@@ -8,10 +8,14 @@ body {
     background-color: #ECECEC;
 }
 
-.container1 {
+.bg-container {
     height: 100%;
     background-image: url(../images/ECECEC.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+form {
+    border: solid 1px black;
 }

@@ -40,20 +40,42 @@ form img.mb4 {
     width: 100%;
     font-weight: bold;
     font-size: 12px;
-    margin-bottom: 3px;
+    margin-bottom: 2px;
 }
 
 .assist-label {
     width: 100%;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 26px;
     color: #C51F3A;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
 }
 
 .adt-label {
     width: 100%;
     font-weight: lighter;
     font-size: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 8%;
+}
+
+
+/*email at password*/
+
+.form-control {
+    background-color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    height: 50px;
+    border: 1px solid #CED4DA;
+    font-weight: 300;
+    font-size: 18px;
+    border-radius: 10px;
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+.inputs {
+    display: grid;
+    row-gap: 10px;
 }

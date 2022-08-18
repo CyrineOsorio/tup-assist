@@ -9,6 +9,7 @@ body {
 }
 
 .bg-container {
+    width: 100%;
     height: 100%;
     background-image: url(../images/ECECEC.jpg);
     background-position: center;
@@ -18,4 +19,6 @@ body {
 
 form {
     border: solid 1px black;
+    width: 700px;
+    margin: 0% 40% 10% 10%;
 }

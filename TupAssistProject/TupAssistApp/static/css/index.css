@@ -15,10 +15,45 @@ body {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    padding: 10% 40% 10% 10%;
 }
+
+
+/*form*/
 
 form {
     border: solid 1px black;
-    width: 700px;
-    margin: 0% 40% 10% 10%;
+    width: 100%;
+    display: grid;
+    text-align: center;
+}
+
+
+/*TUPC LOGO*/
+
+form img.mb4 {
+    justify-self: center;
+    margin-bottom: 5px;
+}
+
+.tup-label {
+    width: 100%;
+    font-weight: bold;
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+
+.assist-label {
+    width: 100%;
+    font-weight: bold;
+    font-size: 24px;
+    color: #C51F3A;
+    margin-bottom: 5px;
+}
+
+.adt-label {
+    width: 100%;
+    font-weight: lighter;
+    font-size: 20px;
+    margin-bottom: 30px;
 }

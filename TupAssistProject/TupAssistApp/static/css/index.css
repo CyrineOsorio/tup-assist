@@ -22,7 +22,7 @@ body {
 /*form*/
 
 form {
-    border: solid 1px black;
+    /*border: solid 1px black;*/
     width: 100%;
     display: grid;
     text-align: center;
@@ -67,7 +67,7 @@ form img.mb4 {
     height: 50px;
     border: 1px solid #CED4DA;
     font-weight: 300;
-    font-size: 18px;
+    font-size: 20px;
     border-radius: 10px;
 }
 
@@ -78,4 +78,66 @@ form img.mb4 {
 .inputs {
     display: grid;
     row-gap: 10px;
+}
+
+
+/*button*/
+
+input.login {
+    width: 100%;
+    height: 45px;
+    background: #C51F3A;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 23px;
+    font-weight: 500;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+
+/*hover ng button */
+
+.login:hover {
+    background-color: #9b0511;
+}
+
+.login:focus {
+    background: #E2435E;
+}
+
+input.login-google {
+    width: 100%;
+    height: 45px;
+    border: solid 1px #C51F3A;
+    color: #000000;
+    cursor: pointer;
+    font-size: 23px;
+    font-weight: lighter;
+    text-align: center;
+    margin-bottom: 40px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+
+/*Don't have an account? SIGN UP here.*/
+
+h2.signup-label {
+    font-style: normal;
+    font-weight: 200;
+    font-size: 20px;
+    color: #000000;
+}
+
+
+/*sigunp label yung red sa baba*/
+
+a.signup-label {
+    color: #E2435E;
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 20px;
 }

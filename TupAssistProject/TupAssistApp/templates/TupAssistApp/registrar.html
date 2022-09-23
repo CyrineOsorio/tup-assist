@@ -9,9 +9,9 @@
     <title>TUPC Administration: All Subjects</title>
 
 
+
     <!--BOOTSTRAP-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
     <!--CSS Custom -->
     <link rel="stylesheet" href="{%static 'css/registrar.css'%}">
@@ -27,7 +27,7 @@
 
     <nav class="navbar navbar-expand-lg" id="tupcnav">
         <img src="../../static/images/tuplogo.png" width="30" height="30" alt="tuplogo">
-        <a class="navbar-brand" href="" id="atech">TECHNOLOGICAL UNIVERSITY OF THE PHILIPPINES - ASSIST</a>
+        <a class="navbar-brand" href="" id="atech">TECHNOLOGICAL UNIVERSITY OF THE PHILIPPINES - ASSIST</a></a>
 
         <nav class="navbar">
             <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,7 +62,56 @@
         </div>
     </nav>
     <div class="bg-container">
+        <div class="welcome">WELCOME, REGISTRAR!</div>
 
+        <div class="content">
+            <div class="offersub-label">
+                <p>OFFER SUBJECTS</p>
+                <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="color:#388465; background-color: white; border: 1px solid #388465; border-radius: 10%; margin-right: 2%;">IMPORT</a>
+            </div>
+            <div style="overflow-x:auto;">
+                <!--HTML code to display data in tabular format-->
+                <table>
+                    <thead>
+                        <th>NO.</th>
+                        <th>SUBJECT CODE</th>
+                        <th>SUBJECT NAME</th>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>CPET15L</td>
+                            <td>MOBILE APPLICATION</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="transtatus-label">
+                <p>TRANSACTION STATUS</p>
+            </div>
+            <div style="overflow-x:auto;">
+                <!--HTML code to display data in tabular format-->
+                <table>
+                    <thead>
+                        <th>TRANSACTION.</th>
+                        <th>STATUS</th>
+                        <th>ACTION</th>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>ADDING</td>
+                            <td>OPEN</td>
+                            <td>EDIT</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>
     </div>
 
 

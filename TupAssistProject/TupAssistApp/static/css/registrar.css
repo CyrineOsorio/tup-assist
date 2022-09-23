@@ -37,14 +37,13 @@ a:focus {
 }
 
 #tupcnav .navbar-brand {
-    width: 100%;
     font-weight: bold;
     font-size: 12px;
     color: black;
 }
 
 #logoutbutton {
-    background-color: black;
+    background-color: #388465;
     color: white;
     padding-left: 40px;
     padding-right: 40px;
@@ -79,5 +78,77 @@ body {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    padding: 5% 30% 10% 20%;
+    padding: 2% 20% 2% 20%;
+}
+
+.welcome {
+    display: flex;
+    justify-content: flex-start;
+    background-color: #388465;
+    color: white;
+    padding: 20px 20px 20px 20px;
+    border-radius: 10px;
+}
+
+.content {
+    display: grid;
+    background-color: white;
+    margin-top: 2%;
+    padding: 20px 20px 20px 20px;
+    border-radius: 10px;
+}
+
+.offersub-label {
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.offersub-label p {
+    width: 50%;
+    height: 100%;
+    font-weight: bold;
+}
+
+
+/*table*/
+
+table {
+    /*border-collapse: collapse;*/
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+    width: 100%;
+}
+
+td,
+th {
+    text-align: left;
+    border-spacing: 10px;
+    border: 1px solid #388465;
+}
+
+.transtatus-label {
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.transtatus-label p {
+    width: 50%;
+    height: 100%;
+    font-weight: bold;
+}
+
+@media only screen and (min-width:1000px) {
+    #navbarToggleExternalContent {
+        display: flex;
+        justify-content: flex-end;
+    }
 }

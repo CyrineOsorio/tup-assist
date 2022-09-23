@@ -14,3 +14,6 @@ def index(request):
 
 def student(request):
     return render(request, 'TupAssistApp/student.html')
+
+def registrar(request):
+    return render(request, 'TupAssistApp/registrar.html')

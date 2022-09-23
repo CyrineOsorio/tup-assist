@@ -146,6 +146,22 @@ th {
     font-weight: bold;
 }
 
+#carouselExampleControlsNoTouching {
+    margin-top: 3%;
+}
+
+.carousel-item {
+    height: 50vh;
+    border: solid 1px #388465;
+    background-color: #388465;
+}
+
+@media only screen and (max-width: 1000px) {
+    .bg-container {
+        padding: 2% 5% 2% 5%;
+    }
+}
+
 @media only screen and (min-width:1000px) {
     #navbarToggleExternalContent {
         display: flex;

@@ -152,8 +152,21 @@ th {
 
 .carousel-item {
     height: 50vh;
-    border: solid 1px #388465;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
     background-color: #388465;
+}
+
+.course-sec-lable {
+    display: flex;
+    justify-content: flex-start;
+    background-color: #388465;
+    color: white;
+    padding: 20px 20px 20px 20px;
+    border-radius: 10px;
+    margin-bottom: 5%;
 }
 
 @media only screen and (max-width: 1000px) {

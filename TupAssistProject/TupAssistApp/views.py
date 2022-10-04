@@ -51,7 +51,9 @@ def transStatus(request,id):
         status.status = status1
         status.save()
         print(status)
+        return redirect('/registrar')
     else:
         status.status = 'Open'
         status.save()
-    return redirect('/registrar')
+        return redirect('/registrar')
+    

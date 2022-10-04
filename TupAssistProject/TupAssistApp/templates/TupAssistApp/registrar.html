@@ -103,17 +103,15 @@
                 <table>
                     <thead>
                         <th>TRANSACTION</th>
-                        <th>STATUS</th>
-                        <th>ACTION</th>
+                        <th>STATUS/ACTION</th>
                     </thead>
 
                     <tbody>
                         {% for status in status %}
                         <tr>
                             <td>{{status.TransName}}</td>
-                            <td>{{status.status}}</td>
                             <td>
-                                <a href="/transStatus/{{status.id}}">Change</a>
+                                <a href="/transStatus/{{status.id}}">{{status.status}}</a>
                             </td>
                         </tr>
                         {% endfor %}
@@ -121,31 +119,15 @@
                 </table>
             </div>
 
-
-            <div id="carouselExampleControlsNoTouching" class="carousel slide" data-touch="false" data-interval="false">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="course-sec-lable">BET-COET-NS-4B</div>
-                        <img src="..." class="d-block w-1000" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <div class="course-sec-lable">BET-COET-S-4A</div>
-                        <img src="..." class="d-block w-1000" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <div class="course-sec-lable">BET-COET-NS-3B</div>
-                        <img src="..." class="d-block w-1000" alt="...">
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-target="#carouselExampleControlsNoTouching" data-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-target="#carouselExampleControlsNoTouching" data-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Next</span>
-                </button>
+            <div class="offersub-label">
+                <p>SCHEDULE</p>
+                <form onsubmit="msg()" action="" method="post">
+                    <input type="submit" value="IMPORT">
+                </form>
             </div>
+
+
+
 
         </div>
     </div>

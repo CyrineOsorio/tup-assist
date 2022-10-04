@@ -10,4 +10,6 @@ class Subjects(models.Model):
     class Meta:
         verbose_name_plural = "Subjects"
 
-        
+class TransStatus(models.Model):
+    TransName = models.CharField(max_length=100, null=True, blank=True)
+    status = models.CharField(max_length=100, null=True, blank=True)     

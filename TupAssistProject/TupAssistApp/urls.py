@@ -5,6 +5,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from . import views
 
+from .views  import *
+
 
 app_name = 'TupAssistApp'
 
@@ -14,5 +16,6 @@ urlpatterns = [
     path('student/', views.student, name='student'),
     path('registrar/', views.registrar, name='registrar'),
     path('sub_cvs', views.sub_cvs, name='sub_cvs'),
+    path('transStatus/<int:id>', views.transStatus),
     
 ]

@@ -6,7 +6,8 @@ from django.contrib import messages
 from .models import *
 
 import csv
-import pandas
+
+
 # Create your views here.
 installed_apps = ['TupAssistApp']
 
@@ -20,8 +21,10 @@ def student(request):
 
 def registrar(request):
     subs = Subjects.objects.all()
+    status = TransStatus.objects.all()
     context = {
-        'subs': subs
+        'subs': subs,
+        'status': status
     }
     return render(request, 'TupAssistApp/registrar.html', context)
 
@@ -39,3 +42,16 @@ def sub_cvs(request):
 
 # switch toggle for transaction status
 # https://stackoverflow.com/questions/55671266/how-to-use-toggle-switch-with-django-boolean-field
+
+def transStatus(request,id):
+    status = TransStatus.objects.get(id=id)
+    print(status)
+    if status.status == 'Open':
+        status1 = 'Close'
+        status.status = status1
+        status.save()
+        print(status)
+    else:
+        status.status = 'Open'
+        status.save()
+    return redirect('/registrar')

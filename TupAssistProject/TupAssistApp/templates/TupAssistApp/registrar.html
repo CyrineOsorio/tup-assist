@@ -104,16 +104,19 @@
                     <thead>
                         <th>TRANSACTION</th>
                         <th>STATUS</th>
+                        <th>ACTION</th>
                     </thead>
 
                     <tbody>
+                        {% for status in status %}
                         <tr>
-                            <td>ADDING</td>
-                            <td><div class="custom-control custom-switch">
-  <input type="checkbox" class="custom-control-input" id="customSwitch1">
-  <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
-</div></td>
+                            <td>{{status.TransName}}</td>
+                            <td>{{status.status}}</td>
+                            <td>
+                                <a href="/transStatus/{{status.id}}">Change</a>
+                            </td>
                         </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>

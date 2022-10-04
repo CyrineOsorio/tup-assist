@@ -67,7 +67,10 @@
         <div class="content">
             <div class="offersub-label">
                 <p>OFFER SUBJECTS</p>
-                <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="color:#388465; background-color: white; border: 1px solid #388465; border-radius: 10%; margin-right: 2%;">IMPORT</a>
+                <form onsubmit="msg()" action="/sub_cvs" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="IMPORT">
+                </form>
             </div>
             <div style="overflow-x:auto;">
                 <!--HTML code to display data in tabular format-->
@@ -76,14 +79,18 @@
                         <th>NO.</th>
                         <th>SUBJECT CODE</th>
                         <th>SUBJECT NAME</th>
+                        <th>COURSE</th>
                     </thead>
 
                     <tbody>
+                        {% for subs in subs %}
                         <tr>
-                            <td>1</td>
-                            <td>CPET15L</td>
-                            <td>Mobile Application</td>
+                            <td>{{subs.id}}</td>
+                            <td>{{subs.SubCode}}</td>
+                            <td>{{subs.SubName}}</td>
+                            <td>{{subs.Course}}</td>
                         </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>

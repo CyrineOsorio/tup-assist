@@ -113,6 +113,18 @@ body {
     font-weight: bold;
 }
 
+.offersub-label input {
+    color: #388465;
+    background-color: white;
+    border: 1px solid #388465;
+    border-radius: 10%;
+    margin-right: 2%;
+}
+
+.offersub-label form {
+    margin-right: 2%;
+}
+
 
 /*table*/
 

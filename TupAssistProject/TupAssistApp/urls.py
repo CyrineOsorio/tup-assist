@@ -13,4 +13,6 @@ urlpatterns = [
     path('index/', views.index, name='index'),
     path('student/', views.student, name='student'),
     path('registrar/', views.registrar, name='registrar'),
+    path('sub_cvs', views.sub_cvs, name='sub_cvs'),
+    
 ]

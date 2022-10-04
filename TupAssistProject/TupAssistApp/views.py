@@ -20,7 +20,7 @@ def student(request):
 
 def registrar(request):
     subs = Subjects.objects.all()
-    context={
+    context = {
         'subs': subs
     }
     return render(request, 'TupAssistApp/registrar.html', context)
@@ -35,4 +35,7 @@ def sub_cvs(request):
                 new_revo.save()
             return redirect('/registrar')
 
-   
+
+
+# switch toggle for transaction status
+# https://stackoverflow.com/questions/55671266/how-to-use-toggle-switch-with-django-boolean-field

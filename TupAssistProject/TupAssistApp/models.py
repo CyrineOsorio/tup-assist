@@ -9,3 +9,5 @@ class Subjects(models.Model):
 
     class Meta:
         verbose_name_plural = "Subjects"
+
+        

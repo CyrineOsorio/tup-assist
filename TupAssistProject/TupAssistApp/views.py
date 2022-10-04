@@ -31,6 +31,7 @@ def registrar(request):
 
 def sub_cvs(request):
     if request.method=='POST': 
+        # subject = request.POST.get('subject')
         with open('TupAssistApp/csv/subject.csv') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:

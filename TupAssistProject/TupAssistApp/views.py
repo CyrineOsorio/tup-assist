@@ -7,6 +7,10 @@ from .models import *
 
 import csv
 
+import os
+
+import glob
+
 
 # Create your views here.
 installed_apps = ['TupAssistApp']
@@ -32,14 +36,13 @@ def registrar(request):
 def sub_cvs(request):
     if request.method=='POST': 
         # subject = request.POST.get('subject')
+        # print(os.path.abspath(subject))
         with open('TupAssistApp/csv/subject.csv') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 new_revo = Subjects.objects.create(SubCode=row['SubCode'], SubName=row['SubName'], Course=row['Course'])
                 new_revo.save()
             return redirect('/registrar')
-
-        return redirect('/registrar')
 
 
 

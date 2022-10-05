@@ -9,7 +9,7 @@ import csv
 
 import os
 
-import glob
+import easygui
 
 
 # Create your views here.
@@ -35,9 +35,9 @@ def registrar(request):
 
 def sub_cvs(request):
     if request.method=='POST': 
-        # subject = request.POST.get('subject')
-        # print(os.path.abspath(subject))
-        with open('TupAssistApp/csv/subject.csv') as csvfile:
+        file = easygui.fileopenbox()
+        print(file)
+        with open(file) as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 new_revo = Subjects.objects.create(SubCode=row['SubCode'], SubName=row['SubName'], Course=row['Course'])

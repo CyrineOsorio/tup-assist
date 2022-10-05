@@ -12,4 +12,7 @@ class Subjects(models.Model):
 
 class TransStatus(models.Model):
     TransName = models.CharField(max_length=100, null=True, blank=True)
-    status = models.CharField(max_length=100, null=True, blank=True)     
+    status = models.CharField(max_length=100, null=True, blank=True)  
+
+    class Meta:
+        verbose_name_plural = "TransStatus"   

@@ -1,0 +1,20 @@
+# (data.json)
+[
+  {
+    "model": "person.author",      # "model" : "app_name.model_name"
+    "pk": 4,
+    "fields": {
+      "first_name": "Sonika"
+    }
+  },
+  {
+    "model": "person.author",
+    "pk": 5,
+    "fields": {
+      "first_name": "Ashish"
+    }
+  }
+]
+#Command : python manage.py loaddata data.json
+
+#reference : https://suyojtamrakar.medium.com/how-to-provide-initial-data-in-django-models-2422aaf3c09a

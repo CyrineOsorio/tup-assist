@@ -1,0 +1,25 @@
+[{
+        "model": "TupAssistApp.TransStatus",
+        "id": 1,
+        "fields": {
+            "TransName": "Add",
+            "status": "Close"
+        }
+    },
+    {
+        "model": "TupAssistApp.TransStatus",
+        "id": 2,
+        "fields": {
+            "TransName": "Drop",
+            "status": "Close"
+        }
+    },
+    {
+        "model": "TupAssistApp.TransStatus",
+        "id": 3,
+        "fields": {
+            "TransName": "Transfer",
+            "status": "Close"
+        }
+    }
+]

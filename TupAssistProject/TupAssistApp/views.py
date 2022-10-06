@@ -31,6 +31,7 @@ def registrar(request):
     # print(latest_sched)
     context = {
         'subs': subs,
+        'status' : status,
         'sched': sched
     }
     return render(request, 'TupAssistApp/registrar.html', context)
@@ -53,8 +54,7 @@ def import_sched(request):
         gSheetLink = request.POST.get('gSheetLink')
         year = request.POST.get('year')
         semester = request.POST.get('semester')
-        status = request.POST.get('status')
-        data = Schedule.objects.create(gSheetLink = gSheetLink, year = year, semester = semester, status = status)
+        data = Schedule.objects.create(gSheetLink = gSheetLink, year = year, semester = semester)
         data.save()
         return redirect('/registrar')
 

@@ -147,16 +147,6 @@
                     </div>
 
                     <div class="col-md-4 mb-4">
-                        <label for="status">Status</label>
-                        <select class="custom-select" name="status" id="status" value="status" required>
-                      <option selected disabled value="status" >status</option>
-                      <option value="Active">Active</option>
-                      <option value="Not Active">Not Active</option>
-                    </select>
-                    </div>
-
-
-                    <div class="col-md-4 mb-4">
                         <label for="button"></label>
                         <input type="submit" class="form-control" id="button" value="IMPORT" required>
                     </div>
@@ -166,6 +156,7 @@
             </form>
 
             <div style="overflow-x:auto;">
+                <!--Defaul link: https://docs.google.com/spreadsheets/d/e/2PACX-1vRyXUDWAdZM2wLlrOCTJH737SRYTjNYjMevJTCOBE-OdcMXwgnaVoABk7KC5yxvTbFC8qDSeLKFXAHg/pubhtml -->
                 <iframe src="{{sched.gSheetLink}}" width="100%" height="100%"></iframe>
             </div>
 

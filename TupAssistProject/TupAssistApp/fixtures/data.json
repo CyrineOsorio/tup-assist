@@ -21,5 +21,14 @@
             "TransName": "Transfer",
             "status": "Close"
         }
+    },
+    {
+        "model": "TupAssistApp.Schedule",
+        "id": 1,
+        "fields": {
+            "gSheetLink": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRyXUDWAdZM2wLlrOCTJH737SRYTjNYjMevJTCOBE-OdcMXwgnaVoABk7KC5yxvTbFC8qDSeLKFXAHg/pubhtml",
+            "year": "2223",
+            "semester": "1"
+        }
     }
 ]

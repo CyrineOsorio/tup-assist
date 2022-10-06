@@ -26,9 +26,12 @@ def student(request):
 def registrar(request):
     subs = Subjects.objects.all()
     status = TransStatus.objects.all()
+    sched = Schedule.objects.latest('id')
+    # latest_sched = sched.gSheetLink
+    # print(latest_sched)
     context = {
         'subs': subs,
-        'status': status
+        'sched': sched
     }
     return render(request, 'TupAssistApp/registrar.html', context)
 
@@ -43,8 +46,17 @@ def sub_cvs(request):
                 new_revo = Subjects.objects.create(SubCode=row['SubCode'], SubName=row['SubName'], Course=row['Course'])
                 new_revo.save()
             return redirect('/registrar')
+    return redirect('/registrar')
 
-
+def import_sched(request):
+    if request.method=='POST': 
+        gSheetLink = request.POST.get('gSheetLink')
+        year = request.POST.get('year')
+        semester = request.POST.get('semester')
+        status = request.POST.get('status')
+        data = Schedule.objects.create(gSheetLink = gSheetLink, year = year, semester = semester, status = status)
+        data.save()
+        return redirect('/registrar')
 
 # switch toggle for transaction status
 # https://stackoverflow.com/questions/55671266/how-to-use-toggle-switch-with-django-boolean-field

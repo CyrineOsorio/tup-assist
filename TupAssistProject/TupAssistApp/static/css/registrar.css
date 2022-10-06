@@ -114,14 +114,37 @@ body {
 }
 
 .offersub-label input {
-    color: #388465;
-    background-color: white;
+    color: white;
+    background-color: #388465;
     border: 1px solid #388465;
     border-radius: 10%;
     margin-right: 2%;
 }
 
 .offersub-label form {
+    margin-right: 2%;
+}
+
+.schedule-label {
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.schedule-label p {
+    width: 50%;
+    height: 100%;
+    font-weight: bold;
+}
+
+#button {
+    color: white;
+    background-color: #388465;
+    border: 1px solid #388465;
+    border-radius: 10%;
     margin-right: 2%;
 }
 

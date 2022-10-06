@@ -14,9 +14,12 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('index/', views.index, name='index'),
     path('student/', views.student, name='student'),
+
+    #registrar
     path('registrar/', views.registrar, name='registrar'),
     path('sub_cvs', views.sub_cvs, name='sub_cvs'),
     path('transStatus/<int:id>', views.transStatus),
     path('import_sched', views.import_sched, name='import_sched'),
+    path('r-adding/', views.r_adding, name='r_adding'),
     
 ]

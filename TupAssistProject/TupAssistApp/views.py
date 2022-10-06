@@ -74,4 +74,6 @@ def transStatus(request,id):
         status.status = 'Open'
         status.save()
         return redirect('/registrar')
-    
+
+def r_adding(request):
+    return render(request, 'TupAssistApp/r-adding.html')

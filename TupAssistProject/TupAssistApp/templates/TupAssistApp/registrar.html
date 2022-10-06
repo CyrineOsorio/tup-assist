@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TUPC Administration: All Subjects</title>
+    <title>TUPC Registrar: Dashboard</title>
 
 
 
@@ -69,7 +69,7 @@
                 <p>OFFER SUBJECTS</p>
                 <form action="/sub_cvs" method="post">
                     {% csrf_token %}
-                    <input type="submit" value="IMPORT">
+                    <input type="submit" value="Import CSV File">
                 </form>
             </div>
             <div style="overflow-x:auto;">
@@ -127,17 +127,17 @@
             <form class="form" action="/import_sched" method="post">
                 {% csrf_token %}
                 <div class="form-row" id="FORMFORM">
-                    <div class="col-md-4 mb-4">
+                    <div class="col-md-4 mb-3">
                         <label for="sub_code">Google Sheet Link</label>
                         <input type="text" class="form-control" name="gSheetLink" id="gSheetLink" required>
                     </div>
 
-                    <div class="col-md-4 mb-4">
+                    <div class="col-md-4 mb-3">
                         <label for="year">Year</label>
                         <input type="number" class="form-control" name="year" id="year" required>
                     </div>
 
-                    <div class="col-md-4 mb-4">
+                    <div class="col-md-4 mb-3">
                         <label for="semester">Semester</label>
                         <select class="custom-select" name="semester" id="semester" required>
                       <option selected disabled value="semester">semester</option>
@@ -146,9 +146,9 @@
                     </select>
                     </div>
 
-                    <div class="col-md-4 mb-4">
+                    <div class="col-md-4 mb-3">
                         <label for="button"></label>
-                        <input type="submit" class="form-control" id="button" value="IMPORT" required>
+                        <input type="submit" class="form-control" id="button" value="Update Schedule" required>
                     </div>
 
 
@@ -157,7 +157,7 @@
 
             <div style="overflow-x:auto;">
                 <!--Defaul link: https://docs.google.com/spreadsheets/d/e/2PACX-1vRyXUDWAdZM2wLlrOCTJH737SRYTjNYjMevJTCOBE-OdcMXwgnaVoABk7KC5yxvTbFC8qDSeLKFXAHg/pubhtml -->
-                <iframe src="{{sched.gSheetLink}}" width="100%" height="100%"></iframe>
+                <iframe src="{{sched.gSheetLink}}" width="100%" height="500"></iframe>
             </div>
 
 

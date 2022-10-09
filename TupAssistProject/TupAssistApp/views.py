@@ -23,6 +23,9 @@ def index(request):
 def student(request):
     return render(request, 'TupAssistApp/student.html')
 
+def pic(request):
+    return render(request, 'TupAssistApp/pic.html')
+
 def registrar(request):
     subs = Subjects.objects.all()
     status = TransStatus.objects.all()

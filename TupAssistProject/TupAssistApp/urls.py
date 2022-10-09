@@ -14,6 +14,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('index/', views.index, name='index'),
     path('student/', views.student, name='student'),
+    path('pic/', views.pic, name='pic'),
 
     #registrar
     path('registrar/', views.registrar, name='registrar'),

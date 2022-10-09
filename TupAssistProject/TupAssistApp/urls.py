@@ -15,6 +15,7 @@ urlpatterns = [
     path('index/', views.index, name='index'),
     path('student/', views.student, name='student'),
     path('pic/', views.pic, name='pic'),
+    path('admin/', views.admin, name='admin'),
 
     #registrar
     path('registrar/', views.registrar, name='registrar'),

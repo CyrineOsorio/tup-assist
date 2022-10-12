@@ -116,10 +116,8 @@ def test2(request):
         form = StudentRegistration(request.POST)
         signup_data = request.POST.dict()
         email = signup_data.get("email")
-
         try:
             userref = StudentReference.objects.get(email=email)
-            
             user_email = userref.email
             print(userref)
             if form.is_valid() and user_email == email:

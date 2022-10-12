@@ -138,3 +138,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 AUTH_USER_MODEL = 'TupAssistApp.registration'
 
+
+#  source: https://stackoverflow.com/questions/61949127/error-message-not-working-as-expected-in-django
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger'
+}

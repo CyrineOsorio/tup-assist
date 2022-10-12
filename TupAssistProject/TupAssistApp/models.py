@@ -24,3 +24,12 @@ class Schedule(models.Model):
 
     class Meta:
         verbose_name_plural = "Schedule" 
+
+class AddingReq(models.Model):
+    subcode = models.CharField(max_length=255, null=True, blank=True)
+    subname = models.CharField(max_length=255, null=True, blank=True)
+    cys = models.CharField(max_length=255, null=True, blank=True)
+    sched = models.CharField(max_length=255, null=True, blank=True)
+    
+    class Meta:
+        verbose_name_plural = "AddingReq" 

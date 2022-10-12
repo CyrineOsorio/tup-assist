@@ -16,6 +16,7 @@ import easygui
 installed_apps = ['TupAssistApp']
 
 
+
 #LOGIN PAGE
 def index(request):
     return render(request, 'TupAssistApp/index.html')
@@ -83,3 +84,22 @@ def transStatus(request,id):
 
 def r_adding(request):
     return render(request, 'TupAssistApp/r-adding.html')
+
+
+#STUDENT PAGE
+def student(request):
+    addReq = AddingReq.objects.all()
+    context = {
+        'addReq': addReq
+    }
+    return render(request, 'TupAssistApp/test.html', context)
+
+def s_adding(request):
+    if request.method=='POST': 
+        subcode = request.POST.get('subcode')
+        subname = request.POST.get('subname')
+        cys = request.POST.get('cys')
+        sched = request.POST.get('sched')
+        add = AddingReq.objects.create(subcode=subcode, subname=subname, cys=cys, sched=sched)
+        add.save()
+    return redirect('/student')

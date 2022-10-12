@@ -24,4 +24,7 @@ urlpatterns = [
     path('import_sched', views.import_sched, name='import_sched'),
     path('r-adding/', views.r_adding, name='r_adding'),
     
+    #student
+    path('student/', views.student, name='student'),
+    path('s_adding', views.s_adding, name='s_adding'),
 ]

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+</head>
+
+<body>
+    <div style="overflow-x:auto;">
+        <!--HTML code to display data in tabular format-->
+        <table>
+            <thead>
+                <th>SUBJECT CODE</th>
+                <th>SUBJECT NAME</th>
+                <th>COURSE, YEAR & SECTION</th>
+                <th>SCHEDULE</th>
+                <th>Action</th>
+            </thead>
+
+            <tbody>
+                {% for i in addReq %}
+                <tr>
+                    <td>{{i.subname}}</td>
+                    <td>{{i.subcode}}</td>
+                    <td>{{i.cys}}</td>
+                    <td>{{i.sched}}</td>
+                    <td><a href="">Delete</a></td>
+                </tr>
+                {% endfor %}
+
+                <tr>
+                    <form class="form" action="/s_adding" method="post">
+                        {% csrf_token %}
+                        <td><input type="text" name="subcode" id="subcode"></td>
+                        <td><input type="text" name="subname" id="subname"></td>
+                        <td><input type="text" name="cys" id="cys"></td>
+                        <td><input type="text" name="sched" id="sched"></td>
+                        <td><input type="submit" value="Add"></td>
+                    </form>
+                </tr>
+
+
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+</html>

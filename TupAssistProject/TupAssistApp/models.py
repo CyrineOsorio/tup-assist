@@ -65,3 +65,9 @@ class registration(AbstractUser):
 
     class Meta:
         verbose_name_plural = "registration" 
+
+class StudentReference(models.Model):
+    email = models.CharField(max_length=255, null=True, blank=True)
+
+    class Meta:
+        verbose_name_plural = "StudentReference" 

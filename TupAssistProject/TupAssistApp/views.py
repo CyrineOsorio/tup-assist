@@ -116,12 +116,18 @@ def test2(request):
         form = StudentRegistration(request.POST)
         signup_data = request.POST.dict()
         email = signup_data.get("email")
-        print(email)
-        f1 = registration.objects.get(email=email)
-        print(f1)
-        if form.is_valid() and f1 == email:
-            # form.save()
-            # messages.success(request, 'Success!')
-            return redirect ('/index')
+
+        try:
+            userref = StudentReference.objects.get(email=email)
+            
+            user_email = userref.email
+            print(userref)
+            if form.is_valid() and user_email == email:
+                form.save()
+                messages.success(request, 'Success!')
+                return redirect ('/index')
+        except StudentReference.DoesNotExist:
+            messages.error(request, 'Error!')
+            return redirect ('/test2')
     context =  {'form': form}
     return render(request, 'TupAssistApp/test2.html', context)

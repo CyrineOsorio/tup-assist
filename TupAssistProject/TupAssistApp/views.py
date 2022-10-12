@@ -108,15 +108,20 @@ def s_adding(request):
         add.save()
     return redirect('/student')
 
+
 #SIGN UP PAGE
 def test2(request):
     form = StudentRegistration()
     if request.method == 'POST':
         form = StudentRegistration(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Success!')
+        signup_data = request.POST.dict()
+        email = signup_data.get("email")
+        print(email)
+        f1 = registration.objects.get(email=email)
+        print(f1)
+        if form.is_valid() and f1 == email:
+            # form.save()
+            # messages.success(request, 'Success!')
             return redirect ('/index')
-
     context =  {'form': form}
     return render(request, 'TupAssistApp/test2.html', context)

@@ -16,67 +16,74 @@
 
 <body>
 
-    {% csrf_token %}
+    <form method="post">
+        {% csrf_token %}
 
-    <div class="input-group input-group-sm mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-sm">first_name</span>
+        <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">first_name</span>
+            </div>
+            {{form.first_name}}
         </div>
-        {{form.first_name}}
-    </div>
 
-    <div class="input-group input-group-sm mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-sm">last_name</span>
+        <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">last_name</span>
+            </div>
+            {{form.last_name}}
         </div>
-        {{form.last_name}}
-    </div>
 
-    <div class="input-group input-group-sm mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-sm">studID</span>
+        <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">studID</span>
+            </div>
+            {{form.studID}}
         </div>
-        {{form.studID}}
-    </div>
 
-    <div class="input-group input-group-sm mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-sm">course</span>
+        <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">course</span>
+            </div>
+            {{form.course}}
         </div>
-        {{form.course}}
-    </div>
 
-    <div class="input-group input-group-sm mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-sm">yrandsec</span>
+        <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">yrandsec</span>
+            </div>
+            {{form.yrandsec}}
         </div>
-        {{form.yrandsec}}
-    </div>
 
-    <div class="input-group input-group-sm mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-sm">username</span>
+        <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">username</span>
+            </div>
+            {{form.username}}
         </div>
-        {{form.username}}
-    </div>
 
-    <div class="input-group input-group-sm mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-sm">password1</span>
+        <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">email</span>
+            </div>
+            {{form.email}}
         </div>
-        {{form.password1}}
-    </div>
 
-    <div class="input-group input-group-sm mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-sm">password2</span>
+        <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">password1</span>
+            </div>
+            {{form.password1}}
         </div>
-        {{form.password2}}
-    </div>
 
+        <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">password2</span>
+            </div>
+            {{form.password2}}
+        </div>
 
-
-    <input class="signup" type="submit" name="register" value="Sign Up">
+        <input class="signup" type="submit" name="register" value="Sign Up">
+    </form>
 
     <h2 class="loginlabel">Already have an account? <a class="loginlabel" href="{%url 'TupAssistApp:index'%}">LOG IN</a> here.</h2>
 

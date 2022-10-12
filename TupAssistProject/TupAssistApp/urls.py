@@ -29,5 +29,5 @@ urlpatterns = [
     path('s_adding', views.s_adding, name='s_adding'),
 
     # studentregistration
-    path('test2', views.test2, name='test2'),
+    path('test2/', views.test2, name='test2'),
 ]

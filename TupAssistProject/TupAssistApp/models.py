@@ -1,4 +1,8 @@
+from email.policy import default
 from django.db import models
+from django.db.models import Model
+import os
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 
@@ -35,11 +39,29 @@ class AddingReq(models.Model):
         verbose_name_plural = "AddingReq" 
 
 # Testing only
-# class StudentAccount(models.Model):
-#     email = models.CharField(max_length=255, null=True, blank=True)
-#     fname = models.CharField(max_length=255, null=True, blank=True)
-#     lname = models.CharField(max_length=255, null=True, blank=True)
-#     studID = models.CharField(max_length=255, null=True, blank=True)
-    
-#     class Meta:
-#         verbose_name_plural = "StudentAccount" 
+# class StudentAccount(AbstractUser):
+    # section = [
+    #     ('BET-COET-S-1A', 'BET-COET-S-1A'),
+    #     ('BET-COET-NS-1B', 'BET-COET-NS-1B'),
+    #     ('BET-COET-S-2A', 'BET-COET-S-2A'),
+    #     ('BET-COET-NS-2B', 'BET-COET-NS-2B'),
+    #     ('BET-COET-S-3A', 'BET-COET-S-3A'),
+    #     ('BET-COET-NS-3B', 'BET-COET-NS-3B'),
+    #     ('BET-COET-S-4A', 'BET-COET-S-4A'),
+    #     ('BET-COET-NS-4B', 'BET-COET-NS-4B'),
+    # ]
+    # userType = [
+    #     ('STDNT', 'Student'),
+    #     ('DH', 'Department Head'),
+    #     ('PIC', 'Person-in-charge'),
+    # ]
+    # email = models.CharField(max_length=255, null=True, blank=True)
+    # fname = models.CharField(max_length=255, null=True, blank=True)
+    # lname = models.CharField(max_length=255, null=True, blank=True)
+    # course = models.CharField(max_length=255, null=True, blank=True)
+    # yrandsec = models.CharField(max_length=255, null=True, blank=True)
+    # studID = models.CharField(max_length=255, null=True, blank=True)
+    # userType = models.CharField(max_length=255, choices= userType, verbose_name='userType', default ='STDNT')
+
+    # class Meta:
+    #     verbose_name_plural = "StudentAccount" 

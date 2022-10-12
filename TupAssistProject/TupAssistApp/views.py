@@ -4,6 +4,10 @@ from django.shortcuts import redirect, render
 from django.contrib import messages
 
 from .models import *
+from django.contrib.auth.forms import UserCreationForm
+from .forms import *
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 import csv
 
@@ -103,3 +107,16 @@ def s_adding(request):
         add = AddingReq.objects.create(subcode=subcode, subname=subname, cys=cys, sched=sched)
         add.save()
     return redirect('/student')
+
+#SIGN UP PAGE
+# def userregistration(request):
+#     form = StudentRegistration()
+#     if request.method == 'POST':
+#         form = StudentRegistration(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             messages.success(request, 'Success!')
+#             return redirect ('/index')
+        
+#     context =  {'form': form }
+#     return render(request, 'Adding_App/registration.html', context)

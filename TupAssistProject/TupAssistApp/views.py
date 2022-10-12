@@ -109,14 +109,14 @@ def s_adding(request):
     return redirect('/student')
 
 #SIGN UP PAGE
-# def userregistration(request):
-#     form = StudentRegistration()
-#     if request.method == 'POST':
-#         form = StudentRegistration(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             messages.success(request, 'Success!')
-#             return redirect ('/index')
-        
-#     context =  {'form': form }
-#     return render(request, 'Adding_App/registration.html', context)
+def test2(request):
+    form = StudentRegistration()
+    if request.method == 'POST':
+        form = StudentRegistration(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Success!')
+            return redirect ('/index')
+
+    context =  {'form': form}
+    return render(request, 'TupAssistApp/test2.html', context)

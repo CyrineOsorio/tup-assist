@@ -7,5 +7,5 @@ from .models import *
 
 class StudentRegistration(UserCreationForm):
     class Meta:
-        model = StudentAccount
-        fields = ['username', 'email', 'password1', 'password2', 'lname', 'fname', 'yrandsec', 'course', 'studID', 'userType']
+        model = registration
+        fields = ['username', 'email', 'password1', 'password2', 'last_name', 'first_name', 'yrandsec', 'course', 'studID', 'userType']

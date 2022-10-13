@@ -151,8 +151,8 @@ def r_adding(request):
 
 #STUDENT PAGE
 def student(request):
-    addReq = AddingReq.objects.all()
     current_user = request.user
+    addReq = AddingReq.objects.filter(email=current_user.email)
     context = {
         'addReq': addReq,
         'current_user': current_user

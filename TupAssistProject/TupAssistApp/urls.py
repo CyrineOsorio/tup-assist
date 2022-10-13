@@ -30,5 +30,5 @@ urlpatterns = [
     path('s_adding_edit/<int:id>', views.s_adding_edit),
 
     # studentregistration
-    path('test2/', views.test2, name='test2'),
+    path('signup/', views.signup, name='signup'),
 ]

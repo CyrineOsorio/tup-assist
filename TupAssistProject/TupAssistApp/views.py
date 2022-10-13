@@ -23,6 +23,25 @@ installed_apps = ['TupAssistApp']
 
 #LOGIN PAGE
 def index(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password') 
+        user = authenticate(request, username=username, password=password) 
+        print(user)
+
+        if user is not None and user.userType == 'STDNT':
+            login(request, user)
+            return redirect('/student')
+        
+        elif user is not None and user.userType == 'DH':
+            login(request, user)
+            return redirect('/head')
+
+        elif user is not None and user.userType == 'PIC':
+            login(request, user)
+            return redirect('/pic')
+        else:
+           messages.error(request, 'Invalid Credentials')
     return render(request, 'TupAssistApp/index.html')
 
 def student(request):
@@ -119,7 +138,7 @@ def s_adding_edit(request, id):
         return redirect('/student')
 
 #SIGN UP PAGE
-def test2(request):
+def signup(request):
     form = StudentRegistration()
     if request.method == 'POST':
         form = StudentRegistration(request.POST)

@@ -63,6 +63,37 @@
         <div class="welcome">WELCOME, REGISTRAR!</div>
 
         <div class="content">
+
+            <div class="gsfe-account-label">
+                <p>STUDENT'S GSFE ACCOUNT</p>
+                <form action="/acc_cvs" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="Import CSV File">
+                </form>
+            </div>
+
+            <div style="overflow-x:auto;">
+                <!--HTML code to display data in tabular format-->
+                <table>
+                    <thead>
+                        <th>NO.</th>
+                        <th>EMAIL</th>
+                    </thead>
+
+                    <tbody>
+                        {% for e in emails %}
+                        <tr>
+                            <td>{{e.id}}</td>
+                            <td>{{e.email}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+
+
+
             <div class="offersub-label">
                 <p>OFFER SUBJECTS</p>
                 <form action="/sub_cvs" method="post">
@@ -95,6 +126,9 @@
                 </table>
             </div>
 
+
+
+
             <div class="transtatus-label">
                 <p>TRANSACTION STATUS</p>
             </div>
@@ -119,10 +153,12 @@
                 </table>
             </div>
 
+
+
+
             <div class="schedule-label">
                 <p>SCHEDULE</p>
             </div>
-
 
             <form class="form" action="/import_sched" method="post">
                 {% csrf_token %}
@@ -168,6 +204,11 @@
     <!--JAVASCRIPT-->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+
+    {% if messages %} {% for message in messages %} {% if message.tags %}
+    <script>
+        alert("{{ message }}")
+    </script> {% endif %} {% endfor %} {% endif %}
 
 </body>
 

@@ -62,7 +62,7 @@ def signup(request):
             else:
                 messages.error(request, 'Invalid Credentials!')
         except StudentReference.DoesNotExist:
-            messages.error(request, 'Email is not Tup Cavite Gsfe Account!')
+            messages.error(request, 'Use Tup Cavite Gsfe Account!')
             return redirect ('/signup')
     context =  {'form': form}
     return render(request, 'TupAssistApp/signup.html', context)
@@ -78,14 +78,31 @@ def registrar(request):
     subs = Subjects.objects.all()
     status = TransStatus.objects.all()
     sched = Schedule.objects.latest('id')
+    emails = StudentReference.objects.all()
     # latest_sched = sched.gSheetLink
     # print(latest_sched)
     context = {
         'subs': subs,
         'status' : status,
-        'sched': sched
+        'sched': sched,
+        'emails': emails
     }
     return render(request, 'TupAssistApp/registrar.html', context)
+
+
+def acc_cvs(request):
+    if request.method=='POST': 
+        file = easygui.fileopenbox()
+        if file is not None:
+            with open(file) as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    new_revo = StudentReference.objects.create(email=row['Email'])
+                    new_revo.save()
+                return redirect('/registrar')
+        else:
+            messages.error(request, 'Cancelled!')
+    return redirect('/registrar')
 
 
 def sub_cvs(request):

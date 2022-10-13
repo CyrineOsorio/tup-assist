@@ -98,6 +98,33 @@ body {
     border-radius: 10px;
 }
 
+.gsfe-account-label {
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.gsfe-account-label p {
+    width: 50%;
+    height: 100%;
+    font-weight: bold;
+}
+
+.gsfe-account-label input {
+    color: white;
+    background-color: #388465;
+    border: 1px solid #388465;
+    border-radius: 10%;
+    margin-right: 2%;
+}
+
+.gsfe-account-label form {
+    margin-right: 2%;
+}
+
 .offersub-label {
     margin-top: 2%;
     margin-left: 2%;

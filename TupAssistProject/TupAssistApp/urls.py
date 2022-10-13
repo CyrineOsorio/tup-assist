@@ -19,6 +19,7 @@ urlpatterns = [
 
     #registrar
     path('registrar/', views.registrar, name='registrar'),
+    path('acc_cvs', views.acc_cvs, name='acc_cvs'),
     path('sub_cvs', views.sub_cvs, name='sub_cvs'),
     path('transStatus/<int:id>', views.transStatus),
     path('import_sched', views.import_sched, name='import_sched'),

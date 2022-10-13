@@ -55,7 +55,7 @@ def sub_cvs(request):
         with open(file) as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                new_revo = Subjects.objects.create(SubCode=row['SubCode'], SubName=row['SubName'], Course=row['Course'])
+                new_revo = Subjects.objects.create(SubCode=row['SubCode'], SubName=row['SubName'], Course=row['Course'], Units=row['Units'])
                 new_revo.save()
             return redirect('/registrar')
     return redirect('/registrar')
@@ -102,9 +102,10 @@ def s_adding(request):
     if request.method=='POST': 
         subcode = request.POST.get('subcode')
         subname = request.POST.get('subname')
-        cys = request.POST.get('cys')
+        course = request.POST.get('course')
+        yrandsec = request.POST.get('yrandsec')
         sched = request.POST.get('sched')
-        add = AddingReq.objects.create(subcode=subcode, subname=subname, cys=cys, sched=sched)
+        add = AddingReq.objects.create(subcode=subcode, subname=subname, course=course, yrandsec=yrandsec, sched=sched)
         add.save()
     return redirect('/student')
 

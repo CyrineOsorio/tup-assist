@@ -6,14 +6,17 @@ from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 
+# CvS file of subjects to import in Subjects Model
 class Subjects(models.Model):           
     SubCode = models.CharField(max_length=255)
     SubName = models.CharField(max_length=255)
     Course = models.CharField(max_length=255)
+    Units = models.IntegerField(blank=True, null=True)
 
     class Meta:
         verbose_name_plural = "Subjects"
 
+# Transaction json file to import | code in terminal: python manage.py loaddata data.json
 class TransStatus(models.Model):
     TransName = models.CharField(max_length=100, null=True, blank=True)
     status = models.CharField(max_length=100, null=True, blank=True)  
@@ -21,6 +24,7 @@ class TransStatus(models.Model):
     class Meta:
         verbose_name_plural = "TransStatus"  
 
+# CvS file of schedule to import in Schedule Model
 class Schedule(models.Model):
     gSheetLink = models.CharField(max_length=500, null=True, blank=True)
     year = models.IntegerField(blank=True, null=True)
@@ -29,18 +33,21 @@ class Schedule(models.Model):
     class Meta:
         verbose_name_plural = "Schedule" 
 
+# Model for Student Adding Transaction
 class AddingReq(models.Model):
     subcode = models.CharField(max_length=255, null=True, blank=True)
     subname = models.CharField(max_length=255, null=True, blank=True)
-    cys = models.CharField(max_length=255, null=True, blank=True)
+    course = models.CharField(max_length=255, null=True, blank=True)
+    yrandsec = models.CharField(max_length=255, null=True, blank=True)
     sched = models.CharField(max_length=255, null=True, blank=True)
     
     class Meta:
         verbose_name_plural = "AddingReq" 
 
-# Testing only
+
+# Student Registration and Student account refernce for tupcavite gsfe account only
 class registration(AbstractUser):
-    section = [
+    yrandsec = [
         ('BET-COET-S-1A', 'BET-COET-S-1A'),
         ('BET-COET-NS-1B', 'BET-COET-NS-1B'),
         ('BET-COET-S-2A', 'BET-COET-S-2A'),

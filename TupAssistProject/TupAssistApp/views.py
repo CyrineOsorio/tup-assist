@@ -122,10 +122,12 @@ def test2(request):
             print(userref)
             if form.is_valid() and user_email == email:
                 form.save()
-                messages.success(request, 'Success!')
+                messages.success(request, 'Account is successfully created!')
                 return redirect ('/index')
+            else:
+                messages.error(request, 'Invalid Credentials!')
         except StudentReference.DoesNotExist:
-            messages.error(request, 'Error!')
+            messages.error(request, 'Email is not Tup Cavite Gsfe Account!')
             return redirect ('/test2')
     context =  {'form': form}
     return render(request, 'TupAssistApp/test2.html', context)

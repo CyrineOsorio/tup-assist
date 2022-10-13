@@ -44,9 +44,6 @@ def index(request):
            messages.error(request, 'Invalid Credentials')
     return render(request, 'TupAssistApp/index.html')
 
-def student(request):
-    return render(request, 'TupAssistApp/student.html')
-
 def pic(request):
     return render(request, 'TupAssistApp/pic.html')
 
@@ -115,7 +112,7 @@ def student(request):
     context = {
         'addReq': addReq
     }
-    return render(request, 'TupAssistApp/test.html', context)
+    return render(request, 'TupAssistApp/student.html', context)
 
 def s_adding(request):
     if request.method=='POST': 
@@ -156,6 +153,6 @@ def signup(request):
                 messages.error(request, 'Invalid Credentials!')
         except StudentReference.DoesNotExist:
             messages.error(request, 'Email is not Tup Cavite Gsfe Account!')
-            return redirect ('/test2')
+            return redirect ('/signup')
     context =  {'form': form}
-    return render(request, 'TupAssistApp/test2.html', context)
+    return render(request, 'TupAssistApp/signup.html', context)

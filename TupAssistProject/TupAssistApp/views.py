@@ -44,6 +44,30 @@ def index(request):
            messages.error(request, 'Invalid Credentials')
     return render(request, 'TupAssistApp/index.html')
 
+#SIGN UP PAGE
+def signup(request):
+    form = StudentRegistration()
+    if request.method == 'POST':
+        form = StudentRegistration(request.POST)
+        signup_data = request.POST.dict()
+        email = signup_data.get("email")
+        try:
+            userref = StudentReference.objects.get(email=email)
+            user_email = userref.email
+            print(userref)
+            if form.is_valid() and user_email == email:
+                form.save()
+                messages.success(request, 'Account is successfully created!')
+                return redirect ('/index')
+            else:
+                messages.error(request, 'Invalid Credentials!')
+        except StudentReference.DoesNotExist:
+            messages.error(request, 'Email is not Tup Cavite Gsfe Account!')
+            return redirect ('/signup')
+    context =  {'form': form}
+    return render(request, 'TupAssistApp/signup.html', context)
+
+
 def pic(request):
     return render(request, 'TupAssistApp/pic.html')
 
@@ -134,25 +158,4 @@ def s_adding_edit(request, id):
         data1.save()
         return redirect('/student')
 
-#SIGN UP PAGE
-def signup(request):
-    form = StudentRegistration()
-    if request.method == 'POST':
-        form = StudentRegistration(request.POST)
-        signup_data = request.POST.dict()
-        email = signup_data.get("email")
-        try:
-            userref = StudentReference.objects.get(email=email)
-            user_email = userref.email
-            print(userref)
-            if form.is_valid() and user_email == email:
-                form.save()
-                messages.success(request, 'Account is successfully created!')
-                return redirect ('/index')
-            else:
-                messages.error(request, 'Invalid Credentials!')
-        except StudentReference.DoesNotExist:
-            messages.error(request, 'Email is not Tup Cavite Gsfe Account!')
-            return redirect ('/signup')
-    context =  {'form': form}
-    return render(request, 'TupAssistApp/signup.html', context)
+

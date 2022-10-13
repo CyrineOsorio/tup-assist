@@ -64,21 +64,25 @@
             <span aria-hidden="true">&times;</span>
           </button>
                 </div>
-                <div class="modal-body">
-                    <div class="col-md-4 mb-3">
-                        <label for="id">Subject Code</label>
-                        <input type="text" class="form-control" name="id" id="id" value="{{i.id}}" readonly>
-                    </div>
+                <form class="form" action="/s_adding_edit/{{i.id}}" method="post">
+                    {% csrf_token %}
+                    <div class="modal-body">
+                        <div class="col-md-4 mb-3">
+                            <label for="id">Subject Code</label>
+                            <input type="text" class="form-control" name="id" id="id" value="{{i.id}}" readonly>
+                        </div>
 
-                    <div class="col-md-4 mb-3">
-                        <label for="subcode">Subject Code</label>
-                        <input type="text" class="form-control" name="subcode" id="subcode" value="{{i.subcode}}" required>
+                        <div class="col-md-4 mb-3">
+                            <label for="subcode">Subject Code</label>
+                            <input type="text" class="form-control" name="subcode" id="subcode" value="{{i.subcode}}" required>
+                        </div>
+
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <input type="submit" value="Save Changes">
+                    </div>
+                </form>
             </div>
         </div>
     </div>

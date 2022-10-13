@@ -108,6 +108,14 @@ def s_adding(request):
         add.save()
     return redirect('/student')
 
+def s_adding_edit(request, id):
+    if request.method =='POST':
+        id = request.POST.get('id')
+        data1= AddingReq.objects.get(id=id)
+        data1.id = request.POST.get('id')
+        data1.subcode = request.POST.get('subcode')
+        data1.save()
+        return redirect('/student')
 
 #SIGN UP PAGE
 def test2(request):

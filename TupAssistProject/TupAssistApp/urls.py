@@ -27,6 +27,7 @@ urlpatterns = [
     #student
     path('student/', views.student, name='student'),
     path('s_adding', views.s_adding, name='s_adding'),
+    path('s_adding_edit/<int:id>', views.s_adding_edit),
 
     # studentregistration
     path('test2/', views.test2, name='test2'),

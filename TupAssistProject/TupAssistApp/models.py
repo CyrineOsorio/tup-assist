@@ -35,6 +35,7 @@ class Schedule(models.Model):
 
 # Model for Student Adding Transaction
 class AddingReq(models.Model):
+    email = models.CharField(max_length=255, null=True, blank=True)
     subcode = models.CharField(max_length=255, null=True, blank=True)
     subname = models.CharField(max_length=255, null=True, blank=True)
     course = models.CharField(max_length=255, null=True, blank=True)

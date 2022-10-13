@@ -152,19 +152,22 @@ def r_adding(request):
 #STUDENT PAGE
 def student(request):
     addReq = AddingReq.objects.all()
+    current_user = request.user
     context = {
-        'addReq': addReq
+        'addReq': addReq,
+        'current_user': current_user
     }
     return render(request, 'TupAssistApp/student.html', context)
 
 def s_adding(request):
     if request.method=='POST': 
+        email = request.POST.get('email')
         subcode = request.POST.get('subcode')
         subname = request.POST.get('subname')
         course = request.POST.get('course')
         yrandsec = request.POST.get('yrandsec')
         sched = request.POST.get('sched')
-        add = AddingReq.objects.create(subcode=subcode, subname=subname, course=course, yrandsec=yrandsec, sched=sched)
+        add = AddingReq.objects.create(email=email, subcode=subcode, subname=subname, course=course, yrandsec=yrandsec, sched=sched)
         add.save()
     return redirect('/student')
 

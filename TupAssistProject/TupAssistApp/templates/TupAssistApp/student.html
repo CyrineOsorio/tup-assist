@@ -14,7 +14,7 @@
 
 <body>
 
-
+    <label>Current User:</label> <label>{{ current_user.email }}</label>
 
     <!-- ADDING REQUESTS TABLE-->
     <div style="overflow-x:auto;">
@@ -45,6 +45,7 @@
                 <tr>
                     <form class="form" action="/s_adding" method="post">
                         {% csrf_token %}
+                        <input type="text" name="email" id="email" value="{{ current_user.email }}" hidden>
                         <td><input type="text" name="subcode" id="subcode"></td>
                         <td><input type="text" name="subname" id="subname"></td>
                         <td><input type="text" name="course" id="course"></td>

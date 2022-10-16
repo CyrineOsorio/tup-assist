@@ -1,13 +1,12 @@
 # tup-assist
 
 
-**GITHUB**
+**GITBASH FOR GITHUB**
+
 1. git pull
 2. git add .
 3. git commit -m "Add Files"
 4. git push
-
-
 
 
 **PROJECT**

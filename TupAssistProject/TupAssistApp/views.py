@@ -153,8 +153,12 @@ def r_adding(request):
 def student(request):
     current_user = request.user
     addReq = AddingReq.objects.filter(email=current_user.email)
+    dropReq = DroppingReq.objects.filter(email=current_user.email)
+    transReq = TransferringReq.objects.filter(email=current_user.email)
     context = {
         'addReq': addReq,
+        'dropReq': dropReq,
+        'transReq': transReq,
         'current_user': current_user
     }
     return render(request, 'TupAssistApp/student.html', context)
@@ -177,7 +181,15 @@ def s_adding_edit(request, id):
         data1= AddingReq.objects.get(id=id)
         data1.id = request.POST.get('id')
         data1.subcode = request.POST.get('subcode')
+        data1.subname = request.POST.get('subname')
+        data1.course = request.POST.get('course')
+        data1.yrandsec = request.POST.get('yrandsec')
+        data1.sched = request.POST.get('sched')
         data1.save()
         return redirect('/student')
 
 
+def s_adding_del(request, id):
+    data = AddingReq.objects.get(id=id)
+    data.delete()
+    return redirect('/student')

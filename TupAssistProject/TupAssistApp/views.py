@@ -188,8 +188,41 @@ def s_adding_edit(request, id):
         data1.save()
         return redirect('/student')
 
-
 def s_adding_del(request, id):
     data = AddingReq.objects.get(id=id)
+    data.delete()
+    return redirect('/student')
+
+def s_dropping(request):
+    if request.method=='POST': 
+        email = request.POST.get('email')
+        subcode = request.POST.get('subcode')
+        subname = request.POST.get('subname')
+        course = request.POST.get('course')
+        yrandsec = request.POST.get('yrandsec')
+        sched = request.POST.get('sched')
+        add = DroppingReq.objects.create(email=email, subcode=subcode, subname=subname, course=course, yrandsec=yrandsec, sched=sched)
+        add.save()
+    return redirect('/student')
+
+def s_dropping_del(request, id):
+    data = DroppingReq.objects.get(id=id)
+    data.delete()
+    return redirect('/student')
+
+def s_transferring(request):
+    if request.method=='POST': 
+        email = request.POST.get('email')
+        subcode = request.POST.get('subcode')
+        subname = request.POST.get('subname')
+        course = request.POST.get('course')
+        yrandsec = request.POST.get('yrandsec')
+        sched = request.POST.get('sched')
+        add = TransferringReq.objects.create(email=email, subcode=subcode, subname=subname, course=course, yrandsec=yrandsec, sched=sched)
+        add.save()
+    return redirect('/student')
+
+def s_transferring_del(request, id):
+    data = TransferringReq.objects.get(id=id)
     data.delete()
     return redirect('/student')

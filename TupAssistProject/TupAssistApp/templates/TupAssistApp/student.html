@@ -85,7 +85,7 @@
                     <td>{{i.course}}</td>
                     <td>{{i.yrandsec}}</td>
                     <td>{{i.sched}}</td>
-                    <td><a href="">Delete</a></td>
+                    <td><a href="/s_dropping_del/{{i.id}}">Delete</a></td>
                     <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="">Edit</button></td>
                 </tr>
                 {% endfor %}
@@ -129,14 +129,14 @@
                     <td>{{i.course}}</td>
                     <td>{{i.yrandsec}}</td>
                     <td>{{i.sched}}</td>
-                    <td><a href="">Delete</a></td>
+                    <td><a href="/s_transferring_del/{{i.id}}">Delete</a></td>
                     <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="">Edit</button></td>
                 </tr>
                 {% endfor %}
 
 
                 <tr>
-                    <form class="form" action="/s_dropping" method="post">
+                    <form class="form" action="/s_transferring" method="post">
                         {% csrf_token %}
                         <input type="text" name="email" id="email" value="{{ current_user.email }}" hidden>
                         <td><input type="text" name="subcode" id="subcode"></td>

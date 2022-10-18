@@ -30,6 +30,10 @@ urlpatterns = [
     path('s_adding', views.s_adding, name='s_adding'),
     path('s_adding_edit/<int:id>', views.s_adding_edit),
     path('s_adding_del/<int:id>', views.s_adding_del),
+    path('s_dropping', views.s_dropping, name='s_dropping'),
+    path('s_dropping_del/<int:id>', views.s_dropping_del),
+    path('s_transferring', views.s_transferring, name='s_transferring'),
+    path('s_transferring_del/<int:id>', views.s_transferring_del),
 
     # studentregistration
     path('signup/', views.signup, name='signup'),

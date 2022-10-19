@@ -123,19 +123,6 @@ def sub_cvs(request):
         return redirect('/registrar')
     return redirect('/registrar')
 
-# def sub_cvs(request):
-#     if request.method=='POST': 
-#         file = easygui.fileopenbox()
-#         if file is not None:
-            
-#                 reader = csv.DictReader(csvfile)
-#                 for row in reader:
-#                     new_revo = Subjects.objects.create(SubCode=row['SubCode'], SubName=row['SubName'], Course=row['Course'], Units=row['Units'])
-#                     new_revo.save()
-#                 return redirect('/registrar')
-#         else:
-#             messages.error(request, 'Cancelled!')
-#     return redirect('/registrar')
 
 def import_sched(request):
     if request.method=='POST': 

@@ -102,32 +102,11 @@ def acc_cvs(request):
         reader = csv.reader(decoded_file)
         print(reader)
         for i in reader:
-            new_revo = StudentReference.objects.create(email=i)
+            new_revo = StudentReference.objects.create(email=[i])
             new_revo.save()
-            return redirect('/registrar')
-
-     return redirect('/registrar')
-
-    # DEBUG IMPORTANTE PA RIN
-    # print(studList)
-    # file = os.path.abspath(str(studList))
-    # with open(f'{filepath}, r') as csvfile:
-    #     reader = csv.DictReader(csvfile)
-    #     for row in reader:
-    #         new_revo = StudentReference.objects.create(email=row['Email'])
-    #         new_revo.save()
-            # return redirect('/registrar')
-    
-    # decoded_file = studcvsfile.read().decode('utf-8').splitlines()
-    # reader = csv.DictReader(studcvsfile)
-    # for row in reader:
-    #     for i in row:
-    #         new_revo = StudentReference.objects.create(email=i[row])
-    #         new_revo.save()
-    #         return redirect('/registrar')
-        
+        return redirect('/registrar')
    
-   
+    return redirect('/registrar')
 
 
 def sub_cvs(request):

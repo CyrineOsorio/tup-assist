@@ -96,32 +96,46 @@ def registrar(request):
 
 def acc_cvs(request):
     if request.method=='POST':
-        datetime1 = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         studcvsfile = request.FILES["studcvsfile"]
         decoded_file = studcvsfile.read().decode('utf-8').splitlines()
         reader = csv.reader(decoded_file)
         print(reader)
         for i in reader:
-            new_revo = StudentReference.objects.create(email=[i])
+            new_revo = StudentReference.objects.create(email=str(i)[2:-2])
             new_revo.save()
         return redirect('/registrar')
    
     return redirect('/registrar')
 
-
 def sub_cvs(request):
     if request.method=='POST': 
-        file = easygui.fileopenbox()
-        if file is not None:
-            
-                reader = csv.DictReader(csvfile)
-                for row in reader:
-                    new_revo = Subjects.objects.create(SubCode=row['SubCode'], SubName=row['SubName'], Course=row['Course'], Units=row['Units'])
-                    new_revo.save()
+        subcvsfile = request.FILES["subcvsfile"]
+        decoded_file = subcvsfile.read().decode('utf-8').splitlines()
+        reader = csv.reader(decoded_file)
+        print(reader)
+        for row in reader:
+            print(row)
+            try:
+                new_revo = Subjects.objects.create(SubCode=str(row[0]), SubName=str(row[1]), Course=str(row[2]), Units=int(row[3]))
+                new_revo.save()
+            except:
                 return redirect('/registrar')
-        else:
-            messages.error(request, 'Cancelled!')
+        return redirect('/registrar')
     return redirect('/registrar')
+
+# def sub_cvs(request):
+#     if request.method=='POST': 
+#         file = easygui.fileopenbox()
+#         if file is not None:
+            
+#                 reader = csv.DictReader(csvfile)
+#                 for row in reader:
+#                     new_revo = Subjects.objects.create(SubCode=row['SubCode'], SubName=row['SubName'], Course=row['Course'], Units=row['Units'])
+#                     new_revo.save()
+#                 return redirect('/registrar')
+#         else:
+#             messages.error(request, 'Cancelled!')
+#     return redirect('/registrar')
 
 def import_sched(request):
     if request.method=='POST': 

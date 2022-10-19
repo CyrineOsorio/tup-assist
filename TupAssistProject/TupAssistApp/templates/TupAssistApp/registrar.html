@@ -97,9 +97,9 @@
 
             <div class="offersub-label">
                 <p>OFFER SUBJECTS</p>
-                <form action="/sub_cvs" method="post">
+                <form action="/sub_cvs" method="post" enctype="multipart/form-data" name="subcvsfile">
                     {% csrf_token %}
-                    <input type="file" name="studcvsfile" id="studcvsfile">
+                    <input type="file" name="subcvsfile" id="subcvsfile">
                     <input type="submit" value="Import CSV File">
                 </form>
             </div>

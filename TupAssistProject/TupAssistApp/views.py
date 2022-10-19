@@ -12,8 +12,12 @@ from django.contrib.auth.decorators import login_required
 import csv
 
 import os
+import time
+from datetime import datetime
 
-import easygui
+
+# importing pandas module
+import pandas as pd
 
 
 # Create your views here.
@@ -91,25 +95,46 @@ def registrar(request):
 
 
 def acc_cvs(request):
-    if request.method=='POST': 
-        file = easygui.fileopenbox()
-        if file is not None:
-            with open(file) as csvfile:
-                reader = csv.DictReader(csvfile)
-                for row in reader:
-                    new_revo = StudentReference.objects.create(email=row['Email'])
-                    new_revo.save()
-                return redirect('/registrar')
-        else:
-            messages.error(request, 'Cancelled!')
-    return redirect('/registrar')
+    if request.method=='POST':
+        datetime1 = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        studcvsfile = request.FILES["studcvsfile"]
+        decoded_file = studcvsfile.read().decode('utf-8').splitlines()
+        reader = csv.reader(decoded_file)
+        print(reader)
+        for i in reader:
+            new_revo = StudentReference.objects.create(email=i)
+            new_revo.save()
+            return redirect('/registrar')
+
+     return redirect('/registrar')
+
+    # DEBUG IMPORTANTE PA RIN
+    # print(studList)
+    # file = os.path.abspath(str(studList))
+    # with open(f'{filepath}, r') as csvfile:
+    #     reader = csv.DictReader(csvfile)
+    #     for row in reader:
+    #         new_revo = StudentReference.objects.create(email=row['Email'])
+    #         new_revo.save()
+            # return redirect('/registrar')
+    
+    # decoded_file = studcvsfile.read().decode('utf-8').splitlines()
+    # reader = csv.DictReader(studcvsfile)
+    # for row in reader:
+    #     for i in row:
+    #         new_revo = StudentReference.objects.create(email=i[row])
+    #         new_revo.save()
+    #         return redirect('/registrar')
+        
+   
+   
 
 
 def sub_cvs(request):
     if request.method=='POST': 
         file = easygui.fileopenbox()
         if file is not None:
-            with open(file) as csvfile:
+            
                 reader = csv.DictReader(csvfile)
                 for row in reader:
                     new_revo = Subjects.objects.create(SubCode=row['SubCode'], SubName=row['SubName'], Course=row['Course'], Units=row['Units'])

@@ -32,7 +32,7 @@ When there is changes in Model.py
 
 
 
-<!-- PACKAGES -->
+<!-- Data Tables NodeJs PACKAGES -->
 SOURCE: https://datatables.net/manual/installation#Initialising-DataTables
 npm install datatables.net    # Core library
 npm install datatables.net-dt # Styling

@@ -47,7 +47,7 @@ a:focus {
     color: white;
     padding-left: 40px;
     padding-right: 40px;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 #logoutbutton:hover {
@@ -55,7 +55,7 @@ a:focus {
     color: #388465;
     padding-left: 40px;
     padding-right: 40px;
-    border-radius: 10px;
+    border-radius: 5px;
     background-color: white;
 }
 

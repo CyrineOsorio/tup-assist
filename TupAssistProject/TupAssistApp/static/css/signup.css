@@ -84,9 +84,8 @@ input.signup {
 h2.loginlabel {
     font-style: normal;
     font-weight: 200;
-    font-size: 23px;
+    font-size: 20px;
     color: #000000;
-    justify-self: flex-start;
 }
 
 label {
@@ -98,8 +97,9 @@ a.loginlabel {
     color: #E2435E;
     text-decoration: none;
     font-weight: normal;
-    font-size: 23px;
+    font-size: 20px;
 }
+
 
 
 

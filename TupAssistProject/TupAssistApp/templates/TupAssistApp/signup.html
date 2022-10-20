@@ -27,66 +27,43 @@
         <h1 class="assist-label">ASSIST</h1>
         <h1 class="adt-label">Add, drop or transfer your subject all in one place</h1>
 
-        <div class="input-group input-group-sm mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">first_name</span>
+
+
+        <div class="formGroup1">
+            <div class="form-group1">
+                {{form.first_name}}
             </div>
-            {{form.first_name}}
+            <div class="form-group1a">
+                {{form.last_name}}
+            </div>
+        </div>
+        <div class="formGroup2">
+            <div class="form-group2">
+                {{form.email}}
+            </div>
+            <div class="form-group2a">
+                {{form.studID}}
+            </div>
         </div>
 
-        <div class="input-group input-group-sm mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">last_name</span>
+        <div class="formGroup3">
+            <div class="form-group3">
+                {{form.course}}
             </div>
-            {{form.last_name}}
+            <div class="form-group3a">
+                {{form.yrandsec}}
+            </div>
         </div>
 
-        <div class="input-group input-group-sm mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">studID</span>
-            </div>
-            {{form.studID}}
-        </div>
-
-        <div class="input-group input-group-sm mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">course</span>
-            </div>
-            {{form.course}}
-        </div>
-
-        <div class="input-group input-group-sm mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">yrandsec</span>
-            </div>
-            {{form.yrandsec}}
-        </div>
-
-        <div class="input-group input-group-sm mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">username</span>
-            </div>
+        <div class="form-group4">
             {{form.username}}
         </div>
 
-        <div class="input-group input-group-sm mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">email</span>
-            </div>
-            {{form.email}}
-        </div>
-
-        <div class="input-group input-group-sm mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">password1</span>
-            </div>
+        <div class="form-group5">
             {{form.password1}}
         </div>
 
-        <div class="input-group input-group-sm mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">password2</span>
-            </div>
+        <div class="form-group6">
             {{form.password2}}
         </div>
 

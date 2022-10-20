@@ -69,7 +69,7 @@
                 <form class="form-inline" action="/acc_cvs" method="post" enctype="multipart/form-data" name="studcvsfile">
                     {% csrf_token %}
                     <div class="form-group mx-sm-3 mb-2">
-                        <input type="file" name="studcvsfile" id="studcvsfile">
+                        <input type="file" name="studcvsfile" id="studcvsfile" required>
                     </div>
                         <button type="submit" class="btn btn-primary mb-2" >Import CSV File</button>
                   </form>
@@ -100,7 +100,7 @@
                 <form class="form-inline" action="/sub_cvs" method="post" enctype="multipart/form-data" name="subcvsfile">
                     {% csrf_token %}
                     <div class="form-group mx-sm-3 mb-2">
-                        <input type="file" name="subcvsfile" id="subcvsfile">
+                        <input type="file" name="subcvsfile" id="subcvsfile" required>
                     </div>
                         <button type="submit" class="btn btn-primary mb-2" >Import CSV File</button>
                   </form>

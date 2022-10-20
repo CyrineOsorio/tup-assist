@@ -156,6 +156,8 @@ def r_adding(request):
 def r_dropping(request):
     return render(request, 'TupAssistApp/r-dropping.html')
 
+def r_transferring(request):
+    return render(request, 'TupAssistApp/r-transferring.html')
 
 
 

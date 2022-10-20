@@ -63,6 +63,27 @@ a:focus {
     font-weight: bold;
 }
 
+.bg-container {
+    width: 100%;
+    height: 100vh;
+    background-image: url(../images/E8EFE5.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 2% 20% 2% 20%;
+}
+
+.welcome {
+    display: flex;
+    justify-content: flex-start;
+    background-color: #388465;
+    color: white;
+    padding: 20px 20px 20px 20px;
+    border-radius: 10px;
+}
+
+
+
 @media only screen and (min-width:1000px) {
     #navbarToggleExternalContent {
         display: flex;

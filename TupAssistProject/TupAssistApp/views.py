@@ -153,6 +153,11 @@ def transStatus(request,id):
 def r_adding(request):
     return render(request, 'TupAssistApp/r-adding.html')
 
+def r_dropping(request):
+    return render(request, 'TupAssistApp/r-dropping.html')
+
+
+
 
 #STUDENT PAGE
 def student(request):

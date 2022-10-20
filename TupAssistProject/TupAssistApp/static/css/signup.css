@@ -86,6 +86,7 @@ h2.loginlabel {
     font-weight: 200;
     font-size: 20px;
     color: #000000;
+    padding-bottom: 5%;
 }
 
 label {
@@ -151,7 +152,7 @@ a.loginlabel {
 .form-group6 input {
     background-color: #ffffff;
     font-family: 'Roboto', sans-serif;
-    height: 50px;
+    height: 40px;
     border: 1px solid #CED4DA;
     font-weight: 300;
     font-size: 18px;

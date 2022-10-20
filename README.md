@@ -26,3 +26,20 @@ When there is changes in Model.py
 
 -Next is Sign Up
 -Then login
+
+
+
+
+
+
+<!-- PACKAGES -->
+SOURCE: https://datatables.net/manual/installation#Initialising-DataTables
+npm install datatables.net    # Core library
+npm install datatables.net-dt # Styling
+
+npm install -g bower
+
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope CurrentUser
+
+bower install --save datatables.net
+bower install --save datatables.net-dt

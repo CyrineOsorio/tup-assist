@@ -151,7 +151,7 @@ def transStatus(request,id):
         return redirect('/registrar')
 
 def r_adding(request):
-    test = StudentReference.objects.all()
+    test = registration.objects.all()
     context = { 'test': test}
     return render(request, 'TupAssistApp/r-adding.html', context)
 

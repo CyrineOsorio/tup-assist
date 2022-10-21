@@ -96,6 +96,8 @@ def registrar(request):
 
 def acc_cvs(request):
     if request.method=='POST':
+        junk = StudentReference.objects.all()
+        junk.delete()
         studcvsfile = request.FILES["studcvsfile"]
         decoded_file = studcvsfile.read().decode('utf-8').splitlines()
         reader = csv.reader(decoded_file)
@@ -109,6 +111,8 @@ def acc_cvs(request):
 
 def sub_cvs(request):
     if request.method=='POST': 
+        junk = Subjects.objects.all()
+        junk.delete()
         subcvsfile = request.FILES["subcvsfile"]
         decoded_file = subcvsfile.read().decode('utf-8').splitlines()
         reader = csv.reader(decoded_file)

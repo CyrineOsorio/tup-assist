@@ -85,11 +85,14 @@
 
         <div class="content">
 
+            <div class="add-label">
+                <p>Add Subject</p>
+            </div>
+
             <!-- ADDING REQUESTS TABLE-->
             <div style="overflow-x:auto;">
                 <!--HTML code to display data in tabular format-->
-                <table>
-                    <legend>Add Subject</legend>
+                <table id="table_id_k" class="display">
                     <thead>
                         <th>SUBJECT CODE</th>
                         <th>SUBJECT NAME</th>
@@ -115,7 +118,7 @@
                         <tr>
                             <form class="form" action="/s_adding" method="post">
                                 {% csrf_token %}
-                                <input type="text" name="email" id="email" value="{{ current_user.email }}" hidden>
+                                <input type="text" name="email" id="email" value="{{current_user.email}}" hidden>
                                 <td><input type="text" name="subcode" id="subcode"></td>
                                 <td><input type="text" name="subname" id="subname"></td>
                                 <td><input type="text" name="course" id="course"></td>
@@ -124,7 +127,6 @@
                                 <td><input type="submit" value="Add"></td>
                             </form>
                         </tr>
-
                     </tbody>
                 </table>
             </div>
@@ -154,7 +156,6 @@
                             <td><a href="/s_dropping_del/{{i.id}}">Delete</a></td>
                         </tr>
                         {% endfor %}
-
 
                         <tr>
                             <form class="form" action="/s_dropping" method="post">
@@ -286,7 +287,7 @@
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
     <script>
         $(document).ready(function() {
-            $('#table_id').DataTable();
+            $('#table_id_k').DataTable();
         });
     </script>
 

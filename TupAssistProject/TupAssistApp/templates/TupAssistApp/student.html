@@ -95,8 +95,7 @@
                     <thead>
                         <th>NO.</th>
                         <th hidden>EMAIL</th>
-                        <th>SUBJECT CODE</th>
-                        <th>SUBJECT NAME</th>
+                        <th>SUBJECT</th>
                         <th>COURSE</th>
                         <th>YEAR & SECTION</th>
                         <th>SCHEDULE</th>
@@ -108,8 +107,7 @@
                         <tr>
                             <td>{{i.id}}</td>
                             <td hidden>{{i.email}}</td>
-                            <td>{{i.subname}}</td>
-                            <td>{{i.subcode}}</td>
+                            <td>{{i.subject}} </td>
                             <td>{{i.course}}</td>
                             <td>{{i.yrandsec}}</td>
                             <td>{{i.sched}}</td>
@@ -125,8 +123,14 @@
                                 {% csrf_token %}
                                 <td></td>
                                 <td hidden><input type="text" name="email" id="email" value="{{current_user.email}}" hidden></td>
-                                <td><input type="text" name="subcode" id="subcode"></td>
-                                <td><input type="text" name="subname" id="subname"></td>
+
+                                <td><select class="custom-select" name="subject" id="subject">
+                                     {% for i in sub %}
+                                    <option value="{{i.SubCode}} {{i.SubName}}">{{i.SubCode}} {{i.SubName}}</option>
+                                     {% endfor %}
+                                  </select>
+                                </td>
+
                                 <td><input type="text" name="course" id="course"></td>
                                 <td><input type="text" name="yrandsec" id="yrandsec"></td>
                                 <td><input type="text" name="sched" id="sched"></td>

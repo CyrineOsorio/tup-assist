@@ -174,26 +174,35 @@ def r_transferring(request):
 #STUDENT PAGE
 def student(request):
     current_user = request.user
+    # Models
     addReq = AddingReq.objects.filter(email=current_user.email)
     dropReq = DroppingReq.objects.filter(email=current_user.email)
     transReq = TransferringReq.objects.filter(email=current_user.email)
+    sub = Subjects.objects.all()
+
+    # Forms
+    subcode = request.POST.get('subcode')
+    sub1 = Subjects.objects.filter(SubCode=subcode)
+
     context = {
         'addReq': addReq,
         'dropReq': dropReq,
         'transReq': transReq,
-        'current_user': current_user
+        'current_user': current_user,
+        'sub': sub
+        
     }
     return render(request, 'TupAssistApp/student.html', context)
+
 
 def s_adding(request):
     if request.method=='POST': 
         email = request.POST.get('email')
-        subcode = request.POST.get('subcode')
-        subname = request.POST.get('subname')
+        subject = request.POST.get('subject')
         course = request.POST.get('course')
         yrandsec = request.POST.get('yrandsec')
         sched = request.POST.get('sched')
-        add = AddingReq.objects.create(email=email, subcode=subcode, subname=subname, course=course, yrandsec=yrandsec, sched=sched)
+        add = AddingReq.objects.create(email=email, subject=subject, course=course, yrandsec=yrandsec, sched=sched)
         add.save()
     return redirect('/student')
 

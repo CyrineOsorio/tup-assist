@@ -130,6 +130,15 @@ body {
     justify-content: space-evenly;
 }
 
+#subcode,
+#subname,
+#course,
+#yrandsec,
+#sched {
+    border: solid 1px #E2435E;
+    height: 25px;
+}
+
 @media only screen and (max-width: 1000px) {
     .bg-container {
         padding: 2% 5% 2% 5%;

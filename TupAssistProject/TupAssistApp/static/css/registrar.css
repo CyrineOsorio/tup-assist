@@ -95,13 +95,30 @@ body {
     display: grid;
     background-color: white;
     margin-top: 2%;
-    padding: 20px 20px 20px 20px;
+    padding: 20px 40px 20px 40px;
     border-radius: 10px;
 }
 
+.card {
+    border: solid 0.5px #388465;
+}
+
+.transtatus-label {
+    margin-top: 2%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.transtatus-label p {
+    width: 50%;
+    height: 100%;
+    font-weight: bold;
+}
+
+
 .gsfe-account-label {
     margin-top: 2%;
-    margin-left: 2%;
     display: flex;
     justify-content: space-between;
 }
@@ -120,13 +137,10 @@ body {
     border: 1px solid #388465;
 }
 
-.gsfe-account-label form {
-    margin-right: 2%;
-}
+
 
 .offersub-label {
     margin-top: 2%;
-    margin-left: 2%;
     display: flex;
     justify-content: space-between;
 }
@@ -146,14 +160,8 @@ body {
     border: 1px solid #388465;
 }
 
-.offersub-label form {
-    margin-right: 2%;
-}
-
 .schedule-label {
     margin-top: 2%;
-    margin-left: 2%;
-    margin-right: 2%;
     width: 100%;
     display: flex;
     justify-content: flex-start;
@@ -170,42 +178,7 @@ body {
     background-color: #388465;
     border: 1px solid #388465;
     border-radius: 5%;
-    margin-right: 2%;
 }
-
-
-/*table*/
-
-table {
-    /*border-collapse: collapse;*/
-    margin-top: 2%;
-    margin-left: 2%;
-    margin-right: 2%;
-    width: 96%;
-}
-
-td,
-th {
-    text-align: left;
-    border-spacing: 10px;
-    border: 1px solid #388465;
-}
-
-.transtatus-label {
-    margin-top: 2%;
-    margin-left: 2%;
-    margin-right: 2%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.transtatus-label p {
-    width: 50%;
-    height: 100%;
-    font-weight: bold;
-}
-
 
 
 

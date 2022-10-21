@@ -93,6 +93,7 @@
                 <!--HTML code to display data in tabular format-->
                 <table id="table_id" class="table table-striped">
                     <thead>
+                        <th>NO.</th>
                         <th hidden>EMAIL</th>
                         <th>SUBJECT CODE</th>
                         <th>SUBJECT NAME</th>
@@ -105,6 +106,7 @@
                     <tbody>
                         {% for i in addReq %}
                         <tr>
+                            <td>{{i.id}}</td>
                             <td hidden>{{i.email}}</td>
                             <td>{{i.subname}}</td>
                             <td>{{i.subcode}}</td>
@@ -121,6 +123,7 @@
                         <tr>
                             <form class="form" action="/s_adding" method="post">
                                 {% csrf_token %}
+                                <td></td>
                                 <td hidden><input type="text" name="email" id="email" value="{{current_user.email}}" hidden></td>
                                 <td><input type="text" name="subcode" id="subcode"></td>
                                 <td><input type="text" name="subname" id="subname"></td>
@@ -143,6 +146,7 @@
                 <!--HTML code to display data in tabular format-->
                 <table id="table_id" class="table table-striped">
                     <thead>
+                        <th>NO.</th>
                         <th hidden>EMAIl</th>
                         <th>SUBJECT CODE</th>
                         <th>SUBJECT NAME</th>
@@ -155,6 +159,7 @@
                     <tbody>
                         {% for i in dropReq %}
                         <tr>
+                            <td>{{i.id}}</td>
                             <td hidden>{{i.email}}</td>
                             <td>{{i.subname}}</td>
                             <td>{{i.subcode}}</td>
@@ -168,6 +173,7 @@
                         <tr>
                             <form class="form" action="/s_dropping" method="post">
                                 {% csrf_token %}
+                                <td></td>
                                 <td hidden><input type="text" name="email" id="email" value="{{current_user.email}}" hidden></td>
                                 <td><input type="text" name="subcode" id="subcode"></td>
                                 <td><input type="text" name="subname" id="subname"></td>
@@ -190,6 +196,7 @@
                 <!--HTML code to display data in tabular format-->
                 <table id="table_id" class="table table-striped">
                     <thead>
+                        <th>NO.</th>
                         <th>SUBJECT CODE</th>
                         <th hidden>EMAIl</th>
                         <th>SUBJECT NAME</th>
@@ -202,6 +209,7 @@
                     <tbody>
                         {% for i in transReq %}
                         <tr>
+                            <td>{{i.id}}</td>
                             <td hidden>{{i.email}}</td>
                             <td>{{i.subname}}</td>
                             <td>{{i.subcode}}</td>
@@ -215,6 +223,7 @@
                         <tr>
                             <form class="form" action="/s_transferring" method="post">
                                 {% csrf_token %}
+                                <td></td>
                                 <td hidden><input type="text" name="email" id="email" value="{{ current_user.email }}" hidden></td>
                                 <td><input type="text" name="subcode" id="subcode"></td>
                                 <td><input type="text" name="subname" id="subname"></td>

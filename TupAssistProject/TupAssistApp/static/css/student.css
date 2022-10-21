@@ -87,13 +87,39 @@ body {
 }
 
 .add-label {
-    margin-top: 2%;
+    margin-top: 4%;
     width: 100%;
     display: flex;
     justify-content: space-between;
 }
 
 .add-label p {
+    width: 50%;
+    height: 100%;
+    font-weight: bold;
+}
+
+.drop-label {
+    margin-top: 4%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.drop-label p {
+    width: 50%;
+    height: 100%;
+    font-weight: bold;
+}
+
+.transfer-label {
+    margin-top: 4%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.transfer-label p {
     width: 50%;
     height: 100%;
     font-weight: bold;

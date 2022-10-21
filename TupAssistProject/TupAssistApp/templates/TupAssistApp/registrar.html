@@ -22,8 +22,8 @@
     <!--ICONS-->
     <link rel="icon" href="../../static/images/tuplogo.png">
 
-     <!--DATATABLES-->
-     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+    <!--DATATABLES-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
 </head>
 
 <body>
@@ -67,25 +67,23 @@
 
         <div class="content">
 
-
             <div class="transtatus-label">
                 <p>TRANSACTION STATUS</p>
             </div>
 
-            
             <div class="row mx-auto" style="margin-bottom:2%;">
                 {% for status in status %}
                 <div class="col-sm">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">{{status.TransName}} Of Subject</h5>
-                        <a href="/transStatus/{{status.id}}" class="card-link" style="font-weight: bold;">{{status.status}}</a>
-                    </div>
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{status.TransName}} Of Subject</h5>
+                            <a href="/transStatus/{{status.id}}" class="card-link" style="font-weight: bold;">{{status.status}}</a>
+                        </div>
                     </div>
                 </div>
                 {% endfor %}
             </div>
-             
+
 
             <div class="gsfe-account-label">
                 <p>STUDENT'S GSFE ACCOUNT</p>
@@ -94,12 +92,12 @@
                     <div class="form-group mx-sm-3 mb-2">
                         <input type="file" name="studcvsfile" id="studcvsfile" required>
                     </div>
-                        <button type="submit" class="btn btn-primary mb-2" >Import CSV File</button>
-                  </form>
+                    <button type="submit" class="btn btn-primary mb-2">Import CSV File</button>
+                </form>
             </div>
 
 
-            <div style="overflow-x:auto; margin-bottom:2%;" >
+            <div style="overflow-x:auto; margin-bottom:2%;">
                 <!--HTML code to display data in tabular format-->
                 <table id="table_id" class="display">
                     <thead>
@@ -118,7 +116,7 @@
                 </table>
             </div>
 
-            
+
 
             <div class="offersub-label">
                 <p>OFFER SUBJECTS</p>
@@ -127,8 +125,8 @@
                     <div class="form-group mx-sm-3 mb-2">
                         <input type="file" name="subcvsfile" id="subcvsfile" required>
                     </div>
-                        <button type="submit" class="btn btn-primary mb-2" >Import CSV File</button>
-                  </form>
+                    <button type="submit" class="btn btn-primary mb-2">Import CSV File</button>
+                </form>
             </div>
 
             <div style="overflow-x:auto; margin-bottom:2%;">
@@ -164,33 +162,33 @@
             <form action="/import_sched" method="post" style="margin-bottom:2%;">
                 {% csrf_token %}
                 <div class="row">
-                  <div class="col">
+                    <div class="col">
                         <label for="sub_code">Google Sheet Link</label>
                         <input type="text" class="form-control" name="gSheetLink" id="gSheetLink" required>
-                  </div>
-                  <div class="col">
-                    <label for="year">Year</label>
-                    <input type="number" class="form-control" name="year" id="year" required>
-                  </div>
-                  <div class="col">
-                    <label for="semester">Semester</label>
+                    </div>
+                    <div class="col">
+                        <label for="year">Year</label>
+                        <input type="number" class="form-control" name="year" id="year" required>
+                    </div>
+                    <div class="col">
+                        <label for="semester">Semester</label>
                         <select class="custom-select" name="semester" id="semester" required>
                       <option selected disabled value="semester">semester</option>
                       <option value="1">1</option>
                       <option value="2">2</option>
                     </select>
-                  </div>
-                  <div class="col">
-                    <label for="button">.</label>
-                    <input type="submit" class="form-control" id="button" value="Update Schedule" required>
-                  </div>
+                    </div>
+                    <div class="col">
+                        <label for="button">.</label>
+                        <input type="submit" class="form-control" id="button" value="Update Schedule" required>
+                    </div>
                 </div>
             </form>
-            
+
 
             <div style="overflow-x:auto; margin-bottom:2%;">
                 <!--Defaul link: https://docs.google.com/spreadsheets/d/e/2PACX-1vRyXUDWAdZM2wLlrOCTJH737SRYTjNYjMevJTCOBE-OdcMXwgnaVoABk7KC5yxvTbFC8qDSeLKFXAHg/pubhtml -->
-                <iframe src="{{sched.gSheetLink}}" width="100%" height="500" ></iframe>
+                <iframe src="{{sched.gSheetLink}}" width="100%" height="500"></iframe>
             </div>
 
         </div>
@@ -209,10 +207,10 @@
     <!--DATATABLES-->
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
     <script>
-        $(document).ready( function () {
+        $(document).ready(function() {
             $('#table_id').DataTable();
             $('#table_id_1').DataTable();
-        } );
+        });
     </script>
 
 </body>

@@ -20,8 +20,6 @@
     <!--ICONS-->
     <link rel="icon" href="../../static/images/tuplogo.png">
 
-    <!--DATATABLES-->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
 
 </head>
 
@@ -92,7 +90,7 @@
             <!-- ADDING REQUESTS TABLE-->
             <div style="overflow-x:auto;">
                 <!--HTML code to display data in tabular format-->
-                <table id="table_id" class="display">
+                <table id="table_id" class="table table-striped">
                     <thead>
                         <th hidden>EMAIL</th>
                         <th>SUBJECT CODE</th>
@@ -141,7 +139,7 @@
             <!-- DROPPING REQUESTS TABLE-->
             <div style="overflow-x:auto;">
                 <!--HTML code to display data in tabular format-->
-                <table id="table_id_1" class="display">
+                <table id="table_id" class="table table-striped">
                     <thead>
                         <th hidden>EMAIl</th>
                         <th>SUBJECT CODE</th>
@@ -188,7 +186,7 @@
             <!-- TRANSFERRING REQUESTS TABLE-->
             <div style="overflow-x:auto;">
                 <!--HTML code to display data in tabular format-->
-                <table id="table_id_2" class="display">
+                <table id="table_id" class="table table-striped">
                     <thead>
                         <th>SUBJECT CODE</th>
                         <th hidden>EMAIl</th>
@@ -236,51 +234,53 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Add Subject: Edit</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
                         </div>
-                        <form class="form" action="/s_adding_edit/{{i.id}}" method="post">
-                            {% csrf_token %}
-                            <div class="modal-body">
-                                <div class="col-md-4 mb-3">
-                                    <label for="id">Subject Code</label>
-                                    <input type="text" class="form-control" name="id" id="id" value="{{i.id}}" readonly>
+
+                        <div class="modal-body">
+                            <form class="needs-validation" action="/s_adding_edit/{{i.id}}" method="post">
+                                {% csrf_token %}
+                                <div class="form-row">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="id">Subject Code</label>
+                                        <input type="text" class="form-control" name="id" id="id" value="{{i.id}}" readonly>
+                                    </div>
+
+                                    <div class="col-md-4 mb-3">
+                                        <label for="subcode">Subject Code</label>
+                                        <input type="text" class="form-control" name="subcode" id="subcode" value="{{i.subcode}}" required>
+                                    </div>
+
+                                    <div class="col-md-4 mb-3">
+                                        <label for="subname">Subject Name</label>
+                                        <input type="text" class="form-control" name="subname" id="subname" value="{{i.subname}}" required>
+                                    </div>
+
+                                    <div class="col-md-4 mb-3">
+                                        <label for="course">Course</label>
+                                        <input type="text" class="form-control" name="course" id="course" value="{{i.course}}" required>
+                                    </div>
+
+                                    <div class="col-md-4 mb-3">
+                                        <label for="yrandsec">Year and Section</label>
+                                        <input type="text" class="form-control" name="yrandsec" id="yrandsec" value="{{i.yrandsec}}" required>
+                                    </div>
+
+                                    <div class="col-md-4 mb-3">
+                                        <label for="sched">Schedule</label>
+                                        <input type="text" class="form-control" name="sched" id="sched" value="{{i.sched}}" required>
+                                    </div>
                                 </div>
 
-                                <div class="col-md-4 mb-3">
-                                    <label for="subcode">Subject Code</label>
-                                    <input type="text" class="form-control" name="subcode" id="subcode" value="{{i.subcode}}" required>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <input type="submit" value="Save Changes">
                                 </div>
-
-                                <div class="col-md-4 mb-3">
-                                    <label for="subname">Subject Name</label>
-                                    <input type="text" class="form-control" name="subname" id="subname" value="{{i.subname}}" required>
-                                </div>
-
-                                <div class="col-md-4 mb-3">
-                                    <label for="course">Course</label>
-                                    <input type="text" class="form-control" name="course" id="course" value="{{i.course}}" required>
-                                </div>
-
-                                <div class="col-md-4 mb-3">
-                                    <label for="yrandsec">Year and Section</label>
-                                    <input type="text" class="form-control" name="yrandsec" id="yrandsec" value="{{i.yrandsec}}" required>
-                                </div>
-
-                                <div class="col-md-4 mb-3">
-                                    <label for="sched">Schedule</label>
-                                    <input type="text" class="form-control" name="sched" id="sched" value="{{i.sched}}" required>
-                                </div>
-
-
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <input type="submit" value="Save Changes">
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -294,16 +294,6 @@
     <!--JAVASCRIPT-->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
-
-    <!--DATATABLES-->
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#table_id').DataTable();
-            $('#table_id_1').DataTable();
-            $('#table_id_2').DataTable();
-        });
-    </script>
 
 </body>
 

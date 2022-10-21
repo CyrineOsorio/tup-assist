@@ -160,10 +160,14 @@ def r_adding(request):
     return render(request, 'TupAssistApp/r-adding.html', context)
 
 def r_dropping(request):
-    return render(request, 'TupAssistApp/r-dropping.html')
+    test = registration.objects.all()
+    context = { 'test': test}
+    return render(request, 'TupAssistApp/r-dropping.html', context)
 
 def r_transferring(request):
-    return render(request, 'TupAssistApp/r-transferring.html')
+    test = registration.objects.all()
+    context = { 'test': test}
+    return render(request, 'TupAssistApp/r-transferring.html', context)
 
 
 

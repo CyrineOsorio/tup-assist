@@ -137,6 +137,8 @@ body {
 #sched {
     border: solid 1px #E2435E;
     height: 25px;
+    border-radius: 8%;
+    width: 100%;
 }
 
 @media only screen and (max-width: 1000px) {

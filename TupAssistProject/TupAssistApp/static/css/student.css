@@ -63,7 +63,7 @@ a:focus {
 /* body */
 
 body {
-    height: 100vh;
+    height: 100%;
     background-color: #ECECEC;
 }
 
@@ -123,6 +123,11 @@ body {
     width: 50%;
     height: 100%;
     font-weight: bold;
+}
+
+.action {
+    display: flex;
+    justify-content: space-evenly;
 }
 
 @media only screen and (max-width: 1000px) {

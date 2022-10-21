@@ -71,12 +71,12 @@ class TransferringReq(models.Model):
 # Student Registration and Student account refernce for tupcavite gsfe account only
 class registration(AbstractUser):
     yrandsec = [
-        ('BET-COET-S-1A', 'BET-COET-S-1A'),
-        ('BET-COET-NS-1B', 'BET-COET-NS-1B'),
-        ('BET-COET-S-2A', 'BET-COET-S-2A'),
-        ('BET-COET-NS-2B', 'BET-COET-NS-2B'),
-        ('BET-COET-S-3A', 'BET-COET-S-3A'),
-        ('BET-COET-NS-3B', 'BET-COET-NS-3B'),
+        ('1A'),
+        ('1B'),
+        ('2A'),
+        ('2B'),
+        ('3A', '3A'),
+        ('3B', 'BET-COET-NS-3B'),
         ('BET-COET-S-4A', 'BET-COET-S-4A'),
         ('BET-COET-NS-4B', 'BET-COET-NS-4B'),
     ]

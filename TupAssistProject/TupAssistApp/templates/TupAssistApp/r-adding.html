@@ -71,7 +71,11 @@
                 <table id="table_id" class="display">
                     <thead>
                         <th>NO.</th>
+                        <th>STUDENT ID</th>
+                        <th>NAME</th>
                         <th>EMAIL</th>
+                        <th>COURSE</th>
+                        <th>YEAR AND SECTION</th>
                         <th>ACTION</th>
                     </thead>
 
@@ -79,7 +83,11 @@
                         {% for e in test %}
                         <tr>
                             <td>{{e.id}}</td>
+                            <td>{{e.studID}}</td>
+                            <td>{{e.first_name}} {{e.last_name}}</td>
                             <td>{{e.email}}</td>
+                            <td>{{e.course}}</td>
+                            <td>{{e.yrandsec}}</td>
                             <td>View</td>
                         </tr>
                         {% endfor %}

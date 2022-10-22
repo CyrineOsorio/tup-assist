@@ -20,6 +20,7 @@ from datetime import datetime
 import pandas as pd
 
 
+
 # Create your views here.
 installed_apps = ['TupAssistApp']
 
@@ -181,15 +182,13 @@ def student(request):
     sub = Subjects.objects.all()
 
     # Forms
-    subcode = request.POST.get('subcode')
-    sub1 = Subjects.objects.filter(SubCode=subcode)
-
+ 
     context = {
         'addReq': addReq,
         'dropReq': dropReq,
         'transReq': transReq,
         'current_user': current_user,
-        'sub': sub
+        'sub': sub,
         
     }
     return render(request, 'TupAssistApp/student.html', context)

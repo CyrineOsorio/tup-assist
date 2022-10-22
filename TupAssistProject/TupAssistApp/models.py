@@ -90,6 +90,8 @@ class registration(AbstractUser):
         ('BET-AT', 'Automotive Technology'),
         ('BET-PPT', 'Power Plant Technology'),
     ]
+
+    
     email = models.CharField(max_length=255, null=True, blank=True)
     first_name = models.CharField(max_length=255, null=True, blank=True)
     last_name = models.CharField(max_length=255, null=True, blank=True)

@@ -130,6 +130,8 @@ body {
     justify-content: space-evenly;
 }
 
+#subcode,
+#subname,
 #subject,
 #course,
 #yrandsec,

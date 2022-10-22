@@ -132,18 +132,41 @@
                                 <td></td>
                                 <td hidden><input type="text" name="email" id="email" value="{{current_user.email}}" hidden></td>
 
-                                <td><select name="subject" id="subject">
+                                <td>
+                                    <select name="subject" id="subject">
                                      {% for i in sub %}
                                     <option value="{{i.SubCode}} {{i.SubName}}">{{i.SubCode}} {{i.SubName}}</option>
                                      {% endfor %}
                                   </select>
                                 </td>
 
+                                <td>
+                                    <select name="course" id="course">
+                                       <option value="BET-ET">Electrical Technology</option>
+                                       <option value="BET-ESET">Electronics Technology</option>
+                                       <option value="BET-COET">Computer Engineering  Technology</option>
+                                       <option value="BET-CT">Civil Technology</option>
+                                       <option value="BET-MT">Mechanical Technology</option>
+                                       <option value="BET-AT">Automotive Technology</option>
+                                       <option value="BET-PPT">Power Plant Technology</option>
+                                     </select>
+                                </td>
 
+                                <td>
+                                    <select name="yrandsec" id="yrandsec">
+                                    <option value="1A">1A</option>
+                                    <option value="1A">2A</option>
+                                    <option value="1A">3A</option>
+                                    <option value="1A">4A</option>
+                                    <option value="1A">1B</option>
+                                    <option value="1A">2B</option>
+                                    <option value="1A">3B</option>
+                                    <option value="1A">4B</option>
+                                   </select>
+                                </td>
 
-                                <td><input type="text" name="course" id="course"></td>
-                                <td><input type="text" name="yrandsec" id="yrandsec"></td>
                                 <td><input type="text" name="sched" id="sched"></td>
+
                                 <td class="action"><button type="submit" style="border: 0px; background-color: transparent;"> <i class="bi bi-plus-circle" style="color:#E2435E; font-size: large;"></i> </button></td>
                             </form>
                         </tr>
@@ -328,6 +351,8 @@
         $(document).ready(function() {
             //change selectboxes to selectize mode to be searchable
             $("#subject").select2();
+            $("#course").select2();
+            $("#yrandsec").select2();
         });
     </script>
 

@@ -71,24 +71,29 @@ class TransferringReq(models.Model):
 # Student Registration and Student account refernce for tupcavite gsfe account only
 class registration(AbstractUser):
     yrandsec = [
-        ('1A'),
-        ('1B'),
-        ('2A'),
-        ('2B'),
+        ('1A', '1A'),
+        ('2A', '2A'),
         ('3A', '3A'),
-        ('3B', 'BET-COET-NS-3B'),
-        ('BET-COET-S-4A', 'BET-COET-S-4A'),
-        ('BET-COET-NS-4B', 'BET-COET-NS-4B'),
+        ('4A', '4A'),
     ]
     userType = [
         ('STDNT', 'Student'),
         ('DH', 'Department Head'),
         ('PIC', 'Person-in-charge'),
     ]
+    course = [
+        ('BET-ET', 'Electrical Technology'),
+        ('BET-ESET', 'Electronics Technology'),
+        ('BET-COET', 'Computer Engineering Technology '),
+        ('BET-CT', 'Civil Technology'),
+        ('BET-MT', 'Mechanical Technology'),
+        ('BET-AT', 'Automotive Technology'),
+        ('BET-PPT', 'Power Plant Technology'),
+    ]
     email = models.CharField(max_length=255, null=True, blank=True)
     first_name = models.CharField(max_length=255, null=True, blank=True)
     last_name = models.CharField(max_length=255, null=True, blank=True)
-    course = models.CharField(max_length=255, null=True, blank=True)
+    course = models.CharField(max_length=255, choices= course, null=True, blank=True)
     yrandsec = models.CharField(max_length=255, null=True, blank=True)
     studID = models.CharField(max_length=255, null=True, blank=True)
     userType = models.CharField(max_length=255, choices= userType, verbose_name='userType', default ='STDNT')

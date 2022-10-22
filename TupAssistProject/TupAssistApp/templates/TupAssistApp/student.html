@@ -8,11 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TUP-Assist: Student</title>
 
-    <!-- DROPDOWN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
+
 
     <!--BOOTSTRAP-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <!-- DROPDOWN BOOTSTRAP-->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
 
     <!--CSS Custom -->
     <link rel="stylesheet" href="{%static 'css/student.css'%}">
@@ -23,7 +25,6 @@
     <!--ICONS-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
     <link rel="icon" href="../../static/images/tuplogo.png">
-
 
 
 
@@ -131,8 +132,7 @@
                                 <td></td>
                                 <td hidden><input type="text" name="email" id="email" value="{{current_user.email}}" hidden></td>
 
-                                <td><select class="form-select" name="subject" id="subject">
-                                    <option selected disabled value="">Choose a subject</option>
+                                <td><select name="subject" id="subject">
                                      {% for i in sub %}
                                     <option value="{{i.SubCode}} {{i.SubName}}">{{i.SubCode}} {{i.SubName}}</option>
                                      {% endfor %}
@@ -319,17 +319,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 
     <!--DROPDOWN-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 
     <script>
         $(document).ready(function() {
-            $('#subject').selectize({
-                sortField: 'text'
-            });
+            //change selectboxes to selectize mode to be searchable
+            $("#subject").select2();
         });
     </script>
-
 
 
 </body>

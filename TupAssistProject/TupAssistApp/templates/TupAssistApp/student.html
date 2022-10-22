@@ -405,7 +405,7 @@
             <!-- Modal -->
             <div class="modal fade" id="shedmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
-                    <div class="modal-content">
+                    <div class="modal-content" style="width: 1000px; background-color: #E2435E;">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -421,41 +421,38 @@
                 </div>
             </div>
 
-
         </div>
 
-    </div>
 
 
+        <!--JAVASCRIPT-->
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 
-    <!--JAVASCRIPT-->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+        <!--DROPDOWN-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 
-    <!--DROPDOWN-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            // Source: https://stackoverflow.com/questions/18796221/creating-a-select-box-with-a-search-option
-            //change selectboxes to selectize mode to be searchable
-            $("#subject").select2();
-            $("#course").select2();
-            $("#yrandsec").select2();
-
-
-            $("#subject1").select2();
-            $("#course1").select2();
-            $("#yrandsec1").select2();
+        <script>
+            $(document).ready(function() {
+                // Source: https://stackoverflow.com/questions/18796221/creating-a-select-box-with-a-search-option
+                //change selectboxes to selectize mode to be searchable
+                $("#subject").select2();
+                $("#course").select2();
+                $("#yrandsec").select2();
 
 
-            $("#subject2").select2();
-            $("#course2").select2();
-            $("#yrandsec2").select2();
+                $("#subject1").select2();
+                $("#course1").select2();
+                $("#yrandsec1").select2();
 
-        });
-    </script>
+
+                $("#subject2").select2();
+                $("#course2").select2();
+                $("#yrandsec2").select2();
+
+            });
+        </script>
 
 
 </body>

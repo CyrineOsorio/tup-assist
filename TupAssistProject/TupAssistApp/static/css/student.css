@@ -130,17 +130,15 @@ body {
     justify-content: space-evenly;
 }
 
-#subcode,
-#subname,
 #subject,
-#subcode1,
-#subname1,
 #subject1,
-#subcode2,
-#subname2,
 #subject2,
 #course,
+#course1,
+#course2,
 #yrandsec,
+#yrandsec1,
+#yrandsec2,
 #sched {
     border: solid 1px #E2435E;
     height: 25px;

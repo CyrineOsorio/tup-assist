@@ -74,7 +74,7 @@ body {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    padding: 2% 20% 2% 20%;
+    padding: 2% 16% 2% 22%;
 }
 
 .content {
@@ -144,6 +144,15 @@ body {
     height: 25px;
     border-radius: 8%;
     width: 100%;
+}
+
+.sched-icon {
+    background: url(../images/sched.png);
+    border: solid 1px #E2435E;
+    margin: 5% 5% 5% 5%;
+    width: 100px;
+    height: 100px;
+    border: none;
 }
 
 @media only screen and (max-width: 1000px) {

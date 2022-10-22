@@ -55,345 +55,375 @@
         </div>
     </nav>
 
-    <div class="bg-container">
 
-        <div class="row" style="margin-bottom:2%;">
-            <div class="col">
-                <div class="card" style="background-color: #E2435E; color: white; max-width: 50rem;">
-                    <div class="card-header">Student Information:</div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col">
-                                <p class="card-text">Name:</p>
-                                <p class="card-text">Student ID:</p>
-                                <p class="card-text">Course, Year, and Section:</p>
+    <div class="bg-container">
+        <div class="row no-gutters">
+            <div class="col-sm-6 col-md-11">
+
+                <div class="row" style="margin-bottom:2%;">
+                    <div class="col">
+                        <div class="card" style="background-color: #E2435E; color: white; max-width: 50rem;">
+                            <div class="card-header">Student Information:</div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="card-text">Name:</p>
+                                        <p class="card-text">Student ID:</p>
+                                        <p class="card-text">Course, Year, and Section:</p>
+                                    </div>
+                                    <div class="col">
+                                        <p class="card-text">{{ current_user.first_name }} {{ current_user.last_name }}</p>
+                                        <p class="card-text">{{ current_user.studID }}</p>
+                                        <p class="card-text">{{ current_user.course }}-{{ current_user.yrandsec }}</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col">
-                                <p class="card-text">{{ current_user.first_name }} {{ current_user.last_name }}</p>
-                                <p class="card-text">{{ current_user.studID }}</p>
-                                <p class="card-text">{{ current_user.course }}-{{ current_user.yrandsec }}</p>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card bg-light mb-3" style="height:19.5vh; max-width: 50rem;">
+                            <div class="card-header">Status:</div>
+                            <div class="card-body">
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col">
-                <div class="card bg-light mb-3" style="height:19.5vh; max-width: 50rem;">
-                    <div class="card-header">Status:</div>
-                    <div class="card-body">
+
+
+
+                <div class="content">
+
+                    <div class="add-label">
+                        <p>ADD SUBJECT</p>
                     </div>
+
+                    <!-- ADDING REQUESTS TABLE-->
+                    <div style="overflow-x:auto;">
+                        <!--HTML code to display data in tabular format-->
+                        <table id="table_id" class="table table-striped">
+                            <thead>
+                                <th>NO.</th>
+                                <th hidden>EMAIL</th>
+                                <th>SUBJECT</th>
+                                <th>COURSE</th>
+                                <th>YEAR & SECTION</th>
+                                <th>SCHEDULE</th>
+                                <th>ACTION</th>
+                            </thead>
+
+                            <tbody>
+
+                                {% for i in addReq %}
+                                <tr>
+                                    <td>{{i.id}}</td>
+                                    <td hidden>{{i.email}}</td>
+                                    <td>{{i.subject}} </td>
+                                    <td>{{i.course}}</td>
+                                    <td>{{i.yrandsec}}</td>
+                                    <td>{{i.sched}}</td>
+                                    <td class="action">
+                                        <a href="/s_adding_del/{{i.id}}"><i class="bi bi-trash"></i></a>
+                                        <i type="button" data-toggle="modal" data-target="#exampleModal{{i.id}}" class="bi bi-pencil"></i>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+
+                                <tr>
+                                    <form class="form" action="/s_adding" method="post">
+                                        {% csrf_token %}
+                                        <td></td>
+                                        <td hidden><input type="text" name="email" id="email" value="{{current_user.email}}" hidden></td>
+
+                                        <td>
+                                            <select name="subject" id="subject">
+                                     {% for i in sub %}
+                                    <option value="{{i.SubCode}} {{i.SubName}}">{{i.SubCode}} {{i.SubName}}</option>
+                                     {% endfor %}
+                                  </select>
+                                        </td>
+
+                                        <td>
+                                            <select name="course" id="course">
+                                       <option value="BET-ET">Electrical Technology</option>
+                                       <option value="BET-ESET">Electronics Technology</option>
+                                       <option value="BET-COET">Computer Engineering  Technology</option>
+                                       <option value="BET-CT">Civil Technology</option>
+                                       <option value="BET-MT">Mechanical Technology</option>
+                                       <option value="BET-AT">Automotive Technology</option>
+                                       <option value="BET-PPT">Power Plant Technology</option>
+                                     </select>
+                                        </td>
+
+                                        <td>
+                                            <select name="yrandsec" id="yrandsec">
+                                    <option value="1A">1A</option>
+                                    <option value="1A">2A</option>
+                                    <option value="1A">3A</option>
+                                    <option value="1A">4A</option>
+                                    <option value="1A">1B</option>
+                                    <option value="1A">2B</option>
+                                    <option value="1A">3B</option>
+                                    <option value="1A">4B</option>
+                                   </select>
+                                        </td>
+
+                                        <td><input type="text" name="sched" id="sched" required></td>
+
+                                        <td class="action"><button type="submit" style="border: 0px; background-color: transparent;"> <i class="bi bi-plus-circle" style="color:#E2435E; font-size: large;"></i> </button></td>
+                                    </form>
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="drop-label">
+                        <p>DROP SUBJECT</p>
+                    </div>
+
+                    <!-- DROPPING REQUESTS TABLE-->
+                    <div style="overflow-x:auto;">
+                        <!--HTML code to display data in tabular format-->
+                        <table id="table_id" class="table table-striped">
+                            <thead>
+                                <th>NO.</th>
+                                <th hidden>EMAIl</th>
+                                <th>SUBJECT</th>
+                                <th>COURSE</th>
+                                <th>YEAR & SECTION</th>
+                                <th>SCHEDULE</th>
+                                <th>Action</th>
+                            </thead>
+
+                            <tbody>
+                                {% for i in dropReq %}
+                                <tr>
+                                    <td>{{i.id}}</td>
+                                    <td hidden>{{i.email}}</td>
+                                    <td>{{i.subject}}</td>
+                                    <td>{{i.course}}</td>
+                                    <td>{{i.yrandsec}}</td>
+                                    <td>{{i.sched}}</td>
+                                    <td class="action"><a href="/s_dropping_del/{{i.id}}"><i class="bi bi-trash"></a></td>
+
+                                </tr>
+                                {% endfor %}
+
+                                <tr>
+                                    <form class="form" action="/s_dropping" method="post">
+                                        {% csrf_token %}
+                                        <td></td>
+                                        <td hidden><input type="text" name="email" id="email" value="{{current_user.email}}" hidden></td>
+
+                                        <td>
+                                            <select name="subject" id="subject1">
+                                     {% for i in sub %}
+                                    <option value="{{i.SubCode}} {{i.SubName}}">{{i.SubCode}} {{i.SubName}}</option>
+                                     {% endfor %}
+                                  </select>
+                                        </td>
+
+                                        <td>
+                                            <select name="course" id="course1">
+                                       <option value="BET-ET">Electrical Technology</option>
+                                       <option value="BET-ESET">Electronics Technology</option>
+                                       <option value="BET-COET">Computer Engineering  Technology</option>
+                                       <option value="BET-CT">Civil Technology</option>
+                                       <option value="BET-MT">Mechanical Technology</option>
+                                       <option value="BET-AT">Automotive Technology</option>
+                                       <option value="BET-PPT">Power Plant Technology</option>
+                                     </select>
+                                        </td>
+
+
+                                        <td>
+                                            <select name="yrandsec" id="yrandsec1">
+                                    <option value="1A">1A</option>
+                                    <option value="1A">2A</option>
+                                    <option value="1A">3A</option>
+                                    <option value="1A">4A</option>
+                                    <option value="1A">1B</option>
+                                    <option value="1A">2B</option>
+                                    <option value="1A">3B</option>
+                                    <option value="1A">4B</option>
+                                   </select>
+                                        </td>
+
+
+                                        <td><input type="text" name="sched" id="sched" required></td>
+                                        <td class="action"><button type="submit" style="border: 0px; background-color: transparent;"> <i class="bi bi-plus-circle" style="color:#E2435E; font-size: large;"></i> </button></td>
+                                    </form>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="drop-label">
+                        <p>TRANSFER SUBJECT</p>
+                    </div>
+
+                    <!-- TRANSFERRING REQUESTS TABLE-->
+                    <div style="overflow-x:auto;">
+                        <!--HTML code to display data in tabular format-->
+                        <table id="table_id" class="table table-striped">
+                            <thead>
+                                <th>NO.</th>
+                                <th hidden>EMAIl</th>
+                                <th>SUBJECT</th>
+                                <th>COURSE</th>
+                                <th>YEAR & SECTION</th>
+                                <th>SCHEDULE</th>
+                                <th>Action</th>
+                            </thead>
+
+                            <tbody>
+                                {% for i in transReq %}
+                                <tr>
+                                    <td>{{i.id}}</td>
+                                    <td hidden>{{i.email}}</td>
+                                    <td>{{i.subject}}</td>
+                                    <td>{{i.course}}</td>
+                                    <td>{{i.yrandsec}}</td>
+                                    <td>{{i.sched}}</td>
+                                    <td class="action"><a href="/s_transferring_del/{{i.id}}"><i class="bi bi-trash"></a></td>
+                                </tr>
+                                {% endfor %}
+
+                                <tr>
+                                    <form class="form" action="/s_transferring" method="post">
+                                        {% csrf_token %}
+                                        <td></td>
+                                        <td hidden><input type="text" name="email" id="email" value="{{ current_user.email }}" hidden></td>
+
+                                        <td>
+                                            <select name="subject" id="subject2">
+                                     {% for i in sub %}
+                                    <option value="{{i.SubCode}} {{i.SubName}}">{{i.SubCode}} {{i.SubName}}</option>
+                                     {% endfor %}
+                                  </select>
+                                        </td>
+
+                                        <td>
+                                            <select name="course" id="course2">
+                                       <option value="BET-ET">Electrical Technology</option>
+                                       <option value="BET-ESET">Electronics Technology</option>
+                                       <option value="BET-COET">Computer Engineering  Technology</option>
+                                       <option value="BET-CT">Civil Technology</option>
+                                       <option value="BET-MT">Mechanical Technology</option>
+                                       <option value="BET-AT">Automotive Technology</option>
+                                       <option value="BET-PPT">Power Plant Technology</option>
+                                     </select>
+                                        </td>
+
+                                        <td>
+                                            <select name="yrandsec" id="yrandsec2">
+                                    <option value="1A">1A</option>
+                                    <option value="1A">2A</option>
+                                    <option value="1A">3A</option>
+                                    <option value="1A">4A</option>
+                                    <option value="1A">1B</option>
+                                    <option value="1A">2B</option>
+                                    <option value="1A">3B</option>
+                                    <option value="1A">4B</option>
+                                   </select>
+                                        </td>
+
+
+                                        <td><input type="text" name="sched" id="sched" required></td>
+                                        <td class="action"><button type="submit" style="border: 0px; background-color: transparent;"> <i class="bi bi-plus-circle" style="color:#E2435E; font-size: large;"></i> </button></td>
+                                    </form>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                    {% for i in addReq %}
+                    <!-- Modal For Adding Requests-->
+                    <!-- source: https://stackoverflow.com/questions/50196148/pass-value-to-bootstrap-modal-form-with-django-->
+                    <div class="modal fade" id="exampleModal{{i.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Add Subject: Edit</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <form class="needs-validation" action="/s_adding_edit/{{i.id}}" method="post">
+                                        {% csrf_token %}
+                                        <div class="form-row">
+                                            <div class="col-md-4 mb-3">
+                                                <label for="id">Subject Code</label>
+                                                <input type="text" class="form-control" name="id" id="id" value="{{i.id}}" readonly>
+                                            </div>
+
+
+                                            <div class="col-md-4 mb-3">
+                                                <label for="subname">Subject</label>
+                                                <input type="text" class="form-control" name="subject" id="subject" value="{{i.subject}}" required>
+                                            </div>
+
+                                            <div class="col-md-4 mb-3">
+                                                <label for="course">Course</label>
+                                                <input type="text" class="form-control" name="course" id="course" value="{{i.course}}" required>
+                                            </div>
+
+                                            <div class="col-md-4 mb-3">
+                                                <label for="yrandsec">Year and Section</label>
+                                                <input type="text" class="form-control" name="yrandsec" id="yrandsec" value="{{i.yrandsec}}" required>
+                                            </div>
+
+                                            <div class="col-md-4 mb-3">
+                                                <label for="sched">Schedule</label>
+                                                <input type="text" class="form-control" name="sched" id="sched" value="{{i.sched}}" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <input type="submit" value="Save Changes">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
                 </div>
             </div>
-        </div>
 
 
-
-        <div class="content">
-
-            <div class="add-label">
-                <p>ADD SUBJECT</p>
+            <div class="col-6 col-md-1" style="height:37vh; width:100%;  display: grid; align-content: end ;">
+                <button type="button" data-toggle="modal" data-target="#shedmodal" class="sched-icon"> </button>
             </div>
 
-            <!-- ADDING REQUESTS TABLE-->
-            <div style="overflow-x:auto;">
-                <!--HTML code to display data in tabular format-->
-                <table id="table_id" class="table table-striped">
-                    <thead>
-                        <th>NO.</th>
-                        <th hidden>EMAIL</th>
-                        <th>SUBJECT</th>
-                        <th>COURSE</th>
-                        <th>YEAR & SECTION</th>
-                        <th>SCHEDULE</th>
-                        <th>ACTION</th>
-                    </thead>
-
-                    <tbody>
-
-                        {% for i in addReq %}
-                        <tr>
-                            <td>{{i.id}}</td>
-                            <td hidden>{{i.email}}</td>
-                            <td>{{i.subject}} </td>
-                            <td>{{i.course}}</td>
-                            <td>{{i.yrandsec}}</td>
-                            <td>{{i.sched}}</td>
-                            <td class="action">
-                                <a href="/s_adding_del/{{i.id}}"><i class="bi bi-trash"></i></a>
-                                <i type="button" data-toggle="modal" data-target="#exampleModal{{i.id}}" class="bi bi-pencil"></i>
-                            </td>
-                        </tr>
-                        {% endfor %}
-
-                        <tr>
-                            <form class="form" action="/s_adding" method="post">
-                                {% csrf_token %}
-                                <td></td>
-                                <td hidden><input type="text" name="email" id="email" value="{{current_user.email}}" hidden></td>
-
-                                <td>
-                                    <select name="subject" id="subject">
-                                     {% for i in sub %}
-                                    <option value="{{i.SubCode}} {{i.SubName}}">{{i.SubCode}} {{i.SubName}}</option>
-                                     {% endfor %}
-                                  </select>
-                                </td>
-
-                                <td>
-                                    <select name="course" id="course">
-                                       <option value="BET-ET">Electrical Technology</option>
-                                       <option value="BET-ESET">Electronics Technology</option>
-                                       <option value="BET-COET">Computer Engineering  Technology</option>
-                                       <option value="BET-CT">Civil Technology</option>
-                                       <option value="BET-MT">Mechanical Technology</option>
-                                       <option value="BET-AT">Automotive Technology</option>
-                                       <option value="BET-PPT">Power Plant Technology</option>
-                                     </select>
-                                </td>
-
-                                <td>
-                                    <select name="yrandsec" id="yrandsec">
-                                    <option value="1A">1A</option>
-                                    <option value="1A">2A</option>
-                                    <option value="1A">3A</option>
-                                    <option value="1A">4A</option>
-                                    <option value="1A">1B</option>
-                                    <option value="1A">2B</option>
-                                    <option value="1A">3B</option>
-                                    <option value="1A">4B</option>
-                                   </select>
-                                </td>
-
-                                <td><input type="text" name="sched" id="sched" required></td>
-
-                                <td class="action"><button type="submit" style="border: 0px; background-color: transparent;"> <i class="bi bi-plus-circle" style="color:#E2435E; font-size: large;"></i> </button></td>
-                            </form>
-                        </tr>
-
-
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="drop-label">
-                <p>DROP SUBJECT</p>
-            </div>
-
-            <!-- DROPPING REQUESTS TABLE-->
-            <div style="overflow-x:auto;">
-                <!--HTML code to display data in tabular format-->
-                <table id="table_id" class="table table-striped">
-                    <thead>
-                        <th>NO.</th>
-                        <th hidden>EMAIl</th>
-                        <th>SUBJECT</th>
-                        <th>COURSE</th>
-                        <th>YEAR & SECTION</th>
-                        <th>SCHEDULE</th>
-                        <th>Action</th>
-                    </thead>
-
-                    <tbody>
-                        {% for i in dropReq %}
-                        <tr>
-                            <td>{{i.id}}</td>
-                            <td hidden>{{i.email}}</td>
-                            <td>{{i.subject}}</td>
-                            <td>{{i.course}}</td>
-                            <td>{{i.yrandsec}}</td>
-                            <td>{{i.sched}}</td>
-                            <td class="action"><a href="/s_dropping_del/{{i.id}}"><i class="bi bi-trash"></a></td>
-
-                        </tr>
-                        {% endfor %}
-
-                        <tr>
-                            <form class="form" action="/s_dropping" method="post">
-                                {% csrf_token %}
-                                <td></td>
-                                <td hidden><input type="text" name="email" id="email" value="{{current_user.email}}" hidden></td>
-
-                                <td>
-                                    <select name="subject" id="subject1">
-                                     {% for i in sub %}
-                                    <option value="{{i.SubCode}} {{i.SubName}}">{{i.SubCode}} {{i.SubName}}</option>
-                                     {% endfor %}
-                                  </select>
-                                </td>
-
-                                <td>
-                                    <select name="course" id="course1">
-                                       <option value="BET-ET">Electrical Technology</option>
-                                       <option value="BET-ESET">Electronics Technology</option>
-                                       <option value="BET-COET">Computer Engineering  Technology</option>
-                                       <option value="BET-CT">Civil Technology</option>
-                                       <option value="BET-MT">Mechanical Technology</option>
-                                       <option value="BET-AT">Automotive Technology</option>
-                                       <option value="BET-PPT">Power Plant Technology</option>
-                                     </select>
-                                </td>
-
-
-                                <td>
-                                    <select name="yrandsec" id="yrandsec1">
-                                    <option value="1A">1A</option>
-                                    <option value="1A">2A</option>
-                                    <option value="1A">3A</option>
-                                    <option value="1A">4A</option>
-                                    <option value="1A">1B</option>
-                                    <option value="1A">2B</option>
-                                    <option value="1A">3B</option>
-                                    <option value="1A">4B</option>
-                                   </select>
-                                </td>
-
-
-                                <td><input type="text" name="sched" id="sched" required></td>
-                                <td class="action"><button type="submit" style="border: 0px; background-color: transparent;"> <i class="bi bi-plus-circle" style="color:#E2435E; font-size: large;"></i> </button></td>
-                            </form>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="drop-label">
-                <p>TRANSFER SUBJECT</p>
-            </div>
-
-            <!-- TRANSFERRING REQUESTS TABLE-->
-            <div style="overflow-x:auto;">
-                <!--HTML code to display data in tabular format-->
-                <table id="table_id" class="table table-striped">
-                    <thead>
-                        <th>NO.</th>
-                        <th hidden>EMAIl</th>
-                        <th>SUBJECT</th>
-                        <th>COURSE</th>
-                        <th>YEAR & SECTION</th>
-                        <th>SCHEDULE</th>
-                        <th>Action</th>
-                    </thead>
-
-                    <tbody>
-                        {% for i in transReq %}
-                        <tr>
-                            <td>{{i.id}}</td>
-                            <td hidden>{{i.email}}</td>
-                            <td>{{i.subject}}</td>
-                            <td>{{i.course}}</td>
-                            <td>{{i.yrandsec}}</td>
-                            <td>{{i.sched}}</td>
-                            <td class="action"><a href="/s_transferring_del/{{i.id}}"><i class="bi bi-trash"></a></td>
-                        </tr>
-                        {% endfor %}
-
-                        <tr>
-                            <form class="form" action="/s_transferring" method="post">
-                                {% csrf_token %}
-                                <td></td>
-                                <td hidden><input type="text" name="email" id="email" value="{{ current_user.email }}" hidden></td>
-
-                                <td>
-                                    <select name="subject" id="subject2">
-                                     {% for i in sub %}
-                                    <option value="{{i.SubCode}} {{i.SubName}}">{{i.SubCode}} {{i.SubName}}</option>
-                                     {% endfor %}
-                                  </select>
-                                </td>
-
-                                <td>
-                                    <select name="course" id="course2">
-                                       <option value="BET-ET">Electrical Technology</option>
-                                       <option value="BET-ESET">Electronics Technology</option>
-                                       <option value="BET-COET">Computer Engineering  Technology</option>
-                                       <option value="BET-CT">Civil Technology</option>
-                                       <option value="BET-MT">Mechanical Technology</option>
-                                       <option value="BET-AT">Automotive Technology</option>
-                                       <option value="BET-PPT">Power Plant Technology</option>
-                                     </select>
-                                </td>
-
-                                <td>
-                                    <select name="yrandsec" id="yrandsec2">
-                                    <option value="1A">1A</option>
-                                    <option value="1A">2A</option>
-                                    <option value="1A">3A</option>
-                                    <option value="1A">4A</option>
-                                    <option value="1A">1B</option>
-                                    <option value="1A">2B</option>
-                                    <option value="1A">3B</option>
-                                    <option value="1A">4B</option>
-                                   </select>
-                                </td>
-
-
-                                <td><input type="text" name="sched" id="sched" required></td>
-                                <td class="action"><button type="submit" style="border: 0px; background-color: transparent;"> <i class="bi bi-plus-circle" style="color:#E2435E; font-size: large;"></i> </button></td>
-                            </form>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-
-            {% for i in addReq %}
-            <!-- Modal For Adding Requests-->
-            <!-- source: https://stackoverflow.com/questions/50196148/pass-value-to-bootstrap-modal-form-with-django-->
-            <div class="modal fade" id="exampleModal{{i.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <!-- Modal -->
+            <div class="modal fade" id="shedmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Add Subject: Edit</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         </div>
-
                         <div class="modal-body">
-                            <form class="needs-validation" action="/s_adding_edit/{{i.id}}" method="post">
-                                {% csrf_token %}
-                                <div class="form-row">
-                                    <div class="col-md-4 mb-3">
-                                        <label for="id">Subject Code</label>
-                                        <input type="text" class="form-control" name="id" id="id" value="{{i.id}}" readonly>
-                                    </div>
-
-
-                                    <div class="col-md-4 mb-3">
-                                        <label for="subname">Subject</label>
-                                        <input type="text" class="form-control" name="subject" id="subject" value="{{i.subject}}" required>
-                                    </div>
-
-                                    <div class="col-md-4 mb-3">
-                                        <label for="course">Course</label>
-                                        <input type="text" class="form-control" name="course" id="course" value="{{i.course}}" required>
-                                    </div>
-
-                                    <div class="col-md-4 mb-3">
-                                        <label for="yrandsec">Year and Section</label>
-                                        <input type="text" class="form-control" name="yrandsec" id="yrandsec" value="{{i.yrandsec}}" required>
-                                    </div>
-
-                                    <div class="col-md-4 mb-3">
-                                        <label for="sched">Schedule</label>
-                                        <input type="text" class="form-control" name="sched" id="sched" value="{{i.sched}}" required>
-                                    </div>
-                                </div>
-
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <input type="submit" value="Save Changes">
-                                </div>
-                            </form>
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
                         </div>
                     </div>
                 </div>
             </div>
-            {% endfor %}
-
-
 
 
         </div>
+
     </div>
 
 

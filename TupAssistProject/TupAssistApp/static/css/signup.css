@@ -18,6 +18,7 @@ body {
     padding: 2% 5% 20% 45%;
 }
 
+
 /*form*/
 
 form {
@@ -26,6 +27,7 @@ form {
     display: grid;
     text-align: center;
 }
+
 
 /*TUPC LOGO*/
 
@@ -55,9 +57,6 @@ form img.mb4 {
     font-size: 22px;
     margin-bottom: 8%;
 }
-
-
-
 
 input.signup {
     width: 100%;
@@ -110,7 +109,7 @@ a.loginlabel {
 
 .formGroup1,
 .formGroup2,
-.formGroup3  {
+.formGroup3 {
     display: flex;
     gap: 10px;
     width: 100%;
@@ -131,7 +130,7 @@ a.loginlabel {
 .form-group2,
 .form-group2a,
 .form-group3,
-.form-group3a  {
+.form-group3a {
     width: 100%;
 }
 
@@ -143,7 +142,7 @@ a.loginlabel {
 .form-group2 input,
 .form-group2a input,
 .form-control,
-.form-group3 input,
+.form-group3 select,
 .form-group3a input,
 .form-group4 input,
 .form-group5 input,
@@ -164,14 +163,12 @@ a.loginlabel {
 .form-group2 input:focus,
 .form-group2a input:focus,
 .form-control:focus,
-.form-group3 input:focus,
-.form-group3a input:focus
-.form-group4 input:focus,
-.form-group5 input:focus
-.form-group6 input:focus
-{
+.form-group3 select:focus,
+.form-group3a input:focus .form-group4 input:focus,
+.form-group5 input:focus .form-group6 input:focus {
     box-shadow: none;
 }
+
 
 /*/*dropdown year and section lang*/
 

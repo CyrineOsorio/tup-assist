@@ -47,8 +47,7 @@ class AddingReq(models.Model):
 
 class DroppingReq(models.Model):
     email = models.CharField(max_length=255, null=True, blank=True)
-    subcode = models.CharField(max_length=255, null=True, blank=True)
-    subname = models.CharField(max_length=255, null=True, blank=True)
+    subject = models.CharField(max_length=255, null=True, blank=True)
     course = models.CharField(max_length=255, null=True, blank=True)
     yrandsec = models.CharField(max_length=255, null=True, blank=True)
     sched = models.CharField(max_length=255, null=True, blank=True)
@@ -58,8 +57,7 @@ class DroppingReq(models.Model):
 
 class TransferringReq(models.Model):
     email = models.CharField(max_length=255, null=True, blank=True)
-    subcode = models.CharField(max_length=255, null=True, blank=True)
-    subname = models.CharField(max_length=255, null=True, blank=True)
+    subject = models.CharField(max_length=255, null=True, blank=True)
     course = models.CharField(max_length=255, null=True, blank=True)
     yrandsec = models.CharField(max_length=255, null=True, blank=True)
     sched = models.CharField(max_length=255, null=True, blank=True)

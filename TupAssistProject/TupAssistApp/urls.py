@@ -13,6 +13,13 @@ app_name = 'TupAssistApp'
 urlpatterns = [
     path('', views.index, name='index'),
     path('index/', views.index, name='index'),
+
+    # log out
+    path('logout/', views.logoutUser, name= 'logout'),
+
+    # studentregistration
+    path('signup/', views.signup, name='signup'),
+
     path('student/', views.student, name='student'),
     path('pic/', views.pic, name='pic'),
     path('admin/', views.admin, name='admin'),
@@ -37,6 +44,5 @@ urlpatterns = [
     path('s_transferring', views.s_transferring, name='s_transferring'),
     path('s_transferring_del/<int:id>', views.s_transferring_del),
 
-    # studentregistration
-    path('signup/', views.signup, name='signup'),
+   
 ]

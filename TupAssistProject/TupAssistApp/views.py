@@ -72,6 +72,11 @@ def signup(request):
     context =  {'form': form}
     return render(request, 'TupAssistApp/signup.html', context)
 
+#LOG OUT
+def logoutUser(request):
+    logout(request)
+    return redirect('/index')
+
 
 def pic(request):
     return render(request, 'TupAssistApp/pic.html')

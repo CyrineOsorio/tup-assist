@@ -130,6 +130,10 @@ body {
     justify-content: space-evenly;
 }
 
+.action i {
+    font-size: 20px;
+}
+
 #subject,
 #subject1,
 #subject2,

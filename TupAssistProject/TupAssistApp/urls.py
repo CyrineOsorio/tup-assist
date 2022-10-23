@@ -40,6 +40,7 @@ urlpatterns = [
     path('r-adding/<int:id>', views.r_adding),
     path('r-dropping/', views.r_dropping, name='r_dropping'),
     path('r-transferring/', views.r_transferring, name='r_transferring'),
+    path('r-request-view/<int:id>', views.r_request_view),
     
     #student
     path('student/', views.student, name='student'),

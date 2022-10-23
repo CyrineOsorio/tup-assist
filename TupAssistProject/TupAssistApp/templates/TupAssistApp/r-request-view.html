@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TUPC Registrar: Adding</title>
+    <title>TUPC Registrar: View Student Requests</title>
 
     <!--BOOTSTRAP-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
@@ -42,20 +42,8 @@
 
             <form class="d-flex">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{%url 'TupAssistApp:registrar'%}" id="">Dashboard <span class="sr-only">(current)</span></a>
-                    </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{%url 'TupAssistApp:r_adding'%}" id="adding">Adding</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{%url 'TupAssistApp:r_dropping'%}" id="">Dropping</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{%url 'TupAssistApp:r_transferring'%}" id="">Transfer</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="" id="logoutbutton">Logout</a>
+                        <a class="nav-link" href="" id="logoutbutton">Back</a>
                     </li>
                 </ul>
             </form>
@@ -73,25 +61,21 @@
                     <thead>
                         <th>NO.</th>
                         <th>STUDENT ID</th>
-                        <th>NAME</th>
-                        <th>EMAIL</th>
+                        <th>SUBJECT</th>
                         <th>COURSE</th>
-                        <th>YEAR AND SECTION</th>
-                        <th>ACTION</th>
+                        <th>YEAR & SECTION</th>
+                        <th>SCHEDULE</th>
                     </thead>
 
                     <tbody>
-                        {% for e in test %}
+                        {% for e in req %}
                         <tr>
                             <td>{{e.id}}</td>
-                            <td>{{e.studID}}</td>
-                            <td>{{e.first_name}} {{e.last_name}}</td>
                             <td>{{e.email}}</td>
+                            <td>{{e.subject}} </td>
                             <td>{{e.course}}</td>
                             <td>{{e.yrandsec}}</td>
-                            <td class="action">
-                                <a href="/r-request-view/{{e.id}}"><i class="bi bi-eye"></i></a>
-                            </td>
+                            <td>{{e.sched}}</td>
                         </tr>
                         {% endfor %}
                     </tbody>

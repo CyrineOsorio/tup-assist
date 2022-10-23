@@ -103,6 +103,15 @@ a:focus {
     margin-top: 1%;
 }
 
+.action {
+    display: flex;
+    text-align: center;
+}
+
+.action i {
+    font-size: 20px;
+}
+
 @media only screen and (min-width:1000px) {
     #navbarToggleExternalContent {
         display: flex;

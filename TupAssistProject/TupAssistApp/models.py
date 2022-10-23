@@ -73,12 +73,18 @@ class registration(AbstractUser):
         ('2A', '2A'),
         ('3A', '3A'),
         ('4A', '4A'),
+        ('1B', '1B'),
+        ('2B', '2B'),
+        ('3B', '3B'),
+        ('4B', '4B'),
     ]
     userType = [
         ('STDNT', 'Student'),
         ('DH', 'Department Head'),
         ('PIC', 'Person-in-charge'),
     ]
+
+    # FOR STUDENT AND PIC
     course = [
         ('BET-ET', 'Electrical Technology'),
         ('BET-ESET', 'Electronics Technology'),
@@ -89,17 +95,27 @@ class registration(AbstractUser):
         ('BET-PPT', 'Power Plant Technology'),
     ]
 
+    # FOR DEPARTMENT HEAD
+    department = [
+        ('DOIT', 'Department of Industrial Technology'),
+        ('DOIE', 'Department of Industial Education'),
+        ('DOE', 'Department of Engineering'),
+    ]
     
     email = models.CharField(max_length=255, null=True, blank=True)
     first_name = models.CharField(max_length=255, null=True, blank=True)
     last_name = models.CharField(max_length=255, null=True, blank=True)
     course = models.CharField(max_length=255, choices= course, null=True, blank=True)
-    yrandsec = models.CharField(max_length=255, null=True, blank=True)
+    yrandsec = models.CharField(max_length=255, choices= userType, null=True, blank=True)
     studID = models.CharField(max_length=255, null=True, blank=True)
     userType = models.CharField(max_length=255, choices= userType, verbose_name='userType', default ='STDNT')
+    department = models.CharField(max_length=255, choices= department, verbose_name='department')
+
 
     class Meta:
         verbose_name_plural = "registration" 
+
+        
 
 class StudentReference(models.Model):
     email = models.CharField(max_length=255, null=True, blank=True)

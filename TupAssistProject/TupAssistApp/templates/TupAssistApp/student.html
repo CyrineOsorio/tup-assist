@@ -82,7 +82,7 @@
                     </div>
 
                     <div class="col">
-                        <div class="card bg-light mb-3" style="height:19.5vh; max-width: 50rem;">
+                        <div class="card bg-light mb-3" style="height:16.5vh; max-width: 50rem;">
                             <div class="card-header">Status:</div>
                             <div class="card-body">
                             </div>
@@ -399,23 +399,26 @@
 
 
             <div class="col-6 col-md-1" style="height:37vh; width:100%;  display: grid; align-content: end ;">
-                <button type="button" data-toggle="modal" data-target="#shedmodal" class="sched-icon"> </button>
+                <button type="button" data-toggle="modal" data-target="#schedmodal" class="sched-icon">
+                    <img src="../../static/images/sched.png" alt="" class="image-icon">
+                </button>
             </div>
 
             <!-- Modal -->
-            <div class="modal fade" id="shedmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="schedmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
-                    <div class="modal-content" style="width: 1000px; background-color: #E2435E;">
+                    <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Schedule</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         </div>
                         <div class="modal-body">
-                            ...
+                            <div style="overflow-x:auto;">
+                                <iframe src="{{sched.gSheetLink}}" width="100%" height="500"></iframe>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
                         </div>
                     </div>
                 </div>

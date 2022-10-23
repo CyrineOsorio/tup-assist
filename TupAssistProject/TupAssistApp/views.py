@@ -180,6 +180,8 @@ def student(request):
     dropReq = DroppingReq.objects.filter(email=current_user.email)
     transReq = TransferringReq.objects.filter(email=current_user.email)
     sub = Subjects.objects.all()
+    sched = Schedule.objects.latest('id')
+
 
     # Forms
  
@@ -189,7 +191,8 @@ def student(request):
         'transReq': transReq,
         'current_user': current_user,
         'sub': sub,
-        
+        'sched': sched
+
     }
     return render(request, 'TupAssistApp/student.html', context)
 

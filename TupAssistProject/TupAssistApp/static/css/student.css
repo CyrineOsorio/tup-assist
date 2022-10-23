@@ -147,12 +147,21 @@ body {
 }
 
 .sched-icon {
-    background: url(../images/sched.png);
-    border: solid 1px #E2435E;
-    margin: 5% 5% 5% 5%;
-    width: 100px;
-    height: 100px;
+    padding: 5px;
     border: none;
+    background-color: transparent;
+    width: 10px;
+}
+
+.image-icon {
+    width: 80px;
+    height: 80px;
+}
+
+.modal-dialog {
+    width: 100%;
+    min-width: 1000px;
+    margin-top: 5%;
 }
 
 @media only screen and (max-width: 1000px) {

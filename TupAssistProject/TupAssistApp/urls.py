@@ -20,9 +20,15 @@ urlpatterns = [
     # studentregistration
     path('signup/', views.signup, name='signup'),
 
+    # student
     path('student/', views.student, name='student'),
-    path('pic/', views.pic, name='pic'),
-    path('admin/', views.admin, name='admin'),
+
+    # pic
+    path('p-adding/', views.p_adding, name='p_adding'),
+
+    # head
+    path('h-adding/', views.h_adding, name='h_adding'),
+    path('h-dropping/', views.h_dropping, name='h_dropping'),
 
     #registrar
     path('registrar/', views.registrar, name='registrar'),

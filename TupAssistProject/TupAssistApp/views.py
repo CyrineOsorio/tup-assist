@@ -78,11 +78,14 @@ def logoutUser(request):
     return redirect('/index')
 
 
-def pic(request):
-    return render(request, 'TupAssistApp/pic.html')
+def p_adding(request):
+    return render(request, 'TupAssistApp/p-adding.html')
 
-def admin(request):
-    return render(request, 'TupAssistApp/admin.html')
+def h_adding(request):
+    return render(request, 'TupAssistApp/h-adding.html')
+
+def h_dropping(request):
+    return render(request, 'TupAssistApp/h-dropping.html')
 
 def registrar(request):
     subs = Subjects.objects.all()

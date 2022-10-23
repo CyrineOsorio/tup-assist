@@ -6,13 +6,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TUPC Registrar: Adding</title>
+    <title>TUPC Administration: Drop of Subject</title>
+
+
 
     <!--BOOTSTRAP-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
     <!--CSS Custom -->
-    <link rel="stylesheet" href="{%static 'css/r-adding.css'%}">
+    <link rel="stylesheet" href="{%static 'css/h-adding.css'%}">
 
     <!--FONTS-->
     <link rel="stylesheet" href="../../static/css/fonts.css">
@@ -24,8 +26,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
 </head>
 
-
-<body>
+<body id="ajax_func">
 
     <nav class="navbar navbar-expand-lg" id="tupcnav">
         <img src="../../static/images/tuplogo.png" width="30" height="30" alt="tuplogo">
@@ -42,16 +43,16 @@
             <form class="d-flex">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{%url 'TupAssistApp:registrar'%}" id="">Dashboard <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="" id="dashboard">Adding<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{%url 'TupAssistApp:r_adding'%}" id="adding">Adding</a>
+                        <a class="nav-link" href="" id="">Dropping</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{%url 'TupAssistApp:r_dropping'%}" id="">Dropping</a>
+                        <a class="nav-link" href="" id="">Transfer</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{%url 'TupAssistApp:r_transferring'%}" id="">Transfer</a>
+                        <a class="nav-link" href="" id="request">More</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="" id="logoutbutton">Logout</a>
@@ -61,39 +62,63 @@
         </div>
     </nav>
 
-
     <div class="bg-container">
-        <div class="welcome">WELCOME, REGISTRAR!</div>
 
-        <div class="content">
-            <div style="overflow-x:auto;">
-                <!--HTML code to display data in tabular format-->
-                <table id="table_id" class="display">
-                    <thead>
-                        <th>NO.</th>
-                        <th>STUDENT ID</th>
-                        <th>NAME</th>
-                        <th>EMAIL</th>
-                        <th>COURSE</th>
-                        <th>YEAR AND SECTION</th>
-                        <th>ACTION</th>
-                    </thead>
+        <div class="row no-gutters">
+            <div class="col-sm-6 col-md-11">
 
-                    <tbody>
-                        {% for e in test %}
-                        <tr>
-                            <td>{{e.id}}</td>
-                            <td>{{e.studID}}</td>
-                            <td>{{e.first_name}} {{e.last_name}}</td>
-                            <td>{{e.email}}</td>
-                            <td>{{e.course}}</td>
-                            <td>{{e.yrandsec}}</td>
-                            <td>View</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                <div class="welcome">WELCOME, DEPARTMENT OF ______________ !</div>
+
+                <div class="content">
+                    <div class="stud-request-label">
+                        <p>STUDENT REQUESTS:</p>
+                    </div>
+
+                    <div style="overflow-x:auto;">
+                        <!--HTML code to display data in tabular format-->
+                        <table id="table_id" class="display">
+                            <thead>
+                                <th>NO.</th>
+                                <th>STUDENT ID</th>
+                                <th>NAME</th>
+                                <th>EMAIL</th>
+                                <th>COURSE</th>
+                                <th>YEAR AND SECTION</th>
+                                <th>ACTION</th>
+                            </thead>
+
+                            <tbody>
+                                {% for e in test %}
+                                <tr>
+                                    <td>{{e.id}}</td>
+                                    <td>{{e.studID}}</td>
+                                    <td>{{e.first_name}} {{e.last_name}}</td>
+                                    <td>{{e.email}}</td>
+                                    <td>{{e.course}}</td>
+                                    <td>{{e.yrandsec}}</td>
+                                    <td>View</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
             </div>
+
+
+
+
+            <div class="col-6 col-md-1" style="height:37vh; width:100%;  display: grid; align-content: end ;">
+                <button type="button" data-toggle="modal" data-target="#schedmodal" class="sched-icon">
+                    <img src="../../static/images/sched1.png" alt="" class="image-icon">
+                </button>
+            </div>
+
+
+
+
         </div>
 
     </div>

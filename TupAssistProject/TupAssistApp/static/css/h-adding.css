@@ -95,14 +95,11 @@ body {
     display: grid;
     background-color: white;
     margin-top: 2%;
-    padding: 20px 40px 20px 40px;
+    padding: 20px 20px 20px 20px;
     border-radius: 10px;
 }
 
 .stud-request-label {
-    margin-top: 2%;
-    margin-left: 2%;
-    margin-right: 2%;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -114,60 +111,22 @@ body {
     font-weight: bold;
 }
 
+.sched-icon {
+    padding: 5px;
+    border: none;
+    background-color: transparent;
+    width: 10px;
+}
 
-/*table*/
+.image-icon {
+    width: 80px;
+    height: 80px;
+}
 
-table {
-    /*border-collapse: collapse;*/
-    margin-top: 2%;
-    margin-left: 2%;
-    margin-right: 2%;
+.modal-dialog {
     width: 100%;
-}
-
-td,
-th {
-    text-align: left;
-    border-spacing: 10px;
-    border: 1px solid #000000;
-}
-
-.transtatus-label {
-    margin-top: 2%;
-    margin-left: 2%;
-    margin-right: 2%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.transtatus-label p {
-    width: 50%;
-    height: 100%;
-    font-weight: bold;
-}
-
-#carouselExampleControlsNoTouching {
-    margin-top: 3%;
-}
-
-.carousel-item {
-    height: 50vh;
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    background-color: #000000;
-}
-
-.course-sec-lable {
-    display: flex;
-    justify-content: flex-start;
-    background-color: #000000;
-    color: white;
-    padding: 20px 20px 20px 20px;
-    border-radius: 10px;
-    margin-bottom: 5%;
+    min-width: 1000px;
+    margin-top: 5%;
 }
 
 @media only screen and (max-width: 1000px) {

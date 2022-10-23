@@ -143,7 +143,7 @@ a.loginlabel {
 .form-group2a input,
 .form-control,
 .form-group3 select,
-.form-group3a input,
+.form-group3a select,
 .form-group4 input,
 .form-group5 input,
 .form-group6 input {
@@ -164,7 +164,7 @@ a.loginlabel {
 .form-group2a input:focus,
 .form-control:focus,
 .form-group3 select:focus,
-.form-group3a input:focus .form-group4 input:focus,
+.form-group3a select:focus .form-group4 input:focus,
 .form-group5 input:focus .form-group6 input:focus {
     box-shadow: none;
 }

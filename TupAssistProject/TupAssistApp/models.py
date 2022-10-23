@@ -106,7 +106,7 @@ class registration(AbstractUser):
     first_name = models.CharField(max_length=255, null=True, blank=True)
     last_name = models.CharField(max_length=255, null=True, blank=True)
     course = models.CharField(max_length=255, choices= course, null=True, blank=True)
-    yrandsec = models.CharField(max_length=255, choices= userType, null=True, blank=True)
+    yrandsec = models.CharField(max_length=255, choices= yrandsec, null=True, blank=True)
     studID = models.CharField(max_length=255, null=True, blank=True)
     userType = models.CharField(max_length=255, choices= userType, verbose_name='userType', default ='STDNT')
     department = models.CharField(max_length=255, choices= department, verbose_name='department')
@@ -115,7 +115,7 @@ class registration(AbstractUser):
     class Meta:
         verbose_name_plural = "registration" 
 
-        
+
 
 class StudentReference(models.Model):
     email = models.CharField(max_length=255, null=True, blank=True)

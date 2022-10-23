@@ -94,13 +94,13 @@ a:focus {
     width: 100%;
     display: grid;
     background-color: white;
-    margin: 2%;
+    margin-top: 2%;
     padding: 20px 20px 20px 20px;
     border-radius: 10px;
 }
 
 .table {
-    margin-top: 5%;
+    margin-top: 1%;
 }
 
 @media only screen and (min-width:1000px) {

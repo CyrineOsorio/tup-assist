@@ -89,7 +89,7 @@
                             <td>{{e.course}}</td>
                             <td>{{e.yrandsec}}</td>
                             <td>
-                                <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">View</a>
+                                <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample{{e.id}}" role="button" aria-expanded="false" aria-controls="collapseExample">View</a>
                             </td>
                         </tr>
                         {% endfor %}
@@ -98,9 +98,11 @@
             </div>
         </div>
 
-        <div class="content collapse" id="collapseExample">
+        {% for e in test %}
+        <div class="content collapse" id="collapseExample{{e.id}}">
             <table class="table">
                 <thead class="thead-dark">
+                    <legend>Student Name: {{e.first_name}} {{e.last_name}}</legend>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">First</th>
@@ -110,26 +112,15 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <th scope="row">1</th>
+                        <th scope="row">{{e.id}}</th>
                         <td>Mark</td>
                         <td>Otto</td>
                         <td>@mdo</td>
                     </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
                 </tbody>
             </table>
         </div>
+        {% endfor %}
 
     </div>
 

@@ -28,6 +28,7 @@ urlpatterns = [
 
     # head
     path('h-adding/', views.h_adding, name='h_adding'),
+    path('h-adding-edit/<int:id>', views.h_adding_edit),
     path('h-dropping/', views.h_dropping, name='h_dropping'),
 
     #registrar

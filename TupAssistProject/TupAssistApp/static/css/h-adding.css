@@ -129,6 +129,15 @@ body {
     margin-top: 5%;
 }
 
+.action {
+    display: flex;
+    text-align: center;
+}
+
+.action i {
+    font-size: 18px;
+}
+
 @media only screen and (max-width: 1000px) {
     .bg-container {
         padding: 2% 5% 2% 5%;

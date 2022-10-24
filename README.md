@@ -39,3 +39,8 @@ Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope CurrentUser
 
 bower install --save datatables.net
 bower install --save datatables.net-dt
+
+
+
+<!-- SweetAlert2 -->
+npm install sweetalert2

@@ -82,7 +82,9 @@ def p_adding(request):
     return render(request, 'TupAssistApp/p-adding.html')
 
 def h_adding(request):
-    return render(request, 'TupAssistApp/h-adding.html')
+    test = registration.objects.all()
+    context = { 'test': test}
+    return render(request, 'TupAssistApp/h-adding.html', context)
 
 def h_dropping(request):
     return render(request, 'TupAssistApp/h-dropping.html')
@@ -168,11 +170,11 @@ def r_adding(request):
     context = { 'test': test}
     return render(request, 'TupAssistApp/r-adding.html', context)
 
-def r_request_view(request, id):
+def r_adding_view(request, id):
     data = registration.objects.get(id=id)
     req = AddingReq.objects.filter(email=data.email)
     context = { 'req': req}
-    return render(request, 'TupAssistApp/r-request-view.html', context)
+    return render(request, 'TupAssistApp/r-adding-view.html', context)
 
 def r_dropping(request):
     test = registration.objects.all()

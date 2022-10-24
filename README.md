@@ -12,7 +12,7 @@
 **PROJECT**
 
 When there is changes in Model.py
-- go to TupAssistApp/migratiuons Folder
+- go to TupAssistApp/migratiions Folder
 -delete 0001_initial.py
 
 -go to phpmyadmin

@@ -79,10 +79,10 @@ class registration(AbstractUser):
         ('4B', '4B'),
     ]
     userType = [
-        ('STDNT', 'Student'),
         ('DH', 'Department Head'),
         ('PIC', 'Person-in-charge'),
         ('R', 'Registrar'),
+        ('STDNT', 'Student'),
     ]
 
     # FOR STUDENT AND PIC
@@ -94,6 +94,11 @@ class registration(AbstractUser):
         ('BET-MT', 'Mechanical Technology'),
         ('BET-AT', 'Automotive Technology'),
         ('BET-PPT', 'Power Plant Technology'),
+        ('BSCE', 'Civil Engineering'),
+        ('BSEE', 'Electrical Engineering'),
+        ('BSEE', 'Electronics Engineering'),
+        ('BSEE', 'Mechanical Engineering'),
+
     ]
 
     # FOR DEPARTMENT HEAD

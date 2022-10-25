@@ -65,6 +65,11 @@ def signup(request):
             user_email = userref.email
             print(userref)
             if form.is_valid() and user_email == email:
+                # Filter of Course by Department
+                course = form.cleaned_data.get('course')
+                print(course)
+                if course == "BET-COET" or course == "BET-ET" or course == "BET-ESET" or course == "BET-CT":
+                    form.instance.department = 'Department of Industrial Technology'
                 form.save()
                 messages.success(request, 'Account is successfully created!')
                 return redirect ('/index')
@@ -97,19 +102,25 @@ def p_adding(request):
     return render(request, 'TupAssistApp/p-adding.html')
 
 def h_adding(request):
+    current_user = request.user
     test = registration.objects.all()
-    context = { 'test': test}
+    context = { 
+        'test': test,
+        'current_user': current_user
+        }
     return render(request, 'TupAssistApp/h-adding.html', context)
+
+def h_adding_edit(request, id):
+    data = registration.objects.get(id=id)
+    req = AddingReq.objects.filter(email=data.email)
+    context = { 
+        'req': req,
+        }
+    return render(request, 'TupAssistApp/h-adding-edit.html', context)
 
 def h_dropping(request):
     return render(request, 'TupAssistApp/h-dropping.html')
 
-def h_adding_edit(request, id):
-    current_user = request.user
-    data = registration.objects.get(id=id)
-    req = AddingReq.objects.filter(email=data.email)
-    context = { 'req': req}
-    return render(request, 'TupAssistApp/h-adding-edit.html', context)
 
 def registrar(request):
     subs = Subjects.objects.all()

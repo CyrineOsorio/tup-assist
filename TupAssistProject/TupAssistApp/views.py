@@ -82,12 +82,12 @@ def signup1(request):
     if request.method == 'POST':
         form = HeadRegistration(request.POST)
         if form.is_valid():
-            userType = form.cleaned_data.get('userType')
-            print(userType)
-            department = form.cleaned_data.get('department')
-            print(department)
-            if userType == None:
-                form.instance.userType = 'DH'
+            # userType = form.cleaned_data.get('userType')
+            # print(userType)
+            # department = form.cleaned_data.get('department')
+            # print(department)
+            # if userType == None:
+            #     form.instance.userType = 'DH'
             form.save()
             return redirect ('/admin')
     context =  {'form': form}

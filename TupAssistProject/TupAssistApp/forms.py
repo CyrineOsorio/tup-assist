@@ -13,4 +13,4 @@ class StudentRegistration(UserCreationForm):
 class HeadRegistration(UserCreationForm):
     class Meta:
         model = registration
-        fields = ['username', 'email', 'password1', 'password2', 'last_name', 'first_name', 'userType', 'department']
+        fields = ['username', 'email', 'password1', 'password2', 'last_name', 'first_name', 'department']

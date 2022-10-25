@@ -82,6 +82,10 @@ def signup1(request):
     if request.method == 'POST':
         form = StudentRegistration(request.POST)
         if form.is_valid():
+            userType = form.cleaned_data.get('userType')
+            print(userType)
+            if userType == None:
+                form.instance.userType = 'DH'
             form.save()
             return redirect ('/admin')
     context =  {'form': form}

@@ -96,7 +96,7 @@
                                     <td>{{e.headCheck}}</td>
                                     <td>{{e.headComment}}</td>
                                     <td class="action">
-                                        <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="bi bi-pencil"></i></a>
+                                        <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample{{e.id}}"><i class="bi bi-pencil"></i></a>
                                     </td>
                                 </tr>
                                 {% endfor %}
@@ -105,9 +105,12 @@
                     </div>
                 </div>
 
-                <div class="content collapse" id="collapseExample">
+
+                <div class="content collapse" id="collapseExample{{e.id}}">
                     <div class="stud-request-label">
-                        <p>Edit:</p>
+                        {% for e in req %}
+                        <p>Edit: {{e.id}}</p>
+                        {% endfor %}
                     </div>
 
                     <div style="overflow-x:auto;">
@@ -129,12 +132,18 @@
 
                             <tbody>
                                 <tr>
+
                                     <form class="form" action="" method="post">
                                         {% csrf_token %}
                                         <td></td>
-                                        <td><input type="text" name="email" id="email" required></td>
+                                        {% for e in req %}
+                                        <td><input type="text" name="email" id="email" value="{{e.email}}" required></td>
+                                        {% endfor %}
                                         <td>
                                             <select name="subject" id="subject">
+                                                {% for e in req %}
+                                                <option value="{{e.subject}}">{{e.subject}}</option>
+                                                {% endfor %}
                                                 {% for i in sub %}
                                                 <option value="{{i.SubCode}} {{i.SubName}}">{{i.SubCode}} {{i.SubName}}</option>
                                                 {% endfor %}
@@ -143,6 +152,9 @@
 
                                         <td>
                                             <select name="course" id="course">
+                                                {% for e in req %}
+                                                <option value="{{e.course}}">{{e.course}}</option>
+                                                {% endfor %}
                                                 <option value="BET-ET">Electrical Technology</option>
                                                 <option value="BET-ESET">Electronics Technology</option>
                                                 <option value="BET-COET">Computer Engineering  Technology</option>
@@ -156,6 +168,9 @@
 
                                         <td>
                                             <select name="yrandsec" id="yrandsec">
+                                                {% for e in req %}
+                                                <option value="{{e.yrandsec}}">{{e.yrandsec}}</option>
+                                                {% endfor %}
                                                 <option value="1A">1A</option>
                                                 <option value="1A">2A</option>
                                                 <option value="1A">3A</option>
@@ -167,7 +182,9 @@
                                             </select>
                                         </td>
 
-                                        <td><input type="text" name="sched" id="sched" required></td>
+                                        {% for e in req %}
+                                        <td><input type="text" name="sched" id="sched" value="{{e.sched}}" required></td>
+                                        {% endfor %}
                                         <td></td>
                                         <td></td>
                                         <td></td>
@@ -180,6 +197,8 @@
                         </table>
                     </div>
                 </div>
+
+
 
 
             </div>

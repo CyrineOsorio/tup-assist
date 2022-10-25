@@ -49,6 +49,9 @@ def index(request):
         elif user is not None and user.userType == 'PIC':
             login(request, user)
             return redirect('/p-adding')
+        elif user is not None and user.userType == 'R':
+            login(request, user)
+            return redirect('/registrar')
         else:
            messages.error(request, 'Invalid Credentials')
     return render(request, 'TupAssistApp/index.html')
@@ -123,6 +126,7 @@ def h_dropping(request):
 
 
 def registrar(request):
+    current_user = request.user
     subs = Subjects.objects.all()
     status = TransStatus.objects.all()
     sched = Schedule.objects.latest('id')
@@ -130,6 +134,7 @@ def registrar(request):
     # latest_sched = sched.gSheetLink
     # print(latest_sched)
     context = {
+        'current_user': current_user,
         'subs': subs,
         'status' : status,
         'sched': sched,

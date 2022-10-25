@@ -53,4 +53,4 @@ username and password
 Industrial Tech : TUPC-DOIT
 Industrial Education : TUPC-DOIE 
 Engineering : TUPC-DOER
-Registrar : TUPC-REGISTRAR
+Registrar : TUPC-REGISTRAR12345

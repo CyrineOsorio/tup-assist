@@ -78,7 +78,7 @@ body {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    padding: 2% 20% 2% 20%;
+    padding: 2% 16% 2% 22%;
 }
 
 .welcome {
@@ -136,6 +136,24 @@ body {
 
 .action i {
     font-size: 18px;
+}
+
+.sched-icon {
+    padding: 5px;
+    border: none;
+    background-color: transparent;
+    width: 10px;
+}
+
+.image-icon {
+    width: 80px;
+    height: 80px;
+}
+
+.modal-dialog {
+    width: 100%;
+    min-width: 1000px;
+    margin-top: 5%;
 }
 
 @media only screen and (max-width: 1000px) {

@@ -53,40 +53,74 @@
     <div class="bg-container">
 
 
+        <div class="row no-gutters">
+            <div class="col-sm-6 col-md-11">
 
-        <div class="welcome">Welcome, {{ current_user.department }}!</div>
+                <div class="welcome">Welcome, {{ current_user.department }}!</div>
 
-        <div class="content">
-            <div class="stud-request-label">
-                <p>STUDENT REQUESTS:</p>
+                <div class="content">
+                    <div class="stud-request-label">
+                        <p>STUDENT REQUESTS:</p>
+                    </div>
+
+                    <div style="overflow-x:auto;">
+                        <!--HTML code to display data in tabular format-->
+                        <table id="table_id" class="display">
+                            <thead>
+                                <th>NO.</th>
+                                <th>STUDENT ID</th>
+                                <th>SUBJECT</th>
+                                <th>COURSE</th>
+                                <th>YEAR & SECTION</th>
+                                <th>SCHEDULE</th>
+                            </thead>
+
+                            <tbody>
+                                {% for e in req %}
+                                <tr>
+                                    <td>{{e.id}}</td>
+                                    <td>{{e.email}}</td>
+                                    <td>{{e.subject}} </td>
+                                    <td>{{e.course}}</td>
+                                    <td>{{e.yrandsec}}</td>
+                                    <td>{{e.sched}}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
             </div>
 
-            <div style="overflow-x:auto;">
-                <!--HTML code to display data in tabular format-->
-                <table id="table_id" class="display">
-                    <thead>
-                        <th>NO.</th>
-                        <th>STUDENT ID</th>
-                        <th>SUBJECT</th>
-                        <th>COURSE</th>
-                        <th>YEAR & SECTION</th>
-                        <th>SCHEDULE</th>
-                    </thead>
 
-                    <tbody>
-                        {% for e in req %}
-                        <tr>
-                            <td>{{e.id}}</td>
-                            <td>{{e.email}}</td>
-                            <td>{{e.subject}} </td>
-                            <td>{{e.course}}</td>
-                            <td>{{e.yrandsec}}</td>
-                            <td>{{e.sched}}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+            <div class="col-6 col-md-1" style="height:37vh; width:100%;  display: grid; align-content: end ;">
+                <button type="button" data-toggle="modal" data-target="#schedmodal" class="sched-icon">
+                    <img src="../../static/images/sched1.png" alt="" class="image-icon">
+                </button>
             </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="schedmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Schedule</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <div style="overflow-x:auto;">
+                                <iframe src="{{sched.gSheetLink}}" width="100%" height="500"></iframe>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
 

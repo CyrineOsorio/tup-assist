@@ -94,10 +94,14 @@ class registration(AbstractUser):
         ('BET-MT', 'Mechanical Technology'),
         ('BET-AT', 'Automotive Technology'),
         ('BET-PPT', 'Power Plant Technology'),
+
         ('BSCE', 'Civil Engineering'),
         ('BSEE', 'Electrical Engineering'),
-        ('BSEE', 'Electronics Engineering'),
-        ('BSEE', 'Mechanical Engineering'),
+        ('BSECE', 'Electronics Engineering'),
+        ('BSME', 'Mechanical Engineering'),
+
+        ('BSME', 'Information and Communication Technology'),
+        ('BSME', 'Industrial Arts'),
 
     ]
 

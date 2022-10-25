@@ -119,7 +119,7 @@ class registration(AbstractUser):
     # FOR DEPARTMENT HEAD
     department = [
         ('Department of Industrial Technology', 'Department of Industrial Technology'),
-        ('Department of Industial Education', 'Department of Industial Education'),
+        ('Department of Industrial Education', 'Department of Industrial Education'),
         ('Department of Engineering', 'Department of Engineering'),
     ]
     

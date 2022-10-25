@@ -108,7 +108,8 @@ a.loginlabel {
 /*fullname, surname, student number, year and section lagayan nila*/
 
 .formGroup1,
-.formGroup2 {
+.formGroup2,
+.formGroup3 {
     display: flex;
     gap: 10px;
     width: 100%;
@@ -127,7 +128,9 @@ a.loginlabel {
 .form-group1,
 .form-group1a,
 .form-group2,
-.form-group2a {
+.form-group2a,
+.form-group3,
+.form-group3a {
     width: 100%;
 }
 
@@ -140,6 +143,7 @@ a.loginlabel {
 .form-group2a input,
 .form-control,
 .form-group3 select,
+.form-group3a select,
 .form-group4 input,
 .form-group5 input {
     background-color: #ffffff;
@@ -159,7 +163,7 @@ a.loginlabel {
 .form-group2a input:focus,
 .form-control:focus,
 .form-group3 select:focus,
-.form-group4 input:focus,
+.form-group3a select:focus .form-group4 input:focus,
 .form-group5 input:focus {
     box-shadow: none;
 }
@@ -200,6 +204,13 @@ a.loginlabel {
 }
 
 .form-group3:before {
+    content: "User Type";
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 10px;
+}
+
+.form-group3a:before {
     content: "Department";
     display: flex;
     justify-content: flex-start;

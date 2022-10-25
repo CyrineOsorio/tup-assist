@@ -82,6 +82,7 @@ class registration(AbstractUser):
         ('STDNT', 'Student'),
         ('DH', 'Department Head'),
         ('PIC', 'Person-in-charge'),
+        ('R', 'Registrar'),
     ]
 
     # FOR STUDENT AND PIC
@@ -97,9 +98,9 @@ class registration(AbstractUser):
 
     # FOR DEPARTMENT HEAD
     department = [
-        ('DOIT', 'Department of Industrial Technology'),
-        ('DOIE', 'Department of Industial Education'),
-        ('DOE', 'Department of Engineering'),
+        ('Department of Industrial Technology', 'Department of Industrial Technology'),
+        ('Department of Industial Education', 'Department of Industial Education'),
+        ('Department of Engineering', 'Department of Engineering'),
     ]
     
     email = models.CharField(max_length=255, null=True, blank=True)
@@ -109,7 +110,7 @@ class registration(AbstractUser):
     yrandsec = models.CharField(max_length=255, choices= yrandsec, null=True, blank=True)
     studID = models.CharField(max_length=255, null=True, blank=True)
     userType = models.CharField(max_length=255, choices= userType, verbose_name='userType', default ='STDNT')
-    department = models.CharField(max_length=255, choices= department, verbose_name='department', blank=True, null=True)
+    department = models.CharField(max_length=255, choices= department, verbose_name='department', null=True)
 
 
     class Meta:

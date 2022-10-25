@@ -105,6 +105,7 @@ def h_dropping(request):
     return render(request, 'TupAssistApp/h-dropping.html')
 
 def h_adding_edit(request, id):
+    current_user = request.user
     data = registration.objects.get(id=id)
     req = AddingReq.objects.filter(email=data.email)
     context = { 'req': req}

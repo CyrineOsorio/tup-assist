@@ -34,7 +34,11 @@ def index(request):
         user = authenticate(request, username=username, password=password) 
         print(user)
 
-        if user is not None and user.userType == 'STDNT':
+        if user is not None and user.is_superuser == True:
+            login(request, user)
+            return redirect('/admin')
+
+        elif user is not None and user.userType == 'STDNT':
             login(request, user)
             return redirect('/student')
         

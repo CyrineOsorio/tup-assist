@@ -47,7 +47,6 @@ npm install sweetalert2
 
 
 
-
 <!--CUSTOM HASH PASSWORD-->
 Default Department Head Account Password:
 Industrial Tech = TUPC-DOIT

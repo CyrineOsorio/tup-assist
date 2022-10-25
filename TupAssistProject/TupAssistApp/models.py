@@ -40,6 +40,10 @@ class AddingReq(models.Model):
     course = models.CharField(max_length=255, null=True, blank=True)
     yrandsec = models.CharField(max_length=255, null=True, blank=True)
     sched = models.CharField(max_length=255, null=True, blank=True)
+    picCheck = models.BooleanField(default=False)
+    picComment = models.CharField(max_length=255, null=True, blank=True)
+    headCheck = models.BooleanField(default=False)
+    headComment = models.CharField(max_length=255, null=True, blank=True)
     
     class Meta:
         verbose_name_plural = "AddingReq" 
@@ -51,6 +55,10 @@ class DroppingReq(models.Model):
     course = models.CharField(max_length=255, null=True, blank=True)
     yrandsec = models.CharField(max_length=255, null=True, blank=True)
     sched = models.CharField(max_length=255, null=True, blank=True)
+    picCheck = models.BooleanField(default=False)
+    picComment = models.CharField(max_length=255, null=True, blank=True)
+    headCheck = models.BooleanField(default=False)
+    headComment = models.CharField(max_length=255, null=True, blank=True)
     
     class Meta:
         verbose_name_plural = "DroppingReq" 
@@ -61,6 +69,10 @@ class TransferringReq(models.Model):
     course = models.CharField(max_length=255, null=True, blank=True)
     yrandsec = models.CharField(max_length=255, null=True, blank=True)
     sched = models.CharField(max_length=255, null=True, blank=True)
+    picCheck = models.BooleanField(default=False)
+    picComment = models.CharField(max_length=255, null=True, blank=True)
+    headCheck = models.BooleanField(default=False)
+    headComment = models.CharField(max_length=255, null=True, blank=True)
     
     class Meta:
         verbose_name_plural = "TransferringReq" 
@@ -119,10 +131,7 @@ class registration(AbstractUser):
     studID = models.CharField(max_length=255, null=True, blank=True)
     userType = models.CharField(max_length=255, choices= userType, verbose_name='userType', default ='STDNT')
     department = models.CharField(max_length=255, choices= department, verbose_name='department', null=True)
-    picCheck = = models.BooleanField()
-    picComment = models.CharField(max_length=255, null=True, blank=True)
-    headCheck = = models.BooleanField()
-    headComment = models.CharField(max_length=255, null=True, blank=True)
+
 
 
     class Meta:

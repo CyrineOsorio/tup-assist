@@ -20,10 +20,9 @@
     <link rel="stylesheet" href="../../static/css/fonts.css">
 
     <!--ICONS-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
     <link rel="icon" href="../../static/images/tuplogo.png">
 
-    <!--DATATABLES-->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
 </head>
 
 <body id="ajax_func">
@@ -65,14 +64,19 @@
 
                     <div style="overflow-x:auto;">
                         <!--HTML code to display data in tabular format-->
-                        <table id="table_id" class="display">
+                        <table class="table">
                             <thead>
                                 <th>NO.</th>
-                                <th>STUDENT ID</th>
+                                <th>STUDENT EMAIL</th>
                                 <th>SUBJECT</th>
                                 <th>COURSE</th>
-                                <th>YEAR & SECTION</th>
+                                <th>Y&S</th>
                                 <th>SCHEDULE</th>
+                                <th>PIC: APPROVAL</th>
+                                <th>PIC: COMMENT</th>
+                                <th>HEAD: APPROVAL</th>
+                                <th>HEAD: COMMENT</th>
+                                <th>ACTION</th>
                             </thead>
 
                             <tbody>
@@ -84,6 +88,11 @@
                                     <td>{{e.course}}</td>
                                     <td>{{e.yrandsec}}</td>
                                     <td>{{e.sched}}</td>
+                                    <td>{{e.picCheck}}</td>
+                                    <td>{{e.picComment}}</td>
+                                    <td>{{e.headCheck}}</td>
+                                    <td>{{e.headComment}}</td>
+                                    <td class="action"><a href=""><i class="bi bi-pencil"></i></a></td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
@@ -131,14 +140,6 @@
     <!--JAVASCRIPT-->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
-
-    <!--DATATABLES-->
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#table_id').DataTable();
-        });
-    </script>
 
 
 </body>

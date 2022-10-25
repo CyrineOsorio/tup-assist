@@ -78,7 +78,7 @@ body {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    padding: 2% 16% 2% 22%;
+    padding: 2% 12% 2% 18%;
 }
 
 .welcome {
@@ -131,11 +131,11 @@ body {
 
 .action {
     display: flex;
-    text-align: center;
+    justify-content: center;
 }
 
 .action i {
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .sched-icon {

@@ -137,7 +137,7 @@
                                         {% csrf_token %}
                                         <td></td>
                                         {% for e in req %}
-                                        <td><input type="text" name="email" id="email" value="{{e.email}}" required></td>
+                                        <td><input type="text" name="email" id="email" value="{{e.email}}" readonly></td>
                                         {% endfor %}
                                         <td>
                                             <select name="subject" id="subject">

@@ -364,7 +364,12 @@
 
                                             <div class="col-md-4 mb-3">
                                                 <label for="subname">Subject</label>
-                                                <input type="text" class="form-control" name="subject" id="subject" value="{{i.subject}}" required>
+                                                <select name="subject" id="subject">
+                                                    <option value="{{e.subject}}">{{i.subject}}</option>
+                                                    {% for i in sub %}
+                                                    <option value="{{i.SubCode}} {{i.SubName}}">{{i.SubCode}} {{i.SubName}}</option>
+                                                    {% endfor %}
+                                                </select>
                                             </div>
 
                                             <div class="col-md-4 mb-3">

@@ -128,9 +128,11 @@ def h_adding_edit(request, id):
     current_user = request.user
     data = registration.objects.get(id=id)
     req = AddingReq.objects.filter(email=data.email)
+    sched = Schedule.objects.latest('id')
     context = { 
         'current_user': current_user,
         'req': req,
+        'sched': sched
         }
     return render(request, 'TupAssistApp/h-adding-edit.html', context)
 

@@ -83,7 +83,7 @@ class registration(AbstractUser):
         ('PIC', 'Person-in-charge'),
         ('R', 'Registrar'),
         ('STDNT', 'Student'),
-    ]
+    ]  
 
     # FOR STUDENT AND PIC
     course = [
@@ -100,8 +100,7 @@ class registration(AbstractUser):
         ('BSECE', 'Electronics Engineering'),
         ('BSME', 'Mechanical Engineering'),
 
-        ('BSME', 'Information and Communication Technology'),
-        ('BSME', 'Industrial Arts'),
+        ('BSIE-ICT', 'Information and Communication Technology'),
 
     ]
 

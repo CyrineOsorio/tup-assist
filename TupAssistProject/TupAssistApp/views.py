@@ -81,7 +81,6 @@ def signup(request):
                 elif course == "BSIE-ICT":
                     form.instance.department = 'Department of Industrial Education'
                 form.save()
-                messages.success(request, 'Account is successfully created!')
                 return redirect ('/index')
             else:
                 messages.error(request, 'Invalid Credentials!')
@@ -91,7 +90,7 @@ def signup(request):
     context =  {'form': form}
     return render(request, 'TupAssistApp/student-registration.html', context)
 
-#DEPARTMENT HEAD SIGN UP PAGE
+# Head, PIC, and Registrar SIGN UP PAGE
 def signup1(request):
     form = HeadRegistration()
     if request.method == 'POST':
@@ -99,8 +98,10 @@ def signup1(request):
         if form.is_valid():
             form.save()
             return redirect ('/admin')
+        else:
+            messages.error(request, 'Invalid Credentials!')
     context =  {'form': form}
-    return render(request, 'TupAssistApp/head-registration.html', context)
+    return render(request, 'TupAssistApp/staff-registration.html', context)
 
 #LOG OUT
 def logoutUser(request):

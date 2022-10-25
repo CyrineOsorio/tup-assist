@@ -19,6 +19,9 @@ from datetime import datetime
 # importing pandas module
 import pandas as pd
 
+# filter "AND,OR,NOT"
+from django.db.models import Q
+
 
 
 # Create your views here.
@@ -71,8 +74,12 @@ def signup(request):
                 # Filter of Course by Department
                 course = form.cleaned_data.get('course')
                 print(course)
-                if course == "BET-COET" or course == "BET-ET" or course == "BET-ESET" or course == "BET-CT":
+                if course == "BET-COET" or course == "BET-ET" or course == "BET-ESET" or course == "BET-CT" or course == "BET-MT" or course == "BET-AT" or course == "BET-PPT":
                     form.instance.department = 'Department of Industrial Technology'
+                elif course == "BSCE" or course == "BSEE" or course == "BSECE" or course == "BSME":
+                    form.instance.department = 'Department of Engineering'
+                elif course == "BSIE-ICT":
+                    form.instance.department = 'Department of Industrial Education'
                 form.save()
                 messages.success(request, 'Account is successfully created!')
                 return redirect ('/index')
@@ -106,7 +113,7 @@ def p_adding(request):
 
 def h_adding(request):
     current_user = request.user
-    test = registration.objects.all()
+    test = registration.objects.filter(Q(department=current_user.department) & Q(userType='STDNT'))
     context = { 
         'test': test,
         'current_user': current_user

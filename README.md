@@ -44,3 +44,12 @@ bower install --save datatables.net-dt
 
 <!-- SweetAlert2 -->
 npm install sweetalert2
+
+
+
+
+<!--CUSTOM HASH PASSWORD-->
+Default Department Head Account Password:
+Industrial Tech = TUPC-DOIT = pbkdf2_sha256$390000$O7OWNm16XCmuXvSvA5lU47$pJJEij++5O7BO0wdsHTB1Gc/Hedks4rF/fRM6MljiAI=
+Industrial Education = TUPC-DOIE =
+Engineering = TUPC-DOER =

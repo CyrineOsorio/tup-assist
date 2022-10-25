@@ -44,11 +44,11 @@ def index(request):
         
         elif user is not None and user.userType == 'DH':
             login(request, user)
-            return redirect('/head')
+            return redirect('/h-adding')
 
         elif user is not None and user.userType == 'PIC':
             login(request, user)
-            return redirect('/pic')
+            return redirect('/p-adding')
         else:
            messages.error(request, 'Invalid Credentials')
     return render(request, 'TupAssistApp/index.html')
@@ -74,7 +74,7 @@ def signup(request):
             messages.error(request, 'Use Tup Cavite Gsfe Account!')
             return redirect ('/signup')
     context =  {'form': form}
-    return render(request, 'TupAssistApp/signup.html', context)
+    return render(request, 'TupAssistApp/student-registration.html', context)
 
 #LOG OUT
 def logoutUser(request):

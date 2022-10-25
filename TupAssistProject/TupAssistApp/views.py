@@ -125,9 +125,11 @@ def h_adding(request):
     return render(request, 'TupAssistApp/h-adding.html', context)
 
 def h_adding_edit(request, id):
+    current_user = request.user
     data = registration.objects.get(id=id)
     req = AddingReq.objects.filter(email=data.email)
     context = { 
+        'current_user': current_user,
         'req': req,
         }
     return render(request, 'TupAssistApp/h-adding-edit.html', context)

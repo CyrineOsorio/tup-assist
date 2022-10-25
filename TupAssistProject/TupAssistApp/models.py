@@ -129,7 +129,7 @@ class registration(AbstractUser):
     course = models.CharField(max_length=255, choices= course, null=True, blank=True)
     yrandsec = models.CharField(max_length=255, choices= yrandsec, null=True, blank=True)
     studID = models.CharField(max_length=255, null=True, blank=True)
-    userType = models.CharField(max_length=255, choices= userType, verbose_name='userType', default ='STDNT')
+    userType = models.CharField(max_length=255, choices= userType, verbose_name='userType', null=True)
     department = models.CharField(max_length=255, choices= department, verbose_name='department', null=True)
 
 

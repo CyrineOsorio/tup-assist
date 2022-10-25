@@ -75,10 +75,13 @@ def signup(request):
                 course = form.cleaned_data.get('course')
                 print(course)
                 if course == "BET-COET" or course == "BET-ET" or course == "BET-ESET" or course == "BET-CT" or course == "BET-MT" or course == "BET-AT" or course == "BET-PPT":
+                    form.instance.userType = 'STDNT'
                     form.instance.department = 'Department of Industrial Technology'
                 elif course == "BSCE" or course == "BSEE" or course == "BSECE" or course == "BSME":
+                    form.instance.userType = 'STDNT'
                     form.instance.department = 'Department of Engineering'
                 elif course == "BSIE-ICT":
+                    form.instance.userType = 'STDNT'
                     form.instance.department = 'Department of Industrial Education'
                 form.save()
                 return redirect ('/index')
@@ -212,7 +215,7 @@ def transStatus(request,id):
         return redirect('/registrar')
 
 def r_adding(request):
-    test = registration.objects.all()
+    test = registration.objects.filter(userType='STDNT')
     context = { 'test': test}
     return render(request, 'TupAssistApp/r-adding.html', context)
 

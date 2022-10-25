@@ -36,7 +36,7 @@ def index(request):
 
         if user is not None and user.is_superuser == True:
             login(request, user)
-            return redirect('/admin')
+            return redirect('/signup1')
 
         elif user is not None and user.userType == 'STDNT':
             login(request, user)
@@ -53,7 +53,7 @@ def index(request):
            messages.error(request, 'Invalid Credentials')
     return render(request, 'TupAssistApp/index.html')
 
-#SIGN UP PAGE
+#STUDENT SIGN UP PAGE
 def signup(request):
     form = StudentRegistration()
     if request.method == 'POST':
@@ -75,6 +75,17 @@ def signup(request):
             return redirect ('/signup')
     context =  {'form': form}
     return render(request, 'TupAssistApp/student-registration.html', context)
+
+#DEPARTMENT HEAD SIGN UP PAGE
+def signup1(request):
+    form = HeadRegistration()
+    if request.method == 'POST':
+        form = StudentRegistration(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect ('/admin')
+    context =  {'form': form}
+    return render(request, 'TupAssistApp/head-registration.html', context)
 
 #LOG OUT
 def logoutUser(request):

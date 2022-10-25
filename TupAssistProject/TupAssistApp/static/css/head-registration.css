@@ -1,0 +1,232 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    background-color: #ECECEC;
+}
+
+.bg-container {
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/ECECEC_i.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 2% 5% 20% 45%;
+}
+
+
+/*form*/
+
+form {
+    /*border: solid 1px black;*/
+    width: 70%;
+    display: grid;
+    text-align: center;
+}
+
+
+/*TUPC LOGO*/
+
+form img.mb4 {
+    justify-self: center;
+    margin-bottom: 5px;
+}
+
+.tup-label {
+    width: 100%;
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 2px;
+}
+
+.assist-label {
+    width: 100%;
+    font-weight: bold;
+    font-size: 30px;
+    color: black;
+    margin-bottom: 2px;
+}
+
+.adt-label {
+    width: 100%;
+    font-weight: lighter;
+    font-size: 22px;
+    margin-bottom: 8%;
+}
+
+input.signup {
+    width: 100%;
+    height: 45px;
+    background: black;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 23px;
+    font-weight: 500;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    margin: 20px 0 10px 0;
+}
+
+.signup:hover {
+    background-color: #464646;
+}
+
+.signup:focus {
+    background: #464646;
+}
+
+h2.loginlabel {
+    font-style: normal;
+    font-weight: 200;
+    font-size: 20px;
+    color: #000000;
+    margin-top: 5px;
+    padding-bottom: 5%;
+}
+
+label {
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+a.loginlabel {
+    color: black;
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 20px;
+}
+
+
+/*forms*/
+
+
+/*fullname, surname, student number, year and section lagayan nila*/
+
+.formGroup1,
+.formGroup2,
+.formGroup3 {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+
+/*dropdown year and section kasama label*/
+
+.form-group2a {
+    display: grid;
+}
+
+
+/*mga box mismo ng fullname, surname, student number, year and section*/
+
+.form-group1,
+.form-group1a,
+.form-group2,
+.form-group2a,
+.form-group3,
+.form-group3a {
+    width: 100%;
+}
+
+
+/*pinakaloob ng fullname, surname, student number, year and section*/
+
+.form-group1 input,
+.form-group1a input,
+.form-group2 input,
+.form-group2a input,
+.form-control,
+.form-group3 select,
+.form-group3a select,
+.form-group4 input,
+.form-group5 input {
+    background-color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    height: 40px;
+    border: 1px solid #CED4DA;
+    font-weight: 300;
+    font-size: 18px;
+    border-radius: 10px;
+    width: 100%;
+    padding: 0 15px 0 15px;
+}
+
+.form-group1 input:focus,
+.form-group1a input:focus,
+.form-group2 input:focus,
+.form-group2a input:focus,
+.form-control:focus,
+.form-group3 select:focus,
+.form-group3a select:focus .form-group4 input:focus,
+.form-group5 input:focus {
+    box-shadow: none;
+}
+
+
+/*/*dropdown year and section lang*/
+
+.form-group2a select {
+    padding: 0 10px 0 10px;
+}
+
+.form-group1:before {
+    content: "First Name";
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 10px;
+}
+
+.form-group1a:before {
+    content: "Last Name";
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 10px;
+}
+
+.form-group2:before {
+    content: "Email";
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 10px;
+}
+
+.form-group2a:before {
+    content: "Username";
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 10px;
+}
+
+.form-group3:before {
+    content: "User Type";
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 10px;
+}
+
+.form-group3a:before {
+    content: "Department";
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 10px;
+}
+
+.form-group4:before {
+    content: "Password";
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 10px;
+}
+
+.form-group5:before {
+    content: "Confirm Password";
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 10px;
+}

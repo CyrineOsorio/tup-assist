@@ -9,3 +9,8 @@ class StudentRegistration(UserCreationForm):
     class Meta:
         model = registration
         fields = ['username', 'email', 'password1', 'password2', 'last_name', 'first_name', 'yrandsec', 'course', 'studID']
+
+class HeadRegistration(UserCreationForm):
+    class Meta:
+        model = registration
+        fields = ['username', 'email', 'password1', 'password2', 'last_name', 'first_name', 'userType', 'department']

@@ -82,8 +82,8 @@
                         <th>NAME</th>
                         <th>EMAIL</th>
                         <th>COURSE</th>
-                        <th>YEAR AND SECTION</th>
-                        <th>ACTION</th>
+                        <th style="text-align: center;">YEAR AND SECTION</th>
+                        <th style="text-align: center;">ACTION</th>
                     </thead>
 
                     <tbody>
@@ -94,7 +94,7 @@
                             <td>{{e.first_name}} {{e.last_name}}</td>
                             <td>{{e.email}}</td>
                             <td>{{e.course}}</td>
-                            <td>{{e.yrandsec}}</td>
+                            <td style="text-align: center;">{{e.yrandsec}}</td>
                             <td class="action">
                                 <a href="/h-adding-edit/{{e.id}}"><i class="bi bi-pencil"></i></a>
                             </td>

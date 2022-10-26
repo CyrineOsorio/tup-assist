@@ -64,7 +64,7 @@
 
 
     <div class="bg-container">
-        <div class="welcome">WELCOME, REGISTRAR!</div>
+        <div class="welcome">Welcome, {{current_user.username}}!</div>
 
         <div class="content">
             <div style="overflow-x:auto;">
@@ -88,7 +88,7 @@
                             <td>{{e.first_name}} {{e.last_name}}</td>
                             <td>{{e.email}}</td>
                             <td>{{e.course}}</td>
-                            <td>{{e.yrandsec}}</td>
+                            <td style="text-align: center;">{{e.yrandsec}}</td>
                             <td class="action">
                                 <a href="/r-adding-view/{{e.id}}"><i class="bi bi-eye"></i></a>
                             </td>

@@ -91,14 +91,12 @@
                                     <td>{{e.course}}</td>
                                     <td>{{e.yrandsec}}</td>
                                     <td>{{e.sched}}</td>
-                                    <td>
-                                        {{e.picCheck}}
-                                    </td>
+                                    <td>{{e.picCheck}}</td>
                                     <td>{{e.picComment}}</td>
                                     <td>{{e.headCheck}}</td>
                                     <td>{{e.headComment}}</td>
                                     <td class="action">
-                                        <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample{{e.id}}"><i class="bi bi-pencil"></i></a>
+                                        <a data-toggle="modal" data-target="#exampleModal{{e.id}}"> <i class="bi bi-pencil"></i> </a>
                                     </td>
                                 </tr>
                                 {% endfor %}
@@ -108,54 +106,58 @@
                 </div>
 
 
-                <div class="content collapse" id="collapseExample{{e.id}}">
-                    <div class="stud-request-label">
-                        {% for e in req %}
-                        <p>Edit: {{e.id}}</p>
-                        {% endfor %}
-                    </div>
+                <!--UPDATE-->
+                <!-- Modal -->
+                {% for e in req %}
+                <div class="modal fade" id="exampleModal{{e.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Edit: {{e.id}}</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
 
-                    <div style="overflow-x:auto;">
-                        <!--HTML code to display data in tabular format-->
-                        <table id="table_id" class="table table-striped">
-                            <thead>
-                                <th>NO.</th>
-                                <th>STUDENT EMAIL</th>
-                                <th>SUBJECT</th>
-                                <th>COURSE</th>
-                                <th>Y&S</th>
-                                <th>SCHEDULE</th>
-                                <th>PIC: APPROVAL</th>
-                                <th>PIC: COMMENT</th>
-                                <th>HEAD: APPROVAL</th>
-                                <th>HEAD: COMMENT</th>
-                                <th>ACTION</th>
-                            </thead>
+                            <div class="modal-body">
 
-                            <tbody>
-                                <tr>
+                                <div style="overflow-x:auto;">
+                                    <!--HTML code to display data in tabular format-->
+                                    <table id="table_id" class="table table-striped">
+                                        <thead>
+                                            <th>NO.</th>
+                                            <th>STUDENT EMAIL</th>
+                                            <th>SUBJECT</th>
+                                            <th>COURSE</th>
+                                            <th>Y&S</th>
+                                            <th>SCHEDULE</th>
+                                            <th>PIC: APPROVAL</th>
+                                            <th>PIC: COMMENT</th>
+                                            <th>HEAD: APPROVAL</th>
+                                            <th>HEAD: COMMENT</th>
+                                            <th>ACTION</th>
+                                        </thead>
 
-                                    <form class="form" action="" method="post">
-                                        {% csrf_token %} {% for e in req %}
-                                        <td>{{e.id}}</td>
-                                        <td><input type="text" name="email" id="email" value="{{e.email}}" readonly></td>
-                                        {% endfor %}
-                                        <td>
-                                            <select name="subject" id="subject">
-                                                {% for e in req %}
+                                        <tbody>
+                                            <tr>
+
+                                                <form class="form" action="" method="post">
+                                                    {% csrf_token %}
+                                                    <td>{{e.id}}</td>
+                                                    <td><input type="text" name="email" id="email" value="{{e.email}}" readonly></td>
+                                                    <td>
+                                                        <select name="subject" id="subject">
                                                 <option value="{{e.subject}}">{{e.subject}}</option>
-                                                {% endfor %}
                                                 {% for i in sub %}
                                                 <option value="{{i.SubCode}} {{i.SubName}}">{{i.SubCode}} {{i.SubName}}</option>
                                                 {% endfor %}
                                             </select>
-                                        </td>
+                                                    </td>
 
-                                        <td>
-                                            <select name="course" id="course">
-                                                {% for e in req %}
+                                                    <td>
+                                                        <select name="course" id="course">
                                                 <option value="{{e.course}}">{{e.course}}</option>
-                                                {% endfor %}
+                                        
                                                 <option value="BET-ET">Electrical Technology</option>
                                                 <option value="BET-ESET">Electronics Technology</option>
                                                 <option value="BET-COET">Computer Engineering  Technology</option>
@@ -164,14 +166,13 @@
                                                 <option value="BET-AT">Automotive Technology</option>
                                                 <option value="BET-PPT">Power Plant Technology</option>
                                             </select>
-                                        </td>
+                                                    </td>
 
 
-                                        <td>
-                                            <select name="yrandsec" id="yrandsec">
-                                                {% for e in req %}
+                                                    <td>
+                                                        <select name="yrandsec" id="yrandsec">
                                                 <option value="{{e.yrandsec}}">{{e.yrandsec}}</option>
-                                                {% endfor %}
+                                              
                                                 <option value="1A">1A</option>
                                                 <option value="1A">2A</option>
                                                 <option value="1A">3A</option>
@@ -181,28 +182,38 @@
                                                 <option value="1A">3B</option>
                                                 <option value="1A">4B</option>
                                             </select>
-                                        </td>
+                                                    </td>
 
-                                        {% for e in req %}
-                                        <td><input type="text" name="sched" id="sched" value="{{e.sched}}" required></td>
-                                        {% endfor %}
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
 
-                                        <td class="action"><button type="submit" style="border: 0px; background-color: transparent;"> <i class="bi bi-plus-circle" style="color:#E2435E; font-size: large;"></i> </button></td>
-                                    </form>
-                                </tr>
-                            </tbody>
-                        </table>
+                                                    <td><input type="text" name="sched" id="sched" value="{{e.sched}}" required></td>
+
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+
+                                                    <td class="action"><button type="submit" style="border: 0px; background-color: transparent;"> <i class="bi bi-plus-circle" style="color:#E2435E; font-size: large;"></i> </button></td>
+                                                </form>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <input type="submit" value="Save changes">
+                            </div>
+
+                        </div>
                     </div>
                 </div>
-
-
-
+                {% endfor %}
 
             </div>
+
+
+
 
 
             <div class="col-6 col-md-1" style="height:37vh; width:100%;  display: grid; align-content: end ;">
@@ -232,8 +243,6 @@
             </div>
 
         </div>
-
-
     </div>
 
 

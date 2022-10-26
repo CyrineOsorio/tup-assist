@@ -133,8 +133,22 @@ def h_adding_edit(request, id):
         'current_user': current_user,
         'req': req,
         'sched': sched
-    
         }
+    if request.method=='POST':
+        ids = request.POST.get('id')
+        edit = AddingReq.objects.get(id=ids)
+        edit.email = request.POST.get('email')
+        edit.subject = request.POST.get('subject')
+        edit.course = request.POST.get('course')
+        edit.yrandsec = request.POST.get('yrandsec')
+        edit.sched = request.POST.get('sched')
+        edit.picCheck = request.POST.get('picCheck')
+        edit.picComment = request.POST.get('picComment')
+        edit.headCheck = request.POST.get('headCheck')
+        edit.headComment = request.POST.get('headComment')
+        edit.save()
+        return redirect('/h-adding-edit/'+ str(id))
+    
     return render(request, 'TupAssistApp/h-adding-edit.html', context)
 
 def h_dropping(request):

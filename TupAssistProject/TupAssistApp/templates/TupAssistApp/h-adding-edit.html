@@ -119,90 +119,58 @@
                                 </button>
                             </div>
 
-                            <div class="modal-body">
+                            <form class="form" method="post">
+                                <div class="modal-body">
+                                    {% csrf_token %}
 
-                                <div style="overflow-x:auto;">
-                                    <!--HTML code to display data in tabular format-->
-                                    <table id="table_id" class="table table-striped">
-                                        <thead>
-                                            <th>NO.</th>
-                                            <th>STUDENT EMAIL</th>
-                                            <th>SUBJECT</th>
-                                            <th>COURSE</th>
-                                            <th>Y&S</th>
-                                            <th>SCHEDULE</th>
-                                            <th>PIC: APPROVAL</th>
-                                            <th>PIC: COMMENT</th>
-                                            <th>HEAD: APPROVAL</th>
-                                            <th>HEAD: COMMENT</th>
-                                            <th>ACTION</th>
-                                        </thead>
+                                    <input type="text" name="id" id="id" value="{{e.id}}" hidden>
 
-                                        <tbody>
-                                            <tr>
+                                    <div class="form-row">
+                                        <div class="col-md-4 mb-3">
+                                            <label for="email">Email</label>
+                                            <input type="text" class="form-control" name="email" id="email" value="{{e.email}}" readonly>
 
-                                                <form class="form" action="" method="post">
-                                                    {% csrf_token %}
-                                                    <td>{{e.id}}</td>
-                                                    <td><input type="text" name="email" id="email" value="{{e.email}}" readonly></td>
-                                                    <td>
-                                                        <select name="subject" id="subject">
-                                                <option value="{{e.subject}}">{{e.subject}}</option>
-                                                {% for i in sub %}
-                                                <option value="{{i.SubCode}} {{i.SubName}}">{{i.SubCode}} {{i.SubName}}</option>
-                                                {% endfor %}
-                                            </select>
-                                                    </td>
-
-                                                    <td>
-                                                        <select name="course" id="course">
-                                                <option value="{{e.course}}">{{e.course}}</option>
-                                        
-                                                <option value="BET-ET">Electrical Technology</option>
-                                                <option value="BET-ESET">Electronics Technology</option>
-                                                <option value="BET-COET">Computer Engineering  Technology</option>
-                                                <option value="BET-CT">Civil Technology</option>
-                                                <option value="BET-MT">Mechanical Technology</option>
-                                                <option value="BET-AT">Automotive Technology</option>
-                                                <option value="BET-PPT">Power Plant Technology</option>
-                                            </select>
-                                                    </td>
-
-
-                                                    <td>
-                                                        <select name="yrandsec" id="yrandsec">
-                                                <option value="{{e.yrandsec}}">{{e.yrandsec}}</option>
-                                              
-                                                <option value="1A">1A</option>
-                                                <option value="1A">2A</option>
-                                                <option value="1A">3A</option>
-                                                <option value="1A">4A</option>
-                                                <option value="1A">1B</option>
-                                                <option value="1A">2B</option>
-                                                <option value="1A">3B</option>
-                                                <option value="1A">4B</option>
-                                            </select>
-                                                    </td>
-
-
-                                                    <td><input type="text" name="sched" id="sched" value="{{e.sched}}" required></td>
-
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-
-                                                    <td class="action"><button type="submit" style="border: 0px; background-color: transparent;"> <i class="bi bi-save" style="font-size: large;"></i> </button></td>
-                                                </form>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="subject">Subject</label>
+                                            <input type="text" class="form-control" name="subject" id="subject" value="{{e.subject}}" readonly>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="course">Course</label>
+                                            <input type="text" class="form-control" name="course" id="course" value="{{e.course}}" readonly>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="yrandsec">Year and Section</label>
+                                            <input type="text" class="form-control" name="yrandsec" id="yrandsec" value="{{e.yrandsec}}" readonly>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="sched">Schedule</label>
+                                            <input type="text" class="form-control" name="sched" id="sched" value="{{e.sched}}" readonly>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="sched">PIC Approval</label>
+                                            <input type="text" class="form-control" name="picCheck" id="picCheck" value="{{e.picCheck}}" readonly>
+                                        </div>
+                                        <div class=" col-md-4 mb-3 ">
+                                            <label for="picComment ">PIC Comment</label>
+                                            <input type="text " class="form-control " name="picComment " id="picComment " value="{{e.picComment}}" readonly>
+                                        </div>
+                                        <div class="col-md-4 mb-3 ">
+                                            <label for="headCheck ">Head Approval</label>
+                                            <input type="text " class="form-control " name="headCheck" id="headCheck" value="{{e.headCheck}}">
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="headComment">Head Comment</label>
+                                            <input type="text" class="form-control" name="headComment" id="headComment" value="{{e.headComment}}">
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </form>
 
                         </div>
                     </div>

@@ -136,9 +136,8 @@
                                 <tr>
 
                                     <form class="form" action="" method="post">
-                                        {% csrf_token %}
-                                        <td></td>
-                                        {% for e in req %}
+                                        {% csrf_token %} {% for e in req %}
+                                        <td>{{e.id}}</td>
                                         <td><input type="text" name="email" id="email" value="{{e.email}}" readonly></td>
                                         {% endfor %}
                                         <td>

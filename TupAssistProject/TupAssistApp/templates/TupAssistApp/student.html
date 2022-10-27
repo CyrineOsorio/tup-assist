@@ -362,56 +362,78 @@
                     </div>
 
 
+                    <!-- UPLOAD ERS IMAGE -->
+                    <div class="grades-label" style="margin-top: 3%">
+                        <p>UPLOAD GRADES FROM ERS</p>
+                    </div>
+
+
+                    <div class="row" id="row">
+                        <div class="column-custom">
+                            <div class="image-upload">
+                                <label for="file-input">
+                                  <img class= "add-img" src="../../static/images/add.png">
+                                </label>
+                                <input id="file-input" type="file">
+
+                            </div>
+
+                            <img src="../../static/images/Screenshot.png" alt="">
+                        </div>
+                    </div>
+
+
+
                     {% for i in addReq %}
                     <!-- Modal For Adding Requests-->
                     <!-- source: https://stackoverflow.com/questions/50196148/pass-value-to-bootstrap-modal-form-with-django-->
-                    <div class="modal fade" id="exampleModal{{i.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Add Subject: Edit</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <div class="modal fade " id="exampleModal{{i.id}} " tabindex="-1 " aria-labelledby="exampleModalLabel " aria-hidden="true ">
+                        <div class="modal-dialog ">
+                            <div class="modal-content ">
+                                <div class="modal-header ">
+                                    <h5 class="modal-title " id="exampleModalLabel ">Add Subject: Edit</h5>
+                                    <button type="button " class="close " data-dismiss="modal " aria-label="Close "><span aria-hidden="true ">&times;</span></button>
                                 </div>
 
-                                <div class="modal-body">
-                                    <form class="needs-validation" action="/s_adding_edit/{{i.id}}" method="post">
+                                <div class="modal-body ">
+                                    <form class="needs-validation " action="/s_adding_edit/{{i.id}} " method="post ">
                                         {% csrf_token %}
-                                        <div class="form-row">
-                                            <div class="col-md-4 mb-3">
-                                                <label for="id">Subject Code</label>
-                                                <input type="text" class="form-control" name="id" id="id" value="{{i.id}}" readonly>
+                                        <div class="form-row ">
+                                            <div class="col-md-4 mb-3 ">
+                                                <label for="id ">Subject Code</label>
+                                                <input type="text " class="form-control " name="id " id="id " value="{{i.id}} " readonly>
                                             </div>
 
 
-                                            <div class="col-md-4 mb-3">
-                                                <label for="subname">Subject</label>
-                                                <select name="subject" id="subject">
-                                                    <option value="{{e.subject}}">{{i.subject}}</option>
+                                            <div class="col-md-4 mb-3 ">
+                                                <label for="subname ">Subject</label>
+                                                <select name="subject " id="subject ">
+                                                    <option value="{{e.subject}} ">{{i.subject}}</option>
                                                     {% for i in sub %}
-                                                    <option value="{{i.SubCode}} {{i.SubName}}">{{i.SubCode}} {{i.SubName}}</option>
+                                                    <option value="{{i.SubCode}} {{i.SubName}} ">{{i.SubCode}} {{i.SubName}}</option>
                                                     {% endfor %}
                                                 </select>
                                             </div>
 
-                                            <div class="col-md-4 mb-3">
-                                                <label for="course">Course</label>
-                                                <input type="text" class="form-control" name="course" id="course" value="{{i.course}}" required>
+                                            <div class="col-md-4 mb-3 ">
+                                                <label for="course ">Course</label>
+                                                <input type="text " class="form-control " name="course " id="course " value="{{i.course}} " required>
                                             </div>
 
-                                            <div class="col-md-4 mb-3">
-                                                <label for="yrandsec">Year and Section</label>
-                                                <input type="text" class="form-control" name="yrandsec" id="yrandsec" value="{{i.yrandsec}}" required>
+                                            <div class="col-md-4 mb-3 ">
+                                                <label for="yrandsec ">Year and Section</label>
+                                                <input type="text " class="form-control " name="yrandsec " id="yrandsec " value="{{i.yrandsec}} " required>
                                             </div>
 
-                                            <div class="col-md-4 mb-3">
-                                                <label for="sched">Schedule</label>
-                                                <input type="text" class="form-control" name="sched" id="sched" value="{{i.sched}}" required>
+                                            <div class="col-md-4 mb-3 ">
+                                                <label for="sched ">Schedule</label>
+                                                <input type="text " class="form-control " name="sched " id="sched " value="{{i.sched}} " required>
                                             </div>
                                         </div>
 
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <input type="submit" value="Save Changes">
+                                        <div class="modal-footer ">
+                                            <button type="button " class="btn btn-secondary " data-dismiss="modal ">Close</button>
+                                            <input type="submit " value="Save Changes ">
                                         </div>
                                     </form>
                                 </div>
@@ -424,27 +446,27 @@
             </div>
 
 
-            <div class="col-6 col-md-1" style="height:37vh; width:100%;  display: grid; align-content: end ;">
-                <button type="button" data-toggle="modal" data-target="#schedmodal" class="sched-icon">
-                    <img src="../../static/images/sched.png" alt="" class="image-icon">
+            <div class="col-6 col-md-1 " style="height:37vh; width:100%; display: grid; align-content: end ; ">
+                <button type="button " data-toggle="modal " data-target="#schedmodal " class="sched-icon ">
+                    <img src="../../static/images/sched.png " alt=" " class="image-icon ">
                 </button>
             </div>
 
             <!-- Modal -->
-            <div class="modal fade" id="schedmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Schedule</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <div class="modal fade " id="schedmodal " tabindex="-1 " aria-labelledby="exampleModalLabel " aria-hidden="true ">
+                <div class="modal-dialog ">
+                    <div class="modal-content ">
+                        <div class="modal-header ">
+                            <h5 class="modal-title " id="exampleModalLabel ">Schedule</h5>
+                            <button type="button " class="close " data-dismiss="modal " aria-label="Close "><span aria-hidden="true ">&times;</span></button>
                         </div>
-                        <div class="modal-body">
-                            <div style="overflow-x:auto;">
-                                <iframe src="{{sched.gSheetLink}}" width="100%" height="500"></iframe>
+                        <div class="modal-body ">
+                            <div style="overflow-x:auto; ">
+                                <iframe src="{{sched.gSheetLink}} " width="100% " height="500 "></iframe>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <div class="modal-footer ">
+                            <button type="button " class="btn btn-secondary " data-dismiss="modal ">Close</button>
                         </div>
                     </div>
                 </div>
@@ -456,30 +478,30 @@
 
 
     <!--JAVASCRIPT-->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js " integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj " crossorigin="anonymous "></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js " integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF " crossorigin="anonymous "></script>
 
     <!--DROPDOWN-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js "></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js "></script>
 
     <script>
         $(document).ready(function() {
             // Source: https://stackoverflow.com/questions/18796221/creating-a-select-box-with-a-search-option
             //change selectboxes to selectize mode to be searchable
-            $("#subject").select2();
-            $("#course").select2();
-            $("#yrandsec").select2();
+            $("#subject ").select2();
+            $("#course ").select2();
+            $("#yrandsec ").select2();
 
 
-            $("#subject1").select2();
-            $("#course1").select2();
-            $("#yrandsec1").select2();
+            $("#subject1 ").select2();
+            $("#course1 ").select2();
+            $("#yrandsec1 ").select2();
 
 
-            $("#subject2").select2();
-            $("#course2").select2();
-            $("#yrandsec2").select2();
+            $("#subject2 ").select2();
+            $("#course2 ").select2();
+            $("#yrandsec2 ").select2();
 
         });
     </script>

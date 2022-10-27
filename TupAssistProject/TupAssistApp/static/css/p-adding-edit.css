@@ -1,0 +1,180 @@
+* {
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+/*NAVBAR*/
+
+.nav-link {
+    margin-right: 20px;
+    color: #000000;
+}
+
+a {
+    color: #000000;
+}
+
+a:focus {
+    font-weight: bold;
+}
+
+#tupcnav {
+    width: 100%;
+    height: 60px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    padding-left: 5%;
+    padding-right: 5%;
+    position: sticky;
+}
+
+#tupcnav img {
+    margin-right: 15px;
+}
+
+#tupcnav img:hover {
+    margin-right: 15px;
+}
+
+#tupcnav .navbar-brand {
+    font-weight: bold;
+    font-size: 12px;
+    color: black;
+}
+
+#logoutbutton {
+    background-color: #319AE4;
+    color: white;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 10px;
+}
+
+#logoutbutton:hover {
+    border: 1px solid #319AE4;
+    color: #319AE4;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+#dashboard {
+    font-weight: bold;
+}
+
+
+/* body */
+
+body {
+    height: 100vh;
+    background-color: #ECECEC;
+}
+
+.bg-container {
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/DFF0FF.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 2% 12% 2% 18%;
+}
+
+.welcome {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    background-color: #319AE4;
+    color: white;
+    padding: 20px 20px 20px 20px;
+    border-radius: 10px;
+}
+
+.content {
+    width: 100%;
+    display: grid;
+    background-color: white;
+    margin-top: 2%;
+    padding: 20px 20px 20px 20px;
+    border-radius: 10px;
+}
+
+.stud-request-label {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.stud-request-label p {
+    width: 50%;
+    height: 100%;
+    font-weight: bold;
+}
+
+.sched-icon {
+    padding: 5px;
+    border: none;
+    background-color: transparent;
+    width: 10px;
+}
+
+.image-icon {
+    width: 80px;
+    height: 80px;
+}
+
+.modal-dialog {
+    width: 100%;
+    min-width: 1000px;
+    margin-top: 5%;
+}
+
+.action {
+    display: flex;
+    justify-content: center;
+}
+
+.action i {
+    font-size: 20px;
+}
+
+.sched-icon {
+    padding: 5px;
+    border: none;
+    background-color: transparent;
+    width: 10px;
+}
+
+.image-icon {
+    width: 80px;
+    height: 80px;
+}
+
+.modal-dialog {
+    width: 100%;
+    min-width: 1000px;
+    margin-top: 5%;
+}
+
+#subject,
+#course,
+#yrandsec,
+#sched {
+    border: solid 1px black;
+    height: 25px;
+    width: 100%;
+}
+
+@media only screen and (max-width: 1000px) {
+    .bg-container {
+        padding: 2% 5% 2% 5%;
+    }
+}
+
+@media only screen and (min-width:1000px) {
+    #navbarToggleExternalContent {
+        display: flex;
+        justify-content: flex-end;
+    }
+}

@@ -27,6 +27,7 @@ urlpatterns = [
 
     # pic
     path('p-adding/', views.p_adding, name='p_adding'),
+    path('p-adding-edit/<int:id>', views.p_adding_edit),
 
     # head
     path('h-adding/', views.h_adding, name='h_adding'),

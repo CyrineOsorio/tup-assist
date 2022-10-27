@@ -121,6 +121,34 @@ def p_adding(request):
         }
     return render(request, 'TupAssistApp/p-adding.html', context )
 
+
+def p_adding_edit(request, id):
+    current_user = request.user
+    data = registration.objects.get(id=id)
+    req = AddingReq.objects.filter(email=data.email)
+    sched = Schedule.objects.latest('id')
+    context = { 
+        'current_user': current_user,
+        'req': req,
+        'sched': sched
+        }
+    if request.method=='POST':
+        ids = request.POST.get('id')
+        edit = AddingReq.objects.get(id=ids)
+        edit.email = request.POST.get('email')
+        edit.subject = request.POST.get('subject')
+        edit.course = request.POST.get('course')
+        edit.yrandsec = request.POST.get('yrandsec')
+        edit.sched = request.POST.get('sched')
+        edit.picCheck = request.POST.get('picCheck')
+        edit.picComment = request.POST.get('picComment')
+        edit.save()
+        return redirect('/p-adding-edit/'+ str(id))
+    
+    return render(request, 'TupAssistApp/p-adding-edit.html', context)
+
+
+
 def h_adding(request):
     current_user = request.user
     test = registration.objects.filter(Q(department=current_user.department) & Q(userType='STDNT'))

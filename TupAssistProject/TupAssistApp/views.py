@@ -199,6 +199,9 @@ def h_adding_edit(request, id):
 def h_dropping(request):
     return render(request, 'TupAssistApp/h-dropping.html')
 
+def h_transferring(request):
+    return render(request, 'TupAssistApp/h-transferring.html')
+
 def h_slots(request):
     return render(request, 'TupAssistApp/h-slots.html')
 

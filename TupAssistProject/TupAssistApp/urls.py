@@ -30,10 +30,11 @@ urlpatterns = [
     path('p-adding-edit/<int:id>', views.p_adding_edit),
 
     # head
-    path('h-slots/', views.h_slots, name='h_slots'),
     path('h-adding/', views.h_adding, name='h_adding'),
     path('h-adding-edit/<int:id>', views.h_adding_edit),
     path('h-dropping/', views.h_dropping, name='h_dropping'),
+    path('h-transferring/', views.h_transferring, name='h_transferring'),
+    path('h-slots/', views.h_slots, name='h_slots'),
 
     #registrar
     path('registrar/', views.registrar, name='registrar'),

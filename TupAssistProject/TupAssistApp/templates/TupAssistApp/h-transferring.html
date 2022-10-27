@@ -46,10 +46,10 @@
                         <a class="nav-link" href="{%url 'TupAssistApp:h_adding'%}" id="">Adding<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{%url 'TupAssistApp:h_dropping'%}" id="dropping">Dropping</a>
+                        <a class="nav-link" href="{%url 'TupAssistApp:h_dropping'%}" id="">Dropping</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{%url 'TupAssistApp:h_transferring'%}" id="">Transfer</a>
+                        <a class="nav-link" href="{%url 'TupAssistApp:h_transferring'%}" id="transferring">Transfer</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{%url 'TupAssistApp:h_slots'%}" id="">Slots</a>
@@ -61,6 +61,8 @@
             </form>
         </div>
     </nav>
+
+
 
     <div class="bg-container">
         <div class="welcome">Welcome, {{ current_user.department }}!</div>

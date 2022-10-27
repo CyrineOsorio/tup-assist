@@ -59,10 +59,9 @@ a:focus {
     background-color: white;
 }
 
-#dashboard {
-    font-weight: bold;
-}
-
+#adding,
+#dropping,
+#transferring,
 #slots {
     font-weight: bold;
 }
@@ -107,12 +106,22 @@ body {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 2%;
 }
 
 .stud-request-label p {
     width: 50%;
     height: 100%;
     font-weight: bold;
+}
+
+.stud-request-label button {
+    background-color: black;
+    border: 1px solid black;
+}
+
+.stud-request-label input {
+    border: 1px solid black;
 }
 
 .sched-icon {

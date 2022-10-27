@@ -56,7 +56,10 @@
         </div>
     </nav>
     <div class="bg-container">
-        <div class="welcome">WELCOME, </div>
+        <div class="welcome">
+            <p>Welcome, {{ current_user.userType }}!</p>
+            <p>{{ current_user.course }}</p>
+        </div>
 
         <div class="content">
             <div class="add-request-label">

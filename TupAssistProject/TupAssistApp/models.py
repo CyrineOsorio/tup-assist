@@ -88,7 +88,7 @@ class registration(AbstractUser):
     ]
     userType = [
         ('DH', 'Department Head'),
-        ('PIC', 'Person-in-charge'),
+        ('Person-in-charge', 'Person-in-charge'),
         ('R', 'Registrar'),
         ('STDNT', 'Student'),
     ]  

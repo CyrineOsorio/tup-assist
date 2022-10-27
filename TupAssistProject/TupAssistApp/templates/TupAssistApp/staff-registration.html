@@ -10,7 +10,7 @@
     <!--BOOTSTRAP-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <!--CSS Custom -->
-    <link rel="stylesheet" href="{%static 'css/head-registration.css'%}">
+    <link rel="stylesheet" href="{%static 'css/staff-registration.css'%}">
     <!--ICONS-->
     <link rel="icon" href="{%static 'images/tuplogo.png'%}">
 
@@ -54,10 +54,14 @@
             </div>
 
             <div class="form-group4">
-                {{form.password1}}
+                {{form.course}}
             </div>
 
             <div class="form-group5">
+                {{form.password1}}
+            </div>
+
+            <div class="form-group6">
                 {{form.password2}}
             </div>
 

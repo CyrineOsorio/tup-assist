@@ -144,8 +144,9 @@ a.loginlabel {
 .form-control,
 .form-group3 select,
 .form-group3a select,
-.form-group4 input,
-.form-group5 input {
+.form-group4 select,
+.form-group5 input,
+.form-group6 input {
     background-color: #ffffff;
     font-family: 'Roboto', sans-serif;
     height: 40px;
@@ -163,7 +164,9 @@ a.loginlabel {
 .form-group2a input:focus,
 .form-control:focus,
 .form-group3 select:focus,
-.form-group3a select:focus .form-group4 input:focus,
+.form-group3a select:focus,
+.form-group4 input:focus,
+.form-group5 input:focus,
 .form-group5 input:focus {
     box-shadow: none;
 }
@@ -218,13 +221,20 @@ a.loginlabel {
 }
 
 .form-group4:before {
-    content: "Password";
+    content: "If PIC Choose Course:";
     display: flex;
     justify-content: flex-start;
     padding-left: 10px;
 }
 
 .form-group5:before {
+    content: "Password";
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 10px;
+}
+
+.form-group6:before {
     content: "Confirm Password";
     display: flex;
     justify-content: flex-start;

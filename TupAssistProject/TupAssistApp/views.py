@@ -49,7 +49,7 @@ def index(request):
             login(request, user)
             return redirect('/h-adding')
 
-        elif user is not None and user.userType == 'PIC':
+        elif user is not None and user.userType == 'Person-in-charge':
             login(request, user)
             return redirect('/p-adding')
         elif user is not None and user.userType == 'R':
@@ -113,9 +113,11 @@ def logoutUser(request):
 
 
 def p_adding(request):
-    test = registration.objects.filter(userType='STDNT')
+    current_user = request.user
+    test = registration.objects.filter(Q(course=current_user.course) & Q(userType='STDNT'))
     context = { 
         'test': test,
+        'current_user': current_user
         }
     return render(request, 'TupAssistApp/p-adding.html', context )
 

@@ -20,10 +20,15 @@
     <link rel="stylesheet" href="../../static/css/fonts.css">
 
     <!--ICONS-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
     <link rel="icon" href="../../static/images/tuplogo.png">
+
+    <!--DATATABLES-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+
 </head>
 
-<body id="ajax_func">
+<body>
 
     <nav class="navbar navbar-expand-lg" id="tupcnav">
         <img src="../../static/images/tuplogo.png" width="30" height="30" alt="tuplogo">
@@ -51,24 +56,64 @@
         </div>
     </nav>
     <div class="bg-container">
-        <div class="welcome">WELCOME, PROGRAM-IN-CHARGE!</div>
+        <div class="welcome">WELCOME, </div>
 
         <div class="content">
-            <div class="offersub-label">
-                <p>STUDENT REQUESTS:</p>
-
+            <div class="add-request-label">
+                <p>ADD SUBJECT REQUESTS:</p>
             </div>
 
 
+            <div style="overflow-x:auto;">
+                <!--HTML code to display data in tabular format-->
+                <table id="table_id" class="display">
+                    <thead>
+                        <th>NO.</th>
+                        <th>STUDENT ID</th>
+                        <th>NAME</th>
+                        <th>EMAIL</th>
+                        <th>COURSE</th>
+                        <th style="text-align: center;">YEAR AND SECTION</th>
+                        <th style="text-align: center;">ACTION</th>
+                    </thead>
 
-
+                    <tbody>
+                        {% for e in test %}
+                        <tr>
+                            <td>{{e.id}}</td>
+                            <td>{{e.studID}}</td>
+                            <td>{{e.first_name}} {{e.last_name}}</td>
+                            <td>{{e.email}}</td>
+                            <td>{{e.course}}</td>
+                            <td style="text-align: center;">{{e.yrandsec}}</td>
+                            <td class="action">
+                                <a href=""><i class="bi bi-pencil"></i></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
+
+
+
+
+    </div>
     </div>
 
 
     <!--JAVASCRIPT-->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+
+    <!--DATATABLES-->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#table_id').DataTable();
+        });
+    </script>
 
 </body>
 

@@ -98,7 +98,7 @@ body {
     border-radius: 10px;
 }
 
-.offersub-label {
+.add-request-label {
     margin-top: 2%;
     margin-left: 2%;
     margin-right: 2%;
@@ -107,78 +107,19 @@ body {
     justify-content: space-between;
 }
 
-.offersub-label p {
+.add-request-label p {
     width: 50%;
     height: 100%;
     font-weight: bold;
 }
 
-.offersub-label input {
-    color: #388465;
-    background-color: white;
-    border: 1px solid #388465;
-    border-radius: 10%;
-    margin-right: 2%;
-}
-
-.offersub-label form {
-    margin-right: 2%;
-}
-
-
-/*table*/
-
-table {
-    /*border-collapse: collapse;*/
-    margin-top: 2%;
-    margin-left: 2%;
-    margin-right: 2%;
-    width: 100%;
-}
-
-td,
-th {
-    text-align: left;
-    border-spacing: 10px;
-    border: 1px solid #388465;
-}
-
-.transtatus-label {
-    margin-top: 2%;
-    margin-left: 2%;
-    margin-right: 2%;
-    width: 100%;
+.action {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
-.transtatus-label p {
-    width: 50%;
-    height: 100%;
-    font-weight: bold;
-}
-
-#carouselExampleControlsNoTouching {
-    margin-top: 3%;
-}
-
-.carousel-item {
-    height: 50vh;
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    background-color: #388465;
-}
-
-.course-sec-lable {
-    display: flex;
-    justify-content: flex-start;
-    background-color: #388465;
-    color: white;
-    padding: 20px 20px 20px 20px;
-    border-radius: 10px;
-    margin-bottom: 5%;
+.action i {
+    font-size: 20px;
 }
 
 @media only screen and (max-width: 1000px) {

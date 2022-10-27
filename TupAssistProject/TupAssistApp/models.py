@@ -55,8 +55,6 @@ class DroppingReq(models.Model):
     course = models.CharField(max_length=255, null=True, blank=True)
     yrandsec = models.CharField(max_length=255, null=True, blank=True)
     sched = models.CharField(max_length=255, null=True, blank=True)
-    picCheck = models.BooleanField(default=False)
-    picComment = models.CharField(max_length=255, null=True, blank=True)
     headCheck = models.BooleanField(default=False)
     headComment = models.CharField(max_length=255, null=True, blank=True)
     
@@ -69,8 +67,6 @@ class TransferringReq(models.Model):
     course = models.CharField(max_length=255, null=True, blank=True)
     yrandsec = models.CharField(max_length=255, null=True, blank=True)
     sched = models.CharField(max_length=255, null=True, blank=True)
-    picCheck = models.BooleanField(default=False)
-    picComment = models.CharField(max_length=255, null=True, blank=True)
     headCheck = models.BooleanField(default=False)
     headComment = models.CharField(max_length=255, null=True, blank=True)
     

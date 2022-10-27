@@ -113,7 +113,11 @@ def logoutUser(request):
 
 
 def p_adding(request):
-    return render(request, 'TupAssistApp/p-adding.html')
+    test = registration.objects.filter(userType='STDNT')
+    context = { 
+        'test': test,
+        }
+    return render(request, 'TupAssistApp/p-adding.html', context )
 
 def h_adding(request):
     current_user = request.user
@@ -234,7 +238,7 @@ def transStatus(request,id):
         return redirect('/registrar')
 
 def r_adding(request):
-    current_user = request.user
+    ecurrnt_user = request.user
     test = registration.objects.filter(userType='STDNT')
     context = { 
         'test': test,

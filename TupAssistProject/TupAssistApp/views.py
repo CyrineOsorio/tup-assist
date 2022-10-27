@@ -93,6 +93,7 @@ def signup(request):
     context =  {'form': form}
     return render(request, 'TupAssistApp/student-registration.html', context)
 
+
 # Head, PIC, and Registrar SIGN UP PAGE
 def signup1(request):
     form = HeadRegistration()
@@ -106,12 +107,18 @@ def signup1(request):
     context =  {'form': form}
     return render(request, 'TupAssistApp/staff-registration.html', context)
 
+
 #LOG OUT
 def logoutUser(request):
     logout(request)
     return redirect('/index')
 
 
+
+
+
+
+# PIC PAGES
 def p_adding(request):
     current_user = request.user
     test = registration.objects.filter(Q(course=current_user.course) & Q(userType='STDNT'))
@@ -148,6 +155,10 @@ def p_adding_edit(request, id):
     return render(request, 'TupAssistApp/p-adding-edit.html', context)
 
 
+
+
+
+# DEPARTMENT HEAD PAGES
 
 def h_adding(request):
     current_user = request.user
@@ -188,6 +199,13 @@ def h_adding_edit(request, id):
 def h_dropping(request):
     return render(request, 'TupAssistApp/h-dropping.html')
 
+def h_slots(request):
+    return render(request, 'TupAssistApp/h-slots.html')
+
+
+
+
+# REGISTRAR PAGES
 
 def registrar(request):
     current_user = request.user
@@ -306,7 +324,10 @@ def r_transferring(request):
 
 
 
-#STUDENT PAGE
+
+
+
+#STUDENT PAGES
 def student(request):
     current_user = request.user
     # Models

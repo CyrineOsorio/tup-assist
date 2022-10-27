@@ -56,7 +56,6 @@ class ERSGradeFile(models.Model):
     ersfile= models.FileField(blank=True, upload_to='file')
 
 
-
 class DroppingReq(models.Model):
     email = models.CharField(max_length=255, null=True, blank=True)
     subject = models.CharField(max_length=255, null=True, blank=True)

@@ -364,23 +364,19 @@
 
                     <!-- UPLOAD ERS IMAGE -->
                     <div class="grades-label" style="margin-top: 3%">
-                        <p>UPLOAD GRADES FROM ERS</p>
-                    </div>
+                        <p>UPLOAD GRADES FROM ERS: </p>
 
-
-                    <div class="row" id="row">
-                        <div class="column-custom">
-                            <div class="image-upload">
-                                <label for="file-input">
-                                  <img class= "add-img" src="../../static/images/add.png">
-                                </label>
-                                <input id="file-input" type="file">
-
+                        <form class="form-inline" method="post" enctype="multipart/form-data" name="gradesfile">
+                            {% csrf_token %}
+                            <div class="form-group mx-sm-3 mb-2">
+                                <input type="file" name="gradesfile" id="gradesfile" required>
                             </div>
+                            <button type="submit" class="btn btn-primary mb-2">Import PDF File</button>
+                        </form>
 
-                            <img src="../../static/images/Screenshot.png" alt="">
-                        </div>
                     </div>
+
+
 
 
 

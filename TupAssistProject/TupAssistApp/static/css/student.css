@@ -138,6 +138,15 @@ body {
     font-weight: bold;
 }
 
+.grades-label button {
+    background-color: #E2435E;
+    border: 1px solid #E2435E;
+}
+
+.grades-label input {
+    border: 1px solid black;
+}
+
 .action {
     display: flex;
     justify-content: space-evenly;
@@ -179,25 +188,6 @@ body {
     width: 100%;
     min-width: 1000px;
     margin-top: 5%;
-}
-
-.image-upload>input {
-    display: none;
-}
-
-.column-custom,
-.image-upload {
-    display: flex;
-    justify-content: justify;
-    align-content: center;
-    padding: 2% 2% 2% 3%;
-}
-
-.column-custom img,
-.add-img {
-    width: 100px;
-    margin: 2% 2% 2% 3%;
-    height: auto;
 }
 
 @media only screen and (max-width: 1000px) {

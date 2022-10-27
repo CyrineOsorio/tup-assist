@@ -197,10 +197,22 @@ def h_adding_edit(request, id):
     return render(request, 'TupAssistApp/h-adding-edit.html', context)
 
 def h_dropping(request):
-    return render(request, 'TupAssistApp/h-dropping.html')
+    current_user = request.user
+    test = registration.objects.filter(Q(department=current_user.department) & Q(userType='STDNT'))
+    context = { 
+        'test': test,
+        'current_user': current_user
+        }
+    return render(request, 'TupAssistApp/h-dropping.html', context)
 
 def h_transferring(request):
-    return render(request, 'TupAssistApp/h-transferring.html')
+    current_user = request.user
+    test = registration.objects.filter(Q(department=current_user.department) & Q(userType='STDNT'))
+    context = { 
+        'test': test,
+        'current_user': current_user
+        }
+    return render(request, 'TupAssistApp/h-transferring.html', context)
 
 def h_slots(request):
     return render(request, 'TupAssistApp/h-slots.html')

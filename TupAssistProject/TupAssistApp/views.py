@@ -215,7 +215,11 @@ def h_transferring(request):
     return render(request, 'TupAssistApp/h-transferring.html', context)
 
 def h_slots(request):
-    return render(request, 'TupAssistApp/h-slots.html')
+    current_user = request.user
+    context = { 
+        'current_user': current_user
+        }
+    return render(request, 'TupAssistApp/h-slots.html', context)
 
 
 

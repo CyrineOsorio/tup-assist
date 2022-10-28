@@ -319,7 +319,7 @@ def r_adding_view(request, id):
     req = AddingReq.objects.filter(email=data.email)
     context = { 
         'req': req,
-        'current_user': current_user,
+        'current_user': current_user
         }
     return render(request, 'TupAssistApp/r-adding-view.html', context)
 

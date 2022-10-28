@@ -305,7 +305,7 @@ def transStatus(request,id):
         return redirect('/registrar')
 
 def r_adding(request):
-    ecurrnt_user = request.user
+    current_user = request.user = request.user
     test = registration.objects.filter(userType='STDNT')
     context = { 
         'test': test,
@@ -328,7 +328,7 @@ def r_dropping(request):
     test = registration.objects.filter(userType='STDNT')
     context = {
         'test': test,
-        'current_user': current_user,
+        'current_user': current_user
         }
     return render(request, 'TupAssistApp/r-dropping.html', context)
 
@@ -337,7 +337,7 @@ def r_transferring(request):
     test = registration.objects.filter(userType='STDNT')
     context = { 
         'test': test,
-        'current_user': current_user,
+        'current_user': current_user
         }
     return render(request, 'TupAssistApp/r-transferring.html', context)
 

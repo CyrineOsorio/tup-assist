@@ -179,35 +179,35 @@ a.loginlabel {
 }
 
 .form-group1:before {
-    content: "First Name";
+    content: "First Name *";
     display: flex;
     justify-content: flex-start;
     padding-left: 10px;
 }
 
 .form-group1a:before {
-    content: "Last Name";
+    content: "Last Name *";
     display: flex;
     justify-content: flex-start;
     padding-left: 10px;
 }
 
 .form-group2:before {
-    content: "Email";
+    content: "Email *";
     display: flex;
     justify-content: flex-start;
     padding-left: 10px;
 }
 
 .form-group2a:before {
-    content: "Username";
+    content: "Username *";
     display: flex;
     justify-content: flex-start;
     padding-left: 10px;
 }
 
 .form-group3:before {
-    content: "User Type";
+    content: "User Type *";
     display: flex;
     justify-content: flex-start;
     padding-left: 10px;
@@ -221,21 +221,21 @@ a.loginlabel {
 }
 
 .form-group4:before {
-    content: "If PIC Choose Course:";
+    content: "Course";
     display: flex;
     justify-content: flex-start;
     padding-left: 10px;
 }
 
 .form-group5:before {
-    content: "Password";
+    content: "Password *";
     display: flex;
     justify-content: flex-start;
     padding-left: 10px;
 }
 
 .form-group6:before {
-    content: "Confirm Password";
+    content: "Confirm Password *";
     display: flex;
     justify-content: flex-start;
     padding-left: 10px;

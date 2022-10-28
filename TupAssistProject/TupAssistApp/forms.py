@@ -14,3 +14,8 @@ class HeadRegistration(UserCreationForm):
     class Meta:
         model = registration
         fields = ['username', 'email', 'password1', 'password2', 'last_name', 'first_name','course', 'userType', 'department']
+    
+    def __init__(self, *args, **kwargs):
+        super(HeadRegistration, self).__init__(*args, **kwargs)
+        self.fields['course'].required = False
+        self.fields['department'].required = False

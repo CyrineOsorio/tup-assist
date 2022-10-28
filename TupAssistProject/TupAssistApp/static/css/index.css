@@ -15,7 +15,7 @@ body {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    padding: 5% 30% 10% 20%;
+    padding: 8% 30% 10% 20%;
 }
 
 
@@ -95,6 +95,7 @@ input.login {
     border: none;
     border-radius: 5px;
     margin-top: 10px;
+    margin-bottom: 30px;
 }
 
 
@@ -140,4 +141,18 @@ a.signup-label {
     text-decoration: none;
     font-weight: normal;
     font-size: 20px;
+}
+
+
+@media only screen and (max-width: 1000px) {
+    .bg-container {
+        padding: 10% 5% 10% 5%;
+        display: grid;
+        justify-content: center;
+    }
+    form {
+        width: 100%;
+    }
+    
+    
 }

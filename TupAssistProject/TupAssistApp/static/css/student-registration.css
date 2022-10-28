@@ -60,16 +60,16 @@ form img.mb4 {
 
 input.signup {
     width: 100%;
-    height: 45px;
+    height: 35px;
     background: #C51F3A;
     color: #FFFFFF;
     cursor: pointer;
-    font-size: 23px;
+    font-size: 18px;
     font-weight: 500;
     text-align: center;
     border: none;
     border-radius: 5px;
-    margin: 20px 0 10px 0;
+    margin: 30px 0 10px 0;
 }
 
 .signup:hover {
@@ -149,11 +149,11 @@ a.loginlabel {
 .form-group6 input {
     background-color: #ffffff;
     font-family: 'Roboto', sans-serif;
-    height: 40px;
+    height: 35px;
     border: 1px solid #CED4DA;
     font-weight: 300;
     font-size: 18px;
-    border-radius: 10px;
+    border-radius: 5px;
     width: 100%;
     padding: 0 15px 0 15px;
 }
@@ -173,68 +173,83 @@ a.loginlabel {
 /*/*dropdown year and section lang*/
 
 .form-group2a select {
-    padding: 0 10px 0 10px;
+    padding: 0 10px 0 5px;
 }
 
 .form-group1:before {
-    content: "First Name";
+    content: "First Name:";
     display: flex;
     justify-content: flex-start;
-    padding-left: 10px;
+    padding-left: 5px;
 }
 
 .form-group1a:before {
-    content: "Last Name";
+    content: "Last Name:";
     display: flex;
     justify-content: flex-start;
-    padding-left: 10px;
+    padding-left: 5px;
 }
 
 .form-group2:before {
-    content: "Email";
+    content: "Email:";
     display: flex;
     justify-content: flex-start;
-    padding-left: 10px;
+    padding-left: 5px;
 }
 
 .form-group2a:before {
-    content: "Student ID";
+    content: "Student ID:";
     display: flex;
     justify-content: flex-start;
-    padding-left: 10px;
+    padding-left: 5px;
 }
 
 .form-group3:before {
-    content: "Course";
+    content: "Course:";
     display: flex;
     justify-content: flex-start;
-    padding-left: 10px;
+    padding-left: 5px;
 }
 
 .form-group3a:before {
-    content: "Year and Section";
+    content: "Year and Section:";
     display: flex;
     justify-content: flex-start;
-    padding-left: 10px;
+    padding-left: 5px;
 }
 
 .form-group4:before {
-    content: "Username";
+    content: "Username:";
     display: flex;
     justify-content: flex-start;
-    padding-left: 10px;
+    padding-left: 5px;
 }
 
 .form-group5:before {
-    content: "Password";
+    content: "Password:";
     display: flex;
     justify-content: flex-start;
-    padding-left: 10px;
+    padding-left: 5px;
 }
 
 .form-group6:before {
-    content: "Confirm Password";
+    content: "Confirm Password:";
     display: flex;
     justify-content: flex-start;
-    padding-left: 10px;
+    padding-left: 5px;
+}
+
+
+
+@media only screen and (max-width: 1000px) {
+    .bg-container {
+        padding: 10% 5% 10% 5%;
+        display: grid;
+        justify-content: center;
+    }
+    form {
+        width: 100%;
+    }
+    
+    
 }

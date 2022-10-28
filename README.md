@@ -50,13 +50,14 @@ npm install sweetalert2
 <!--CUSTOM HASH PASSWORD-->
 Default Department Head Account Password:
 username and password
-Industrial Tech : TUPC-DOIT
-Industrial Education : TUPC-DOIE 
-Engineering : TUPC-DOER
+die.head : TUPC-DIT
+dit.head : TUPC-DIE 
+doe.head : TUPC-DOE
 Registrar : TUPC-REGISTRAR12345
 
 
 PIC ACCOUNT
+LASTNAME - COURSE - PASSWORD
 PIC1 - BET-COET - TUPC-COET12345
 PIC2 - BET-ET - TUPC-ET12345
 PIC3 - BSCE - TUPC-BSCE12345

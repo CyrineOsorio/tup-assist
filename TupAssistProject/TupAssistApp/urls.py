@@ -24,6 +24,7 @@ urlpatterns = [
 
     # student
     path('student/', views.student, name='student'),
+    path('students/', views.students, name='students'),
 
     # pic
     path('p-adding/', views.p_adding, name='p_adding'),

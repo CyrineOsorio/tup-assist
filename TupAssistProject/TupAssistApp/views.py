@@ -347,6 +347,12 @@ def r_transferring(request):
 
 
 #STUDENT PAGES
+
+def students(request):
+    return render(request, 'TupAssistApp/students.html', context)
+
+
+
 def student(request):
     current_user = request.user
     # Models

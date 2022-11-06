@@ -349,6 +349,11 @@ def r_transferring(request):
 #STUDENT PAGES
 
 def students(request):
+    sched = Schedule.objects.latest('id')
+    context = {
+    'sched': sched
+
+    }
     return render(request, 'TupAssistApp/students.html', context)
 
 

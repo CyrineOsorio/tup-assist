@@ -225,7 +225,7 @@ p {
 .grades-label {
     margin-top: 4%;
     width: 100%;
-    display: flex;
+    display: grid;
     justify-content: space-between;
 }
 
@@ -239,6 +239,19 @@ p {
 .grades-label button {
     background-color: #E2435E;
     border: 1px solid #E2435E;
+}
+
+.submit-button {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 5%;
+}
+
+.submit-button button {
+    background-color: #E2435E;
+    border: 1px solid #E2435E;
+    color: white;
 }
 
 .grades-label input {

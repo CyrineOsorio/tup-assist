@@ -341,6 +341,16 @@
 
                 </div>
 
+                <!-- Submit button -->
+
+
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <div class="submit-button">
+                        <button type="submit" class="btn btn-primary mb-2">SUBMIT REQUEST</button>
+                    </div>
+                </form>
+
 
                 {% for i in addReq %}
                 <!-- Modal For Adding Requests-->

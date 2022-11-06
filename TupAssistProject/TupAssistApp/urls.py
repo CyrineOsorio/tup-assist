@@ -22,9 +22,6 @@ urlpatterns = [
     # headregistration
     path('signup1/', views.signup1, name='signup1'),
 
-    # student
-    path('student/', views.student, name='student'),
-    path('students/', views.students, name='students'),
 
     # pic
     path('p-adding/', views.p_adding, name='p_adding'),
@@ -50,7 +47,7 @@ urlpatterns = [
     path('r-adding-view/<int:id>', views.r_adding_view),
     
     #student
-    path('student/', views.student, name='student'),
+    path('students/', views.students, name='students'),
     path('s_adding', views.s_adding, name='s_adding'),
     path('s_adding_edit/<int:id>', views.s_adding_edit),
     path('s_adding_del/<int:id>', views.s_adding_del),

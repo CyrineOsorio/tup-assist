@@ -43,7 +43,7 @@ def index(request):
 
         elif user is not None and user.userType == 'STDNT':
             login(request, user)
-            return redirect('/student')
+            return redirect('/students')
         
         elif user is not None and user.userType == 'DH':
             login(request, user)
@@ -349,16 +349,6 @@ def r_transferring(request):
 #STUDENT PAGES
 
 def students(request):
-    sched = Schedule.objects.latest('id')
-    context = {
-    'sched': sched
-
-    }
-    return render(request, 'TupAssistApp/students.html', context)
-
-
-
-def student(request):
     current_user = request.user
     # Models
     addReq = AddingReq.objects.filter(email=current_user.email)
@@ -367,9 +357,6 @@ def student(request):
     sub = Subjects.objects.all()
     sched = Schedule.objects.latest('id')
 
-
-    # Forms
- 
     context = {
         'addReq': addReq,
         'dropReq': dropReq,
@@ -379,7 +366,9 @@ def student(request):
         'sched': sched
 
     }
-    return render(request, 'TupAssistApp/student.html', context)
+    return render(request, 'TupAssistApp/students.html', context)
+
+
 
 
 def s_adding(request):
@@ -391,7 +380,7 @@ def s_adding(request):
         sched = request.POST.get('sched')
         add = AddingReq.objects.create(email=email, subject=subject, course=course, yrandsec=yrandsec, sched=sched)
         add.save()
-    return redirect('/student')
+    return redirect('/students')
 
 def s_adding_edit(request, id):
     if request.method =='POST':
@@ -403,12 +392,12 @@ def s_adding_edit(request, id):
         data1.yrandsec = request.POST.get('yrandsec')
         data1.sched = request.POST.get('sched')
         data1.save()
-        return redirect('/student')
+        return redirect('/students')
 
 def s_adding_del(request, id):
     data = AddingReq.objects.get(id=id)
     data.delete()
-    return redirect('/student')
+    return redirect('/students')
 
 def s_dropping(request):
     if request.method=='POST': 
@@ -419,12 +408,12 @@ def s_dropping(request):
         sched = request.POST.get('sched')
         add = DroppingReq.objects.create(email=email, subject=subject, course=course, yrandsec=yrandsec, sched=sched)
         add.save()
-    return redirect('/student')
+    return redirect('/students')
 
 def s_dropping_del(request, id):
     data = DroppingReq.objects.get(id=id)
     data.delete()
-    return redirect('/student')
+    return redirect('/students')
 
 def s_transferring(request):
     if request.method=='POST': 

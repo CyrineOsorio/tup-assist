@@ -331,7 +331,7 @@
                 <div class="grades-label" style="margin-top: 3%">
                     <p>UPLOAD GRADES FROM ERS: </p>
 
-                    <form class="form-inline" method="post" enctype="multipart/form-data" name="gradesfile">
+                    <form class="form-inline" method="post" enctype="multipart/form-data" action="/upload">
                         {% csrf_token %}
                         <div class="form-group mx-sm-3 mb-2">
                             <input type="file" name="gradesfile" id="gradesfile" required>

@@ -385,6 +385,14 @@ def students(request):
     return render(request, 'TupAssistApp/students.html', context)
 
 
+def upload(request):
+    current_user = request.user
+    if request.method == 'POST':
+        data = registration.objects.get(username=current_user.username)
+        data.upload = request.FILES["gradesfile"]
+        # data.stud_stats = 'Requested'
+        data.save()
+    return redirect('/students')
 
 
 def s_adding(request):

@@ -347,6 +347,13 @@ footer button img {
 }
 
 
+/* grades file yung upload ng file/pdf */
+
+#gradesfile {
+    border: 1px solid #E2435E;
+}
+
+
 /* pag maliit na ang screen */
 
 @media only screen and (max-width: 1000px) {

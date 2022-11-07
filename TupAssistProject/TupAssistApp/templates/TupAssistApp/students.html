@@ -425,6 +425,9 @@
         <button id="sched-up"><img src="../../static/images/double-up-arrow.png" alt=""></button>
         <button id="sched-down"><img src="../../static/images/double-down-arrows.png" alt=""></button>
 
+        <div style="overflow-x:auto;" id="datadata">
+            <iframe src="{{sched.gSheetLink}}" style="width: 100%; height: 100%;"></iframe>
+        </div>
 
     </footer>
 
@@ -438,14 +441,16 @@
         document.getElementById("sched-up").addEventListener("click", function() {
             document.getElementById("sched-down").style.display = 'flex';
             document.getElementById("sched-up").style.display = "none";
-            document.getElementById("footerfooter").style.height = "500px"
+            document.getElementById("footerfooter").style.height = "500px";
+            document.getElementById('datadata').style.display = "grid";
 
         })
 
         document.getElementById("sched-down").addEventListener("click", function() {
             document.getElementById("sched-up").style.display = 'flex';
             document.getElementById("sched-down").style.display = "none";
-            document.getElementById("footerfooter").style.height = "40px"
+            document.getElementById("footerfooter").style.height = "40px";
+            document.getElementById('datadata').style.display = "none";
         })
     </script>
 

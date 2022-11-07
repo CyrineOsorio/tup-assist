@@ -80,10 +80,6 @@ def signup(request):
                 if course == "BET-COET" or course == "BET-ET" or course == "BET-ESET" or course == "BET-CT" or course == "BET-MT" or course == "BET-AT" or course == "BET-PPT":
                     form.instance.userType = 'STDNT'
                     form.instance.department = 'Department of Industrial Technology'
-                    subject = 'TUP-Assist Registration'
-                    message = 'Your account was already created. You have access now in add, drop and transfer subjects.'
-                    recipient = form.cleaned_data.get('email')
-                    send_mail(subject, message, settings.EMAIL_HOST_USER, [recipient], fail_silently=False)
                 elif course == "BSCE" or course == "BSEE" or course == "BSECE" or course == "BSME":
                     form.instance.userType = 'STDNT'
                     form.instance.department = 'Department of Engineering'

@@ -306,10 +306,12 @@ footer {
     height: 40px;
     z-index: 100;
     bottom: 0;
-    display: grid;
+    display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     padding-top: 10px;
+    flex-direction: column;
+    gap: 10px;
 }
 
 footer button {
@@ -330,6 +332,18 @@ footer button img {
 
 #sched-down {
     display: none;
+    justify-content: center;
+    width: 100%;
+}
+
+
+/* lagayan ng data */
+
+#datadata {
+    display: none;
+    height: 400px;
+    width: 90%;
+    justify-self: center;
 }
 
 

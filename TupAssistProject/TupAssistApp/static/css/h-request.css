@@ -189,6 +189,7 @@ body {
         justify-items: center;
         align-items: center;
         text-align: center;
+        padding: 10% 10% 10% 10%;
     }
     .bg-container {
         padding: 2% 5% 2% 5%;

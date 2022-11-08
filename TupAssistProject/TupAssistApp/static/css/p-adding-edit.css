@@ -241,6 +241,13 @@ footer button img {
 }
 
 @media only screen and (max-width: 1000px) {
+    .navbarLagayan {
+        text-align: center;
+        align-items: center;
+    }
+    #navbarnavbar {
+        padding: 0 5% 0 5%;
+    }
     .bg-container {
         padding: 2% 5% 2% 5%;
     }

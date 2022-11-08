@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{%static 'css/h-request.css'%}">
 
     <!--FONTS-->
-    <link rel="stylesheet" href="../../static/css/fonts.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 
     <!--ICONS-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
@@ -27,22 +27,24 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
 </head>
 
-<body id="ajax_func">
+<body>
 
-    <nav class="navbar navbar-expand-lg" id="tupcnav">
-        <img src="../../static/images/tuplogo.png" width="30" height="30" alt="tuplogo">
-        <a class="navbar-brand" href="" id="atech">TECHNOLOGICAL UNIVERSITY OF THE PHILIPPINES - ASSIST</a></a>
 
-        <nav class="navbar">
-            <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-        </nav>
+    <nav class="navbar navbar-expand-lg" id="navbarnavbar">
+        <div class="navbarLagayan">
+            <img src="../../static/images/tuplogo.png" alt="TUPLogo.png" width="30" height="30">
+            <a class="nav-link" href="{%url 'TupAssistApp:students'%}">Technological University of the Philippines - <span style="color: #E2435E; font-weight: 500;"> Assist</span></a>
+            <div class="lagayanNgButton">
+                <button class="navbar-toggler navbar-light" type="button" style="background-color: transparent;" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+            </div>
+        </div>
 
         <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
 
             <form class="d-flex">
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav mr-auto" id="center">
                     <li class="nav-item active">
                         <a class="nav-link" href="{%url 'TupAssistApp:h_adding'%}" id="adding">Adding<span class="sr-only">(current)</span></a>
                     </li>
@@ -62,6 +64,7 @@
             </form>
         </div>
     </nav>
+
 
     <div class="bg-container">
         <div class="welcome">Welcome, {{ current_user.department }}!</div>

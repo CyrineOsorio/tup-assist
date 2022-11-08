@@ -241,6 +241,15 @@ p {
     border: 1px solid #E2435E;
 }
 
+#gradesfile {
+    margin-right: 5px;
+}
+
+#grade-view {
+    border: solid 1px #E2435E;
+    color: black;
+}
+
 .submit-button {
     width: 100%;
     display: flex;

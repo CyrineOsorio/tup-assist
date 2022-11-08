@@ -57,5 +57,4 @@ urlpatterns = [
     path('s_transferring', views.s_transferring, name='s_transferring'),
     path('s_transferring_del/<int:id>', views.s_transferring_del),
 
-   
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,45 +1,53 @@
 * {
-    font-size: 12px;
+    margin: 0;
+    padding: 0;
     font-family: 'Roboto', sans-serif;
+    font-size: 14px;
 }
 
-
-/*NAVBAR*/
-
-.nav-link {
-    margin-right: 20px;
-    color: #000000;
+body {
+    width: 100%;
+    height: 100vh;
 }
 
 a {
-    color: #000000;
+    color: black;
 }
 
 a:focus {
     font-weight: bold;
 }
 
-#tupcnav {
-    width: 100%;
+
+/* navbar */
+
+#navbarnavbar {
     height: 60px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-    padding-left: 5%;
-    padding-right: 5%;
     position: sticky;
+    top: 0;
+    background-color: #F8F9FB;
+    z-index: 100;
+    padding: 0 10% 0 10%;
 }
 
-#tupcnav img {
-    margin-right: 15px;
+.navbarLagayan {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
 
-#tupcnav img:hover {
-    margin-right: 15px;
-}
-
-#tupcnav .navbar-brand {
-    font-weight: bold;
-    font-size: 12px;
+.navbarLagayan a {
     color: black;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.lagayanNgButton {
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 1;
 }
 
 #logoutbutton {
@@ -47,39 +55,70 @@ a:focus {
     color: white;
     padding-left: 40px;
     padding-right: 40px;
-    border-radius: 10px;
+    border-radius: 5px;
+    margin-left: 15px;
 }
 
 #logoutbutton:hover {
     border: 1px solid #319AE4;
-    color: #319AE4;
+    color: black;
     padding-left: 40px;
     padding-right: 40px;
     border-radius: 10px;
     background-color: white;
 }
 
-#dashboard {
-    font-weight: bold;
+.navbarLagayan button {
+    background-color: #319AE4;
+    color: white;
+    border: none;
+    justify-self: flex-end;
 }
 
 
-/* body */
+/* katawan yung section */
 
-body {
-    height: 100vh;
-    background-color: #ECECEC;
-}
-
-.bg-container {
+section {
     width: 100%;
-    height: 100%;
     background-image: url(../images/DFF0FF.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    padding: 2% 12% 2% 18%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0 30px 0;
 }
+
+
+/* main lagayan sa loob ng section - lagayan ng tatlong box */
+
+.bodybody {
+    display: grid;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* hati lang */
+
+.dividerLangs {
+    height: 20px;
+}
+
+
+/* yung lagayan ng adding ganon */
+
+.innerBody {
+    width: 100%;
+    min-height: 70vh;
+    border-radius: 5px;
+    background-color: #F8F9FB;
+    padding: 4% 4% 4% 4%;
+}
+
+
+/*  Rejay's edit */
 
 .welcome {
     display: flex;
@@ -91,13 +130,8 @@ body {
     border-radius: 10px;
 }
 
-.content {
-    width: 100%;
-    display: grid;
-    background-color: white;
-    margin-top: 2%;
-    padding: 20px 20px 20px 20px;
-    border-radius: 10px;
+.add-request-label p {
+    font-weight: bold;
 }
 
 .stud-request-label {
@@ -139,24 +173,6 @@ body {
     font-size: 20px;
 }
 
-.sched-icon {
-    padding: 5px;
-    border: none;
-    background-color: transparent;
-    width: 10px;
-}
-
-.image-icon {
-    width: 80px;
-    height: 80px;
-}
-
-.modal-dialog {
-    width: 100%;
-    min-width: 1000px;
-    margin-top: 5%;
-}
-
 #subject,
 #course,
 #yrandsec,
@@ -164,6 +180,64 @@ body {
     border: solid 1px black;
     height: 25px;
     width: 100%;
+}
+
+
+/* footer */
+
+footer {
+    position: sticky;
+    background-color: white;
+    box-shadow: -1px -7px 16px -10px rgba(0, 0, 0, 0.75);
+    width: 100%;
+    height: 40px;
+    z-index: 100;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    flex-direction: column;
+    gap: 10px;
+}
+
+footer button {
+    background-color: transparent;
+    border: none;
+}
+
+footer button img {
+    width: 20px;
+}
+
+#sched-up {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 0;
+}
+
+#sched-down {
+    display: none;
+    justify-content: center;
+    width: 100%;
+}
+
+
+/* lagayan ng data */
+
+#datadata {
+    display: none;
+    height: 400px;
+    width: 90%;
+    justify-self: center;
+}
+
+
+/* grades file yung upload ng file/pdf */
+
+#gradesfile {
+    border: 1px solid #E2435E;
 }
 
 @media only screen and (max-width: 1000px) {

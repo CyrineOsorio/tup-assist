@@ -30,31 +30,17 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg" id="tupcnav">
-        <img src="../../static/images/tuplogo.png" width="30" height="30" alt="tuplogo">
-        <a class="navbar-brand" href="" id="atech">TECHNOLOGICAL UNIVERSITY OF THE PHILIPPINES - ASSIST</a></a>
-
-        <nav class="navbar">
-            <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-        </nav>
-
-
-        <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
-
-            <form class="d-flex">
-                <ul class="navbar-nav mr-auto">
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="{%url 'TupAssistApp:logout'%}" id="logoutbutton">Logout</a>
-                    </li>
-                </ul>
-
-
-            </form>
+    <nav class="navbar navbar-expand-lg" id="navbarnavbar">
+        <div class="navbarLagayan">
+            <img src="../../static/images/tuplogo.png" alt="TUPLogo.png" width="30" height="30">
+            <a class="nav-link" href="{%url 'TupAssistApp:students'%}">Technological University of the Philippines - <span style="color: #E2435E; font-weight: 500;"> Assist</span></a>
+            <div class="lagayanNgButton">
+                <a class="nav-link" href="{%url 'TupAssistApp:logout'%}" id="logoutbutton">Logout</a>
+            </div>
         </div>
     </nav>
+
+
     <div class="bg-container">
         <div class="welcome">
             <p>Welcome, {{ current_user.userType }}!</p>

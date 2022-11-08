@@ -60,6 +60,7 @@
                     <p>Name: {{ student_info.first_name }} {{ student_info.last_name }}</p>
                     <p>Student ID: {{ student_info.studID }}</p>
                     <p>Course Year and Section: {{ student_info.course }}-{{ student_info.yrandsec }}</p>
+                    <p>Grades File: <a href="#" class="alert-link" onclick="window.open('{{ student_info.upload.url }}');">{{ student_info.upload }}</a></p>
                 </div>
 
                 <!--HTML code to display data in tabular format-->

@@ -40,7 +40,9 @@
 
     <section>
         <div class="bodybody">
+
             <div class="boxes">
+
                 <div class="studentDetails">
                     <div class="innerStudentDetails">
                         <div class="lagayan1">
@@ -61,278 +63,278 @@
                     <div class="lagayanNgStatus"></div>
                     <div class="isapanglagayan"></div>
                 </div>
+
             </div>
+
+
             <div class="dividerLangs"></div>
 
-
-
-            <div class="innerBody">
-
+            <div style="overflow-x:auto;" class="innerBody">
                 <div class="add-label">
                     <p>ADD SUBJECT</p>
                 </div>
 
                 <!-- ADDING REQUESTS TABLE-->
-                <div style="overflow-x:auto;">
-                    <!--HTML code to display data in tabular format-->
-                    <table id="table_id" class="table table-striped">
-                        <thead>
-                            <th>NO.</th>
-                            <th hidden>STUDENT ID</th>
-                            <th>SUBJECT</th>
-                            <th>COURSE</th>
-                            <th>YEAR & SECTION</th>
-                            <th>SCHEDULE</th>
-                            <th>ACTION</th>
-                        </thead>
 
-                        <tbody>
+                <!--HTML code to display data in tabular format-->
+                <table id="table_id" class="table table-striped">
+                    <thead>
+                        <th>NO.</th>
+                        <th hidden>STUDENT ID</th>
+                        <th>SUBJECT</th>
+                        <th>COURSE</th>
+                        <th>YEAR & SECTION</th>
+                        <th>SCHEDULE</th>
+                        <th>ACTION</th>
+                    </thead>
 
-                            {% for i in addReq %}
-                            <tr>
-                                <td>{{i.id}}</td>
-                                <td hidden>{{i.studID}}</td>
-                                <td>{{i.subject}} </td>
-                                <td>{{i.course}}</td>
-                                <td>{{i.yrandsec}}</td>
-                                <td>{{i.sched}}</td>
-                                <td class="action">
-                                    <a href="/s_adding_del/{{i.id}}"><i class="bi bi-trash"></i></a>
-                                    <i type="button" data-toggle="modal" data-target="#exampleModal{{i.id}}" class="bi bi-pencil"></i>
+                    <tbody>
+
+                        {% for i in addReq %}
+                        <tr>
+                            <td>{{i.id}}</td>
+                            <td hidden>{{i.studID}}</td>
+                            <td>{{i.subject}} </td>
+                            <td>{{i.course}}</td>
+                            <td>{{i.yrandsec}}</td>
+                            <td>{{i.sched}}</td>
+                            <td class="action">
+                                <a href="/s_adding_del/{{i.id}}"><i class="bi bi-trash"></i></a>
+                                <i type="button" data-toggle="modal" data-target="#exampleModal{{i.id}}" class="bi bi-pencil"></i>
+                            </td>
+                        </tr>
+                        {% endfor %}
+
+                        <tr>
+                            <form class="form" action="/s_adding" method="post">
+                                {% csrf_token %}
+                                <td></td>
+                                <td hidden><input type="text" name="studID" id="studID" value="{{current_user.studID}}" hidden></td>
+
+                                <td>
+                                    <select name="subject" id="subject">
+                                        {% for i in sub %}
+                                        <option value="{{i.SubCode}} {{i.SubName}}">{{i.SubCode}} {{i.SubName}}</option>
+                                        {% endfor %}
+                                    </select>
                                 </td>
-                            </tr>
-                            {% endfor %}
 
-                            <tr>
-                                <form class="form" action="/s_adding" method="post">
-                                    {% csrf_token %}
-                                    <td></td>
-                                    <td hidden><input type="text" name="studID" id="studID" value="{{current_user.studID}}" hidden></td>
+                                <td>
+                                    <select name="course" id="course">
+                                        <option value="BET-ET">Electrical Technology</option>
+                                        <option value="BET-ESET">Electronics Technology</option>
+                                        <option value="BET-COET">Computer Engineering  Technology</option>
+                                        <option value="BET-CT">Civil Technology</option>
+                                        <option value="BET-MT">Mechanical Technology</option>
+                                        <option value="BET-AT">Automotive Technology</option>
+                                        <option value="BET-PPT">Power Plant Technology</option>
 
-                                    <td>
-                                        <select name="subject" id="subject">
-                                                {% for i in sub %}
-                                                <option value="{{i.SubCode}} {{i.SubName}}">{{i.SubCode}} {{i.SubName}}</option>
-                                                {% endfor %}
-                                            </select>
-                                    </td>
+                                        <option value="BSCE">Civil Engineering'</option>
+                                        <option value="BSEE">Electrical Engineeri</option>
+                                        <option value="BSECE">Electronics Engineering</option>
+                                        <option value="BSME">Mechanical Engineering</option>
 
-                                    <td>
-                                        <select name="course" id="course">
-                                                <option value="BET-ET">Electrical Technology</option>
-                                                <option value="BET-ESET">Electronics Technology</option>
-                                                <option value="BET-COET">Computer Engineering  Technology</option>
-                                                <option value="BET-CT">Civil Technology</option>
-                                                <option value="BET-MT">Mechanical Technology</option>
-                                                <option value="BET-AT">Automotive Technology</option>
-                                                <option value="BET-PPT">Power Plant Technology</option>
+                                        <option value="BSIE-ICT">Information and Communication Technology</option>
+                                    </select>
+                                </td>
 
-                                                <option value="BSCE">Civil Engineering'</option>
-                                                <option value="BSEE">Electrical Engineeri</option>
-                                                <option value="BSECE">Electronics Engineering</option>
-                                                <option value="BSME">Mechanical Engineering</option>
+                                <td>
+                                    <select name="yrandsec" id="yrandsec">
+                                        <option value="1A">1A</option>
+                                        <option value="1A">2A</option>
+                                        <option value="1A">3A</option>
+                                        <option value="1A">4A</option>
+                                        <option value="1A">1B</option>
+                                        <option value="1A">2B</option>
+                                        <option value="1A">3B</option>
+                                        <option value="1A">4B</option>
+                                    </select>
+                                </td>
 
-                                                <option value="BSIE-ICT">Information and Communication Technology</option>
-                                            </select>
-                                    </td>
+                                <td><input type="text" name="sched" id="sched" required></td>
 
-                                    <td>
-                                        <select name="yrandsec" id="yrandsec">
-                                                <option value="1A">1A</option>
-                                                <option value="1A">2A</option>
-                                                <option value="1A">3A</option>
-                                                <option value="1A">4A</option>
-                                                <option value="1A">1B</option>
-                                                <option value="1A">2B</option>
-                                                <option value="1A">3B</option>
-                                                <option value="1A">4B</option>
-                                            </select>
-                                    </td>
-
-                                    <td><input type="text" name="sched" id="sched" required></td>
-
-                                    <td class="action"><button type="submit" style="border: 0px; background-color: transparent;"> <i class="bi bi-plus-circle" style="color:#E2435E; font-size: large;"></i> </button></td>
-                                </form>
-                            </tr>
+                                <td class="action"><button type="submit" style="border: 0px; background-color: transparent;"> <i class="bi bi-plus-circle" style="color:#E2435E; font-size: large;"></i> </button></td>
+                            </form>
+                        </tr>
 
 
-                        </tbody>
-                    </table>
-                </div>
+                    </tbody>
+                </table>
+
 
                 <div class="drop-label">
                     <p>DROP SUBJECT</p>
                 </div>
 
                 <!-- DROPPING REQUESTS TABLE-->
-                <div style="overflow-x:auto;">
-                    <!--HTML code to display data in tabular format-->
-                    <table id="table_id" class="table table-striped">
-                        <thead>
-                            <th>NO.</th>
-                            <th hidden>STUDENT ID</th>
-                            <th>SUBJECT</th>
-                            <th>COURSE</th>
-                            <th>YEAR & SECTION</th>
-                            <th>SCHEDULE</th>
-                            <th>Action</th>
-                        </thead>
 
-                        <tbody>
-                            {% for i in dropReq %}
-                            <tr>
-                                <td>{{i.id}}</td>
-                                <td hidden>{{i.studID}}</td>
-                                <td>{{i.subject}}</td>
-                                <td>{{i.course}}</td>
-                                <td>{{i.yrandsec}}</td>
-                                <td>{{i.sched}}</td>
-                                <td class="action"><a href="/s_dropping_del/{{i.id}}"><i class="bi bi-trash"></a></td>
+                <!--HTML code to display data in tabular format-->
+                <table id="table_id" class="table table-striped">
+                    <thead>
+                        <th>NO.</th>
+                        <th hidden>STUDENT ID</th>
+                        <th>SUBJECT</th>
+                        <th>COURSE</th>
+                        <th>YEAR & SECTION</th>
+                        <th>SCHEDULE</th>
+                        <th>Action</th>
+                    </thead>
 
-                            </tr>
-                            {% endfor %}
+                    <tbody>
+                        {% for i in dropReq %}
+                        <tr>
+                            <td>{{i.id}}</td>
+                            <td hidden>{{i.studID}}</td>
+                            <td>{{i.subject}}</td>
+                            <td>{{i.course}}</td>
+                            <td>{{i.yrandsec}}</td>
+                            <td>{{i.sched}}</td>
+                            <td class="action"><a href="/s_dropping_del/{{i.id}}"><i class="bi bi-trash"></a></td>
 
-                            <tr>
-                                <form class="form" action="/s_dropping" method="post">
-                                    {% csrf_token %}
-                                    <td></td>
-                                    <td hidden><input type="text" name="studID" id="studID" value="{{current_user.studID}}" hidden></td>
+                        </tr>
+                        {% endfor %}
 
-                                    <td>
-                                        <select name="subject" id="subject1">
-                                                {% for i in sub %}
-                                                <option value="{{i.SubCode}} {{i.SubName}}">{{i.SubCode}} {{i.SubName}}</option>
-                                                {% endfor %}
-                                            </select>
-                                    </td>
+                        <tr>
+                            <form class="form" action="/s_dropping" method="post">
+                                {% csrf_token %}
+                                <td></td>
+                                <td hidden><input type="text" name="studID" id="studID" value="{{current_user.studID}}" hidden></td>
 
-                                    <td>
-                                        <select name="course" id="course1">
-                                                <option value="BET-ET">Electrical Technology</option>
-                                                <option value="BET-ESET">Electronics Technology</option>
-                                                <option value="BET-COET">Computer Engineering  Technology</option>
-                                                <option value="BET-CT">Civil Technology</option>
-                                                <option value="BET-MT">Mechanical Technology</option>
-                                                <option value="BET-AT">Automotive Technology</option>
-                                                <option value="BET-PPT">Power Plant Technology</option>
+                                <td>
+                                    <select name="subject" id="subject1">
+                                        {% for i in sub %}
+                                        <option value="{{i.SubCode}} {{i.SubName}}">{{i.SubCode}} {{i.SubName}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
 
-                                                <option value="BSCE">Civil Engineering'</option>
-                                                <option value="BSEE">Electrical Engineeri</option>
-                                                <option value="BSECE">Electronics Engineering</option>
-                                                <option value="BSME">Mechanical Engineering</option>
+                                <td>
+                                    <select name="course" id="course1">
+                                        <option value="BET-ET">Electrical Technology</option>
+                                        <option value="BET-ESET">Electronics Technology</option>
+                                        <option value="BET-COET">Computer Engineering  Technology</option>
+                                        <option value="BET-CT">Civil Technology</option>
+                                        <option value="BET-MT">Mechanical Technology</option>
+                                        <option value="BET-AT">Automotive Technology</option>
+                                        <option value="BET-PPT">Power Plant Technology</option>
 
-                                                <option value="BSIE-ICT">Information and Communication Technology</option>
-                                            </select>
-                                    </td>
+                                        <option value="BSCE">Civil Engineering'</option>
+                                        <option value="BSEE">Electrical Engineeri</option>
+                                        <option value="BSECE">Electronics Engineering</option>
+                                        <option value="BSME">Mechanical Engineering</option>
 
-
-                                    <td>
-                                        <select name="yrandsec" id="yrandsec1">
-                                                <option value="1A">1A</option>
-                                                <option value="1A">2A</option>
-                                                <option value="1A">3A</option>
-                                                <option value="1A">4A</option>
-                                                <option value="1A">1B</option>
-                                                <option value="1A">2B</option>
-                                                <option value="1A">3B</option>
-                                                <option value="1A">4B</option>
-                                            </select>
-                                    </td>
+                                        <option value="BSIE-ICT">Information and Communication Technology</option>
+                                    </select>
+                                </td>
 
 
-                                    <td><input type="text" name="sched" id="sched" required></td>
-                                    <td class="action"><button type="submit" style="border: 0px; background-color: transparent;"> <i class="bi bi-plus-circle" style="color:#E2435E; font-size: large;"></i> </button></td>
-                                </form>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                                <td>
+                                    <select name="yrandsec" id="yrandsec1">
+                                        <option value="1A">1A</option>
+                                        <option value="1A">2A</option>
+                                        <option value="1A">3A</option>
+                                        <option value="1A">4A</option>
+                                        <option value="1A">1B</option>
+                                        <option value="1A">2B</option>
+                                        <option value="1A">3B</option>
+                                        <option value="1A">4B</option>
+                                    </select>
+                                </td>
+
+
+                                <td><input type="text" name="sched" id="sched" required></td>
+                                <td class="action"><button type="submit" style="border: 0px; background-color: transparent;"> <i class="bi bi-plus-circle" style="color:#E2435E; font-size: large;"></i> </button></td>
+                            </form>
+                        </tr>
+                    </tbody>
+                </table>
+
 
                 <div class="drop-label">
                     <p>TRANSFER SUBJECT</p>
                 </div>
 
                 <!-- TRANSFERRING REQUESTS TABLE-->
-                <div style="overflow-x:auto;">
-                    <!--HTML code to display data in tabular format-->
-                    <table id="table_id" class="table table-striped">
-                        <thead>
-                            <th>NO.</th>
-                            <th hidden>STUDENT ID</th>
-                            <th>SUBJECT</th>
-                            <th>COURSE</th>
-                            <th>YEAR & SECTION</th>
-                            <th>SCHEDULE</th>
-                            <th>Action</th>
-                        </thead>
 
-                        <tbody>
-                            {% for i in transReq %}
-                            <tr>
-                                <td>{{i.id}}</td>
-                                <td hidden>{{i.studID}}</td>
-                                <td>{{i.subject}}</td>
-                                <td>{{i.course}}</td>
-                                <td>{{i.yrandsec}}</td>
-                                <td>{{i.sched}}</td>
-                                <td class="action"><a href="/s_transferring_del/{{i.id}}"><i class="bi bi-trash"></a></td>
-                            </tr>
-                            {% endfor %}
+                <!--HTML code to display data in tabular format-->
+                <table id="table_id" class="table table-striped">
+                    <thead>
+                        <th>NO.</th>
+                        <th hidden>STUDENT ID</th>
+                        <th>SUBJECT</th>
+                        <th>COURSE</th>
+                        <th>YEAR & SECTION</th>
+                        <th>SCHEDULE</th>
+                        <th>Action</th>
+                    </thead>
 
-                            <tr>
-                                <form class="form" action="/s_transferring" method="post">
-                                    {% csrf_token %}
-                                    <td></td>
-                                    <td hidden><input type="text" name="studID" id="studID" value="{{ current_user.studID }}" hidden></td>
+                    <tbody>
+                        {% for i in transReq %}
+                        <tr>
+                            <td>{{i.id}}</td>
+                            <td hidden>{{i.studID}}</td>
+                            <td>{{i.subject}}</td>
+                            <td>{{i.course}}</td>
+                            <td>{{i.yrandsec}}</td>
+                            <td>{{i.sched}}</td>
+                            <td class="action"><a href="/s_transferring_del/{{i.id}}"><i class="bi bi-trash"></a></td>
+                        </tr>
+                        {% endfor %}
 
-                                    <td>
-                                        <select name="subject" id="subject2">
-                                                {% for i in sub %}
-                                                <option value="{{i.SubCode}} {{i.SubName}}">{{i.SubCode}} {{i.SubName}}</option>
-                                                {% endfor %}
-                                            </select>
-                                    </td>
+                        <tr>
+                            <form class="form" action="/s_transferring" method="post">
+                                {% csrf_token %}
+                                <td></td>
+                                <td hidden><input type="text" name="studID" id="studID" value="{{ current_user.studID }}" hidden></td>
 
-                                    <td>
-                                        <select name="course" id="course2">
-                                                <option value="BET-ET">Electrical Technology</option>
-                                                <option value="BET-ESET">Electronics Technology</option>
-                                                <option value="BET-COET">Computer Engineering  Technology</option>
-                                                <option value="BET-CT">Civil Technology</option>
-                                                <option value="BET-MT">Mechanical Technology</option>
-                                                <option value="BET-AT">Automotive Technology</option>
-                                                <option value="BET-PPT">Power Plant Technology</option>
+                                <td>
+                                    <select name="subject" id="subject2">
+                                        {% for i in sub %}
+                                        <option value="{{i.SubCode}} {{i.SubName}}">{{i.SubCode}} {{i.SubName}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
 
-                                                <option value="BSCE">Civil Engineering'</option>
-                                                <option value="BSEE">Electrical Engineeri</option>
-                                                <option value="BSECE">Electronics Engineering</option>
-                                                <option value="BSME">Mechanical Engineering</option>
+                                <td>
+                                    <select name="course" id="course2">
+                                        <option value="BET-ET">Electrical Technology</option>
+                                        <option value="BET-ESET">Electronics Technology</option>
+                                        <option value="BET-COET">Computer Engineering  Technology</option>
+                                        <option value="BET-CT">Civil Technology</option>
+                                        <option value="BET-MT">Mechanical Technology</option>
+                                        <option value="BET-AT">Automotive Technology</option>
+                                        <option value="BET-PPT">Power Plant Technology</option>
 
-                                                <option value="BSIE-ICT">Information and Communication Technology</option>
-                                                       </select>
-                                    </td>
+                                        <option value="BSCE">Civil Engineering'</option>
+                                        <option value="BSEE">Electrical Engineeri</option>
+                                        <option value="BSECE">Electronics Engineering</option>
+                                        <option value="BSME">Mechanical Engineering</option>
 
-                                    <td>
-                                        <select name="yrandsec" id="yrandsec2">
-                                                <option value="1A">1A</option>
-                                                <option value="1A">2A</option>
-                                                <option value="1A">3A</option>
-                                                <option value="1A">4A</option>
-                                                <option value="1A">1B</option>
-                                                <option value="1A">2B</option>
-                                                <option value="1A">3B</option>
-                                                <option value="1A">4B</option>
-                                            </select>
-                                    </td>
+                                        <option value="BSIE-ICT">Information and Communication Technology</option>
+                                    </select>
+                                </td>
+
+                                <td>
+                                    <select name="yrandsec" id="yrandsec2">
+                                        <option value="1A">1A</option>
+                                        <option value="1A">2A</option>
+                                        <option value="1A">3A</option>
+                                        <option value="1A">4A</option>
+                                        <option value="1A">1B</option>
+                                        <option value="1A">2B</option>
+                                        <option value="1A">3B</option>
+                                        <option value="1A">4B</option>
+                                    </select>
+                                </td>
 
 
-                                    <td><input type="text" name="sched" id="sched" required></td>
-                                    <td class="action"><button type="submit" style="border: 0px; background-color: transparent;"> <i class="bi bi-plus-circle" style="color:#E2435E; font-size: large;"></i> </button></td>
-                                </form>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                                <td><input type="text" name="sched" id="sched" required></td>
+                                <td class="action"><button type="submit" style="border: 0px; background-color: transparent;"> <i class="bi bi-plus-circle" style="color:#E2435E; font-size: large;"></i> </button></td>
+                            </form>
+                        </tr>
+                    </tbody>
+                </table>
+
 
 
                 <!-- UPLOAD ERS IMAGE -->
@@ -348,7 +350,7 @@
                     </form>
                     {% endif %} {% if current_user.upload != '' %}
                     <div class="alert" id="grade-view" role="alert">
-                        <a href="#" class="alert-link" onclick="window.open('{{ current_user.upload.url }}');">{{ current_user.upload }}</a><i class="bi bi-x-circle" style="margin-left: 15%; color: #E2435E"></i>
+                        <a href="#" class="alert-link" onclick="window.open('{{ current_user.upload.url }}');">{{ current_user.upload }}</a> <a href="{%url 'TupAssistApp:delupload'%}"><i class="bi bi-x-circle" style="margin-left: 15%; color: #E2435E"></i></a>
                     </div>
                     {% endif %}
 

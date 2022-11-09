@@ -391,6 +391,13 @@ def upload(request):
         data.save()
     return redirect('/students')
 
+def delupload(request):
+    current_user = request.user
+    data = registration.objects.get(username=current_user.username)
+    data.upload = ""
+    data.save()
+    return redirect('/students')
+
 
 def s_adding(request):
     if request.method=='POST': 

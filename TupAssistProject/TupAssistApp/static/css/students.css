@@ -95,7 +95,7 @@ section {
 
 .bodybody {
     display: grid;
-    width: 60%;
+    width: 100%;
     height: fit-content;
 }
 

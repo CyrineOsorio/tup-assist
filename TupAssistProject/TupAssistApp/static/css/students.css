@@ -248,9 +248,7 @@ p {
 }
 
 #grade-view {
-    border: solid 1px #E2435E;
-    color: black;
-    width: auto;
+    width: 500px;
 }
 
 .submit-button {

@@ -338,7 +338,7 @@
 
 
                 <!-- UPLOAD ERS IMAGE -->
-                <div class="grades-label" style="margin-top: 3%; width: 100%;">
+                <div class="grades-label">
                     <p style="width: 100%;">UPLOAD GRADES FROM ERS:</p>
                     {% if current_user.upload == '' %}
                     <form class="form-inline" method="post" enctype="multipart/form-data" action="/upload">
@@ -348,9 +348,10 @@
                         </div>
                         <button type="submit" class="btn btn-primary mb-2">Import PDF File</button>
                     </form>
+
                     {% endif %} {% if current_user.upload != '' %}
-                    <div class="alert" id="grade-view" role="alert">
-                        <a href="#" class="alert-link" onclick="window.open('{{ current_user.upload.url }}');">{{ current_user.upload }}</a> <a href="{%url 'TupAssistApp:delupload'%}"><i class="bi bi-x-circle" style="margin-left: 15%; color: #E2435E"></i></a>
+                    <div id="grade-view">
+                        <a href="#" class="alert-link" onclick="window.open('{{ current_user.upload.url }}');">{{ current_user.upload }}</a> <a href="{%url 'TupAssistApp:delupload'%}"><i class="bi bi-x-circle" style="margin-left: 5%; color: #E2435E"></i></a>
                     </div>
                     {% endif %}
 

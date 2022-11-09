@@ -35,7 +35,7 @@ class Schedule(models.Model):
 
 # Model for Student Adding Transaction
 class AddingReq(models.Model):
-    email = models.CharField(max_length=255, null=True, blank=True)
+    studID = models.IntegerField()
     subject = models.CharField(max_length=255, null=True, blank=True)
     course = models.CharField(max_length=255, null=True, blank=True)
     yrandsec = models.CharField(max_length=255, null=True, blank=True)
@@ -49,15 +49,8 @@ class AddingReq(models.Model):
         verbose_name_plural = "AddingReq" 
 
 
-
-class ERSGradeFile(models.Model):
-    email = models.CharField(max_length=255)
-    datetime = models.DateField()
-    ersfile= models.FileField(blank=True, upload_to='file')
-
-
 class DroppingReq(models.Model):
-    email = models.CharField(max_length=255, null=True, blank=True)
+    studID = models.IntegerField()
     subject = models.CharField(max_length=255, null=True, blank=True)
     course = models.CharField(max_length=255, null=True, blank=True)
     yrandsec = models.CharField(max_length=255, null=True, blank=True)
@@ -69,7 +62,7 @@ class DroppingReq(models.Model):
         verbose_name_plural = "DroppingReq" 
 
 class TransferringReq(models.Model):
-    email = models.CharField(max_length=255, null=True, blank=True)
+    studID = models.IntegerField()
     subject = models.CharField(max_length=255, null=True, blank=True)
     course = models.CharField(max_length=255, null=True, blank=True)
     yrandsec = models.CharField(max_length=255, null=True, blank=True)
@@ -125,16 +118,19 @@ class registration(AbstractUser):
         ('Department of Industrial Education', 'Department of Industrial Education'),
         ('Department of Engineering', 'Department of Engineering'),
     ]
-    
+    id = models.BigAutoField(primary_key=True)
+    studID = models.IntegerField(blank=True, null=True)
     email = models.CharField(max_length=255, null=True, blank=True)
     first_name = models.CharField(max_length=255, null=True, blank=True)
     last_name = models.CharField(max_length=255, null=True, blank=True)
     course = models.CharField(max_length=255, choices= course, null=True, blank=True)
     yrandsec = models.CharField(max_length=255, choices= yrandsec, null=True, blank=True)
-    studID = models.CharField(max_length=255, null=True, blank=True)
     userType = models.CharField(max_length=255, choices= userType, verbose_name='userType', null=True)
     department = models.CharField(max_length=255, choices= department, verbose_name='department', null=True)
     upload = models.FileField(upload_to ='grades/')
+    addStatus = models.CharField(max_length=255, null=True, blank=True)
+    dropStatus = models.CharField(max_length=255, null=True, blank=True)
+    transferStatus = models.CharField(max_length=255, null=True, blank=True)
 
 
 

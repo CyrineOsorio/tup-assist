@@ -78,7 +78,7 @@
                     <table id="table_id" class="table table-striped">
                         <thead>
                             <th>NO.</th>
-                            <th hidden>EMAIL</th>
+                            <th hidden>STUDENT ID</th>
                             <th>SUBJECT</th>
                             <th>COURSE</th>
                             <th>YEAR & SECTION</th>
@@ -91,7 +91,7 @@
                             {% for i in addReq %}
                             <tr>
                                 <td>{{i.id}}</td>
-                                <td hidden>{{i.email}}</td>
+                                <td hidden>{{i.studID}}</td>
                                 <td>{{i.subject}} </td>
                                 <td>{{i.course}}</td>
                                 <td>{{i.yrandsec}}</td>
@@ -107,7 +107,7 @@
                                 <form class="form" action="/s_adding" method="post">
                                     {% csrf_token %}
                                     <td></td>
-                                    <td hidden><input type="text" name="email" id="email" value="{{current_user.email}}" hidden></td>
+                                    <td hidden><input type="text" name="studID" id="studID" value="{{current_user.studID}}" hidden></td>
 
                                     <td>
                                         <select name="subject" id="subject">
@@ -170,7 +170,7 @@
                     <table id="table_id" class="table table-striped">
                         <thead>
                             <th>NO.</th>
-                            <th hidden>EMAIl</th>
+                            <th hidden>STUDENT ID</th>
                             <th>SUBJECT</th>
                             <th>COURSE</th>
                             <th>YEAR & SECTION</th>
@@ -182,7 +182,7 @@
                             {% for i in dropReq %}
                             <tr>
                                 <td>{{i.id}}</td>
-                                <td hidden>{{i.email}}</td>
+                                <td hidden>{{i.studID}}</td>
                                 <td>{{i.subject}}</td>
                                 <td>{{i.course}}</td>
                                 <td>{{i.yrandsec}}</td>
@@ -196,7 +196,7 @@
                                 <form class="form" action="/s_dropping" method="post">
                                     {% csrf_token %}
                                     <td></td>
-                                    <td hidden><input type="text" name="email" id="email" value="{{current_user.email}}" hidden></td>
+                                    <td hidden><input type="text" name="studID" id="studID" value="{{current_user.studID}}" hidden></td>
 
                                     <td>
                                         <select name="subject" id="subject1">
@@ -258,7 +258,7 @@
                     <table id="table_id" class="table table-striped">
                         <thead>
                             <th>NO.</th>
-                            <th hidden>EMAIl</th>
+                            <th hidden>STUDENT ID</th>
                             <th>SUBJECT</th>
                             <th>COURSE</th>
                             <th>YEAR & SECTION</th>
@@ -270,7 +270,7 @@
                             {% for i in transReq %}
                             <tr>
                                 <td>{{i.id}}</td>
-                                <td hidden>{{i.email}}</td>
+                                <td hidden>{{i.studID}}</td>
                                 <td>{{i.subject}}</td>
                                 <td>{{i.course}}</td>
                                 <td>{{i.yrandsec}}</td>
@@ -283,7 +283,7 @@
                                 <form class="form" action="/s_transferring" method="post">
                                     {% csrf_token %}
                                     <td></td>
-                                    <td hidden><input type="text" name="email" id="email" value="{{ current_user.email }}" hidden></td>
+                                    <td hidden><input type="text" name="studID" id="studID" value="{{ current_user.studID }}" hidden></td>
 
                                     <td>
                                         <select name="subject" id="subject2">
@@ -336,9 +336,9 @@
 
 
                 <!-- UPLOAD ERS IMAGE -->
-                <div class="grades-label" style="margin-top: 3%">
-                    <p>UPLOAD GRADES FROM ERS: </p>
-
+                <div class="grades-label" style="margin-top: 3%; width: 100%;">
+                    <p style="width: 100%;">UPLOAD GRADES FROM ERS:</p>
+                    {% if current_user.upload == '' %}
                     <form class="form-inline" method="post" enctype="multipart/form-data" action="/upload">
                         {% csrf_token %}
                         <div class="form-group mb-2">
@@ -346,12 +346,11 @@
                         </div>
                         <button type="submit" class="btn btn-primary mb-2">Import PDF File</button>
                     </form>
-
-
+                    {% endif %} {% if current_user.upload != '' %}
                     <div class="alert" id="grade-view" role="alert">
-                        This is the grade file you upload <a href="#" class="alert-link" onclick="window.open('{{ current_user.upload.url }}');">{{ current_user.upload }}</a>. Click it to download.
+                        <a href="#" class="alert-link" onclick="window.open('{{ current_user.upload.url }}');">{{ current_user.upload }}</a><i class="bi bi-x-circle" style="margin-left: 15%; color: #E2435E"></i>
                     </div>
-
+                    {% endif %}
 
                 </div>
 

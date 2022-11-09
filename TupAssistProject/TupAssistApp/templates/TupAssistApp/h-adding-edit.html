@@ -67,7 +67,7 @@
                 <table class="table">
                     <thead>
                         <th>NO.</th>
-                        <th>STUDENT EMAIL</th>
+                        <th>STUDENT ID</th>
                         <th>SUBJECT</th>
                         <th>COURSE</th>
                         <th>Y&S</th>
@@ -83,7 +83,7 @@
                         {% for e in req %}
                         <tr>
                             <td>{{e.id}}</td>
-                            <td>{{e.email}}</td>
+                            <td>{{e.studID}}</td>
                             <td>{{e.subject}} </td>
                             <td>{{e.course}}</td>
                             <td>{{e.yrandsec}}</td>
@@ -125,8 +125,8 @@
 
                         <div class="form-row">
                             <div class="col-md-4 mb-3">
-                                <label for="email">Email</label>
-                                <input type="text" class="form-control" name="email" id="email" value="{{e.email}}" readonly>
+                                <label for="studID">Student ID</label>
+                                <input type="text" class="form-control" name="studID" id="studID" value="{{e.studID}}" readonly>
 
                             </div>
                             <div class="col-md-4 mb-3">

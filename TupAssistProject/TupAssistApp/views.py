@@ -144,7 +144,7 @@ def p_adding(request):
 def p_adding_edit(request, id):
     current_user = request.user
     data = registration.objects.get(id=id)
-    req = AddingReq.objects.filter(email=data.email)
+    req = AddingReq.objects.filter(studID=data.studID)
     sched = Schedule.objects.latest('id')
     context = { 
         'current_user': current_user,
@@ -154,7 +154,7 @@ def p_adding_edit(request, id):
     if request.method=='POST':
         ids = request.POST.get('id')
         edit = AddingReq.objects.get(id=ids)
-        edit.email = request.POST.get('email')
+        edit.studID = request.POST.get('studID')
         edit.subject = request.POST.get('subject')
         edit.course = request.POST.get('course')
         edit.yrandsec = request.POST.get('yrandsec')
@@ -184,7 +184,7 @@ def h_adding(request):
 def h_adding_edit(request, id):
     current_user = request.user
     data = registration.objects.get(id=id)
-    req = AddingReq.objects.filter(email=data.email)
+    req = AddingReq.objects.filter(studID=data.studID)
     sched = Schedule.objects.latest('id')
     context = { 
         'current_user': current_user,
@@ -195,7 +195,7 @@ def h_adding_edit(request, id):
     if request.method=='POST':
         ids = request.POST.get('id')
         edit = AddingReq.objects.get(id=ids)
-        edit.email = request.POST.get('email')
+        edit.studID = request.POST.get('studID')
         edit.subject = request.POST.get('subject')
         edit.course = request.POST.get('course')
         edit.yrandsec = request.POST.get('yrandsec')
@@ -329,7 +329,7 @@ def r_adding(request):
 def r_adding_view(request, id):
     current_user = request.user
     data = registration.objects.get(id=id)
-    req = AddingReq.objects.filter(email=data.email)
+    req = AddingReq.objects.filter(studID=data.studID)
     context = { 
         'req': req,
         'current_user': current_user
@@ -364,9 +364,9 @@ def r_transferring(request):
 def students(request):
     current_user = request.user
     # Models
-    addReq = AddingReq.objects.filter(email=current_user.email)
-    dropReq = DroppingReq.objects.filter(email=current_user.email)
-    transReq = TransferringReq.objects.filter(email=current_user.email)
+    addReq = AddingReq.objects.filter(studID=current_user.studID)
+    dropReq = DroppingReq.objects.filter(studID=current_user.studID)
+    transReq = TransferringReq.objects.filter(studID=current_user.studID)
     sub = Subjects.objects.all()
     sched = Schedule.objects.latest('id')
 
@@ -394,12 +394,12 @@ def upload(request):
 
 def s_adding(request):
     if request.method=='POST': 
-        email = request.POST.get('email')
+        studID = request.POST.get('studID')
         subject = request.POST.get('subject')
         course = request.POST.get('course')
         yrandsec = request.POST.get('yrandsec')
         sched = request.POST.get('sched')
-        add = AddingReq.objects.create(email=email, subject=subject, course=course, yrandsec=yrandsec, sched=sched)
+        add = AddingReq.objects.create(studID=studID, subject=subject, course=course, yrandsec=yrandsec, sched=sched)
         add.save()
     return redirect('/students')
 
@@ -422,12 +422,12 @@ def s_adding_del(request, id):
 
 def s_dropping(request):
     if request.method=='POST': 
-        email = request.POST.get('email')
+        studID = request.POST.get('studID')
         subject = request.POST.get('subject')
         course = request.POST.get('course')
         yrandsec = request.POST.get('yrandsec')
         sched = request.POST.get('sched')
-        add = DroppingReq.objects.create(email=email, subject=subject, course=course, yrandsec=yrandsec, sched=sched)
+        add = DroppingReq.objects.create(studID=studID, subject=subject, course=course, yrandsec=yrandsec, sched=sched)
         add.save()
     return redirect('/students')
 
@@ -438,12 +438,12 @@ def s_dropping_del(request, id):
 
 def s_transferring(request):
     if request.method=='POST': 
-        email = request.POST.get('email')
+        studID = request.POST.get('studID')
         subject = request.POST.get('subject')
         course = request.POST.get('course')
         yrandsec = request.POST.get('yrandsec')
         sched = request.POST.get('sched')
-        add = TransferringReq.objects.create(email=email, subject=subject, course=course, yrandsec=yrandsec, sched=sched)
+        add = TransferringReq.objects.create(studID=studID, subject=subject, course=course, yrandsec=yrandsec, sched=sched)
         add.save()
     return redirect('/student')
 

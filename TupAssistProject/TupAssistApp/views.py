@@ -148,6 +148,7 @@ def p_adding_edit(request, id):
     sched = Schedule.objects.latest('id')
     context = { 
         'current_user': current_user,
+        'student_info': data,
         'req': req,
         'sched': sched
         }

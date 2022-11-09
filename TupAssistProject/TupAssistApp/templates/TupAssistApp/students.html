@@ -162,6 +162,45 @@
                 </table>
 
 
+
+
+                <!-- UPLOAD ERS IMAGE -->
+                <div class="grades-label">
+                    <p style="width: 100%;">UPLOAD GRADES FROM ERS:</p>
+                    {% if current_user.upload == '' %}
+                    <form class="form-inline" method="post" enctype="multipart/form-data" action="/upload">
+                        {% csrf_token %}
+                        <div class="form-group mb-2">
+                            <input type="file" name="gradesfile" id="gradesfile" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2">Import PDF File</button>
+                    </form>
+
+                    {% endif %} {% if current_user.upload != '' %}
+                    <div id="grade-view">
+                        <a href="#" class="alert-link" onclick="window.open('{{ current_user.upload.url }}');">{{ current_user.upload }}</a> <a href="{%url 'TupAssistApp:delupload'%}"><i class="bi bi-x-circle" style="margin-left: 5%; color: #E2435E"></i></a>
+                    </div>
+                    {% endif %}
+
+                </div>
+
+                <!-- Submit button -->
+
+
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <div class="submit-button">
+                        <button type="submit" class="btn btn-primary mb-2">SUBMIT REQUEST</button>
+                    </div>
+                </form>
+
+
+
+
+
+
+
+
                 <div class="drop-label">
                     <p>DROP SUBJECT</p>
                 </div>
@@ -250,6 +289,17 @@
                 </table>
 
 
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <div class="submit-button">
+                        <button type="submit" class="btn btn-primary mb-2">SUBMIT REQUEST</button>
+                    </div>
+                </form>
+
+
+
+
+
                 <div class="drop-label">
                     <p>TRANSFER SUBJECT</p>
                 </div>
@@ -335,37 +385,13 @@
                     </tbody>
                 </table>
 
-
-
-                <!-- UPLOAD ERS IMAGE -->
-                <div class="grades-label">
-                    <p style="width: 100%;">UPLOAD GRADES FROM ERS:</p>
-                    {% if current_user.upload == '' %}
-                    <form class="form-inline" method="post" enctype="multipart/form-data" action="/upload">
-                        {% csrf_token %}
-                        <div class="form-group mb-2">
-                            <input type="file" name="gradesfile" id="gradesfile" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary mb-2">Import PDF File</button>
-                    </form>
-
-                    {% endif %} {% if current_user.upload != '' %}
-                    <div id="grade-view">
-                        <a href="#" class="alert-link" onclick="window.open('{{ current_user.upload.url }}');">{{ current_user.upload }}</a> <a href="{%url 'TupAssistApp:delupload'%}"><i class="bi bi-x-circle" style="margin-left: 5%; color: #E2435E"></i></a>
-                    </div>
-                    {% endif %}
-
-                </div>
-
-                <!-- Submit button -->
-
-
                 <form method="post" action="">
                     {% csrf_token %}
                     <div class="submit-button">
                         <button type="submit" class="btn btn-primary mb-2">SUBMIT REQUEST</button>
                     </div>
                 </form>
+
 
             </div>
         </div>

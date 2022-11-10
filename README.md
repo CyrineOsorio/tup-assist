@@ -19,9 +19,10 @@ When there is changes in Model.py
 -drop all tables in database
 
 -proceed in terminal
--- python manage.py makemirations
--- python manage.py runserver
+-- python manage.py makemigrations
+-- py manage.py migrate
 -- python manage.py loaddata data.json
+-- python manage.py createsuperuser
 -- python manage.py runserver
 
 -Next is Sign Up

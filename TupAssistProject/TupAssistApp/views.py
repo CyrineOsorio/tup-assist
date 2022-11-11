@@ -219,6 +219,39 @@ def h_dropping(request):
         }
     return render(request, 'TupAssistApp/h-dropping.html', context)
 
+
+def h_dropping_edit(request, id):
+    current_user = request.user
+    data = registration.objects.get(id=id)
+    req = DroppingReq.objects.filter(studID=data.studID)
+    sched = Schedule.objects.latest('id')
+    context = { 
+        'current_user': current_user,
+        'student_info': data,
+        'req': req,
+        'sched': sched
+        }
+    if request.method=='POST':
+        ids = request.POST.get('id')
+        edit = DroppingReq.objects.get(id=ids)
+        edit.studID = request.POST.get('studID')
+        edit.subject = request.POST.get('subject')
+        edit.course = request.POST.get('course')
+        edit.yrandsec = request.POST.get('yrandsec')
+        edit.sched = request.POST.get('sched')
+        edit.headCheck = request.POST.get('headCheck')
+        edit.headComment = request.POST.get('headComment')
+        edit.save()
+        return redirect('/h-dropping-edit/'+ str(id))
+    
+    return render(request, 'TupAssistApp/h-dropping-edit.html', context)
+
+
+
+
+
+
+
 def h_transferring(request):
     current_user = request.user
     test = registration.objects.filter(Q(department=current_user.department) & Q(userType='STDNT'))

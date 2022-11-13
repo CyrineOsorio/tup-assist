@@ -72,7 +72,7 @@
                         <th>SUBJECT</th>
                         <th>COURSE</th>
                         <th>Y&S</th>
-                        <th>SCHEDULE</th>
+                        <th>REASON</th>
                         <th>HEAD: APPROVAL</th>
                         <th>HEAD: COMMENT</th>
                         <th>ACTION</th>
@@ -86,7 +86,7 @@
                             <td>{{e.subject}} </td>
                             <td>{{e.course}}</td>
                             <td>{{e.yrandsec}}</td>
-                            <td>{{e.sched}}</td>
+                            <td>{{e.reason}}</td>
                             <td>{{e.headCheck}}</td>
                             <td>{{e.headComment}}</td>
                             <td class="action">
@@ -139,8 +139,8 @@
                                 <input type="text" class="form-control" name="yrandsec" id="yrandsec" value="{{e.yrandsec}}" readonly>
                             </div>
                             <div class="col-md-4 mb-3">
-                                <label for="sched">Schedule</label>
-                                <input type="text" class="form-control" name="sched" id="sched" value="{{e.sched}}" readonly>
+                                <label for="reason">Reason</label>
+                                <input type="text" class="form-control" name="reason" id="reason" value="{{e.reason}}" readonly>
                             </div>
 
                             <div class="col-md-4 mb-3 ">
@@ -166,16 +166,6 @@
     {% endfor %}
 
 
-    <footer id="footerfooter">
-        <!-- up and down button -->
-        <button id="sched-up" title="Show Schedule"><img src="../../static/images/double-up-arrow.png" alt=""></button>
-        <button id="sched-down" title="Hide Schedule"><img src="../../static/images/double-down-arrows.png" alt=""></button>
-
-        <div style="overflow-x:auto;" id="datadata">
-            <iframe src="{{sched.gSheetLink}}" style="width: 100%; height: 100%; border: 1px solid #E2435E"></iframe>
-        </div>
-
-    </footer>
 
     <!-- bootstrap na js: yung seperate -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

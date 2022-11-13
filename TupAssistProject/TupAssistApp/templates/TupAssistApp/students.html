@@ -215,7 +215,7 @@
                         <th>SUBJECT</th>
                         <th>COURSE</th>
                         <th>YEAR & SECTION</th>
-                        <th>SCHEDULE</th>
+                        <th>REASON</th>
                         <th>Action</th>
                     </thead>
 
@@ -227,7 +227,7 @@
                             <td>{{i.subject}}</td>
                             <td>{{i.course}}</td>
                             <td>{{i.yrandsec}}</td>
-                            <td>{{i.sched}}</td>
+                            <td>{{i.reason}}</td>
                             <td class="action"><a href="/s_dropping_del/{{i.id}}"><i class="bi bi-trash"></a></td>
 
                         </tr>
@@ -281,7 +281,7 @@
                                 </td>
 
 
-                                <td><input type="text" name="sched" id="sched" required></td>
+                                <td><input type="text" name="reason" id="reason" required></td>
                                 <td class="action"><button type="submit" style="border: 0px; background-color: transparent;"> <i class="bi bi-plus-circle" style="color:#E2435E; font-size: large;"></i> </button></td>
                             </form>
                         </tr>
@@ -314,7 +314,7 @@
                         <th>SUBJECT</th>
                         <th>COURSE</th>
                         <th>YEAR & SECTION</th>
-                        <th>SCHEDULE</th>
+                        <th>REASON</th>
                         <th>Action</th>
                     </thead>
 
@@ -326,7 +326,7 @@
                             <td>{{i.subject}}</td>
                             <td>{{i.course}}</td>
                             <td>{{i.yrandsec}}</td>
-                            <td>{{i.sched}}</td>
+                            <td>{{i.reason}}</td>
                             <td class="action"><a href="/s_transferring_del/{{i.id}}"><i class="bi bi-trash"></a></td>
                         </tr>
                         {% endfor %}
@@ -378,7 +378,7 @@
                                 </td>
 
 
-                                <td><input type="text" name="sched" id="sched" required></td>
+                                <td><input type="text" name="reason" id="reason" required></td>
                                 <td class="action"><button type="submit" style="border: 0px; background-color: transparent;"> <i class="bi bi-plus-circle" style="color:#E2435E; font-size: large;"></i> </button></td>
                             </form>
                         </tr>

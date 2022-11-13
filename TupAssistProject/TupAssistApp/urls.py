@@ -33,6 +33,7 @@ urlpatterns = [
     path('h-dropping/', views.h_dropping, name='h_dropping'),
     path('h-dropping-edit/<int:id>', views.h_dropping_edit),
     path('h-transferring/', views.h_transferring, name='h_transferring'),
+    path('h-transferring-edit/<int:id>', views.h_transferring_edit),
     path('h-slots/', views.h_slots, name='h_slots'),
 
     #registrar

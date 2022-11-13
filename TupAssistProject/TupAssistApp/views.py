@@ -261,6 +261,36 @@ def h_transferring(request):
         }
     return render(request, 'TupAssistApp/h-transferring.html', context)
 
+
+def h_transferring_edit(request, id):
+    current_user = request.user
+    data = registration.objects.get(id=id)
+    req = TransferringReq.objects.filter(studID=data.studID)
+    sched = Schedule.objects.latest('id')
+    context = { 
+        'current_user': current_user,
+        'student_info': data,
+        'req': req,
+        'sched': sched
+        }
+    if request.method=='POST':
+        ids = request.POST.get('id')
+        edit = TransferringReq.objects.get(id=ids)
+        edit.studID = request.POST.get('studID')
+        edit.subject = request.POST.get('subject')
+        edit.course = request.POST.get('course')
+        edit.yrandsec = request.POST.get('yrandsec')
+        edit.reason = request.POST.get('reason')
+        edit.headCheck = request.POST.get('headCheck')
+        edit.headComment = request.POST.get('headComment')
+        edit.save()
+        return redirect('/h-transferring-edit/'+ str(id))
+    
+    return render(request, 'TupAssistApp/h-transferring-edit.html', context)
+
+
+
+
 def h_slots(request):
     current_user = request.user
     context = { 
@@ -486,9 +516,9 @@ def s_transferring(request):
         reason = request.POST.get('reason')
         add = TransferringReq.objects.create(studID=studID, subject=subject, course=course, yrandsec=yrandsec, reason=reason)
         add.save()
-    return redirect('/student')
+    return redirect('/students')
 
 def s_transferring_del(request, id):
     data = TransferringReq.objects.get(id=id)
     data.delete()
-    return redirect('/student')
+    return redirect('/students')

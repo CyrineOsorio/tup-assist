@@ -163,6 +163,10 @@ table {
     width: fit-content;
 }
 
+th {
+    text-align: center;
+}
+
 
 /* footer */
 

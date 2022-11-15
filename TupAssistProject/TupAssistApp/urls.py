@@ -34,7 +34,7 @@ urlpatterns = [
     path('h-dropping-edit/<int:id>', views.h_dropping_edit),
     path('h-transferring/', views.h_transferring, name='h_transferring'),
     path('h-transferring-edit/<int:id>', views.h_transferring_edit),
-    path('h-slots/', views.h_slots, name='h_slots'),
+    path('h-schedule/', views.h_schedule, name='h_schedule'),
 
     #registrar
     path('registrar/', views.registrar, name='registrar'),
@@ -49,15 +49,21 @@ urlpatterns = [
     path('r-adding-view/<int:id>', views.r_adding_view),
     
     #student
-    path('students/', views.students, name='students'),
-    path('upload', views.upload, name='upload'),
-    path('delupload', views.delupload, name='delupload'),
     path('s_adding', views.s_adding, name='s_adding'),
+    path('s_adding1', views.s_adding1, name='s_adding1'),
     path('s_adding_edit/<int:id>', views.s_adding_edit),
     path('s_adding_del/<int:id>', views.s_adding_del),
+    path('upload', views.upload, name='upload'),
+    path('delupload', views.delupload, name='delupload'),
+
+
     path('s_dropping', views.s_dropping, name='s_dropping'),
+    path('s_dropping1', views.s_dropping1, name='s_dropping1'),
     path('s_dropping_del/<int:id>', views.s_dropping_del),
+
+    
     path('s_transferring', views.s_transferring, name='s_transferring'),
+    path('s_transferring1', views.s_transferring1, name='s_transferring1'),
     path('s_transferring_del/<int:id>', views.s_transferring_del),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

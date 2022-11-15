@@ -414,6 +414,25 @@ def r_transferring(request):
     return render(request, 'TupAssistApp/r-transferring.html', context)
 
 
+def r_staff(request):
+    current_user = request.user
+    form = HeadRegistration()
+    if request.method == 'POST':
+        form = HeadRegistration(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect ('/admin')
+        else:
+            messages.error(request, 'Invalid Credentials!')
+            
+    context = { 
+        'form': form,
+        'current_user': current_user
+        }
+    return render(request, 'TupAssistApp/r-staff.html', context)
+
+
+
 
 
 

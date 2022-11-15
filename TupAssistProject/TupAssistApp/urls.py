@@ -43,10 +43,11 @@ urlpatterns = [
     path('transStatus/<int:id>', views.transStatus),
     path('import_sched', views.import_sched, name='import_sched'),
     path('r-adding/', views.r_adding, name='r_adding'),
-    path('r-adding/<int:id>', views.r_adding),
+    path('r-adding-view/<int:id>', views.r_adding_view),
     path('r-dropping/', views.r_dropping, name='r_dropping'),
     path('r-transferring/', views.r_transferring, name='r_transferring'),
-    path('r-adding-view/<int:id>', views.r_adding_view),
+    path('r-staff/', views.r_staff, name='r_staff'),
+    
     
     #student
     path('s_adding', views.s_adding, name='s_adding'),
@@ -56,12 +57,10 @@ urlpatterns = [
     path('upload', views.upload, name='upload'),
     path('delupload', views.delupload, name='delupload'),
 
-
     path('s_dropping', views.s_dropping, name='s_dropping'),
     path('s_dropping1', views.s_dropping1, name='s_dropping1'),
     path('s_dropping_del/<int:id>', views.s_dropping_del),
 
-    
     path('s_transferring', views.s_transferring, name='s_transferring'),
     path('s_transferring1', views.s_transferring1, name='s_transferring1'),
     path('s_transferring_del/<int:id>', views.s_transferring_del),

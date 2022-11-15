@@ -19,3 +19,4 @@ class HeadRegistration(UserCreationForm):
         super(HeadRegistration, self).__init__(*args, **kwargs)
         self.fields['course'].required = False
         self.fields['department'].required = False
+

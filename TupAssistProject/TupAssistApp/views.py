@@ -83,10 +83,6 @@ def signup(request):
                 elif course == "BSCE" or course == "BSEE" or course == "BSECE" or course == "BSME":
                     form.instance.userType = 'STDNT'
                     form.instance.department = 'Department of Engineering'
-                    subject = 'TUP-Assist Registration'
-                    message = 'Your account was already created. You have access now in add, drop and transfer subjects.'
-                    recipient = form.cleaned_data.get('email')
-                    send_mail(subject, message, settings.EMAIL_HOST_USER, [recipient], fail_silently=False)
                 elif course == "BSIE-ICT":
                     form.instance.userType = 'STDNT'
                     form.instance.department = 'Department of Industrial Education'
@@ -98,10 +94,9 @@ def signup(request):
                 form.save()
                 return redirect ('/index')
             else:
-                messages.error(request, 'Invalid Credentials!')
+                messages.error(request, 'Password Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.')
         except StudentReference.DoesNotExist:
             messages.error(request, 'Use Tup Cavite Gsfe Account!')
-            return redirect ('/signup')
     context =  {'form': form}
     return render(request, 'TupAssistApp/student-registration.html', context)
 

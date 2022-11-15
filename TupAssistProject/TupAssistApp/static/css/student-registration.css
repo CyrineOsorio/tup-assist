@@ -198,7 +198,7 @@ a.loginlabel {
 }
 
 .form-group2a:before {
-    content: "Student ID:";
+    content: "Student Number:";
     display: flex;
     justify-content: flex-start;
     padding-left: 5px;
@@ -239,8 +239,6 @@ a.loginlabel {
     padding-left: 5px;
 }
 
-
-
 @media only screen and (max-width: 1000px) {
     .bg-container {
         padding: 10% 5% 10% 5%;
@@ -250,6 +248,4 @@ a.loginlabel {
     form {
         width: 100%;
     }
-    
-    
 }

@@ -70,54 +70,58 @@
 
         <div class="content">
             <div class="stud-request-label">
-                <p>Class Slots Availability:</p>
+                <p>Schedule:</p>
             </div>
 
             <div class="filter">
 
-                <select class="custom-select">
-                    <option selected>Program</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
+                <div class="row">
+                    <div class="col-8">
+                        <select class="custom-select" name="program">
+                            <option value="all">Program</option>
+                            <option value="Sample1">Sample1</option>
+                            <option value="Sample2">Sample2</option>
+                            <option value="Sample3">Sample3</option>
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <select class="custom-select" name="schoolyear">
+                            <option value="all">School Year</option>
+                            <option value="1920">1920</option>
+                            <option value="2021">2021</option>
+                            <option value="2122">2122</option>
+                        </select>
+                    </div>
+                </div>
 
                 <div class="row">
                     <div class="col">
-                        <select class="custom-select">
-                            <option selected>School Year</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                        <select class="custom-select" name="term">
+                            <option value="all">Term</option>
+                            <option value="First">First</option>
+                            <option value="Second">Second</option>
                         </select>
                     </div>
-
                     <div class="col">
-                        <select class="custom-select">
-                            <option selected>Term</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                        <select class="custom-select" name="yearlevel">
+                            <option value="all">Year Level</option>
+                            <option value="First Year">First Year</option>
+                            <option value="Second Year">Second Year</option>
+                            <option value="Fourth Year">Fourth Year</option>
+                            <option value="Fifth Year">Fifth Year</option>
                         </select>
                     </div>
-
                     <div class="col">
-                        <select class="custom-select">
-                            <option selected>Year Level</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                        <select class="custom-select" name="section">
+                            <option value="all">Section</option>
+                            <option value=""></option>
+                            <option value=""></option>
+                            <option value=""></option>
+                            <option value=""></option>
                         </select>
-
                     </div>
-
                     <div class="col">
-                        <select class="custom-select">
-                            <option selected>Section</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
+                        <button type="button" class="btn btn-primary">Reset</button>
                     </div>
                 </div>
 
@@ -143,17 +147,44 @@
                     </thead>
 
                     <tbody>
+                        <tr class="all Sample1 1920 First">
+                            <td>Sample1</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>1920</td>
+                            <td>First</td>
+                            <td></td>
+                            <td style="text-align: center;"></td>
+                        </tr>
 
-                        <tr>
+                        <tr class="all Sample2 2021 First">
+                            <td>Sample2</td>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
+                            <td>2021</td>
+                            <td>First</td>
+                            <td></td>
+                            <td style="text-align: center;"></td>
+                        </tr>
+
+                        <tr class="all Sample3 2122 Second">
+                            <td>Sample3</td>
                             <td></td>
                             <td></td>
                             <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>2122</td>
+                            <td>Second</td>
                             <td></td>
                             <td style="text-align: center;"></td>
                         </tr>
@@ -161,29 +192,49 @@
                     </tbody>
                 </table>
 
-
-
             </div>
+        </div>
+
+
+        <div class="content">
+            <div class="stud-request-label">
+                <p>Dito nakalagay yung table na naka week form ng schedule na na-iplot:</p>
+            </div>
+
         </div>
 
 
     </div>
 
 
-    </div>
+
+
 
 
     <!--JAVASCRIPT-->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 
-    <!--DATATABLES-->
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+
     <script>
-        $(document).ready(function() {
-            $('#table_id').DataTable();
+        // Filter 
+        $(".filter select").on('change', function() {
+            var filters = $.map($(".filter select").toArray(), function(e) {
+                return $(e).val();
+            }).join(".");
+            $("tbody").find("tr").hide();
+            $("tbody").find("tr." + filters).show();
+
+        });
+        // Reset
+        $('button').on('click', function() {
+            $(".filter select").val($("option:first").val());
+            $("tbody").find("tr").show();
         });
     </script>
+
+
+
 
 
 </body>

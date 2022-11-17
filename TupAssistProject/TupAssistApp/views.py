@@ -430,6 +430,19 @@ def r_staff(request):
 
 
 
+def r_staff_create(request):
+    form = HeadRegistration(request.POST)
+    if form.is_valid():
+        form.save()
+        return redirect ('/r-staff')
+    else:
+        messages.error(request, 'Invalid Credentials!')
+    return render(request, 'TupAssistApp/r-staff.html')
+
+
+
+
+
 
 
 

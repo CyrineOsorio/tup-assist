@@ -42,7 +42,7 @@ def index(request):
 
         if user is not None and user.is_superuser == True:
             login(request, user)
-            return redirect('/signup1')
+            return redirect('/registrar')
 
         elif user is not None and user.userType == 'STDNT':
             login(request, user)
@@ -55,9 +55,6 @@ def index(request):
         elif user is not None and user.userType == 'Person-in-charge':
             login(request, user)
             return redirect('/p-adding')
-        elif user is not None and user.userType == 'R':
-            login(request, user)
-            return redirect('/registrar')
         else:
            messages.error(request, 'Invalid Credentials')
     return render(request, 'TupAssistApp/index.html')
@@ -430,6 +427,19 @@ def r_staff(request):
         'current_user': current_user
         }
     return render(request, 'TupAssistApp/r-staff.html', context)
+
+
+
+def r_staff_create(request):
+    form = HeadRegistration(request.POST)
+    if form.is_valid():
+        form.save()
+        return redirect ('/r-staff')
+    else:
+        messages.error(request, 'Invalid Credentials!')
+    return render(request, 'TupAssistApp/r-staff.html')
+
+
 
 
 

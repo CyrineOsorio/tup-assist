@@ -47,6 +47,8 @@ urlpatterns = [
     path('r-dropping/', views.r_dropping, name='r_dropping'),
     path('r-transferring/', views.r_transferring, name='r_transferring'),
     path('r-staff/', views.r_staff, name='r_staff'),
+    path('r_staff_create', views.r_staff_create, name='r_staff_create'),
+    
     
     
     #student

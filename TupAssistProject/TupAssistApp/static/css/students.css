@@ -84,7 +84,7 @@ a:focus {
 
 /* katawan yung section */
 
-section {
+.bg-container {
     width: 100%;
     background-image: url(../images/F3D4D9.jpg);
     background-position: center;
@@ -609,4 +609,11 @@ ul.form-stepper li a .form-stepper-circle {
 
 .form-stepper a {
     cursor: default;
+}
+
+
+#step-1,
+#step-2,
+#step-3 {
+    border:solid 1px #E2435E;
 }

@@ -101,6 +101,47 @@
 
 
 
+                <form class="demo-form">
+                    <div class="form-section">
+                        <label for="firstname">First Name:</label>
+                        <input type="text" class="form-control" name="firstname" required="">
+
+                        <label for="lastname">Last Name:</label>
+                        <input type="text" class="form-control" name="lastname" required="">
+                    </div>
+
+                    <div class="form-section">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" name="email" required="">
+                    </div>
+
+                    <div class="form-section">
+                        <label for="color">Favorite color:</label>
+                        <input type="text" class="form-control" name="color" required="">
+                    </div>
+
+                    <div class="form-navigation">
+                        <button type="button" class="previous btn btn-info pull-left">&lt; Previous</button>
+                        <button type="button" class="next btn btn-info pull-right">Next &gt;</button>
+                        <input type="submit" class="btn btn-default pull-right">
+                        <span class="clearfix"></span>
+                    </div>
+
+                </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 <!-- DROPPING REQUESTS TABLE-->
 
                 <!--HTML code to display data in tabular format-->
@@ -331,78 +372,47 @@
 
 
 
-    <script>
-        /**
-         * Define a function to navigate betweens form steps.
-         * It accepts one parameter. That is - step number.
-         */
-        const navigateToFormStep = (stepNumber) => {
-            /**
-             * Hide all form steps.
-             */
-            document.querySelectorAll(".form-step").forEach((formStepElement) => {
-                formStepElement.classList.add("d-none");
-            });
-            /**
-             * Mark all form steps as unfinished.
-             */
-            document.querySelectorAll(".form-stepper-list").forEach((formStepHeader) => {
-                formStepHeader.classList.add("form-stepper-unfinished");
-                formStepHeader.classList.remove("form-stepper-active", "form-stepper-completed");
-            });
-            /**
-             * Show the current form step (as passed to the function).
-             */
-            document.querySelector("#step-" + stepNumber).classList.remove("d-none");
-            /**
-             * Select the form step circle (progress bar).
-             */
-            const formStepCircle = document.querySelector('li[step="' + stepNumber + '"]');
-            /**
-             * Mark the current form step as active.
-             */
-            formStepCircle.classList.remove("form-stepper-unfinished", "form-stepper-completed");
-            formStepCircle.classList.add("form-stepper-active");
-            /**
-             * Loop through each form step circles.
-             * This loop will continue up to the current step number.
-             * Example: If the current step is 3,
-             * then the loop will perform operations for step 1 and 2.
-             */
-            for (let index = 0; index < stepNumber; index++) {
-                /**
-                 * Select the form step circle (progress bar).
-                 */
-                const formStepCircle = document.querySelector('li[step="' + index + '"]');
-                /**
-                 * Check if the element exist. If yes, then proceed.
-                 */
-                if (formStepCircle) {
-                    /**
-                     * Mark the form step as completed.
-                     */
-                    formStepCircle.classList.remove("form-stepper-unfinished", "form-stepper-active");
-                    formStepCircle.classList.add("form-stepper-completed");
-                }
+    <script type="text/javascript">
+        $(function() {
+            var $sections = $('.form-section');
+
+            function navigateTo(index) {
+                // Mark the current section with the class 'current'
+                $sections
+                    .removeClass('current')
+                    .eq(index)
+                    .addClass('current');
+                // Show only the navigation buttons that make sense for the current section:
+                $('.form-navigation .previous').toggle(index > 0);
+                var atTheEnd = index >= $sections.length - 1;
+                $('.form-navigation .next').toggle(!atTheEnd);
+                $('.form-navigation [type=submit]').toggle(atTheEnd);
             }
-        };
-        /**
-         * Select all form navigation buttons, and loop through them.
-         */
-        document.querySelectorAll(".btn-navigate-form-step").forEach((formNavigationBtn) => {
-            /**
-             * Add a click event listener to the button.
-             */
-            formNavigationBtn.addEventListener("click", () => {
-                /**
-                 * Get the value of the step.
-                 */
-                const stepNumber = parseInt(formNavigationBtn.getAttribute("step_number"));
-                /**
-                 * Call the function to navigate to the target form step.
-                 */
-                navigateToFormStep(stepNumber);
+
+            function curIndex() {
+                // Return the current index by looking at which section has the class 'current'
+                return $sections.index($sections.filter('.current'));
+            }
+
+            // Previous button is easy, just go back
+            $('.form-navigation .previous').click(function() {
+                navigateTo(curIndex() - 1);
             });
+
+            // Next button goes forward iff current block validates
+            $('.form-navigation .next').click(function() {
+                $('.demo-form').parsley().whenValidate({
+                    group: 'block-' + curIndex()
+                }).done(function() {
+                    navigateTo(curIndex() + 1);
+                });
+            });
+
+            // Prepare sections by setting the `data-parsley-group` attribute to 'block-0', 'block-1', etc.
+            $sections.each(function(index, section) {
+                $(section).find(':input').attr('data-parsley-group', 'block-' + index);
+            });
+            navigateTo(0); // Start at the beginning
         });
     </script>
 

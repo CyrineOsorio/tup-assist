@@ -441,12 +441,6 @@ def r_staff_create(request):
 
 
 
-
-
-
-
-
-
 #STUDENT PAGES
 
 def s_adding(request):

@@ -185,128 +185,18 @@ p {
 
 /*  Rejay's edit */
 
-.add-label {
-    margin-top: 4%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.add-label p {
-    width: 100%;
-    height: 100%;
-    font-weight: bold;
-    color: black;
-}
-
-.drop-label {
-    margin-top: 4%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.drop-label p {
-    width: 100%;
-    height: 100%;
-    font-weight: bold;
-    color: black;
-}
-
-.transfer-label {
-    margin-top: 4%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.transfer-label p {
-    width: 100%;
-    height: 100%;
-    font-weight: bold;
-    color: black;
-}
-
-.grades-label {
-    margin-top: 4%;
-    width: 100%;
-    display: grid;
-    justify-content: space-between;
-}
-
-.grades-label p {
-    width: 100%;
-    height: 100%;
-    font-weight: bold;
-    color: black;
-}
-
-.grades-label button {
-    background-color: #E2435E;
-    border: 1px solid #E2435E;
-}
-
-#gradesfile {
-    margin-right: 5px;
-}
-
-#grade-view {
-    width: 500px;
-}
-
-.submit-button {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 4%;
-}
-
-.submit-button button {
-    background-color: #E2435E;
-    border: 1px solid #E2435E;
-    color: white;
-}
-
-.grades-label input {
-    border: 1px solid black;
-}
-
-.action {
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.action i {
-    font-size: 20px;
-}
-
-#subject,
-#subject1,
-#subject2,
-#course,
-#course1,
-#course2,
-#yrandsec,
-#yrandsec1,
-#yrandsec2,
-#sched,
-#reason1,
-#reason2 {
-    border: solid 1px black;
-    height: 25px;
+.image-upload {
     width: 100%;
 }
 
-table {
-    width: 100%;
+.image-upload img {
+    width: 200px;
+    height: auto;
+    cursor: pointer;
 }
 
-tr {
-    width: 100%;
-}
-
-td {
-    width: fit-content;
+.image-upload>input {
+    display: none;
 }
 
 
@@ -367,6 +257,10 @@ footer button img {
     border: 1px solid #E2435E;
 }
 
+.alert-link {
+    width: 80%;
+}
+
 
 /* pag maliit na ang screen */
 
@@ -415,7 +309,7 @@ footer button img {
 }
 
 
-/* Dagdag testing 11/17/22 */
+/* Dagdag MULTI_FORM 11/17/22 */
 
 h1 {
     text-align: center;

@@ -469,16 +469,27 @@ def upload(request):
     if request.method == 'POST':
         data = registration.objects.get(username=current_user.username)
         data.upload = request.FILES["gradesfile"]
-        # data.stud_stats = 'Requested'
+        data.addStatus = 'Requested Grades Uploaded'
         data.save()
     return redirect('/s_adding')
+
 
 def delupload(request):
     current_user = request.user
     data = registration.objects.get(username=current_user.username)
     data.upload = ""
+    data.addStatus = ''
     data.save()
     return redirect('/s_adding')
+
+
+
+
+
+
+
+
+
 
 
 def s_adding1(request):

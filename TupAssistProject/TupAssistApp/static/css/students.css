@@ -90,10 +90,7 @@ a:focus {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 0 40px 0;
+    padding: 2% 20% 2% 20%;
 }
 
 
@@ -611,9 +608,12 @@ ul.form-stepper li a .form-stepper-circle {
     cursor: default;
 }
 
-
 #step-1,
 #step-2,
 #step-3 {
-    border:solid 1px #E2435E;
+    border: solid 1px #E2435E;
+}
+
+#step1 {
+    display: grid;
 }

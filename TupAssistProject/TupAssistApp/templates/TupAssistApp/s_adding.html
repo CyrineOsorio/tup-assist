@@ -92,7 +92,7 @@
             <div class="dividerLangs"></div>
 
             <div style="overflow-x:auto;" class="innerBody">
-                
+
                 <div>
                     <h1>Add Subject Transcation Form</h1>
                     <div id="multi-step-form-container">
@@ -132,8 +132,12 @@
                         <section id="step-1" class="form-step">
                             <h2 class="font-normal">Upload a file of the previous grade from ERS.</h2>
                             <!-- Step 1 input fields -->
-                            <div class="mt-3">
-                                Step 1 input fields goes here..
+                            <div class="mt-3" id="step1">
+
+                                <input type="file" accept="application/pdf" name="image" id="file" onchange="loadFile(event)">
+                                <iframe id="output" style="width: 100%; height: auto;border: none;"></iframe>
+
+
                             </div>
                             <div class="mt-3">
                                 <button class="button btn-navigate-form-step" type="button" step_number="2">Next</button>
@@ -168,120 +172,6 @@
                 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                <div class="add-label">
-                    <p>ADD SUBJECT</p>
-                </div>
-
-
-                <!-- ADDING REQUESTS TABLE-->
-
-                <!--HTML code to display data in tabular format-->
-                <table id="table_id" class="table table-striped">
-                    <thead>
-                        <th>NO.</th>
-                        <th hidden>STUDENT ID</th>
-                        <th>SUBJECT</th>
-                        <th>COURSE</th>
-                        <th>YEAR & SECTION</th>
-                        <th>SCHEDULE</th>
-                        <th>ACTION</th>
-                    </thead>
-
-                    <tbody>
-
-                        {% for i in addReq %}
-                        <tr>
-                            <td>{{i.id}}</td>
-                            <td hidden>{{i.studID}}</td>
-                            <td>{{i.subject}} </td>
-                            <td>{{i.course}}</td>
-                            <td>{{i.yrandsec}}</td>
-                            <td>{{i.sched}}</td>
-                            <td class="action">
-                                <a href="/s_adding_del/{{i.id}}"><i class="bi bi-trash"></i></a>
-                                <i type="button" data-toggle="modal" data-target="#exampleModal{{i.id}}" class="bi bi-pencil"></i>
-                            </td>
-                        </tr>
-                        {% endfor %}
-
-                        <tr>
-                            <form class="form" action="/s_adding1" method="post">
-                                {% csrf_token %}
-                                <td></td>
-                                <td hidden><input type="text" name="studID" id="studID" value="{{current_user.studID}}" hidden></td>
-
-                                <td>
-                                    <select name="subject" id="subject">
-                                        {% for i in sub %}
-                                        <option value="{{i.SubCode}} {{i.SubName}}">{{i.SubCode}} {{i.SubName}}</option>
-                                        {% endfor %}
-                                    </select>
-                                </td>
-
-                                <td>
-                                    <select name="course" id="course">
-                                        <option value="BET-ET">Electrical Technology</option>
-                                        <option value="BET-ESET">Electronics Technology</option>
-                                        <option value="BET-COET">Computer Engineering  Technology</option>
-                                        <option value="BET-CT">Civil Technology</option>
-                                        <option value="BET-MT">Mechanical Technology</option>
-                                        <option value="BET-AT">Automotive Technology</option>
-                                        <option value="BET-PPT">Power Plant Technology</option>
-
-                                        <option value="BSCE">Civil Engineering'</option>
-                                        <option value="BSEE">Electrical Engineeri</option>
-                                        <option value="BSECE">Electronics Engineering</option>
-                                        <option value="BSME">Mechanical Engineering</option>
-
-                                        <option value="BSIE-ICT">Information and Communication Technology</option>
-                                    </select>
-                                </td>
-
-                                <td>
-                                    <select name="yrandsec" id="yrandsec">
-                                        <option value="1A">1A</option>
-                                        <option value="1A">2A</option>
-                                        <option value="1A">3A</option>
-                                        <option value="1A">4A</option>
-                                        <option value="1A">1B</option>
-                                        <option value="1A">2B</option>
-                                        <option value="1A">3B</option>
-                                        <option value="1A">4B</option>
-                                    </select>
-                                </td>
-
-                                <td><input type="text" name="sched" id="sched" required></td>
-
-                                <td class="action"><button type="submit" style="border: 0px; background-color: transparent;"> <i class="bi bi-plus-circle" style="color:#E2435E; font-size: large;"></i> </button></td>
-                            </form>
-                        </tr>
-
-
-                    </tbody>
-                </table>
-
-
-
-
                 <!-- UPLOAD ERS IMAGE -->
                 <div class="grades-label">
                     <p style="width: 100%;">UPLOAD GRADES FROM ERS:</p>
@@ -301,19 +191,6 @@
                     {% endif %}
 
                 </div>
-
-                <input type="checkbox" name="" id="">
-                <label>I certify that I am s simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy.</label>
-
-                <!-- Submit button -->
-
-                <form method="post" action="">
-                    {% csrf_token %}
-                    <div class="submit-button">
-                        <button type="submit" class="btn btn-primary mb-2">SUBMIT REQUEST</button>
-                    </div>
-                </form>
-
 
 
             </div>
@@ -527,6 +404,14 @@
                 navigateToFormStep(stepNumber);
             });
         });
+    </script>
+
+
+    <script>
+        var loadFile = function(event) {
+            var image = document.getElementById('output');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        };
     </script>
 
 

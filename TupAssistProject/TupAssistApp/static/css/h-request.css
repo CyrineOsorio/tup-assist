@@ -51,7 +51,7 @@ a:focus {
 }
 
 #logoutbutton {
-    background-color: black;
+    background-color: #319AE4;
     color: white;
     padding-left: 40px;
     padding-right: 40px;
@@ -60,7 +60,7 @@ a:focus {
 }
 
 #logoutbutton:hover {
-    border: 1px solid black;
+    border: 1px solid #319AE4;
     color: black;
     padding-left: 40px;
     padding-right: 40px;
@@ -69,17 +69,10 @@ a:focus {
 }
 
 .navbarLagayan button {
-    background-color: black;
+    background-color: #319AE4;
     color: white;
     border: none;
     justify-self: flex-end;
-}
-
-#adding,
-#dropping,
-#transferring,
-#slots {
-    font-weight: bold;
 }
 
 
@@ -93,7 +86,7 @@ body {
 .bg-container {
     width: 100%;
     height: 100%;
-    background-image: url(../images/ECEDF1.jpg);
+    background-image: url(../images/DFF0FF.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -102,15 +95,15 @@ body {
 
 .welcome {
     display: flex;
-    justify-content: flex-start;
-    background-color: #000000;
+    width: 100%;
+    justify-content: space-between;
+    background-color: #319AE4;
     color: white;
     padding: 20px 20px 20px 20px;
     border-radius: 10px;
 }
 
 .content {
-    width: 100%;
     display: grid;
     background-color: white;
     margin-top: 2%;
@@ -118,26 +111,16 @@ body {
     border-radius: 10px;
 }
 
-.stud-request-label {
+.add-request-label {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 2%;
 }
 
-.stud-request-label p {
+.add-request-label p {
     width: 50%;
     height: 100%;
     font-weight: bold;
-}
-
-.stud-request-label button {
-    background-color: black;
-    border: 1px solid black;
-}
-
-.stud-request-label input {
-    border: 1px solid black;
 }
 
 .action {
@@ -149,10 +132,6 @@ body {
     font-size: 20px;
 }
 
-table {
-    margin-top: 15px;
-}
-
 @media only screen and (max-width: 1000px) {
     .navbarLagayan {
         text-align: center;
@@ -160,22 +139,6 @@ table {
     }
     #navbarnavbar {
         padding: 0 5% 0 5%;
-        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-        position: sticky;
-        top: 0;
-        z-index: 1;
-    }
-    #navbarToggleExternalContent {
-        background-color: #F8F9FB;
-        width: 100%;
-    }
-    #center {
-        display: grid;
-        width: 100%;
-        justify-items: center;
-        align-items: center;
-        text-align: center;
-        padding: 10% 10% 10% 10%;
     }
     .bg-container {
         padding: 0 0 0 0;

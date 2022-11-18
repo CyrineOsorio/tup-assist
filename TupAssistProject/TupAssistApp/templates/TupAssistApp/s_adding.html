@@ -147,7 +147,10 @@
                                 </form>
 
                                 {% endif %} {% if current_user.upload != '' %}
-                                <a href="#" class="alert-link" onclick="window.open('{{ current_user.upload.url }}');">{{ current_user.upload }}</a> <a href="{%url 'TupAssistApp:delupload'%}"><i class="bi bi-x-circle" style="margin-left: 5%; color: #E2435E"></i></a>                                {% endif %}
+                                <div class="lagayanngfile">
+                                    <a href="#" class="alert-link" onclick="window.open('{{ current_user.upload.url }}');">{{ current_user.upload }}</a> <a href="{%url 'TupAssistApp:delupload'%}"><i class="bi bi-x-circle" style="margin-left: 5%; color: #E2435E"></i></a>
+                                </div>
+                                {% endif %}
 
 
                             </div>

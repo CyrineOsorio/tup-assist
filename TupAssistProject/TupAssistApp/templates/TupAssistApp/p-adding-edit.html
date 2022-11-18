@@ -61,7 +61,7 @@
                     <p>Name: {{ student_info.first_name }} {{ student_info.last_name }}</p>
                     <p>Student ID: {{ student_info.studID }}</p>
                     <p>Course Year and Section: {{ student_info.course }}-{{ student_info.yrandsec }}</p>
-                    <p>Grades File: {% if current_user.upload != '' %}<a href="#" class="alert-link" onclick="window.open('{{ student_info.upload.url }}');">{{ student_info.upload }}</a> {% endif %}</p>
+                    <p>Grades File: {% if student_info.upload != '' %}<a href="#" class="alert-link" onclick="window.open('{{ student_info.upload.url }}');">{{ student_info.upload.url }}</a> {% endif %}</p>
 
                 </div>
 
@@ -69,36 +69,24 @@
                 <table class="table">
                     <thead>
                         <th>NO.</th>
-                        <th>STUDENT ID</th>
+                        <th>STUDENT NUMBER</th>
                         <th>SUBJECT</th>
                         <th>COURSE</th>
                         <th>Y&S</th>
                         <th>SCHEDULE</th>
-                        <th>PIC: APPROVAL</th>
-                        <th>PIC: COMMENT</th>
-                        <th>HEAD: APPROVAL</th>
-                        <th>HEAD: COMMENT</th>
                         <th>ACTION</th>
                     </thead>
 
                     <tbody>
-                        {% for e in req %}
                         <tr>
-                            <td>{{e.id}}</td>
-                            <td>{{e.studID}}</td>
-                            <td>{{e.subject}} </td>
-                            <td>{{e.course}}</td>
-                            <td>{{e.yrandsec}}</td>
-                            <td>{{e.sched}}</td>
-                            <td>{{e.picCheck}}</td>
-                            <td>{{e.picComment}}</td>
-                            <td>{{e.headCheck}}</td>
-                            <td>{{e.headComment}}</td>
-                            <td class="action">
-                                <a data-toggle="modal" data-target="#exampleModal{{e.id}}"> <i class="bi bi-pencil"></i> </a>
-                            </td>
+                            <td></td>
+                            <td><input type="text" value="{{student_info.studID}}" readonly></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="action"> </td>
                         </tr>
-                        {% endfor %}
                     </tbody>
                 </table>
             </div>
@@ -117,78 +105,6 @@
         </div>
 
     </footer>
-
-
-
-
-    <!--UPDATE-->
-    <!-- Modal -->
-    {% for e in req %}
-    <div class="modal fade" id="exampleModal{{e.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit: {{e.id}}</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                </div>
-
-                <form class="form" method="post">
-                    <div class="modal-body">
-                        {% csrf_token %}
-
-                        <input type="text" name="id" id="id" value="{{e.id}}" hidden>
-
-                        <div class="form-row">
-                            <div class="col-md-4 mb-3">
-                                <label for="studID">STUDENT ID</label>
-                                <input type="text" class="form-control" name="studID" id="studID" value="{{e.studID}}" readonly>
-
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="subject">Subject</label>
-                                <input type="text" class="form-control" name="subject" id="subject" value="{{e.subject}}" readonly>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="course">Course</label>
-                                <input type="text" class="form-control" name="course" id="course" value="{{e.course}}" readonly>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="yrandsec">Year and Section</label>
-                                <input type="text" class="form-control" name="yrandsec" id="yrandsec" value="{{e.yrandsec}}" readonly>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="sched">Schedule</label>
-                                <input type="text" class="form-control" name="sched" id="sched" value="{{e.sched}}" readonly>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="sched">PIC Approval</label>
-                                <input type="text" class="form-control" name="picCheck" id="picCheck" value="{{e.picCheck}}">
-                            </div>
-                            <div class=" col-md-4 mb-3 ">
-                                <label for="picComment ">PIC Comment</label>
-                                <input type="text " class="form-control " name="picComment" id="picComment" value="{{e.picComment}}">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </form>
-
-            </div>
-        </div>
-    </div>
-    {% endfor %}
-
-
-
-
-
-
 
 
 

@@ -51,7 +51,7 @@ a:focus {
 }
 
 #logoutbutton {
-    background-color: #319AE4;
+    background-color: black;
     color: white;
     padding-left: 40px;
     padding-right: 40px;
@@ -60,7 +60,7 @@ a:focus {
 }
 
 #logoutbutton:hover {
-    border: 1px solid #319AE4;
+    border: 1px solid black;
     color: black;
     padding-left: 40px;
     padding-right: 40px;
@@ -69,7 +69,7 @@ a:focus {
 }
 
 .navbarLagayan button {
-    background-color: #319AE4;
+    background-color: black;
     color: white;
     border: none;
     justify-self: flex-end;
@@ -97,7 +97,7 @@ body {
     display: flex;
     width: 100%;
     justify-content: space-between;
-    background-color: #319AE4;
+    background-color: black;
     color: white;
     padding: 20px 20px 20px 20px;
     border-radius: 10px;
@@ -130,6 +130,10 @@ body {
 
 .action i {
     font-size: 20px;
+}
+
+.filter {
+    margin-bottom: 10px;
 }
 
 @media only screen and (max-width: 1000px) {

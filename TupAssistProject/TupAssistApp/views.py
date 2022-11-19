@@ -98,7 +98,7 @@ def signup(request):
     return render(request, 'TupAssistApp/student-registration.html', context)
 
 
-# Head, PIC, and Registrar SIGN UP PAGE
+# Head, PIC SIGN UP PAGE
 def signup1(request):
     form = HeadRegistration()
     if request.method == 'POST':
@@ -158,8 +158,6 @@ def p_adding_edit(request, id):
         return redirect('/p-adding-edit/'+ str(id))
     
     return render(request, 'TupAssistApp/p-adding-edit.html', context)
-
-
 
 
 
@@ -459,7 +457,6 @@ def s_adding(request):
         'current_user': current_user,
         'sub': sub,
         'sched': sched
-
     }
     return render(request, 'TupAssistApp/s_adding.html', context)
 
@@ -471,6 +468,7 @@ def upload(request):
         data.upload = request.FILES["gradesfile"]
         data.addStatus = 'Requested Grades Uploaded'
         data.save()
+        messages.success(request, 'Successfully Upload your file. Wait for the program-in-charge, before proceeding in Step 2.')
     return redirect('/s_adding')
 
 

@@ -135,16 +135,40 @@
                             <div class="mt-3" id="step1">
 
                                 {% if current_user.upload == '' %}
-                                <form class="form-inline" id="gradesfileform" method="post" enctype="multipart/form-data" action="/upload">
-                                    {% csrf_token %}
-                                    <div class="image-upload">
-                                        <label for="gradesfile">
-                                          <img src="../../static/images/icons8-pdf-40.png"/>
-                                        </label>
-                                        <input type="file" accept="application/pdf" name="gradesfile" id="gradesfile" required>
+                                 <!-- Button trigger modal -->
+                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addFile">
+                                    Upload your PDF compile of your previous grades here.
+                                </button>
+                                
+                                <!-- Modal -->
+                                <div class="modal fade" id="addFile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Select PDF FIle of your compile grades.</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form class="form-inline" id="gradesfileform" method="post" enctype="multipart/form-data" action="/upload">
+                                                {% csrf_token %}
+                                                <div class="image-upload">
+                                                    <label for="gradesfile">
+                                                      <img src="../../static/images/icons8-pdf-40.png"/>
+                                                    </label>
+                                                    <input type="file" accept="application/pdf" name="gradesfile" id="gradesfile" required>
+                                                </div>
+                                                
+                                            </form>
+                                            
+                                        </div>
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
                                     </div>
-
-                                </form>
+                                    </div>
+                                </div>
 
                                 {% endif %} {% if current_user.upload != '' %}
                                 <div class="lagayanngfile">
@@ -155,9 +179,8 @@
 
                             </div>
                             <div class="mt-3">
-                                {% if current_user.addStatus != '' %}
+                                {% if current_user.addStatus == 'None' or current_user.addStatus != ''  %}
                                 <button class="button btn-navigate-form-step" type="button" step_number="2">Next</button> {% endif %}
-
                             </div>
                         </section>
                         <!-- Step 2 Content, default hidden on page load. -->
@@ -263,7 +286,6 @@
 
 
     <!-- Django with Jquery para magload kapag nasaang current step na si students -->
-
     {% if current_user.addStatus == 'Requested Grades Uploaded' %}
     <script>
         document.querySelector("#step-" + 1).classList.add("d-none");
@@ -275,7 +297,7 @@
     {% endif %}
 
 
-
+    <!-- Multiform javascript -->
     <script>
         /**
          * Define a function to navigate betweens form steps.
@@ -352,11 +374,23 @@
     </script>
 
 
+    <!-- Automatic Upload of images -->
     <script>
         $('#gradesfile').change(function() {
             $('#gradesfileform').submit();
         });
     </script>
+
+
+    <!-- Messages -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {% if messages %} {% for message in messages %} {% if message.tags %}
+    <script>
+        Swal.fire({
+        icon: 'success',
+        text: '{{ message }}',
+        })
+    </script> {% endif %} {% endfor %} {% endif %}
 
 
 

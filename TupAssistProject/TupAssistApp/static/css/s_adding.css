@@ -511,3 +511,8 @@ ul.form-stepper li a .form-stepper-circle {
 #step1 {
     display: grid;
 }
+
+#step1 button {
+    background-color: #E2435E;
+    border: solid 1px #E2435E;
+}

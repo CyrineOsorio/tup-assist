@@ -42,7 +42,7 @@ def index(request):
 
         if user is not None and user.is_superuser == True:
             login(request, user)
-            return redirect('/r-dashboard')
+            return redirect('/r_dashboard')
 
         elif user is not None and user.userType == 'STDNT':
             login(request, user)
@@ -377,7 +377,7 @@ def r_adding(request):
         'test': test,
         'current_user': current_user,
         }
-    return render(request, 'TupAssistApp/r-adding.html', context)
+    return render(request, 'TupAssistApp/r_dashboard.html', context)
 
 def r_adding_view(request, id):
     current_user = request.user
@@ -387,7 +387,7 @@ def r_adding_view(request, id):
         'req': req,
         'current_user': current_user
         }
-    return render(request, 'TupAssistApp/r-adding-view.html', context)
+    return render(request, 'TupAssistApp/r_adding_view.html', context)
 
 def r_dropping(request):
     current_user = request.user
@@ -396,7 +396,7 @@ def r_dropping(request):
         'test': test,
         'current_user': current_user
         }
-    return render(request, 'TupAssistApp/r-dropping.html', context)
+    return render(request, 'TupAssistApp/r_dropping.html', context)
 
 def r_transferring(request):
     current_user = request.user
@@ -405,7 +405,7 @@ def r_transferring(request):
         'test': test,
         'current_user': current_user
         }
-    return render(request, 'TupAssistApp/r-transferring.html', context)
+    return render(request, 'TupAssistApp/r_transferring.html', context)
 
 
 def r_staff(request):
@@ -423,7 +423,7 @@ def r_staff(request):
         'form': form,
         'current_user': current_user
         }
-    return render(request, 'TupAssistApp/r-staff.html', context)
+    return render(request, 'TupAssistApp/r_staff.html', context)
 
 
 
@@ -431,10 +431,10 @@ def r_staff_create(request):
     form = HeadRegistration(request.POST)
     if form.is_valid():
         form.save()
-        return redirect ('/r-staff')
+        return redirect ('/r_staff')
     else:
         messages.error(request, 'Invalid Credentials!')
-    return render(request, 'TupAssistApp/r-staff.html')
+    return render(request, 'TupAssistApp/r_staff.html')
 
 
 

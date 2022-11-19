@@ -78,27 +78,27 @@ class registration(AbstractUser):
     userType = [
         ('DH', 'Department Head'),
         ('Person-in-charge', 'Person-in-charge'),
-        ('R', 'Registrar'),
-        ('STDNT', 'Student'),
     ]  
 
     # FOR STUDENT AND PIC
     course = [
-        ('BET-ET', 'Electrical Technology'),
-        ('BET-ESET', 'Electronics Technology'),
-        ('BET-COET', 'Computer Engineering Technology '),
-        ('BET-CT', 'Civil Technology'),
-        ('BET-MT', 'Mechanical Technology'),
-        ('BET-AT', 'Automotive Technology'),
-        ('BET-PPT', 'Power Plant Technology'),
-
-        ('BSCE', 'Civil Engineering'),
-        ('BSEE', 'Electrical Engineering'),
-        ('BSECE', 'Electronics Engineering'),
-        ('BSME', 'Mechanical Engineering'),
-
-        ('BSIE-ICT', 'Information and Communication Technology'),
-
+        ('BGT-AT', 'Bachelor in Graphics Technology major in Architecture Technology'),
+        ('BET-ET', 'Bachelor of Engineering Technology major in Electrical Technology'),
+        ('BET-ESET', 'Bachelor of Engineering Technology major in Electronics Technology Track: Industrial Automation Technology'),
+        ('BET-COET', 'Bachelor of Engineering Technology major in Computer Engineering Technology'),
+        ('BET-CT', 'Bachelor of Engineering Technology major in Contruction Technology'),
+        ('BET-CT', 'Bachelor of Engineering Technology major in Civil Technology'),
+        ('BET-MT', 'Bachelor of Engineering Technology major in Mechanical Technology'),
+        ('BET-AT', 'Bachelor of Engineering Technology major in Mechanical Engineering Technology Track: Automotive Technology'),
+        ('BET-PPT', 'Bachelor of Engineering Technology major in Mechanical Engineering Technology Track: Power Plant Technology'),
+        ('BSIE-HE', 'Bachelor of Science in Industrial Education major in: Home Economics'),
+        ('BSIE-IA', 'Bachelor of Science in Industrial Education major in: Industrial Arts'),
+        ('BSIE-ICT', 'Bachelor of Science in Industrial Education major in: Information and Communication Technology'),
+        ('BTTE-CP', 'Bachelor of Technical Vocational Teacher Education major in: Computer Programming'),
+        ('BTTE-EL', 'Bachelor of Technical Vocational Teacher Education major in: Electrical'),
+        ('BSCE', 'Bachelor of Science in Civil Engineering'),
+        ('BSEE', 'Bachelor of Science in Electrical Engineering'),
+        ('BSME', 'Bachelor of Science in Mechanical Engineering'),
     ]
 
     # FOR DEPARTMENT HEAD

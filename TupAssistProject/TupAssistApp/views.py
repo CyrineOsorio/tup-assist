@@ -97,21 +97,6 @@ def signup(request):
     context =  {'form': form}
     return render(request, 'TupAssistApp/student-registration.html', context)
 
-
-# Head, PIC SIGN UP PAGE
-def signup1(request):
-    form = HeadRegistration()
-    if request.method == 'POST':
-        form = HeadRegistration(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect ('/admin')
-        else:
-            messages.error(request, 'Invalid Credentials!')
-    context =  {'form': form}
-    return render(request, 'TupAssistApp/staff-registration.html', context)
-
-
 #LOG OUT
 def logoutUser(request):
     logout(request)

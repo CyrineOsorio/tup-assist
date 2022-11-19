@@ -9,6 +9,13 @@ class StudentRegistration(UserCreationForm):
     class Meta:
         model = registration
         fields = ['username', 'email', 'password1', 'password2', 'last_name', 'first_name', 'yrandsec', 'course', 'studID']
+        labels = {
+            "username": "*Username",
+        }    
+        widgets = {
+            "username":  forms.TextInput(attrs={'autocomplete': 'off'}), 
+            # "password1": forms.PasswordInput(attrs={'placeholder':'********','autocomplete': 'off','data-toggle': 'password1'}),
+        }
 
 class HeadRegistration(UserCreationForm):
     class Meta:

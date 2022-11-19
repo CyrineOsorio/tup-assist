@@ -51,24 +51,13 @@ class AddingReq(models.Model):
 
 class DroppingReq(models.Model):
     studID = models.IntegerField()
-    subject = models.CharField(max_length=255, null=True, blank=True)
-    course = models.CharField(max_length=255, null=True, blank=True)
-    yrandsec = models.CharField(max_length=255, null=True, blank=True)
-    reason = models.CharField(max_length=255, null=True, blank=True)
-    headCheck = models.BooleanField(default=False)
-    headComment = models.CharField(max_length=255, null=True, blank=True)
+    
     
     class Meta:
         verbose_name_plural = "DroppingReq" 
 
 class TransferringReq(models.Model):
     studID = models.IntegerField()
-    subject = models.CharField(max_length=255, null=True, blank=True)
-    course = models.CharField(max_length=255, null=True, blank=True)
-    yrandsec = models.CharField(max_length=255, null=True, blank=True)
-    reason = models.CharField(max_length=255, null=True, blank=True)
-    headCheck = models.BooleanField(default=False)
-    headComment = models.CharField(max_length=255, null=True, blank=True)
     
     class Meta:
         verbose_name_plural = "TransferringReq" 

@@ -493,11 +493,7 @@ def delupload(request):
 def s_adding1(request):
     if request.method=='POST': 
         studID = request.POST.get('studID')
-        subject = request.POST.get('subject')
-        course = request.POST.get('course')
-        yrandsec = request.POST.get('yrandsec')
-        sched = request.POST.get('sched')
-        add = AddingReq.objects.create(studID=studID, subject=subject, course=course, yrandsec=yrandsec, sched=sched)
+        add = AddingReq.objects.create(studID=studID)
         add.save()
     return redirect('/s_adding')
 
@@ -506,10 +502,6 @@ def s_adding_edit(request, id):
         id = request.POST.get('id')
         data1= AddingReq.objects.get(id=id)
         data1.id = request.POST.get('id')
-        data1.subject = request.POST.get('subject')
-        data1.course = request.POST.get('course')
-        data1.yrandsec = request.POST.get('yrandsec')
-        data1.sched = request.POST.get('sched')
         data1.save()
         return redirect('/s_adding')
 
@@ -540,11 +532,7 @@ def s_dropping(request):
 def s_dropping1(request):
     if request.method=='POST': 
         studID = request.POST.get('studID')
-        subject = request.POST.get('subject')
-        course = request.POST.get('course')
-        yrandsec = request.POST.get('yrandsec')
-        reason = request.POST.get('reason')
-        add = DroppingReq.objects.create(studID=studID, subject=subject, course=course, yrandsec=yrandsec, reason=reason)
+        add = DroppingReq.objects.create(studID=studID)
         add.save()
     return redirect('/s_dropping')
 
@@ -580,10 +568,7 @@ def s_transferring1(request):
     if request.method=='POST': 
         studID = request.POST.get('studID')
         subject = request.POST.get('subject')
-        course = request.POST.get('course')
-        yrandsec = request.POST.get('yrandsec')
-        reason = request.POST.get('reason')
-        add = TransferringReq.objects.create(studID=studID, subject=subject, course=course, yrandsec=yrandsec, reason=reason)
+        add = TransferringReq.objects.create(studID=studID)
         add.save()
     return redirect('/s_transferring')
 

@@ -98,7 +98,7 @@
                     <div class="form-group mx-sm-3 mb-2">
                         <input type="file" name="subcvsfile" id="subcvsfile" required>
                     </div>
-                    <button type="submit" class="btn btn-primary mb-2">Import CSV File</button>
+                    <button type="submit" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" class="btn btn-primary mb-2">Import CSV File</button>
                 </form>
             </div>
 
@@ -126,7 +126,7 @@
                     <div class="form-group mx-sm-3 mb-2">
                         <input type="file" name="subcvsfile" id="subcvsfile" required>
                     </div>
-                    <button type="submit" class="btn btn-primary mb-2">Import CSV File</button>
+                    <button type="submit"  accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" class="btn btn-primary mb-2">Import CSV File</button>
                 </form>
             </div>
 
@@ -137,6 +137,7 @@
                         <th>NO.</th>
                         <th>PROGRAM</th>
                         <th>SCHOOL YEAR</th>
+                        <th>SEMESTER</th>
                         <th>SUBJECT CODE</th>
                         <th>DESCRIPTION</th>
                         <th>LEC</th>
@@ -163,7 +164,7 @@
                 <form class="form-inline" action="/acc_cvs" method="post" enctype="multipart/form-data" name="studcvsfile">
                     {% csrf_token %}
                     <div class="form-group mx-sm-3 mb-2">
-                        <input type="file" name="studcvsfile" id="studcvsfile" required>
+                        <input type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" name="studcvsfile" id="studcvsfile" required>
                     </div>
                     <button type="submit" class="btn btn-primary mb-2">Import CSV File</button>
                 </form>
@@ -182,9 +183,10 @@
                         {% for e in emails %}
                         <tr>
                             <td>{{e.id}}</td>
+                            <td>{{e.name}}</td>
+                            <td>{{e.course_year_and_section}}</td>
                             <td>{{e.email}}</td>
-                            <td></td>
-                            <td></td>
+                            
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -215,17 +217,62 @@
                     </select>
                     </div>
                     <div class="col">
+                        <label for="section">Section</label>
+                        <input type="text" class="form-control" name="section" id="section" required>
+                    </div>
+                    <div class="col">
                         <label for="button">.</label>
-                        <input type="submit" class="form-control" id="button" value="Update Schedule" required>
+                        <input type="submit" class="form-control" id="button" value="Add" required>
                     </div>
                 </div>
             </form>
 
 
-            <div style="overflow-x:auto; margin-bottom:2%;">
-                <!--Defaul link: https://docs.google.com/spreadsheets/d/e/2PACX-1vRyXUDWAdZM2wLlrOCTJH737SRYTjNYjMevJTCOBE-OdcMXwgnaVoABk7KC5yxvTbFC8qDSeLKFXAHg/pubhtml -->
-                <iframe src="{{sched.gSheetLink}}" width="100%" height="500"></iframe>
-            </div>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" id="home-tab" data-toggle="tab" data-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Live View</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="profile-tab" data-toggle="tab" data-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Table</button>
+                </li>
+              </ul>
+              <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div style="overflow-x:auto; margin-bottom:2%;">
+                            <!--Defaul link: https://docs.google.com/spreadsheets/d/e/2PACX-1vRyXUDWAdZM2wLlrOCTJH737SRYTjNYjMevJTCOBE-OdcMXwgnaVoABk7KC5yxvTbFC8qDSeLKFXAHg/pubhtml -->
+                            {% for e in sched %}
+                            <iframe src="{{e.gSheetLink}}" width="100%" height="500"></iframe>
+                            {% endfor %}
+                        </div>
+                </div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <div style="overflow-x:auto; margin-bottom:2%;">
+                        <table class="table table-bordered">
+                            <thead>
+                                <th>NO.</th>
+                                <th>Link</th>
+                                <th>YEAR</th>
+                                <th>SEMESTER</th>
+                                <th>SECTION</th>
+                            </thead>
+                            <tbody>
+                                {% for e in sched %}
+                                <tr>
+                                    <td>{{e.id}}</td>
+                                    <td>{{e.gSheetLink}}</td>
+                                    <td>{{e.year}}</td>
+                                    <td>{{e.semester}}</td>
+                                    
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+              </div>
+
+
+            
 
         </div>
     </div>
@@ -235,9 +282,14 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     {% if messages %} {% for message in messages %} {% if message.tags %}
     <script>
-        alert("{{ message }}")
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: '{{ message }}',
+        })
     </script> {% endif %} {% endfor %} {% endif %}
 
     <!--DATATABLES-->

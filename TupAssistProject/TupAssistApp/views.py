@@ -282,7 +282,7 @@ def r_dashboard(request):
     current_user = request.user
     subs = Subjects.objects.all()
     status = TransStatus.objects.all()
-    sched = Schedule.objects.latest('id')
+    sched = Schedule.objects.all()
     emails = StudentReference.objects.all()
     # latest_sched = sched.gSheetLink
     # print(latest_sched)
@@ -304,9 +304,14 @@ def acc_cvs(request):
         decoded_file = studcvsfile.read().decode('utf-8').splitlines()
         reader = csv.reader(decoded_file)
         print(reader)
-        for i in reader:
-            new_revo = StudentReference.objects.create(email=str(i)[2:-2])
-            new_revo.save()
+        for row in reader:
+            # new_revo = StudentReference.objects.create(email=str(i)[2:-2])
+            try:
+                new_revo = StudentReference.objects.create(name=str(row[0]), course_year_and_section=str(row[1]), email=str(row[2]))
+                new_revo.save()
+            except:
+                messages.error(request, 'it looks like CSV format is not match to the table.')
+                return redirect('/r_dashboard')
         return redirect('/r_dashboard')
     return redirect('/r_dashboard')
 
@@ -324,6 +329,7 @@ def sub_cvs(request):
                 new_revo = Subjects.objects.create(SubCode=str(row[0]), SubName=str(row[1]), Course=str(row[2]), Units=int(row[3]))
                 new_revo.save()
             except:
+                messages.error(request, 'it looks like CSV format is not match to the table.')
                 return redirect('/r_dashboard')
         return redirect('/r_dashboard')
     return redirect('/r_dashboard')

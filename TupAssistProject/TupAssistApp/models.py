@@ -116,10 +116,10 @@ class registration(AbstractUser):
     yrandsec = models.CharField(max_length=255, choices= yrandsec, null=True, blank=True)
     userType = models.CharField(max_length=255, choices= userType, verbose_name='userType', null=True)
     department = models.CharField(max_length=255, choices= department, verbose_name='department', null=True)
-    upload = models.FileField(upload_to ='grades/')
-    addStatus = models.CharField(max_length=255, null=True, blank=True)
-    dropStatus = models.CharField(max_length=255, null=True, blank=True)
-    transferStatus = models.CharField(max_length=255, null=True, blank=True)
+    upload = models.FileField(upload_to ='grades/', null=True, blank=True)
+    addStatus = models.CharField(max_length=255, blank=True)
+    dropStatus = models.CharField(max_length=255, blank=True)
+    transferStatus = models.CharField(max_length=255, blank=True)
 
 
 
@@ -129,6 +129,8 @@ class registration(AbstractUser):
 
 
 class StudentReference(models.Model):
+    name = models.CharField(max_length=255, null=True, blank=True)
+    course_year_and_section = models.CharField(max_length=255, null=True, blank=True)
     email = models.CharField(max_length=255, null=True, blank=True)
 
     class Meta:

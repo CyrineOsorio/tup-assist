@@ -107,8 +107,12 @@ a:focus {
     display: grid;
     background-color: white;
     margin-top: 2%;
-    padding: 20px 20px 20px 20px;
+    padding: 20px 60px 20px 60px;
     border-radius: 10px;
+}
+
+.container {
+    width: 100%;
 }
 
 .table {
@@ -148,7 +152,12 @@ a:focus {
         text-align: center;
     }
     .bg-container {
+        width: 100%;
         padding: 2% 5% 2% 5%;
+    }
+    .content {
+        width: 100%;
+        padding: 20px 20px 20px 20px;
     }
 }
 
@@ -191,6 +200,11 @@ a:focus {
 .form-group3,
 .form-group3a {
     width: 100%;
+}
+
+#sub_button {
+    margin-top: 20px;
+    background-color: #388465;
 }
 
 

@@ -87,7 +87,7 @@ a:focus {
 /* body */
 
 body {
-    height: 100vh;
+    height: 100%;
     background-color: #ECECEC;
 }
 
@@ -157,6 +157,10 @@ body {
     border-radius: 5%;
 }
 
+#profile {
+    width: 100%;
+}
+
 @media only screen and (max-width: 1000px) {
     .navbarLagayan {
         text-align: center;
@@ -181,7 +185,12 @@ body {
         text-align: center;
     }
     .bg-container {
-        padding: 2% 5% 2% 5%;
+        padding: 2% 2% 2% 2%;
+    }
+    .content {
+        width: 100%;
+        padding: 2px 2px 2px 2px;
+   
     }
 }
 

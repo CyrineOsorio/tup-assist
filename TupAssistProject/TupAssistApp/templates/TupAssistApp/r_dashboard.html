@@ -140,17 +140,21 @@
                         <th>SEMESTER</th>
                         <th>SUBJECT CODE</th>
                         <th>DESCRIPTION</th>
+                        <th>SLOTS</th>
                     </thead>
                     <tbody>
-                        
+                        {% for i in subs %}
                         <tr>
+                            <td>{{i.id}}</td>
+                            <td>{{i.program}}</td>
+                            <td>{{i.school_year}}</td>
+                            <td>{{i.semester}}</td>
+                            <td>{{i.subject_code}}</td>
+                            <td>{{i.description}}</td>
                             <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            
                         </tr>
+                        {% endfor %}
                        
                     </tbody>
                 </table>
@@ -203,8 +207,8 @@
                         <input type="text" class="form-control" name="gSheetLink" id="gSheetLink" required>
                     </div>
                     <div class="col">
-                        <label for="year">School Year</label>
-                        <input type="number" class="form-control" name="year" id="year" required>
+                        <label for="school_year">School Year</label>
+                        <input type="number" class="form-control" name="school_year" id="school_year" required>
                     </div>
                     <div class="col">
                         <label for="semester">Semester</label>
@@ -215,8 +219,12 @@
                     </select>
                     </div>
                     <div class="col">
-                        <label for="section">Course Year Section</label>
-                        <input type="text" class="form-control" name="section" id="section" required>
+                        <label for="course_year_and_section">Course Year Section</label>
+                        <input type="text" class="form-control" name="course_year_and_section" id="course_year_and_section" required>
+                    </div>
+                    <div class="col">
+                        <label for="slots">Slots</label>
+                        <input type="number" class="form-control" name="slots" id="slots" required>
                     </div>
                     <div class="col">
                         <label for="button">.</label>
@@ -252,16 +260,15 @@
                                 <th>SCHOOL YEAR</th>
                                 <th>SEMESTER</th>
                                 <th>COURSE YEAR AND SECTION</th>
-                                <th>SLOTS</th>
                             </thead>
                             <tbody>
                                 {% for e in sched %}
                                 <tr>
                                     <td>{{e.id}}</td>
                                     <td>{{e.gSheetLink}}</td>
-                                    <td>{{e.year}}</td>
+                                    <td>{{e.school_year}}</td>
                                     <td>{{e.semester}}</td>
-                                    
+                                    <td>{{e.course_year_and_section}}</td>
                                 </tr>
                                 {% endfor %}
                             </tbody>

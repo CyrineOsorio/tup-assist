@@ -326,7 +326,7 @@ def sub_cvs(request):
         for row in reader:
             print(row)
             try:
-                new_revo = Subjects.objects.create(SubCode=str(row[0]), SubName=str(row[1]), Course=str(row[2]), Units=int(row[3]))
+                new_revo = Subjects.objects.create(program=str(row[0]), school_year=int(row[1]), semester=str(row[2]), subject_code=str(row[3]), description=str(row[4]))
                 new_revo.save()
             except:
                 messages.error(request, 'it looks like CSV format is not match to the table.')
@@ -338,9 +338,11 @@ def sub_cvs(request):
 def import_sched(request):
     if request.method=='POST': 
         gSheetLink = request.POST.get('gSheetLink')
-        year = request.POST.get('year')
+        school_year = request.POST.get('school_year')
         semester = request.POST.get('semester')
-        data = Schedule.objects.create(gSheetLink = gSheetLink, year = year, semester = semester)
+        course_year_and_section  = request.POST.get('course_year_and_section')
+        slots  = request.POST.get('slots')
+        data = Schedule.objects.create(gSheetLink = gSheetLink, school_year = school_year, semester = semester, course_year_and_section=course_year_and_section, slots=slots)
         data.save()
         return redirect('/r_dashboard')
 

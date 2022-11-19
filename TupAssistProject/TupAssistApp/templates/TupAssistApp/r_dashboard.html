@@ -140,20 +140,18 @@
                         <th>SEMESTER</th>
                         <th>SUBJECT CODE</th>
                         <th>DESCRIPTION</th>
-                        <th>LEC</th>
-                        <th>LAB</th>
-                        <th>SLOTS</th>
                     </thead>
                     <tbody>
-                        {% for subs in subs %}
+                        
                         <tr>
-                            <td>{{subs.id}}</td>
-                            <td>{{subs.SubCode}}</td>
-                            <td>{{subs.SubName}}</td>
-                            <td>{{subs.Course}}</td>
-                            <td>{{subs.Units}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
-                        {% endfor %}
+                       
                     </tbody>
                 </table>
             </div>
@@ -195,7 +193,7 @@
 
 
             <div class="title">
-                <p>SCHEDULE</p>
+                <p>SCHEDULE AND SLOTS</p>
             </div>
             <form action="/import_sched" method="post" style="margin-bottom:2%;">
                 {% csrf_token %}
@@ -217,7 +215,7 @@
                     </select>
                     </div>
                     <div class="col">
-                        <label for="section">Section</label>
+                        <label for="section">Course Year Section</label>
                         <input type="text" class="form-control" name="section" id="section" required>
                     </div>
                     <div class="col">
@@ -251,9 +249,10 @@
                             <thead>
                                 <th>NO.</th>
                                 <th>LINK</th>
-                                <th>YEAR</th>
+                                <th>SCHOOL YEAR</th>
                                 <th>SEMESTER</th>
-                                <th>SECTION</th>
+                                <th>COURSE YEAR AND SECTION</th>
+                                <th>SLOTS</th>
                             </thead>
                             <tbody>
                                 {% for e in sched %}

@@ -8,10 +8,11 @@ from django.contrib.auth.models import AbstractUser
 
 # CvS file of subjects to import in Subjects Model
 class Subjects(models.Model):           
-    SubCode = models.CharField(max_length=255)
-    SubName = models.CharField(max_length=255)
-    Course = models.CharField(max_length=255)
-    Units = models.IntegerField(blank=True, null=True)
+    program = models.CharField(max_length=255)
+    school_year = models.IntegerField(blank=True, null=True)
+    semester = models.CharField(max_length=255)
+    subject_code = models.CharField(max_length=255)
+    description = models.CharField(max_length=255)
 
     class Meta:
         verbose_name_plural = "Subjects"

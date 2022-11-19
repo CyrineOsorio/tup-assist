@@ -75,6 +75,13 @@ a:focus {
     justify-self: flex-end;
 }
 
+/* body */
+
+body {
+    height: 100%;
+    background-color: #ECECEC;
+}
+
 
 /* katawan yung section */
 
@@ -109,7 +116,7 @@ a:focus {
 
 .innerBody {
     width: 100%;
-    height: auto;
+    height: 100%;
     border-radius: 5px;
     background-color: #F8F9FB;
     padding: 4% 4% 4% 4%;
@@ -278,6 +285,7 @@ h2 {
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 20px;
     padding: 3rem;
+    width: 100%;
 }
 
 .font-normal {
@@ -422,6 +430,11 @@ ul.form-stepper li a .form-stepper-circle {
 #step-2,
 #step-3 {
     border: solid 1px #319AE4;
+    width: 100%;
+}
+
+table {
+    width: 100%;
 }
 
 #step1 {

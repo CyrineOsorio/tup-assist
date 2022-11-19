@@ -87,7 +87,7 @@
                                 <span class="form-stepper-circle">
                                         <span>1</span>
                                 </span>
-                                <div class="label">Offering of Subjects</div>
+                                <div class="label">Offering of Subjects for Student</div>
                             </a>
                         </li>
                         <!-- Step 2 -->
@@ -96,7 +96,7 @@
                                 <span class="form-stepper-circle text-muted">
                                         <span>2</span>
                                 </span>
-                                <div class="label text-muted">Step 2</div>
+                                <div class="label text-muted">I-check ang mga plinot ni Student na Schedule.</div>
                             </a>
                         </li>
                         <!-- Step 3 -->
@@ -108,47 +108,71 @@
                                 <div class="label text-muted">Step 3</div>
                             </a>
                         </li>
+                        <!-- Step 4 -->
+                        <li class="form-stepper-unfinished text-center form-stepper-list" step="4">
+                            <a class="mx-2">
+                                <span class="form-stepper-circle text-muted">
+                                        <span>4</span>
+                                </span>
+                                <div class="label text-muted">Step 4</div>
+                            </a>
+                        </li>
                     </ul>
+
+
+
                     <!-- Step Wise Form Content -->
                     <!-- <form id="userAccountSetupForm" name="userAccountSetupForm" enctype="multipart/form-data" method="POST"> -->
                     <!-- Step 1 Content -->
                     <section id="step-1" class="form-step">
-                        <h2 class="font-normal">Offering of Subjects</h2>
+                        <h2 class="font-normal">Offering of Subjects for Student</h2>
                         <!-- Step 1 input fields -->
                         <div class="mt-3">
-                            Step 1 input fields goes here..
-
-
                             <!--HTML code to display data in tabular format-->
+
                             <table class="table table-bordered">
                                 <thead>
                                     <th>NO.</th>
                                     <th>STUDENT NUMBER</th>
                                     <th>SUBJECT</th>
-                                    <th>ACTION</th>
                                 </thead>
 
                                 <tbody>
                                     <tr>
-                                        <td></td>
+                                        <td>1</td>
                                         <td><input type="text" class="form-control" value="{{student_info.studID}}" readonly></td>
                                         <td><input type="text" class="form-control"></td>
-                                        <td class="action"> <button type="button" class="btn btn-primary">Add</button> </td>
                                     </tr>
                                     <tr>
-                                        <td></td>
+                                        <td>2</td>
                                         <td><input type="text" class="form-control" value="{{student_info.studID}}" readonly></td>
                                         <td><input type="text" class="form-control"></td>
-                                        <td class="action"> <button type="button" class="btn btn-primary">Add</button> </td>
                                     </tr>
                                     <tr>
-                                        <td></td>
+                                        <td>3</td>
                                         <td><input type="text" class="form-control" value="{{student_info.studID}}" readonly></td>
                                         <td><input type="text" class="form-control"></td>
-                                        <td class="action"> <button type="button" class="btn btn-primary">Add</button> </td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td><input type="text" class="form-control" value="{{student_info.studID}}" readonly></td>
+                                        <td><input type="text" class="form-control"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td><input type="text" class="form-control" value="{{student_info.studID}}" readonly></td>
+                                        <td><input type="text" class="form-control"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td><input type="text" class="form-control" value="{{student_info.studID}}" readonly></td>
+                                        <td><input type="text" class="form-control"></td>
                                     </tr>
                                 </tbody>
                             </table>
+                            
+
+
 
 
 
@@ -159,10 +183,70 @@
                     </section>
                     <!-- Step 2 Content, default hidden on page load. -->
                     <section id="step-2" class="form-step d-none">
-                        <h2 class="font-normal">Step 2</h2>
+                        <h2 class="font-normal">I-check ang mga plinot ni Student na Schedule.</h2>
                         <!-- Step 2 input fields -->
                         <div class="mt-3">
-                            Step 2 input fields goes here..
+                            <table class="table table-bordered">
+                                <thead>
+                                    <th>NO.</th>
+                                    <th>STUDENT NUMBER</th>
+                                    <th>SUBJECT</th>
+                                    <th>SECTION</th>
+                                    <th>DAY</th>
+                                    <th>TIME</th>
+                                </thead>
+
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td><input type="text" class="form-control" value="{{student_info.studID}}" readonly></td>
+                                        <td><input type="text" class="form-control"></td>
+                                        <td><input type="text" class="form-control"></td>
+                                        <td><input type="text" class="form-control"></td>
+                                        <td><input type="text" class="form-control"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td><input type="text" class="form-control" value="{{student_info.studID}}" readonly></td>
+                                        <td><input type="text" class="form-control"></td>
+                                        <td><input type="text" class="form-control"></td>
+                                        <td><input type="text" class="form-control"></td>
+                                        <td><input type="text" class="form-control"></td>
+                                       
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td><input type="text" class="form-control" value="{{student_info.studID}}" readonly></td>
+                                        <td><input type="text" class="form-control"></td>
+                                        <td><input type="text" class="form-control"></td>
+                                        <td><input type="text" class="form-control"></td>
+                                        <td><input type="text" class="form-control"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td><input type="text" class="form-control" value="{{student_info.studID}}" readonly></td>
+                                        <td><input type="text" class="form-control"></td>
+                                        <td><input type="text" class="form-control"></td>
+                                        <td><input type="text" class="form-control"></td>
+                                        <td><input type="text" class="form-control"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td><input type="text" class="form-control" value="{{student_info.studID}}" readonly></td>
+                                        <td><input type="text" class="form-control"></td>
+                                        <td><input type="text" class="form-control"></td>
+                                        <td><input type="text" class="form-control"></td>
+                                        <td><input type="text" class="form-control"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text">Reasons:</span>
+                                </div>
+                                <textarea class="form-control" aria-label="With textarea"></textarea>
+                              </div>
                         </div>
                         <div class="mt-3">
                             <button class="button btn-navigate-form-step" type="button" step_number="1">Prev</button>
@@ -178,6 +262,18 @@
                         </div>
                         <div class="mt-3">
                             <button class="button btn-navigate-form-step" type="button" step_number="2">Prev</button>
+                            <button class="button btn-navigate-form-step" type="button" step_number="4">Next</button>
+                        </div>
+                    </section>
+                    <!-- Step 4 Content, default hidden on page load. -->
+                    <section id="step-4" class="form-step d-none">
+                        <h2 class="font-normal">Step 4</h2>
+                        <!-- Step 4 input fields -->
+                        <div class="mt-3">
+                            Step 4 input fields goes here..
+                        </div>
+                        <div class="mt-3">
+                            <button class="button btn-navigate-form-step" type="button" step_number="3">Prev</button>
                             <button class="button submit-btn" type="submit">Save</button>
                         </div>
                     </section>

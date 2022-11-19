@@ -170,6 +170,7 @@
 
                                 {% endif %} {% if current_user.upload != '' %}
                                 <div class="lagayanngfile">
+                                    <h5>Note:<span class="note"> You already submitted your grades through PDF File. Proceed to step 2 now.</span></h5>
                                     <a href="#" class="alert-link" onclick="window.open('{{ current_user.upload.url }}');">{{ current_user.upload }}</a> <a href="{%url 'TupAssistApp:delupload'%}"><i class="bi bi-x-circle" style="margin-left: 5%; color: #E2435E"></i></a>
                                 </div>
                                 {% endif %}
@@ -190,7 +191,7 @@
                                 Step 2 input fields goes here..
                             </div>
 
-                            
+
                             <div class="mt-3">
                                 <button class="button btn-navigate-form-step" type="button" step_number="1">Prev</button>
                                 <button class="button btn-navigate-form-step" type="button" step_number="3">Next</button>

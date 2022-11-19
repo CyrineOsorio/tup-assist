@@ -422,9 +422,11 @@ def r_staff_create(request):
     form = HeadRegistration(request.POST)
     if form.is_valid():
         form.save()
+        messages.error(request, 'Account Successfully Created!')
         return redirect ('/r_staff')
     else:
         messages.error(request, 'Invalid Credentials!')
+        return redirect ('/r_staff')
     return render(request, 'TupAssistApp/r_staff.html')
 
 

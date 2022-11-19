@@ -377,7 +377,7 @@ def r_adding(request):
         'test': test,
         'current_user': current_user,
         }
-    return render(request, 'TupAssistApp/r_dashboard.html', context)
+    return render(request, 'TupAssistApp/r_adding.html', context)
 
 def r_adding_view(request, id):
     current_user = request.user

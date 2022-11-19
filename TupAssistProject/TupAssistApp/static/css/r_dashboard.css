@@ -123,72 +123,31 @@ body {
     border: solid 0.5px #388465;
 }
 
-.transtatus-label {
-    margin-top: 2%;
+.title {
+    margin-top: 20px;
     width: 100%;
     display: flex;
     justify-content: space-between;
 }
 
-.transtatus-label p {
+.title p {
     width: 50%;
     height: 100%;
     font-weight: bold;
 }
 
-.gsfe-account-label {
-    margin-top: 2%;
-    display: flex;
-    justify-content: space-between;
-}
 
-.gsfe-account-label p {
-    width: 50%;
-    height: 100%;
-    font-weight: bold;
-}
-
-.gsfe-account-label button {
+.title button {
     background-color: #388465;
     border: 1px solid #388465;
 }
 
-.gsfe-account-label input {
+.title input {
     border: 1px solid #388465;
 }
 
-.offersub-label {
-    margin-top: 2%;
+#trans_status {
     display: flex;
-    justify-content: space-between;
-}
-
-.offersub-label p {
-    width: 50%;
-    height: 100%;
-    font-weight: bold;
-}
-
-.offersub-label button {
-    background-color: #388465;
-    border: 1px solid #388465;
-}
-
-.offersub-label input {
-    border: 1px solid #388465;
-}
-
-.schedule-label {
-    margin-top: 2%;
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-}
-
-.schedule-label p {
-    width: 50%;
-    height: 100%;
-    font-weight: bold;
 }
 
 #button {

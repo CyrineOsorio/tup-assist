@@ -28,8 +28,10 @@ class TransStatus(models.Model):
 # CvS file of schedule to import in Schedule Model
 class Schedule(models.Model):
     gSheetLink = models.CharField(max_length=500, null=True, blank=True)
-    year = models.IntegerField(blank=True, null=True)
+    school_year = models.IntegerField(blank=True, null=True)
     semester = models.IntegerField(blank=True, null=True)
+    course_year_and_section = models.CharField(max_length=255, null=True, blank=True)
+    slots = models.IntegerField(blank=True, null=True)
 
     class Meta:
         verbose_name_plural = "Schedule" 

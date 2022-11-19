@@ -37,16 +37,16 @@ urlpatterns = [
     path('h-schedule/', views.h_schedule, name='h_schedule'),
 
     #registrar
-    path('registrar/', views.registrar, name='registrar'),
+    path('r_dashboard/', views.r_dashboard, name='r_dashboard'),
     path('acc_cvs', views.acc_cvs, name='acc_cvs'),
     path('sub_cvs', views.sub_cvs, name='sub_cvs'),
     path('transStatus/<int:id>', views.transStatus),
     path('import_sched', views.import_sched, name='import_sched'),
-    path('r-adding/', views.r_adding, name='r_adding'),
-    path('r-adding-view/<int:id>', views.r_adding_view),
-    path('r-dropping/', views.r_dropping, name='r_dropping'),
-    path('r-transferring/', views.r_transferring, name='r_transferring'),
-    path('r-staff/', views.r_staff, name='r_staff'),
+    path('r_adding/', views.r_adding, name='r_adding'),
+    path('r_adding_view/<int:id>', views.r_adding_view),
+    path('r_dropping/', views.r_dropping, name='r_dropping'),
+    path('r_transferring/', views.r_transferring, name='r_transferring'),
+    path('r_staff/', views.r_staff, name='r_staff'),
     path('r_staff_create', views.r_staff_create, name='r_staff_create'),
     
     

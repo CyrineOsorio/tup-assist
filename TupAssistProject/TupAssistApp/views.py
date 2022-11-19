@@ -42,7 +42,7 @@ def index(request):
 
         if user is not None and user.is_superuser == True:
             login(request, user)
-            return redirect('/registrar')
+            return redirect('/r-dashboard')
 
         elif user is not None and user.userType == 'STDNT':
             login(request, user)
@@ -291,9 +291,9 @@ def h_schedule(request):
 
 
 
-# REGISTRAR PAGES
+# CUSTOMIZE ADMIN PAGES FOR OAA AND REGISTRAR
 
-def registrar(request):
+def r_dashboard(request):
     current_user = request.user
     subs = Subjects.objects.all()
     status = TransStatus.objects.all()
@@ -308,7 +308,7 @@ def registrar(request):
         'sched': sched,
         'emails': emails
     }
-    return render(request, 'TupAssistApp/registrar.html', context)
+    return render(request, 'TupAssistApp/r_dashboard.html', context)
 
 
 def acc_cvs(request):
@@ -322,9 +322,8 @@ def acc_cvs(request):
         for i in reader:
             new_revo = StudentReference.objects.create(email=str(i)[2:-2])
             new_revo.save()
-        return redirect('/registrar')
-   
-    return redirect('/registrar')
+        return redirect('/r_dashboard')
+    return redirect('/r_dashboard')
 
 def sub_cvs(request):
     if request.method=='POST': 
@@ -340,9 +339,9 @@ def sub_cvs(request):
                 new_revo = Subjects.objects.create(SubCode=str(row[0]), SubName=str(row[1]), Course=str(row[2]), Units=int(row[3]))
                 new_revo.save()
             except:
-                return redirect('/registrar')
-        return redirect('/registrar')
-    return redirect('/registrar')
+                return redirect('/r_dashboard')
+        return redirect('/r_dashboard')
+    return redirect('/r_dashboard')
 
 
 def import_sched(request):
@@ -352,7 +351,7 @@ def import_sched(request):
         semester = request.POST.get('semester')
         data = Schedule.objects.create(gSheetLink = gSheetLink, year = year, semester = semester)
         data.save()
-        return redirect('/registrar')
+        return redirect('/r_dashboard')
 
 # switch toggle for transaction status
 # https://stackoverflow.com/questions/55671266/how-to-use-toggle-switch-with-django-boolean-field
@@ -365,11 +364,11 @@ def transStatus(request,id):
         status.status = status1
         status.save()
         print(status)
-        return redirect('/registrar')
+        return redirect('/r_dashboard')
     else:
         status.status = 'Open'
         status.save()
-        return redirect('/registrar')
+        return redirect('/r_dashboard')
 
 def r_adding(request):
     current_user = request.user = request.user

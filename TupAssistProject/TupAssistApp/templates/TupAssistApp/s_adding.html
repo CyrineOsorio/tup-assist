@@ -126,6 +126,7 @@
                                 </a>
                             </li>
                         </ul>
+
                         <!-- Step Wise Form Content -->
                         <!-- <form id="userAccountSetupForm" name="userAccountSetupForm" enctype="multipart/form-data" method="POST"> -->
                         <!-- Step 1 Content -->
@@ -170,7 +171,9 @@
 
                                 {% endif %} {% if current_user.upload != '' %}
                                 <div class="lagayanngfile">
-                                    <h5>Note:<span class="note"> You already submitted your grades through PDF File. Proceed to step 2 now.</span></h5>
+                                    <div class="alert alert-success" role="alert">
+                                        Notice: You already submitted your grades. Proceed to step 2 now.
+                                    </div>
                                     <a href="#" class="alert-link" onclick="window.open('{{ current_user.upload.url }}');">{{ current_user.upload }}</a> <a href="{%url 'TupAssistApp:delupload'%}"><i class="bi bi-x-circle" style="margin-left: 5%; color: #E2435E"></i></a>
                                 </div>
                                 {% endif %}
@@ -183,10 +186,9 @@
                             </div>
                         </section>
                         <!-- Step 2 Content, default hidden on page load. -->
-
                         <section id="step-2" class="form-step d-none">
                             <div class="alert alert-danger" role="alert">
-                                Notice: Hintayin ang Program-in-charge, sa Subject na i-ooffer sa'yo! Ang input ay nakadisable kapag wala pang notice ni PIC.
+                                Notice: Hintayin ang Program-in-charge, sa Subject na i-ooffer sa'yo. Ang input ay nakadisable kapag wala pang notice ni PIC.
                               </div>
                             
                             <h2 class="font-normal">Typing of Schedule</h2>
@@ -205,7 +207,7 @@
                                     <tbody>
                                         <tr>
                                             <td>1</td>
-                                            <td><input type="text" class="form-control" value="{{student_info.studID}}" readonly></td>
+                                            <td><input type="text" class="form-control" value="{{current_user.studID}}" readonly></td>
                                             <td><input type="text" class="form-control"></td>
                                             <td><input type="text" class="form-control"></td>
                                             <td><input type="text" class="form-control"></td>
@@ -213,7 +215,7 @@
                                         </tr>
                                         <tr>
                                             <td>2</td>
-                                            <td><input type="text" class="form-control" value="{{student_info.studID}}" readonly></td>
+                                            <td><input type="text" class="form-control" value="{{current_user.studID}}" readonly></td>
                                             <td><input type="text" class="form-control"></td>
                                             <td><input type="text" class="form-control"></td>
                                             <td><input type="text" class="form-control"></td>
@@ -222,7 +224,7 @@
                                         </tr>
                                         <tr>
                                             <td>3</td>
-                                            <td><input type="text" class="form-control" value="{{student_info.studID}}" readonly></td>
+                                            <td><input type="text" class="form-control" value="{{current_user.studID}}" readonly></td>
                                             <td><input type="text" class="form-control"></td>
                                             <td><input type="text" class="form-control"></td>
                                             <td><input type="text" class="form-control"></td>
@@ -230,7 +232,7 @@
                                         </tr>
                                         <tr>
                                             <td>4</td>
-                                            <td><input type="text" class="form-control" value="{{student_info.studID}}" readonly></td>
+                                            <td><input type="text" class="form-control" value="{{current_user.studID}}" readonly></td>
                                             <td><input type="text" class="form-control"></td>
                                             <td><input type="text" class="form-control"></td>
                                             <td><input type="text" class="form-control"></td>
@@ -238,7 +240,7 @@
                                         </tr>
                                         <tr>
                                             <td>5</td>
-                                            <td><input type="text" class="form-control" value="{{student_info.studID}}" readonly></td>
+                                            <td><input type="text" class="form-control" value="{{current_user.studID}}" readonly></td>
                                             <td><input type="text" class="form-control"></td>
                                             <td><input type="text" class="form-control"></td>
                                             <td><input type="text" class="form-control"></td>

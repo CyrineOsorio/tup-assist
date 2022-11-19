@@ -288,8 +288,9 @@ footer button img {
         text-align: center;
         padding: 10% 10% 10% 10%;
     }
-    section {
+    .bg-container {
         width: 100%;
+        padding: 2% 2% 2% 2%;
     }
     .bodybody {
         width: 100%;
@@ -320,6 +321,7 @@ h2 {
 }
 
 #multi-step-form-container {
+    width: 100%;
     margin-top: 5rem;
 }
 
@@ -362,6 +364,7 @@ h2 {
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 20px;
     padding: 3rem;
+    width: 100%;
 }
 
 .font-normal {
@@ -506,17 +509,17 @@ ul.form-stepper li a .form-stepper-circle {
 #step-2,
 #step-3 {
     border: solid 1px #E2435E;
+    width: 100%;
 }
 
-#step1 {
+#step1,
+#step2,
+#step3 {
     display: grid;
+    width: 100%;
 }
 
 #step1 button {
     background-color: #E2435E;
     border: solid 1px #E2435E;
-}
-
-.note {
-    font-weight: 500;
 }

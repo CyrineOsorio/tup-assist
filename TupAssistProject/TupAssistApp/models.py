@@ -4,7 +4,13 @@ from django.db.models import Model
 import os
 from django.contrib.auth.models import AbstractUser
 
-# Create your models here.
+# Transaction json file to import | code in terminal: python manage.py loaddata data.json
+class TransStatus(models.Model):
+    TransName = models.CharField(max_length=100, null=True, blank=True)
+    status = models.CharField(max_length=100, null=True, blank=True)  
+
+    class Meta:
+        verbose_name_plural = "TransStatus" 
 
 # CvS file of subjects to import in Subjects Model
 class Subjects(models.Model):           
@@ -15,15 +21,7 @@ class Subjects(models.Model):
     description = models.CharField(max_length=255)
 
     class Meta:
-        verbose_name_plural = "Subjects"
-
-# Transaction json file to import | code in terminal: python manage.py loaddata data.json
-class TransStatus(models.Model):
-    TransName = models.CharField(max_length=100, null=True, blank=True)
-    status = models.CharField(max_length=100, null=True, blank=True)  
-
-    class Meta:
-        verbose_name_plural = "TransStatus"  
+        verbose_name_plural = "Subjects" 
 
 # CvS file of schedule to import in Schedule Model
 class Schedule(models.Model):
@@ -36,34 +34,13 @@ class Schedule(models.Model):
     class Meta:
         verbose_name_plural = "Schedule" 
 
-# Model for Student Adding Transaction
-class AddingReq(models.Model):
-    studID = models.IntegerField()
-    subject = models.CharField(max_length=255, null=True, blank=True)
-    course = models.CharField(max_length=255, null=True, blank=True)
-    yrandsec = models.CharField(max_length=255, null=True, blank=True)
-    sched = models.CharField(max_length=255, null=True, blank=True)
-    picCheck = models.BooleanField(default=False)
-    picComment = models.CharField(max_length=255, null=True, blank=True)
-    headCheck = models.BooleanField(default=False)
-    headComment = models.CharField(max_length=255, null=True, blank=True)
-    
-    class Meta:
-        verbose_name_plural = "AddingReq" 
+class StudentReference(models.Model):
+    name = models.CharField(max_length=255, null=True, blank=True)
+    course_year_and_section = models.CharField(max_length=255, null=True, blank=True)
+    email = models.CharField(max_length=255, null=True, blank=True)
 
-
-class DroppingReq(models.Model):
-    studID = models.IntegerField()
-    
-    
     class Meta:
-        verbose_name_plural = "DroppingReq" 
-
-class TransferringReq(models.Model):
-    studID = models.IntegerField()
-    
-    class Meta:
-        verbose_name_plural = "TransferringReq" 
+        verbose_name_plural = "StudentReference" 
 
 
 # Student Registration and Student account refernce for tupcavite gsfe account only
@@ -124,17 +101,34 @@ class registration(AbstractUser):
     dropStatus = models.CharField(max_length=255, blank=True)
     transferStatus = models.CharField(max_length=255, blank=True)
 
-
-
     class Meta:
         verbose_name_plural = "registration" 
 
 
-
-class StudentReference(models.Model):
-    name = models.CharField(max_length=255, null=True, blank=True)
-    course_year_and_section = models.CharField(max_length=255, null=True, blank=True)
-    email = models.CharField(max_length=255, null=True, blank=True)
-
+# Model for Student Adding Transaction
+class AddingReq(models.Model):
+    studID = models.IntegerField()
+    subject = models.CharField(max_length=255, null=True, blank=True)
+    course = models.CharField(max_length=255, null=True, blank=True)
+    yrandsec = models.CharField(max_length=255, null=True, blank=True)
+    sched = models.CharField(max_length=255, null=True, blank=True)
+    picCheck = models.BooleanField(default=False)
+    picComment = models.CharField(max_length=255, null=True, blank=True)
+    headCheck = models.BooleanField(default=False)
+    headComment = models.CharField(max_length=255, null=True, blank=True)
+    
     class Meta:
-        verbose_name_plural = "StudentReference" 
+        verbose_name_plural = "AddingReq" 
+
+
+class DroppingReq(models.Model):
+    studID = models.IntegerField()
+    
+    class Meta:
+        verbose_name_plural = "DroppingReq" 
+
+class TransferringReq(models.Model):
+    studID = models.IntegerField()
+    
+    class Meta:
+        verbose_name_plural = "TransferringReq" 

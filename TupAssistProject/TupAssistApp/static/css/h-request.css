@@ -75,6 +75,13 @@ a:focus {
     justify-self: flex-end;
 }
 
+#adding,
+#dropping,
+#transferring,
+#schedule {
+    font-weight: bold;
+}
+
 
 /* body */
 

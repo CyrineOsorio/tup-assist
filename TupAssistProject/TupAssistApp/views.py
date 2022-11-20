@@ -122,27 +122,76 @@ def p_adding_edit(request, id):
     current_user = request.user
     data = registration.objects.get(id=id)
     req = AddingReq.objects.filter(studID=data.studID)
-    sched = Schedule.objects.latest('id')
+    sched = Schedule.objects.all()
     context = { 
         'current_user': current_user,
         'student_info': data,
         'req': req,
         'sched': sched
         }
-    if request.method=='POST':
-        ids = request.POST.get('id')
-        edit = AddingReq.objects.get(id=ids)
-        edit.studID = request.POST.get('studID')
-        edit.subject = request.POST.get('subject')
-        edit.course = request.POST.get('course')
-        edit.yrandsec = request.POST.get('yrandsec')
-        edit.sched = request.POST.get('sched')
-        edit.picCheck = request.POST.get('picCheck')
-        edit.picComment = request.POST.get('picComment')
-        edit.save()
-        return redirect('/p-adding-edit/'+ str(id))
-    
     return render(request, 'TupAssistApp/p-adding-edit.html', context)
+
+def p_offer_sub(request):
+    if request.method=='POST':
+        studID = request.POST.get('studID')
+        data = registration.objects.get(studID=studID)
+        sub1 = request.POST.get('sub1')
+        sub2 = request.POST.get('sub2')
+        sub3 = request.POST.get('sub3')
+        sub4 = request.POST.get('sub4')
+        sub5 = request.POST.get('sub5')
+        sub6 = request.POST.get('sub6')
+        sub7 = request.POST.get('sub7')
+        sub8 = request.POST.get('sub8')
+        sub9 = request.POST.get('sub9')
+        sub10 = request.POST.get('sub10')
+        
+        # HANDLING ERROR
+        if sub1 == '' and sub2 == '' and sub3 == '' and sub4 == '' and sub5 == '' and sub6 == '' and sub7 == '' and sub8 == '' and sub9 == '' and sub10 == '':
+            messages.error(request, 'Input atleast 1 offer subject.') 
+            return redirect('/p-adding-edit/'+ str(data.id))
+        if sub1 != '' and sub2 == '' and sub3 == '' and sub4 == '' and sub5 == '' and sub6 == '' and sub7 == '' and sub8 == '' and sub9 == '' and sub10 == '':
+            sub1 = AddingReq.objects.create(studID=studID, subject=sub1)
+            sub1.save()
+            return redirect('/p-adding-edit/'+ str(data.id))
+        elif sub1 != '' and sub2 != '' and sub3 == '' and sub4 == '' and sub5 == '' and sub6 == '' and sub7 == '' and sub8 == '' and sub9 == '' and sub10 == '':
+            add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1), AddingReq(studID=studID, subject=sub2)])
+            return redirect('/p-adding-edit/'+ str(data.id))
+        elif sub1 != '' and sub2 != '' and sub3 != '' and sub4 == '' and sub5 == '' and sub6 == '' and sub7 == '' and sub8 == '' and sub9 == '' and sub10 == '':
+            add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1), AddingReq(studID=studID, subject=sub2), AddingReq(studID=studID, subject=sub3)])
+            return redirect('/p-adding-edit/'+ str(data.id))
+        elif sub1 != '' and sub2 != '' and sub3 != '' and sub4 != '' and sub5 == '' and sub6 == '' and sub7 == '' and sub8 == '' and sub9 == '' and sub10 == '':
+            add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1), AddingReq(studID=studID, subject=sub2), AddingReq(studID=studID, subject=sub3),
+            AddingReq(studID=studID, subject=sub4)])
+            return redirect('/p-adding-edit/'+ str(data.id))
+        elif sub1 != '' and sub2 != '' and sub3 != '' and sub4 != '' and sub5 != '' and sub6 == '' and sub7 == '' and sub8 == '' and sub9 == '' and sub10 == '':
+            add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1), AddingReq(studID=studID, subject=sub2), AddingReq(studID=studID, subject=sub3),
+            AddingReq(studID=studID, subject=sub4), AddingReq(studID=studID, subject=sub5)])
+            return redirect('/p-adding-edit/'+ str(data.id))
+        elif sub1 != '' and sub2 != '' and sub3 != '' and sub4 != '' and sub5 != '' and sub6 != '' and sub7 == '' and sub8 == '' and sub9 == '' and sub10 == '':
+            add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1), AddingReq(studID=studID, subject=sub2), AddingReq(studID=studID, subject=sub3),
+            AddingReq(studID=studID, subject=sub4), AddingReq(studID=studID, subject=sub5), AddingReq(studID=studID, subject=sub6)])
+            return redirect('/p-adding-edit/'+ str(data.id))
+        elif sub1 != '' and sub2 != '' and sub3 != '' and sub4 != '' and sub5 != '' and sub6 != '' and sub7 != '' and sub8 == '' and sub9 == '' and sub10 == '':
+            add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1), AddingReq(studID=studID, subject=sub2), AddingReq(studID=studID, subject=sub3),
+            AddingReq(studID=studID, subject=sub4), AddingReq(studID=studID, subject=sub5), AddingReq(studID=studID, subject=sub6), AddingReq(studID=studID, subject=sub7)])
+            return redirect('/p-adding-edit/'+ str(data.id))
+        elif sub1 != '' and sub2 != '' and sub3 != '' and sub4 != '' and sub5 != '' and sub6 != '' and sub7 != '' and sub8 != '' and sub9 == '' and sub10 == '':
+            add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1), AddingReq(studID=studID, subject=sub2), AddingReq(studID=studID, subject=sub3),
+            AddingReq(studID=studID, subject=sub4), AddingReq(studID=studID, subject=sub5), AddingReq(studID=studID, subject=sub6), AddingReq(studID=studID, subject=sub7),
+            AddingReq(studID=studID, subject=sub8)])
+        elif sub1 != '' and sub2 != '' and sub3 != '' and sub4 != '' and sub5 != '' and sub6 != '' and sub7 != '' and sub8 != '' and sub9 != '' and sub10 == '':
+            add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1), AddingReq(studID=studID, subject=sub2), AddingReq(studID=studID, subject=sub3),
+            AddingReq(studID=studID, subject=sub4), AddingReq(studID=studID, subject=sub5), AddingReq(studID=studID, subject=sub6), AddingReq(studID=studID, subject=sub7),
+            AddingReq(studID=studID, subject=sub8),AddingReq(studID=studID, subject=sub9)])
+            return redirect('/p-adding-edit/'+ str(data.id))
+        elif sub1 != '' and sub2 != '' and sub3 != '' and sub4 != '' and sub5 != '' and sub6 != '' and sub7 != '' and sub8 != '' and sub9 != '' and sub10 != '':
+            add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1), AddingReq(studID=studID, subject=sub2), AddingReq(studID=studID, subject=sub3),
+            AddingReq(studID=studID, subject=sub4), AddingReq(studID=studID, subject=sub5), AddingReq(studID=studID, subject=sub6), AddingReq(studID=studID, subject=sub7),
+            AddingReq(studID=studID, subject=sub8),AddingReq(studID=studID, subject=sub9),AddingReq(studID=studID, subject=sub10)])
+            return redirect('/p-adding-edit/'+ str(data.id))
+
+        
 
 
 
@@ -161,27 +210,13 @@ def h_adding_edit(request, id):
     current_user = request.user
     data = registration.objects.get(id=id)
     req = AddingReq.objects.filter(studID=data.studID)
-    sched = Schedule.objects.latest('id')
+    sched = Schedule.objects.all()
     context = { 
         'current_user': current_user,
         'student_info': data,
         'req': req,
         'sched': sched
         }
-    if request.method=='POST':
-        ids = request.POST.get('id')
-        edit = AddingReq.objects.get(id=ids)
-        edit.studID = request.POST.get('studID')
-        edit.subject = request.POST.get('subject')
-        edit.course = request.POST.get('course')
-        edit.yrandsec = request.POST.get('yrandsec')
-        edit.sched = request.POST.get('sched')
-        edit.picCheck = request.POST.get('picCheck')
-        edit.picComment = request.POST.get('picComment')
-        edit.headCheck = request.POST.get('headCheck')
-        edit.headComment = request.POST.get('headComment')
-        edit.save()
-        return redirect('/h-adding-edit/'+ str(id))
     
     return render(request, 'TupAssistApp/h-adding-edit.html', context)
 
@@ -199,26 +234,13 @@ def h_dropping_edit(request, id):
     current_user = request.user
     data = registration.objects.get(id=id)
     req = DroppingReq.objects.filter(studID=data.studID)
-    sched = Schedule.objects.latest('id')
+    sched = Schedule.objects.all()
     context = { 
         'current_user': current_user,
         'student_info': data,
         'req': req,
         'sched': sched
         }
-    if request.method=='POST':
-        ids = request.POST.get('id')
-        edit = DroppingReq.objects.get(id=ids)
-        edit.studID = request.POST.get('studID')
-        edit.subject = request.POST.get('subject')
-        edit.course = request.POST.get('course')
-        edit.yrandsec = request.POST.get('yrandsec')
-        edit.reason = request.POST.get('reason')
-        edit.headCheck = request.POST.get('headCheck')
-        edit.headComment = request.POST.get('headComment')
-        edit.save()
-        return redirect('/h-dropping-edit/'+ str(id))
-    
     return render(request, 'TupAssistApp/h-dropping-edit.html', context)
 
 
@@ -241,26 +263,13 @@ def h_transferring_edit(request, id):
     current_user = request.user
     data = registration.objects.get(id=id)
     req = TransferringReq.objects.filter(studID=data.studID)
-    sched = Schedule.objects.latest('id')
+    sched = Schedule.objects.all()
     context = { 
         'current_user': current_user,
         'student_info': data,
         'req': req,
         'sched': sched
         }
-    if request.method=='POST':
-        ids = request.POST.get('id')
-        edit = TransferringReq.objects.get(id=ids)
-        edit.studID = request.POST.get('studID')
-        edit.subject = request.POST.get('subject')
-        edit.course = request.POST.get('course')
-        edit.yrandsec = request.POST.get('yrandsec')
-        edit.reason = request.POST.get('reason')
-        edit.headCheck = request.POST.get('headCheck')
-        edit.headComment = request.POST.get('headComment')
-        edit.save()
-        return redirect('/h-transferring-edit/'+ str(id))
-    
     return render(request, 'TupAssistApp/h-transferring-edit.html', context)
 
 
@@ -442,8 +451,7 @@ def s_adding(request):
     dropReq = DroppingReq.objects.filter(studID=current_user.studID)
     transReq = TransferringReq.objects.filter(studID=current_user.studID)
     sub = Subjects.objects.all()
-    sched = Schedule.objects.latest('id')
-
+    sched = Schedule.objects.all()
     context = {
         'addReq': addReq,
         'dropReq': dropReq,
@@ -460,7 +468,7 @@ def upload(request):
     if request.method == 'POST':
         data = registration.objects.get(username=current_user.username)
         data.upload = request.FILES["gradesfile"]
-        data.addStatus = 'Requested Grades Uploaded'
+        data.addStatus = 'Requested: Grades Uploaded'
         data.save()
         messages.success(request, 'Successfully Upload your file. Wait for the program-in-charge, before proceeding in Step 2.')
     return redirect('/s_adding')
@@ -473,8 +481,6 @@ def delupload(request):
     data.addStatus = ''
     data.save()
     return redirect('/s_adding')
-
-
 
 
 

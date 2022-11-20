@@ -75,18 +75,18 @@
             <div class="title">
                 <p>TRANSACTION STATUS</p>
             </div>
-            
+
             {% for status in status %}
-                <div class="row" id="trans_status">
-                    <div class="col">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">{{status.TransName}} Of Subject</h5>
-                                <a href="/transStatus/{{status.id}}" class="card-link" style="font-weight: bold;">{{status.status}}</a>
-                            </div>
+            <div class="row" id="trans_status">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{status.TransName}} Of Subject</h5>
+                            <a href="/transStatus/{{status.id}}" class="card-link" style="font-weight: bold;">{{status.status}}</a>
                         </div>
                     </div>
                 </div>
+            </div>
             {% endfor %}
 
 
@@ -126,7 +126,7 @@
                     <div class="form-group mx-sm-3 mb-2">
                         <input type="file" name="subcvsfile" id="subcvsfile" required>
                     </div>
-                    <button type="submit"  accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" class="btn btn-primary mb-2">Import CSV File</button>
+                    <button type="submit" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" class="btn btn-primary mb-2">Import CSV File</button>
                 </form>
             </div>
 
@@ -152,17 +152,17 @@
                             <td>{{i.subject_code}}</td>
                             <td>{{i.description}}</td>
                             <td></td>
-                            
+
                         </tr>
                         {% endfor %}
-                       
+
                     </tbody>
                 </table>
             </div>
 
 
             <div class="title">
-                <p>STUDENT'S GSFE ACCOUNT</p>
+                <p>ENROLLED STUDENTS</p>
                 <form class="form-inline" action="/acc_cvs" method="post" enctype="multipart/form-data" name="studcvsfile">
                     {% csrf_token %}
                     <div class="form-group mx-sm-3 mb-2">
@@ -188,7 +188,7 @@
                             <td>{{e.name}}</td>
                             <td>{{e.course_year_and_section}}</td>
                             <td>{{e.email}}</td>
-                            
+
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -236,20 +236,19 @@
 
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                  <button class="nav-link active" id="home-tab" data-toggle="tab" data-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Live View</button>
+                    <button class="nav-link active" id="home-tab" data-toggle="tab" data-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Live View</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="profile-tab" data-toggle="tab" data-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Table</button>
+                    <button class="nav-link" id="profile-tab" data-toggle="tab" data-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Table</button>
                 </li>
-              </ul>
-              <div class="tab-content" id="myTabContent">
+            </ul>
+            <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <div style="overflow-x:auto; margin-bottom:2%;">
-                            <!--Defaul link: https://docs.google.com/spreadsheets/d/e/2PACX-1vRyXUDWAdZM2wLlrOCTJH737SRYTjNYjMevJTCOBE-OdcMXwgnaVoABk7KC5yxvTbFC8qDSeLKFXAHg/pubhtml -->
-                            {% for e in sched %}
-                            <iframe src="{{e.gSheetLink}}" width="100%" height="500"></iframe>
-                            {% endfor %}
-                        </div>
+                    <div style="overflow-x:auto; margin-bottom:2%;">
+                        <!--Defaul link: https://docs.google.com/spreadsheets/d/e/2PACX-1vRyXUDWAdZM2wLlrOCTJH737SRYTjNYjMevJTCOBE-OdcMXwgnaVoABk7KC5yxvTbFC8qDSeLKFXAHg/pubhtml -->
+                        {% for e in sched %}
+                        <iframe src="{{e.gSheetLink}}" width="100%" height="500"></iframe> {% endfor %}
+                    </div>
                 </div>
                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                     <div style="overflow-x:auto; margin-bottom:2%;">
@@ -275,10 +274,10 @@
                         </table>
                     </div>
                 </div>
-              </div>
+            </div>
 
 
-            
+
 
         </div>
     </div>

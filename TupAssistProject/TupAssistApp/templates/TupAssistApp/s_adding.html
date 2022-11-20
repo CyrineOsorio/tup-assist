@@ -186,9 +186,10 @@
                         </section>
                         <!-- Step 2 Content, default hidden on page load. -->
                         <section id="step-2" class="form-step d-none">
+                            {% if current_user.addStatus != 'PIC Offer Subject: Student may plot schedule now.' %}
                             <div class="alert alert-danger" role="alert">
                                 Notice: Hintayin ang Program-in-charge, sa Subject na i-ooffer sa'yo. Ang input ay nakadisable kapag wala pang notice ni PIC.
-                            </div>
+                            </div> {% endif %}
 
                             <h2 class="font-normal">Typing of Schedule</h2>
                             <!-- Step 2 input fields -->
@@ -196,22 +197,21 @@
                                 <table class="table table-bordered">
                                     <thead>
                                         <th>NO.</th>
-                                        <th>STUDENT NUMBER</th>
                                         <th>SUBJECT</th>
                                         <th>SECTION</th>
                                         <th>DAY AND TIME</th>
                                     </thead>
 
                                     <tbody>
+                                        {% for i in req %}
                                         <tr>
-                                            <td>1</td>
-                                            <td><input type="text" class="form-control" value="{{current_user.studID}}" readonly></td>
+                                            <td hidden><input type="text" class="form-control" value="{{current_user.studID}}" readonly></td>
+                                            <td>{{i.id}}</td>
+                                            <td><input type="text" class="form-control" value="{{i.subject}}" readonly></td>
                                             <td><input type="text" class="form-control"></td>
                                             <td><input type="text" class="form-control"></td>
-                                            <td style="display: flex; align-items:center; column-gap: 5px;">
-                                                <input type="text" class="form-control">
-                                            </td>
                                         </tr>
+                                        {% endfor %}
                                     </tbody>
                                 </table>
 
@@ -310,7 +310,7 @@
 
 
     <!-- Django with Jquery para magload kapag nasaang current step na si students -->
-    {% if current_user.addStatus == 'Requested: Grades Uploaded' %}
+    {% if current_user.addStatus != '' %}
     <script>
         document.querySelector("#step-" + 1).classList.add("d-none");
         document.querySelector("#step-" + 2).classList.remove("d-none");

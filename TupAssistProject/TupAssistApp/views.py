@@ -150,45 +150,76 @@ def p_offer_sub(request):
         if sub1 == '' and sub2 == '' and sub3 == '' and sub4 == '' and sub5 == '' and sub6 == '' and sub7 == '' and sub8 == '' and sub9 == '' and sub10 == '':
             messages.error(request, 'Input atleast 1 offer subject.') 
             return redirect('/p-adding-edit/'+ str(data.id))
-        if sub1 != '' and sub2 == '' and sub3 == '' and sub4 == '' and sub5 == '' and sub6 == '' and sub7 == '' and sub8 == '' and sub9 == '' and sub10 == '':
+        elif sub1 != '' and sub2 == '' and sub3 == '' and sub4 == '' and sub5 == '' and sub6 == '' and sub7 == '' and sub8 == '' and sub9 == '' and sub10 == '':
             sub1 = AddingReq.objects.create(studID=studID, subject=sub1)
             sub1.save()
+            data = registration.objects.get(studID=studID)
+            data.addStatus = 'PIC Offer Subject: Student may plot schedule now.'
+            data.save()
             return redirect('/p-adding-edit/'+ str(data.id))
         elif sub1 != '' and sub2 != '' and sub3 == '' and sub4 == '' and sub5 == '' and sub6 == '' and sub7 == '' and sub8 == '' and sub9 == '' and sub10 == '':
             add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1), AddingReq(studID=studID, subject=sub2)])
+            data = registration.objects.get(studID=studID)
+            data.addStatus = 'PIC Offer Subject: Student may plot schedule now.'
+            data.save()
             return redirect('/p-adding-edit/'+ str(data.id))
         elif sub1 != '' and sub2 != '' and sub3 != '' and sub4 == '' and sub5 == '' and sub6 == '' and sub7 == '' and sub8 == '' and sub9 == '' and sub10 == '':
             add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1), AddingReq(studID=studID, subject=sub2), AddingReq(studID=studID, subject=sub3)])
+            data = registration.objects.get(studID=studID)
+            data.addStatus = 'PIC Offer Subject: Student may plot schedule now.'
+            data.save()
             return redirect('/p-adding-edit/'+ str(data.id))
         elif sub1 != '' and sub2 != '' and sub3 != '' and sub4 != '' and sub5 == '' and sub6 == '' and sub7 == '' and sub8 == '' and sub9 == '' and sub10 == '':
             add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1), AddingReq(studID=studID, subject=sub2), AddingReq(studID=studID, subject=sub3),
             AddingReq(studID=studID, subject=sub4)])
+            data = registration.objects.get(studID=studID)
+            data.addStatus = 'PIC Offer Subject: Student may plot schedule now.'
+            data.save()
             return redirect('/p-adding-edit/'+ str(data.id))
         elif sub1 != '' and sub2 != '' and sub3 != '' and sub4 != '' and sub5 != '' and sub6 == '' and sub7 == '' and sub8 == '' and sub9 == '' and sub10 == '':
             add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1), AddingReq(studID=studID, subject=sub2), AddingReq(studID=studID, subject=sub3),
             AddingReq(studID=studID, subject=sub4), AddingReq(studID=studID, subject=sub5)])
+            data = registration.objects.get(studID=studID)
+            data.addStatus = 'PIC Offer Subject: Student may plot schedule now.'
+            data.save()
             return redirect('/p-adding-edit/'+ str(data.id))
         elif sub1 != '' and sub2 != '' and sub3 != '' and sub4 != '' and sub5 != '' and sub6 != '' and sub7 == '' and sub8 == '' and sub9 == '' and sub10 == '':
             add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1), AddingReq(studID=studID, subject=sub2), AddingReq(studID=studID, subject=sub3),
             AddingReq(studID=studID, subject=sub4), AddingReq(studID=studID, subject=sub5), AddingReq(studID=studID, subject=sub6)])
+            data = registration.objects.get(studID=studID)
+            data.addStatus = 'PIC Offer Subject: Student may plot schedule now.'
+            data.save()
             return redirect('/p-adding-edit/'+ str(data.id))
         elif sub1 != '' and sub2 != '' and sub3 != '' and sub4 != '' and sub5 != '' and sub6 != '' and sub7 != '' and sub8 == '' and sub9 == '' and sub10 == '':
             add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1), AddingReq(studID=studID, subject=sub2), AddingReq(studID=studID, subject=sub3),
             AddingReq(studID=studID, subject=sub4), AddingReq(studID=studID, subject=sub5), AddingReq(studID=studID, subject=sub6), AddingReq(studID=studID, subject=sub7)])
+            data = registration.objects.get(studID=studID)
+            data.addStatus = 'PIC Offer Subject: Student may plot schedule now.'
+            data.save()
             return redirect('/p-adding-edit/'+ str(data.id))
         elif sub1 != '' and sub2 != '' and sub3 != '' and sub4 != '' and sub5 != '' and sub6 != '' and sub7 != '' and sub8 != '' and sub9 == '' and sub10 == '':
             add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1), AddingReq(studID=studID, subject=sub2), AddingReq(studID=studID, subject=sub3),
             AddingReq(studID=studID, subject=sub4), AddingReq(studID=studID, subject=sub5), AddingReq(studID=studID, subject=sub6), AddingReq(studID=studID, subject=sub7),
             AddingReq(studID=studID, subject=sub8)])
+            data = registration.objects.get(studID=studID)
+            data.addStatus = 'PIC Offer Subject: Student may plot schedule now.'
+            data.save()
+            return redirect('/p-adding-edit/'+ str(data.id))
         elif sub1 != '' and sub2 != '' and sub3 != '' and sub4 != '' and sub5 != '' and sub6 != '' and sub7 != '' and sub8 != '' and sub9 != '' and sub10 == '':
             add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1), AddingReq(studID=studID, subject=sub2), AddingReq(studID=studID, subject=sub3),
             AddingReq(studID=studID, subject=sub4), AddingReq(studID=studID, subject=sub5), AddingReq(studID=studID, subject=sub6), AddingReq(studID=studID, subject=sub7),
             AddingReq(studID=studID, subject=sub8),AddingReq(studID=studID, subject=sub9)])
+            data = registration.objects.get(studID=studID)
+            data.addStatus = 'PIC Offer Subject: Student may plot schedule now.'
+            data.save()
             return redirect('/p-adding-edit/'+ str(data.id))
         elif sub1 != '' and sub2 != '' and sub3 != '' and sub4 != '' and sub5 != '' and sub6 != '' and sub7 != '' and sub8 != '' and sub9 != '' and sub10 != '':
             add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1), AddingReq(studID=studID, subject=sub2), AddingReq(studID=studID, subject=sub3),
             AddingReq(studID=studID, subject=sub4), AddingReq(studID=studID, subject=sub5), AddingReq(studID=studID, subject=sub6), AddingReq(studID=studID, subject=sub7),
             AddingReq(studID=studID, subject=sub8),AddingReq(studID=studID, subject=sub9),AddingReq(studID=studID, subject=sub10)])
+            data = registration.objects.get(studID=studID)
+            data.addStatus = 'PIC Offer Subject: Student may plot schedule now.'
+            data.save()
             return redirect('/p-adding-edit/'+ str(data.id))
 
         
@@ -447,15 +478,11 @@ def r_staff_create(request):
 def s_adding(request):
     current_user = request.user
     # Models
-    addReq = AddingReq.objects.filter(studID=current_user.studID)
-    dropReq = DroppingReq.objects.filter(studID=current_user.studID)
-    transReq = TransferringReq.objects.filter(studID=current_user.studID)
+    req = AddingReq.objects.filter(studID=current_user.studID)
     sub = Subjects.objects.all()
     sched = Schedule.objects.all()
     context = {
-        'addReq': addReq,
-        'dropReq': dropReq,
-        'transReq': transReq,
+        'req': req,
         'current_user': current_user,
         'sub': sub,
         'sched': sched

@@ -109,8 +109,7 @@ class registration(AbstractUser):
 class AddingReq(models.Model):
     studID = models.IntegerField()
     subject = models.CharField(max_length=255, null=True, blank=True)
-    course = models.CharField(max_length=255, null=True, blank=True)
-    yrandsec = models.CharField(max_length=255, null=True, blank=True)
+    section = models.CharField(max_length=255, null=True, blank=True)
     sched = models.CharField(max_length=255, null=True, blank=True)
     picCheck = models.BooleanField(default=False)
     picComment = models.CharField(max_length=255, null=True, blank=True)

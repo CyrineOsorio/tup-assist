@@ -509,26 +509,12 @@ def delupload(request):
     data.save()
     return redirect('/s_adding')
 
-
-
-
-
-
-
-
-
-def s_adding1(request):
-    if request.method=='POST': 
-        studID = request.POST.get('studID')
-        add = AddingReq.objects.create(studID=studID)
-        add.save()
-    return redirect('/s_adding')
-
-def s_adding_edit(request, id):
+def s_adding_editSub(request):
     if request.method =='POST':
         id = request.POST.get('id')
         data1= AddingReq.objects.get(id=id)
         data1.id = request.POST.get('id')
+        data1.section = request.POST.get('section')
         data1.save()
         return redirect('/s_adding')
 

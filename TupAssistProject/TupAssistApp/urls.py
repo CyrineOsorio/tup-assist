@@ -52,8 +52,7 @@ urlpatterns = [
     
     #student
     path('s_adding', views.s_adding, name='s_adding'),
-    path('s_adding1', views.s_adding1, name='s_adding1'),
-    path('s_adding_edit/<int:id>', views.s_adding_edit),
+    path('s_adding_editSub', views.s_adding_editSub, name="s_adding_editSub"),
     path('s_adding_del/<int:id>', views.s_adding_del),
     path('upload', views.upload, name='upload'),
     path('delupload', views.delupload, name='delupload'),

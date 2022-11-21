@@ -196,24 +196,108 @@
                             <div class="mt-3">
                                 <table class="table table-bordered">
                                     <thead>
-                                        <th>NO.</th>
                                         <th>SUBJECT</th>
-                                        <th>SECTION</th>
+                                        <th>COURSE, YEAR AND SECTION</th>
                                         <th>DAY AND TIME</th>
+                                        <th>ACTION</th>
                                     </thead>
 
                                     <tbody>
                                         {% for i in req %}
                                         <tr>
                                             <td hidden><input type="text" class="form-control" value="{{current_user.studID}}" readonly></td>
-                                            <td>{{i.id}}</td>
                                             <td><input type="text" class="form-control" value="{{i.subject}}" readonly></td>
-                                            <td><input type="text" class="form-control"></td>
-                                            <td><input type="text" class="form-control"></td>
+                                            <td><input type="text" class="form-control" value="{{i.section}}" readonly></td>
+                                            <td><input type="text" class="form-control" readonly></td>
+                                            <td>
+                                                <a class="btn btn-primary" data-toggle="modal" data-target="#editSub{{i.id}}">Edit</a>
                                         </tr>
                                         {% endfor %}
                                     </tbody>
                                 </table>
+
+                                <!-- Edit Subject Modal -->
+                                {% for i in req %}
+                                <div class="modal fade" id="editSub{{i.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Edit Section and Schedule</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <form class="form" method="post" action="s_adding_editSub">
+                                                {% csrf_token %}
+
+                                                <div class="modal-body">
+                                                    <div class="form-group" hidden>
+                                                        <label for="id">Subject</label>
+                                                        <input type="text" class="form-control" id="id" name="id" value="{{i.id}}">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="subject">Subject</label>
+                                                        <input type="text" class="form-control" id="subject" name="subject" value="{{i.subject}}" readonly>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="section">Course, Year and Section</label>
+                                                        <input type="text" class="form-control" id="section" name="section">
+                                                    </div>
+
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-addon1">Monday</span>
+                                                        </div>
+                                                        <input type="time" class="form-control" aria-describedby="basic-addon1" name="mon_start">
+                                                        <input type="time" class="form-control" aria-describedby="basic-addon1" name="mon_end">
+                                                    </div>
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-addon1">Tuesday</span>
+                                                        </div>
+                                                        <input type="time" class="form-control" aria-describedby="basic-addon1" name="tue_start">
+                                                        <input type="time" class="form-control" aria-describedby="basic-addon1" name="tue_end">
+                                                    </div>
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-addon1">Wednesday</span>
+                                                        </div>
+                                                        <input type="time" class="form-control" aria-describedby="basic-addon1" name="wed_start">
+                                                        <input type="time" class="form-control" aria-describedby="basic-addon1" name="wed_end">
+                                                    </div>
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-addon1">Thurdsay</span>
+                                                        </div>
+                                                        <input type="time" class="form-control" aria-describedby="basic-addon1" name="thu_start">
+                                                        <input type="time" class="form-control" aria-describedby="basic-addon1" name="thu_end">
+                                                    </div>
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-addon1">Friday</span>
+                                                        </div>
+                                                        <input type="time" class="form-control" aria-describedby="basic-addon1" name="fri_start">
+                                                        <input type="time" class="form-control" aria-describedby="basic-addon1" name="fri_end">
+                                                    </div>
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-addon1">Saturday</span>
+                                                        </div>
+                                                        <input type="time" class="form-control" aria-describedby="basic-addon1" name="sat_start">
+                                                        <input type="time" class="form-control" aria-describedby="basic-addon1" name="sat_end">
+                                                    </div>
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                                </div>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
 
                             </div>
 

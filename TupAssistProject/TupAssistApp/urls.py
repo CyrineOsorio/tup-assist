@@ -24,7 +24,6 @@ urlpatterns = [
     # pic
     path('p-adding/', views.p_adding, name='p_adding'),
     path('p-adding-edit/<int:id>', views.p_adding_edit),
-    path('p_offer_sub', views.p_offer_sub, name='p_offer_sub'),
 
     # head
     path('h-adding/', views.h_adding, name='h_adding'),
@@ -53,6 +52,7 @@ urlpatterns = [
     #student
     path('s_adding', views.s_adding, name='s_adding'),
     path('s_step1_submit', views.s_step1_submit, name="s_step1_submit"),
+
     
     path('s_adding_editSub', views.s_adding_editSub, name="s_adding_editSub"),
     path('s_step2_submit', views.s_step2_submit, name="s_step2_submit"),

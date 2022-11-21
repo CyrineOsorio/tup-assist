@@ -131,12 +131,6 @@ def p_adding_edit(request, id):
         }
     return render(request, 'TupAssistApp/p-adding-edit.html', context)
 
-def p_offer_sub(request):
-    studID = request.POST.get('studID')
-    data = registration.objects.get(studID=studID)
-    if request.method=='POST':
-        print ('something')
-        return redirect('/p-adding-edit/'+ str(data.id))
 
         
 

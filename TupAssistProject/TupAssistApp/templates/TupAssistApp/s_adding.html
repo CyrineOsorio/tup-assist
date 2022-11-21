@@ -288,9 +288,11 @@
                                 <table class="table table-bordered">
                                     <thead>
                                         <th>SUBJECT</th>
-                                        <th>COURSE, YEAR AND SECTION</th>
+                                        <th>SECTION</th>
                                         <th>DAY AND TIME</th>
                                         <th>ACTION</th>
+                                        <th>PIC APPROVE</th>
+                                        <th>PIC REMARK</th>
                                     </thead>
 
                                     <tbody>
@@ -299,11 +301,10 @@
                                             <td hidden><input type="text" class="form-control" value="{{current_user.studID}}" readonly></td>
                                             <td><input type="text" class="form-control" value="{{i.subject}}" readonly></td>
                                             <td><input type="text" class="form-control" value="{{i.section}}" readonly></td>
-                                            <td>
-                                                <textarea class="form-control" placeholder="{{i.sched}}" readonly></textarea>
-                                            </td>
-                                            <td>
-                                                <a class="btn btn-primary" data-toggle="modal" data-target="#editSub{{i.id}}">Edit</a>
+                                            <td><textarea class="form-control" placeholder="{{i.sched}}" readonly></textarea></td>
+                                            <td><a class="btn btn-primary" data-toggle="modal" data-target="#editSub{{i.id}}">Edit</a></td>
+                                            <td><input type="text" class="form-control" value="" readonly></td>
+                                            <td><input type="text" class="form-control" value="" readonly></td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>

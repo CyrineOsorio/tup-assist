@@ -553,7 +553,7 @@ def s_dropping(request):
     # Models
     dropReq = DroppingReq.objects.filter(studID=current_user.studID)
     sub = Subjects.objects.all()
-    sched = Schedule.objects.latest('id')
+    sched = Schedule.objects.all()
 
     context = {
         'dropReq': dropReq,
@@ -589,7 +589,7 @@ def s_transferring(request):
     # Models
     transReq = TransferringReq.objects.filter(studID=current_user.studID)
     sub = Subjects.objects.all()
-    sched = Schedule.objects.latest('id')
+    sched = Schedule.objects.all()
 
     context = {
         'transReq': transReq,

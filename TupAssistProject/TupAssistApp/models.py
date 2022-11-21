@@ -111,10 +111,10 @@ class AddingReq(models.Model):
     subject = models.CharField(max_length=255, null=True, blank=True)
     section = models.CharField(max_length=255, null=True, blank=True)
     sched = models.CharField(max_length=255, null=True, blank=True)
-    picCheck = models.BooleanField(default=False)
-    picComment = models.CharField(max_length=255, null=True, blank=True)
-    headCheck = models.BooleanField(default=False)
-    headComment = models.CharField(max_length=255, null=True, blank=True)
+    pic_is_approve = models.BooleanField(default=False)
+    pic_remark = models.CharField(max_length=255, null=True, blank=True)
+    head_is_approve = models.BooleanField(default=False)
+    head_remark = models.CharField(max_length=255, null=True, blank=True)
     
     class Meta:
         verbose_name_plural = "AddingReq" 

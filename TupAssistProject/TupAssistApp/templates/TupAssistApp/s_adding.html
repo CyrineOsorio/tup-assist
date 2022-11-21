@@ -82,7 +82,10 @@
                     </div>
                 </div>
                 <div class="progressbox">
-                    <div class="lagayanNgStatus"></div>
+                    <div class="lagayanNgStatus">
+                        <p id="p1">Status:</p>
+                        <p style="text-align: center;">{{ current_user.addStatus }}</p>
+                    </div>
                     <div class="isapanglagayan"></div>
                 </div>
             </div>
@@ -306,13 +309,22 @@
                                     </div>
                                 </div>
                                 {% endfor %}
-
                             </div>
 
+                            {% if current_user.addStatus == 'PIC Offer Subject: Student may plot schedule now.' %}
+                            <div class="mt-3" style="display: flex; justify-content: end;">
+                                <form action="s_step2_submit" method="post">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                            </div>{% endif %} 
 
+                            <br>
+                            
                             <div class="mt-3">
                                 <button class="button btn-navigate-form-step" type="button" step_number="1">Prev</button>
-                                <button class="button btn-navigate-form-step" type="button" step_number="3">Next</button>
+                                {% if current_user.addStatus == 'Requested: Wait for PIC Approval' %}
+                                <button class="button btn-navigate-form-step" type="button" step_number="3">Next</button> {% endif %} 
                             </div>
                         </section>
 
@@ -412,6 +424,19 @@
         formStepCircle.classList.add("form-stepper-active");
     </script>
     {% endif %}
+
+    {% if current_user.addStatus == 'Requested: Wait for PIC Approval' %}
+    <script>
+        document.querySelector("#step-" + 1).classList.add("d-none");
+        document.querySelector("#step-" + 2).classList.add("d-none");
+        document.querySelector("#step-" + 3).classList.remove("d-none");
+        const formStepCircle = document.querySelector('li[step="' + 3 + '"]');
+        formStepCircle.classList.remove("form-stepper-unfinished", "form-stepper-completed");
+        formStepCircle.classList.add("form-stepper-active");
+    </script>
+    {% endif %}
+
+    Requested: Wait for PIC Approval
 
 
     <!-- Multiform javascript -->

@@ -182,6 +182,12 @@ p {
     font-weight: 500;
 }
 
+.lagayanNgStatus #p1,
+.lagayanNgStatus p
+{
+    color:#E2435E;
+}
+
 
 /*  Rejay's edit */
 

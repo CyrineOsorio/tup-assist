@@ -542,10 +542,13 @@ def s_adding_editSub(request):
         return redirect('/s_adding')
 
 
-def s_adding_del(request, id):
-    data = AddingReq.objects.get(id=id)
-    data.delete()
+def s_step2_submit(request):
+    current_user = request.user
+    data = registration.objects.get(username=current_user.username)
+    data.addStatus = 'Requested: Wait for PIC Approval'
+    data.save()
     return redirect('/s_adding')
+
 
 
 def s_dropping(request):

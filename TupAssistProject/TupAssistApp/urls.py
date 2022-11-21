@@ -52,20 +52,18 @@ urlpatterns = [
     #student
     path('s_adding', views.s_adding, name='s_adding'),
     path('s_step1_submit', views.s_step1_submit, name="s_step1_submit"),
-
-    
-    path('s_adding_editSub', views.s_adding_editSub, name="s_adding_editSub"),
-    path('s_step2_submit', views.s_step2_submit, name="s_step2_submit"),
-
     path('upload', views.upload, name='upload'),
     path('delupload', views.delupload, name='delupload'),
 
+    path('s_adding_editSub', views.s_adding_editSub, name="s_adding_editSub"),
+    path('s_step2_submit', views.s_step2_submit, name="s_step2_submit"),
+    
+
+
     path('s_dropping', views.s_dropping, name='s_dropping'),
-    path('s_dropping1', views.s_dropping1, name='s_dropping1'),
-    path('s_dropping_del/<int:id>', views.s_dropping_del),
+   
 
     path('s_transferring', views.s_transferring, name='s_transferring'),
-    path('s_transferring1', views.s_transferring1, name='s_transferring1'),
-    path('s_transferring_del/<int:id>', views.s_transferring_del),
+    
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

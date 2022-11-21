@@ -593,23 +593,6 @@ def s_dropping(request):
 
 
 
-def s_dropping1(request):
-    if request.method=='POST': 
-        studID = request.POST.get('studID')
-        add = DroppingReq.objects.create(studID=studID)
-        add.save()
-    return redirect('/s_dropping')
-
-def s_dropping_del(request, id):
-    data = DroppingReq.objects.get(id=id)
-    data.delete()
-    return redirect('/s_dropping')
-
-
-
-
-
-
 
 def s_transferring(request):
     current_user = request.user
@@ -627,16 +610,3 @@ def s_transferring(request):
     }
     return render(request, 'TupAssistApp/s_transferring.html', context)
 
-
-def s_transferring1(request):
-    if request.method=='POST': 
-        studID = request.POST.get('studID')
-        subject = request.POST.get('subject')
-        add = TransferringReq.objects.create(studID=studID)
-        add.save()
-    return redirect('/s_transferring')
-
-def s_transferring_del(request, id):
-    data = TransferringReq.objects.get(id=id)
-    data.delete()
-    return redirect('/s_transferring')

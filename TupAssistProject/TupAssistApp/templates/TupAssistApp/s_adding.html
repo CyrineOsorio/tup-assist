@@ -208,7 +208,9 @@
                                             <td hidden><input type="text" class="form-control" value="{{current_user.studID}}" readonly></td>
                                             <td><input type="text" class="form-control" value="{{i.subject}}" readonly></td>
                                             <td><input type="text" class="form-control" value="{{i.section}}" readonly></td>
-                                            <td><input type="text" class="form-control" readonly></td>
+                                            <td>
+                                                <textarea class="form-control" placeholder="{{i.sched}}" readonly></textarea>
+                                            </td>
                                             <td>
                                                 <a class="btn btn-primary" data-toggle="modal" data-target="#editSub{{i.id}}">Edit</a>
                                         </tr>
@@ -241,7 +243,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="section">Course, Year and Section</label>
-                                                        <input type="text" class="form-control" id="section" name="section">
+                                                        <input type="text" class="form-control" id="section" name="section" value="{{i.section}}">
                                                     </div>
 
                                                     <div class="input-group mb-3">

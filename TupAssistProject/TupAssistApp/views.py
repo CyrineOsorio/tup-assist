@@ -512,6 +512,12 @@ def delupload(request):
 def s_adding_editSub(request):
     if request.method =='POST':
         id = request.POST.get('id')
+        M = request.POST.get('M')
+        T = request.POST.get('T')
+        W = request.POST.get('W')
+        TH = request.POST.get('TH')
+        F = request.POST.get('F')
+        S = request.POST.get('S')
         mon_start = request.POST.get('mon_start')
         mon_end = request.POST.get('mon_end')
         tue_start = request.POST.get('tue_start')
@@ -528,7 +534,7 @@ def s_adding_editSub(request):
             data1= AddingReq.objects.get(id=id)
             data1.id = request.POST.get('id')
             data1.section = request.POST.get('section')
-            data1.sched = 'M' + ' ' + mon_start + '-' + mon_end + ' ' + 'T' + ' ' + tue_start + '-' + tue_end + ' ' + 'W' + ' ' + wed_start + '-' + wed_start + ' ' + 'TH' + ' ' + thu_start + '-' + thu_end + ' ' + 'F' + ' ' + fri_start + '-' + fri_end + ' ' + 'S' + ' ' + sat_start + '-' + sat_end
+            data1.sched = M + ' ' + mon_start + '-' + mon_end + ' ' + T + ' ' + tue_start + '-' + tue_end + ' ' + W + ' ' + wed_start + '-' + wed_start + ' ' + TH + ' ' + thu_start + '-' + thu_end + ' ' + F + ' ' + fri_start + '-' + fri_end + ' ' + S + ' ' + sat_start + '-' + sat_end
             data1.save()
             return redirect('/s_adding')
     else:

@@ -250,6 +250,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="basic-addon1">Monday</span>
                                                         </div>
+                                                        <input type="text" class="form-control" aria-describedby="basic-addon1" name="M" value="M" hidden>
                                                         <input type="time" class="form-control" aria-describedby="basic-addon1" name="mon_start">
                                                         <input type="time" class="form-control" aria-describedby="basic-addon1" name="mon_end">
                                                     </div>
@@ -257,6 +258,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="basic-addon1">Tuesday</span>
                                                         </div>
+                                                        <input type="text" class="form-control" aria-describedby="basic-addon1" name="T" value="T" hidden>
                                                         <input type="time" class="form-control" aria-describedby="basic-addon1" name="tue_start">
                                                         <input type="time" class="form-control" aria-describedby="basic-addon1" name="tue_end">
                                                     </div>
@@ -264,6 +266,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="basic-addon1">Wednesday</span>
                                                         </div>
+                                                        <input type="text" class="form-control" aria-describedby="basic-addon1" name="W" value="W" hidden>
                                                         <input type="time" class="form-control" aria-describedby="basic-addon1" name="wed_start">
                                                         <input type="time" class="form-control" aria-describedby="basic-addon1" name="wed_end">
                                                     </div>
@@ -271,6 +274,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="basic-addon1">Thurdsay</span>
                                                         </div>
+                                                        <input type="text" class="form-control" aria-describedby="basic-addon1" name="TH" value="TH" hidden>
                                                         <input type="time" class="form-control" aria-describedby="basic-addon1" name="thu_start">
                                                         <input type="time" class="form-control" aria-describedby="basic-addon1" name="thu_end">
                                                     </div>
@@ -278,6 +282,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="basic-addon1">Friday</span>
                                                         </div>
+                                                        <input type="text" class="form-control" aria-describedby="basic-addon1" name="F" value="F" hidden>
                                                         <input type="time" class="form-control" aria-describedby="basic-addon1" name="fri_start">
                                                         <input type="time" class="form-control" aria-describedby="basic-addon1" name="fri_end">
                                                     </div>
@@ -285,6 +290,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="basic-addon1">Saturday</span>
                                                         </div>
+                                                        <input type="text" class="form-control" aria-describedby="basic-addon1" name="S" value="S" hidden>
                                                         <input type="time" class="form-control" aria-describedby="basic-addon1" name="sat_start">
                                                         <input type="time" class="form-control" aria-describedby="basic-addon1" name="sat_end">
                                                     </div>
@@ -497,7 +503,6 @@
     {% if messages %} {% for message in messages %} {% if message.tags %}
     <script>
         Swal.fire({
-            icon: 'success',
             text: '{{ message }}',
         })
     </script> {% endif %} {% endfor %} {% endif %}

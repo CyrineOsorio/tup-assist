@@ -438,27 +438,16 @@ def s_step1_submit(request):
         sub9 = request.POST.get('sub9')
         sub10 = request.POST.get('sub10')
 
-        course1 = request.POST.get('course1')
-        course2 = request.POST.get('course2')
-        course3 = request.POST.get('course3')
-        course4 = request.POST.get('course4')
-        course5 = request.POST.get('course5')
-        course6 = request.POST.get('course6')
-        course7 = request.POST.get('course7')
-        course8 = request.POST.get('course8')
-        course9 = request.POST.get('course9')
-        course10 = request.POST.get('course10')
-
-        unit1 = request.POST.get('unit1')
-        unit2 = request.POST.get('unit2')
-        unit3 = request.POST.get('unit3')
-        unit4 = request.POST.get('unit4')
-        unit5 = request.POST.get('unit5')
-        unit6 = request.POST.get('unit6')
-        unit7 = request.POST.get('unit7')
-        unit8 = request.POST.get('unit8')
-        unit9 = request.POST.get('unit9')
-        unit10 = request.POST.get('unit10')
+        sec1 = request.POST.get('sec1')
+        sec2 = request.POST.get('sec2')
+        sec3 = request.POST.get('sec3')
+        sec4 = request.POST.get('sec4')
+        sec5 = request.POST.get('sec5')
+        sec6 = request.POST.get('sec6')
+        sec7 = request.POST.get('sec7')
+        sec8 = request.POST.get('sec8')
+        sec9 = request.POST.get('sec9')
+        sec10 = request.POST.get('sec10')
 
         grade = current_user.upload
 
@@ -466,36 +455,36 @@ def s_step1_submit(request):
         if  (grade == ''):
             messages.error(request, 'Upload File first')
             return redirect('/s_adding')
-        elif (sub1 == '' and course1 == '') and (sub2 == ''and course2  == '') and (sub3 == '' and course3 == '') and (sub4 == '' and course4 == '') and (sub5 == '' and course5 == '') and (sub6 == '' and course6 == '') and (sub7 == '' and course7 == '') and (sub8 == '' and course8 == '') and (sub9 == '' and course9 == '') and (sub10 == '' and course10 == ''):
+        elif (sub1 == '' and sec1 == '') and (sub2 == ''and sec2  == '') and (sub3 == '' and sec3 == '') and (sub4 == '' and sec4 == '') and (sub5 == '' and sec5 == '') and (sub6 == '' and sec6 == '') and (sub7 == '' and sec7 == '') and (sub8 == '' and sec8 == '') and (sub9 == '' and sec9 == '') and (sub10 == '' and sec10 == ''):
             messages.error(request, 'Input atleast 1 offer subject.') 
             return redirect('/s_adding')
-        elif (sub1 != '' and course1 != '') and (sub2 == '' and course2 == '') and (sub3 == '' and course3 == '') and (sub4 == '' and course4 == '') and (sub5 == '' and course5 == '') and (sub6 == '' and course6 == '') and (sub7 == '' and course7 == '') and (sub8 == '' and course8 == '') and (sub9 == '' and course9 == '') and (sub10 == '' and course10 == ''):
-            sub1 = AddingReq.objects.create(studID=studID, subject=sub1)
+        elif (sub1 != '' and sec1 != '') and (sub2 == '' and sec2 == '') and (sub3 == '' and sec3 == '') and (sub4 == '' and sec4 == '') and (sub5 == '' and sec5 == '') and (sub6 == '' and sec6 == '') and (sub7 == '' and sec7 == '') and (sub8 == '' and sec8 == '') and (sub9 == '' and sec9 == '') and (sub10 == '' and sec10 == ''):
+            sub1 = AddingReq.objects.create(studID=studID, subject=sub1, section=sec1)
             sub1.save()
             data = registration.objects.get(username=current_user.username)
             data.addStatus = 'Requested: Subject to be taken is submitted.'
             data.save()
             return redirect('/s_adding')
-        elif (sub1 != '' and course1 != '') and (sub2 != '' and course2 != '') and (sub3 == '' and course3 == '') and (sub4 == '' and course4 == '') and (sub5 == '' and course5 == '') and (sub6 == '' and course6 == '') and (sub7 == '' and course7 == '') and (sub8 == '' and course8 == '') and (sub9 == '' and course9 == '') and (sub10 == '' and course10 == ''):
-            add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1), AddingReq(studID=studID, subject=sub2)])
+        elif (sub1 != '' and sec1 != '') and (sub2 != '' and sec2 != '') and (sub3 == '' and sec3 == '') and (sub4 == '' and sec4 == '') and (sub5 == '' and sec5 == '') and (sub6 == '' and sec6 == '') and (sub7 == '' and sec7 == '') and (sub8 == '' and sec8 == '') and (sub9 == '' and sec9 == '') and (sub10 == '' and sec10 == ''):
+            add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1, section=sec1), AddingReq(studID=studID, subject=sub2, section=sec2)])
             data = registration.objects.get(username=current_user.username)
             data.addStatus = 'Requested: Subject to be taken is submitted.'
             data.save()
             return redirect('/s_adding')
-        elif (sub1 != '' and course1 != '') and (sub2 != '' and course2 != '') and (sub3 != '' and course3 != '') and (sub4 == '' and course4 == '') and (sub5 == '' and course5 == '') and (sub6 == '' and course6 == '') and (sub7 == '' and course7 == '') and (sub8 == '' and course8 == '') and (sub9 == '' and course9 == '') and (sub10 == '' and course10 == ''):
-            add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1), AddingReq(studID=studID, subject=sub2), AddingReq(studID=studID, subject=sub3)])
+        elif (sub1 != '' and sec1 != '') and (sub2 != '' and sec2 != '') and (sub3 != '' and sec3 != '') and (sub4 == '' and sec4 == '') and (sub5 == '' and sec5 == '') and (sub6 == '' and sec6 == '') and (sub7 == '' and sec7 == '') and (sub8 == '' and sec8 == '') and (sub9 == '' and sec9 == '') and (sub10 == '' and sec10 == ''):
+            add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1, section=sec1), AddingReq(studID=studID, subject=sub2, section=sec2), AddingReq(studID=studID, subject=sub3, section=sec3)])
             data = registration.objects.get(username=current_user.username)
             data.addStatus = 'Requested: Subject to be taken is submitted.'
             data.save()
             return redirect('/s_adding')
-        elif (sub1 != '' and course1 != '') and (sub2 != '' and course2 != '') and (sub3 != '' and course3 != '') and (sub4 != '' and course4 != '') and (sub5 == '' and course5 == '') and (sub6 == '' and course6 == '') and (sub7 == '' and course7 == '') and (sub8 == '' and course8 == '') and (sub9 == '' and course9 == '') and (sub10 == '' and course10 == ''):
-            add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1), AddingReq(studID=studID, subject=sub2), AddingReq(studID=studID, subject=sub3),
-            AddingReq(studID=studID, subject=sub4)])
+        elif (sub1 != '' and sec1 != '') and (sub2 != '' and sec2 != '') and (sub3 != '' and sec3 != '') and (sub4 != '' and sec4 != '') and (sub5 == '' and sec5 == '') and (sub6 == '' and sec6 == '') and (sub7 == '' and sec7 == '') and (sub8 == '' and sec8 == '') and (sub9 == '' and sec9 == '') and (sub10 == '' and sec10 == ''):
+            add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1, section=sec1), AddingReq(studID=studID, subject=sub2, section=sec2), AddingReq(studID=studID, subject=sub3, section=sec3),
+            AddingReq(studID=studID, subject=sub4, section=sec4)])
             data = registration.objects.get(username=current_user.username)
             data.addStatus = 'Requested: Subject to be taken is submitted.'
             data.save()
             return redirect('/s_adding')
-        elif (sub1 != '' and course1 != '') and (sub2 != '' and course2 != '') and (sub3 != '' and course3 != '') and (sub4 != '' and course4 != '') and (sub5 != '' and course5 != '') and (sub6 == '' and course6 == '') and (sub7 == '' and course7 == '') and (sub8 == '' and course8 == '') and (sub9 == '' and course9 == '') and (sub10 == '' and course10 == ''):
+        elif (sub1 != '' and sec1 != '') and (sub2 != '' and sec2 != '') and (sub3 != '' and sec3 != '') and (sub4 != '' and sec4 != '') and (sub5 != '' and sec5 != '') and (sub6 == '' and sec6 == '') and (sub7 == '' and sec7 == '') and (sub8 == '' and sec8 == '') and (sub9 == '' and sec9 == '') and (sub10 == '' and sec10 == ''):
             add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1), AddingReq(studID=studID, subject=sub2), AddingReq(studID=studID, subject=sub3),
             AddingReq(studID=studID, subject=sub4), AddingReq(studID=studID, subject=sub5)])
             data = registration.objects.get(studID=studID)
@@ -503,14 +492,14 @@ def s_step1_submit(request):
             data.addStatus = 'Requested: Subject to be taken is submitted.'
             data.save()
             return redirect('/s_adding')
-        elif (sub1 != '' and course1 != '') and (sub2 != '' and course2 != '') and (sub3 != '' and course3 != '') and (sub4 != '' and course4 != '') and (sub5 != '' and course5 != '') and (sub6 != '' and course6 != '') and (sub7 == '' and course7 == '') and (sub8 == '' and course8 == '') and (sub9 == '' and course9 == '') and (sub10 == '' and course10 == ''):
+        elif (sub1 != '' and sec1 != '') and (sub2 != '' and sec2 != '') and (sub3 != '' and sec3 != '') and (sub4 != '' and sec4 != '') and (sub5 != '' and sec5 != '') and (sub6 != '' and sec6 != '') and (sub7 == '' and sec7 == '') and (sub8 == '' and sec8 == '') and (sub9 == '' and sec9 == '') and (sub10 == '' and sec10 == ''):
             add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1), AddingReq(studID=studID, subject=sub2), AddingReq(studID=studID, subject=sub3),
             AddingReq(studID=studID, subject=sub4), AddingReq(studID=studID, subject=sub5), AddingReq(studID=studID, subject=sub6)])
             data = registration.objects.get(username=current_user.username)
             data.addStatus = 'Requested: Subject to be taken is submitted.'
             data.save()
             return redirect('/s_adding')
-        elif (sub1 != '' and course1 != '') and (sub2 != '' and course2 != '') and (sub3 != '' and course3 != '') and (sub4 != '' and course4 != '') and (sub5 != '' and course5 != '') and (sub6 != '' and course6 != '') and (sub7 != '' and course7 != '') and (sub8 == '' and course8 == '') and (sub9 == '' and course9 == '') and (sub10 == '' and course10 == ''):
+        elif (sub1 != '' and sec1 != '') and (sub2 != '' and sec2 != '') and (sub3 != '' and sec3 != '') and (sub4 != '' and sec4 != '') and (sub5 != '' and sec5 != '') and (sub6 != '' and sec6 != '') and (sub7 != '' and sec7 != '') and (sub8 == '' and sec8 == '') and (sub9 == '' and sec9 == '') and (sub10 == '' and sec10 == ''):
             add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1), AddingReq(studID=studID, subject=sub2), AddingReq(studID=studID, subject=sub3),
             AddingReq(studID=studID, subject=sub4), AddingReq(studID=studID, subject=sub5), AddingReq(studID=studID, subject=sub6), AddingReq(studID=studID, subject=sub7)])
             data = registration.objects.get(studID=studID)
@@ -518,7 +507,7 @@ def s_step1_submit(request):
             data.addStatus = 'Requested: Subject to be taken is submitted.'
             data.save()
             return redirect('/s_adding')
-        elif (sub1 != '' and course1 != '') and (sub2 != '' and course2 != '') and (sub3 != '' and course3 != '') and (sub4 != '' and course4 != '') and (sub5 != '' and course5 != '') and (sub6 != '' and course6 != '') and (sub7 != '' and course7 != '') and (sub8 != '' and course8 != '') and (sub9 == '' and course9 == '') and (sub10 == '' and course10 == ''):
+        elif (sub1 != '' and sec1 != '') and (sub2 != '' and sec2 != '') and (sub3 != '' and sec3 != '') and (sub4 != '' and sec4 != '') and (sub5 != '' and sec5 != '') and (sub6 != '' and sec6 != '') and (sub7 != '' and sec7 != '') and (sub8 != '' and sec8 != '') and (sub9 == '' and sec9 == '') and (sub10 == '' and sec10 == ''):
             add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1), AddingReq(studID=studID, subject=sub2), AddingReq(studID=studID, subject=sub3),
             AddingReq(studID=studID, subject=sub4), AddingReq(studID=studID, subject=sub5), AddingReq(studID=studID, subject=sub6), AddingReq(studID=studID, subject=sub7),
             AddingReq(studID=studID, subject=sub8)])
@@ -526,7 +515,7 @@ def s_step1_submit(request):
             data.addStatus = 'Requested: Subject to be taken is submitted.'
             data.save()
             return redirect('/s_adding')
-        elif (sub1 != '' and course1 != '') and (sub2 != '' and course2 != '') and (sub3 != '' and course3 != '') and (sub4 != '' and course4 != '') and (sub5 != '' and course5 != '') and (sub6 != '' and course6 != '') and (sub7 != '' and course7 != '') and (sub8 != '' and course8 != '') and (sub9 != '' and course9 != '') and (sub10 == '' and course10 == ''):
+        elif (sub1 != '' and sec1 != '') and (sub2 != '' and sec2 != '') and (sub3 != '' and sec3 != '') and (sub4 != '' and sec4 != '') and (sub5 != '' and sec5 != '') and (sub6 != '' and sec6 != '') and (sub7 != '' and sec7 != '') and (sub8 != '' and sec8 != '') and (sub9 != '' and sec9 != '') and (sub10 == '' and sec10 == ''):
             add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1), AddingReq(studID=studID, subject=sub2), AddingReq(studID=studID, subject=sub3),
             AddingReq(studID=studID, subject=sub4), AddingReq(studID=studID, subject=sub5), AddingReq(studID=studID, subject=sub6), AddingReq(studID=studID, subject=sub7),
             AddingReq(studID=studID, subject=sub8),AddingReq(studID=studID, subject=sub9)])
@@ -534,7 +523,7 @@ def s_step1_submit(request):
             data.addStatus = 'Requested: Subject to be taken is submitted.'
             data.save()
             return redirect('/s_adding')
-        elif (sub1 != '' and course1 != '') and (sub2 != '' and course2 != '') and (sub3 != '' and course3 != '') and (sub4 != '' and course4 != '') and (sub5 != '' and course5 != '') and (sub6 != '' and course6 != '') and (sub7 != '' and course7 != '') and (sub8 != '' and course8 != '') and (sub9 != '' and course9 != '') and (sub10 != '' and course10 != ''):
+        elif (sub1 != '' and sec1 != '') and (sub2 != '' and sec2 != '') and (sub3 != '' and sec3 != '') and (sub4 != '' and sec4 != '') and (sub5 != '' and sec5 != '') and (sub6 != '' and sec6 != '') and (sub7 != '' and sec7 != '') and (sub8 != '' and sec8 != '') and (sub9 != '' and sec9 != '') and (sub10 != '' and sec10 != ''):
             add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1), AddingReq(studID=studID, subject=sub2), AddingReq(studID=studID, subject=sub3),
             AddingReq(studID=studID, subject=sub4), AddingReq(studID=studID, subject=sub5), AddingReq(studID=studID, subject=sub6), AddingReq(studID=studID, subject=sub7),
             AddingReq(studID=studID, subject=sub8),AddingReq(studID=studID, subject=sub9),AddingReq(studID=studID, subject=sub10)])

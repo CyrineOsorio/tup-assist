@@ -317,8 +317,7 @@ def s_step1_submit(request):
         data.addStatus = 'Wait for PIC Approval'
         data.save()
         return redirect('/s_adding')
-    
-    
+        
 def s_adding_edit_sched(request):
     if request.method =='POST':
         id = request.POST.get('id')

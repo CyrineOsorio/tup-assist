@@ -115,7 +115,7 @@
                                     <span class="form-stepper-circle text-muted">
                                         <span>2</span>
                                     </span>
-                                    <div class="label text-muted">Typing of Schedule</div>
+                                    <div class="label text-muted">Wait for PIC Approval</div>
                                 </a>
                             </li>
                             <!-- Step 3 -->
@@ -186,82 +186,123 @@
 
 
                                 <!--HTML code to display data in tabular format-->
-                                <form method="post" action="/s_step1_submit">
                                     {% csrf_token %}
                                     <table class="table table-bordered">
                                         <thead>
                                             <th>NO.</th>
                                             <th>SUBJECT</th>
                                             <th>SECTION</th>
+                                            <th>SCHEDULE</th>
+                                            <th>ACTION</th>
                                         </thead>
 
                                         <tbody>
+                                            {% for i in req %}
                                             <tr>
-                                                <td>1</td>
-                                                <td hidden><input type="text" class="form-control" name="studID" value="{{current_user.studID}}"></td>
-                                                <td><input type="text" class="form-control" name="sub1"></td>
-                                                <td><input type="text" class="form-control" name="sec1"></td>
-
+                                                <td>{{i.id}}</td>
+                                                <td>{{i.subject}}</td>
+                                                <td>{{i.section}}</td>
+                                                <td>{{i.sched}}</td>
+                                                <td class="d-flex" style="gap:10px;">
+                                                    <button type="button" class="btn btn-success">Update</button>
+                                                    <button type="button" class="btn btn-danger">Delete</button>
+                                                </td>
                                             </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td><input type="text" class="form-control" name="sub2"></td>
-                                                <td><input type="text" class="form-control" name="sec2"></td>
-
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td><input type="text" class="form-control" name="sub3"></td>
-                                                <td><input type="text" class="form-control" name="sec3"></td>
-
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td><input type="text" class="form-control" name="sub4"></td>
-                                                <td><input type="text" class="form-control" name="sec4"></td>
-
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td><input type="text" class="form-control" name="sub5"></td>
-                                                <td><input type="text" class="form-control" name="sec5"></td>
-
-                                            </tr>
-                                            <tr>
-                                                <td>6</td>
-                                                <td><input type="text" class="form-control" name="sub6"></td>
-                                                <td><input type="text" class="form-control" name="sec6"></td>
-
-                                            </tr>
-                                            <tr>
-                                                <td>7</td>
-                                                <td><input type="text" class="form-control" name="sub7"></td>
-                                                <td><input type="text" class="form-control" name="sec7"></td>
-
-                                            </tr>
-                                            <tr>
-                                                <td>8</td>
-                                                <td><input type="text" class="form-control" name="sub8"></td>
-                                                <td><input type="text" class="form-control" name="sec8"></td>
-
-                                            </tr>
-                                            <tr>
-                                                <td>9</td>
-                                                <td><input type="text" class="form-control" name="sub9"></td>
-                                                <td><input type="text" class="form-control" name="sec9"></td>
-
-                                            </tr>
-                                            <tr>
-                                                <td>10</td>
-                                                <td><input type="text" class="form-control" name="sub10"></td>
-                                                <td><input type="text" class="form-control" name="sec10"></td>
-
-                                            </tr>
+                                            {% endfor %}
+                                            <form method="post" action="/s_add_sub">
+                                            {% csrf_token %}
+                                                <tr>
+                                                    <td></td>
+                                                    <td><input type="text" class="form-control" name="subject" required></td>
+                                                    <td><input type="text" class="form-control" name="section" required></td>
+                                                    <td class="d-flex" style="column-gap: 5px;"><input type="text" class="form-control" name="schedule" id="schedule" readonly> <a class="btn btn-primary" data-toggle="modal" data-target="#editSub">Edit</a> </td>
+                                                    <td><button type="submit" class="btn btn-primary btn-lg btn-block">Add</button></td>
+                                                </tr>
+                                            </form>
                                         </tbody>
                                     </table>
+
+
+                                     <!-- Edit Subject Modal -->
+                                <div class="modal fade" id="editSub" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Edit Schedule</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                                <div class="modal-body">
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-addon1">Monday</span>
+                                                        </div>
+                                                        <input type="text" class="form-control" aria-describedby="basic-addon1" id="M" value="M" hidden>
+                                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="mon_start">
+                                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="mon_end">
+                                                    </div>
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-addon1">Tuesday</span>
+                                                        </div>
+                                                        <input type="text" class="form-control" aria-describedby="basic-addon1" id="T" value="T" hidden>
+                                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="tue_start">
+                                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="tue_end">
+                                                    </div>
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-addon1">Wednesday</span>
+                                                        </div>
+                                                        <input type="text" class="form-control" aria-describedby="basic-addon1" id="W" value="W" hidden>
+                                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="wed_start">
+                                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="wed_end">
+                                                    </div>
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-addon1">Thurdsay</span>
+                                                        </div>
+                                                        <input type="text" class="form-control" aria-describedby="basic-addon1" id="TH" value="TH" hidden>
+                                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="thu_start">
+                                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="thu_end">
+                                                    </div>
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-addon1">Friday</span>
+                                                        </div>
+                                                        <input type="text" class="form-control" aria-describedby="basic-addon1" id="F" value="F" hidden>
+                                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="fri_start">
+                                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="fri_end">
+                                                    </div>
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-addon1">Saturday</span>
+                                                        </div>
+                                                        <input type="text" class="form-control" aria-describedby="basic-addon1" id="S" value="S" hidden>
+                                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="sat_start">
+                                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="sat_end">
+                                                    </div>
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary" onclick="myFunction()" data-dismiss="modal">Save changes</button>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                                    <br>
                                     {% if current_user.addStatus == '' %}
-                                    <button type="submit" class="btn btn-primary">Submit</button>{% endif %}
-                                </form>
+                                    <form method="post" action="/s_step1_submit">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </form> {% endif %}
 
 
                             </div>
@@ -275,14 +316,28 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         <!-- Step 2 Content, default hidden on page load. -->
                         <section id="step-2" class="form-step d-none">
-                            {% if current_user.addStatus != 'PIC Offer Subject: Student may plot schedule now.' %}
+                            {% if current_user.addStatus == '' %}
                             <div class="alert alert-danger" role="alert">
-                                Notice: Hintayin ang Program-in-charge i-approve ang iyong add request. Ang input ay nakadisable kapag wala pang notice ni PIC.
+                                Notice: Hintayin ang Program-in-charge i-approve ang iyong add request.
                             </div> {% endif %}
 
-                            <h2 class="font-normal">Typing of Schedule</h2>
+                            <h2 class="font-normal">Wait for PIC Approval</h2>
                             <!-- Step 2 input fields -->
                             <div class="mt-3">
                                 <table class="table table-bordered">
@@ -309,95 +364,7 @@
                                     </tbody>
                                 </table>
 
-                                <!-- Edit Subject Modal -->
-                                {% for i in req %}
-                                <div class="modal fade" id="editSub{{i.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Edit Section and Schedule</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <form class="form" method="post" action="s_adding_edit_sched">
-                                                {% csrf_token %}
-
-                                                <div class="modal-body">
-                                                    <div class="form-group" hidden>
-                                                        <label for="id">Subject</label>
-                                                        <input type="text" class="form-control" id="id" name="id" value="{{i.id}}">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="subject">Subject</label>
-                                                        <input type="text" class="form-control" id="subject" name="subject" value="{{i.subject}}" readonly>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="section">Section</label>
-                                                        <input type="text" class="form-control" id="section" name="section" value="{{i.section}}">
-                                                    </div>
-
-                                                    <div class="input-group mb-3">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="basic-addon1">Monday</span>
-                                                        </div>
-                                                        <input type="text" class="form-control" aria-describedby="basic-addon1" name="M" value="M" hidden>
-                                                        <input type="time" class="form-control" aria-describedby="basic-addon1" name="mon_start">
-                                                        <input type="time" class="form-control" aria-describedby="basic-addon1" name="mon_end">
-                                                    </div>
-                                                    <div class="input-group mb-3">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="basic-addon1">Tuesday</span>
-                                                        </div>
-                                                        <input type="text" class="form-control" aria-describedby="basic-addon1" name="T" value="T" hidden>
-                                                        <input type="time" class="form-control" aria-describedby="basic-addon1" name="tue_start">
-                                                        <input type="time" class="form-control" aria-describedby="basic-addon1" name="tue_end">
-                                                    </div>
-                                                    <div class="input-group mb-3">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="basic-addon1">Wednesday</span>
-                                                        </div>
-                                                        <input type="text" class="form-control" aria-describedby="basic-addon1" name="W" value="W" hidden>
-                                                        <input type="time" class="form-control" aria-describedby="basic-addon1" name="wed_start">
-                                                        <input type="time" class="form-control" aria-describedby="basic-addon1" name="wed_end">
-                                                    </div>
-                                                    <div class="input-group mb-3">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="basic-addon1">Thurdsay</span>
-                                                        </div>
-                                                        <input type="text" class="form-control" aria-describedby="basic-addon1" name="TH" value="TH" hidden>
-                                                        <input type="time" class="form-control" aria-describedby="basic-addon1" name="thu_start">
-                                                        <input type="time" class="form-control" aria-describedby="basic-addon1" name="thu_end">
-                                                    </div>
-                                                    <div class="input-group mb-3">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="basic-addon1">Friday</span>
-                                                        </div>
-                                                        <input type="text" class="form-control" aria-describedby="basic-addon1" name="F" value="F" hidden>
-                                                        <input type="time" class="form-control" aria-describedby="basic-addon1" name="fri_start">
-                                                        <input type="time" class="form-control" aria-describedby="basic-addon1" name="fri_end">
-                                                    </div>
-                                                    <div class="input-group mb-3">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="basic-addon1">Saturday</span>
-                                                        </div>
-                                                        <input type="text" class="form-control" aria-describedby="basic-addon1" name="S" value="S" hidden>
-                                                        <input type="time" class="form-control" aria-describedby="basic-addon1" name="sat_start">
-                                                        <input type="time" class="form-control" aria-describedby="basic-addon1" name="sat_end">
-                                                    </div>
-
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-primary">Save changes</button>
-                                                </div>
-                                            </form>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                {% endfor %}
-                            </div>
+                               
 
                             {% if current_user.addStatus == 'PIC Offer Subject: Student may plot schedule now.' %}
                             <div class="mt-3" style="display: flex; justify-content: end;">
@@ -478,6 +445,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 
+
+
+    <!-- FOOTER NI CYRINE -->
     <script>
         $(document).ready(function() {
             // Source: https://stackoverflow.com/questions/18796221/creating-a-select-box-with-a-search-option
@@ -498,6 +468,31 @@
 
         });
     </script>
+
+    <!-- SCHEDULE NI REJAY -->
+    <script>
+        function myFunction() {
+            var a = document.getElementById("mon_start");
+            var b = document.getElementById("mon_end");
+            var c = document.getElementById("tue_start");
+            var d = document.getElementById("tue_end");
+            var e = document.getElementById("wed_start");
+            var f = document.getElementById("wed_end");
+            var g = document.getElementById("thu_start");
+            var h = document.getElementById("thu_end");
+            var i = document.getElementById("fri_start");
+            var j = document.getElementById("fri_end");
+            var k = document.getElementById("sat_start");
+            var l = document.getElementById("sat_end");
+            document.getElementById('schedule').innerHTML = a.value ;
+            var currentVal = a.value;
+            schedule.value = a.value + b.value;
+            
+        }
+    </script>
+
+
+
 
 
 

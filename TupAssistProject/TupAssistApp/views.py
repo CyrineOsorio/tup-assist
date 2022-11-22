@@ -290,121 +290,29 @@ def delupload(request):
     current_user = request.user
     data = registration.objects.get(username=current_user.username)
     data.upload = ""
-    data.addStatus = ''
     data.save()
     return redirect('/s_adding')
 
+def s_add_sub(request):
+    current_user = request.user
+    if request.method =='POST':
+        subject = request.POST.get('subject')
+        section = request.POST.get('section')
+        schedule = request.POST.get('schedule')
+        data = AddingReq.objects.create(studID= current_user.studID, subject=subject, section=section, sched=schedule)
+        data.save()
+        messages.success(request, 'Subject Added')
+        return redirect('/s_adding')
+
 def s_step1_submit(request):
     current_user = request.user
-    if request.method=='POST':
-        studID = request.POST.get('studID')
+    if request.method =='POST':
+        data = registration.objects.get(username=current_user.username)
+        data.addStatus = 'Wait for PIC Approval'
+        return redirect('/s_adding')
+    
+    
 
-        sub1 = request.POST.get('sub1')
-        sub2 = request.POST.get('sub2')
-        sub3 = request.POST.get('sub3')
-        sub4 = request.POST.get('sub4')
-        sub5 = request.POST.get('sub5')
-        sub6 = request.POST.get('sub6')
-        sub7 = request.POST.get('sub7')
-        sub8 = request.POST.get('sub8')
-        sub9 = request.POST.get('sub9')
-        sub10 = request.POST.get('sub10')
-
-        sec1 = request.POST.get('sec1')
-        sec2 = request.POST.get('sec2')
-        sec3 = request.POST.get('sec3')
-        sec4 = request.POST.get('sec4')
-        sec5 = request.POST.get('sec5')
-        sec6 = request.POST.get('sec6')
-        sec7 = request.POST.get('sec7')
-        sec8 = request.POST.get('sec8')
-        sec9 = request.POST.get('sec9')
-        sec10 = request.POST.get('sec10')
-
-        grade = current_user.upload
-
-        # HANDLING ERROR
-        if  (grade == ''):
-            messages.error(request, 'Upload File first')
-            return redirect('/s_adding')
-        elif (sub1 == '' and sec1 == '') and (sub2 == ''and sec2  == '') and (sub3 == '' and sec3 == '') and (sub4 == '' and sec4 == '') and (sub5 == '' and sec5 == '') and (sub6 == '' and sec6 == '') and (sub7 == '' and sec7 == '') and (sub8 == '' and sec8 == '') and (sub9 == '' and sec9 == '') and (sub10 == '' and sec10 == ''):
-            messages.error(request, 'Input atleast 1 offer subject.') 
-            return redirect('/s_adding')
-        elif (sub1 != '' and sec1 != '') and (sub2 == '' and sec2 == '') and (sub3 == '' and sec3 == '') and (sub4 == '' and sec4 == '') and (sub5 == '' and sec5 == '') and (sub6 == '' and sec6 == '') and (sub7 == '' and sec7 == '') and (sub8 == '' and sec8 == '') and (sub9 == '' and sec9 == '') and (sub10 == '' and sec10 == ''):
-            sub1 = AddingReq.objects.create(studID=studID, subject=sub1, section=sec1)
-            sub1.save()
-            data = registration.objects.get(username=current_user.username)
-            data.addStatus = 'Requested: Subject to be taken is submitted.'
-            data.save()
-            return redirect('/s_adding')
-        elif (sub1 != '' and sec1 != '') and (sub2 != '' and sec2 != '') and (sub3 == '' and sec3 == '') and (sub4 == '' and sec4 == '') and (sub5 == '' and sec5 == '') and (sub6 == '' and sec6 == '') and (sub7 == '' and sec7 == '') and (sub8 == '' and sec8 == '') and (sub9 == '' and sec9 == '') and (sub10 == '' and sec10 == ''):
-            add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1, section=sec1), AddingReq(studID=studID, subject=sub2, section=sec2)])
-            data = registration.objects.get(username=current_user.username)
-            data.addStatus = 'Requested: Subject to be taken is submitted.'
-            data.save()
-            return redirect('/s_adding')
-        elif (sub1 != '' and sec1 != '') and (sub2 != '' and sec2 != '') and (sub3 != '' and sec3 != '') and (sub4 == '' and sec4 == '') and (sub5 == '' and sec5 == '') and (sub6 == '' and sec6 == '') and (sub7 == '' and sec7 == '') and (sub8 == '' and sec8 == '') and (sub9 == '' and sec9 == '') and (sub10 == '' and sec10 == ''):
-            add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1, section=sec1), AddingReq(studID=studID, subject=sub2, section=sec2), AddingReq(studID=studID, subject=sub3, section=sec3)])
-            data = registration.objects.get(username=current_user.username)
-            data.addStatus = 'Requested: Subject to be taken is submitted.'
-            data.save()
-            return redirect('/s_adding')
-        elif (sub1 != '' and sec1 != '') and (sub2 != '' and sec2 != '') and (sub3 != '' and sec3 != '') and (sub4 != '' and sec4 != '') and (sub5 == '' and sec5 == '') and (sub6 == '' and sec6 == '') and (sub7 == '' and sec7 == '') and (sub8 == '' and sec8 == '') and (sub9 == '' and sec9 == '') and (sub10 == '' and sec10 == ''):
-            add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1, section=sec1), AddingReq(studID=studID, subject=sub2, section=sec2), AddingReq(studID=studID, subject=sub3, section=sec3),
-            AddingReq(studID=studID, subject=sub4, section=sec4)])
-            data = registration.objects.get(username=current_user.username)
-            data.addStatus = 'Requested: Subject to be taken is submitted.'
-            data.save()
-            return redirect('/s_adding')
-        elif (sub1 != '' and sec1 != '') and (sub2 != '' and sec2 != '') and (sub3 != '' and sec3 != '') and (sub4 != '' and sec4 != '') and (sub5 != '' and sec5 != '') and (sub6 == '' and sec6 == '') and (sub7 == '' and sec7 == '') and (sub8 == '' and sec8 == '') and (sub9 == '' and sec9 == '') and (sub10 == '' and sec10 == ''):
-            add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1, section=sec1), AddingReq(studID=studID, subject=sub2, section=sec2), AddingReq(studID=studID, subject=sub3, section=sec3),
-            AddingReq(studID=studID, subject=sub4, section=sec4), AddingReq(studID=studID, subject=sub5, section=sec5)])
-            data = registration.objects.get(studID=studID)
-            data = registration.objects.get(username=current_user.username)
-            data.addStatus = 'Requested: Subject to be taken is submitted.'
-            data.save()
-            return redirect('/s_adding')
-        elif (sub1 != '' and sec1 != '') and (sub2 != '' and sec2 != '') and (sub3 != '' and sec3 != '') and (sub4 != '' and sec4 != '') and (sub5 != '' and sec5 != '') and (sub6 != '' and sec6 != '') and (sub7 == '' and sec7 == '') and (sub8 == '' and sec8 == '') and (sub9 == '' and sec9 == '') and (sub10 == '' and sec10 == ''):
-            add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1, section=sec1), AddingReq(studID=studID, subject=sub2, section=sec2), AddingReq(studID=studID, subject=sub3 , section=sec3),
-            AddingReq(studID=studID, subject=sub4, section=sec4), AddingReq(studID=studID, subject=sub5, section=sec5), AddingReq(studID=studID, subject=sub6, section=sec6)])
-            data = registration.objects.get(username=current_user.username)
-            data.addStatus = 'Requested: Subject to be taken is submitted.'
-            data.save()
-            return redirect('/s_adding')
-        elif (sub1 != '' and sec1 != '') and (sub2 != '' and sec2 != '') and (sub3 != '' and sec3 != '') and (sub4 != '' and sec4 != '') and (sub5 != '' and sec5 != '') and (sub6 != '' and sec6 != '') and (sub7 != '' and sec7 != '') and (sub8 == '' and sec8 == '') and (sub9 == '' and sec9 == '') and (sub10 == '' and sec10 == ''):
-            add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1, section=sec1), AddingReq(studID=studID, subject=sub2, section=sec2), AddingReq(studID=studID, subject=sub3, section=sec3),
-            AddingReq(studID=studID, subject=sub4, section=sec4), AddingReq(studID=studID, subject=sub5, section=sec5), AddingReq(studID=studID, subject=sub6, section=sec6), AddingReq(studID=studID, subject=sub7, section=sec7)])
-            data = registration.objects.get(username=current_user.username)
-            data.addStatus = 'Requested: Subject to be taken is submitted.'
-            data.save()
-            return redirect('/s_adding')
-        elif (sub1 != '' and sec1 != '') and (sub2 != '' and sec2 != '') and (sub3 != '' and sec3 != '') and (sub4 != '' and sec4 != '') and (sub5 != '' and sec5 != '') and (sub6 != '' and sec6 != '') and (sub7 != '' and sec7 != '') and (sub8 != '' and sec8 != '') and (sub9 == '' and sec9 == '') and (sub10 == '' and sec10 == ''):
-            add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1, section=sec1), AddingReq(studID=studID, subject=sub2, section=sec2), AddingReq(studID=studID, subject=sub3, section=sec3),
-            AddingReq(studID=studID, subject=sub4, section=sec4), AddingReq(studID=studID, subject=sub5, section=sec5), AddingReq(studID=studID, subject=sub6, section=sec6), AddingReq(studID=studID, subject=sub7, section=sec7),
-            AddingReq(studID=studID, subject=sub8)])
-            data = registration.objects.get(username=current_user.username)
-            data.addStatus = 'Requested: Subject to be taken is submitted.'
-            data.save()
-            return redirect('/s_adding')
-        elif (sub1 != '' and sec1 != '') and (sub2 != '' and sec2 != '') and (sub3 != '' and sec3 != '') and (sub4 != '' and sec4 != '') and (sub5 != '' and sec5 != '') and (sub6 != '' and sec6 != '') and (sub7 != '' and sec7 != '') and (sub8 != '' and sec8 != '') and (sub9 != '' and sec9 != '') and (sub10 == '' and sec10 == ''):
-            add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1, section=sec1), AddingReq(studID=studID, subject=sub2, section=sec2), AddingReq(studID=studID, subject=sub3, section=sec3),
-            AddingReq(studID=studID, subject=sub4, section=sec4), AddingReq(studID=studID, subject=sub5, section=sec5), AddingReq(studID=studID, subject=sub6, section=sec6), AddingReq(studID=studID, subject=sub7, section=sec7),
-            AddingReq(studID=studID, subject=sub8, section=sec8),AddingReq(studID=studID, subject=sub9, section=sec9)])
-            data = registration.objects.get(username=current_user.username)
-            data.addStatus = 'Requested: Subject to be taken is submitted.'
-            data.save()
-            return redirect('/s_adding')
-        elif (sub1 != '' and sec1 != '') and (sub2 != '' and sec2 != '') and (sub3 != '' and sec3 != '') and (sub4 != '' and sec4 != '') and (sub5 != '' and sec5 != '') and (sub6 != '' and sec6 != '') and (sub7 != '' and sec7 != '') and (sub8 != '' and sec8 != '') and (sub9 != '' and sec9 != '') and (sub10 != '' and sec10 != ''):
-            add = AddingReq.objects.bulk_create([AddingReq(studID=studID, subject=sub1, section=sec1), AddingReq(studID=studID, subject=sub2, section=sec2), AddingReq(studID=studID, subject=sub3, section=sec3),
-            AddingReq(studID=studID, subject=sub4, section=sec4), AddingReq(studID=studID, subject=sub5, section=sec5), AddingReq(studID=studID, subject=sub6, section=sec6), AddingReq(studID=studID, subject=sub7, section=sec7),
-            AddingReq(studID=studID, subject=sub8, section=sec8),AddingReq(studID=studID, subject=sub9, section=sec9),AddingReq(studID=studID, subject=sub10, section=sec10)])
-            data = registration.objects.get(username=current_user.username)
-            data.addStatus = 'Requested: Subject to be taken is submitted.'
-            data.save()
-            return redirect('/s_adding')
-        else:
-            messages.error(request, 'Input atleast 1 offer subject or Complete the row field.')
-            return redirect('/s_adding')
 
 
 def s_adding_edit_sched(request):

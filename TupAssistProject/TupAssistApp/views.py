@@ -311,10 +311,12 @@ def s_del_sub(request, id):
     return redirect('/s_adding')
 
 def s_step1_submit(request):
+    print('something')
     current_user = request.user
     if request.method =='POST':
         data = registration.objects.get(username=current_user.username)
         data.addStatus = 'Wait for PIC Approval'
+        data.save()
         return redirect('/s_adding')
     
     

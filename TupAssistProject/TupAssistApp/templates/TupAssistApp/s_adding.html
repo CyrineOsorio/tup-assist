@@ -154,37 +154,6 @@
                                     Upload your PDF compile of your previous grades here.
                                 </button>
 
-                                <!-- Modal -->
-                                <div class="modal fade" id="addFile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Upload a PDF FIle of your compiled previous grades from ERS.</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form class="form-inline" id="gradesfileform" method="post" enctype="multipart/form-data" action="/upload">
-                                                    {% csrf_token %}
-                                                    <div class="image-upload">
-                                                        <label for="gradesfile">
-                                                      <img src="../../static/images/icons8-pdf-40.png"/>
-                                                    </label>
-                                                        <input type="file" accept="application/pdf" name="gradesfile" id="gradesfile" required>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {% endif %}
-
-
-
                                 <!--HTML code to display data in tabular format-->
                                 {% csrf_token %}
                                 <table class="table table-bordered">
@@ -222,93 +191,131 @@
                                 </table>
 
 
-                                <!-- Edit Subject Modal -->
-                                <div class="modal fade" id="editSub" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Edit Schedule</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="input-group mb-3">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="basic-addon1">Monday</span>
-                                                    </div>
-                                                    <input type="text" class="form-control" aria-describedby="basic-addon1" id="M" value="M" hidden>
-                                                    <input type="time" class="form-control" aria-describedby="basic-addon1" id="mon_start">
-                                                    <input type="time" class="form-control" aria-describedby="basic-addon1" id="mon_end">
-                                                </div>
-                                                <div class="input-group mb-3">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="basic-addon1">Tuesday</span>
-                                                    </div>
-                                                    <input type="text" class="form-control" aria-describedby="basic-addon1" id="T" value="T" hidden>
-                                                    <input type="time" class="form-control" aria-describedby="basic-addon1" id="tue_start">
-                                                    <input type="time" class="form-control" aria-describedby="basic-addon1" id="tue_end">
-                                                </div>
-                                                <div class="input-group mb-3">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="basic-addon1">Wednesday</span>
-                                                    </div>
-                                                    <input type="text" class="form-control" aria-describedby="basic-addon1" id="W" value="W" hidden>
-                                                    <input type="time" class="form-control" aria-describedby="basic-addon1" id="wed_start">
-                                                    <input type="time" class="form-control" aria-describedby="basic-addon1" id="wed_end">
-                                                </div>
-                                                <div class="input-group mb-3">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="basic-addon1">Thurdsay</span>
-                                                    </div>
-                                                    <input type="text" class="form-control" aria-describedby="basic-addon1" id="TH" value="TH" hidden>
-                                                    <input type="time" class="form-control" aria-describedby="basic-addon1" id="thu_start">
-                                                    <input type="time" class="form-control" aria-describedby="basic-addon1" id="thu_end">
-                                                </div>
-                                                <div class="input-group mb-3">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="basic-addon1">Friday</span>
-                                                    </div>
-                                                    <input type="text" class="form-control" aria-describedby="basic-addon1" id="F" value="F" hidden>
-                                                    <input type="time" class="form-control" aria-describedby="basic-addon1" id="fri_start">
-                                                    <input type="time" class="form-control" aria-describedby="basic-addon1" id="fri_end">
-                                                </div>
-                                                <div class="input-group mb-3">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="basic-addon1">Saturday</span>
-                                                    </div>
-                                                    <input type="text" class="form-control" aria-describedby="basic-addon1" id="S" value="S" hidden>
-                                                    <input type="time" class="form-control" aria-describedby="basic-addon1" id="sat_start">
-                                                    <input type="time" class="form-control" aria-describedby="basic-addon1" id="sat_end">
-                                                </div>
+                                <br> {% if current_user.addStatus == '' %}
+                                <form method="post" action="/s_step1_submit">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form> {% endif %}
 
+                                <div class="mt-3">
+                                    {% if current_user.addStatus != '' %}
+                                    <button class="button btn-navigate-form-step" type="button" step_number="2">Next</button> {% endif %}
+                                </div>
+
+                            </div>
+
+                        </section>
+
+
+
+                        <!-- Add FIle Modal -->
+                        <div class="modal fade" id="addFile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Upload a PDF FIle of your compiled previous grades from ERS.</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form-inline" id="gradesfileform" method="post" enctype="multipart/form-data" action="/upload">
+                                            {% csrf_token %}
+                                            <div class="image-upload">
+                                                <label for="gradesfile">
+                                                      <img src="../../static/images/icons8-pdf-40.png"/>
+                                                    </label>
+                                                <input type="file" accept="application/pdf" name="gradesfile" id="gradesfile" required>
                                             </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary" onclick="myFunction()" data-dismiss="modal">Save changes</button>
-                                            </div>
-                                        </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        {% endif %}
 
 
+                        <!-- Edit Subject Modal -->
+                        <div class="modal fade" id="editSub" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Edit Schedule</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">Monday</span>
+                                            </div>
+                                            <input type="text" class="form-control" aria-describedby="basic-addon1" id="M" value="M" hidden>
+                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="mon_start">
+                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="mon_end">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">Tuesday</span>
+                                            </div>
+                                            <input type="text" class="form-control" aria-describedby="basic-addon1" id="T" value="T" hidden>
+                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="tue_start">
+                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="tue_end">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">Wednesday</span>
+                                            </div>
+                                            <input type="text" class="form-control" aria-describedby="basic-addon1" id="W" value="W" hidden>
+                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="wed_start">
+                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="wed_end">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">Thurdsay</span>
+                                            </div>
+                                            <input type="text" class="form-control" aria-describedby="basic-addon1" id="TH" value="TH" hidden>
+                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="thu_start">
+                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="thu_end">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">Friday</span>
+                                            </div>
+                                            <input type="text" class="form-control" aria-describedby="basic-addon1" id="F" value="F" hidden>
+                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="fri_start">
+                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="fri_end">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">Saturday</span>
+                                            </div>
+                                            <input type="text" class="form-control" aria-describedby="basic-addon1" id="S" value="S" hidden>
+                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="sat_start">
+                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="sat_end">
+                                        </div>
 
-
-
-
-                            <br> {% if current_user.addStatus == '' %}
-                            <form method="post" action="/s_step1_submit">
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                            </form> {% endif %}
-
-
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary" onclick="myFunction()" data-dismiss="modal">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mt-3">
-                        {% if current_user.addStatus != '' %}
-                        <button class="button btn-navigate-form-step" type="button" step_number="2">Next</button> {% endif %}
-                    </div>
-                    </section>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -342,21 +349,19 @@
                                 <thead>
                                     <th>SUBJECT</th>
                                     <th>SECTION</th>
-                                    <th colspan="2">DAY AND TIME</th>
-                                    <th>APPROVE</th>
-                                    <th>REMARK</th>
+                                    <th>SCHEDULE</th>
+                                    <th>PIC - APPROVE</th>
+                                    <th>PIC - REMARK</th>
                                 </thead>
 
                                 <tbody>
                                     {% for i in req %}
                                     <tr>
-                                        <td hidden><input type="text" class="form-control" value="{{current_user.studID}}" readonly></td>
-                                        <td><input type="text" class="form-control" value="{{i.subject}}" readonly></td>
-                                        <td><input type="text" class="form-control" value="{{i.section}}" readonly></td>
-                                        <td><textarea class="form-control" placeholder="{{i.sched}}" readonly></textarea></td>
-                                        <td><a class="btn btn-primary" data-toggle="modal" data-target="#editSub{{i.id}}">Edit</a></td>
-                                        <td><input type="text" class="form-control" value="" readonly></td>
-                                        <td><input type="text" class="form-control" value="" readonly></td>
+                                        <td>{{i.subject}}</td>
+                                        <td>{{i.section}}</td>
+                                        <td>{{i.sched}}</td>
+                                        <td></td>
+                                        <td></td>
                                     </tr>
                                     {% endfor %}
                                 </tbody>
@@ -379,6 +384,18 @@
                                 <button class="button btn-navigate-form-step" type="button" step_number="3">Next</button> {% endif %}
                             </div>
                     </section>
+
+
+
+
+
+
+
+
+
+
+
+
 
                     <!-- Step 3 Content, default hidden on page load. -->
                     <section id="step-3" class="form-step d-none">
@@ -491,7 +508,22 @@
                 minute: 'numeric'
             });
 
-            schedule.value = a12hr;
+            const b12hr = new Date('1970-01-01T' + b + 'Z').toLocaleTimeString('en-US', {
+                timeZone: 'UTC',
+                hour12: true,
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+
+
+            const c12hr = new Date('1970-01-01T' + c + 'Z').toLocaleTimeString('en-US', {
+                timeZone: 'UTC',
+                hour12: true,
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+
+            schedule.value = 'M' + ' ' + a12hr + '-' + b12hr + ' ' + 'T' + '' + c12hr;
 
         }
     </script>

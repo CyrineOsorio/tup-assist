@@ -250,50 +250,50 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="input-group mb-3">
+                                            <input type="checkbox" id="M">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="basic-addon1">Monday</span>
                                             </div>
-                                            <input type="text" class="form-control" aria-describedby="basic-addon1" id="M" value="M" hidden>
                                             <input type="time" class="form-control" aria-describedby="basic-addon1" id="mon_start">
                                             <input type="time" class="form-control" aria-describedby="basic-addon1" id="mon_end">
                                         </div>
                                         <div class="input-group mb-3">
+                                            <input type="checkbox" id="T">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="basic-addon1">Tuesday</span>
                                             </div>
-                                            <input type="text" class="form-control" aria-describedby="basic-addon1" id="T" value="T" hidden>
                                             <input type="time" class="form-control" aria-describedby="basic-addon1" id="tue_start">
                                             <input type="time" class="form-control" aria-describedby="basic-addon1" id="tue_end">
                                         </div>
                                         <div class="input-group mb-3">
+                                            <input type="checkbox" id="W">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="basic-addon1">Wednesday</span>
                                             </div>
-                                            <input type="text" class="form-control" aria-describedby="basic-addon1" id="W" value="W" hidden>
                                             <input type="time" class="form-control" aria-describedby="basic-addon1" id="wed_start">
                                             <input type="time" class="form-control" aria-describedby="basic-addon1" id="wed_end">
                                         </div>
                                         <div class="input-group mb-3">
+                                            <input type="checkbox" id="TH">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="basic-addon1">Thurdsay</span>
                                             </div>
-                                            <input type="text" class="form-control" aria-describedby="basic-addon1" id="TH" value="TH" hidden>
                                             <input type="time" class="form-control" aria-describedby="basic-addon1" id="thu_start">
                                             <input type="time" class="form-control" aria-describedby="basic-addon1" id="thu_end">
                                         </div>
                                         <div class="input-group mb-3">
+                                            <input type="checkbox" id="F">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="basic-addon1">Friday</span>
                                             </div>
-                                            <input type="text" class="form-control" aria-describedby="basic-addon1" id="F" value="F" hidden>
                                             <input type="time" class="form-control" aria-describedby="basic-addon1" id="fri_start">
                                             <input type="time" class="form-control" aria-describedby="basic-addon1" id="fri_end">
                                         </div>
                                         <div class="input-group mb-3">
+                                            <input type="checkbox" id="S" onclick="myFunction()">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="basic-addon1">Saturday</span>
                                             </div>
-                                            <input type="text" class="form-control" aria-describedby="basic-addon1" id="S" value="S" hidden>
                                             <input type="time" class="form-control" aria-describedby="basic-addon1" id="sat_start">
                                             <input type="time" class="form-control" aria-describedby="basic-addon1" id="sat_end">
                                         </div>
@@ -456,11 +456,6 @@
         })
     </script>
 
-    <!--DROPDOWN-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
-
-
 
     <!-- FOOTER NI CYRINE -->
     <script>
@@ -515,7 +510,6 @@
                 minute: 'numeric'
             });
 
-
             const c12hr = new Date('1970-01-01T' + c + 'Z').toLocaleTimeString('en-US', {
                 timeZone: 'UTC',
                 hour12: true,
@@ -523,13 +517,96 @@
                 minute: 'numeric'
             });
 
-            schedule.value = 'M' + ' ' + a12hr + '-' + b12hr + ' ' + 'T' + '' + c12hr;
+            const d12hr = new Date('1970-01-01T' + d + 'Z').toLocaleTimeString('en-US', {
+                timeZone: 'UTC',
+                hour12: true,
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+
+            const e12hr = new Date('1970-01-01T' + e + 'Z').toLocaleTimeString('en-US', {
+                timeZone: 'UTC',
+                hour12: true,
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+
+            const f12hr = new Date('1970-01-01T' + f + 'Z').toLocaleTimeString('en-US', {
+                timeZone: 'UTC',
+                hour12: true,
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+
+            const g12hr = new Date('1970-01-01T' + g + 'Z').toLocaleTimeString('en-US', {
+                timeZone: 'UTC',
+                hour12: true,
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+
+            const h12hr = new Date('1970-01-01T' + h + 'Z').toLocaleTimeString('en-US', {
+                timeZone: 'UTC',
+                hour12: true,
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+
+            const i12hr = new Date('1970-01-01T' + i + 'Z').toLocaleTimeString('en-US', {
+                timeZone: 'UTC',
+                hour12: true,
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+
+            const j12hr = new Date('1970-01-01T' + j + 'Z').toLocaleTimeString('en-US', {
+                timeZone: 'UTC',
+                hour12: true,
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+
+            const k12hr = new Date('1970-01-01T' + k + 'Z').toLocaleTimeString('en-US', {
+                timeZone: 'UTC',
+                hour12: true,
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+
+            const l12hr = new Date('1970-01-01T' + l + 'Z').toLocaleTimeString('en-US', {
+                timeZone: 'UTC',
+                hour12: true,
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+
+
+            var arr = [];
+
+            // If the checkbox is checked, display the output text
+            if (a && b != '') {
+                arr.push('M' + ' ' + a12hr + '-' + b12hr);
+            }
+            if (c && d != '') {
+                arr.push('T' + ' ' + c12hr + '-' + d12hr);
+            }
+            if (e && f != '') {
+                arr.push('W' + ' ' + e12hr + '-' + f12hr);
+            }
+            if (g && h != '') {
+                arr.push('TH' + ' ' + g12hr + '-' + h12hr);
+            }
+            if (i && j != '') {
+                arr.push('F' + ' ' + i12hr + '-' + j12hr);
+            }
+            if (k && l != '') {
+                arr.push('S' + ' ' + k12hr + '-' + l12hr);
+            }
+
+            schedule.value = arr;
 
         }
     </script>
-
-
-
 
 
 
@@ -542,7 +619,10 @@
         formStepCircle.classList.remove("form-stepper-unfinished", "form-stepper-completed");
         formStepCircle.classList.add("form-stepper-active");
     </script>
-    {% endif %} {% if current_user.addStatus == 'Requested: Wait for PIC Approval' %}
+    {% endif %}
+
+
+    <br> {% if current_user.addStatus == 'Requested: Wait for PIC Approval' %}
     <script>
         document.querySelector("#step-" + 1).classList.add("d-none");
         document.querySelector("#step-" + 2).classList.add("d-none");
@@ -552,6 +632,8 @@
         formStepCircle.classList.add("form-stepper-active");
     </script>
     {% endif %} Requested: Wait for PIC Approval
+
+
 
 
     <!-- Multiform javascript -->

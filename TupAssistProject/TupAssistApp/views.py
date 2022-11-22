@@ -311,7 +311,6 @@ def s_del_sub(request, id):
     return redirect('/s_adding')
 
 def s_step1_submit(request):
-    print('something')
     current_user = request.user
     if request.method =='POST':
         data = registration.objects.get(username=current_user.username)
@@ -420,7 +419,13 @@ def p_adding_edit(request, id):
         }
     return render(request, 'TupAssistApp/p_adding_edit.html', context)
 
-
+def p_step1_submit(request):
+    studID = request.POST.get('studID')
+    if request.method =='POST':
+        data = registration.objects.get(studID=studID)
+        data.addStatus = 'Wait for Department Head Approval'
+        data.save()
+        return redirect('/p_adding_edit/'+ str(data.id))
         
 
 

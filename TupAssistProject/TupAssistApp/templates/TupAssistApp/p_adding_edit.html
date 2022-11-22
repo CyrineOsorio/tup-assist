@@ -84,7 +84,7 @@
                                 <span class="form-stepper-circle">
                                         <span>1</span>
                                 </span>
-                                <div class="label">Check Student Request:</div>
+                                <div class="label">Check Student Request and Program-in-charge Approval</div>
                             </a>
                         </li>
                         <!-- Step 2 -->
@@ -92,15 +92,6 @@
                             <a class="mx-2">
                                 <span class="form-stepper-circle text-muted">
                                         <span>2</span>
-                                </span>
-                                <div class="label text-muted">Program-in-charge Approval</div>
-                            </a>
-                        </li>
-                        <!-- Step 3 -->
-                        <li class="form-stepper-unfinished text-center form-stepper-list" step="3">
-                            <a class="mx-2">
-                                <span class="form-stepper-circle text-muted">
-                                        <span>3</span>
                                 </span>
                                 <div class="label text-muted">Department Head Approval</div>
                             </a>
@@ -114,13 +105,10 @@
                     <!-- Step 1 Content -->
                     <section id="step-1" class="form-step">
                         {% if student_info.addStatus == 'PIC Offer Subject: Student may plot schedule now.' %}
-                        <div class="alert alert-success" role="alert">
-                            Notice: Tapos ka na sa step 1. You can proceed na sa step 2.
-                        </div>{% endif %}
-                        <h2 class="font-normal">Subject to be taken</h2>
+                        <div class="alert alert-success" role="alert"> Notice: Tapos ka na sa step 1. You can proceed na sa step 2.</div>{% endif %}
 
+                        <h2 class="font-normal">Check Student Request and Program-in-charge Approval</h2>
 
-                        <!-- Step 1 input fields -->
                         <div class="mt-3">
                             <table class="table table-bordered">
                                 <thead>
@@ -131,7 +119,6 @@
                                     <th>REMARK</th>
                                     <th>ACTION</th>
                                 </thead>
-
                                 <tbody>
                                     {% for i in req %}
                                     <tr>
@@ -200,17 +187,17 @@
                             </div>
                         </div> {% endfor %}
 
-
                         <br> {% if student_info.addStatus == 'Wait for PIC Approval' %}
-                        <div class="mt-3" style="display: flex; justify-content: end;">
-                            <form action="s_step2_submit" method="post">
+                        <div class="mt-3" style="display: flex; justify-content: end; gap:5px;">
+                            <form action="/p_step1_submit" method="post">
                                 {% csrf_token %}
+                                <input type="text" name="studID" id="studID" value="{{student_info.studID}}" hidden>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
                         </div>{% endif %}
 
                         <div class="mt-3">
-                            {% if student_info.addStatus == 'PIC Offer Subject: Student may plot schedule now.' %}
+                            {% if student_info.addStatus != 'Wait for Department Head Approval' %}
                             <button class="button btn-navigate-form-step" type="button" step_number="2">Next</button>{% endif %}
                         </div>
                     </section>
@@ -219,11 +206,11 @@
 
                     <!-- Step 2 Content, default hidden on page load. -->
                     <section id="step-2" class="form-step d-none">
-                        {% if student_info.addStatus == 'PIC Offer Subject: Student may plot schedule now.' %}
+                        {% if student_info.addStatus == 'Wait for Department Head Approval' %}
                         <div class="alert alert-danger" role="alert">
-                            Notice: Hintayin ang Student na mag-plot ng schedule niya.
+                            Notice: Hintayin ang Department Head sa approval ng request.
                         </div>{% endif %}
-                        <h2 class="font-normal">Program-in-charge Approval</h2>
+                        <h2 class="font-normal">Department Head Approval</h2>
                         <!-- Step 2 input fields -->
                         <div class="mt-3">
                             <table class="table table-bordered">
@@ -246,41 +233,17 @@
                                     {% endfor %}
                                 </tbody>
                             </table>
-
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Reasons:</span>
-                                </div>
-                                <textarea class="form-control" aria-label="With textarea"></textarea>
-                            </div>
                         </div>
+
                         <div class="mt-3">
                             <button class="button btn-navigate-form-step" type="button" step_number="1">Prev</button>
-                            <button class="button btn-navigate-form-step" type="button" step_number="3">Next</button>
-                        </div>
-                    </section>
-
-
-
-                    <!-- Step 3 Content, default hidden on page load. -->
-                    <section id="step-3" class="form-step d-none">
-                        <h2 class="font-normal">Department Head Approval</h2>
-                        <!-- Step 3 input fields -->
-                        <div class="mt-3">
-                            Step 3 input fields goes here..
-                        </div>
-                        <div class="mt-3">
-                            <button class="button btn-navigate-form-step" type="button" step_number="2">Prev</button>
                             <button class="button submit-btn" type="submit">Save</button>
                         </div>
                     </section>
 
-
                 </div>
             </div>
-
         </div>
-
     </div>
     </div>
 

@@ -24,6 +24,8 @@ urlpatterns = [
     # pic
     path('p_adding/', views.p_adding, name='p_adding'),
     path('p_adding_edit/<int:id>', views.p_adding_edit),
+    path('p_step1_submit', views.p_step1_submit, name='p_step1_submit'),
+    
 
     # head
     path('h-adding/', views.h_adding, name='h_adding'),

@@ -351,7 +351,7 @@ def s_adding_edit_sched(request):
 def s_step2_submit(request):
     current_user = request.user
     data = registration.objects.get(username=current_user.username)
-    data.addStatus = 'Requested: Wait for PIC Approval'
+    data.addStatus = 'Wait for Department Head Approval'
     data.save()
     return redirect('/s_adding')
 

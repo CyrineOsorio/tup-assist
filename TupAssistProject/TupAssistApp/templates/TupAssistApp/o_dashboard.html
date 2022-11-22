@@ -1,0 +1,237 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TUPC Registrar: Dashboard</title>
+
+
+
+    <!--BOOTSTRAP-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <!--CSS Custom -->
+    <link rel="stylesheet" href="{%static 'css/r_dashboard.css'%}">
+
+    <!--FONTS-->
+    <link rel="stylesheet" href="../../static/css/fonts.css">
+
+    <!--ICONS-->
+    <link rel="icon" href="../../static/images/tuplogo.png">
+
+    <!--DATATABLES-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg" id="navbarnavbar">
+        <div class="navbarLagayan">
+            <img src="../../static/images/tuplogo.png" alt="TUPLogo.png" width="30" height="30">
+            <a class="nav-link" href="{%url 'TupAssistApp:r_dashboard'%}">Technological University of the Philippines - <span style="color: #E2435E; font-weight: 500;"> Assist</span></a>
+            <div class="lagayanNgButton">
+                <button class="navbar-toggler navbar-light" type="button" style="background-color: transparent;" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+            </div>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
+
+            <form class="d-flex">
+                <ul class="navbar-nav mr-auto" id="center">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{%url 'TupAssistApp:r_dashboard'%}" id="dashboard">Dashboard <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{%url 'TupAssistApp:r_adding'%}" id="">Adding</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{%url 'TupAssistApp:r_dropping'%}" id="">Dropping</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{%url 'TupAssistApp:r_transferring'%}" id="">Transfer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{%url 'TupAssistApp:r_staff'%}" id="">Staff</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{%url 'TupAssistApp:logout'%}" id="logoutbutton">Logout</a>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </nav>
+
+
+
+    <div class="bg-container">
+        <div class="welcome">Welcome, {{current_user.username}}!</div>
+        <div class="content">
+
+            <div class="title">
+                <p>TRANSACTION STATUS</p>
+            </div>
+
+
+
+            <!-- Transaction Status -->
+            {% for status in status %}
+            <div class="row" id="trans_status">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{status.TransName}} Of Subject</h5>
+                            <a href="/transStatus/{{status.id}}" class="card-link" style="font-weight: bold;">{{status.status}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+            <!-- Schedule -->
+            <div class="title">
+                <p>SCHEDULE</p>
+            </div>
+
+            <div style="overflow-x:auto; margin-bottom:2%;">
+                <form action="/import_sched" method="post" style="margin-bottom:2%;">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col">
+                            <label for="sub_code">Google Sheet Link</label>
+                            <input type="text" class="form-control" name="gSheetLink" id="gSheetLink" required>
+                        </div>
+                        <div class="col">
+                            <label for="school_year">School Year</label>
+                            <input type="number" class="form-control" name="school_year" id="school_year" required>
+                        </div>
+                        <div class="col">
+                            <label for="semester">Semester</label>
+                            <select class="custom-select" name="semester" id="semester" required>
+                        <option selected disabled value="semester">semester</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        </select>
+                        </div>
+                        <div class="col">
+                            <label for="course_year_and_section">Course Year Section</label>
+                            <input type="text" class="form-control" name="course_year_and_section" id="course_year_and_section" required>
+                        </div>
+                        <div class="col">
+                            <label for="slots">Slots</label>
+                            <input type="number" class="form-control" name="slots" id="slots" required>
+                        </div>
+                        <div class="col">
+                            <label for="button">.</label>
+                            <input type="submit" class="form-control" id="button" value="Add" required>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+            <!-- Viewing of Schedule -->
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="home-tab" data-toggle="tab" data-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Live View</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="profile-tab" data-toggle="tab" data-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Table</button>
+                </li>
+            </ul>
+
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div style="overflow-x:auto; margin-bottom:2%;">
+                        <!--Defaul link: https://docs.google.com/spreadsheets/d/e/2PACX-1vTKXalt0LO2MbolP5HnRC-bgP8BAZHKEdd0yoUUoCIksyl4Qhn0femTlD8MWVU_pA/pubhtml?widget=true&amp;headers=false -->
+                        {% for e in sched %}
+                        <iframe src="{{e.gSheetLink}}" width="100%" height="500"></iframe> {% endfor %}
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <div style="overflow-x:auto; margin-bottom:2%;">
+                        <table class="table table-bordered">
+                            <thead>
+                                <th>NO.</th>
+                                <th>LINK</th>
+                                <th>SCHOOL YEAR</th>
+                                <th>SEMESTER</th>
+                                <th>COURSE YEAR AND SECTION</th>
+                            </thead>
+                            <tbody>
+                                {% for e in sched %}
+                                <tr>
+                                    <td>{{e.id}}</td>
+                                    <td>{{e.gSheetLink}}</td>
+                                    <td>{{e.school_year}}</td>
+                                    <td>{{e.semester}}</td>
+                                    <td>{{e.course_year_and_section}}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Enrolled Students -->
+            <div class="title">
+                <p>ENROLLED STUDENTS</p>
+                <form class="form-inline" action="/acc_cvs" method="post" enctype="multipart/form-data" name="studcvsfile">
+                    {% csrf_token %}
+                    <div class="form-group mx-sm-3 mb-2">
+                        <input type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" name="studcvsfile" id="studcvsfile" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary mb-2">Import CSV File</button>
+                </form>
+            </div>
+
+
+            <div style="overflow-x:auto; margin-bottom:2%;">
+                <!--HTML code to display data in tabular format-->
+                <table class="table table-bordered">
+                    <thead>
+                        <th>NO.</th>
+                        <th>NAME</th>
+                        <th>COURSE YEAR AND SECTION</th>
+                        <th>EMAIL</th>
+                    </thead>
+                    <tbody>
+                        {% for e in emails %}
+                        <tr>
+                            <td>{{e.id}}</td>
+                            <td>{{e.name}}</td>
+                            <td>{{e.course_year_and_section}}</td>
+                            <td>{{e.email}}</td>
+
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!--JAVASCRIPT-->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {% if messages %} {% for message in messages %} {% if message.tags %}
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: '{{ message }}',
+        })
+    </script> {% endif %} {% endfor %} {% endif %}
+</body>
+
+</html>

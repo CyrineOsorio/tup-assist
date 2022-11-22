@@ -123,6 +123,7 @@ class AddingReq(models.Model):
 class DroppingReq(models.Model):
     studID = models.IntegerField()
     
+    
     class Meta:
         verbose_name_plural = "DroppingReq" 
 

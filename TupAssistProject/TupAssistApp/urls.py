@@ -54,8 +54,7 @@ urlpatterns = [
     path('s_step1_submit', views.s_step1_submit, name="s_step1_submit"),
     path('upload', views.upload, name='upload'),
     path('delupload', views.delupload, name='delupload'),
-
-    path('s_adding_editSub', views.s_adding_editSub, name="s_adding_editSub"),
+    path('s_adding_edit_sched', views.s_adding_edit_sched, name="s_adding_edit_sched"),
     path('s_step2_submit', views.s_step2_submit, name="s_step2_submit"),
     
 

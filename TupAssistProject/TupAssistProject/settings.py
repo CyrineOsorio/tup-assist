@@ -152,3 +152,7 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'tupaos.cavite@gmail.com'
 EMAIL_HOST_PASSWORD = 'hqubqxsrqfujykzv'
+
+
+
+TIME_INPUT_FORMATS = ('%I:%M %p',)

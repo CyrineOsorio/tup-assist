@@ -104,128 +104,6 @@ def logoutUser(request):
 
 
 
-
-
-
-# PIC PAGES
-def p_adding(request):
-    current_user = request.user
-    test = registration.objects.filter(Q(course=current_user.course) & Q(userType='STDNT'))
-    context = { 
-        'test': test,
-        'current_user': current_user
-        }
-    return render(request, 'TupAssistApp/p-adding.html', context )
-
-
-def p_adding_edit(request, id):
-    current_user = request.user
-    data = registration.objects.get(id=id)
-    req = AddingReq.objects.filter(studID=data.studID)
-    sched = Schedule.objects.all()
-    context = { 
-        'current_user': current_user,
-        'student_info': data,
-        'req': req,
-        'sched': sched
-        }
-    return render(request, 'TupAssistApp/p-adding-edit.html', context)
-
-
-        
-
-
-
-# DEPARTMENT HEAD PAGES
-
-def h_adding(request):
-    current_user = request.user
-    test = registration.objects.filter(Q(department=current_user.department) & Q(userType='STDNT'))
-    context = { 
-        'test': test,
-        'current_user': current_user
-        }
-    return render(request, 'TupAssistApp/h-adding.html', context)
-
-def h_adding_edit(request, id):
-    current_user = request.user
-    data = registration.objects.get(id=id)
-    req = AddingReq.objects.filter(studID=data.studID)
-    sched = Schedule.objects.all()
-    context = { 
-        'current_user': current_user,
-        'student_info': data,
-        'req': req,
-        'sched': sched
-        }
-    
-    return render(request, 'TupAssistApp/h-adding-edit.html', context)
-
-def h_dropping(request):
-    current_user = request.user
-    test = registration.objects.filter(Q(department=current_user.department) & Q(userType='STDNT'))
-    context = { 
-        'test': test,
-        'current_user': current_user
-        }
-    return render(request, 'TupAssistApp/h-dropping.html', context)
-
-
-def h_dropping_edit(request, id):
-    current_user = request.user
-    data = registration.objects.get(id=id)
-    req = DroppingReq.objects.filter(studID=data.studID)
-    sched = Schedule.objects.all()
-    context = { 
-        'current_user': current_user,
-        'student_info': data,
-        'req': req,
-        'sched': sched
-        }
-    return render(request, 'TupAssistApp/h-dropping-edit.html', context)
-
-
-
-
-
-
-
-def h_transferring(request):
-    current_user = request.user
-    test = registration.objects.filter(Q(department=current_user.department) & Q(userType='STDNT'))
-    context = { 
-        'test': test,
-        'current_user': current_user
-        }
-    return render(request, 'TupAssistApp/h-transferring.html', context)
-
-
-def h_transferring_edit(request, id):
-    current_user = request.user
-    data = registration.objects.get(id=id)
-    req = TransferringReq.objects.filter(studID=data.studID)
-    sched = Schedule.objects.all()
-    context = { 
-        'current_user': current_user,
-        'student_info': data,
-        'req': req,
-        'sched': sched
-        }
-    return render(request, 'TupAssistApp/h-transferring-edit.html', context)
-
-
-
-
-def h_schedule(request):
-    current_user = request.user
-    context = { 
-        'current_user': current_user
-        }
-    return render(request, 'TupAssistApp/h-schedule.html', context)
-
-
-
-
 # CUSTOMIZE ADMIN PAGES FOR OAA AND REGISTRAR
 
 def r_dashboard(request):
@@ -529,11 +407,7 @@ def s_step1_submit(request):
             return redirect('/s_adding')
 
 
-
-
-
-
-def s_adding_editSub(request):
+def s_adding_edit_sched(request):
     if request.method =='POST':
         id = request.POST.get('id')
         M = request.POST.get('M')
@@ -554,15 +428,16 @@ def s_adding_editSub(request):
         fri_end = request.POST.get('fri_end')
         sat_start = request.POST.get('sat_start')
         sat_end = request.POST.get('sat_end')
-    if ( mon_start and mon_end != '') or ( tue_start and tue_end != '') or ( wed_start and wed_end != '') or ( thu_start and thu_end != '') or ( fri_start and fri_end != '') or ( sat_start and sat_end != ''):
-            data1= AddingReq.objects.get(id=id)
-            data1.id = request.POST.get('id')
-            data1.section = request.POST.get('section')
-            data1.sched = M + ' ' + mon_start + '-' + mon_end + ' ' + T + ' ' + tue_start + '-' + tue_end + ' ' + W + ' ' + wed_start + '-' + wed_start + ' ' + TH + ' ' + thu_start + '-' + thu_end + ' ' + F + ' ' + fri_start + '-' + fri_end + ' ' + S + ' ' + sat_start + '-' + sat_end
-            data1.save()
-            return redirect('/s_adding')
-    else:
-        messages.error(request, 'Must Input atleast 1 sched')
+
+        # if ( mon_start and mon_end != '') or ( tue_start and tue_end != '') or ( wed_start and wed_end != '') or ( thu_start and thu_end != '') or ( fri_start and fri_end != '') or ( sat_start and sat_end != ''):
+        #         data1= AddingReq.objects.get(id=id)
+        #         data1.id = request.POST.get('id')
+        #         data1.section = request.POST.get('section')
+        #         data1.sched = M + ' ' + mon_start + '-' + mon_end + ' ' + T + ' ' + tue_start + '-' + tue_end + ' ' + W + ' ' + wed_start + '-' + wed_start + ' ' + TH + ' ' + thu_start + '-' + thu_end + ' ' + F + ' ' + fri_start + '-' + fri_end + ' ' + S + ' ' + sat_start + '-' + sat_end
+        #         data1.save()
+        #         return redirect('/s_adding')
+        # else:
+        #     messages.error(request, 'Must Input atleast 1 sched')
         return redirect('/s_adding')
 
 
@@ -609,4 +484,117 @@ def s_transferring(request):
 
     }
     return render(request, 'TupAssistApp/s_transferring.html', context)
+
+
+
+
+
+# PIC PAGES
+def p_adding(request):
+    current_user = request.user
+    test = registration.objects.filter(Q(course=current_user.course) & Q(userType='STDNT'))
+    context = { 
+        'test': test,
+        'current_user': current_user
+        }
+    return render(request, 'TupAssistApp/p-adding.html', context )
+
+
+def p_adding_edit(request, id):
+    current_user = request.user
+    data = registration.objects.get(id=id)
+    req = AddingReq.objects.filter(studID=data.studID)
+    sched = Schedule.objects.all()
+    context = { 
+        'current_user': current_user,
+        'student_info': data,
+        'req': req,
+        'sched': sched
+        }
+    return render(request, 'TupAssistApp/p-adding-edit.html', context)
+
+
+        
+
+
+
+# DEPARTMENT HEAD PAGES
+
+def h_adding(request):
+    current_user = request.user
+    test = registration.objects.filter(Q(department=current_user.department) & Q(userType='STDNT'))
+    context = { 
+        'test': test,
+        'current_user': current_user
+        }
+    return render(request, 'TupAssistApp/h-adding.html', context)
+
+def h_adding_edit(request, id):
+    current_user = request.user
+    data = registration.objects.get(id=id)
+    req = AddingReq.objects.filter(studID=data.studID)
+    sched = Schedule.objects.all()
+    context = { 
+        'current_user': current_user,
+        'student_info': data,
+        'req': req,
+        'sched': sched
+        }
+    
+    return render(request, 'TupAssistApp/h-adding-edit.html', context)
+
+def h_dropping(request):
+    current_user = request.user
+    test = registration.objects.filter(Q(department=current_user.department) & Q(userType='STDNT'))
+    context = { 
+        'test': test,
+        'current_user': current_user
+        }
+    return render(request, 'TupAssistApp/h-dropping.html', context)
+
+
+def h_dropping_edit(request, id):
+    current_user = request.user
+    data = registration.objects.get(id=id)
+    req = DroppingReq.objects.filter(studID=data.studID)
+    sched = Schedule.objects.all()
+    context = { 
+        'current_user': current_user,
+        'student_info': data,
+        'req': req,
+        'sched': sched
+        }
+    return render(request, 'TupAssistApp/h-dropping-edit.html', context)
+
+
+def h_transferring(request):
+    current_user = request.user
+    test = registration.objects.filter(Q(department=current_user.department) & Q(userType='STDNT'))
+    context = { 
+        'test': test,
+        'current_user': current_user
+        }
+    return render(request, 'TupAssistApp/h-transferring.html', context)
+
+
+def h_transferring_edit(request, id):
+    current_user = request.user
+    data = registration.objects.get(id=id)
+    req = TransferringReq.objects.filter(studID=data.studID)
+    sched = Schedule.objects.all()
+    context = { 
+        'current_user': current_user,
+        'student_info': data,
+        'req': req,
+        'sched': sched
+        }
+    return render(request, 'TupAssistApp/h-transferring-edit.html', context)
+
+
+def h_schedule(request):
+    current_user = request.user
+    context = { 
+        'current_user': current_user
+        }
+    return render(request, 'TupAssistApp/h-schedule.html', context)
 

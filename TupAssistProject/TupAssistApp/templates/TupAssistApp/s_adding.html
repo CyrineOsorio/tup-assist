@@ -204,8 +204,7 @@
                                             <td>{{i.section}}</td>
                                             <td>{{i.sched}}</td>
                                             <td class="d-flex" style="gap:10px;">
-                                                <button type="button" class="btn btn-success">Update</button>
-                                                <button type="button" class="btn btn-danger">Delete</button>
+                                                <a type="button" class="btn btn-danger" href="/s_del_sub/{{i.id}}">Delete</a>
                                             </td>
                                         </tr>
                                         {% endfor %}
@@ -470,44 +469,29 @@
 
     <!-- SCHEDULE NI REJAY -->
     <script>
-        const getTimeAMPMFormat = (date) => {
-            let hours = date.getHours();
-            let minutes = date.getMinutes();
-            const ampm = hours >= 12 ? 'PM' : 'AM';
-            hours = hours % 12;
-            hours = hours ? hours : 12; // the hour '0' should be '12'
-            hours = hours < 10 ? '0' + hours : hours;
-            // appending zero in the start if hours less than 10
-            minutes = minutes < 10 ? '0' + minutes : minutes;
-            return hours + ':' + minutes + ' ' + ampm;
-        };
-        console.log(getTimeAMPMFormat(new Date));
-
         function myFunction() {
 
-            var a = document.getElementById("mon_start");
-            var b = document.getElementById("mon_end");
-            var c = document.getElementById("tue_start");
-            var d = document.getElementById("tue_end");
-            var e = document.getElementById("wed_start");
-            var f = document.getElementById("wed_end");
-            var g = document.getElementById("thu_start");
-            var h = document.getElementById("thu_end");
-            var i = document.getElementById("fri_start");
-            var j = document.getElementById("fri_end");
-            var k = document.getElementById("sat_start");
-            var l = document.getElementById("sat_end");
-            var timeString = a.value;
+            var a = document.getElementById("mon_start").value;
+            var b = document.getElementById("mon_end").value;
+            var c = document.getElementById("tue_start").value;
+            var d = document.getElementById("tue_end").value;
+            var e = document.getElementById("wed_start").value;
+            var f = document.getElementById("wed_end").value;
+            var g = document.getElementById("thu_start").value;
+            var h = document.getElementById("thu_end").value;
+            var i = document.getElementById("fri_start").value;
+            var j = document.getElementById("fri_end").value;
+            var k = document.getElementById("sat_start").value;
+            var l = document.getElementById("sat_end").value;
 
-            const timeString12hr = new Date('1970-01-01T' + timeString + 'Z')
-                .toLocaleTimeString('en-US', {
-                    timeZone: 'UTC',
-                    hour12: true,
-                    hour: 'numeric',
-                    minute: 'numeric'
-                });
+            const a12hr = new Date('1970-01-01T' + a + 'Z').toLocaleTimeString('en-US', {
+                timeZone: 'UTC',
+                hour12: true,
+                hour: 'numeric',
+                minute: 'numeric'
+            });
 
-            schedule.value = timeString12hr;
+            schedule.value = a12hr;
 
         }
     </script>

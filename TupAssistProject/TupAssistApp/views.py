@@ -304,6 +304,12 @@ def s_add_sub(request):
         messages.success(request, 'Subject Added')
         return redirect('/s_adding')
 
+def s_del_sub(request, id):
+    data = AddingReq.objects.get(id=id)
+    data.delete()
+    messages.success(request, 'Subject Deleted')
+    return redirect('/s_adding')
+
 def s_step1_submit(request):
     current_user = request.user
     if request.method =='POST':

@@ -124,7 +124,7 @@
                                     <span class="form-stepper-circle text-muted">
                                         <span>3</span>
                                     </span>
-                                    <div class="label text-muted">Requests Details</div>
+                                    <div class="label text-muted">Wait for Department Head Approval</div>
                                 </a>
                             </li>
                         </ul>
@@ -203,7 +203,6 @@
                                 </div>
 
                             </div>
-
                         </section>
 
 
@@ -333,7 +332,7 @@
                                         <td>{{i.pic_is_approve}}</td>
                                         <td>{{i.pic_remark}}</td>
                                         <td class="d-flex" style="gap:10px;">
-                                            <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateReq">Update</a>
+                                            <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateReq{{i.id}}">Update</a>
                                         </td>
                                     </tr>
                                     {% endfor %}
@@ -357,26 +356,83 @@
                     </section>
 
                     <!-- Update Request Modal -->
-                    <!-- Modal -->
-                    <div class="modal fade" id="updateReq" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    {% for i in req %}
+                    <div class="modal fade" id="updateReq{{i.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Edit Request Subject</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                                 </div>
-                                <div class="modal-body">
-                                    ...
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
+                                <form action="/s_edit_sub" method="post">
+                                    {% csrf_token %}
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label for="subject">Subject</label>
+                                            <input type="text" class="form-control" id="subject" name="subject" value="{{i.subject}}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="section">Section</label>
+                                            <input type="text" class="form-control" id="section" name="section" value="{{i.section}}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="sched">Schedule</label>
+                                            <input type="text" class="form-control" id="sched1" name="sched" value="{{i.sched}}" readonly>
+                                        </div>
+
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">Monday</span>
+                                            </div>
+                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="mon_start1">
+                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="mon_end1">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">Tuesday</span>
+                                            </div>
+                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="tue_start1">
+                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="tue_end1">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">Wednesday</span>
+                                            </div>
+                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="wed_start1">
+                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="wed_end1">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">Thurdsay</span>
+                                            </div>
+                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="thu_start1">
+                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="thu_end1">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">Friday</span>
+                                            </div>
+                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="fri_start1">
+                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="fri_end1">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">Saturday</span>
+                                            </div>
+                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="sat_start1">
+                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="sat_end1">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
-                    </div>
+                    </div> {% endfor %}
 
 
 
@@ -390,7 +446,7 @@
 
                     <!-- Step 3 Content, default hidden on page load. -->
                     <section id="step-3" class="form-step d-none">
-                        <h2 class="font-normal">Requests Details</h2>
+                        <h2 class="font-normal">Wait for Department Head Approval</h2>
                         <!-- Step 3 input fields -->
                         <div class="mt-3">
                             Step 3 input fields goes here..

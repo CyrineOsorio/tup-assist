@@ -429,16 +429,16 @@ def s_adding_edit_sched(request):
         sat_start = request.POST.get('sat_start')
         sat_end = request.POST.get('sat_end')
 
-        # if ( mon_start and mon_end != '') or ( tue_start and tue_end != '') or ( wed_start and wed_end != '') or ( thu_start and thu_end != '') or ( fri_start and fri_end != '') or ( sat_start and sat_end != ''):
-        #         data1= AddingReq.objects.get(id=id)
-        #         data1.id = request.POST.get('id')
-        #         data1.section = request.POST.get('section')
-        #         data1.sched = M + ' ' + mon_start + '-' + mon_end + ' ' + T + ' ' + tue_start + '-' + tue_end + ' ' + W + ' ' + wed_start + '-' + wed_start + ' ' + TH + ' ' + thu_start + '-' + thu_end + ' ' + F + ' ' + fri_start + '-' + fri_end + ' ' + S + ' ' + sat_start + '-' + sat_end
-        #         data1.save()
-        #         return redirect('/s_adding')
-        # else:
-        #     messages.error(request, 'Must Input atleast 1 sched')
-        return redirect('/s_adding')
+        if ( mon_start and mon_end != '') or ( tue_start and tue_end != '') or ( wed_start and wed_end != '') or ( thu_start and thu_end != '') or ( fri_start and fri_end != '') or ( sat_start and sat_end != ''):
+                data1= AddingReq.objects.get(id=id)
+                data1.id = request.POST.get('id')
+                data1.section = request.POST.get('section')
+                data1.sched = M + ' ' + mon_start + '-' + mon_end + ' ' + T + ' ' + tue_start + '-' + tue_end + ' ' + W + ' ' + wed_start + '-' + wed_start + ' ' + TH + ' ' + thu_start + '-' + thu_end + ' ' + F + ' ' + fri_start + '-' + fri_end + ' ' + S + ' ' + sat_start + '-' + sat_end
+                data1.save()
+                return redirect('/s_adding')
+        else:
+            messages.error(request, 'Must Input atleast 1 sched')
+            return redirect('/s_adding')
 
 
 def s_step2_submit(request):

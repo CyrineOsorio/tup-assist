@@ -14,8 +14,6 @@ class TransStatus(models.Model):
 
 # CvS file of subjects to import in Subjects Model
 class Subjects(models.Model):           
-    school_year = models.IntegerField(blank=True, null=True)
-    semester = models.CharField(max_length=255)
     subject_code = models.CharField(max_length=255)
 
     class Meta:

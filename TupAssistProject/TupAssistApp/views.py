@@ -54,7 +54,7 @@ def index(request):
 
         elif user is not None and user.userType == 'Person-in-charge':
             login(request, user)
-            return redirect('/p-adding')
+            return redirect('/p_adding')
         else:
            messages.error(request, 'Invalid Credentials')
     return render(request, 'TupAssistApp/index.html')
@@ -320,18 +320,9 @@ def s_step1_submit(request):
         return redirect('/s_adding')
     
     
-
-
-
 def s_adding_edit_sched(request):
     if request.method =='POST':
         id = request.POST.get('id')
-        M = request.POST.get('M')
-        T = request.POST.get('T')
-        W = request.POST.get('W')
-        TH = request.POST.get('TH')
-        F = request.POST.get('F')
-        S = request.POST.get('S')
         mon_start = request.POST.get('mon_start')
         mon_end = request.POST.get('mon_end')
         tue_start = request.POST.get('tue_start')
@@ -413,7 +404,7 @@ def p_adding(request):
         'test': test,
         'current_user': current_user
         }
-    return render(request, 'TupAssistApp/p-adding.html', context )
+    return render(request, 'TupAssistApp/p_adding.html', context )
 
 
 def p_adding_edit(request, id):
@@ -427,7 +418,7 @@ def p_adding_edit(request, id):
         'req': req,
         'sched': sched
         }
-    return render(request, 'TupAssistApp/p-adding-edit.html', context)
+    return render(request, 'TupAssistApp/p_adding_edit.html', context)
 
 
         

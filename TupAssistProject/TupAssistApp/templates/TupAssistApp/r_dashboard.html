@@ -76,6 +76,9 @@
                 <p>TRANSACTION STATUS</p>
             </div>
 
+
+
+            <!-- Transaction Status -->
             {% for status in status %}
             <div class="row" id="trans_status">
                 <div class="col">
@@ -90,35 +93,7 @@
             {% endfor %}
 
 
-
-            <div class="title">
-                <p>PROGRAM/COURSES OFFER</p>
-                <form class="form-inline" action="/sub_cvs" method="post" enctype="multipart/form-data" name="subcvsfile">
-                    {% csrf_token %}
-                    <div class="form-group mx-sm-3 mb-2">
-                        <input type="file" name="subcvsfile" id="subcvsfile" required>
-                    </div>
-                    <button type="submit" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" class="btn btn-primary mb-2">Import CSV File</button>
-                </form>
-            </div>
-
-            <table class="table table-bordered">
-                <thead>
-                    <th>NO.</th>
-                    <th>PROGRAM</th>
-                    <th>CODE</th>
-                </thead>
-                <tbody>
-                    {% for i in prog %}
-                    <tr>
-                        <td>{{i.id}}</td>
-                        <td>{{i.program}}</td>
-                        <td>{{i.code}}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-
+            <!-- Offer Subject -->
             <div class="title">
                 <p>OFFER SUBJECTS</p>
                 <form class="form-inline" action="/sub_cvs" method="post" enctype="multipart/form-data" name="subcvsfile">
@@ -161,6 +136,7 @@
             </div>
 
 
+            <!-- Enrolled Students -->
             <div class="title">
                 <p>ENROLLED STUDENTS</p>
                 <form class="form-inline" action="/acc_cvs" method="post" enctype="multipart/form-data" name="studcvsfile">
@@ -195,45 +171,49 @@
                 </table>
             </div>
 
-
+            <!-- Schedule -->
             <div class="title">
-                <p>SCHEDULE AND SLOTS</p>
+                <p>SCHEDULE</p>
             </div>
-            <form action="/import_sched" method="post" style="margin-bottom:2%;">
-                {% csrf_token %}
-                <div class="row">
-                    <div class="col">
-                        <label for="sub_code">Google Sheet Link</label>
-                        <input type="text" class="form-control" name="gSheetLink" id="gSheetLink" required>
+
+            <div style="overflow-x:auto; margin-bottom:2%;">
+                <form action="/import_sched" method="post" style="margin-bottom:2%;">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col">
+                            <label for="sub_code">Google Sheet Link</label>
+                            <input type="text" class="form-control" name="gSheetLink" id="gSheetLink" required>
+                        </div>
+                        <div class="col">
+                            <label for="school_year">School Year</label>
+                            <input type="number" class="form-control" name="school_year" id="school_year" required>
+                        </div>
+                        <div class="col">
+                            <label for="semester">Semester</label>
+                            <select class="custom-select" name="semester" id="semester" required>
+                        <option selected disabled value="semester">semester</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        </select>
+                        </div>
+                        <div class="col">
+                            <label for="course_year_and_section">Course Year Section</label>
+                            <input type="text" class="form-control" name="course_year_and_section" id="course_year_and_section" required>
+                        </div>
+                        <div class="col">
+                            <label for="slots">Slots</label>
+                            <input type="number" class="form-control" name="slots" id="slots" required>
+                        </div>
+                        <div class="col">
+                            <label for="button">.</label>
+                            <input type="submit" class="form-control" id="button" value="Add" required>
+                        </div>
                     </div>
-                    <div class="col">
-                        <label for="school_year">School Year</label>
-                        <input type="number" class="form-control" name="school_year" id="school_year" required>
-                    </div>
-                    <div class="col">
-                        <label for="semester">Semester</label>
-                        <select class="custom-select" name="semester" id="semester" required>
-                      <option selected disabled value="semester">semester</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                    </select>
-                    </div>
-                    <div class="col">
-                        <label for="course_year_and_section">Course Year Section</label>
-                        <input type="text" class="form-control" name="course_year_and_section" id="course_year_and_section" required>
-                    </div>
-                    <div class="col">
-                        <label for="slots">Slots</label>
-                        <input type="number" class="form-control" name="slots" id="slots" required>
-                    </div>
-                    <div class="col">
-                        <label for="button">.</label>
-                        <input type="submit" class="form-control" id="button" value="Add" required>
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
 
 
+            <!-- Viewing of Schedule -->
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="home-tab" data-toggle="tab" data-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Live View</button>
@@ -242,6 +222,7 @@
                     <button class="nav-link" id="profile-tab" data-toggle="tab" data-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Table</button>
                 </li>
             </ul>
+
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <div style="overflow-x:auto; margin-bottom:2%;">
@@ -275,9 +256,6 @@
                     </div>
                 </div>
             </div>
-
-
-
 
         </div>
     </div>

@@ -104,8 +104,8 @@
                     <!-- <form id="userAccountSetupForm" name="userAccountSetupForm" enctype="multipart/form-data" method="POST"> -->
                     <!-- Step 1 Content -->
                     <section id="step-1" class="form-step">
-                        {% if student_info.addStatus == 'PIC Offer Subject: Student may plot schedule now.' %}
-                        <div class="alert alert-success" role="alert"> Notice: Tapos ka na sa step 1. You can proceed na sa step 2.</div>{% endif %}
+                        {% if student_info.addStatus == 'Wait for Department Head Approval' %}
+                        <div class="alert alert-success" role="alert"> Notice: Wait for Department Head Approval.</div>{% endif %}
 
                         <h2 class="font-normal">Check Student Request and Program-in-charge Approval</h2>
 
@@ -117,7 +117,7 @@
                                     <th>SCHEDULE</th>
                                     <th>APPROVE</th>
                                     <th>REMARK</th>
-                                    <th>SIGNED BY</th>
+                                    <th>REVIEWED BY</th>
                                     <th>DATE & TIME</th>
                                     <th>ACTION</th>
                                 </thead>
@@ -226,7 +226,6 @@
                         </div>
 
 
-
                         <br> {% if student_info.addStatus == 'Wait for PIC Approval' %}
                         <div class="mt-3" style="display: flex; justify-content: end; gap:5px;">
                             <form action="/p_step1_submit" method="post">
@@ -247,18 +246,25 @@
                     <!-- Step 2 Content, default hidden on page load. -->
                     <section id="step-2" class="form-step d-none">
                         {% if student_info.addStatus == 'Wait for Department Head Approval' %}
-                        <div class="alert alert-danger" role="alert">
-                            Notice: Hintayin ang Department Head sa approval ng request.
-                        </div>{% endif %}
+                        <div class="alert alert-danger" role="alert">Notice: Hintayin ang Department Head sa approval ng request.</div>{% endif %}
+
                         <h2 class="font-normal">Department Head Approval</h2>
                         <!-- Step 2 input fields -->
                         <div class="mt-3">
                             <table class="table table-bordered">
                                 <thead>
-                                    <th>NO.</th>
                                     <th>SUBJECT</th>
                                     <th>SECTION</th>
                                     <th>SCHEDULE</th>
+                                    <th>PIC APPROVAL</th>
+                                    <th>PIC REMARK</th>
+                                    <th>REVIEWED BY</th>
+                                    <th>DATE & TIME</th>
+                                    <th>HEAD APPROVAL</th>
+                                    <th>HEAD REMARK</th>
+                                    <th>ENDORSE BY</th>
+                                    <th>DATE & TIME</th>
+                                    <th>ACTION</th>
                                 </thead>
 
                                 <tbody>

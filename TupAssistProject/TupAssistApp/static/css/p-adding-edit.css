@@ -266,6 +266,7 @@ h2 {
 
 .mt-3 {
     margin-top: 2rem;
+    width: 100%
 }
 
 .d-none {
@@ -428,6 +429,7 @@ table {
     width: 100%;
 }
 
-#step1 {
+#step1,
+#step2 {
     display: grid;
 }

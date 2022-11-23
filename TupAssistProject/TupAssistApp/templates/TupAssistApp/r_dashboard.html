@@ -153,16 +153,16 @@
                 <table class="table table-bordered">
                     <thead>
                         <th>NO.</th>
-                        <th>NAME</th>
-                        <th>SECTION</th>
+                        <th>FIRST NAME</th>
+                        <th>LAST NAME</th>
                         <th>EMAIL</th>
                     </thead>
                     <tbody>
                         {% for e in emails %}
                         <tr>
                             <td>{{e.id}}</td>
-                            <td>{{e.name}}</td>
-                            <td>{{e.section}}</td>
+                            <td>{{e.first_name}}</td>
+                            <td>{{e.last_name}}</td>
                             <td>{{e.email}}</td>
 
                         </tr>

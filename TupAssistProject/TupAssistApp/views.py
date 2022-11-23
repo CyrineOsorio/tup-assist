@@ -36,7 +36,8 @@ installed_apps = ['TupAssistApp']
 def index(request):
     if request.method == 'POST':
         username = request.POST.get('username')
-        password = request.POST.get('password') 
+        password = request.POST.get('password')
+        print(password)
         user = authenticate(request, username=username, password=password) 
         print(user)
 
@@ -111,7 +112,7 @@ def r_dashboard(request):
     subs = Subjects.objects.all()
     status = TransStatus.objects.all()
     sched = Schedule.objects.all()
-    emails = StudentReference.objects.all()
+    emails = registration.objects.filter(userType='STDNT')
     # latest_sched = sched.gSheetLink
     # print(latest_sched)
     context = {
@@ -123,25 +124,20 @@ def r_dashboard(request):
     }
     return render(request, 'TupAssistApp/r_dashboard.html', context)
 
-
 def acc_cvs(request):
     if request.method=='POST':
-        junk = StudentReference.objects.all()
-        junk.delete()
+        form = StudentRegistration(request.POST)
         studcvsfile = request.FILES["studcvsfile"]
         decoded_file = studcvsfile.read().decode('utf-8').splitlines()
         reader = csv.reader(decoded_file)
         print(reader)
         for row in reader:
-            # new_revo = StudentReference.objects.create(email=str(i)[2:-2])
-            try:
-                new_revo = StudentReference.objects.create(name=str(row[0]), section=str(row[1]), email=str(row[2]))
-                new_revo.save()
-            except:
-                messages.error(request, 'it looks like CSV format is not match to the table.')
-                return redirect('/r_dashboard')
+            new_revo = registration.objects.create(username=str(row[2]), email=str(row[2]), first_name=str(row[0]), last_name=str(row[1]), userType='STDNT')
+            new_revo.set_password('TUPC-'+str(row[0])+str(row[1])) #Default Password
+            new_revo.save()    
         return redirect('/r_dashboard')
     return redirect('/r_dashboard')
+
 
 def sub_cvs(request):
     if request.method=='POST': 

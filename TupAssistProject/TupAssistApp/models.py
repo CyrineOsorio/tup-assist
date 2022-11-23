@@ -109,8 +109,12 @@ class AddingReq(models.Model):
     sched = models.CharField(max_length=255, null=True, blank=True)
     pic_is_approve = models.CharField(max_length=255, null=True, blank=True, default='Pending')
     pic_remark = models.CharField(max_length=255, null=True, blank=True)
+    pic_name = models.CharField(max_length=255, null=True, blank=True)
+    pic_date = models.DateTimeField()
     head_is_approve = models.BooleanField(default=False)
     head_remark = models.CharField(max_length=255, null=True, blank=True)
+    head_name = models.CharField(max_length=255, null=True, blank=True)
+    head_date = models.DateTimeField()
     
     class Meta:
         verbose_name_plural = "AddingReq" 

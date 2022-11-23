@@ -11,11 +11,26 @@ from .views  import *
 app_name = 'TupAssistApp'
 
 urlpatterns = [
+    # Login
     path('', views.index, name='index'),
     path('index/', views.index, name='index'),
 
-    # log out
+    # Logout
     path('logout/', views.logoutUser, name= 'logout'),
+
+
+    #registrar
+    path('r_dashboard/', views.r_dashboard, name='r_dashboard'),
+    path('student_acc_cvs', views.student_acc_cvs, name='student_acc_cvs'),
+    path('sub_cvs', views.sub_cvs, name='sub_cvs'),
+    path('transStatus/<int:id>', views.transStatus),
+    path('import_sched', views.import_sched, name='import_sched'),
+    path('r_adding/', views.r_adding, name='r_adding'),
+    path('r_adding_view/<int:id>', views.r_adding_view),
+    path('r_dropping/', views.r_dropping, name='r_dropping'),
+    path('r_transferring/', views.r_transferring, name='r_transferring'),
+    path('r_account/', views.r_account, name='r_account'),
+    path('r_staff_create', views.r_staff_create, name='r_staff_create'),
 
     #student
     path('s_adding', views.s_adding, name='s_adding'),
@@ -51,18 +66,6 @@ urlpatterns = [
     path('h-transferring-edit/<int:id>', views.h_transferring_edit),
     path('h-schedule/', views.h_schedule, name='h_schedule'),
 
-    #registrar
-    path('r_dashboard/', views.r_dashboard, name='r_dashboard'),
-    path('acc_cvs', views.acc_cvs, name='acc_cvs'),
-    path('sub_cvs', views.sub_cvs, name='sub_cvs'),
-    path('transStatus/<int:id>', views.transStatus),
-    path('import_sched', views.import_sched, name='import_sched'),
-    path('r_adding/', views.r_adding, name='r_adding'),
-    path('r_adding_view/<int:id>', views.r_adding_view),
-    path('r_dropping/', views.r_dropping, name='r_dropping'),
-    path('r_transferring/', views.r_transferring, name='r_transferring'),
-    path('r_account/', views.r_account, name='r_account'),
-    path('r_staff_create', views.r_staff_create, name='r_staff_create'),
     
     
 

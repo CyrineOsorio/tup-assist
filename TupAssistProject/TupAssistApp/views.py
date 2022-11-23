@@ -48,11 +48,11 @@ def index(request):
             login(request, user)
             return redirect('/r_dashboard')
 
-        elif user is not None and user.userType == 'STDNT':
+        elif user is not None and user.userType == 'Student':
             login(request, user)
             return redirect('/s_profile')
         
-        elif user is not None and user.userType == 'DH':
+        elif user is not None and user.userType == 'Department Head':
             login(request, user)
             return redirect('/h-adding')
 
@@ -178,7 +178,7 @@ def r_account(request):
     current_user = request.user
     form = HeadRegistration()
     # staff = registration.objects.filter(Q(userType='STDNT') & Q(userType='STDNT'))
-    student = registration.objects.filter(userType='STDNT')
+    student = registration.objects.filter(userType='Student')
     context = {
         'form': form,
         'current_user': current_user,
@@ -194,7 +194,7 @@ def r_account(request):
     return render(request, 'TupAssistApp/r_account.html', context)
 
 
-def acc_cvs(request):
+def student_acc_cvs(request):
     if request.method=='POST':
         junk = registration.objects.all()
         junk.delete()
@@ -205,7 +205,7 @@ def acc_cvs(request):
         print(reader)
         for row in reader:
             try:
-                new_revo = registration.objects.create(username=str(row[2]), email=str(row[2]), first_name=str(row[0]), last_name=str(row[1]), userType='STDNT')
+                new_revo = registration.objects.create(username=str(row[2]), email=str(row[2]), first_name=str(row[0]), last_name=str(row[1]), userType='Student')
                 new_revo.set_password('TUPC-'+str(row[0])+str(row[1])) #Default Password
                 new_revo.save()    
                 messages.success(request, 'Successfully Import, but check if data imported is correct.')
@@ -256,14 +256,40 @@ def changepassword(request):
 def changestudentinfo(request):
     current_user = request.user
     if request.method == 'POST':
-        data = registration.objects.get(username=current_user.username)
-        data.first_name = request.POST.get("first_name")
-        data.last_name = request.POST.get("last_name")
-        data.section = request.POST.get("section")
-        data.studID = request.POST.get("studID")
-        data.save()
-        messages.success(request, 'Successfully Updated your Personal Information.')
-        return redirect('/s_profile')
+        try:
+            course = request.POST.get("course")
+            if course == "BET-COET" or course == "BET-ET" or course == "BET-ESET" or course == "BET-CT" or course == "BET-MT" or course == "BET-AT" or course == "BET-PPT":
+                data = registration.objects.get(username=current_user.username)
+                data.course = request.POST.get("course")
+                data.year = request.POST.get("year")
+                data.section = request.POST.get("section")
+                data.studID = request.POST.get("studID")
+                data.department = 'Department of Industrial Technology'
+                data.save()
+                messages.success(request, 'Successfully Updated your Personal Information.')
+                return redirect('/s_profile')
+            elif course == "BSCE" or course == "BSEE" or course == "BSECE" or course == "BSME":
+                data.course = request.POST.get("course")
+                data.year = request.POST.get("year")
+                data.section = request.POST.get("section")
+                data.studID = request.POST.get("studID")
+                data.department = 'Department of Engineering'
+                data.save()
+                messages.success(request, 'Successfully Updated your Personal Information.')
+                return redirect('/s_profile')
+            elif course == "BSIE-ICT":
+                data.course = request.POST.get("course")
+                data.year = request.POST.get("year")
+                data.section = request.POST.get("section")
+                data.studID = request.POST.get("studID")
+                data.department = 'Department of Industrial Education'
+                data.save()
+                messages.success(request, 'Successfully Updated your Personal Information.')
+                return redirect('/s_profile')
+        except:
+            messages.error(request, 'Invalid Credentials!')
+            return redirect('/s_profile')
+        
 
 def s_adding(request):
     current_user = request.user
@@ -440,21 +466,6 @@ def p_edit_sub(request):
         edit.save()
         messages.success(request, 'Request Successfully Edited!')
         return redirect('/p_adding_edit/'+ str(data.id))
-
-        # mon_start = request.POST.get('mon_start')
-        # mon_end = request.POST.get('mon_end')
-        # tue_start = request.POST.get('tue_start')
-        # tue_end = request.POST.get('tue_end')
-        # wed_start = request.POST.get('wed_start')
-        # wed_end = request.POST.get('wed_end')
-        # thu_start = request.POST.get('thu_start')
-        # thu_end = request.POST.get('thu_end')
-        # fri_start = request.POST.get('fri_start')
-        # fri_end = request.POST.get('fri_end')
-        # sat_start = request.POST.get('sat_start')
-        # sat_end = request.POST.get('sat_end')
-        # print('something')
-        return redirect('/s_adding')
 
 def p_step1_submit(request):
     studID = request.POST.get('studID')

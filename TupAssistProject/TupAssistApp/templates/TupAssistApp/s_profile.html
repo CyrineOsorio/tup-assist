@@ -85,9 +85,25 @@
                         <input type="text" class="form-control" id="last_name" name="last_name" value="{{current_user.last_name}}" readonly>
                     </div>
                     <div class="form-group">
+                        <label for="course">Course</label>
+                        <select class="custom-select" id="course" name="course">
+                            <option selected>{{current_user.course}}</option>
+                            <option value="BET-COET">Bachelor of Engineering Technology major in Computer Engineering Technology</option>
+                            <option value="BSIE-ICT">Bachelor of Science in Industrial Education major in: Information and Communication Technology</option>
+                            <option value="BSCE">Bachelor of Science in Civil Engineering</option>
+                          </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="year">Year</label>
+                        <input type="number" class="form-control" id="year" name="year" value="{{current_user.year}}" min="1" max="5">
+                    </div>
+                    <div class="form-group">
                         <label for="section">Section</label>
-                        <input type="text" class="form-control" id="section" name="section" value="{{current_user.section}}">
-                        <small id="last_name" class="form-text text-muted">Format: Course-Year-Section, Ex: BET-COET-4B</small>
+                        <select class="custom-select" id="section" name="section">
+                            <option selected>{{current_user.section}}</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                          </select>
                     </div>
                     <div class="form-group">
                         <label for="studID">Sudent Number</label>

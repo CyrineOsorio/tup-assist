@@ -100,7 +100,7 @@
                     <!-- Enrolled Students -->
                     <div class="title">
                         <p>ENROLLED STUDENTS</p>
-                        <form class="form-inline" action="/acc_cvs" method="post" enctype="multipart/form-data" name="studcvsfile" style="gap:10px;">
+                        <form class="form-inline" action="/student_acc_cvs" method="post" enctype="multipart/form-data" name="studcvsfile" style="gap:10px;">
                             {% csrf_token %}
                             <div class="form-group">
                                 <input type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" name="studcvsfile" id="studcvsfile" required>
@@ -125,7 +125,6 @@
                                     <td>{{e.first_name}}</td>
                                     <td>{{e.last_name}}</td>
                                     <td>{{e.email}}</td>
-
                                 </tr>
                                 {% endfor %}
                             </tbody>

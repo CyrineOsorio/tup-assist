@@ -267,6 +267,15 @@ def r_staff_create(request):
 
 #STUDENT PAGES
 
+def s_profile(request):
+    current_user = request.user
+    # Models
+    context = {
+        'current_user': current_user,
+    }
+    return render(request, 'TupAssistApp/s_profile.html', context)
+
+
 def s_adding(request):
     current_user = request.user
     # Models

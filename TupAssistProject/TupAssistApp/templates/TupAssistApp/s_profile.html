@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> TUP-ASSIST </title>
+
+
+    <!-- DROPDOWN BOOTSTRAP-->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+
+    <!-- css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="{%static 'css/s_profile.css'%}">
+
+
+    <!-- icon sa bar tab and fonts -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="../../static/images/tuplogo.png" type="image/x-icon">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg" id="navbarnavbar">
+        <div class="navbarLagayan">
+            <img src="../../static/images/tuplogo.png" alt="TUPLogo.png" width="30" height="30">
+            <a class="nav-link" href="{%url 'TupAssistApp:s_adding'%}">Technological University of the Philippines - <span style="color: #E2435E; font-weight: 500;"> Assist</span></a>
+            <div class="lagayanNgButton">
+                <button class="navbar-toggler navbar-light" type="button" style="background-color: transparent;" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+            </div>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
+
+            <form class="d-flex">
+                <ul class="navbar-nav mr-auto" id="center">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{%url 'TupAssistApp:s_profile'%}" id="profile">Profile<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{%url 'TupAssistApp:s_adding'%}" id="">Adding</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{%url 'TupAssistApp:s_dropping'%}" id="">Dropping</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{%url 'TupAssistApp:s_transferring'%}" id="">Transfer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{%url 'TupAssistApp:logout'%}" id="logoutbutton">Logout</a>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </nav>
+
+
+
+    <div class="bg-container">
+        <div class="bodybody">
+
+            <div style="overflow-x:auto;" class="innerBody">
+                <h1>Profile Information</h1>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <!-- bootstrap na js: yung seperate -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+
+    <!-- Messages -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {% if messages %} {% for message in messages %} {% if message.tags %}
+    <script>
+        Swal.fire({
+            text: '{{ message }}',
+        })
+    </script> {% endif %} {% endfor %} {% endif %}
+
+
+
+</body>
+
+</html>

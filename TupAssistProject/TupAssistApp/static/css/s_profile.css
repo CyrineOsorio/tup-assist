@@ -7,7 +7,7 @@
 
 body {
     width: 100%;
-    height: 100vh;
+    height: 110vh;
 }
 
 a {
@@ -75,7 +75,7 @@ a:focus {
     justify-self: flex-end;
 }
 
-#s_profile,
+#profile,
 #adding,
 #dropping,
 #transferring {
@@ -87,6 +87,7 @@ a:focus {
 
 .bg-container {
     width: 100%;
+    height: 100%;
     background-image: url(../images/F3D4D9.jpg);
     background-position: center;
     background-size: cover;

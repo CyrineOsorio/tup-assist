@@ -34,6 +34,7 @@ urlpatterns = [
 
     path('s_dropping', views.s_dropping, name='s_dropping'),
     path('s_transferring', views.s_transferring, name='s_transferring'),
+    path('s_profile', views.s_profile, name='s_profile'),
 
 
     # pic

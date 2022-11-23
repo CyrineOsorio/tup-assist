@@ -75,6 +75,7 @@ a:focus {
     justify-self: flex-end;
 }
 
+#s_profile,
 #adding,
 #dropping,
 #transferring {
@@ -183,9 +184,8 @@ p {
 }
 
 .lagayanNgStatus #p1,
-.lagayanNgStatus p
-{
-    color:#E2435E;
+.lagayanNgStatus p {
+    color: #E2435E;
 }
 
 
@@ -524,4 +524,3 @@ ul.form-stepper li a .form-stepper-circle {
     display: grid;
     width: 100%;
 }
-

@@ -121,7 +121,17 @@ class AddingReq(models.Model):
 
 class DroppingReq(models.Model):
     studID = models.IntegerField()
-    
+    subject = models.CharField(max_length=255, null=True, blank=True)
+    section = models.CharField(max_length=255, null=True, blank=True)
+    sched = models.CharField(max_length=255, null=True, blank=True)
+    subj_teacher_approve = models.CharField(max_length=255, null=True, blank=True, default='Pending')
+    subj_teacher_remark = models.CharField(max_length=255, null=True, blank=True)
+    subj_teacher_name = models.CharField(max_length=255, null=True, blank=True)
+    subj_teacher_date = models.DateTimeField(null=True, blank=True)
+    head_is_approve = models.CharField(max_length=255, null=True, blank=True)
+    head_remark = models.CharField(max_length=255, null=True, blank=True)
+    head_name = models.CharField(max_length=255, null=True, blank=True)
+    head_date = models.DateTimeField(null=True, blank=True)
     
     class Meta:
         verbose_name_plural = "DroppingReq" 

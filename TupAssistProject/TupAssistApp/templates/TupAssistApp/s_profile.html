@@ -70,27 +70,28 @@
                 <h1>Profile Information</h1>
 
 
-                <form>
+                <form action="/changestudentinfo" method="post">
+                    {% csrf_token %}
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email Address/Username</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <input type="email" class="form-control" id="exampleInputEmail1" name="username" aria-describedby="emailHelp" value="{{current_user.username}}" readonly>
                     </div>
                     <div class="form-group">
                         <label for="first_name">First Name</label>
-                        <input type="text" class="form-control" id="first_name">
+                        <input type="text" class="form-control" id="first_name" name="first_name" value="{{current_user.first_name}}" readonly>
                     </div>
                     <div class="form-group">
                         <label for="first_name">Last Name</label>
-                        <input type="text" class="form-control" id="last_name">
+                        <input type="text" class="form-control" id="last_name" name="last_name" value="{{current_user.last_name}}" readonly>
                     </div>
                     <div class="form-group">
-                        <label for="first_name">Section</label>
-                        <input type="text" class="form-control" id="last_name">
+                        <label for="section">Section</label>
+                        <input type="text" class="form-control" id="section" name="section" value="{{current_user.section}}">
                         <small id="last_name" class="form-text text-muted">Format: Course-Year-Section, Ex: BET-COET-4B</small>
                     </div>
                     <div class="form-group">
-                        <label for="first_name">Sudent Number</label>
-                        <input type="number" class="form-control" id="studID">
+                        <label for="studID">Sudent Number</label>
+                        <input type="number" class="form-control" id="studID" name="studID" value="{{current_user.studID}}">
                     </div>
                     <button type="submit" class="btn btn-primary btn-lg btn-block">Update</button>
                 </form>

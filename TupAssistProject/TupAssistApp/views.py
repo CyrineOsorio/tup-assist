@@ -50,7 +50,7 @@ def index(request):
 
         elif user is not None and user.userType == 'STDNT':
             login(request, user)
-            return redirect('/s_adding')
+            return redirect('/s_profile')
         
         elif user is not None and user.userType == 'DH':
             login(request, user)
@@ -63,50 +63,11 @@ def index(request):
            messages.error(request, 'Invalid Credentials')
     return render(request, 'TupAssistApp/index.html')
 
-#STUDENT SIGN UP PAGE
-def signup(request):
-    form = StudentRegistration()
-    if request.method == 'POST':
-        form = StudentRegistration(request.POST)
-        signup_data = request.POST.dict()
-        email = signup_data.get("email")
-        try:
-            userref = StudentReference.objects.get(email=email)
-            user_email = userref.email
-            print(userref)
-            if form.is_valid() and user_email == email:
-                # Filter of Course by Department
-                course = form.cleaned_data.get('course')
-                print(course)
-                if course == "BET-COET" or course == "BET-ET" or course == "BET-ESET" or course == "BET-CT" or course == "BET-MT" or course == "BET-AT" or course == "BET-PPT":
-                    form.instance.userType = 'STDNT'
-                    form.instance.department = 'Department of Industrial Technology'
-                elif course == "BSCE" or course == "BSEE" or course == "BSECE" or course == "BSME":
-                    form.instance.userType = 'STDNT'
-                    form.instance.department = 'Department of Engineering'
-                elif course == "BSIE-ICT":
-                    form.instance.userType = 'STDNT'
-                    form.instance.department = 'Department of Industrial Education'
-                    #EDIT FOR EMAIL 5/30/2022
-                    subject = 'TUP-Assist Registration'
-                    message = 'Your account was already created. You have access now in add, drop and transfer subjects.'
-                    recipient = form.cleaned_data.get('email')
-                    send_mail(subject, message, settings.EMAIL_HOST_USER, [recipient], fail_silently=False)
-                form.save()
-                return redirect ('/index')
-            else:
-                messages.error(request, 'Password Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.')
-        except StudentReference.DoesNotExist:
-            messages.error(request, 'Use Tup Cavite Gsfe Account!')
-    context =  {'form': form}
-    return render(request, 'TupAssistApp/student-registration.html', context)
 
 #LOG OUT
 def logoutUser(request):
     logout(request)
     return redirect('/index')
-
-
 
 # CUSTOMIZE ADMIN PAGES FOR OAA AND REGISTRAR
 
@@ -292,6 +253,18 @@ def changepassword(request):
             messages.error(request, 'Invalid Credentials')
             return redirect('/s_profile')
 
+def changestudentinfo(request):
+    current_user = request.user
+    if request.method == 'POST':
+        data = registration.objects.get(username=current_user.username)
+        data.first_name = request.POST.get("first_name")
+        data.last_name = request.POST.get("last_name")
+        data.section = request.POST.get("section")
+        data.studID = request.POST.get("studID")
+        data.save()
+        messages.success(request, 'Successfully Updated your Personal Information.')
+        return redirect('/s_profile')
+
 def s_adding(request):
     current_user = request.user
     # Models
@@ -313,7 +286,7 @@ def upload(request):
         data.upload = request.FILES["gradesfile"]
         data.save()
         messages.success(request, 'Successfully Upload your file.')
-    return redirect('/s_adding')
+        return redirect('/s_adding')
 
 def delupload(request):
     current_user = request.user

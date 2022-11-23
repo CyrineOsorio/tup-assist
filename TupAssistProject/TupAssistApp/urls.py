@@ -17,10 +17,6 @@ urlpatterns = [
     # log out
     path('logout/', views.logoutUser, name= 'logout'),
 
-    # studentregistration
-    path('signup/', views.signup, name='signup'),
-
-
     #student
     path('s_adding', views.s_adding, name='s_adding'),
     path('upload', views.upload, name='upload'),
@@ -36,6 +32,7 @@ urlpatterns = [
     path('s_transferring', views.s_transferring, name='s_transferring'),
     path('s_profile', views.s_profile, name='s_profile'),
     path('changepassword', views.changepassword, name='changepassword'),
+    path('changestudentinfo', views.changestudentinfo, name='changestudentinfo'),
 
 
     # pic

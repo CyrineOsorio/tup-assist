@@ -236,10 +236,10 @@
                             </form>
                         </div>{% endif %}
 
-                        <div class="mt-3">
-                            {% if student_info.addStatus != 'Wait for Department Head Approval' %}
-                            <button class="button btn-navigate-form-step" type="button" step_number="2">Next</button>{% endif %}
-                        </div>
+                        <br>
+                        <div class="mt-3">{% if student_info.addStatus == 'Wait for Department Head Approval' %}
+                            <button class="button btn-navigate-form-step" type="button" step_number="2">Next ></button>
+                        </div>{% endif %}
                     </section>
 
 

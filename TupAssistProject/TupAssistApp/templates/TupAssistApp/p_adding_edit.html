@@ -117,6 +117,8 @@
                                     <th>SCHEDULE</th>
                                     <th>APPROVE</th>
                                     <th>REMARK</th>
+                                    <th>SIGNED BY</th>
+                                    <th>DATE & TIME</th>
                                     <th>ACTION</th>
                                 </thead>
                                 <tbody>
@@ -127,12 +129,14 @@
                                         <td>{{i.sched}}</td>
                                         <td>{{i.pic_is_approve}}</td>
                                         <td>{{i.pic_remark}}</td>
+                                        <td>{{i.pic_name}}</td>
+                                        <td>{{i.pic_date}}</td>
                                         <td><a class="btn btn-primary" data-toggle="modal" data-target="#editReq{{i.id}}">Edit</a></td>
                                     </tr>
                                     {% endfor %}
                                     <tr>
                                         <td></td>
-                                        <td colspan="4"><button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#addSub">Add Subject +</button></td>
+                                        <td colspan="6"><button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#addSub">Add Subject +</button></td>
                                         <td></td>
 
                                     </tr>
@@ -151,12 +155,13 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <form class="form" method="post" action="">
+                                    <form class="form" method="post" action="/p_edit_sub">
                                         {% csrf_token %}
 
                                         <div class="modal-body">
                                             <div class="form-group" hidden>
-                                                <label for="id">Transcation No.</label>
+                                                <label for="id">Transcation No. and Student ID</label>
+                                                <input type="text" class="form-control" id="studID" name="studID" value="{{student_info.studID}}">
                                                 <input type="text" class="form-control" id="id" name="id" value="{{i.id}}">
                                             </div>
                                             <div class="form-group">
@@ -174,7 +179,7 @@
                                             <div class="form-group">
                                                 <label for="pic_is_approve">Approval</label>
                                                 <select class="custom-select" id="pic_is_approve" name="pic_is_approve">
-                                                    <option selected>Choose...</option>
+                                                    <option value="Pending" selected disabled hidden>Select an Option</option>
                                                     <option value="Approve">Approve</option>
                                                     <option value="Decline">Decline</option>
                                                   </select>
@@ -184,8 +189,8 @@
                                                 <input type="text" class="form-control" id="pic_remark" name="pic_remark" value="{{i.pic_remark}}">
                                             </div>
                                             <div class="form-group">
-                                                <label for="pic_remark">Enlisted By:</label>
-                                                <input type="text" class="form-control" id="pic_remark" name="pic_remark" value="{{current_user.first_name}} {{current_user.last_name}}" readonly>
+                                                <label for="pic_name">Enlisted By:</label>
+                                                <input type="text" class="form-control" id="pic_name" name="pic_name" value="{{current_user.first_name}} {{current_user.last_name}}" readonly>
                                             </div>
                                         </div>
                                         <div class="modal-footer">

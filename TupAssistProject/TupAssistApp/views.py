@@ -423,13 +423,21 @@ def p_adding_edit(request, id):
     return render(request, 'TupAssistApp/p_adding_edit.html', context)
 
 def p_edit_sub(request):
+    studID = request.POST.get('studID')
+    data = registration.objects.get(studID=studID)
     if request.method =='POST':
-        id = request.POST.get('id')
-        subject = request.POST.get('subject')
-        section = request.POST.get('section')
-        sched = request.POST.get('sched')
-        pic_is_approve = request.POST.get('pic_is_approve')
-        pic_remark = request.POST.get('pic_remark')
+        id = request.POST.get('id')   
+        edit = AddingReq.objects.get(id=id)
+        edit.subject = request.POST.get('subject')
+        edit.section = request.POST.get('section')
+        edit.sched = request.POST.get('sched')
+        edit.pic_is_approve = request.POST.get('pic_is_approve')
+        edit.pic_remark = request.POST.get('pic_remark')
+        edit.pic_name = request.POST.get('pic_name')
+        edit.pic_date = datetime.now()
+        edit.save()
+        messages.success(request, 'Request Successfully Edited!')
+        return redirect('/p_adding_edit/'+ str(data.id))
 
         # mon_start = request.POST.get('mon_start')
         # mon_end = request.POST.get('mon_end')
@@ -444,8 +452,6 @@ def p_edit_sub(request):
         # sat_start = request.POST.get('sat_start')
         # sat_end = request.POST.get('sat_end')
         # print('something')
-       
-        print(sat_end.strftime("%I:%M %p"))
         return redirect('/s_adding')
 
 def p_step1_submit(request):

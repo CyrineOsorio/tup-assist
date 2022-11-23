@@ -29,15 +29,6 @@ class Schedule(models.Model):
     class Meta:
         verbose_name_plural = "Schedule" 
 
-class StudentReference(models.Model):
-    name = models.CharField(max_length=255, null=True, blank=True)
-    section = models.CharField(max_length=255, null=True, blank=True)
-    email = models.CharField(max_length=255, null=True, blank=True)
-
-    class Meta:
-        verbose_name_plural = "StudentReference" 
-
-
 # Student Registration and Student account refernce for tupcavite gsfe account only
 class registration(AbstractUser):
     yrandsec = [

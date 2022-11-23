@@ -111,8 +111,8 @@
                         <th>STUDENT ID</th>
                         <th>NAME</th>
                         <th>EMAIL</th>
-                        <th>COURSE</th>
-                        <th style="text-align: center;">YEAR AND SECTION</th>
+                        <th style="text-align: center;">SECTION</th>
+                        <th>STATUS</th>
                         <th style="text-align: center;">VIEW TRANSACTION</th>
                     </thead>
 
@@ -125,6 +125,7 @@
                             <td>{{e.email}}</td>
                             <td>{{e.course}}</td>
                             <td style="text-align: center;">{{e.yrandsec}}</td>
+                            <td>{{e.addStatus}}</td>
                             <td class="action">
                                 <a href="/r_adding_view/{{e.id}}"><i class="bi bi-eye"></i></a>
                             </td>

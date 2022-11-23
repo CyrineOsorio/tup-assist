@@ -9,6 +9,9 @@ from .forms import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
+
 import csv
 
 import os
@@ -269,12 +272,25 @@ def r_staff_create(request):
 
 def s_profile(request):
     current_user = request.user
+    form = PasswordChangeForm(current_user)
     # Models
     context = {
         'current_user': current_user,
+        'form': form
     }
     return render(request, 'TupAssistApp/s_profile.html', context)
 
+def changepassword(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)
+            messages.success(request, 'Change Password Successfully')
+            return redirect('/s_profile')
+        else:
+            messages.error(request, 'Invalid Credentials')
+            return redirect('/s_profile')
 
 def s_adding(request):
     current_user = request.user

@@ -69,8 +69,45 @@
             <div style="overflow-x:auto;" class="innerBody">
                 <h1>Profile Information</h1>
 
-            </div>
 
+                <form>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email Address/Username</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                    <div class="form-group">
+                        <label for="first_name">First Name</label>
+                        <input type="text" class="form-control" id="first_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="first_name">Last Name</label>
+                        <input type="text" class="form-control" id="last_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="first_name">Section</label>
+                        <input type="text" class="form-control" id="last_name">
+                        <small id="last_name" class="form-text text-muted">Format: Course-Year-Section, Ex: BET-COET-4B</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="first_name">Sudent Number</label>
+                        <input type="number" class="form-control" id="studID">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Update</button>
+                </form>
+
+                <h1 style="margin-top:30px;">Change Password</h1>
+
+
+                <form method="post" action="/changepassword" style="margin-top:5%; margin-bottom: 5%;">
+                    {% csrf_token %}
+                    <div class="container">
+                        {{ form }}
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Change Password</button>
+                </form>
+
+
+            </div>
         </div>
     </div>
 

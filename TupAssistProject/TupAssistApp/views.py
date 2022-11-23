@@ -135,7 +135,7 @@ def acc_cvs(request):
         for row in reader:
             # new_revo = StudentReference.objects.create(email=str(i)[2:-2])
             try:
-                new_revo = StudentReference.objects.create(name=str(row[0]), course_year_and_section=str(row[1]), email=str(row[2]))
+                new_revo = StudentReference.objects.create(name=str(row[0]), section=str(row[1]), email=str(row[2]))
                 new_revo.save()
             except:
                 messages.error(request, 'it looks like CSV format is not match to the table.')

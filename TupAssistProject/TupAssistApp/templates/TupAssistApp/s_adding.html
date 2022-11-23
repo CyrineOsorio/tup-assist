@@ -148,11 +148,13 @@
                                 <div class="lagayanngfile">
                                     Grades: <a href="#" class="alert-link" onclick="window.open('{{ current_user.upload.url }}');">{{ current_user.upload }}</a> <a href="{%url 'TupAssistApp:delupload'%}"><i class="bi bi-x-circle" style="margin-left: 5%; color: #E2435E"></i></a>
                                 </div>
-                                {% endif %} {% if current_user.upload == '' %}
+                                {% endif %}
+
+                                <br> {% if current_user.upload == '' %}
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addFile">
                                     Upload your PDF compile of your previous grades here.
-                                </button>
+                                </button> {% endif %}
 
                                 <!--HTML code to display data in tabular format-->
                                 {% csrf_token %}
@@ -234,7 +236,7 @@
                                 </div>
                             </div>
                         </div>
-                        {% endif %}
+
 
 
                         <!-- Edit Subject Modal -->

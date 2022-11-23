@@ -264,17 +264,22 @@
                                     <th>HEAD REMARK</th>
                                     <th>ENDORSE BY</th>
                                     <th>DATE & TIME</th>
-                                    <th>ACTION</th>
                                 </thead>
 
                                 <tbody>
                                     {% for i in req %}
                                     <tr>
-                                        <td hidden><input type="text" class="form-control" value="{{student_info.studID}}" readonly></td>
-                                        <td></td>
                                         <td>{{i.subject}}</td>
                                         <td>{{i.section}}</td>
                                         <td>{{i.sched}}</td>
+                                        <td>{{i.pic_is_approve}}</td>
+                                        <td>{{i.pic_remark}}</td>
+                                        <td>{{i.pic_name}}</td>
+                                        <td>{{i.pic_date}}</td>
+                                        <td>{{i.head_is_approve}}</td>
+                                        <td>{{i.head_remark}}</td>
+                                        <td>{{i.head_name}}</td>
+                                        <td>{{i.head_date}}</td>
                                     </tr>
                                     {% endfor %}
                                 </tbody>
@@ -282,9 +287,11 @@
                         </div>
 
                         <div class="mt-3">
-                            <button class="button btn-navigate-form-step" type="button" step_number="1">Prev</button>
-                            <button class="button submit-btn" type="submit">Save</button>
+                            <button class="button btn-navigate-form-step" type="button" step_number="1"> < Prev</button>
+                            <!-- <button class="button submit-btn" type="submit">Save</button> -->
                         </div>
+
+
                     </section>
 
                 </div>
@@ -337,7 +344,7 @@
 
 
     <!-- Django with Jquery para magload kapag nasaang current step na si students -->
-    {% if student_info.addStatus == 'PIC Offer Subject: Student may plot schedule now.' %}
+    {% if student_info.addStatus == 'Wait for Department Head Approval' %}
     <script>
         document.querySelector("#step-" + 1).classList.add("d-none");
         document.querySelector("#step-" + 2).classList.remove("d-none");

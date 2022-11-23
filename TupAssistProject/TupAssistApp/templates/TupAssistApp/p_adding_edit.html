@@ -156,12 +156,12 @@
 
                                         <div class="modal-body">
                                             <div class="form-group" hidden>
-                                                <label for="id">Student Number</label>
+                                                <label for="id">Transcation No.</label>
                                                 <input type="text" class="form-control" id="id" name="id" value="{{i.id}}">
                                             </div>
                                             <div class="form-group">
                                                 <label for="subject">Subject</label>
-                                                <input type="text" class="form-control" id="subject" name="subject" value="{{i.subject}}" readonly>
+                                                <input type="text" class="form-control" id="subject" name="subject" value="{{i.subject}}">
                                             </div>
                                             <div class="form-group">
                                                 <label for="section">Section</label>
@@ -173,7 +173,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="pic_is_approve">Approval</label>
-                                                <select class="custom-select" id="pic_is_approve">
+                                                <select class="custom-select" id="pic_is_approve" name="pic_is_approve">
                                                     <option selected>Choose...</option>
                                                     <option value="Approve">Approve</option>
                                                     <option value="Decline">Decline</option>
@@ -182,6 +182,10 @@
                                             <div class="form-group">
                                                 <label for="pic_remark">Remarks</label>
                                                 <input type="text" class="form-control" id="pic_remark" name="pic_remark" value="{{i.pic_remark}}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="pic_remark">Enlisted By:</label>
+                                                <input type="text" class="form-control" id="pic_remark" name="pic_remark" value="{{current_user.first_name}} {{current_user.last_name}}" readonly>
                                             </div>
                                         </div>
                                         <div class="modal-footer">

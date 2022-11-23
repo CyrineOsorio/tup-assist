@@ -112,7 +112,7 @@
                         <th>NAME</th>
                         <th>EMAIL</th>
                         <th style="text-align: center;">SECTION</th>
-                        <th>STATUS</th>
+                        <th>ADD STATUS</th>
                         <th style="text-align: center;">VIEW TRANSACTION</th>
                     </thead>
 
@@ -123,12 +123,9 @@
                             <td>{{e.studID}}</td>
                             <td>{{e.first_name}} {{e.last_name}}</td>
                             <td>{{e.email}}</td>
-                            <td>{{e.course}}</td>
-                            <td style="text-align: center;">{{e.yrandsec}}</td>
+                            <td style="text-align: center;">{{e.course}}-{{e.yrandsec}}</td>
                             <td>{{e.addStatus}}</td>
-                            <td class="action">
-                                <a href="/r_adding_view/{{e.id}}"><i class="bi bi-eye"></i></a>
-                            </td>
+                            <td class="action"><a href=""><i class="bi bi-eye"></i></a></td>
                         </tr>
                         {% endfor %}
                     </tbody>

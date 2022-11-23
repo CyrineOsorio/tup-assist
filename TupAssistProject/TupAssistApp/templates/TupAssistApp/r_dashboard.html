@@ -56,7 +56,7 @@
                         <a class="nav-link" href="{%url 'TupAssistApp:r_transferring'%}" id="">Transfer</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{%url 'TupAssistApp:r_staff'%}" id="">Staff</a>
+                        <a class="nav-link" href="{%url 'TupAssistApp:r_account'%}" id="">Accounts</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{%url 'TupAssistApp:logout'%}" id="logoutbutton">Logout</a>
@@ -131,42 +131,6 @@
                         </tr>
                         {% endfor %}
 
-                    </tbody>
-                </table>
-            </div>
-
-
-            <!-- Enrolled Students -->
-            <div class="title">
-                <p>ENROLLED STUDENTS</p>
-                <form class="form-inline" action="/acc_cvs" method="post" enctype="multipart/form-data" name="studcvsfile">
-                    {% csrf_token %}
-                    <div class="form-group mx-sm-3 mb-2">
-                        <input type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" name="studcvsfile" id="studcvsfile" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary mb-2">Import CSV File</button>
-                </form>
-            </div>
-
-            <div style="overflow-x:auto; margin-bottom:2%;">
-                <!--HTML code to display data in tabular format-->
-                <table class="table table-bordered">
-                    <thead>
-                        <th>NO.</th>
-                        <th>FIRST NAME</th>
-                        <th>LAST NAME</th>
-                        <th>EMAIL</th>
-                    </thead>
-                    <tbody>
-                        {% for e in emails %}
-                        <tr>
-                            <td>{{e.id}}</td>
-                            <td>{{e.first_name}}</td>
-                            <td>{{e.last_name}}</td>
-                            <td>{{e.email}}</td>
-
-                        </tr>
-                        {% endfor %}
                     </tbody>
                 </table>
             </div>

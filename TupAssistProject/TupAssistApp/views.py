@@ -112,7 +112,7 @@ def r_dashboard(request):
     subs = Subjects.objects.all()
     status = TransStatus.objects.all()
     sched = Schedule.objects.all()
-    emails = registration.objects.filter(userType='STDNT')
+    student = registration.objects.filter(userType='STDNT')
     # latest_sched = sched.gSheetLink
     # print(latest_sched)
     context = {
@@ -120,24 +120,9 @@ def r_dashboard(request):
         'subs': subs,
         'status' : status,
         'sched': sched,
-        'emails': emails
+        'student': student
     }
     return render(request, 'TupAssistApp/r_dashboard.html', context)
-
-def acc_cvs(request):
-    if request.method=='POST':
-        form = StudentRegistration(request.POST)
-        studcvsfile = request.FILES["studcvsfile"]
-        decoded_file = studcvsfile.read().decode('utf-8').splitlines()
-        reader = csv.reader(decoded_file)
-        print(reader)
-        for row in reader:
-            new_revo = registration.objects.create(username=str(row[2]), email=str(row[2]), first_name=str(row[0]), last_name=str(row[1]), userType='STDNT')
-            new_revo.set_password('TUPC-'+str(row[0])+str(row[1])) #Default Password
-            new_revo.save()    
-        return redirect('/r_dashboard')
-    return redirect('/r_dashboard')
-
 
 def sub_cvs(request):
     if request.method=='POST': 
@@ -225,9 +210,16 @@ def r_transferring(request):
     return render(request, 'TupAssistApp/r_transferring.html', context)
 
 
-def r_staff(request):
+def r_account(request):
     current_user = request.user
     form = HeadRegistration()
+    # staff = registration.objects.filter(Q(userType='STDNT') & Q(userType='STDNT'))
+    student = registration.objects.filter(userType='STDNT')
+    context = {
+        'form': form,
+        'current_user': current_user,
+        'student': student
+    }
     if request.method == 'POST':
         form = HeadRegistration(request.POST)
         if form.is_valid():
@@ -235,13 +227,29 @@ def r_staff(request):
             return redirect ('/admin')
         else:
             messages.error(request, 'Invalid Credentials!')
-            
-    context = { 
-        'form': form,
-        'current_user': current_user
-        }
-    return render(request, 'TupAssistApp/r_staff.html', context)
+    return render(request, 'TupAssistApp/r_account.html', context)
 
+
+def acc_cvs(request):
+    if request.method=='POST':
+        junk = registration.objects.all()
+        junk.delete()
+        form = StudentRegistration(request.POST)
+        studcvsfile = request.FILES["studcvsfile"]
+        decoded_file = studcvsfile.read().decode('utf-8').splitlines()
+        reader = csv.reader(decoded_file)
+        print(reader)
+        for row in reader:
+            try:
+                new_revo = registration.objects.create(username=str(row[2]), email=str(row[2]), first_name=str(row[0]), last_name=str(row[1]), userType='STDNT')
+                new_revo.set_password('TUPC-'+str(row[0])+str(row[1])) #Default Password
+                new_revo.save()    
+                messages.success(request, 'Successfully Import, but check if data imported is correct.')
+            except:
+                messages.error(request, 'it looks like CSV format is not match to the table.')
+                return redirect('/r_account')
+        return redirect('/r_account')
+    return redirect('/r_account')
 
 
 def r_staff_create(request):

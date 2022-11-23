@@ -79,7 +79,7 @@ a:focus {
 #dropping,
 #transferring,
 #dashboard,
-#staff {
+#account {
     font-weight: bold;
 }
 
@@ -115,17 +115,26 @@ a:focus {
     width: 100%;
 }
 
-.table {
-    margin-top: 1%;
+.title {
+    margin-top: 20px;
+    width: 100%;
+    display: grid;
+    justify-content: space-between;
 }
 
-.action {
-    display: flex;
-    justify-content: center;
+.title p {
+    width: 50%;
+    height: 100%;
+    font-weight: bold;
 }
 
-.action i {
-    font-size: 20px;
+.title button {
+    background-color: #388465;
+    border: 1px solid #388465;
+}
+
+.title input {
+    border: 1px solid #388465;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -167,7 +176,6 @@ a:focus {
         justify-content: flex-end;
     }
 }
-
 
 
 /*forms*/
@@ -313,6 +321,3 @@ a:focus {
     justify-content: flex-start;
     padding-left: 10px;
 }
-
-
-

@@ -62,7 +62,7 @@ urlpatterns = [
     path('r_adding_view/<int:id>', views.r_adding_view),
     path('r_dropping/', views.r_dropping, name='r_dropping'),
     path('r_transferring/', views.r_transferring, name='r_transferring'),
-    path('r_staff/', views.r_staff, name='r_staff'),
+    path('r_account/', views.r_account, name='r_account'),
     path('r_staff_create', views.r_staff_create, name='r_staff_create'),
     
     

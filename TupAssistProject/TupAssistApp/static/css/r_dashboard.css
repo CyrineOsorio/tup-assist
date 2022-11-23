@@ -79,7 +79,7 @@ a:focus {
 #dropping,
 #transferring,
 #dashboard,
-#staff {
+#account {
     font-weight: bold;
 }
 
@@ -136,7 +136,6 @@ body {
     font-weight: bold;
 }
 
-
 .title button {
     background-color: #388465;
     border: 1px solid #388465;
@@ -190,7 +189,6 @@ body {
     .content {
         width: 100%;
         padding: 2px 2px 2px 2px;
-   
     }
 }
 
@@ -200,13 +198,3 @@ body {
         justify-content: flex-end;
     }
 }
-
-
-
-
-
-
-
-
-
-

@@ -163,20 +163,20 @@
                             <input type="text" class="form-control" id="pic_name" name="pic_name" value="{{i.pic_name}}" readonly>
                         </div>
                         <div class="form-group">
-                            <label for="pic_is_approve">Approval</label>
-                            <select class="custom-select" id="pic_is_approve" name="pic_is_approve">
+                            <label for="head_is_approve">Approval</label>
+                            <select class="custom-select" id="head_is_approve" name="head_is_approve">
                                 <option value="Pending" selected disabled hidden>Select an Option</option>
                                 <option value="Approve">Approve</option>
                                 <option value="Decline">Decline</option>
                               </select>
                         </div>
                         <div class="form-group">
-                            <label for="pic_remark">Head Remarks</label>
-                            <input type="text" class="form-control" id="pic_remark" name="pic_remark" value="{{i.head_remark}}">
+                            <label for="head_remark">Head Remarks</label>
+                            <input type="text" class="form-control" id="head_remark" name="head_remark" value="{{i.head_remark}}">
                         </div>
                         <div class="form-group">
-                            <label for="pic_name">Endorsed By:</label>
-                            <input type="text" class="form-control" id="pic_name" name="pic_name" value="{{current_user.first_name}} {{current_user.last_name}}">
+                            <label for="head_name">Endorsed By:</label>
+                            <input type="text" class="form-control" id="head_name" name="head_name" value="{{current_user.first_name}} {{current_user.last_name}}">
                         </div>
                     </div>
                     <div class="modal-footer">

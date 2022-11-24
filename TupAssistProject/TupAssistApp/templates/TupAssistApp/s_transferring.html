@@ -91,14 +91,20 @@
 
             </div>
 
-
             <div class="dividerLangs"></div>
 
             <div style="overflow-x:auto;" class="innerBody">
 
+                {% if current_user.course == '' or current_user.course == None or current_user.section == '' or current_user.section == None or current_user.year == None or current_user.year == '' or current_user.studID == None or current_user.studID == '' %}
+                <div class="alert alert-danger" role="alert">
+                    Notice: You can't proceed to in Add Subject Transaction if your Personal Information is not complete.
+                </div>{% endif %}
 
                 <div>
+
                     <h1>Transfer Subject Transcation Form</h1>
+
+                    {% if current_user.course != '' and current_user.course != None and current_user.section != '' and current_user.section != None and current_user.year != None and current_user.year != '' and current_user.studID != None and current_user.studID != '' %}
                     <div id="multi-step-form-container">
                         <!-- Form Steps / Progress Bar -->
                         <ul class="form-stepper form-stepper-horizontal text-center mx-auto pl-0">
@@ -169,6 +175,7 @@
                         </section>
                         <!-- </form> -->
                     </div>
+                    {% endif %}
                 </div>
 
 

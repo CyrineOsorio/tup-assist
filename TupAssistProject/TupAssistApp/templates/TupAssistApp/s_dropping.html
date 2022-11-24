@@ -96,8 +96,13 @@
 
             <div style="overflow-x:auto;" class="innerBody">
 
+                {% if current_user.course == '' or current_user.course == None or current_user.section == '' or current_user.section == None or current_user.year == None or current_user.year == '' or current_user.studID == None or current_user.studID == '' %}
+                <div class="alert alert-danger" role="alert">
+                    Notice: You can't proceed to in Drop Subject Transaction if your Personal Information is not complete.
+                </div>{% endif %}
 
                 <div>
+
                     <h1>Drop Subject Transcation Form</h1>
                     <div id="multi-step-form-container">
                         <!-- Form Steps / Progress Bar -->
@@ -169,6 +174,7 @@
                         </section>
                         <!-- </form> -->
                     </div>
+
                 </div>
 
 

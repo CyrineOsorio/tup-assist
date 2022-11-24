@@ -102,21 +102,19 @@
                         <th>STUDENT ID</th>
                         <th>NAME</th>
                         <th>EMAIL</th>
-                        <th>COURSE</th>
-                        <th style="text-align: center;">YEAR AND SECTION</th>
+                        <th style="text-align: center;">SECTION</th>
                         <th>STATUS</th>
                         <th style="text-align: center;">ACTION</th>
                     </thead>
 
                     <tbody>
                         {% for e in test %}
-                        <tr class="all {{e.id}} {{e.studID}} {{e.first_name}} {{e.last_name}} {{e.email}} {{e.course}} {{e.yrandsec}}">
+                        <tr class="all {{e.id}} {{e.studID}} {{e.first_name}} {{e.last_name}} {{e.email}} {{e.course}} {{e.year}}{{e.section}}">
                             <td>{{e.id}}</td>
                             <td>{{e.studID}}</td>
                             <td>{{e.first_name}} {{e.last_name}}</td>
                             <td>{{e.email}}</td>
-                            <td>{{e.course}}</td>
-                            <td style="text-align: center;">{{e.yrandsec}}</td>
+                            <td style="text-align: center;">{{e.course}}-{{e.year}}{{e.section}}</td>
                             <td>{{e.addStatus}}</td>
                             <td class="action">
                                 <a href="/p_adding_edit/{{e.id}}"><i class="bi bi-pencil"></i></a>

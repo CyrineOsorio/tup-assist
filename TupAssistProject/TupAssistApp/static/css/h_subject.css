@@ -119,15 +119,11 @@ body {
     border-radius: 10px;
 }
 
-.add-request-label {
+.title {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
 }
 
-.add-request-label p {
-    width: 50%;
-    height: 100%;
+.title p {
     font-weight: bold;
 }
 

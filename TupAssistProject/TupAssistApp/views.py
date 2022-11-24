@@ -515,8 +515,10 @@ def changeheadinfo(request):
 
 def h_subject(request):
     current_user = request.user
+    subs = Subjects.objects.all()
     context = { 
-        'current_user': current_user
+        'current_user': current_user,
+        'subs': subs
         }
     return render(request, 'TupAssistApp/h_subject.html', context)
 
@@ -531,9 +533,10 @@ def sub_cvs(request):
         for row in reader:
             print(row)
             try:
-                new_revo = Subjects.objects.create(course=str(row[0]), year=int(row[1]), semester=int(row[2]), shop=int(row[3]), is_lab=str(row[4]))
-                new_revo.save()
-                messages.success(request, 'Successfully Import, but check if data imported is correct.')
+                if str(row[4]) == "" or str(row[4]) != "":
+                    new_revo = Subjects.objects.create(course=str(row[0]), year=int(row[1]), semester=int(row[2]), shop=int(row[3]), is_lab=str(row[4]))
+                    new_revo.save()
+                    messages.success(request, 'Successfully Import, but check if data imported is correct.')
             except:
                 messages.error(request, 'it looks like CSV format is not match to the table.')
                 return redirect('/h_subject')

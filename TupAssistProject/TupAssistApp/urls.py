@@ -23,7 +23,6 @@ urlpatterns = [
     path('r_dashboard/', views.r_dashboard, name='r_dashboard'),
     path('student_acc_cvs', views.student_acc_cvs, name='student_acc_cvs'),
     path('staff_acc_cvs', views.staff_acc_cvs, name='staff_acc_cvs'),
-    path('sub_cvs', views.sub_cvs, name='sub_cvs'),
     path('transStatus/<int:id>', views.transStatus),
     path('import_sched', views.import_sched, name='import_sched'),
     path('r_adding/', views.r_adding, name='r_adding'),
@@ -67,6 +66,9 @@ urlpatterns = [
     path('changepassword2', views.changepassword2, name='changepassword2'),
     path('changeheadinfo', views.changeheadinfo, name='changeheadinfo'),
 
+    path('h_subject/', views.h_subject, name='h_subject'),
+    path('sub_cvs', views.sub_cvs, name='sub_cvs'),
+
     path('h-adding/', views.h_adding, name='h_adding'),
     path('h_adding_edit/<int:id>', views.h_adding_edit),
     path('h_edit_sub', views.h_edit_sub, name='h_edit_sub'),
@@ -75,8 +77,7 @@ urlpatterns = [
     path('h-dropping-edit/<int:id>', views.h_dropping_edit),
     path('h-transferring/', views.h_transferring, name='h_transferring'),
     path('h-transferring-edit/<int:id>', views.h_transferring_edit),
-    path('h_subject/', views.h_subject, name='h_subject'),
-
+    
     
     
 

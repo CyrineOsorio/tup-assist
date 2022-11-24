@@ -10,6 +10,7 @@ class registration(AbstractUser):
         ('Student', 'Student'),
         ('Department Head', 'Department Head'),
         ('Person-in-charge', 'Person-in-charge'), 
+        ('Teacher', 'Teacher'), 
     ]
     # FOR STUDENT AND PIC
     course = [
@@ -63,7 +64,11 @@ class TransStatus(models.Model):
 
 # CvS file of subjects to import in Subjects Model
 class Subjects(models.Model):           
-    subject_code = models.CharField(max_length=255)
+    course = models.CharField(max_length=255)
+    year = models.IntegerField()
+    semester = models.IntegerField()
+    shop = models.IntegerField()
+    is_lab = models.CharField(max_length=500, null=True, blank=True, default="L")
 
     class Meta:
         verbose_name_plural = "Subjects" 

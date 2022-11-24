@@ -131,17 +131,16 @@ body {
     font-weight: bold;
 }
 
-.action {
-    display: flex;
-    justify-content: center;
-}
-
-.action i {
-    font-size: 20px;
+#subcvsfile {
+    border: solid 1px black;
 }
 
 .filter {
     margin-bottom: 10px;
+}
+
+.form-inline button {
+    background-color: black;
 }
 
 @media only screen and (max-width: 1000px) {

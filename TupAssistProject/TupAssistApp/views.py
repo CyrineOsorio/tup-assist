@@ -84,26 +84,6 @@ def r_dashboard(request):
     }
     return render(request, 'TupAssistApp/r_dashboard.html', context)
 
-def sub_cvs(request):
-    if request.method=='POST': 
-        junk = Subjects.objects.all()
-        junk.delete()
-        subcvsfile = request.FILES["subcvsfile"]
-        decoded_file = subcvsfile.read().decode('utf-8').splitlines()
-        reader = csv.reader(decoded_file)
-        print(reader)
-        for row in reader:
-            print(row)
-            try:
-                new_revo = Subjects.objects.create(program=str(row[0]), school_year=int(row[1]), semester=str(row[2]), subject_code=str(row[3]), description=str(row[4]))
-                new_revo.save()
-            except:
-                messages.error(request, 'it looks like CSV format is not match to the table.')
-                return redirect('/r_dashboard')
-        return redirect('/r_dashboard')
-    return redirect('/r_dashboard')
-
-
 def import_sched(request):
     if request.method=='POST': 
         gSheetLink = request.POST.get('gSheetLink')
@@ -533,6 +513,34 @@ def changeheadinfo(request):
             messages.error(request, 'Invalid Credentials!')
             return redirect('/h_profile')
 
+def h_subject(request):
+    current_user = request.user
+    context = { 
+        'current_user': current_user
+        }
+    return render(request, 'TupAssistApp/h_subject.html', context)
+
+def sub_cvs(request):
+    if request.method=='POST': 
+        # junk = Subjects.objects.all()
+        # junk.delete()
+        subcvsfile = request.FILES["subcvsfile"]
+        decoded_file = subcvsfile.read().decode('utf-8').splitlines()
+        reader = csv.reader(decoded_file)
+        print(reader)
+        for row in reader:
+            print(row)
+            try:
+                new_revo = Subjects.objects.create(course=str(row[0]), year=int(row[1]), semester=int(row[2]), shop=int(row[3]), is_lab=str(row[4]))
+                new_revo.save()
+                messages.success(request, 'Successfully Import, but check if data imported is correct.')
+            except:
+                messages.error(request, 'it looks like CSV format is not match to the table.')
+                return redirect('/h_subject')
+        return redirect('/h_subject')
+    return redirect('/h_subject')
+
+
 def h_adding(request):
     current_user = request.user
     test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student'))
@@ -616,11 +624,4 @@ def h_transferring_edit(request, id):
         }
     return render(request, 'TupAssistApp/h-transferring-edit.html', context)
 
-
-def h_subject(request):
-    current_user = request.user
-    context = { 
-        'current_user': current_user
-        }
-    return render(request, 'TupAssistApp/h_subject.html', context)
 

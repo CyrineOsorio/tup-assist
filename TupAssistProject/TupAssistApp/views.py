@@ -350,16 +350,16 @@ def s_dropping(request):
     current_user = request.user
     # Models
     dropReq = DroppingReq.objects.filter(studID=current_user.studID)
-    subs = Subjects.objects.filter(course__icontains=current_user.course[4:10])
-    # subs = Subjects.objects.filter(course=current_user.course)
-    sched = Schedule.objects.all()
-    context = {
-        'dropReq': dropReq,
-        'current_user': current_user,
-        'subs': subs,
-        'sched': sched
-
-    }
+    if current_user.course[0:3] =="BET":
+        print(current_user.course[4:10])
+        subs = Subjects.objects.filter(Q(course__icontains=current_user.course[4:10]) & Q(year=current_user.year))
+        sched = Schedule.objects.all()
+        context = {
+            'dropReq': dropReq,
+            'current_user': current_user,
+            'subs': subs,
+            'sched': sched
+        }
     return render(request, 'TupAssistApp/s_dropping.html', context)
 
 

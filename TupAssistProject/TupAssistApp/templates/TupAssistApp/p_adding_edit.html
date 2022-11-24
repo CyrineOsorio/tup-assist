@@ -291,7 +291,7 @@
                             {% if student_info.addStatus == 'Wait for PIC Approval' %}
                             <form action="" method="post">
                                 {% csrf_token %}
-                                <input type="text" name="studID" id="studID" value="{{student_info.studID}}" hidden>
+                                <input type="text" name="studID" id="studID" value="{{student_info.studID}}" hidden> Hindi pa ako sure dito.
                                 <button type="submit" class="btn btn-primary">Ipa-update kay Student</button>
                             </form> {% endif %}
 

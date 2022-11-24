@@ -47,6 +47,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{%url 'TupAssistApp:h_profile'%}" id="">Profile</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{%url 'TupAssistApp:h_subject'%}" id="subject">Subjects</a>
+                    </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="{%url 'TupAssistApp:h_adding'%}" id="">Adding<span class="sr-only">(current)</span></a>
                     </li>
@@ -55,9 +58,6 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{%url 'TupAssistApp:h_transferring'%}" id="">Transfer</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{%url 'TupAssistApp:h_subject'%}" id="subject">Subjects</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{%url 'TupAssistApp:logout'%}" id="logoutbutton">Logout</a>
@@ -75,7 +75,7 @@
 
             <div class="title">
                 <p>OFFER SUBJECTS</p>
-                <form class="form-inline" action="/sub_cvs" method="post" enctype="multipart/form-data" name="subcvsfile">
+                <form class="form-inline" action="" method="post" enctype="multipart/form-data" name="subcvsfile">
                     {% csrf_token %}
                     <div class="form-group mx-sm-3 mb-2">
                         <input type="file" name="subcvsfile" id="subcvsfile" required>

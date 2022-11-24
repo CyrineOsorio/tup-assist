@@ -22,6 +22,8 @@ from datetime import datetime
 # importing pandas module
 import pandas as pd
 
+ from itertools import chain
+
 # filter "AND,OR,NOT"
 from django.db.models import Q
 
@@ -353,6 +355,8 @@ def s_dropping(request):
     if current_user.course[0:3] =="BET":
         print(current_user.course[4:10])
         subs = Subjects.objects.filter(Q(course__icontains=current_user.course[4:10]) & Q(year=current_user.year))
+        # sem = TransStatus.objects.filter(semester=)
+        # results = chain(subs, sem)
         sched = Schedule.objects.all()
         context = {
             'dropReq': dropReq,

@@ -348,33 +348,8 @@ def s_step1_submit(request):
 def s_edit_sub(request):
     if request.method =='POST':
         id = request.POST.get('id')
-        mon_start = request.POST.get('mon_start')
-        mon_end = request.POST.get('mon_end')
-        tue_start = request.POST.get('tue_start')
-        tue_end = request.POST.get('tue_end')
-        wed_start = request.POST.get('wed_start')
-        wed_end = request.POST.get('wed_end')
-        thu_start = request.POST.get('thu_start')
-        thu_end = request.POST.get('thu_end')
-        fri_start = request.POST.get('fri_start')
-        fri_end = request.POST.get('fri_end')
-        sat_start = request.POST.get('sat_start')
-        sat_end = request.POST.get('sat_end')
-        print('something')
        
-        print(sat_end.strftime("%I:%M %p"))
         return redirect('/s_adding')
-
-        # if ( mon_start and mon_end != '') or ( tue_start and tue_end != '') or ( wed_start and wed_end != '') or ( thu_start and thu_end != '') or ( fri_start and fri_end != '') or ( sat_start and sat_end != ''):
-        #         data1= AddingReq.objects.get(id=id)
-        #         data1.id = request.POST.get('id')
-        #         data1.section = request.POST.get('section')
-        #         data1.sched = M + ' ' + mon_start + '-' + mon_end + ' ' + T + ' ' + tue_start + '-' + tue_end + ' ' + W + ' ' + wed_start + '-' + wed_start + ' ' + TH + ' ' + thu_start + '-' + thu_end + ' ' + F + ' ' + fri_start + '-' + fri_end + ' ' + S + ' ' + sat_start + '-' + sat_end
-        #         data1.save()
-        #         return redirect('/s_adding')
-        # else:
-        #     messages.error(request, 'Must Input atleast 1 sched')
-        #     return redirect('/s_adding')
 
 
 def s_step2_submit(request):
@@ -426,7 +401,6 @@ def s_transferring(request):
 
 
 # PIC PAGES
-
 def p_profile(request):
     current_user = request.user
     form = PasswordChangeForm(current_user)
@@ -575,7 +549,6 @@ def h_adding_edit(request, id):
         'req': req,
         'sched': sched
         }
-    
     return render(request, 'TupAssistApp/h-adding-edit.html', context)
 
 def h_dropping(request):

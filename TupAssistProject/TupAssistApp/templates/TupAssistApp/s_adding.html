@@ -381,6 +381,10 @@
                                 <form action="/s_edit_sub" method="post">
                                     {% csrf_token %}
                                     <div class="modal-body">
+                                        <div class="form-group" hidden>
+                                            <label for="subject">Transcation ID</label>
+                                            <input type="text" class="form-control" id="subject" name="subject" value="{{i.id}}">
+                                        </div>
                                         <div class="form-group">
                                             <label for="subject">Subject</label>
                                             <input type="text" class="form-control" id="subject" name="subject" value="{{i.subject}}">
@@ -391,7 +395,6 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="sched">Schedule</label>
-
                                             <div class="d-flex">
                                                 <input type="text" style="width:70%" class="form-control" id="sched1" name="sched" value="{{i.sched}}" readonly>
                                                 <a class="btn btn-primary" style="width:30%" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Edit</a>
@@ -687,8 +690,6 @@
     <!-- Update Schedule ni Rejay -->
     <script>
         function myFuntcion1() {
-
-            alert('Something')
 
             var a = document.getElementById("mon_start1").value;
             var b = document.getElementById("mon_end1").value;

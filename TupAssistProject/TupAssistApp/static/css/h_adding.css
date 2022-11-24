@@ -75,10 +75,11 @@ a:focus {
     justify-self: flex-end;
 }
 
+#profile,
 #adding,
 #dropping,
 #transferring,
-#schedule {
+#subject {
     font-weight: bold;
 }
 

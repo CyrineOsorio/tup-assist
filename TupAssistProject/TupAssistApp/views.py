@@ -426,6 +426,45 @@ def s_transferring(request):
 
 
 # PIC PAGES
+
+def p_profile(request):
+    current_user = request.user
+    form = PasswordChangeForm(current_user)
+    # Models
+    context = {
+        'current_user': current_user,
+        'form': form
+    }
+    return render(request, 'TupAssistApp/p_profile.html', context)
+
+def changepassword1(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)
+            messages.success(request, 'Change Password Successfully')
+            return redirect('/p_profile')
+        else:
+            messages.error(request, 'Invalid Credentials')
+            return redirect('/p_profile')
+
+def changepicinfo(request):
+    current_user = request.user
+    if request.method == 'POST':
+        try:
+            data = registration.objects.get(username=current_user.username)
+            data.course = request.POST.get("course")
+            data.studID = request.POST.get("studID")
+            data.department = request.POST.get("department")
+            data.save()
+            messages.success(request, 'Successfully Updated your Personal Information.')
+            return redirect('/p_profile')
+        except:
+            messages.error(request, 'Invalid Credentials!')
+            return redirect('/p_profile')
+
+
 def p_adding(request):
     current_user = request.user
     test = registration.objects.filter(Q(course=current_user.course) & Q(userType='Student'))
@@ -478,6 +517,43 @@ def p_step1_submit(request):
 
 
 # DEPARTMENT HEAD PAGES
+
+def h_profile(request):
+    current_user = request.user
+    form = PasswordChangeForm(current_user)
+    # Models
+    context = {
+        'current_user': current_user,
+        'form': form
+    }
+    return render(request, 'TupAssistApp/h_profile.html', context)
+
+def changepassword2(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)
+            messages.success(request, 'Change Password Successfully')
+            return redirect('/h_profile')
+        else:
+            messages.error(request, 'Invalid Credentials')
+            return redirect('/h_profile')
+
+def changeheadinfo(request):
+    current_user = request.user
+    if request.method == 'POST':
+        try:
+            data = registration.objects.get(username=current_user.username)
+            data.course = request.POST.get("course")
+            data.studID = request.POST.get("studID")
+            data.department = request.POST.get("department")
+            data.save()
+            messages.success(request, 'Successfully Updated your Personal Information.')
+            return redirect('/h_profile')
+        except:
+            messages.error(request, 'Invalid Credentials!')
+            return redirect('/h_profile')
 
 def h_adding(request):
     current_user = request.user
@@ -550,10 +626,10 @@ def h_transferring_edit(request, id):
     return render(request, 'TupAssistApp/h-transferring-edit.html', context)
 
 
-def h_schedule(request):
+def h_subject(request):
     current_user = request.user
     context = { 
         'current_user': current_user
         }
-    return render(request, 'TupAssistApp/h-schedule.html', context)
+    return render(request, 'TupAssistApp/h_subject.html', context)
 

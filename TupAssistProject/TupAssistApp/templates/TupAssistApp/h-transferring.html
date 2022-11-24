@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
     <!--CSS Custom -->
-    <link rel="stylesheet" href="{%static 'css/h-request.css'%}">
+    <link rel="stylesheet" href="{%static 'css/h_transferring.css'%}">
 
     <!--FONTS-->
     <link rel="stylesheet" href="../../static/css/fonts.css">
@@ -42,6 +42,9 @@
 
             <form class="d-flex">
                 <ul class="navbar-nav mr-auto" id="center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{%url 'TupAssistApp:h_profile'%}" id="">Profile</a>
+                    </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="{%url 'TupAssistApp:h_adding'%}" id="">Adding<span class="sr-only">(current)</span></a>
                     </li>
@@ -52,7 +55,7 @@
                         <a class="nav-link" href="{%url 'TupAssistApp:h_transferring'%}" id="transferring">Transfer</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{%url 'TupAssistApp:h_schedule'%}" id="">Schedule</a>
+                        <a class="nav-link" href="{%url 'TupAssistApp:h_subject'%}" id="">Subjects</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{%url 'TupAssistApp:logout'%}" id="logoutbutton">Logout</a>

@@ -116,25 +116,8 @@ body {
     border-radius: 10px;
 }
 
-.add-request-label {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.add-request-label p {
-    width: 50%;
-    height: 100%;
-    font-weight: bold;
-}
-
-.action {
-    display: flex;
-    justify-content: center;
-}
-
-.action i {
-    font-size: 20px;
+.content h1 {
+    text-align: center;
 }
 
 @media only screen and (max-width: 1000px) {

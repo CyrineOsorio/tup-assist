@@ -31,10 +31,29 @@
     <nav class="navbar navbar-expand-lg" id="navbarnavbar">
         <div class="navbarLagayan">
             <img src="../../static/images/tuplogo.png" alt="TUPLogo.png" width="30" height="30">
-            <a class="nav-link" href="{%url 'TupAssistApp:p_adding'%}">Technological University of the Philippines - <span style="color: #E2435E; font-weight: 500;"> Assist</span></a>
+            <a class="nav-link" href="{%url 'TupAssistApp:s_profile'%}">Technological University of the Philippines - <span style="color: #E2435E; font-weight: 500;"> Assist</span></a>
             <div class="lagayanNgButton">
-                <a class="nav-link" href="{%url 'TupAssistApp:logout'%}" id="logoutbutton">Logout</a>
+                <button class="navbar-toggler navbar-light" type="button" style="background-color: transparent;" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
             </div>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
+
+            <form class="d-flex">
+                <ul class="navbar-nav mr-auto" id="center">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{%url 'TupAssistApp:p_profile'%}" id="">Profile<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{%url 'TupAssistApp:p_adding'%}" id="adding">Adding</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{%url 'TupAssistApp:logout'%}" id="logoutbutton">Logout</a>
+                    </li>
+                </ul>
+            </form>
         </div>
     </nav>
 
@@ -136,6 +155,16 @@
             $("tbody").find("tr").show();
         });
     </script>
+
+    <!-- Messages -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {% if messages %} {% for message in messages %} {% if message.tags %}
+    <script>
+        Swal.fire({
+            text: '{{ message }}',
+        })
+    </script> {% endif %} {% endfor %} {% endif %}
+
 
 
 

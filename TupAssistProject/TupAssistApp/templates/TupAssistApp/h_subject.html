@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TUPC Administration: Drop of Subject</title>
+    <title>TUPC Administration: Add Subject</title>
 
 
 
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
     <!--CSS Custom -->
-    <link rel="stylesheet" href="{%static 'css/h_dropping.css'%}">
+    <link rel="stylesheet" href="{%static 'css/h_subject.css'%}">
 
     <!--FONTS-->
     <link rel="stylesheet" href="../../static/css/fonts.css">
@@ -23,10 +23,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
     <link rel="icon" href="../../static/images/tuplogo.png">
 
-
+    <!--DATATABLES-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
 </head>
 
 <body>
+
     <nav class="navbar navbar-expand-lg" id="navbarnavbar">
         <div class="navbarLagayan">
             <img src="../../static/images/tuplogo.png" alt="TUPLogo.png" width="30" height="30">
@@ -49,13 +51,13 @@
                         <a class="nav-link" href="{%url 'TupAssistApp:h_adding'%}" id="">Adding<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{%url 'TupAssistApp:h_dropping'%}" id="dropping">Dropping</a>
+                        <a class="nav-link" href="{%url 'TupAssistApp:h_dropping'%}" id="">Dropping</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{%url 'TupAssistApp:h_transferring'%}" id="">Transfer</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{%url 'TupAssistApp:h_subject'%}" id="">Subjects</a>
+                        <a class="nav-link" href="{%url 'TupAssistApp:h_subject'%}" id="subject">Subjects</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{%url 'TupAssistApp:logout'%}" id="logoutbutton">Logout</a>
@@ -70,75 +72,23 @@
         <div class="welcome">Welcome, {{ current_user.department }}!</div>
 
         <div class="content">
-            <div class="stud-request-label">
-                <p>DROPPING SUBJECT REQUESTS:</p>
-            </div>
 
-            <div class="filter">
-                <div class="row">
-                    <div class="col">
-                        <select class="custom-select" name="program">
-                            <option value="all">Program</option>
-                            <option value="BET-COET">BET-COET</option>
-                            <option value="BET-ET">BET-ET</option>
-                            <option value="BET-CT">BET-CT</option>
-                        </select>
-                    </div>
-                    <div class="col">
-                        <select class="custom-select" name="yearandsection">
-                            <option value="all">Year and Section</option>
-                            <option value="1A">1A</option>
-                            <option value="1B">1B</option>
-                            <option value="4A">4A</option>
-                            <option value="4B">4B</option>
 
-                        </select>
-                    </div>
-                    <div class="col">
-                        <button type="button" class="btn btn-primary">Reset</button>
-                    </div>
-                </div>
-            </div>
 
-            <div style="overflow-x:auto;">
-                <!--HTML code to display data in tabular format-->
-                <table class="table table-striped">
-                    <thead class="thead-dark">
-                        <th>NO.</th>
-                        <th>STUDENT ID</th>
-                        <th>NAME</th>
-                        <th>EMAIL</th>
-                        <th>COURSE</th>
-                        <th style="text-align: center;">YEAR AND SECTION</th>
-                        <th style="text-align: center;">ACTION</th>
-                    </thead>
-
-                    <tbody>
-                        {% for e in test %}
-                        <tr class="all {{e.id}} {{e.studID}} {{e.first_name}} {{e.last_name}} {{e.email}} {{e.course}} {{e.yrandsec}}">
-                            <td>{{e.id}}</td>
-                            <td>{{e.studID}}</td>
-                            <td>{{e.first_name}} {{e.last_name}}</td>
-                            <td>{{e.email}}</td>
-                            <td>{{e.course}}</td>
-                            <td style="text-align: center;">{{e.yrandsec}}</td>
-                            <td class="action">
-                                <a href="/h-dropping-edit/{{e.id}}"><i class="bi bi-pencil"></i></a>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
         </div>
 
 
     </div>
 
 
+
+
+
+
     <!--JAVASCRIPT-->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+
 
     <script>
         // Filter 
@@ -156,6 +106,9 @@
             $("tbody").find("tr").show();
         });
     </script>
+
+
+
 
 
 </body>

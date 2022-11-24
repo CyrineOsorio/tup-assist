@@ -52,6 +52,10 @@ urlpatterns = [
 
 
     # pic
+    path('p_profile/', views.p_profile, name='p_profile'),
+    path('changepassword1', views.changepassword1, name='changepassword1'),
+    path('changepicinfo', views.changepicinfo, name='changepicinfo'),
+
     path('p_adding/', views.p_adding, name='p_adding'),
     path('p_adding_edit/<int:id>', views.p_adding_edit),
     path('p_edit_sub', views.p_edit_sub, name='p_edit_sub'),
@@ -59,13 +63,17 @@ urlpatterns = [
     
 
     # head
+    path('h_profile/', views.h_profile, name='h_profile'),
+    path('changepassword2', views.changepassword2, name='changepassword2'),
+    path('changeheadinfo', views.changeheadinfo, name='changeheadinfo'),
+
     path('h-adding/', views.h_adding, name='h_adding'),
     path('h-adding-edit/<int:id>', views.h_adding_edit),
     path('h-dropping/', views.h_dropping, name='h_dropping'),
     path('h-dropping-edit/<int:id>', views.h_dropping_edit),
     path('h-transferring/', views.h_transferring, name='h_transferring'),
     path('h-transferring-edit/<int:id>', views.h_transferring_edit),
-    path('h-schedule/', views.h_schedule, name='h_schedule'),
+    path('h_subject/', views.h_subject, name='h_subject'),
 
     
     

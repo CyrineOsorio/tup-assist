@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
     <!--CSS Custom -->
-    <link rel="stylesheet" href="{%static 'css/h_adding.css'%}">
+    <link rel="stylesheet" href="{%static 'css/h_profile.css'%}">
 
     <!--FONTS-->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
@@ -44,10 +44,10 @@
             <form class="d-flex">
                 <ul class="navbar-nav mr-auto" id="center">
                     <li class="nav-item">
-                        <a class="nav-link" href="{%url 'TupAssistApp:h_profile'%}" id="">Profile</a>
+                        <a class="nav-link" href="{%url 'TupAssistApp:h_profile'%}" id="profile">Profile</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="{%url 'TupAssistApp:h_adding'%}" id="adding">Adding<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{%url 'TupAssistApp:h_adding'%}" id="">Adding<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{%url 'TupAssistApp:h_dropping'%}" id="">Dropping</a>
@@ -71,70 +71,60 @@
         <div class="welcome">Welcome, {{ current_user.department }}!</div>
 
         <div class="content">
-            <div class="stud-request-label">
-                <p>ADDING SUBJECT REQUESTS:</p>
-            </div>
+            <h1>Profile Information</h1>
 
-            <div class="filter">
-                <div class="row">
-                    <div class="col">
-                        <select class="custom-select" name="program">
-                            <option value="all">Program</option>
-                            <option value="BET-COET">BET-COET</option>
-                            <option value="BET-ET">BET-ET</option>
-                            <option value="BET-CT">BET-CT</option>
-                        </select>
-                    </div>
-                    <div class="col">
-                        <select class="custom-select" name="yearandsection">
-                            <option value="all">Year and Section</option>
-                            <option value="1A">1A</option>
-                            <option value="1B">1B</option>
-                            <option value="4A">4A</option>
-                            <option value="4B">4B</option>
-
-                        </select>
-                    </div>
-                    <div class="col">
-                        <button type="button" class="btn btn-primary">Reset</button>
-                    </div>
+            <form action="/changeheadinfo" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email Address/Username:</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" name="username" aria-describedby="emailHelp" value="{{current_user.username}}" readonly>
                 </div>
-            </div>
+                <div class="form-group">
+                    <label for="first_name">First Name:</label>
+                    <input type="text" class="form-control" id="first_name" name="first_name" value="{{current_user.first_name}}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="first_name">Last Name:</label>
+                    <input type="text" class="form-control" id="last_name" name="last_name" value="{{current_user.last_name}}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="course">Course:</label>
+                    <select class="custom-select" id="course" name="course">
+                            <option selected>{{current_user.course}}</option>
+                            <option value="BET-COET">Bachelor of Engineering Technology major in Computer Engineering Technology</option>
+                            <option value="BSIE-ICT">Bachelor of Science in Industrial Education major in: Information and Communication Technology</option>
+                            <option value="BSCE">Bachelor of Science in Civil Engineering</option>
+                          </select>
+                </div>
+                <div class="form-group">
+                    <label for="department">Department:</label>
+                    <select class="custom-select" id="department" name="department">
+                            <option selected>{{current_user.department}}</option>
+                            <option value="Department of Engineering">Department of Engineering</option>
+                            <option value="Department of Industrial Technology">Department of Industrial Technology</option>
+                            <option value="Department of Industrial Education">Department of Industrial Education</option>
+                          </select>
+                </div>
+                <div class="form-group">
+                    <label for="studID">ID Number:</label>
+                    <input type="number" class="form-control" id="studID" name="studID" value="{{current_user.studID}}">
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Update</button>
+            </form>
+
+            <h1 style="margin-top:30px;">Change Password</h1>
+
+
+            <form method="post" action="/changepassword2" style="margin-top:5%; margin-bottom: 5%;">
+                {% csrf_token %}
+                <div class="container">
+                    {{ form }}
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Change Password</button>
+            </form>
 
 
 
-            <div style="overflow-x:auto;">
-                <!--HTML code to display data in tabular format-->
-                <table class="table table-striped">
-                    <thead class="thead-dark">
-                        <th>NO.</th>
-                        <th>STUDENT ID</th>
-                        <th>NAME</th>
-                        <th>EMAIL</th>
-                        <th>COURSE</th>
-                        <th style="text-align: center;">YEAR AND SECTION</th>
-                        <th>STATUS</th>
-                        <th style="text-align: center;">ACTION</th>
-                    </thead>
-
-                    <tbody>
-                        {% for e in test %}
-                        <tr class="all {{e.id}} {{e.studID}} {{e.first_name}} {{e.last_name}} {{e.email}} {{e.course}} {{e.yrandsec}}">
-                            <td>{{e.id}}</td>
-                            <td>{{e.studID}}</td>
-                            <td>{{e.first_name}} {{e.last_name}}</td>
-                            <td>{{e.email}}</td>
-                            <td>{{e.course}}</td>
-                            <td style="text-align: center;">{{e.yrandsec}}</td>
-                            <td>{{e.addStatus}}</td>
-                            <td class="action">
-                                <a href="/h-adding-edit/{{e.id}}"><i class="bi bi-pencil"></i></a>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
         </div>
 
 
@@ -164,6 +154,14 @@
         });
     </script>
 
+    <!-- Messages -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {% if messages %} {% for message in messages %} {% if message.tags %}
+    <script>
+        Swal.fire({
+            text: '{{ message }}',
+        })
+    </script> {% endif %} {% endfor %} {% endif %}
 
 </body>
 

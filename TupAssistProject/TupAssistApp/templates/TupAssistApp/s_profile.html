@@ -73,19 +73,19 @@
                 <form action="/changestudentinfo" method="post">
                     {% csrf_token %}
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Email Address/Username</label>
+                        <label for="exampleInputEmail1">Email Address/Username:</label>
                         <input type="email" class="form-control" id="exampleInputEmail1" name="username" aria-describedby="emailHelp" value="{{current_user.username}}" readonly>
                     </div>
                     <div class="form-group">
-                        <label for="first_name">First Name</label>
+                        <label for="first_name">First Name:</label>
                         <input type="text" class="form-control" id="first_name" name="first_name" value="{{current_user.first_name}}" readonly>
                     </div>
                     <div class="form-group">
-                        <label for="first_name">Last Name</label>
+                        <label for="first_name">Last Name:</label>
                         <input type="text" class="form-control" id="last_name" name="last_name" value="{{current_user.last_name}}" readonly>
                     </div>
                     <div class="form-group">
-                        <label for="course">Course</label>
+                        <label for="course">Course:</label>
                         <select class="custom-select" id="course" name="course">
                             <option selected>{{current_user.course}}</option>
                             <option value="BET-COET">Bachelor of Engineering Technology major in Computer Engineering Technology</option>
@@ -94,11 +94,20 @@
                           </select>
                     </div>
                     <div class="form-group">
-                        <label for="year">Year</label>
+                        <label for="department">Department:</label>
+                        <select class="custom-select" id="department" name="department">
+                            <option selected>{{current_user.department}}</option>
+                            <option value="Department of Engineering">Department of Engineering</option>
+                            <option value="Department of Industrial Technology">Department of Industrial Technology</option>
+                            <option value="Department of Industrial Education">Department of Industrial Education</option>
+                          </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="year">Year:</label>
                         <input type="number" class="form-control" id="year" name="year" value="{{current_user.year}}" min="1" max="5">
                     </div>
                     <div class="form-group">
-                        <label for="section">Section</label>
+                        <label for="section">Section:</label>
                         <select class="custom-select" id="section" name="section">
                             <option selected>{{current_user.section}}</option>
                             <option value="A">A</option>
@@ -106,7 +115,7 @@
                           </select>
                     </div>
                     <div class="form-group">
-                        <label for="studID">Sudent Number</label>
+                        <label for="studID">Sudent Number:</label>
                         <input type="number" class="form-control" id="studID" name="studID" value="{{current_user.studID}}">
                     </div>
                     <button type="submit" class="btn btn-primary btn-lg btn-block">Update</button>

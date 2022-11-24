@@ -115,6 +115,8 @@
                                 <th>FIRST NAME</th>
                                 <th>LAST NAME</th>
                                 <th>EMAIL</th>
+                                <th>USER ROLE</th>
+                                <th>DEPARTMENT</th>
                             </thead>
                             <tbody>
                                 {% for e in staff %}
@@ -123,6 +125,8 @@
                                     <td>{{e.first_name}}</td>
                                     <td>{{e.last_name}}</td>
                                     <td>{{e.email}}</td>
+                                    <td>{{e.userType}}</td>
+                                    <td>{{e.department}}</td>
                                 </tr>
                                 {% endfor %}
                             </tbody>

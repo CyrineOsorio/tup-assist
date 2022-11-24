@@ -40,9 +40,7 @@ def index(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-        print(password)
         user = authenticate(request, username=username, password=password) 
-        print(user)
 
         if user is not None and user.is_superuser == True:
             login(request, user)
@@ -56,7 +54,7 @@ def index(request):
             login(request, user)
             return redirect('/h-adding')
 
-        elif user is not None and user.userType == 'Person-in-charge':
+        elif user is not None and user.userType == 'Program-in-charge':
             login(request, user)
             return redirect('/p_adding')
         else:
@@ -76,9 +74,7 @@ def r_dashboard(request):
     subs = Subjects.objects.all()
     status = TransStatus.objects.all()
     sched = Schedule.objects.all()
-    student = registration.objects.filter(userType='STDNT')
-    # latest_sched = sched.gSheetLink
-    # print(latest_sched)
+    student = registration.objects.filter(userType='Student')
     context = {
         'current_user': current_user,
         'subs': subs,
@@ -138,7 +134,7 @@ def transStatus(request,id):
 
 def r_adding(request):
     current_user = request.user = request.user
-    test = registration.objects.filter(userType='STDNT')
+    test = registration.objects.filter(userType='Student')
     context = { 
         'test': test,
         'current_user': current_user,
@@ -157,7 +153,7 @@ def r_adding_view(request, id):
 
 def r_dropping(request):
     current_user = request.user
-    test = registration.objects.filter(userType='STDNT')
+    test = registration.objects.filter(userType='Student')
     context = {
         'test': test,
         'current_user': current_user
@@ -166,7 +162,7 @@ def r_dropping(request):
 
 def r_transferring(request):
     current_user = request.user
-    test = registration.objects.filter(userType='STDNT')
+    test = registration.objects.filter(userType='Student')
     context = { 
         'test': test,
         'current_user': current_user
@@ -219,7 +215,7 @@ def student_acc_cvs(request):
 
 def staff_acc_cvs(request):
     if request.method=='POST':
-        junk = registration.objects.all(Q(userType='Department Head') | Q(userType='Program-in-Charge'))
+        junk = registration.objects.filter(Q(userType='Department Head') | Q(userType='Program-in-Charge'))
         junk.delete()
         form = StudentRegistration(request.POST)
         staffcvsfile = request.FILES["staffcvsfile"]
@@ -228,7 +224,7 @@ def staff_acc_cvs(request):
         print(reader)
         for row in reader:
             try:
-                new_revo = registration.objects.create(username=str(row[2]), email=str(row[2]), first_name=str(row[0]), last_name=str(row[1]), userType=str(row[4]))
+                new_revo = registration.objects.create(username=str(row[2]), email=str(row[2]), first_name=str(row[0]), last_name=str(row[1]), userType=str(row[4]), department=str(row[5]))
                 new_revo.set_password('TUPC-'+str(row[3])) #Default Password
                 new_revo.save()    
                 messages.success(request, 'Successfully Import, but check if data imported is correct.')
@@ -432,7 +428,7 @@ def s_transferring(request):
 # PIC PAGES
 def p_adding(request):
     current_user = request.user
-    test = registration.objects.filter(Q(course=current_user.course) & Q(userType='STDNT'))
+    test = registration.objects.filter(Q(course=current_user.course) & Q(userType='Student'))
     context = { 
         'test': test,
         'current_user': current_user
@@ -485,7 +481,7 @@ def p_step1_submit(request):
 
 def h_adding(request):
     current_user = request.user
-    test = registration.objects.filter(Q(department=current_user.department) & Q(userType='STDNT'))
+    test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student'))
     context = { 
         'test': test,
         'current_user': current_user
@@ -508,7 +504,7 @@ def h_adding_edit(request, id):
 
 def h_dropping(request):
     current_user = request.user
-    test = registration.objects.filter(Q(department=current_user.department) & Q(userType='STDNT'))
+    test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student'))
     context = { 
         'test': test,
         'current_user': current_user
@@ -532,7 +528,7 @@ def h_dropping_edit(request, id):
 
 def h_transferring(request):
     current_user = request.user
-    test = registration.objects.filter(Q(department=current_user.department) & Q(userType='STDNT'))
+    test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student'))
     context = { 
         'test': test,
         'current_user': current_user

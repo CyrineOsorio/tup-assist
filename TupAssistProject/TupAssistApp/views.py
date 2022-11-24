@@ -52,11 +52,11 @@ def index(request):
         
         elif user is not None and user.userType == 'Department Head':
             login(request, user)
-            return redirect('/h-adding')
+            return redirect('/h_profile')
 
         elif user is not None and user.userType == 'Program-in-charge':
             login(request, user)
-            return redirect('/p_adding')
+            return redirect('/p_profile')
         else:
            messages.error(request, 'Invalid Credentials')
     return render(request, 'TupAssistApp/index.html')
@@ -524,7 +524,6 @@ def changeheadinfo(request):
     if request.method == 'POST':
         try:
             data = registration.objects.get(username=current_user.username)
-            data.course = request.POST.get("course")
             data.studID = request.POST.get("studID")
             data.department = request.POST.get("department")
             data.save()

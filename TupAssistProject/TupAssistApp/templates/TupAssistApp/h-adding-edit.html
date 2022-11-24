@@ -239,6 +239,14 @@
         })
     </script>
 
+    <!-- Messages -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {% if messages %} {% for message in messages %} {% if message.tags %}
+    <script>
+        Swal.fire({
+            text: '{{ message }}',
+        })
+    </script> {% endif %} {% endfor %} {% endif %}
 
 </body>
 

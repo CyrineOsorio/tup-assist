@@ -556,6 +556,20 @@ def h_adding_edit(request, id):
         }
     return render(request, 'TupAssistApp/h-adding-edit.html', context)
 
+def h_edit_sub(request):
+    studID = request.POST.get('studID')
+    data = registration.objects.get(studID=studID)
+    if request.method =='POST':
+        id = request.POST.get('id')   
+        edit = AddingReq.objects.get(id=id) 
+        edit.head_is_approve = request.POST.get('head_is_approve')
+        edit.head_remark = request.POST.get('head_remark')
+        edit.head_name = request.POST.get('head_name')
+        edit.head_date = datetime.now()
+        edit.save()
+        messages.success(request, 'Request Successfully Edited!')
+        return redirect('/h_adding_edit/'+ str(data.id))
+
 def h_dropping(request):
     current_user = request.user
     test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student'))

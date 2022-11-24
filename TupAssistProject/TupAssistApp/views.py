@@ -182,7 +182,8 @@ def r_account(request):
     context = {
         'form': form,
         'current_user': current_user,
-        'student': student
+        'student': student,
+        'staff': staff
     }
     if request.method == 'POST':
         form = HeadRegistration(request.POST)
@@ -218,7 +219,7 @@ def student_acc_cvs(request):
 
 def staff_acc_cvs(request):
     if request.method=='POST':
-        junk = registration.objects.all(Q(userType='Department Head') or Q(userType='Program-in-Charge'))
+        junk = registration.objects.all(Q(userType='Department Head') | Q(userType='Program-in-Charge'))
         junk.delete()
         form = StudentRegistration(request.POST)
         staffcvsfile = request.FILES["staffcvsfile"]

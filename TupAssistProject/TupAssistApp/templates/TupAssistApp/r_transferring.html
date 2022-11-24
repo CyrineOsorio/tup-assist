@@ -48,6 +48,9 @@
                         <a class="nav-link" href="{%url 'TupAssistApp:r_dashboard'%}" id="">Dashboard <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{%url 'TupAssistApp:r_account'%}" id="">Accounts</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{%url 'TupAssistApp:r_adding'%}" id="">Adding</a>
                     </li>
                     <li class="nav-item">
@@ -55,9 +58,6 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{%url 'TupAssistApp:r_transferring'%}" id="transferring">Transfer</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{%url 'TupAssistApp:r_account'%}" id="">Accounts</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{%url 'TupAssistApp:logout'%}" id="logoutbutton">Logout</a>
@@ -127,7 +127,7 @@
                             <td>{{e.first_name}} {{e.last_name}}</td>
                             <td>{{e.email}}</td>
                             <td style="text-align: center;">{{e.course}}-{{e.yrandsec}}</td>
-                            <td>{{e.addStatus}}</td>
+                            <td>{{e.tranferStatus}}</td>
                             <td class="action"><a href=""><i class="bi bi-eye"></i></a></td>
                         </tr>
                         {% endfor %}

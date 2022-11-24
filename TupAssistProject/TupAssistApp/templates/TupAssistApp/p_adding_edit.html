@@ -174,8 +174,67 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="sched">Schedule</label>
-                                                <input type="text" class="form-control" id="sched" name="sched" value="{{i.sched}}">
+                                                <div class="d-flex">
+                                                    <input type="text" style="width:70%" class="form-control" id="sched1" name="sched" value="{{i.sched}}" readonly>
+                                                    <a class="btn btn-primary" style="width:30%" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Edit</a>
+                                                </div>
+
+                                                <div class="collapse" id="collapseExample">
+                                                    <div class="card card-body">
+
+                                                        <div class="input-group mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="basic-addon1">Monday</span>
+                                                            </div>
+                                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="mon_start1">
+                                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="mon_end1">
+                                                        </div>
+                                                        <div class="input-group mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="basic-addon1">Tuesday</span>
+                                                            </div>
+                                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="tue_start1">
+                                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="tue_end1">
+                                                        </div>
+                                                        <div class="input-group mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="basic-addon1">Wednesday</span>
+                                                            </div>
+                                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="wed_start1">
+                                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="wed_end1">
+                                                        </div>
+                                                        <div class="input-group mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="basic-addon1">Thurdsay</span>
+                                                            </div>
+                                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="thu_start1">
+                                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="thu_end1">
+                                                        </div>
+                                                        <div class="input-group mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="basic-addon1">Friday</span>
+                                                            </div>
+                                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="fri_start1">
+                                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="fri_end1">
+                                                        </div>
+                                                        <div class="input-group mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="basic-addon1">Saturday</span>
+                                                            </div>
+                                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="sat_start1">
+                                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="sat_end1">
+                                                        </div>
+
+                                                        <!-- Submit sa editeing na schedule -->
+                                                        <button type="button" class="btn btn-primary btn-lg btn-block" onclick="myFuntcion1()">Update Schedule</button>
+                                                    </div>
+                                                </div>
                                             </div>
+
+
+
+
+
                                             <div class="form-group">
                                                 <label for="pic_is_approve">Approval</label>
                                                 <select class="custom-select" id="pic_is_approve" name="pic_is_approve">
@@ -351,6 +410,136 @@
             document.getElementById("footerfooter").style.height = "40px";
             document.getElementById('datadata').style.display = "none";
         })
+    </script>
+
+
+    <!-- Update Schedule ni Rejay -->
+    <script>
+        function myFuntcion1() {
+
+            var a = document.getElementById("mon_start1").value;
+            var b = document.getElementById("mon_end1").value;
+            var c = document.getElementById("tue_start1").value;
+            var d = document.getElementById("tue_end1").value;
+            var e = document.getElementById("wed_start1").value;
+            var f = document.getElementById("wed_end1").value;
+            var g = document.getElementById("thu_start1").value;
+            var h = document.getElementById("thu_end1").value;
+            var i = document.getElementById("fri_start1").value;
+            var j = document.getElementById("fri_end1").value;
+            var k = document.getElementById("sat_start1").value;
+            var l = document.getElementById("sat_end1").value;
+
+            const a12hr = new Date('1970-01-01T' + a + 'Z').toLocaleTimeString('en-US', {
+                timeZone: 'UTC',
+                hour12: true,
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+
+            const b12hr = new Date('1970-01-01T' + b + 'Z').toLocaleTimeString('en-US', {
+                timeZone: 'UTC',
+                hour12: true,
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+
+            const c12hr = new Date('1970-01-01T' + c + 'Z').toLocaleTimeString('en-US', {
+                timeZone: 'UTC',
+                hour12: true,
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+
+            const d12hr = new Date('1970-01-01T' + d + 'Z').toLocaleTimeString('en-US', {
+                timeZone: 'UTC',
+                hour12: true,
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+
+            const e12hr = new Date('1970-01-01T' + e + 'Z').toLocaleTimeString('en-US', {
+                timeZone: 'UTC',
+                hour12: true,
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+
+            const f12hr = new Date('1970-01-01T' + f + 'Z').toLocaleTimeString('en-US', {
+                timeZone: 'UTC',
+                hour12: true,
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+
+            const g12hr = new Date('1970-01-01T' + g + 'Z').toLocaleTimeString('en-US', {
+                timeZone: 'UTC',
+                hour12: true,
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+
+            const h12hr = new Date('1970-01-01T' + h + 'Z').toLocaleTimeString('en-US', {
+                timeZone: 'UTC',
+                hour12: true,
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+
+            const i12hr = new Date('1970-01-01T' + i + 'Z').toLocaleTimeString('en-US', {
+                timeZone: 'UTC',
+                hour12: true,
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+
+            const j12hr = new Date('1970-01-01T' + j + 'Z').toLocaleTimeString('en-US', {
+                timeZone: 'UTC',
+                hour12: true,
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+
+            const k12hr = new Date('1970-01-01T' + k + 'Z').toLocaleTimeString('en-US', {
+                timeZone: 'UTC',
+                hour12: true,
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+
+            const l12hr = new Date('1970-01-01T' + l + 'Z').toLocaleTimeString('en-US', {
+                timeZone: 'UTC',
+                hour12: true,
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+
+
+            var arr = [];
+
+            // If the checkbox is checked, display the output text
+            if (a && b != '') {
+                arr.push('M' + ' ' + a12hr + '-' + b12hr);
+            }
+            if (c && d != '') {
+                arr.push('T' + ' ' + c12hr + '-' + d12hr);
+            }
+            if (e && f != '') {
+                arr.push('W' + ' ' + e12hr + '-' + f12hr);
+            }
+            if (g && h != '') {
+                arr.push('TH' + ' ' + g12hr + '-' + h12hr);
+            }
+            if (i && j != '') {
+                arr.push('F' + ' ' + i12hr + '-' + j12hr);
+            }
+            if (k && l != '') {
+                arr.push('S' + ' ' + k12hr + '-' + l12hr);
+            }
+
+            sched1.value = arr;
+
+        }
     </script>
 
 

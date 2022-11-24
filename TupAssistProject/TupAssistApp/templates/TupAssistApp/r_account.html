@@ -94,6 +94,40 @@
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
+                    <!-- List of Staffs -->
+                    <div class="title">
+                        <p>ENROLLED STUDENTS</p>
+                        <form class="form-inline" action="/staff_acc_cvs" method="post" enctype="multipart/form-data" name="staffcvsfile" style="gap:10px;">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <input type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" name="staffcvsfile" id="staffcvsfile" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Import CSV File</button>
+                        </form>
+                    </div>
+
+
+                    <div style="overflow-x:auto; margin-bottom:2%;">
+                        <!--HTML code to display data in tabular format-->
+                        <table class="table table-bordered">
+                            <thead>
+                                <th>NO.</th>
+                                <th>FIRST NAME</th>
+                                <th>LAST NAME</th>
+                                <th>EMAIL</th>
+                            </thead>
+                            <tbody>
+                                {% for e in staff %}
+                                <tr>
+                                    <td>{{e.id}}</td>
+                                    <td>{{e.first_name}}</td>
+                                    <td>{{e.last_name}}</td>
+                                    <td>{{e.email}}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 

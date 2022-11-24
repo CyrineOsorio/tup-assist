@@ -177,7 +177,7 @@ def r_transferring(request):
 def r_account(request):
     current_user = request.user
     form = HeadRegistration()
-    # staff = registration.objects.filter(Q(userType='STDNT') & Q(userType='STDNT'))
+    staff = registration.objects.filter(Q(userType='Department Head') | Q(userType='Program-in-Charge'))
     student = registration.objects.filter(userType='Student')
     context = {
         'form': form,
@@ -196,7 +196,7 @@ def r_account(request):
 
 def student_acc_cvs(request):
     if request.method=='POST':
-        junk = registration.objects.all()
+        junk = registration.objects.filter(userType='Student')
         junk.delete()
         form = StudentRegistration(request.POST)
         studcvsfile = request.FILES["studcvsfile"]
@@ -207,6 +207,28 @@ def student_acc_cvs(request):
             try:
                 new_revo = registration.objects.create(username=str(row[2]), email=str(row[2]), first_name=str(row[0]), last_name=str(row[1]), userType='Student')
                 new_revo.set_password('TUPC-'+str(row[0])+str(row[1])) #Default Password
+                new_revo.save()    
+                messages.success(request, 'Successfully Import, but check if data imported is correct.')
+            except:
+                messages.error(request, 'it looks like CSV format is not match to the table.')
+                return redirect('/r_account')
+        return redirect('/r_account')
+    return redirect('/r_account')
+
+
+def staff_acc_cvs(request):
+    if request.method=='POST':
+        junk = registration.objects.all(Q(userType='Department Head') or Q(userType='Program-in-Charge'))
+        junk.delete()
+        form = StudentRegistration(request.POST)
+        staffcvsfile = request.FILES["staffcvsfile"]
+        decoded_file = staffcvsfile.read().decode('utf-8').splitlines()
+        reader = csv.reader(decoded_file)
+        print(reader)
+        for row in reader:
+            try:
+                new_revo = registration.objects.create(username=str(row[2]), email=str(row[2]), first_name=str(row[0]), last_name=str(row[1]), userType=str(row[4]))
+                new_revo.set_password('TUPC-'+str(row[3])) #Default Password
                 new_revo.save()    
                 messages.success(request, 'Successfully Import, but check if data imported is correct.')
             except:
@@ -257,35 +279,15 @@ def changestudentinfo(request):
     current_user = request.user
     if request.method == 'POST':
         try:
-            course = request.POST.get("course")
-            if course == "BET-COET" or course == "BET-ET" or course == "BET-ESET" or course == "BET-CT" or course == "BET-MT" or course == "BET-AT" or course == "BET-PPT":
-                data = registration.objects.get(username=current_user.username)
-                data.course = request.POST.get("course")
-                data.year = request.POST.get("year")
-                data.section = request.POST.get("section")
-                data.studID = request.POST.get("studID")
-                data.department = 'Department of Industrial Technology'
-                data.save()
-                messages.success(request, 'Successfully Updated your Personal Information.')
-                return redirect('/s_profile')
-            elif course == "BSCE" or course == "BSEE" or course == "BSECE" or course == "BSME":
-                data.course = request.POST.get("course")
-                data.year = request.POST.get("year")
-                data.section = request.POST.get("section")
-                data.studID = request.POST.get("studID")
-                data.department = 'Department of Engineering'
-                data.save()
-                messages.success(request, 'Successfully Updated your Personal Information.')
-                return redirect('/s_profile')
-            elif course == "BSIE-ICT":
-                data.course = request.POST.get("course")
-                data.year = request.POST.get("year")
-                data.section = request.POST.get("section")
-                data.studID = request.POST.get("studID")
-                data.department = 'Department of Industrial Education'
-                data.save()
-                messages.success(request, 'Successfully Updated your Personal Information.')
-                return redirect('/s_profile')
+            data = registration.objects.get(username=current_user.username)
+            data.course = request.POST.get("course")
+            data.year = request.POST.get("year")
+            data.section = request.POST.get("section")
+            data.studID = request.POST.get("studID")
+            data.department = request.POST.get("department")
+            data.save()
+            messages.success(request, 'Successfully Updated your Personal Information.')
+            return redirect('/s_profile')
         except:
             messages.error(request, 'Invalid Credentials!')
             return redirect('/s_profile')

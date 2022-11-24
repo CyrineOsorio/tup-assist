@@ -22,6 +22,7 @@ urlpatterns = [
     #registrar
     path('r_dashboard/', views.r_dashboard, name='r_dashboard'),
     path('student_acc_cvs', views.student_acc_cvs, name='student_acc_cvs'),
+    path('staff_acc_cvs', views.staff_acc_cvs, name='staff_acc_cvs'),
     path('sub_cvs', views.sub_cvs, name='sub_cvs'),
     path('transStatus/<int:id>', views.transStatus),
     path('import_sched', views.import_sched, name='import_sched'),

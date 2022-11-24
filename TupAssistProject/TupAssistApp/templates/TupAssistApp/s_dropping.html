@@ -79,7 +79,7 @@
                             <p style="text-align: end;">{{ current_user.studID }}</p>
                         </div>
                         <div class="lagayan3">
-                            <p id="p1">Year Course and Section:</p>
+                            <p id="p1">Course and Section:</p>
                             <p style="text-align: end;">{{ current_user.course }}-{{ current_user.year }}{{ current_user.section }}</p>
                         </div>
                     </div>
@@ -115,7 +115,7 @@
                                     <span class="form-stepper-circle">
                                         <span>1</span>
                                     </span>
-                                    <div class="label">Step 1</div>
+                                    <div class="label">Subject to be drop</div>
                                 </a>
                             </li>
                             <!-- Step 2 -->
@@ -124,7 +124,7 @@
                                     <span class="form-stepper-circle text-muted">
                                         <span>2</span>
                                     </span>
-                                    <div class="label text-muted">Step 2</div>
+                                    <div class="label text-muted">Wait for PIC Approval</div>
                                 </a>
                             </li>
                             <!-- Step 3 -->
@@ -133,26 +133,51 @@
                                     <span class="form-stepper-circle text-muted">
                                         <span>3</span>
                                     </span>
-                                    <div class="label text-muted">Step 3</div>
+                                    <div class="label text-muted">Wait for Department Head Apprval</div>
                                 </a>
                             </li>
                         </ul>
-                        <!-- Step Wise Form Content -->
-                        <!-- <form id="userAccountSetupForm" name="userAccountSetupForm" enctype="multipart/form-data" method="POST"> -->
+
+
                         <!-- Step 1 Content -->
                         <section id="step-1" class="form-step">
-                            <h2 class="font-normal">Step 1</h2>
+                            <h2 class="font-normal">Subject to be drop</h2>
                             <!-- Step 1 input fields -->
                             <div class="mt-3">
-                                Step 1 input fields goes here..
+
+
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col"></th>
+                                            <th scope="col"></th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for i in subs %}
+                                        <tr>
+                                            <td scope="row">1</td>
+                                            <td>{{i.course}}{{i.year}}{{i.semester}}{{i.shop}}{{i.is_lab}}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+
+
+
                             </div>
                             <div class="mt-3">
                                 <button class="button btn-navigate-form-step" type="button" step_number="2">Next</button>
                             </div>
                         </section>
+
+
+
                         <!-- Step 2 Content, default hidden on page load. -->
                         <section id="step-2" class="form-step d-none">
-                            <h2 class="font-normal">Step 2</h2>
+                            <h2 class="font-normal">Wait for PIC Approval</h2>
                             <!-- Step 2 input fields -->
                             <div class="mt-3">
                                 Step 2 input fields goes here..
@@ -162,9 +187,13 @@
                                 <button class="button btn-navigate-form-step" type="button" step_number="3">Next</button>
                             </div>
                         </section>
+
+
+
+
                         <!-- Step 3 Content, default hidden on page load. -->
                         <section id="step-3" class="form-step d-none">
-                            <h2 class="font-normal">Step 3</h2>
+                            <h2 class="font-normal">Wait for Department Head Approval</h2>
                             <!-- Step 3 input fields -->
                             <div class="mt-3">
                                 Step 3 input fields goes here..

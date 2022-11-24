@@ -350,13 +350,14 @@ def s_dropping(request):
     current_user = request.user
     # Models
     dropReq = DroppingReq.objects.filter(studID=current_user.studID)
-    sub = Subjects.objects.all()
+    # subs = Subjects.objects.filter(course__icontains=current_user.course)
+    subs = Subjects.objects.filter(course=current_user.course)
     sched = Schedule.objects.all()
 
     context = {
         'dropReq': dropReq,
         'current_user': current_user,
-        'sub': sub,
+        'subs': subs,
         'sched': sched
 
     }

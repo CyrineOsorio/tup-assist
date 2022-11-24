@@ -202,8 +202,8 @@ def student_acc_cvs(request):
         print(reader)
         for row in reader:
             try:
-                new_revo = registration.objects.create(username=str(row[2]), email=str(row[2]), first_name=str(row[0]), last_name=str(row[1]), userType='Student')
-                new_revo.set_password('TUPC-'+str(row[0])+str(row[1])) #Default Password
+                new_revo = registration.objects.create(studID=str(row[0]), username=str(row[3]), email=str(row[3]), first_name=str(row[1]), last_name=str(row[2]), userType='Student')
+                new_revo.set_password('TUPC-'+str(row[0])) #Default Password
                 new_revo.save()    
                 messages.success(request, 'Successfully Import, but check if data imported is correct.')
             except:
@@ -224,8 +224,8 @@ def staff_acc_cvs(request):
         print(reader)
         for row in reader:
             try:
-                new_revo = registration.objects.create(username=str(row[2]), email=str(row[2]), first_name=str(row[0]), last_name=str(row[1]), userType=str(row[4]), department=str(row[5]))
-                new_revo.set_password('TUPC-'+str(row[3])) #Default Password
+                new_revo = registration.objects.create(studID=str(row[0]), username=str(row[3]), email=str(row[3]), first_name=str(row[1]), last_name=str(row[2]), userType=str(row[4]), department=str(row[5]))
+                new_revo.set_password('TUPC-'+str(row[0])) #Default Password
                 new_revo.save()    
                 messages.success(request, 'Successfully Import, but check if data imported is correct.')
             except:

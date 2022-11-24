@@ -96,7 +96,7 @@
 
                     <!-- List of Staffs -->
                     <div class="title">
-                        <p>ENROLLED STUDENTS</p>
+                        <p>LIST OF STAFFS</p>
                         <form class="form-inline" action="/staff_acc_cvs" method="post" enctype="multipart/form-data" name="staffcvsfile" style="gap:10px;">
                             {% csrf_token %}
                             <div class="form-group">
@@ -112,6 +112,7 @@
                         <table class="table table-bordered">
                             <thead>
                                 <th>NO.</th>
+                                <th>STAFF ID</th>
                                 <th>FIRST NAME</th>
                                 <th>LAST NAME</th>
                                 <th>EMAIL</th>
@@ -122,6 +123,7 @@
                                 {% for e in staff %}
                                 <tr>
                                     <td>{{e.id}}</td>
+                                    <td>{{e.studID}}</td>
                                     <td>{{e.first_name}}</td>
                                     <td>{{e.last_name}}</td>
                                     <td>{{e.email}}</td>
@@ -152,6 +154,7 @@
                         <table class="table table-bordered">
                             <thead>
                                 <th>NO.</th>
+                                <th>STUDENT NUMBER</th>
                                 <th>FIRST NAME</th>
                                 <th>LAST NAME</th>
                                 <th>EMAIL</th>
@@ -160,6 +163,7 @@
                                 {% for e in student %}
                                 <tr>
                                     <td>{{e.id}}</td>
+                                    <td>{{e.studID}}</td>
                                     <td>{{e.first_name}}</td>
                                     <td>{{e.last_name}}</td>
                                     <td>{{e.email}}</td>

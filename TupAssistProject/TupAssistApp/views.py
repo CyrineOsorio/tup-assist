@@ -348,15 +348,20 @@ def s_step1_submit(request):
 def s_edit_sub(request):
     if request.method =='POST':
         id = request.POST.get('id')
-       
+        data = AddingReq.objects.get(id=id)
+        data.subject = request.POST.get('subject')
+        data.section = request.POST.get('section')
+        data.sched = request.POST.get('sched')
+        data.save()
+        messages.success(request, 'Update Successfuly')
         return redirect('/s_adding')
 
 
 def s_step2_submit(request):
-    current_user = request.user
-    data = registration.objects.get(username=current_user.username)
-    data.addStatus = 'Wait for Department Head Approval'
-    data.save()
+    # current_user = request.user
+    # data = registration.objects.get(username=current_user.username)
+    # data.addStatus = 'Updated Request'
+    # data.save()
     return redirect('/s_adding')
 
 

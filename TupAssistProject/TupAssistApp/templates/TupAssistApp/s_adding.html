@@ -105,6 +105,24 @@
 
                 <div>
 
+                    <div class="filter" style="display: flex; justify-content: flex-start; margin-bottom: 20px;">
+                        <div class="row">
+                            <div class="col">
+                                <select class="custom-select" name="school_year">
+                                    <option value="all">School Year</option>
+                                    <option value="BET-COET">2122</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <select class="custom-select" name="semester">
+                                    <option value="all">Semester</option>
+                                    <option value="2">1</option>
+                                    <option value="1">2</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
                     <h1>Add Subject Transcation Form</h1>
 
                     {% if current_user.course != '' and current_user.course != None and current_user.section != '' and current_user.section != None and current_user.year != None and current_user.year != '' and current_user.studID != None and current_user.studID != '' %}
@@ -535,6 +553,18 @@
         })
     </script>
 
+
+    <!-- Transcation Status -->
+    <script>
+        // Filter 
+        $(".filter select").on('change', function() {
+            var filters = $.map($(".filter select").toArray(), function(e) {
+                return $(e).val();
+            }).join(".");
+            $("multi-step-form-container").find("tr").hide();
+            $("multi-step-form-container").find("tr." + filters).show();
+        });
+    </script>
 
     <!-- FOOTER NI CYRINE -->
     <script>

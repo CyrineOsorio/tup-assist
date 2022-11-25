@@ -83,8 +83,8 @@
                         <th>TRANSACTION NAME</th>
                         <th>SCHOOL YEAR</th>
                         <th>SEMESTER</th>
-                        <th>CHANGE STATUS</th>
-                        <th>DELETE</th>
+                        <th>STATUS</th>
+                        <th>ACTION</th>
                     </thead>
                     <tbody>
                         {% for status in status %}
@@ -92,28 +92,10 @@
                             <td>{{status.TransName}} Of Subject</td>
                             <td>{{status.school_year}}</td>
                             <td>{{status.semester}} </td>
-                            <td><a type="button" class="btn btn-primary" href="/transStatus/{{status.id}}">{{status.status}}</a></td>
-                            <td><a type="button" class="btn btn-danger" href="">Delete</a></td>
+                            <td><a type="button" href="/transStatus/{{status.id}}">{{status.status}}</a></td>
+                            <td class="d-flex" style="column-gap: 5px;"><button type="submit" class="btn btn-primary">Change</button> </td>
                         </tr>
                         {% endfor %}
-
-                        <form method="post" action="">
-                            {% csrf_token %}
-                            <tr>
-                                <td><input type="text" class="form-control" name="TransName" placeholder="Transaction Name" required></td>
-                                <td><input type="number" class="form-control" name="school_year" placeholder="School Year" required></td>
-                                <td><input type="number" class="form-control" name="semester" id="semester" required></td>
-                                <td>
-                                    <select class="custom-select" id="status" name="status">
-                                        <option value="Pending" selected disabled hidden>Select an Option</option>
-                                        <option value="Open">Open</option>
-                                        <option value="Close">Close</option>
-                                  </select>
-                                </td>
-                                <td><button type="submit" class="btn btn-primary btn-lg btn-block">Add</button></td>
-                            </tr>
-                        </form>
-
                     </tbody>
                 </table>
             </div>

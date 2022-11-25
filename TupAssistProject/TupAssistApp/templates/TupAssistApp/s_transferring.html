@@ -102,6 +102,27 @@
 
                 <div>
 
+                    <!-- Transaction Status -->
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label for="school_year">School Year</label>
+                            <input type="number" class="form-control" id="school_year" value="{{trans.school_year}}" readonly>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="semester">Semester</label>
+                            <input type="number" class="form-control" id="semester" value="{{trans.semester}}" readonly>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="semester">Status</label>
+                            <input type="text" class="form-control" id="semester" value="{{trans.status}}" readonly>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-danger" role="alert" id="TransferTransaction">
+                        Notice: Transferring Transaction is Closed.
+                    </div>
+
+
                     <h1>Transfer Subject Transcation Form</h1>
 
                     {% if current_user.course != '' and current_user.course != None and current_user.section != '' and current_user.section != None and current_user.year != None and current_user.year != '' and current_user.studID != None and current_user.studID != '' %}
@@ -227,6 +248,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 
+
+    <!-- Transcation Status -->
+    {% if trans.status == 'Open' %}
+    <script>
+        $("#multi-step-form-container").show();
+        $("#TransferTransaction").hide();
+    </script>
+
+    {% elif trans.status == 'Close' %}
+    <script>
+        $("#multi-step-form-container").hide();
+        $("#TransferTransaction").show();
+    </script> {% endif %}
+
+
+
+
     <script>
         $(document).ready(function() {
             // Source: https://stackoverflow.com/questions/18796221/creating-a-select-box-with-a-search-option
@@ -247,8 +285,6 @@
 
         });
     </script>
-
-
 
 
     <script>

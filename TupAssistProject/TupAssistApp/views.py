@@ -352,8 +352,8 @@ def s_step2_submit(request):
 
 def s_dropping(request):
     current_user = request.user
-    # Models
     dropReq = DroppingReq.objects.filter(studID=current_user.studID)
+    trans = TransStatus.objects.get(TransName="Drop")
     if current_user.course[0:3] =="BET":
         print(current_user.course[4:10])
         subs = Subjects.objects.filter(Q(course__icontains=current_user.course[4:10]) & Q(year=current_user.year))
@@ -363,6 +363,7 @@ def s_dropping(request):
         context = {
             'dropReq': dropReq,
             'current_user': current_user,
+            'trans': trans,
             'subs': subs,
             'sched': sched
         }
@@ -375,12 +376,14 @@ def s_transferring(request):
     current_user = request.user
     # Models
     transReq = TransferringReq.objects.filter(studID=current_user.studID)
+    trans = TransStatus.objects.get(TransName="Transfer")
     sub = Subjects.objects.all()
     sched = Schedule.objects.all()
 
     context = {
         'transReq': transReq,
         'current_user': current_user,
+        'trans': trans,
         'sub': sub,
         'sched': sched
 

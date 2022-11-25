@@ -105,6 +105,7 @@
 
                 <div>
 
+                    <!-- Transaction Status -->
                     <div class="form-row">
                         <div class="form-group col-md-3">
                             <label for="school_year">School Year</label>
@@ -557,7 +558,6 @@
 
 
     <!-- Transcation Status -->
-
     {% if trans.status == 'Open' %}
     <script>
         $("#multi-step-form-container").show();
@@ -874,7 +874,7 @@
         formStepCircle.classList.remove("form-stepper-unfinished", "form-stepper-completed");
         formStepCircle.classList.add("form-stepper-active");
     </script>
-    {% endif %} Requested: Wait for PIC Approval
+    {% endif %}
 
 
 

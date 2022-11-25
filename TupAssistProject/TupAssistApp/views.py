@@ -278,11 +278,13 @@ def s_adding(request):
     req = AddingReq.objects.filter(studID=current_user.studID)
     sub = Subjects.objects.all()
     sched = Schedule.objects.all()
+    trans = TransStatus.objects.get(TransName="Add")
     context = {
         'req': req,
         'current_user': current_user,
         'sub': sub,
-        'sched': sched
+        'sched': sched,
+        'trans': trans
     }
     return render(request, 'TupAssistApp/s_adding.html', context)
 

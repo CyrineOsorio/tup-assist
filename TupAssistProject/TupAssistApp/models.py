@@ -51,6 +51,7 @@ class registration(AbstractUser):
     dropStatus = models.CharField(max_length=255, blank=True)
     transferStatus = models.CharField(max_length=255, blank=True)
     
+    
 
     class Meta:
         verbose_name_plural = "registration" 
@@ -59,8 +60,9 @@ class registration(AbstractUser):
 class TransStatus(models.Model):
     TransName = models.CharField(max_length=100, null=True, blank=True)
     status = models.CharField(max_length=100, null=True, blank=True)
-    # year = models.IntegerField()
-    # semester = models.IntegerField() 
+    school_year = models.IntegerField(null=True, blank=True)
+    semester = models.IntegerField(null=True, blank=True)
+
 
     class Meta:
         verbose_name_plural = "TransStatus" 
@@ -104,8 +106,8 @@ class AddingReq(models.Model):
     admin_approve = models.CharField(max_length=255, null=True, blank=True)
     admin_name = models.CharField(max_length=255, null=True, blank=True)
     admin_date = models.DateTimeField(null=True, blank=True)
-    # year = models.IntegerField()
-    # semester = models.IntegerField()
+    school_year = models.IntegerField(null=True, blank=True)
+    semester = models.IntegerField(null=True, blank=True)
     
     class Meta:
         verbose_name_plural = "AddingReq" 
@@ -127,8 +129,8 @@ class DroppingReq(models.Model):
     admin_approve = models.CharField(max_length=255, null=True, blank=True)
     admin_name = models.CharField(max_length=255, null=True, blank=True)
     admin_date = models.DateTimeField(null=True, blank=True)
-    # year = models.IntegerField()
-    # semester = models.IntegerField()
+    school_year = models.IntegerField(null=True, blank=True)
+    semester = models.IntegerField(null=True, blank=True)
     
     class Meta:
         verbose_name_plural = "DroppingReq" 
@@ -149,8 +151,8 @@ class TransferringReq(models.Model):
     admin_approve = models.CharField(max_length=255, null=True, blank=True)
     admin_name = models.CharField(max_length=255, null=True, blank=True)
     admin_date = models.DateTimeField(null=True, blank=True)
-    # year = models.IntegerField()
-    # semester = models.IntegerField()
+    school_year = models.IntegerField(null=True, blank=True)
+    semester = models.IntegerField(null=True, blank=True)
     
     class Meta:
         verbose_name_plural = "TransferringReq" 

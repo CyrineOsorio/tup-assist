@@ -3,6 +3,8 @@
         "id": 1,
         "fields": {
             "TransName": "Add",
+            "school_year": 2223,
+            "semester": 1,
             "status": "Close"
         }
     },
@@ -11,6 +13,8 @@
         "id": 2,
         "fields": {
             "TransName": "Drop",
+            "school_year": 2223,
+            "semester": 1,
             "status": "Close"
         }
     },
@@ -19,6 +23,8 @@
         "id": 3,
         "fields": {
             "TransName": "Transfer",
+            "school_year": 2223,
+            "semester": 1,
             "status": "Close"
         }
     }

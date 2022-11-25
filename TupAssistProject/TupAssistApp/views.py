@@ -22,7 +22,7 @@ from datetime import datetime
 # importing pandas module
 import pandas as pd
 
- from itertools import chain
+from itertools import chain
 
 # filter "AND,OR,NOT"
 from django.db.models import Q

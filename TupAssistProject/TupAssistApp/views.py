@@ -140,8 +140,7 @@ def r_edit_sub(request):
     if request.method =='POST':
         id = request.POST.get('id')   
         edit = AddingReq.objects.get(id=id) 
-        edit.admin_is_approve = request.POST.get('admin_is_approve')
-        edit.admin_remark = request.POST.get('admin_remark')
+        edit.admin_approve = request.POST.get('admin_approve')
         edit.admin_name = request.POST.get('admin_name')
         edit.admin_date = datetime.now()
         edit.save()

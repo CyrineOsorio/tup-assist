@@ -123,9 +123,9 @@ def r_adding(request):
         }
     return render(request, 'TupAssistApp/r_adding.html', context)
 
-def r_adding_view(request, id):
+def r_adding_view(request, studID):
     current_user = request.user
-    data = registration.objects.get(id=id)
+    data = registration.objects.get(studID=studID)
     req = AddingReq.objects.filter(studID=data.studID)
     context = { 
         'req': req,
@@ -443,9 +443,9 @@ def p_adding(request):
     return render(request, 'TupAssistApp/p_adding.html', context )
 
 
-def p_adding_edit(request, id):
+def p_adding_edit(request, studID):
     current_user = request.user
-    data = registration.objects.get(id=id)
+    data = registration.objects.get(studID=studID)
     req = AddingReq.objects.filter(studID=data.studID)
     sched = Schedule.objects.all()
     context = { 
@@ -471,7 +471,7 @@ def p_edit_sub(request):
         edit.pic_date = datetime.now()
         edit.save()
         messages.success(request, 'Request Successfully Edited!')
-        return redirect('/p_adding_edit/'+ str(data.id))
+        return redirect('/p_adding_edit/'+ str(data.studID))
 
 def p_step1_submit(request):
     studID = request.POST.get('studID')
@@ -479,7 +479,7 @@ def p_step1_submit(request):
         data = registration.objects.get(studID=studID)
         data.addStatus = 'Wait for Department Head Approval'
         data.save()
-        return redirect('/p_adding_edit/'+ str(data.id))
+        return redirect('/p_adding_edit/'+ str(data.studID))
         
 
 
@@ -562,9 +562,9 @@ def h_adding(request):
         }
     return render(request, 'TupAssistApp/h-adding.html', context)
 
-def h_adding_edit(request, id):
+def h_adding_edit(request, studID):
     current_user = request.user
-    data = registration.objects.get(id=id)
+    data = registration.objects.get(studID=studID)
     req = AddingReq.objects.filter(studID=data.studID)
     sched = Schedule.objects.all()
     context = { 
@@ -587,7 +587,7 @@ def h_edit_sub(request):
         edit.head_date = datetime.now()
         edit.save()
         messages.success(request, 'Request Successfully Edited!')
-        return redirect('/h_adding_edit/'+ str(data.id))
+        return redirect('/h_adding_edit/'+ str(data.studID))
 
 def h_dropping(request):
     current_user = request.user
@@ -599,9 +599,9 @@ def h_dropping(request):
     return render(request, 'TupAssistApp/h-dropping.html', context)
 
 
-def h_dropping_edit(request, id):
+def h_dropping_edit(request, studID):
     current_user = request.user
-    data = registration.objects.get(id=id)
+    data = registration.objects.get(studID=studID)
     req = DroppingReq.objects.filter(studID=data.studID)
     sched = Schedule.objects.all()
     context = { 
@@ -623,9 +623,9 @@ def h_transferring(request):
     return render(request, 'TupAssistApp/h-transferring.html', context)
 
 
-def h_transferring_edit(request, id):
+def h_transferring_edit(request, studID):
     current_user = request.user
-    data = registration.objects.get(id=id)
+    data = registration.objects.get(studID=studID)
     req = TransferringReq.objects.filter(studID=data.studID)
     sched = Schedule.objects.all()
     context = { 

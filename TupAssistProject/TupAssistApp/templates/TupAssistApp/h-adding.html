@@ -107,7 +107,6 @@
                 <!--HTML code to display data in tabular format-->
                 <table class="table table-striped">
                     <thead class="thead-dark">
-                        <th>NO.</th>
                         <th>STUDENT ID</th>
                         <th>NAME</th>
                         <th>EMAIL</th>
@@ -118,15 +117,14 @@
 
                     <tbody>
                         {% for e in test %}
-                        <tr class="all {{e.id}} {{e.studID}} {{e.first_name}} {{e.last_name}} {{e.email}} {{e.course}} {{e.year}}{{e.section}}">
-                            <td>{{e.id}}</td>
+                        <tr class="all {{e.studID}} {{e.first_name}} {{e.last_name}} {{e.email}} {{e.course}} {{e.year}}{{e.section}}">
                             <td>{{e.studID}}</td>
                             <td>{{e.first_name}} {{e.last_name}}</td>
                             <td>{{e.email}}</td>
                             <td style="text-align: center;">{{e.course}}-{{e.year}}{{e.section}}</td>
                             <td>{{e.addStatus}}</td>
                             <td class="action">
-                                <a href="/h_adding_edit/{{e.id}}"><i class="bi bi-pencil"></i></a>
+                                <a href="/h_adding_edit/{{e.studID}}"><i class="bi bi-pencil"></i></a>
                             </td>
                         </tr>
                         {% endfor %}

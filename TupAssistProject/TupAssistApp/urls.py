@@ -56,7 +56,7 @@ urlpatterns = [
     path('changepicinfo', views.changepicinfo, name='changepicinfo'),
 
     path('p_adding/', views.p_adding, name='p_adding'),
-    path('p_adding_edit/<int:id>', views.p_adding_edit),
+    path('p_adding_edit/<int:studID>', views.p_adding_edit),
     path('p_edit_sub', views.p_edit_sub, name='p_edit_sub'),
     path('p_step1_submit', views.p_step1_submit, name='p_step1_submit'),
     
@@ -70,13 +70,13 @@ urlpatterns = [
     path('sub_cvs', views.sub_cvs, name='sub_cvs'),
 
     path('h-adding/', views.h_adding, name='h_adding'),
-    path('h_adding_edit/<int:id>', views.h_adding_edit),
+    path('h_adding_edit/<int:studID>', views.h_adding_edit),
     path('h_edit_sub', views.h_edit_sub, name='h_edit_sub'),
 
     path('h-dropping/', views.h_dropping, name='h_dropping'),
-    path('h-dropping-edit/<int:id>', views.h_dropping_edit),
+    path('h-dropping-edit/<int:studID>', views.h_dropping_edit),
     path('h-transferring/', views.h_transferring, name='h_transferring'),
-    path('h-transferring-edit/<int:id>', views.h_transferring_edit),
+    path('h-transferring-edit/<int:studID>', views.h_transferring_edit),
     
     
     

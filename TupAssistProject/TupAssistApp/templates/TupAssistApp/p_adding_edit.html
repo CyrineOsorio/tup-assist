@@ -160,7 +160,7 @@
                         <!-- Edit Subject Modal -->
                         {% for i in req %}
                         <div class="modal fade" id="editReq{{i.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
+                            <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">Edit Request</h5>
@@ -248,7 +248,8 @@
                                             <div class="form-group">
                                                 <label for="pic_is_approve">Approval</label>
                                                 <select class="custom-select" id="pic_is_approve" name="pic_is_approve">
-                                                    <option value="Pending" selected disabled hidden>Select an Option</option>
+                                                    <option value="" selected disabled hidden>Select an Option</option>
+                                                    <option value="Pending">Pending</option>
                                                     <option value="Approve">Approve</option>
                                                     <option value="Decline">Decline</option>
                                                   </select>
@@ -274,22 +275,22 @@
 
                         <!-- Add Subject Modal -->
                         <div class="modal fade" id="addSub" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
+                            <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Add Subject</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <div class="modal-body">
-                                        
-                                        
-                                        <form class="form" method="post" action="/p_edit_sub">
-                                            {% csrf_token %}
-    
+                                    <form class="form" method="post" action="/p_add_sub">
+                                        {% csrf_token %}
+                                        <div class="modal-body">
                                             <div class="modal-body">
-                                               
+                                                <div class="form-group" hidden>
+                                                    <label for="id">Student ID</label>
+                                                    <input type="text" class="form-control" id="studID" name="studID" value="{{student_info.studID}}">
+                                                </div>
                                                 <div class="form-group">
                                                     <label for="subject">Subject</label>
                                                     <input type="text" class="form-control" id="subject" name="subject">
@@ -304,10 +305,10 @@
                                                         <input type="text" style="width:70%" class="form-control" id="schedule" name="sched" readonly>
                                                         <a class="btn btn-primary" style="width:30%" data-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample">Edit</a>
                                                     </div>
-    
+
                                                     <div class="collapse" id="collapseExample1">
                                                         <div class="card card-body">
-    
+
                                                             <div class="input-group mb-3">
                                                                 <div class="input-group-prepend">
                                                                     <span class="input-group-text" id="basic-addon1">Monday</span>
@@ -350,20 +351,36 @@
                                                                 <input type="time" class="form-control" aria-describedby="basic-addon1" id="sat_start">
                                                                 <input type="time" class="form-control" aria-describedby="basic-addon1" id="sat_end">
                                                             </div>
-    
+
                                                             <!-- Submit sa editeing na schedule -->
                                                             <button type="button" class="btn btn-primary btn-lg btn-block" onclick="myFunction()">Save Changes</button>
                                                         </div>
                                                     </div>
-                                                </div>
 
+                                                    <div class="form-group">
+                                                        <label for="pic_is_approve">Approval</label>
+                                                        <select class="custom-select" id="pic_is_approve" name="pic_is_approve">
+                                                            <option value="" selected disabled hidden>Select an Option</option>
+                                                            <option value="Pending">Pending</option>
+                                                            <option value="Approve">Approve</option>
+                                                            <option value="Decline">Decline</option>
+                                                            </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="pic_remark">Remarks</label>
+                                                        <input type="text" class="form-control" id="pic_remark" name="pic_remark" value="{{i.pic_remark}}">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="pic_name">Enlisted By:</label>
+                                                        <input type="text" class="form-control" id="pic_name" name="pic_name" value="{{current_user.first_name}} {{current_user.last_name}}" readonly>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">+Add</button>
                                             </div>
                                         </form>
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">+Add</button>
                                     </div>
                                 </div>
                             </div>
@@ -377,7 +394,7 @@
                             <form action="/p_step1_submit" method="post">
                                 {% csrf_token %}
                                 <input type="text" name="studID" id="studID" value="{{student_info.studID}}" hidden>
-                                <button type="submit" class="btn btn-primary">Submit kay Department Head</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
                             </form>{% endif %}
                         </div>
 
@@ -509,7 +526,7 @@
 
                         <div class="mt-3">
                             <button class="button btn-navigate-form-step" type="button" step_number="2">Prev</button>
-                            <button class="button submit-btn" type="submit">Save</button>
+                            <!-- <button class="button submit-btn" type="submit">Save</button> -->
                         </div>
                     </section>
 

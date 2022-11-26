@@ -473,6 +473,23 @@ def p_edit_sub(request):
         messages.success(request, 'Request Successfully Edited!')
         return redirect('/p_adding_edit/'+ str(data.studID))
 
+def p_add_sub(request):
+    studID = request.POST.get('studID')
+    data = registration.objects.get(studID=studID)
+    if request.method =='POST':   
+        studID = request.POST.get('studID')
+        subject = request.POST.get('subject')
+        section = request.POST.get('section')
+        sched = request.POST.get('sched')
+        pic_is_approve = request.POST.get('pic_is_approve')
+        pic_remark = request.POST.get('pic_remark')
+        pic_name = request.POST.get('pic_name')
+        pic_date = datetime.now()
+        add = AddingReq.objects.create(studID_id=studID, subject=subject, section=section, sched=sched, pic_is_approve=pic_is_approve, pic_remark=pic_remark, pic_name=pic_name, pic_date=pic_date)
+        add.save()
+        messages.success(request, 'Subject Successfully Add!')
+        return redirect('/p_adding_edit/'+ str(data.studID))
+
 def p_step1_submit(request):
     studID = request.POST.get('studID')
     if request.method =='POST':

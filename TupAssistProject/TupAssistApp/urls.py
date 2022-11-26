@@ -58,6 +58,7 @@ urlpatterns = [
     path('p_adding/', views.p_adding, name='p_adding'),
     path('p_adding_edit/<int:studID>', views.p_adding_edit),
     path('p_edit_sub', views.p_edit_sub, name='p_edit_sub'),
+    path('p_add_sub', views.p_add_sub, name='p_add_sub'),
     path('p_step1_submit', views.p_step1_submit, name='p_step1_submit'),
     
 

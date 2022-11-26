@@ -175,8 +175,8 @@
                                     <tbody>
                                         {% for i in subs %}
                                         <tr>
-                                            <td>{{i.course}}{{i.year}}{{i.semester}}{{i.shop}}{{i.is_lab}}</td>
-                                            <td><input type="email" class="head_name" name="head_name"></td>
+                                            <td><input type="text" class="form-control" id="subject" name="subject" value="{{i.course}}{{i.year}}{{i.semester}}{{i.shop}}{{i.is_lab}}" readonly></td>
+                                            <td><input type="email" class="form-control" id="head_name" name="head_name"></td>
                                             <td ><input type="checkbox"></td>
                                         </tr>
                                         {% endfor %}
@@ -268,15 +268,6 @@
             document.getElementById('datadata').style.display = "none";
         })
     </script>
-   
-    <script>
-        var elementList = $(".head_name");
-        for (var i = 1; i <= list.length; i++) {
-            elementList[i].attr("id", "head_name" + i);
-        }
-        
-    </script>
-
 
     <!--DROPDOWN-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

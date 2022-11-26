@@ -114,8 +114,6 @@
                     <!-- Step 1 Content -->
                     <section id="step-1" class="form-step">
 
-                        <div class="alert alert-success" role="alert" id="WaitHead0"> Notice: Wait for Department Head Approval.</div>
-                        <div class="alert alert-success" role="alert" id="WaitAdmin0"> Notice: Wait for Administration Approval.</div>
 
                         <h2 class="font-normal">Check Student Request and Program-in-charge Approval</h2>
 
@@ -335,8 +333,6 @@
                     <!-- Step 2 Content, default hidden on page load. -->
                     <section id="step-2" class="form-step d-none">
                         
-                        <div class="alert alert-danger" role="alert" id="WaitHead1">Notice: Wait for Department Head Approval.</div>
-                        <div class="alert alert-danger" role="alert" id="WaitAdmin1">Notice: Wait for Administration Approval.</div>
 
                         <h2 class="font-normal">Department Head Approval</h2>
 
@@ -660,24 +656,6 @@
     </script>
     {% endif %}
 
-
-
-    {% if student_info.addStatus == 'Wait for Department Head Approval' %}
-    <script>
-        $("#WaitHead0").show();
-        $("#WaitHead1").show();
-        $("#WaitAdmin0").hide();
-        $("#WaitAdmin1").hide();
-    </script>
-
-    {% elif student_info.addStatus == 'Wait for Administration Approval' %}
-    <script>
-        $("#WaitHead0").hide();
-        $("#WaitHead1").hide();
-        $("#WaitAdmin0").show();
-        $("#WaitAdmin1").show();
-    </script>
-    {% endif %}
 
 
 

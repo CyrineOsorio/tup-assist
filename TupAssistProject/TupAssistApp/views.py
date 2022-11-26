@@ -310,7 +310,7 @@ def s_add_sub(request):
         subject = request.POST.get('subject')
         section = request.POST.get('section')
         schedule = request.POST.get('schedule')
-        data = AddingReq.objects.create(studID= current_user.studID, subject=subject, section=section, sched=schedule)
+        data = AddingReq.objects.create(studID_id= current_user.studID, subject=subject, section=section, sched=schedule)
         data.save()
         messages.success(request, 'Subject Added')
         return redirect('/s_adding')
@@ -446,7 +446,7 @@ def p_adding(request):
 def p_adding_edit(request, studID):
     current_user = request.user
     data = registration.objects.get(studID=studID)
-    req = AddingReq.objects.filter(studID=data.studID)
+    req = AddingReq.objects.filter(studID_id=data.studID)
     sched = Schedule.objects.all()
     context = { 
         'current_user': current_user,
@@ -565,7 +565,7 @@ def h_adding(request):
 def h_adding_edit(request, studID):
     current_user = request.user
     data = registration.objects.get(studID=studID)
-    req = AddingReq.objects.filter(studID=data.studID)
+    req = AddingReq.objects.filter(studID_id=data.studID)
     sched = Schedule.objects.all()
     context = { 
         'current_user': current_user,
@@ -602,7 +602,7 @@ def h_dropping(request):
 def h_dropping_edit(request, studID):
     current_user = request.user
     data = registration.objects.get(studID=studID)
-    req = DroppingReq.objects.filter(studID=data.studID)
+    req = DroppingReq.objects.filter(studID_id=data.studID)
     sched = Schedule.objects.all()
     context = { 
         'current_user': current_user,
@@ -626,7 +626,7 @@ def h_transferring(request):
 def h_transferring_edit(request, studID):
     current_user = request.user
     data = registration.objects.get(studID=studID)
-    req = TransferringReq.objects.filter(studID=data.studID)
+    req = TransferringReq.objects.filter(studID_id=data.studID)
     sched = Schedule.objects.all()
     context = { 
         'current_user': current_user,

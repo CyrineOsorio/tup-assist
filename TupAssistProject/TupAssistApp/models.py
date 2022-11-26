@@ -91,7 +91,7 @@ class Schedule(models.Model):
 
 # Model for Student Adding Transaction
 class AddingReq(models.Model):
-    studID = models.IntegerField()
+    studID = models.ForeignKey("registration", on_delete=models.CASCADE)
     subject = models.CharField(max_length=255, null=True, blank=True)
     section = models.CharField(max_length=255, null=True, blank=True)
     sched = models.CharField(max_length=255, null=True, blank=True)
@@ -114,7 +114,7 @@ class AddingReq(models.Model):
 
 
 class DroppingReq(models.Model):
-    studID = models.IntegerField()
+    studID = models.ForeignKey("registration", on_delete=models.CASCADE)
     subject = models.CharField(max_length=255, null=True, blank=True)
     section = models.CharField(max_length=255, null=True, blank=True)
     sched = models.CharField(max_length=255, null=True, blank=True)
@@ -136,7 +136,7 @@ class DroppingReq(models.Model):
         verbose_name_plural = "DroppingReq" 
 
 class TransferringReq(models.Model):
-    studID = models.IntegerField()    
+    studID = models.ForeignKey("registration", on_delete=models.CASCADE)  
     subject = models.CharField(max_length=255, null=True, blank=True)
     section = models.CharField(max_length=255, null=True, blank=True)
     sched = models.CharField(max_length=255, null=True, blank=True)

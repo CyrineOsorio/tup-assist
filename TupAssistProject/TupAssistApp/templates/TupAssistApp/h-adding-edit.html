@@ -151,8 +151,19 @@
 
                             </div>
 
+                            <div class="mt-3" style="display: flex; justify-content: end; gap:5px;">
+                                {% if student_info.addStatus == 'Wait for Department Head Approval' %}
+                                <form action="/h_step1_submit" method="post">
+                                    {% csrf_token %}
+                                    <input type="text" name="studID" id="studID" value="{{student_info.studID}}" hidden>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>{% endif %}
+                            </div>
+
+
                             <div class="mt-3">
-                                <button class="button btn-navigate-form-step" type="button" step_number="2">Next</button>
+                                {% if student_info.addStatus == 'Wait for Administration Approval' %}
+                                <button class="button btn-navigate-form-step" type="button" step_number="2">Next</button>{% endif %}
                             </div>
                         </section>
 
@@ -385,6 +396,17 @@
     </script>
 
 
+    <!-- Django with Jquery para magload kapag nasaang current step na si students -->
+    {% if student_info.addStatus == 'Wait for Administration Approval' %}
+    <script>
+        document.querySelector("#step-" + 1).classList.add("d-none");
+        document.querySelector("#step-" + 2).classList.remove("d-none");
+        const formStepCircle = document.querySelector('li[step="' + 2 + '"]');
+        formStepCircle.classList.remove("form-stepper-unfinished", "form-stepper-completed");
+        formStepCircle.classList.add("form-stepper-active");
+    </script>
+    {% endif %}
+
     <!-- Multiform ni Rejay -->
     <script>
         /**
@@ -460,6 +482,9 @@
             });
         });
     </script>
+
+
+
 
 
     <!-- Messages -->

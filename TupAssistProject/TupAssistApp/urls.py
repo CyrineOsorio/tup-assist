@@ -73,6 +73,7 @@ urlpatterns = [
     path('h-adding/', views.h_adding, name='h_adding'),
     path('h_adding_edit/<int:studID>', views.h_adding_edit),
     path('h_edit_sub', views.h_edit_sub, name='h_edit_sub'),
+    path('h_step1_submit', views.h_step1_submit, name='h_step1_submit'),
 
     path('h-dropping/', views.h_dropping, name='h_dropping'),
     path('h-dropping-edit/<int:studID>', views.h_dropping_edit),

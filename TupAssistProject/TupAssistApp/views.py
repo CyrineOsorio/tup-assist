@@ -606,6 +606,15 @@ def h_edit_sub(request):
         messages.success(request, 'Request Successfully Edited!')
         return redirect('/h_adding_edit/'+ str(data.studID))
 
+
+def h_step1_submit(request):
+    studID = request.POST.get('studID')
+    if request.method =='POST':
+        data = registration.objects.get(studID=studID)
+        data.addStatus = 'Wait for Administration Approval'
+        data.save()
+        return redirect('/p_adding_edit/'+ str(data.studID))
+
 def h_dropping(request):
     current_user = request.user
     test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student'))

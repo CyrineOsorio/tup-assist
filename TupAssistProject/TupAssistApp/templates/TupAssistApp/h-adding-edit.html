@@ -133,7 +133,7 @@
     <!-- Edit Subject Modal -->
     {% for i in req %}
     <div class="modal fade" id="editReq{{i.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Edit Request</h5>
@@ -177,7 +177,8 @@
                         <div class="form-group">
                             <label for="head_is_approve">Approval</label>
                             <select class="custom-select" id="head_is_approve" name="head_is_approve">
-                                <option value="Pending" selected disabled hidden>Select an Option</option>
+                                <option value="" selected disabled hidden>Select an Option</option>
+                                <option value="Pending">Pending</option>
                                 <option value="Approve">Approve</option>
                                 <option value="Decline">Decline</option>
                               </select>

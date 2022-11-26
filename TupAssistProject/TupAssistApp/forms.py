@@ -13,10 +13,12 @@ class StudentRegistration(UserCreationForm):
 class HeadRegistration(UserCreationForm):
     class Meta:
         model = registration
-        fields = ['username', 'email', 'password1', 'password2', 'last_name', 'first_name','course', 'userType', 'department']
+        fields = ['username', 'email', 'password1', 'password2', 'last_name', 'first_name','course', 'year', 'section', 'userType', 'department']
     
     def __init__(self, *args, **kwargs):
         super(HeadRegistration, self).__init__(*args, **kwargs)
         self.fields['course'].required = False
+        self.fields['year'].required = False
+        self.fields['section'].required = False
         self.fields['department'].required = False
 

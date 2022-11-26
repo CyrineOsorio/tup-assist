@@ -383,7 +383,6 @@ def s_dropping(request):
     trans = TransStatus.objects.get(TransName="Drop")
     subs = Subjects.objects.filter(Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))
     sched = Schedule.objects.all()
-    print(subs)
     context = {
         'dropReq': dropReq,
         'current_user': current_user,

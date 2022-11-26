@@ -175,9 +175,9 @@
                                     <tbody>
                                         {% for i in subs %}
                                         <tr>
-                                            <td><input type="text" class="form-control" id="subject" name="subject" value="{{i.course}}{{i.year}}{{i.semester}}{{i.shop}}{{i.is_lab}}" readonly></td>
-                                            <td><input type="email" class="form-control" id="head_name" name="head_name"></td>
-                                            <td ><input type="checkbox"></td>
+                                            <td><input type="text" class="form-control" id="subject" name="subject{{forloop.counter}}" value="{{i.course}}{{i.year}}{{i.semester}}{{i.shop}}{{i.is_lab}}" readonly></td>
+                                            <td><input type="email" class="form-control" id="head_name{{forloop.counter}}" name="head_name"  disabled></td>
+                                            <td ><input type="checkbox" id="check{{forloop.counter}}"></td>
                                         </tr>
                                         {% endfor %}
 
@@ -272,6 +272,16 @@
     <!--DROPDOWN-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+
+
+    {% for i in subs %}
+    <script>
+        document.getElementById('check{{forloop.counter}}').onchange = function() {
+        document.getElementById('head_name{{forloop.counter}}').disabled = !this.checked;
+        };
+    </script>
+    {% endfor %}
+
 
 
     <!-- Transcation Status -->

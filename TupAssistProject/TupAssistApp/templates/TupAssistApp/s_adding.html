@@ -156,7 +156,7 @@
                                     <span class="form-stepper-circle text-muted">
                                         <span>3</span>
                                     </span>
-                                    <div class="label text-muted">Wait for Department Head Approval</div>
+                                    <div class="label text-muted">Wait for Department Head and Administration Approval</div>
                                 </a>
                             </li>
                         </ul>
@@ -216,7 +216,7 @@
                                                 <td><input type="text" class="form-control" name="subject" required></td>
                                                 <td><input type="text" class="form-control" name="section" required></td>
                                                 <td class="d-flex" style="column-gap: 5px;"><input type="text" class="form-control" name="schedule" id="schedule" readonly> <a class="btn btn-primary" data-toggle="modal" data-target="#editSub">Edit</a> </td>
-                                                <td><button type="submit" class="btn btn-primary btn-lg btn-block">Add</button></td>
+                                                <td><button type="submit" class="btn btn-primary">+ Add</button></td>
                                             </tr>
                                         </form>
                                     </tbody>
@@ -348,13 +348,18 @@
                         <div class="mt-3">
                             <table class="table table-bordered">
                                 <thead>
+                                    <th colspan="3" style="text-align: center;">SUBJECT TO BE TAKEN BY STUDENT</th>
+                                    <th colspan="5" style="text-align: center;">PROGRAM-IN-CHARGE</th>
+                                </thead>
+                                <thead>
                                     <th>SUBJECT</th>
                                     <th>SECTION</th>
                                     <th>SCHEDULE</th>
-                                    <th>PIC - APPROVE</th>
-                                    <th>PIC - REMARK</th>
-                                    <th> {% if current_user.addStatus == 'Update Your Request' %}ACTION{% endif%}</th>
-                                </thead>
+                                    <th>APPROVAL</th>
+                                    <th>REMARK</th>
+                                    <th>ENLISTED BY</th>
+                                    <th>DATE & TIME</th>
+                            </thead>
 
                                 <tbody>
                                     {% for i in req %}
@@ -364,9 +369,8 @@
                                         <td>{{i.sched}}</td>
                                         <td>{{i.pic_is_approve}}</td>
                                         <td>{{i.pic_remark}}</td>
-                                        <td class="d-flex" style="gap:10px;">
-                                            {% if current_user.addStatus == 'Update Your Request' %}<a type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateReq{{i.id}}">Update</a>{% endif %}
-                                        </td>
+                                        <td>{{i.pic_name}}</td>
+                                        <td>{{i.pic_date}}</td>
                                     </tr>
                                     {% endfor %}
                                 </tbody>
@@ -499,7 +503,7 @@
 
                     <!-- Step 3 Content, default hidden on page load. -->
                     <section id="step-3" class="form-step d-none">
-                        <h2 class="font-normal">Wait for Department Head Approval</h2>
+                        <h2 class="font-normal">Wait for Department Head and Administration Approval</h2>
                         <!-- Step 3 input fields -->
                         <div class="mt-3">
                             Step 3 input fields goes here..
@@ -854,7 +858,16 @@
 
 
     <!-- Django with Jquery para magload kapag nasaang current step na si students -->
-    {% if current_user.addStatus != '' %}
+
+    {% if current_user.addStatus == '' %}
+    <script>
+        document.querySelector("#step-" + 1).classList.remove("d-none");
+        const formStepCircle = document.querySelector('li[step="' + 1 + '"]');
+        formStepCircle.classList.remove("form-stepper-unfinished", "form-stepper-completed");
+        formStepCircle.classList.add("form-stepper-active");
+    </script>
+   
+    {% elif current_user.addStatus == 'Wait for PIC Approval' %}
     <script>
         document.querySelector("#step-" + 1).classList.add("d-none");
         document.querySelector("#step-" + 2).classList.remove("d-none");
@@ -862,10 +875,8 @@
         formStepCircle.classList.remove("form-stepper-unfinished", "form-stepper-completed");
         formStepCircle.classList.add("form-stepper-active");
     </script>
-    {% endif %}
 
-
-    <br> {% if current_user.addStatus == 'Requested: Wait for PIC Approval' %}
+    {% elif current_user.addStatus == 'Wait for Department Head and Administration Approval' %}
     <script>
         document.querySelector("#step-" + 1).classList.add("d-none");
         document.querySelector("#step-" + 2).classList.add("d-none");

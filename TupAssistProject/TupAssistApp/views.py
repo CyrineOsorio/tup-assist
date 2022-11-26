@@ -129,9 +129,24 @@ def r_adding_view(request, studID):
     req = AddingReq.objects.filter(studID=data.studID)
     context = { 
         'req': req,
-        'current_user': current_user
+        'current_user': current_user,
+        'student_info': data,
         }
     return render(request, 'TupAssistApp/r_adding_view.html', context)
+
+def r_edit_sub(request):
+    studID = request.POST.get('studID')
+    data = registration.objects.get(studID=studID)
+    if request.method =='POST':
+        id = request.POST.get('id')   
+        edit = AddingReq.objects.get(id=id) 
+        edit.admin_is_approve = request.POST.get('admin_is_approve')
+        edit.admin_remark = request.POST.get('admin_remark')
+        edit.admin_name = request.POST.get('admin_name')
+        edit.admin_date = datetime.now()
+        edit.save()
+        messages.success(request, 'Request Successfully Edited!')
+        return redirect('/r_adding_view/'+ str(data.studID))
 
 def r_dropping(request):
     current_user = request.user
@@ -371,7 +386,6 @@ def s_dropping(request):
 
 
 
-
 def s_transferring(request):
     current_user = request.user
     # Models
@@ -389,9 +403,6 @@ def s_transferring(request):
 
     }
     return render(request, 'TupAssistApp/s_transferring.html', context)
-
-
-
 
 
 # PIC PAGES

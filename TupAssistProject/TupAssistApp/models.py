@@ -40,7 +40,7 @@ class registration(AbstractUser):
         ('Department of Math and Science', 'Department of Math and Science'),
         ('Department of Liberal Arts', 'Department of Liberal Arts'),
     ]
-    studID = models.IntegerField(blank=True, null=True)
+    studID = models.BigAutoField(primary_key=True)
     course = models.CharField(max_length=255, choices= course, null=True, blank=True)
     year = models.IntegerField(blank=True, null=True)
     section = models.CharField(max_length=255, null=True, blank=True)

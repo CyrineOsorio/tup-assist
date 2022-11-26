@@ -68,8 +68,6 @@
 
 
 
-
-
     <div class="bg-container">
         <div class="welcome">Welcome, {{current_user.username}}!</div>
 
@@ -111,7 +109,6 @@
                         <!--HTML code to display data in tabular format-->
                         <table class="table table-bordered">
                             <thead>
-                                <th>NO.</th>
                                 <th>STAFF ID</th>
                                 <th>FIRST NAME</th>
                                 <th>LAST NAME</th>
@@ -122,7 +119,6 @@
                             <tbody>
                                 {% for e in staff %}
                                 <tr>
-                                    <td>{{e.id}}</td>
                                     <td>{{e.studID}}</td>
                                     <td>{{e.first_name}}</td>
                                     <td>{{e.last_name}}</td>
@@ -153,7 +149,6 @@
                         <!--HTML code to display data in tabular format-->
                         <table class="table table-bordered">
                             <thead>
-                                <th>NO.</th>
                                 <th>STUDENT NUMBER</th>
                                 <th>FIRST NAME</th>
                                 <th>LAST NAME</th>
@@ -162,7 +157,6 @@
                             <tbody>
                                 {% for e in student %}
                                 <tr>
-                                    <td>{{e.id}}</td>
                                     <td>{{e.studID}}</td>
                                     <td>{{e.first_name}}</td>
                                     <td>{{e.last_name}}</td>
@@ -179,7 +173,6 @@
                     <!-- CREATE ACCOUNT MANUAL -->
                     <form method="post" action="/r_staff_create">
                         {% csrf_token %}
-
 
                         <div class="formGroup1">
                             <div class="form-group1">

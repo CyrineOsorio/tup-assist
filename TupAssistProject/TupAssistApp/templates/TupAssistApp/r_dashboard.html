@@ -100,64 +100,6 @@
                 </table>
             </div>
 
-            <!-- {% for status in status %}
-            <div class="row" id="trans_status">
-                <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">{{status.TransName}} Of Subject</h5>
-                            <a href="/transStatus/{{status.id}}" class="card-link" style="font-weight: bold;">{{status.status}}</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endfor %} -->
-
-
-            <!-- Offer Subject -->
-
-            <!-- <div class="title">
-                <p>OFFER SUBJECTS</p>
-                <form class="form-inline" action="/sub_cvs" method="post" enctype="multipart/form-data" name="subcvsfile">
-                    {% csrf_token %}
-                    <div class="form-group mx-sm-3 mb-2">
-                        <input type="file" name="subcvsfile" id="subcvsfile" required>
-                    </div>
-                    <button type="submit" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" class="btn btn-primary mb-2">Import CSV File</button>
-                </form>
-            </div>
-
-            <div style="overflow-x:auto; margin-bottom:2%;">
-                <table class="table table-bordered">
-                    <thead>
-                        <th>NO.</th>
-                        <th>PROGRAM</th>
-                        <th>SCHOOL YEAR</th>
-                        <th>SEMESTER</th>
-                        <th>SUBJECT CODE</th>
-                        <th>DESCRIPTION</th>
-                        <th>SLOTS</th>
-                    </thead>
-                    <tbody>
-                        {% for i in subs %}
-                        <tr>
-                            <td>{{i.id}}</td>
-                            <td>{{i.program}}</td>
-                            <td>{{i.school_year}}</td>
-                            <td>{{i.semester}}</td>
-                            <td>{{i.subject_code}}</td>
-                            <td>{{i.description}}</td>
-                            <td></td>
-
-                        </tr>
-                        {% endfor %}
-
-                    </tbody>
-                </table>
-            </div> -->
-
-
-
 
 
             <!-- Schedule -->
@@ -188,10 +130,6 @@
                         <div class="col">
                             <label for="course_year_and_section">Course Year Section</label>
                             <input type="text" class="form-control" name="course_year_and_section" id="course_year_and_section" required>
-                        </div>
-                        <div class="col">
-                            <label for="slots">Slots</label>
-                            <input type="number" class="form-control" name="slots" id="slots" required>
                         </div>
                         <div class="col">
                             <label for="button">.</label>

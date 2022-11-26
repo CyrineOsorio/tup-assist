@@ -183,7 +183,7 @@
 
                                         <tr>
                                             <td colspan="2"></td>
-                                            <td><input type="checkbox"> Check All</td>
+                                            <td><input type="checkbox" id="checkAll"> Check All</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -279,6 +279,12 @@
         document.getElementById('check{{forloop.counter}}').onchange = function() {
         document.getElementById('head_name{{forloop.counter}}').disabled = !this.checked;
         };
+
+        $('#checkAll').click(function () {    
+            $('input:checkbox').prop('checked', this.checked); 
+            $('#head_name{{forloop.counter}}').prop('disabled', !this.checked);    
+        });
+
     </script>
     {% endfor %}
 

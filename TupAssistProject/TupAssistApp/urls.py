@@ -24,6 +24,7 @@ urlpatterns = [
     path('student_acc_cvs', views.student_acc_cvs, name='student_acc_cvs'),
     path('staff_acc_cvs', views.staff_acc_cvs, name='staff_acc_cvs'),
     path('transStatus/<int:id>', views.transStatus),
+    path('changestatus', views.changestatus, name='changestatus'),
     path('import_sched', views.import_sched, name='import_sched'),
     path('r_adding/', views.r_adding, name='r_adding'),
     path('r_adding_view/<int:studID>', views.r_adding_view),

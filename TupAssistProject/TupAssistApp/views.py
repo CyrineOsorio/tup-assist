@@ -114,6 +114,19 @@ def transStatus(request,id):
         status.save()
         return redirect('/r_dashboard')
 
+def changestatus(request):
+    TransName = request.POST.get('TransName')
+    if request.method=='POST': 
+        status = TransStatus.objects.get(TransName=TransName)
+        status.school_year = request.POST.get('school_year')
+        status.semester = request.POST.get('semester')
+        status.status = request.POST.get('status')
+        status.save()
+        messages.success(request, 'Status Change Successfully')
+        return redirect('/r_dashboard')
+
+
+
 def r_adding(request):
     current_user = request.user = request.user
     test = registration.objects.filter(userType='Student')
@@ -368,19 +381,16 @@ def s_dropping(request):
     current_user = request.user
     dropReq = DroppingReq.objects.filter(studID=current_user.studID)
     trans = TransStatus.objects.get(TransName="Drop")
-    if current_user.course[0:3] =="BET":
-        print(current_user.course[4:10])
-        subs = Subjects.objects.filter(Q(course__icontains=current_user.course[4:10]) & Q(year=current_user.year))
-        # sem = TransStatus.objects.filter(semester=)
-        # results = chain(subs, sem)
-        sched = Schedule.objects.all()
-        context = {
-            'dropReq': dropReq,
-            'current_user': current_user,
-            'trans': trans,
-            'subs': subs,
-            'sched': sched
-        }
+    subs = Subjects.objects.filter(Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))
+    sched = Schedule.objects.all()
+    print(subs)
+    context = {
+        'dropReq': dropReq,
+        'current_user': current_user,
+        'trans': trans,
+        'subs': subs,
+        'sched': sched
+    }
     return render(request, 'TupAssistApp/s_dropping.html', context)
 
 

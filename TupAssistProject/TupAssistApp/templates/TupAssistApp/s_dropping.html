@@ -164,36 +164,34 @@
                             <h2 class="font-normal">Subject to be drop</h2>
                             <!-- Step 1 input fields -->
                             <div class="mt-3">
-
-
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col"></th>
-                                            <th scope="col"></th>
-                                            <th scope="col"></th>
+                                            <th scope="col">SUBJECT</th>
+                                            <th scope="col">TEACHER'S EMAIL</th>
+                                            <th scope="col" width="100px">ACTION</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {% for i in subs %}
                                         <tr>
-                                            <td scope="row">1</td>
                                             <td>{{i.course}}{{i.year}}{{i.semester}}{{i.shop}}{{i.is_lab}}</td>
+                                            <td><input type="email" class="head_name" name="head_name"></td>
+                                            <td ><input type="checkbox"></td>
                                         </tr>
                                         {% endfor %}
+
+                                        <tr>
+                                            <td colspan="2"></td>
+                                            <td><input type="checkbox"> Check All</td>
+                                        </tr>
                                     </tbody>
                                 </table>
-
-
-
                             </div>
                             <div class="mt-3">
                                 <button class="button btn-navigate-form-step" type="button" step_number="2">Next</button>
                             </div>
                         </section>
-
-
 
                         <!-- Step 2 Content, default hidden on page load. -->
                         <section id="step-2" class="form-step d-none">
@@ -207,8 +205,6 @@
                                 <button class="button btn-navigate-form-step" type="button" step_number="3">Next</button>
                             </div>
                         </section>
-
-
 
 
                         <!-- Step 3 Content, default hidden on page load. -->
@@ -225,10 +221,7 @@
                         </section>
                         <!-- </form> -->
                     </div>{% endif %}
-
                 </div>
-
-
 
             </div>
         </div>
@@ -275,6 +268,15 @@
             document.getElementById('datadata').style.display = "none";
         })
     </script>
+   
+    <script>
+        var elementList = $(".head_name");
+        for (var i = 1; i <= list.length; i++) {
+            elementList[i].attr("id", "head_name" + i);
+        }
+        
+    </script>
+
 
     <!--DROPDOWN-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

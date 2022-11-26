@@ -26,7 +26,7 @@ urlpatterns = [
     path('transStatus/<int:id>', views.transStatus),
     path('import_sched', views.import_sched, name='import_sched'),
     path('r_adding/', views.r_adding, name='r_adding'),
-    path('r_adding_view/<int:id>', views.r_adding_view),
+    path('r_adding_view/<int:studID>', views.r_adding_view),
     path('r_dropping/', views.r_dropping, name='r_dropping'),
     path('r_transferring/', views.r_transferring, name='r_transferring'),
     path('r_account/', views.r_account, name='r_account'),

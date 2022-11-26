@@ -76,20 +76,30 @@
                 </div>
 
                 <!--HTML code to display data in tabular format-->
-                <table class="table table-striped">
-                    <thead class="thead-dark">
+                <table class="table table-bordered">
+                    <thead>
+                        <th colspan="3" style="text-align: center;">SUBJECT TO BE TAKEN BY STUDENT</th>
+                        <th colspan="4" style="text-align: center;">PROGRAM-IN-CHARGE</th>
+                        <th colspan="5" style="text-align: center;">DEPARTMENT HEAD</th>
+                        <th colspan="4" style="text-align: center;">ADMIN</th>
+                    </thead>
+                    <thead>
                         <th>SUBJECT</th>
                         <th>SECTION</th>
                         <th>SCHEDULE</th>
-                        <th>PIC APPROVAL</th>
-                        <th>PIC REMARK</th>
-                        <th>REVIEWED BY</th>
+                        <th>APPROVAL</th>
+                        <th>REMARK</th>
+                        <th>ENLISTED BY</th>
                         <th>DATE & TIME</th>
-                        <th>HEAD APPROVAL</th>
-                        <th>HEAD REMARK</th>
-                        <th>ENDORSE BY</th>
+                        <th>APPROVAL</th>
+                        <th>REMARK</th>
+                        <th>ENDORSED BY</th>
                         <th>DATE & TIME</th>
                         <th>ACTION</th>
+                        <th>APPROVAL</th>
+                        <th>REMARK</th>
+                        <th>ADMIN NAME</th>
+                        <th>DATE & TIME</th>
                     </thead>
 
                     <tbody>
@@ -106,9 +116,7 @@
                             <td>{{i.head_remark}}</td>
                             <td>{{i.head_name}}</td>
                             <td>{{i.head_date}}</td>
-                            <td>
-                                <a class="btn btn-primary" data-toggle="modal" data-target="#editReq{{i.id}}"> Edit </a>
-                            </td>
+                            <td><a class="btn btn-primary" data-toggle="modal" data-target="#editReq{{i.id}}"> Edit </a></td>
                         </tr>
                         {% endfor %}
                     </tbody>

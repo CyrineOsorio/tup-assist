@@ -153,6 +153,7 @@
                                 <th>FIRST NAME</th>
                                 <th>LAST NAME</th>
                                 <th>EMAIL</th>
+                                <th>SECTION</th>
                             </thead>
                             <tbody>
                                 {% for e in student %}
@@ -161,6 +162,7 @@
                                     <td>{{e.first_name}}</td>
                                     <td>{{e.last_name}}</td>
                                     <td>{{e.email}}</td>
+                                    <td>{{e.course}}-{{e.year}}{{e.section}}</td>
                                 </tr>
                                 {% endfor %}
                             </tbody>

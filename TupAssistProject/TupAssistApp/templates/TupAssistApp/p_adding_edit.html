@@ -320,8 +320,8 @@
 
                         <br>
                         <div class="mt-3">
-                            
-                            <button class="button btn-navigate-form-step" type="button" step_number="2" id="next1">Next ></button>
+                            {% if student_info.addStatus == 'Wait for Department Head Approval' %}
+                            <button class="button btn-navigate-form-step" type="button" step_number="2" id="next1">Next ></button> {% endif %}
                         </div>
                     </section>
 
@@ -378,7 +378,9 @@
 
                         <div class="mt-3">
                             <button class="button btn-navigate-form-step" type="button" step_number="1"> < Prev</button>
-                            <button class="button btn-navigate-form-step" type="button" step_number="3" id="next2">Next ></button>
+
+                            {% if student_info.addStatus == 'Wait for Administration Approval' %}
+                            <button class="button btn-navigate-form-step" type="button" step_number="3" id="next2">Next ></button> {% endif %}
                         </div>
 
 

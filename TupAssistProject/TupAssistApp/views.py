@@ -383,10 +383,11 @@ def s_dropping(request):
     trans = TransStatus.objects.get(TransName="Drop")
     if current_user.department == "Department of Industrial Technology":
         current_user.department = "DIT"
-        subs0 = Subjects.objects.filter(Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))
-        subs1 = Subjects.objects.filter(Q(course__icontains=current_user.department) & Q(year=current_user.year) & Q(semester=trans.semester))
-        subs = (chain(subs0, subs1))
-        print(subs1)
+        # subs0 = Subjects.objects.filter(Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))
+        # subs1 = Subjects.objects.filter(Q(course__icontains=current_user.department) & Q(year=current_user.year) & Q(semester=trans.semester))
+        # subs = (chain(subs0, subs1))
+        # print(subs1)
+        subs = Subjects.objects.filter( (Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester)) | (Q(course__icontains=current_user.department) & Q(year=current_user.year) & Q(semester=trans.semester)) ) 
         sched = Schedule.objects.all()
         context = {
             'dropReq': dropReq,

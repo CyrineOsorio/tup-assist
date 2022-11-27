@@ -310,13 +310,13 @@
     {% for i in subs %}
     <script>
         document.getElementById('check{{forloop.counter}}').onchange = function() {
-        document.getElementById('section{{forloop.counter}}').disabled = !this.checked;
-        document.getElementById('schedule{{forloop.counter}}').disabled = !this.checked;
-        document.getElementById('email{{forloop.counter}}').disabled = !this.checked;
-        document.getElementById('section{{forloop.counter}}').required = true;
-        document.getElementById('schedule{{forloop.counter}}').required = true;
-        document.getElementById('email{{forloop.counter}}').required = true;
-        document.getElementById('drop').disabled = !this.checked;
+            document.getElementById('section{{forloop.counter}}').disabled = !this.checked;
+            document.getElementById('schedule{{forloop.counter}}').disabled = !this.checked;
+            document.getElementById('email{{forloop.counter}}').disabled = !this.checked;
+            document.getElementById('section{{forloop.counter}}').required = true;
+            document.getElementById('schedule{{forloop.counter}}').required = true;
+            document.getElementById('email{{forloop.counter}}').required = true;
+            document.getElementById('drop').disabled = !this.checked;
         };
 
         $('#checkAll').click(function () {    

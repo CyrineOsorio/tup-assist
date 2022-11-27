@@ -394,7 +394,35 @@ def s_dropping(request):
             'trans': trans,
             'subs': subs,
             'sched': sched
-        }
+    }
+    elif current_user.department == "Department of Industrial Education":
+        current_user.department = "DIE"
+        subs0 = Subjects.objects.filter(Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))
+        subs1 = Subjects.objects.filter(Q(course__icontains=current_user.department) & Q(year=current_user.year) & Q(semester=trans.semester))
+        subs = (chain(subs0, subs1))
+        print(subs1)
+        sched = Schedule.objects.all()
+        context = {
+            'dropReq': dropReq,
+            'current_user': current_user,
+            'trans': trans,
+            'subs': subs,
+            'sched': sched
+    }
+    elif current_user.department == "Department of Engineering":
+        current_user.department = "DOE"
+        subs0 = Subjects.objects.filter(Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))
+        subs1 = Subjects.objects.filter(Q(course__icontains=current_user.department) & Q(year=current_user.year) & Q(semester=trans.semester))
+        subs = (chain(subs0, subs1))
+        print(subs1)
+        sched = Schedule.objects.all()
+        context = {
+            'dropReq': dropReq,
+            'current_user': current_user,
+            'trans': trans,
+            'subs': subs,
+            'sched': sched
+    }
     return render(request, 'TupAssistApp/s_dropping.html', context)
 
 def s_drop_sub(request):

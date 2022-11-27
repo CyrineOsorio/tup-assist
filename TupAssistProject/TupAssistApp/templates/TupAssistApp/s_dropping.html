@@ -189,7 +189,7 @@
 
                                             <tr>
                                                 <td><input type="checkbox" id="checkAll"> Check All</td>
-                                                <td colspan="4"><button type="submit" class="btn btn-danger btn-lg btn-block" id="drop" disabled>Drop</button></td>
+                                                <td colspan="4"><button type="submit" class="btn btn-danger btn-lg btn-block" id="drop">Drop</button></td>
                                             </tr>
                                         </tbody>
                                     </form>
@@ -288,6 +288,9 @@
         document.getElementById('section{{forloop.counter}}').disabled = !this.checked;
         document.getElementById('schedule{{forloop.counter}}').disabled = !this.checked;
         document.getElementById('email{{forloop.counter}}').disabled = !this.checked;
+        document.getElementById('section{{forloop.counter}}').required = true;
+        document.getElementById('schedule{{forloop.counter}}').required = true;
+        document.getElementById('email{{forloop.counter}}').required = true;
         };
 
         $('#checkAll').click(function () {    
@@ -297,33 +300,8 @@
             $('#email{{forloop.counter}}').prop('disabled', !this.checked);
         });
 
-        const isEmpty = str => !str.trim().length;
-
-        document.getElementById('schedule{{forloop.counter}}').addEventListener
-        ("input", function() {
-        if( isEmpty(this.value) ) {
-            document.getElementById("schedule{{forloop.counter}}").required;
-            document.getElementById('drop').disabled = !this.checked;
-        } else {
-            document.getElementById('drop').disabled = this.checked;
-        }
-        });
-        document.getElementById("section{{forloop.counter}}").addEventListener("input", function() {
-        if( isEmpty(this.value) ) {
-            document.getElementById("section{{forloop.counter}}").required;
-            document.getElementById('drop').disabled = !this.checked;
-        } else {
-            document.getElementById('drop').disabled = this.checked;
-        }
-        });
-        document.getElementById("email{{forloop.counter}}").addEventListener("input", function() {
-        if( isEmpty(this.value) ) {
-            document.getElementById("email{{forloop.counter}}").required;
-            document.getElementById('drop').disabled = !this.checked;
-        } else {
-            document.getElementById('drop').disabled = this.checked;
-        }
-        });
+        
+        
 
 
     </script>

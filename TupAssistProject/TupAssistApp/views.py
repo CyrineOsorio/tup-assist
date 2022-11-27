@@ -91,9 +91,8 @@ def import_sched(request):
         gSheetLink = request.POST.get('gSheetLink')
         school_year = request.POST.get('school_year')
         semester = request.POST.get('semester')
-        course_year_and_section  = request.POST.get('course_year_and_section')
-        slots  = request.POST.get('slots')
-        data = Schedule.objects.create(gSheetLink = gSheetLink, school_year = school_year, semester = semester, course_year_and_section=course_year_and_section, slots=slots)
+        department  = request.POST.get('department')
+        data = Schedule.objects.create(gSheetLink = gSheetLink, school_year = school_year, semester = semester, department=department)
         data.save()
         return redirect('/r_dashboard')
 

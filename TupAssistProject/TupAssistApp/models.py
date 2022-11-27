@@ -67,7 +67,7 @@ class Schedule(models.Model):
     gSheetLink = models.CharField(max_length=500, null=True, blank=True)
     school_year = models.IntegerField(blank=True, null=True)
     semester = models.IntegerField(blank=True, null=True)
-    section = models.CharField(max_length=255, null=True, blank=True)
+    department = models.CharField(max_length=255, null=True, blank=True)
 
     class Meta:
         verbose_name_plural = "Schedule" 

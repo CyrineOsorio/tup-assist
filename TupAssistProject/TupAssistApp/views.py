@@ -304,14 +304,17 @@ def s_adding(request):
     req = AddingReq.objects.filter(studID=current_user.studID)
     sched = Schedule.objects.all()
     trans = TransStatus.objects.get(TransName="Add")
-    subs = Subjects.objects.filter(Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))
-    context = {
-        'req': req,
-        'current_user': current_user,
-        'subs': subs,
-        'sched': sched,
-        'trans': trans
-    }
+    if current_user.department == "Department of Industrial Technology":
+        current_user.department = "DIT"
+        subs = Subjects.objects.filter( (Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester)) | (Q(course__icontains=current_user.department) & Q(year=current_user.year) & Q(semester=trans.semester)) ) 
+        sched = Schedule.objects.all()
+        context = {
+            'req': req,
+            'current_user': current_user,
+            'trans': trans,
+            'subs': subs,
+            'sched': sched
+        }
     return render(request, 'TupAssistApp/s_adding.html', context)
 
 def upload(request):

@@ -202,8 +202,14 @@
                                             {% endfor %}
                                             <tr>
                                                 <td><input type="checkbox" id="checkAll"> Check All</td>
-                                                <td colspan="3"></td>
-                                                <td colspan="1"><button type="submit" class="btn btn-danger btn-lg btn-block" id="drop" disabled>Drop</button></td>
+                                                <td colspan="5">
+                                                    <label for="reason">Reason:</label>
+                                                    <textarea class="form-control" id="reason" required></textarea>
+                                                </td>
+                                                
+                                            </tr>
+                                            <tr>
+                                                <td colspan="7"><button type="submit" class="btn btn-danger btn-lg btn-block" id="drop" disabled>Drop</button></td>
                                             </tr>
                                         </tbody>
                                     </form>

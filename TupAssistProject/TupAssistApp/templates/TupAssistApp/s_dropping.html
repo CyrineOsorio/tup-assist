@@ -189,7 +189,7 @@
 
                                             <tr>
                                                 <td><input type="checkbox" id="checkAll"> Check All</td>
-                                                <td colspan="4"><button type="submit" class="btn btn-danger btn-lg btn-block" id="drop">Drop</button></td>
+                                                <td colspan="4"><button type="submit" class="btn btn-danger btn-lg btn-block" id="drop" disabled>Drop</button></td>
                                             </tr>
                                         </tbody>
                                     </form>
@@ -291,6 +291,7 @@
         document.getElementById('section{{forloop.counter}}').required = true;
         document.getElementById('schedule{{forloop.counter}}').required = true;
         document.getElementById('email{{forloop.counter}}').required = true;
+        document.getElementById('drop').disabled = !this.checked;
         };
 
         $('#checkAll').click(function () {    
@@ -298,11 +299,11 @@
             $('#section{{forloop.counter}}').prop('disabled', !this.checked);
             $('#schedule{{forloop.counter}}').prop('disabled', !this.checked);
             $('#email{{forloop.counter}}').prop('disabled', !this.checked);
+            document.getElementById('section{{forloop.counter}}').required = true;
+            document.getElementById('schedule{{forloop.counter}}').required = true;
+            document.getElementById('email{{forloop.counter}}').required = true;
+            document.getElementById('drop').disabled = !this.checked;
         });
-
-        
-        
-
 
     </script>
     {% endfor %}

@@ -833,30 +833,30 @@
 
 
 
-
-    {% if student_info.addStatus != 'Wait for PIC Approval' %}
-    <script>
-        $("#next1").show();
-    </script>
-    {% endif %}
-
     <!-- Django with Jquery para magload kapag nasaang current step na si students -->
     {% if student_info.addStatus == 'Wait for Department Head Approval' %}
     <script>
         document.querySelector("#step-" + 1).classList.add("d-none");
         document.querySelector("#step-" + 2).classList.remove("d-none");
-        const formStepCircle = document.querySelector('li[step="' + 2 + '"]');
-        formStepCircle.classList.remove("form-stepper-unfinished", "form-stepper-completed");
-        formStepCircle.classList.add("form-stepper-active");
+        const formStepCircle0 = document.querySelector('li[step="' + 2 + '"]');
+        formStepCircle0.classList.remove("form-stepper-unfinished", "form-stepper-completed");
+        formStepCircle0.classList.add("form-stepper-active");
     </script>
     {% elif student_info.addStatus == 'Wait for Administration Approval' %}
     <script>
         document.querySelector("#step-" + 1).classList.add("d-none");
         document.querySelector("#step-" + 2).classList.add("d-none");
         document.querySelector("#step-" + 3).classList.remove("d-none");
-        const formStepCircle = document.querySelector('li[step="' + 3 + '"]');
-        formStepCircle.classList.remove("form-stepper-unfinished", "form-stepper-completed");
-        formStepCircle.classList.add("form-stepper-active");
+        const formStepCircle1 = document.querySelector('li[step="' + 3 + '"]');
+        formStepCircle1.classList.remove("form-stepper-unfinished", "form-stepper-completed");
+        formStepCircle1.classList.add("form-stepper-active");
+        // Header Update
+        const formStepHeader = document.querySelector('li[step="' + 2 + '"]');
+        formStepHeader.classList.remove("form-stepper-unfinished");
+        formStepHeader.classList.add("form-stepper-active");
+        const formStepHeader1 = document.querySelector('li[step="' + 3 + '"]');
+        formStepHeader1.classList.remove("form-stepper-unfinished");
+        formStepHeader1.classList.add("form-stepper-active");
     </script>
     {% endif %}
 

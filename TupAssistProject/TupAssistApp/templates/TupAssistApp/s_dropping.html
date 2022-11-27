@@ -180,7 +180,8 @@
                                     <thead>
                                         <tr>
                                             <th scope="col" width="100px">ACTION</th>
-                                            <th scope="col">SUBJECT</th>
+                                            <th scope="col">SUBJECT CODE</th>
+                                            <th scope="col">DESCRIPTION</th>
                                             <th scope="col">SCHEDULE</th>
                                             <th scope="col">SECTION</th>
                                             <th scope="col">TEACHER'S EMAIL</th>
@@ -193,20 +194,20 @@
                                             <tr>
                                                 <td ><input type="checkbox" id="check{{forloop.counter}}"></td>
                                                 <td><input type="text" class="form-control" id="subject" name="subject{{forloop.counter}}" value="{{i.course}}{{i.year}}{{i.semester}}{{i.shop}}{{i.is_lab}}" readonly></td>
+                                                <td>{{i.description}}</td>
                                                 <td><input type="text" class="form-control" id="schedule{{forloop.counter}}" name="schedule{{forloop.counter}}"  disabled></td>
                                                 <td><input type="text" class="form-control" id="section{{forloop.counter}}" name="section{{forloop.counter}}"  disabled></td>
                                                 <td><input type="email" class="form-control" id="email{{forloop.counter}}" name="email{{forloop.counter}}"  disabled></td>
                                             </tr>
                                             {% endfor %}
-
                                             <tr>
                                                 <td><input type="checkbox" id="checkAll"> Check All</td>
-                                                <td colspan="4"><button type="submit" class="btn btn-danger btn-lg btn-block" id="drop" disabled>Drop</button></td>
+                                                <td colspan="3"></td>
+                                                <td colspan="1"><button type="submit" class="btn btn-danger btn-lg btn-block" id="drop" disabled>Drop</button></td>
                                             </tr>
                                         </tbody>
                                     </form>
                                 </table>
-                            </div>
                             <div class="mt-3">
                                 {% if current_user.dropStatus == '' %}
                                 <button class="button btn-navigate-form-step" type="button" step_number="2">Next</button>{% endif %}

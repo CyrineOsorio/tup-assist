@@ -1,24 +1,27 @@
-Department of Industrial technology,BET-COET,1,1,1,L
-Department of Industrial technology,BET-COET,1,1,2,L
-Department of Industrial technology,BET-COET,1,1,3,
-Department of Industrial technology,BET-COET,1,2,1,L
-Department of Industrial technology,BET-COET,1,2,2,L
-Department of Industrial technology,BET-COET,1,2,3,
-Department of Industrial technology,BET-COET,2,1,1,L
-Department of Industrial technology,BET-COET,2,1,2,L
-Department of Industrial technology,BET-COET,2,1,3,
-Department of Industrial technology,BET-COET,2,2,1,L
-Department of Industrial technology,BET-COET,2,2,2,L
-Department of Industrial technology,BET-COET,2,2,3,
-Department of Industrial technology,BET-COET,3,1,1,L
-Department of Industrial technology,BET-COET,3,1,2,L
-Department of Industrial technology,BET-COET,3,1,3,
-Department of Industrial technology,BET-COET,3,2,1,L
-Department of Industrial technology,BET-COET,3,2,2,L
-Department of Industrial technology,BET-COET,3,2,3,
-Department of Industrial technology,BET-COET,4,1,1,L
-Department of Industrial technology,BET-COET,4,1,2,L
-Department of Industrial technology,BET-COET,4,1,3,
-Department of Industrial technology,BET-COET,4,2,1,L
-Department of Industrial technology,BET-COET,4,2,2,L
-Department of Industrial technology,BET-COET,4,2,3,
+BET-COET,1,1,1,L,Program Logic and Formulation Lab
+BET-COET,1,2,1,L,Object Oriented Programming 2 Lab
+BET-COET,1,2,2,L
+BET-COET,1,2,3,
+BET-COET,2,1,1,L
+BET-COET,2,1,2,L
+BET-COET,2,1,3,
+BET-COET,2,2,1,L
+BET-COET,2,2,2,L
+BET-COET,2,2,3,
+BET-COET,3,1,1,L
+BET-COET,3,1,2,L
+BET-COET,3,1,3,
+BET-COET,3,2,1,L
+BET-COET,3,2,3,
+BET-COET,4,1,1,L
+BET-COET,4,1,2,L
+BET-COET,4,1,3,
+BET-COET,4,2,1,L
+BET-COET,4,2,2,L
+BET-COET,4,2,3,
+DIT,1,1,1, ,Orientation to BET,Seminars and Field Trips
+DIT,1,1,1, ,Electrical Circuits Lec
+DIT,1,1,1, ,Electrical Circuits Lab
+DIT,1,1,2, ,Computer Aided Drafting/Engineering Graphics
+DIT,1,1,2, ,
+DIT,1,1,2, ,

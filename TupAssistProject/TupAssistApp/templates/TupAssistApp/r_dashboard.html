@@ -21,6 +21,7 @@
 
     <!--ICONS-->
     <link rel="icon" href="../../static/images/tuplogo.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
 
     <!--DATATABLES-->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
@@ -150,7 +151,26 @@
             <!-- Schedule -->
             <div class="title">
                 <p>SCHEDULE</p>
+                <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="bi bi-info-circle"></i></a>
             </div>
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    Important: <br>
+                        When you publish a chart to the web, people can see the data used to create it. Be careful when publishing a chart with private or sensitive info. <br>
+                        Any changes you make to the original document will be updated in the published version. The automatic update might take a few minutes. <br>
+                        To remove a file from the web, you must stop publishing it. <br>
+                        To stop sharing a file with collaborators<br><br>
+                    
+                    1. In Google Sheets open a file. <br>
+                    2. At the top, click File and then Share and then Publish to web. <br>
+                    3. Choose a publishing option: <br>
+                    4. Spreadsheet: Publish the entire spreadsheet or individual sheets. You can also choose a publishing format.
+                    5. Click Publish. <br>
+                    6. Copy the URL and send it to anyone you’d like to see the file. Or, embed it into your website.
+                </div>
+            </div>
+
+           
 
             <div style="overflow-x:auto; margin-bottom:2%;">
                 <form action="/import_sched" method="post" style="margin-bottom:2%;">
@@ -173,8 +193,8 @@
                         </select>
                         </div>
                         <div class="col">
-                            <label for="course_year_and_section">Course Year Section</label>
-                            <input type="text" class="form-control" name="course_year_and_section" id="course_year_and_section" required>
+                            <label for="department">Department</label>
+                            <input type="text" class="form-control" name="department" id="department" required>
                         </div>
                         <div class="col">
                             <label for="button">.</label>

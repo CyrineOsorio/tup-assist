@@ -381,15 +381,20 @@ def s_dropping(request):
     current_user = request.user
     dropReq = DroppingReq.objects.filter(studID=current_user.studID)
     trans = TransStatus.objects.get(TransName="Drop")
-    subs = Subjects.objects.filter(Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))
-    sched = Schedule.objects.all()
-    context = {
-        'dropReq': dropReq,
-        'current_user': current_user,
-        'trans': trans,
-        'subs': subs,
-        'sched': sched
-    }
+    if current_user.department == "Department of Industrial Technology":
+        current_user.department = "DIT"
+        subs0 = Subjects.objects.filter(Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))
+        subs1 = Subjects.objects.filter(Q(course__icontains=current_user.department) & Q(year=current_user.year) & Q(semester=trans.semester))
+        subs = (chain(subs0, subs1))
+        print(subs1)
+        sched = Schedule.objects.all()
+        context = {
+            'dropReq': dropReq,
+            'current_user': current_user,
+            'trans': trans,
+            'subs': subs,
+            'sched': sched
+        }
     return render(request, 'TupAssistApp/s_dropping.html', context)
 
 def s_drop_sub(request):
@@ -651,7 +656,7 @@ def sub_cvs(request):
             print(row)
             try:
                 if str(row[4]) == "" or str(row[4]) != "":
-                    new_revo = Subjects.objects.create(course=str(row[0]), year=int(row[1]), semester=int(row[2]), shop=int(row[3]), is_lab=str(row[4]))
+                    new_revo = Subjects.objects.create(course=str(row[0]), year=int(row[1]), semester=int(row[2]), shop=int(row[3]), is_lab=str(row[4]), description=str(row[5]))
                     new_revo.save()
                     messages.success(request, 'Successfully Import, but check if data imported is correct.')
             except:

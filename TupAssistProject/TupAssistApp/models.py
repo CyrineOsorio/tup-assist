@@ -56,7 +56,8 @@ class Subjects(models.Model):
     year = models.IntegerField()
     semester = models.IntegerField()
     shop = models.IntegerField()
-    is_lab = models.CharField(max_length=500, null=True, blank=True, default="L")
+    is_lab = models.CharField(max_length=255, null=True, blank=True, default="L")
+    description = models.CharField(max_length=255)
 
     class Meta:
         verbose_name_plural = "Subjects" 

@@ -3,24 +3,11 @@ DMS,1,1,1,L,General Chemistry(Lab)
 DMS,1,1,2,,General Chemistry(Lec)
 DMS,1,1,3, ,Math in the Modern World
 DMS,1,1,4, ,Pre-Calculus
-DMS,1,2,1,L,
-DMS,1,2,2,L,
-DMS,1,2,3, ,
-DMS,2,1,1,L,
-DMS,2,1,2,L,
-DMS,2,1,3, ,
-DMS,2,2,1,L,
-DMS,2,2,2,L,
-DMS,2,2,3, ,
-DMS,3,1,1,L,
-DMS,3,1,2,L,
-DMS,3,1,3, ,
-DMS,3,2,1,L, 
-DMS,3,2,2,L,
-DMS,3,2,3, ,
-DMS,4,1,1,L,
-DMS,4,1,2,L,
-DMS,4,1,3, ,
-DMS,4,2,1,L,
-DMS,4,2,2,L,
-DMS4,2,3, ,
+DMS,1,2,1, ,Chemistry for Engineering Technologists
+DMS,1,2,2,L,Chemistry for Engineering Technologists Lab
+DMS,1,2,3, ,Differential Calculus
+DMS,2,1,1, ,Integral Calculus
+DMS,2,1,2, ,General Physics Lec
+DMS,2,1,3,L,General Physics Lab
+DMS,2,2,1, ,Physics for Engineering Technologist Lec
+DMS,2,2,2,L,Physics for Engineering Technologist lab

@@ -213,8 +213,14 @@
                                         <form method="post" action="/s_add_sub">
                                             {% csrf_token %}
                                             <tr>
-                                                <td></td>
-                                                <td><input type="text" class="form-control" name="subject" required></td>
+                                                <td colspan="2">
+                                                    <select class="custom-select" name="subject" required>
+                                                        <option selected disabled>Choose...</option>
+                                                        {% for i in subs %}
+                                                        <option value="{{i.course}}{{i.year}}{{i.semester}}{{i.shop}}{{i.is_lab}}">{{i.course}}{{i.year}}{{i.semester}}{{i.shop}}{{i.is_lab}}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </td>
                                                 <td><input type="text" class="form-control" name="section" required></td>
                                                 <td class="d-flex" style="column-gap: 5px;"><input type="text" class="form-control" name="schedule" id="schedule" readonly> <a class="btn btn-primary" data-toggle="modal" data-target="#editSub">Edit</a> </td>
                                                 <td><button type="submit" class="btn btn-primary">+ Add</button></td>

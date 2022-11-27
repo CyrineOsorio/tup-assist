@@ -35,21 +35,25 @@ urlpatterns = [
     path('r_staff_create', views.r_staff_create, name='r_staff_create'),
 
     #student
+    path('s_profile', views.s_profile, name='s_profile'),
+    path('changepassword', views.changepassword, name='changepassword'),
+    path('changestudentinfo', views.changestudentinfo, name='changestudentinfo'),
+
     path('s_adding', views.s_adding, name='s_adding'),
     path('upload', views.upload, name='upload'),
     path('delupload', views.delupload, name='delupload'),
     path('s_add_sub', views.s_add_sub, name='s_add_sub'),
     path('s_del_sub/<int:id>', views.s_del_sub),
     path('s_step1_submit', views.s_step1_submit, name="s_step1_submit"),
-    
-    path('s_step2_submit', views.s_step2_submit, name="s_step2_submit"),
-    path('s_edit_sub', views.s_edit_sub, name='s_edit_sub'),
+    # path('s_step2_submit', views.s_step2_submit, name="s_step2_submit"),
+    # path('s_edit_sub', views.s_edit_sub, name='s_edit_sub'),
 
     path('s_dropping', views.s_dropping, name='s_dropping'),
+    path('s_drop_sub', views.s_drop_sub, name='s_drop_sub'),
+
     path('s_transferring', views.s_transferring, name='s_transferring'),
-    path('s_profile', views.s_profile, name='s_profile'),
-    path('changepassword', views.changepassword, name='changepassword'),
-    path('changestudentinfo', views.changestudentinfo, name='changestudentinfo'),
+
+   
 
 
     # pic

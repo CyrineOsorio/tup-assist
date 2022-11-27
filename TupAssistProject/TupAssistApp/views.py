@@ -303,13 +303,13 @@ def s_adding(request):
     current_user = request.user
     # Models
     req = AddingReq.objects.filter(studID=current_user.studID)
-    sub = Subjects.objects.all()
     sched = Schedule.objects.all()
     trans = TransStatus.objects.get(TransName="Add")
+    subs = Subjects.objects.filter(Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))
     context = {
         'req': req,
         'current_user': current_user,
-        'sub': sub,
+        'subs': subs,
         'sched': sched,
         'trans': trans
     }
@@ -391,6 +391,78 @@ def s_dropping(request):
         'sched': sched
     }
     return render(request, 'TupAssistApp/s_dropping.html', context)
+
+def s_drop_sub(request):
+    current_user = request.user
+    if request.method =='POST':
+        subject1 = request.POST.get('subject1')
+        subject2 = request.POST.get('subject2')
+        subject3 = request.POST.get('subject3')
+        subject4 = request.POST.get('subject4')
+        subject5 = request.POST.get('subject5')
+        subject6 = request.POST.get('subject6')
+        subject7 = request.POST.get('subject7')
+        subject8 = request.POST.get('subject8')
+        subject9 = request.POST.get('subject9')
+        subject10 = request.POST.get('subject10')
+
+        section1 = request.POST.get('section1')
+        section2 = request.POST.get('section2')
+        section3 = request.POST.get('section3')
+        section4 = request.POST.get('section4')
+        section5 = request.POST.get('section5')
+        section6 = request.POST.get('section6')
+        section7 = request.POST.get('section7')
+        section8 = request.POST.get('section8')
+        section9 = request.POST.get('section9')
+        section10 = request.POST.get('section10')
+
+        schedule1 = request.POST.get('schedule1')
+        schedule2 = request.POST.get('schedule2')
+        schedule3 = request.POST.get('schedule3')
+        schedule4 = request.POST.get('schedule4')
+        schedule5 = request.POST.get('schedule5')
+        schedule6 = request.POST.get('schedule6')
+        schedule7 = request.POST.get('schedule7')
+        schedule8 = request.POST.get('schedule8')
+        schedule9 = request.POST.get('schedule9')
+        schedule10 = request.POST.get('schedule10')
+
+        print(subject1, section1 , schedule1)
+
+        if subject1 and section1 and schedule1 !='':
+            data = DroppingReq.objects.create(studID_id= current_user.studID, subject=subject1, section=section1, sched=schedule1)
+            data.save()
+        if subject2 and section2 and schedule2 !='':
+            data = DroppingReq.objects.create(studID_id= current_user.studID, subject=subject2, section=section2, sched=schedule2)
+            data.save()
+        if subject3 and section3 and schedule3 !='':
+            data = DroppingReq.objects.create(studID_id= current_user.studID, subject=subject3, section=section3, sched=schedule3)
+            data.save()
+        if subject4 and section4 and schedule4 !='':
+            data = DroppingReq.objects.create(studID_id= current_user.studID, subject=subject4, section=section4, sched=schedule4)
+            data.save()
+        if subject5 and section5 and schedule5 !='':
+            data = DroppingReq.objects.create(studID_id= current_user.studID, subject=subject5, section=section5, sched=schedule5)
+            data.save()
+        if subject6 and section6 and schedule6 !='':
+            data = DroppingReq.objects.create(studID_id= current_user.studID, subject=subject6, section=section6, sched=schedule6)
+            data.save()
+        if subject7 and section7 and schedule7 !='':
+            data = DroppingReq.objects.create(studID_id= current_user.studID, subject=subject7, section=section7, sched=schedule7)
+            data.save()
+        if subject8 and section8 and schedule8 !='':
+            data = DroppingReq.objects.create(studID_id= current_user.studID, subject=subject8, section=section8, sched=schedule8)
+            data.save()
+        if subject9 and section9 and schedule9 !='':
+            data = DroppingReq.objects.create(studID_id= current_user.studID, subject=subject9, section=section9, sched=schedule9)
+            data.save()
+        if subject10 and section10 and schedule10 !='':
+            data = DroppingReq.objects.create(studID_id= current_user.studID, subject=subject10, section=section10, sched=schedule10)
+            data.save()
+
+        messages.success(request, 'Subject to Drop')
+        return redirect('/s_dropping')
 
 
 

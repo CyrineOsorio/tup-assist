@@ -125,7 +125,7 @@
                                 <tbody>
                                     {% for i in req %}
                                     <tr>
-                                        <td>{{i.subject}}</td>
+                                        <td>{{i.subject.subject}}-{{i.subject.description}}</td>
                                         <td>{{i.section}}</td>
                                         <td>{{i.sched}}</td>
                                         <td>{{i.pic_is_approve}}</td>
@@ -184,7 +184,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="subject">Subject</label>
-                                                <input type="text" class="form-control" id="subject" name="subject" value="{{i.subject}}">
+                                                <input type="text" class="form-control" id="subject" name="subject" value="{{i.subject.subject}}-{{i.subject.description}}">
                                             </div>
                                             <div class="form-group">
                                                 <label for="section">Section</label>
@@ -435,7 +435,7 @@
                                 <tbody>
                                     {% for i in req %}
                                     <tr>
-                                        <td>{{i.subject}}</td>
+                                        <td>{{i.subject.subject}}-{{i.subject.description}}</td>
                                         <td>{{i.section}}</td>
                                         <td>{{i.sched}}</td>
                                         <td>{{i.pic_is_approve}}</td>

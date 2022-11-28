@@ -59,6 +59,9 @@ def index(request):
         elif user is not None and user.userType == 'Program-in-charge':
             login(request, user)
             return redirect('/p_profile')
+        elif user is not None and user.userType == 'Teacher':
+            login(request, user)
+            return redirect('/t_profile')
         else:
            messages.error(request, 'Invalid Credentials')
     return render(request, 'TupAssistApp/index.html')
@@ -181,7 +184,7 @@ def r_transferring(request):
 def r_account(request):
     current_user = request.user
     form = HeadRegistration()
-    staff = registration.objects.filter(Q(userType='Department Head') | Q(userType='Program-in-Charge'))
+    staff = registration.objects.filter(Q(userType='Department Head') | Q(userType='Program-in-Charge') | Q(userType='Teacher'))
     student = registration.objects.filter(userType='Student')
     context = {
         'form': form,
@@ -699,12 +702,20 @@ def p_step1_submit(request):
 def t_profile(request):
     current_user = request.user
     form = PasswordChangeForm(current_user)
-    # Models
     context = {
         'current_user': current_user,
         'form': form
     }
     return render(request, 'TupAssistApp/t_profile.html', context)
+
+def t_requests(request):
+    current_user = request.user
+    req = DroppingReq.objects.filter(subj_teacher_name=current_user.email)
+    context = {
+        'current_user': current_user,
+        'req': req,
+    }
+    return render(request, 'TupAssistApp/t_requests.html', context)
 
 
 

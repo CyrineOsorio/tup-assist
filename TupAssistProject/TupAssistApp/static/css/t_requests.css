@@ -90,12 +90,12 @@ body {
 
 .bg-container {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background-image: url(../images/DFF0FF.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    padding: 2% 20% 2% 20%;
+    padding: 2% 10% 2% 10%;
 }
 
 .welcome {
@@ -114,10 +114,11 @@ body {
     margin-top: 2%;
     padding: 20px 20px 20px 20px;
     border-radius: 10px;
+    
 }
 
 .content h1 {
-    text-align: center;
+    text-align: flex-start;
 }
 
 @media only screen and (max-width: 1000px) {

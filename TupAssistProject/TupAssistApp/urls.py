@@ -68,6 +68,8 @@ urlpatterns = [
 
     # teacher
     path('t_profile/', views.t_profile, name='t_profile'),
+    path('t_requests/', views.t_requests, name='t_requests'),
+    
 
 
      #student

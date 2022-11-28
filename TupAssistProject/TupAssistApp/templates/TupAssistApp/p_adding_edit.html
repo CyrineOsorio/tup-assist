@@ -136,10 +136,7 @@
                                     </tr>
                                     {% endfor %}
                                     <tr>
-                                        <td></td>
-                                        <td colspan="6"><button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#addSub">+ Add Subject</button></td>
-                                        <td></td>
-
+                                        <td colspan="8"><button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#addSub">+ Add Subject</button></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -179,12 +176,12 @@
                                         <div class="modal-body">
                                             <div class="form-group" hidden>
                                                 <label for="id">Transcation No. and Student ID</label>
-                                                <input type="text" class="form-control" id="studID" name="studID" value="{{student_info.studID}}">
+                                                <input type="text" class="form-control" id="studID" name="studID" value="{{student_info.studID}}" readonly>
                                                 <input type="text" class="form-control" id="id" name="id" value="{{i.id}}">
                                             </div>
                                             <div class="form-group">
                                                 <label for="subject">Subject</label>
-                                                <input type="text" class="form-control" id="subject" name="subject" value="{{i.subject.subject}}-{{i.subject.description}}">
+                                                <input type="text" class="form-control" id="subject" name="subject" value="{{i.subject.subject}}-{{i.subject.description}}" readonly>
                                             </div>
                                             <div class="form-group">
                                                 <label for="section">Section</label>

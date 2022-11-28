@@ -95,7 +95,7 @@
                         <tbody>
                             {% for i in req %}
                             <tr>
-                                <td>{{i.subject}}</td>
+                                <td>{{i.subject.subject}}-{{i.subject.description}}</td>
                                 <td>{{i.section}}</td>
                                 <td>{{i.sched}}</td>
                                 <td>{{i.subj_teacher_approve}}</td>
@@ -142,7 +142,7 @@
                         </div>
                         <div class="form-group">
                             <label for="subject">Subject</label>
-                            <input type="text" class="form-control" id="subject" name="subject" value="{{i.subject}}" readonly>
+                            <input type="text" class="form-control" id="subject" name="subject" value="{{i.subject.subject}}-{{i.subject.description}}" readonly>
                         </div>
                         <div class="form-group">
                             <label for="section">Section</label>

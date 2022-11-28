@@ -328,7 +328,7 @@ def s_adding(request):
     trans = TransStatus.objects.get(TransName="Add")
     if current_user.department == "Department of Industrial Technology":
         current_user.department1 = "DIT"
-        subs = Subjects.objects.filter( ((Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course__icontains=current_user.department1) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year=current_user.year) & Q(semester=trans.semester)))  ) 
+        subs = Subjects.objects.filter( ((Q(course=current_user.course) & Q(year__lte=current_user.year) & Q(semester=trans.semester))) | ((Q(course__icontains=current_user.department1) & Q(year__lte=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year__lte=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year__lte=current_user.year) & Q(semester=trans.semester)))  ) 
         sched = Schedule.objects.all()
         context = {
             'req': req,
@@ -339,7 +339,7 @@ def s_adding(request):
         }
     elif current_user.department == "Department of Industrial Education":
         current_user.department1 = "DIE"
-        subs = Subjects.objects.filter( ((Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course__icontains=current_user.department1) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year=current_user.year) & Q(semester=trans.semester)))  ) 
+        subs = Subjects.objects.filter( ((Q(course=current_user.course) & Q(year__lte=current_user.year) & Q(semester=trans.semester))) | ((Q(course__icontains=current_user.department1) & Q(year__lte=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year__lte=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year__lte=current_user.year) & Q(semester=trans.semester)))  ) 
         sched = Schedule.objects.all()
         context = {
             'req': req,
@@ -350,7 +350,7 @@ def s_adding(request):
     }
     elif current_user.department == "Department of Engineering":
         current_user.department1 = "DOE"
-        subs = Subjects.objects.filter( ((Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course__icontains=current_user.department1) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year=current_user.year) & Q(semester=trans.semester)))  ) 
+        subs = Subjects.objects.filter( ((Q(course=current_user.course) & Q(year__lte=current_user.year) & Q(semester=trans.semester))) | ((Q(course__icontains=current_user.department1) & Q(year__lte=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year__lte=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year__lte=current_user.year) & Q(semester=trans.semester)))  ) 
         sched = Schedule.objects.all()
         context = {
             'req': req,
@@ -666,7 +666,7 @@ def p_adding_edit(request, studID):
     trans = TransStatus.objects.get(TransName="Add")
     if student_info.department == "Department of Industrial Technology":
         student_info.department1 = "DIT"
-        subs = Subjects.objects.filter( ((Q(course=student_info.course) & Q(year=student_info.year) & Q(semester=trans.semester))) | ((Q(course__icontains=student_info.department1) & Q(year=student_info.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year=student_info.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year=student_info.year) & Q(semester=trans.semester)))  ) 
+        subs = Subjects.objects.filter( ((Q(course=student_info.course) & Q(year__lte=student_info.year) & Q(semester=trans.semester))) | ((Q(course__icontains=student_info.department1) & Q(year__lte=student_info.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year__lte=student_info.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year__lte=student_info.year) & Q(semester=trans.semester)))  ) 
         sched = Schedule.objects.all()
         context = {
             'current_user': current_user,
@@ -678,7 +678,7 @@ def p_adding_edit(request, studID):
         }
     elif student_info.department == "Department of Industrial Education":
         student_info.department1 = "DIE"
-        subs = Subjects.objects.filter( ((Q(course=student_info.course) & Q(year=student_info.year) & Q(semester=trans.semester))) | ((Q(course__icontains=student_info.department1) & Q(year=student_info.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year=student_info.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year=student_info.year) & Q(semester=trans.semester)))  ) 
+        subs = Subjects.objects.filter( ((Q(course=student_info.course) & Q(year__lte=student_info.year) & Q(semester=trans.semester))) | ((Q(course__icontains=student_info.department1) & Q(year__lte=student_info.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year__lte=student_info.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year__lte=student_info.year) & Q(semester=trans.semester)))  ) 
         sched = Schedule.objects.all()
         context = {
             'current_user': current_user,
@@ -690,7 +690,7 @@ def p_adding_edit(request, studID):
         }
     elif student_info.department == "Department of Engineering":
         student_info.department1 = "DOE"
-        subs = Subjects.objects.filter( ((Q(course=student_info.course) & Q(year=student_info.year) & Q(semester=trans.semester))) | ((Q(course__icontains=student_info.department1) & Q(year=student_info.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year=student_info.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year=student_info.year) & Q(semester=trans.semester)))  ) 
+        subs = Subjects.objects.filter( ((Q(course=student_info.course) & Q(year__lte=student_info.year) & Q(semester=trans.semester))) | ((Q(course__icontains=student_info.department1) & Q(year__lte=student_info.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year__lte=student_info.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year__lte=student_info.year) & Q(semester=trans.semester)))  ) 
         sched = Schedule.objects.all()
         context = {
             'current_user': current_user,

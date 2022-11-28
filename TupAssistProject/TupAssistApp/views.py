@@ -835,11 +835,10 @@ def sub_cvs(request):
             print(row)
             try:
                 if str(row[4]) == "" or str(row[4]) != "":
-                    new_revo = Subjects.objects.create(course=str(row[0]), year=int(row[1]), semester=int(row[2]), shop=int(row[3]), is_lab=str(row[4]), description=str(row[5]))
+                    new_revo = Subjects.objects.create(subject=str(row[0])+str(row[1])+str(row[2])+str(row[3])+str(row[4]), course=str(row[0]), year=int(row[1]), semester=int(row[2]), shop=int(row[3]), is_lab=str(row[4]), description=str(row[5]))
                     new_revo.save()
-                    messages.success(request, 'Successfully Import, but check if data imported is correct.')
             except:
-                messages.error(request, 'it looks like CSV format is not match to the table.')
+                messages.success(request, 'Successfully Import, but check if data imported is correct.')
                 return redirect('/h_subject')
         return redirect('/h_subject')
     return redirect('/h_subject')

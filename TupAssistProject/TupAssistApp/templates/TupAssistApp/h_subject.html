@@ -87,7 +87,6 @@
             <div style="overflow-x:auto; margin-bottom:2%;">
                 <table class="table table-bordered">
                     <thead>
-                        <th>NO.</th>
                         <th>COURSE</th>
                         <th>YEAR</th>
                         <th>SEMESTER</th>
@@ -100,13 +99,12 @@
                     <tbody>
                         {% for i in subs %}
                         <tr>
-                            <td>{{i.id}}</td>
                             <td>{{i.course}}</td>
                             <td>{{i.year}}</td>
                             <td>{{i.semester}}</td>
                             <td>{{i.shop}}</td>
                             <td>{{i.is_lab}}</td>
-                            <td>{{i.course}}{{i.year}}{{i.semester}}{{i.shop}}{{i.is_lab}}</td>
+                            <td>{{i.subject}}</td>
                             <td>{{i.description}}</td>
                         </tr>
                         {% endfor %}

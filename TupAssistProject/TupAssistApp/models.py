@@ -57,6 +57,7 @@ class Subjects(models.Model):
     semester = models.IntegerField()
     shop = models.IntegerField()
     is_lab = models.CharField(max_length=255, null=True, blank=True, default="L")
+    subject = models.CharField(max_length=255, primary_key=True)
     description = models.CharField(max_length=255)
 
     class Meta:

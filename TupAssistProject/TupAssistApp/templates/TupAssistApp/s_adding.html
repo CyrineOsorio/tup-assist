@@ -217,7 +217,7 @@
                                                     <select class="custom-select" name="subject" required>
                                                         <option selected disabled>Choose...</option>
                                                         {% for i in subs %}
-                                                        <option value="{{i.course}}{{i.year}}{{i.semester}}{{i.shop}}{{i.is_lab}}">{{i.course}}{{i.year}}{{i.semester}}{{i.shop}}{{i.is_lab}}</option>
+                                                        <option value="{{i.subject}}">{{i.subject}}-{{i.description}}</option>
                                                         {% endfor %}
                                                     </select>
                                                 </td>

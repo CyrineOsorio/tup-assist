@@ -592,8 +592,6 @@ def s_drop_sub(request):
         messages.success(request, 'Subject to Drop Successfully Request Wait for the Teacher Approval.')
         return redirect('/s_dropping')
 
-
-
 def s_transferring(request):
     current_user = request.user
     # Models
@@ -662,15 +660,54 @@ def p_adding(request):
 
 def p_adding_edit(request, studID):
     current_user = request.user
-    data = registration.objects.get(studID=studID)
-    req = AddingReq.objects.filter(studID_id=data.studID)
+    student_info = registration.objects.get(studID=studID)
+    req = AddingReq.objects.filter(studID_id=student_info.studID)
     sched = Schedule.objects.all()
-    context = { 
-        'current_user': current_user,
-        'student_info': data,
-        'req': req,
-        'sched': sched
+    trans = TransStatus.objects.get(TransName="Add")
+    if student_info.department == "Department of Industrial Technology":
+        student_info.department1 = "DIT"
+        subs = Subjects.objects.filter( ((Q(course=student_info.course) & Q(year=student_info.year) & Q(semester=trans.semester))) | ((Q(course__icontains=student_info.department1) & Q(year=student_info.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year=student_info.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year=student_info.year) & Q(semester=trans.semester)))  ) 
+        sched = Schedule.objects.all()
+        context = {
+            'current_user': current_user,
+            'student_info': student_info,
+            'req': req,
+            'sched': sched,
+            'subs': subs,
+ 
         }
+    elif student_info.department == "Department of Industrial Education":
+        student_info.department1 = "DIE"
+        subs = Subjects.objects.filter( ((Q(course=student_info.course) & Q(year=student_info.year) & Q(semester=trans.semester))) | ((Q(course__icontains=student_info.department1) & Q(year=student_info.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year=student_info.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year=student_info.year) & Q(semester=trans.semester)))  ) 
+        sched = Schedule.objects.all()
+        context = {
+            'current_user': current_user,
+            'student_info': student_info,
+            'req': req,
+            'sched': sched,
+            'subs': subs,
+ 
+        }
+    elif student_info.department == "Department of Engineering":
+        student_info.department1 = "DOE"
+        subs = Subjects.objects.filter( ((Q(course=student_info.course) & Q(year=student_info.year) & Q(semester=trans.semester))) | ((Q(course__icontains=student_info.department1) & Q(year=student_info.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year=student_info.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year=student_info.year) & Q(semester=trans.semester)))  ) 
+        sched = Schedule.objects.all()
+        context = {
+            'current_user': current_user,
+            'student_info': student_info,
+            'req': req,
+            'sched': sched,
+            'subs': subs,
+ 
+        }
+    else:
+        context = {
+            'current_user': current_user,
+            'student_info': student_info,
+            'req': req,
+            'sched': sched
+        }
+
     return render(request, 'TupAssistApp/p_adding_edit.html', context)
 
 def p_edit_sub(request):

@@ -299,7 +299,12 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="subject">Subject</label>
-                                                    <input type="text" class="form-control" id="subject" name="subject">
+                                                    <select class="custom-select" name="subject" id="subject" required>
+                                                        <option selected disabled>Choose...</option>
+                                                        {% for i in subs %}
+                                                        <option value="{{i.subject}}">{{i.subject}}-{{i.description}}</option>
+                                                        {% endfor %}
+                                                    </select>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="section">Section</label>

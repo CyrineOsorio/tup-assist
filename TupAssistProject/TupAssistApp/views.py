@@ -847,11 +847,18 @@ def sub_cvs(request):
 
 def h_adding(request):
     current_user = request.user
-    test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student'))
-    context = { 
-        'test': test,
-        'current_user': current_user
-        }
+    if current_user.department == "Department of Information Technology" or current_user.department == "Department of Engineering" or current_user.department == "Department of Information Education":
+        test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student'))
+        context = { 
+            'test': test,
+            'current_user': current_user
+            }
+    else:
+        test = registration.objects.filter(userType='Student')
+        context = { 
+            'test': test,
+            'current_user': current_user
+            }
     return render(request, 'TupAssistApp/h-adding.html', context)
 
 def h_adding_edit(request, studID):

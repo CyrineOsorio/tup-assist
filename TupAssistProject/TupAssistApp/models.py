@@ -77,7 +77,7 @@ class Schedule(models.Model):
 # Model for Student Adding Transaction
 class AddingReq(models.Model):
     studID = models.ForeignKey("registration", on_delete=models.CASCADE)
-    subject = models.CharField(max_length=255, null=True, blank=True)
+    subject = models.ForeignKey("Subjects", on_delete=models.CASCADE)
     section = models.CharField(max_length=255, null=True, blank=True)
     sched = models.CharField(max_length=255, null=True, blank=True)
     pic_is_approve = models.CharField(max_length=255, null=True, blank=True, default='Pending')
@@ -100,7 +100,7 @@ class AddingReq(models.Model):
 
 class DroppingReq(models.Model):
     studID = models.ForeignKey("registration", on_delete=models.CASCADE)
-    subject = models.CharField(max_length=255, null=True, blank=True)
+    subject = models.ForeignKey("Subjects", on_delete=models.CASCADE)
     section = models.CharField(max_length=255, null=True, blank=True)
     sched = models.CharField(max_length=255, null=True, blank=True)
     subj_teacher_approve = models.CharField(max_length=255, null=True, blank=True, default='Pending')
@@ -123,7 +123,7 @@ class DroppingReq(models.Model):
 
 class TransferringReq(models.Model):
     studID = models.ForeignKey("registration", on_delete=models.CASCADE)  
-    subject = models.CharField(max_length=255, null=True, blank=True)
+    subject = models.ForeignKey("Subjects", on_delete=models.CASCADE)
     section = models.CharField(max_length=255, null=True, blank=True)
     sched = models.CharField(max_length=255, null=True, blank=True)
     subj_teacher_approve = models.CharField(max_length=255, null=True, blank=True, default='Pending')

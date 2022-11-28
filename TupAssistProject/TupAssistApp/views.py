@@ -718,6 +718,22 @@ def t_requests(request):
     return render(request, 'TupAssistApp/t_requests.html', context)
 
 
+def t_edit_sub(request):
+    studID_id = request.POST.get('studID_id')
+    data = registration.objects.get(studID=studID_id)
+    if request.method =='POST':
+        id = request.POST.get('id')   
+        edit = DroppingReq.objects.get(id=id)
+        edit.subject = request.POST.get('subject')
+        edit.section = request.POST.get('section')
+        edit.sched = request.POST.get('sched')
+        edit.subj_teacher_approve = request.POST.get('subj_teacher_approve')
+        edit.subj_teacher_remark = request.POST.get('subj_teacher_remark')
+        edit.subj_teacher_name = request.POST.get('subj_teacher_name')
+        edit.subj_teacher_date = datetime.now()
+        edit.save()
+        messages.success(request, 'Request Successfully Edited!')
+        return redirect('/t_edit_sub')
 
 
 

@@ -114,24 +114,53 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body">
-                            <div class="form-group" hidden>
-                                <label for="studID_id">Student ID</label>
-                                <input type="number" class="form-control" id="studID_id" name="studID_id" value="{{i.studID_id}}">
+                        <form action="/t_edit_sub" method="post">
+                            {% csrf_token %}
+                            <div class="modal-body">
+                                <div class="form-group" hidden>
+                                    <label for="studID_id">Student ID and Transaction No.</label>
+                                    <input type="number" class="form-control" id="studID_id" name="studID_id" value="{{i.studID_id}}">
+                                    <input type="number" class="form-control" id="id" name="id" value="{{i.id}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="studID">Student</label>
+                                    <input type="text" class="form-control" id="{{i.studID}}" name="studID" value="{{i.studID}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="subject">Subject</label>
+                                    <input type="text" class="form-control" id="subject" name="subject" value="{{i.subject}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="section">Section</label>
+                                    <input type="text" class="form-control" id="section" name="section" value="{{i.section}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="sched">Schedule</label>
+                                    <input type="text" class="form-control" id="sched" name="sched" value="{{i.sched}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="subj_teacher_approve">Approval</label>
+                                    <select class="custom-select" id="subj_teacher_approve" name="subj_teacher_approve" value="{{i.subj_teacher_approve}}">
+                                        <option selected disabled>Choose...</option>
+                                        <option value="Approve">Approve</option>
+                                        <option value="Decline">Decline</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="subj_teacher_remark">Remark</label>
+                                    <input type="text" class="form-control" id="subj_teacher_remark" name="subj_teacher_remark" value="{{i.subj_teacher_remark}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="subj_teacher_name">Enlisted by:</label>
+                                    <input type="text" class="form-control" id="subj_teacher_name" name="subj_teacher_name" value="{{i.subj_teacher_name}}">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="studID">Student</label>
-                                <input type="text" class="form-control" id="{{i.studID}}" value="{{i.studID}}">
+                        
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
                             </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1">
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
+                        </form>
                     </div>
                 </div>
                 {% endfor %}

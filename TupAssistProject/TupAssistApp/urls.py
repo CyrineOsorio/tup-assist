@@ -19,7 +19,7 @@ urlpatterns = [
     path('logout/', views.logoutUser, name= 'logout'),
 
 
-    #registrar
+    #admin
     path('r_dashboard/', views.r_dashboard, name='r_dashboard'),
     path('student_acc_cvs', views.student_acc_cvs, name='student_acc_cvs'),
     path('staff_acc_cvs', views.staff_acc_cvs, name='staff_acc_cvs'),
@@ -34,7 +34,43 @@ urlpatterns = [
     path('r_account/', views.r_account, name='r_account'),
     path('r_staff_create', views.r_staff_create, name='r_staff_create'),
 
-    #student
+   
+    
+    # head
+    path('h_profile/', views.h_profile, name='h_profile'),
+    path('changepassword2', views.changepassword2, name='changepassword2'),
+    path('changeheadinfo', views.changeheadinfo, name='changeheadinfo'),
+
+    path('h_subject/', views.h_subject, name='h_subject'),
+    path('sub_cvs', views.sub_cvs, name='sub_cvs'),
+
+    path('h-adding/', views.h_adding, name='h_adding'),
+    path('h_adding_edit/<int:studID>', views.h_adding_edit),
+    path('h_edit_sub', views.h_edit_sub, name='h_edit_sub'),
+
+    path('h-dropping/', views.h_dropping, name='h_dropping'),
+    path('h-dropping-edit/<int:studID>', views.h_dropping_edit),
+    path('h-transferring/', views.h_transferring, name='h_transferring'),
+    path('h-transferring-edit/<int:studID>', views.h_transferring_edit),
+
+
+    # pic
+    path('p_profile/', views.p_profile, name='p_profile'),
+    path('changepassword1', views.changepassword1, name='changepassword1'),
+    path('changepicinfo', views.changepicinfo, name='changepicinfo'),
+
+    path('p_adding/', views.p_adding, name='p_adding'),
+    path('p_adding_edit/<int:studID>', views.p_adding_edit),
+    path('p_edit_sub', views.p_edit_sub, name='p_edit_sub'),
+    path('p_add_sub', views.p_add_sub, name='p_add_sub'),
+    path('p_step1_submit', views.p_step1_submit, name='p_step1_submit'),
+
+
+    # teacher
+    path('t_profile/', views.t_profile, name='t_profile'),
+
+
+     #student
     path('s_profile', views.s_profile, name='s_profile'),
     path('changepassword', views.changepassword, name='changepassword'),
     path('changestudentinfo', views.changestudentinfo, name='changestudentinfo'),
@@ -52,38 +88,6 @@ urlpatterns = [
     path('s_drop_sub', views.s_drop_sub, name='s_drop_sub'),
 
     path('s_transferring', views.s_transferring, name='s_transferring'),
-
-   
-
-
-    # pic
-    path('p_profile/', views.p_profile, name='p_profile'),
-    path('changepassword1', views.changepassword1, name='changepassword1'),
-    path('changepicinfo', views.changepicinfo, name='changepicinfo'),
-
-    path('p_adding/', views.p_adding, name='p_adding'),
-    path('p_adding_edit/<int:studID>', views.p_adding_edit),
-    path('p_edit_sub', views.p_edit_sub, name='p_edit_sub'),
-    path('p_add_sub', views.p_add_sub, name='p_add_sub'),
-    path('p_step1_submit', views.p_step1_submit, name='p_step1_submit'),
-    
-
-    # head
-    path('h_profile/', views.h_profile, name='h_profile'),
-    path('changepassword2', views.changepassword2, name='changepassword2'),
-    path('changeheadinfo', views.changeheadinfo, name='changeheadinfo'),
-
-    path('h_subject/', views.h_subject, name='h_subject'),
-    path('sub_cvs', views.sub_cvs, name='sub_cvs'),
-
-    path('h-adding/', views.h_adding, name='h_adding'),
-    path('h_adding_edit/<int:studID>', views.h_adding_edit),
-    path('h_edit_sub', views.h_edit_sub, name='h_edit_sub'),
-
-    path('h-dropping/', views.h_dropping, name='h_dropping'),
-    path('h-dropping-edit/<int:studID>', views.h_dropping_edit),
-    path('h-transferring/', views.h_transferring, name='h_transferring'),
-    path('h-transferring-edit/<int:studID>', views.h_transferring_edit),
     
     
     

@@ -695,6 +695,22 @@ def p_step1_submit(request):
         
 
 
+#  TEACHER PAGES
+def t_profile(request):
+    current_user = request.user
+    form = PasswordChangeForm(current_user)
+    # Models
+    context = {
+        'current_user': current_user,
+        'form': form
+    }
+    return render(request, 'TupAssistApp/t_profile.html', context)
+
+
+
+
+
+
 
 # DEPARTMENT HEAD PAGES
 

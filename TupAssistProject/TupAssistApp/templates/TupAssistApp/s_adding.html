@@ -156,16 +156,7 @@
                                     <span class="form-stepper-circle text-muted">
                                         <span>3</span>
                                     </span>
-                                    <div class="label text-muted">Wait for Department Head Approval</div>
-                                </a>
-                            </li>
-                            <!-- Step 4 -->
-                            <li class="form-stepper-unfinished text-center form-stepper-list" step="4">
-                                <a class="mx-2">
-                                    <span class="form-stepper-circle text-muted">
-                                        <span>4</span>
-                                    </span>
-                                    <div class="label text-muted">Wait for Administration Approval</div>
+                                    <div class="label text-muted">Wait for Department Head and Asst. Director for Academic Affairs Approval</div>
                                 </a>
                             </li>
                         </ul>
@@ -509,61 +500,8 @@
 
                     <!-- Step 3 Content, default hidden on page load. -->
                     <section id="step-3" class="form-step d-none">
-                        <h2 class="font-normal">Wait for Department Head Approval</h2>
+                        <h2 class="font-normal">Wait for Department Head and Asst. Director for Academic Affairs Approval</h2>
                         
-                        
-                        <div class="mt-3" style="overflow-x: scroll;">
-                            <table class="table table-bordered">
-                                <thead>
-                                    <th colspan="3" style="text-align: center;">SUBJECT TO BE TAKEN BY STUDENT</th>
-                                    <th colspan="4" style="text-align: center;">PROGRAM-IN-CHARGE</th>
-                                    <th colspan="4" style="text-align: center;">DEPARTMENT HEAD</th>
-                                </thead>
-                                <thead>
-                                    <th>SUBJECT</th>
-                                    <th>SECTION</th>
-                                    <th>SCHEDULE</th>
-                                    <th>APPROVAL</th>
-                                    <th>REMARK</th>
-                                    <th>ENLISTED BY</th>
-                                    <th>DATE & TIME</th>
-                                    <th>APPROVAL</th>
-                                    <th>REMARK</th>
-                                    <th>ENDORSED BY</th>
-                                    <th>DATE & TIME</th>
-
-                                <tbody>
-                                    {% for i in req %}
-                                    <tr>
-                                        <td>{{i.subject}}</td>
-                                        <td>{{i.section}}</td>
-                                        <td>{{i.sched}}</td>
-                                        <td>{{i.pic_is_approve}}</td>
-                                        <td>{{i.pic_remark}}</td>
-                                        <td>{{i.pic_name}}</td>
-                                        <td>{{i.pic_date}}</td>
-                                        <td>{{i.head_is_approve}}</td>
-                                        <td>{{i.head_remark}}</td>
-                                        <td>{{i.head_name}}</td>
-                                        <td>{{i.head_date}}</td>
-                                    </tr>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
-                        
-
-                        <div class="mt-3">
-                            <button class="button btn-navigate-form-step" type="button" step_number="2">Prev</button>
-                            <button class="button btn-navigate-form-step" type="button" step_number="4">Next</button>
-                        </div>
-                    </section>
-
-
-                    <!-- Step 4 Content, default hidden on page load. -->
-                    <section id="step-4" class="form-step d-none">
-                        <h2 class="font-normal">Wait for Department Head Approval</h2>
-                        <!-- Step 4 input fields -->
                         <div class="mt-3" style="overflow-x: scroll;">
                             <table class="table table-bordered">
                                 <thead>
@@ -610,10 +548,14 @@
                                 </tbody>
                             </table>
                         </div>
+                        
+
                         <div class="mt-3">
-                            <button class="button btn-navigate-form-step" type="button" step_number="3">Prev</button>
+                            <button class="button btn-navigate-form-step" type="button" step_number="2">Prev</button>
                         </div>
                     </section>
+
+
                 
                     </div>
                 </div>
@@ -992,7 +934,7 @@
     
     </script>
 
-    {% elif current_user.addStatus == 'Wait for Department Head Approval' %}
+    {% elif current_user.addStatus == 'Wait for Department Head and Asst. Director for Academic Affairs Approval' %}
     <script>
         // Content Update
         document.getElementById('disable').style.pointerEvents = 'none';
@@ -1011,26 +953,6 @@
         const formStepHeader1 = document.querySelector('li[step="' + 3 + '"]');
         formStepHeader1.classList.remove("form-stepper-unfinished");
         formStepHeader1.classList.add("form-stepper-active");
-    </script>
-
-    {% elif current_user.addStatus == 'Wait for Administration Approval' %}
-    <script>
-        // Content Update
-        document.getElementById('disable').style.pointerEvents = 'none';
-        document.getElementById('disable0').style.pointerEvents = 'none';
-        document.querySelector("#step-" + 1).classList.add("d-none");
-        document.querySelector("#step-" + 2).classList.add("d-none");
-        document.querySelector("#step-" + 3).classList.add("d-none");
-        document.querySelector("#step-" + 4).classList.remove("d-none");
-        const formStepCircle = document.querySelector('li[step="' + 4 + '"]');
-        formStepCircle.classList.remove("form-stepper-unfinished", "form-stepper-completed");
-        formStepCircle.classList.add("form-stepper-active");
-
-        // Header Update
-        document.querySelectorAll(".form-stepper-list").forEach((formStepHeader) => {
-                formStepHeader.classList.remove("form-stepper-unfinished");
-                formStepHeader.classList.add("form-stepper-active", "form-stepper-completed");
-            });
     </script>
     {% endif %}
 

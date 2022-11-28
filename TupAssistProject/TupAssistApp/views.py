@@ -493,7 +493,6 @@ def s_drop_sub(request):
         schedule10 = request.POST.get('schedule10')
 
         print(subject1, section1 , schedule1)
-
         if subject1 and section1 and schedule1 !='':
             data = DroppingReq.objects.create(studID_id= current_user.studID, subject=subject1, section=section1, sched=schedule1)
             data.save()
@@ -544,7 +543,6 @@ def s_transferring(request):
         'trans': trans,
         'sub': sub,
         'sched': sched
-
     }
     return render(request, 'TupAssistApp/s_transferring.html', context)
 
@@ -649,7 +647,7 @@ def p_step1_submit(request):
     studID = request.POST.get('studID')
     if request.method =='POST':
         data = registration.objects.get(studID=studID)
-        data.addStatus = 'Wait for Department Head Approval'
+        data.addStatus = 'Wait for Department Head and Asst. Director for Academic Affairs Approval'
         data.save()
         return redirect('/p_adding_edit/'+ str(data.studID))
         
@@ -760,15 +758,7 @@ def h_edit_sub(request):
         edit.save()
         messages.success(request, 'Request Successfully Edited!')
         return redirect('/h_adding_edit/'+ str(data.studID))
-
-
-def h_step1_submit(request):
-    studID = request.POST.get('studID')
-    if request.method =='POST':
-        data = registration.objects.get(studID=studID)
-        data.addStatus = 'Wait for Administration Approval'
-        data.save()
-        return redirect('/p_adding_edit/'+ str(data.studID))
+        
 
 def h_dropping(request):
     current_user = request.user

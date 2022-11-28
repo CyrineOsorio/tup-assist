@@ -480,36 +480,48 @@ def s_drop_sub(request):
         schedule9 = request.POST.get('schedule9')
         schedule10 = request.POST.get('schedule10')
 
+        teacher1 = request.POST.get('teacher1')
+        teacher2 = request.POST.get('teacher2')
+        teacher3 = request.POST.get('teacher3')
+        teacher4 = request.POST.get('teacher4')
+        teacher5 = request.POST.get('teacher5')
+        teacher6 = request.POST.get('teacher6')
+        teacher7 = request.POST.get('teacher7')
+        teacher8 = request.POST.get('teacher8')
+        teacher9 = request.POST.get('teacher9')
+
+        reason = request.POST.get('reason')
+        
         print(subject1, section1 , schedule1)
         if subject1 and section1 and schedule1 !='':
-            data = DroppingReq.objects.create(studID_id= current_user.studID, subject=subject1, section=section1, sched=schedule1)
+            data = DroppingReq.objects.create(studID_id= current_user.studID, subject=subject1, section=section1, sched=schedule1, subj_teacher_name=teacher1, reason=reason)
             data.save()
         if subject2 and section2 and schedule2 !='':
-            data = DroppingReq.objects.create(studID_id= current_user.studID, subject=subject2, section=section2, sched=schedule2)
+            data = DroppingReq.objects.create(studID_id= current_user.studID, subject=subject2, section=section2, sched=schedule2, subj_teacher_name=teacher2, reason=reason)
             data.save()
         if subject3 and section3 and schedule3 !='':
-            data = DroppingReq.objects.create(studID_id= current_user.studID, subject=subject3, section=section3, sched=schedule3)
+            data = DroppingReq.objects.create(studID_id= current_user.studID, subject=subject3, section=section3, sched=schedule3, subj_teacher_name=teacher3, reason=reason)
             data.save()
         if subject4 and section4 and schedule4 !='':
-            data = DroppingReq.objects.create(studID_id= current_user.studID, subject=subject4, section=section4, sched=schedule4)
+            data = DroppingReq.objects.create(studID_id= current_user.studID, subject=subject4, section=section4, sched=schedule4, subj_teacher_name=teacher4, reason=reason)
             data.save()
         if subject5 and section5 and schedule5 !='':
-            data = DroppingReq.objects.create(studID_id= current_user.studID, subject=subject5, section=section5, sched=schedule5)
+            data = DroppingReq.objects.create(studID_id= current_user.studID, subject=subject5, section=section5, sched=schedule5, subj_teacher_name=teacher5, reason=reason)
             data.save()
         if subject6 and section6 and schedule6 !='':
-            data = DroppingReq.objects.create(studID_id= current_user.studID, subject=subject6, section=section6, sched=schedule6)
+            data = DroppingReq.objects.create(studID_id= current_user.studID, subject=subject6, section=section6, sched=schedule6, subj_teacher_name=teacher6, reason=reason)
             data.save()
         if subject7 and section7 and schedule7 !='':
-            data = DroppingReq.objects.create(studID_id= current_user.studID, subject=subject7, section=section7, sched=schedule7)
+            data = DroppingReq.objects.create(studID_id= current_user.studID, subject=subject7, section=section7, sched=schedule7, subj_teacher_name=teacher7, reason=reason)
             data.save()
         if subject8 and section8 and schedule8 !='':
-            data = DroppingReq.objects.create(studID_id= current_user.studID, subject=subject8, section=section8, sched=schedule8)
+            data = DroppingReq.objects.create(studID_id= current_user.studID, subject=subject8, section=section8, sched=schedule8, subj_teacher_name=teacher8, reason=reason)
             data.save()
         if subject9 and section9 and schedule9 !='':
-            data = DroppingReq.objects.create(studID_id= current_user.studID, subject=subject9, section=section9, sched=schedule9)
+            data = DroppingReq.objects.create(studID_id= current_user.studID, subject=subject9, section=section9, sched=schedule9, subj_teacher_name=teacher9, reason=reason)
             data.save()
         if subject10 and section10 and schedule10 !='':
-            data = DroppingReq.objects.create(studID_id= current_user.studID, subject=subject10, section=section10, sched=schedule10)
+            data = DroppingReq.objects.create(studID_id= current_user.studID, subject=subject10, section=section10, sched=schedule10, subj_teacher_name=teacher10, reason=reason)
             data.save()
 
         messages.success(request, 'Subject to Drop')

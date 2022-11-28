@@ -538,6 +538,7 @@ ul.form-stepper li a .form-stepper-circle {
     background-color: #3498DB;
     cursor: pointer;
     border: solid 1px black;
+    pointer-events: none;
   }
   
   .schedule-rows td:first-child {

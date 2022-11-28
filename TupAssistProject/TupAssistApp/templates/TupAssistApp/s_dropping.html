@@ -174,6 +174,8 @@
                                         <tbody>
                                             {% for i in subs %}
                                             <tr>
+                                                <td hidden><input type="text" class="form-control" name="school_year" value="{{trans.school_year}}"></td>
+                                                <td hidden><input type="text" class="form-control" name="semester" value="{{trans.semester}}"></td>
                                                 <td ><input type="checkbox" id="check{{forloop.counter}}"></td>
                                                 <td><input type="text" class="form-control" id="subject" name="subject{{forloop.counter}}" value="{{i.course}}{{i.year}}{{i.semester}}{{i.shop}}{{i.is_lab}}" readonly></td>
                                                 <td>{{i.description}}</td>
@@ -244,10 +246,10 @@
                                             <td>{{i.subject}}</td>
                                             <td>{{i.section}}</td>
                                             <td>{{i.sched}}</td>
-                                            <td>{{i.pic_is_approve}}</td>
-                                            <td>{{i.pic_remark}}</td>
-                                            <td>{{i.pic_name}}</td>
-                                            <td>{{i.pic_date}}</td>
+                                            <td>{{i.subj_teacher_approve}}</td>
+                                            <td>{{i.subj_teacher_remark}}</td>
+                                            <td>{{i.subj_teacher_name}}</td>
+                                            <td>{{i.subj_teacher_date}}</td>
                                             <td>{{i.head_is_approve}}</td>
                                             <td>{{i.head_remark}}</td>
                                             <td>{{i.head_name}}</td>

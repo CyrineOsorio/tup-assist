@@ -513,20 +513,23 @@ def s_drop_sub(request):
         schedule9 = request.POST.get('schedule9')
         schedule10 = request.POST.get('schedule10')
 
-        teacher1 = request.POST.get('teacher1')
-        teacher2 = request.POST.get('teacher2')
-        teacher3 = request.POST.get('teacher3')
-        teacher4 = request.POST.get('teacher4')
-        teacher5 = request.POST.get('teacher5')
-        teacher6 = request.POST.get('teacher6')
-        teacher7 = request.POST.get('teacher7')
-        teacher8 = request.POST.get('teacher8')
-        teacher9 = request.POST.get('teacher9')
+        teacher1 = request.POST.get('email1')
+        teacher2 = request.POST.get('email2')
+        teacher3 = request.POST.get('email3')
+        teacher4 = request.POST.get('email4')
+        teacher5 = request.POST.get('email5')
+        teacher6 = request.POST.get('email6')
+        teacher7 = request.POST.get('email7')
+        teacher8 = request.POST.get('email8')
+        teacher9 = request.POST.get('email9')
+        teacher10 = request.POST.get('email10')
 
         reason = request.POST.get('reason')
+        school_year = request.POST.get('school_year')
+        semester = request.POST.get('semester')
 
         if subject1 and section1 and schedule1 !='':
-            data = DroppingReq.objects.create(studID_id= current_user.studID, subject=subject1, section=section1, sched=schedule1, subj_teacher_name=teacher1, reason=reason)
+            data = DroppingReq.objects.create(studID_id= current_user.studID, subject=subject1, section=section1, sched=schedule1, subj_teacher_name=teacher1, reason=reason, school_year=school_year, semester=semester)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
             data1.dropStatus = 'Wait for Teacher Approval'
@@ -657,7 +660,6 @@ def p_adding(request):
         }
     return render(request, 'TupAssistApp/p_adding.html', context )
 
-
 def p_adding_edit(request, studID):
     current_user = request.user
     data = registration.objects.get(studID=studID)
@@ -735,7 +737,6 @@ def t_requests(request):
         'req': req,
     }
     return render(request, 'TupAssistApp/t_requests.html', context)
-
 
 def t_edit_sub(request):
     studID_id = request.POST.get('studID_id')

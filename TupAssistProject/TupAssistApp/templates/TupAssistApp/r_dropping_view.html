@@ -33,7 +33,7 @@
             <img src="../../static/images/tuplogo.png" alt="TUPLogo.png" width="30" height="30">
             <a class="nav-link" href="{%url 'TupAssistApp:r_adding'%}">Technological University of the Philippines - <span style="color: #E2435E; font-weight: 500;"> Assist</span></a>
             <div class="lagayanNgButton">
-                <a class="nav-link" href="{%url 'TupAssistApp:r_adding'%}" id="logoutbutton">Back</a>
+                <a class="nav-link" href="{%url 'TupAssistApp:r_dropping'%}" id="logoutbutton">Back</a>
             </div>
         </div>
     </nav>
@@ -45,7 +45,7 @@
         <div class="content">
             <div style="overflow-x:auto;">
                 
-                <h1 style="text-align:center; margin-bottom: 30px;">Adding of Subjects Request:</h1>
+                <h1 style="text-align:center; margin-bottom: 30px;">Dropping of Subjects Request:</h1>
 
                 <div class="container" style="margin:15px 0 15px 0;">
                     <div class="row">
@@ -70,7 +70,7 @@
                     <table class="table table-bordered">
                         <thead>
                             <th colspan="3" style="text-align: center;">SUBJECT TO BE TAKEN BY STUDENT</th>
-                            <th colspan="4" style="text-align: center;">PROGRAM-IN-CHARGE</th>
+                            <th colspan="4" style="text-align: center;">TEACHER</th>
                             <th colspan="4" style="text-align: center;">DEPARTMENT HEAD</th>
                             <th colspan="4" style="text-align: center;">ASSIST. DIRECTOR OF ACADEMIC AFFAIRS</th>
                         </thead>
@@ -98,10 +98,10 @@
                                 <td>{{i.subject}}</td>
                                 <td>{{i.section}}</td>
                                 <td>{{i.sched}}</td>
-                                <td>{{i.pic_is_approve}}</td>
-                                <td>{{i.pic_remark}}</td>
-                                <td>{{i.pic_name}}</td>
-                                <td>{{i.pic_date}}</td>
+                                <td>{{i.subj_teacher_approve}}</td>
+                                <td>{{i.subj_teacher_remark}}</td>
+                                <td>{{i.subj_teacher_name}}</td>
+                                <td>{{i.subj_teacher_date}}</td>
                                 <td>{{i.head_is_approve}}</td>
                                 <td>{{i.head_remark}}</td>
                                 <td>{{i.head_name}}</td>

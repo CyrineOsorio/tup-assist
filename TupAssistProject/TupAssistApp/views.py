@@ -72,7 +72,7 @@ def logoutUser(request):
     logout(request)
     return redirect('/index')
 
-# CUSTOMIZE ADMIN PAGES FOR OAA AND REGISTRAR
+# CUSTOMIZE ADMIN PAGES FOR OAA AND REGISTRAR * NEED TO CLARIFY *
 
 def r_dashboard(request):
     current_user = request.user
@@ -98,9 +98,6 @@ def import_sched(request):
         data = Schedule.objects.create(gSheetLink = gSheetLink, school_year = school_year, semester = semester, department=department)
         data.save()
         return redirect('/r_dashboard')
-
-# switch toggle for transaction status
-# https://stackoverflow.com/questions/55671266/how-to-use-toggle-switch-with-django-boolean-field
 
 def transStatus(request,id):
     status = TransStatus.objects.get(id=id)
@@ -128,59 +125,6 @@ def changestatus(request):
         return redirect('/r_dashboard')
 
 
-
-def r_adding(request):
-    current_user = request.user = request.user
-    test = registration.objects.filter(userType='Student')
-    context = { 
-        'test': test,
-        'current_user': current_user,
-        }
-    return render(request, 'TupAssistApp/r_adding.html', context)
-
-def r_adding_view(request, studID):
-    current_user = request.user
-    data = registration.objects.get(studID=studID)
-    req = AddingReq.objects.filter(studID=data.studID)
-    context = { 
-        'req': req,
-        'current_user': current_user,
-        'student_info': data,
-        }
-    return render(request, 'TupAssistApp/r_adding_view.html', context)
-
-def r_edit_sub(request):
-    studID = request.POST.get('studID')
-    data = registration.objects.get(studID=studID)
-    if request.method =='POST':
-        id = request.POST.get('id')   
-        edit = AddingReq.objects.get(id=id) 
-        edit.admin_approve = request.POST.get('admin_approve')
-        edit.admin_name = request.POST.get('admin_name')
-        edit.admin_date = datetime.now()
-        edit.save()
-        messages.success(request, 'Request Successfully Edited!')
-        return redirect('/r_adding_view/'+ str(data.studID))
-
-def r_dropping(request):
-    current_user = request.user
-    test = registration.objects.filter(userType='Student')
-    context = {
-        'test': test,
-        'current_user': current_user
-        }
-    return render(request, 'TupAssistApp/r_dropping.html', context)
-
-def r_transferring(request):
-    current_user = request.user
-    test = registration.objects.filter(userType='Student')
-    context = { 
-        'test': test,
-        'current_user': current_user
-        }
-    return render(request, 'TupAssistApp/r_transferring.html', context)
-
-
 def r_account(request):
     current_user = request.user
     form = HeadRegistration()
@@ -200,7 +144,6 @@ def r_account(request):
         else:
             messages.error(request, 'Invalid Credentials!')
     return render(request, 'TupAssistApp/r_account.html', context)
-
 
 def student_acc_cvs(request):
     if request.method=='POST':
@@ -223,7 +166,6 @@ def student_acc_cvs(request):
         return redirect('/r_account')
     return redirect('/r_account')
 
-
 def staff_acc_cvs(request):
     if request.method=='POST':
         junk = registration.objects.filter(Q(userType='Department Head') | Q(userType='Program-in-Charge'))
@@ -245,7 +187,6 @@ def staff_acc_cvs(request):
         return redirect('/r_account')
     return redirect('/r_account')
 
-
 def r_staff_create(request):
     form = HeadRegistration(request.POST)
     if form.is_valid():
@@ -256,6 +197,70 @@ def r_staff_create(request):
         messages.error(request, 'Invalid Credentials!')
         return redirect ('/r_staff')
     return render(request, 'TupAssistApp/r_staff.html')
+
+
+def r_edit_sub(request):
+    studID = request.POST.get('studID')
+    data = registration.objects.get(studID=studID)
+    if request.method =='POST':
+        id = request.POST.get('id')   
+        edit = AddingReq.objects.get(id=id) 
+        edit.admin_approve = request.POST.get('admin_approve')
+        edit.admin_name = request.POST.get('admin_name')
+        edit.admin_date = datetime.now()
+        edit.save()
+        messages.success(request, 'Request Successfully Edited!')
+        return redirect('/r_adding_view/'+ str(data.studID))
+
+def r_adding(request):
+    current_user = request.user = request.user
+    test = registration.objects.filter(userType='Student')
+    context = { 
+        'test': test,
+        'current_user': current_user,
+        }
+    return render(request, 'TupAssistApp/r_adding.html', context)
+
+def r_adding_view(request, studID):
+    current_user = request.user
+    data = registration.objects.get(studID=studID)
+    req = AddingReq.objects.filter(studID=data.studID)
+    context = { 
+        'req': req,
+        'current_user': current_user,
+        'student_info': data,
+        }
+    return render(request, 'TupAssistApp/r_adding_view.html', context)
+
+def r_dropping(request):
+    current_user = request.user
+    test = registration.objects.filter(userType='Student')
+    context = {
+        'test': test,
+        'current_user': current_user
+        }
+    return render(request, 'TupAssistApp/r_dropping.html', context)
+
+def r_dropping_view(request, studID):
+    current_user = request.user
+    data = registration.objects.get(studID=studID)
+    req = DroppingReq.objects.filter(studID=data.studID)
+    context = { 
+        'req': req,
+        'current_user': current_user,
+        'student_info': data,
+        }
+    return render(request, 'TupAssistApp/r_dropping_view.html', context)
+
+def r_transferring(request):
+    current_user = request.user
+    test = registration.objects.filter(userType='Student')
+    context = { 
+        'test': test,
+        'current_user': current_user
+        }
+    return render(request, 'TupAssistApp/r_transferring.html', context)
+
 
 
 
@@ -906,7 +911,6 @@ def h_transferring(request):
         'current_user': current_user
         }
     return render(request, 'TupAssistApp/h-transferring.html', context)
-
 
 def h_transferring_edit(request, studID):
     current_user = request.user

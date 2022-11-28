@@ -26,13 +26,17 @@ urlpatterns = [
     path('transStatus/<int:id>', views.transStatus),
     path('changestatus', views.changestatus, name='changestatus'),
     path('import_sched', views.import_sched, name='import_sched'),
+    path('r_account/', views.r_account, name='r_account'),
+    path('r_staff_create', views.r_staff_create, name='r_staff_create'),
+
     path('r_adding/', views.r_adding, name='r_adding'),
     path('r_adding_view/<int:studID>', views.r_adding_view),
     path('r_edit_sub', views.r_edit_sub, name='r_edit_sub'),
+
     path('r_dropping/', views.r_dropping, name='r_dropping'),
+    path('r_dropping_view/<int:studID>', views.r_dropping_view),
+
     path('r_transferring/', views.r_transferring, name='r_transferring'),
-    path('r_account/', views.r_account, name='r_account'),
-    path('r_staff_create', views.r_staff_create, name='r_staff_create'),
 
    
     

@@ -630,7 +630,7 @@
     }
 
     DayScheduleSelector.DEFAULTS = {
-        days        : ['M', 'T', 'TH', 'W', 'F', 'S'],  // Sun - Sat
+        days        : ['M', 'T', 'W', 'TH', 'F', 'S'],  // Sun - Sat
         startTime   : '08:00',                // HH:mm format
         endTime     : '21:00',                // HH:mm format
         interval    : 30,                     // minutes
@@ -933,7 +933,7 @@
             console.log(selected);
         })
         $("#day-schedule").data('artsy.dayScheduleSelector').deserialize({
-            'T': [['07:30', '11:00'], ['13:00', '16:30']]
+            'F': [['07:30', '11:00'], ['13:00', '16:30']]
         });
         })($);
     </script>

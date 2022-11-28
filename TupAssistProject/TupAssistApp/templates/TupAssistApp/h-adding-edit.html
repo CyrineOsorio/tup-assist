@@ -218,7 +218,8 @@
         <button id="sched-down" title="Hide Schedule"><img src="../../static/images/double-down-arrows.png" alt=""></button>
 
         <div style="overflow-x:auto;" id="datadata">
-            <iframe src="{{sched.gSheetLink}}" style="width: 100%; height: 100%; border: 1px solid #E2435E"></iframe>
+            {% for e in sched %}
+            <iframe src="{{e.gSheetLink}}" style="width: 100%; height: 100%; border: 1px solid #E2435E"></iframe>{% endfor %}
         </div>
 
     </footer>

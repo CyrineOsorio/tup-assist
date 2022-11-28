@@ -199,19 +199,6 @@ def r_staff_create(request):
     return render(request, 'TupAssistApp/r_staff.html')
 
 
-def r_edit_sub(request):
-    studID = request.POST.get('studID')
-    data = registration.objects.get(studID=studID)
-    if request.method =='POST':
-        id = request.POST.get('id')   
-        edit = AddingReq.objects.get(id=id) 
-        edit.admin_approve = request.POST.get('admin_approve')
-        edit.admin_name = request.POST.get('admin_name')
-        edit.admin_date = datetime.now()
-        edit.save()
-        messages.success(request, 'Request Successfully Edited!')
-        return redirect('/r_adding_view/'+ str(data.studID))
-
 def r_adding(request):
     current_user = request.user = request.user
     test = registration.objects.filter(userType='Student')
@@ -232,6 +219,20 @@ def r_adding_view(request, studID):
         }
     return render(request, 'TupAssistApp/r_adding_view.html', context)
 
+def r_edit_sub(request):
+    studID = request.POST.get('studID')
+    data = registration.objects.get(studID=studID)
+    if request.method =='POST':
+        id = request.POST.get('id')   
+        edit = AddingReq.objects.get(id=id) 
+        edit.admin_approve = request.POST.get('admin_approve')
+        edit.admin_name = request.POST.get('admin_name')
+        edit.admin_date = datetime.now()
+        edit.save()
+        messages.success(request, 'Request Successfully Edited!')
+        return redirect('/r_adding_view/'+ str(data.studID))
+
+
 def r_dropping(request):
     current_user = request.user
     test = registration.objects.filter(userType='Student')
@@ -251,6 +252,19 @@ def r_dropping_view(request, studID):
         'student_info': data,
         }
     return render(request, 'TupAssistApp/r_dropping_view.html', context)
+
+def r_edit_sub1(request):
+    studID = request.POST.get('studID')
+    data = registration.objects.get(studID=studID)
+    if request.method =='POST':
+        id = request.POST.get('id')   
+        edit = DroppingReq.objects.get(id=id) 
+        edit.admin_approve = request.POST.get('admin_approve')
+        edit.admin_name = request.POST.get('admin_name')
+        edit.admin_date = datetime.now()
+        edit.save()
+        messages.success(request, 'Request Successfully Edited!')
+        return redirect('/r_dropping_view/'+ str(data.studID))
 
 def r_transferring(request):
     current_user = request.user

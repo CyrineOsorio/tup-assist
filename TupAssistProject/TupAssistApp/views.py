@@ -305,8 +305,8 @@ def s_adding(request):
     sched = Schedule.objects.all()
     trans = TransStatus.objects.get(TransName="Add")
     if current_user.department == "Department of Industrial Technology":
-        current_user.department = "DIT"
-        subs = Subjects.objects.filter( (Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester)) | (Q(course__icontains=current_user.department) & Q(year=current_user.year) & Q(semester=trans.semester)) ) 
+        current_user.department1 = "DIT"
+        subs = Subjects.objects.filter( ((Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course__icontains=current_user.department1) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year=current_user.year) & Q(semester=trans.semester)))  ) 
         sched = Schedule.objects.all()
         context = {
             'req': req,
@@ -316,11 +316,8 @@ def s_adding(request):
             'sched': sched
         }
     elif current_user.department == "Department of Industrial Education":
-        current_user.department = "DIE"
-        subs0 = Subjects.objects.filter(Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))
-        subs1 = Subjects.objects.filter(Q(course__icontains=current_user.department) & Q(year=current_user.year) & Q(semester=trans.semester))
-        subs = (chain(subs0, subs1))
-        print(subs1)
+        current_user.department1 = "DIE"
+        subs = Subjects.objects.filter( ((Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course__icontains=current_user.department1) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year=current_user.year) & Q(semester=trans.semester)))  ) 
         sched = Schedule.objects.all()
         context = {
             'req': req,
@@ -330,11 +327,8 @@ def s_adding(request):
             'sched': sched
     }
     elif current_user.department == "Department of Engineering":
-        current_user.department = "DOE"
-        subs0 = Subjects.objects.filter(Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))
-        subs1 = Subjects.objects.filter(Q(course__icontains=current_user.department) & Q(year=current_user.year) & Q(semester=trans.semester))
-        subs = (chain(subs0, subs1))
-        print(subs1)
+        current_user.department1 = "DOE"
+        subs = Subjects.objects.filter( ((Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course__icontains=current_user.department1) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year=current_user.year) & Q(semester=trans.semester)))  ) 
         sched = Schedule.objects.all()
         context = {
             'req': req,
@@ -412,12 +406,12 @@ def s_dropping(request):
     dropReq = DroppingReq.objects.filter(studID=current_user.studID)
     trans = TransStatus.objects.get(TransName="Drop")
     if current_user.department == "Department of Industrial Technology":
-        current_user.department = "DIT"
+        current_user.department1 = "DIT"
         # subs0 = Subjects.objects.filter(Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))
         # subs1 = Subjects.objects.filter(Q(course__icontains=current_user.department) & Q(year=current_user.year) & Q(semester=trans.semester))
         # subs = (chain(subs0, subs1))
         # print(subs1)
-        subs = Subjects.objects.filter( (Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester)) | (Q(course__icontains=current_user.department) & Q(year=current_user.year) & Q(semester=trans.semester)) ) 
+        subs = Subjects.objects.filter( ((Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course__icontains=current_user.department1) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year=current_user.year) & Q(semester=trans.semester)))  ) 
         sched = Schedule.objects.all()
         context = {
             'dropReq': dropReq,
@@ -427,11 +421,8 @@ def s_dropping(request):
             'sched': sched
     }
     elif current_user.department == "Department of Industrial Education":
-        current_user.department = "DIE"
-        subs0 = Subjects.objects.filter(Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))
-        subs1 = Subjects.objects.filter(Q(course__icontains=current_user.department) & Q(year=current_user.year) & Q(semester=trans.semester))
-        subs = (chain(subs0, subs1))
-        print(subs1)
+        current_user.department1 = "DIE"
+        subs = Subjects.objects.filter( ((Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course__icontains=current_user.department1) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year=current_user.year) & Q(semester=trans.semester)))  ) 
         sched = Schedule.objects.all()
         context = {
             'dropReq': dropReq,
@@ -441,11 +432,8 @@ def s_dropping(request):
             'sched': sched
     }
     elif current_user.department == "Department of Engineering":
-        current_user.department = "DOE"
-        subs0 = Subjects.objects.filter(Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))
-        subs1 = Subjects.objects.filter(Q(course__icontains=current_user.department) & Q(year=current_user.year) & Q(semester=trans.semester))
-        subs = (chain(subs0, subs1))
-        print(subs1)
+        current_user.department1 = "DOE"
+        subs = Subjects.objects.filter( ((Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course__icontains=current_user.department1) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year=current_user.year) & Q(semester=trans.semester)))  ) 
         sched = Schedule.objects.all()
         context = {
             'dropReq': dropReq,
@@ -694,11 +682,28 @@ def changeheadinfo(request):
 
 def h_subject(request):
     current_user = request.user
-    subs = Subjects.objects.all()
-    context = { 
-        'current_user': current_user,
-        'subs': subs
-        }
+    if current_user.department == "Department of Industrial Technology":
+        current_user.department1 = "DIT"
+        current_user.department2 = "BET"
+        subs = Subjects.objects.filter (Q(course__icontains=current_user.department1) | Q(course__icontains=current_user.department2) ) 
+        context = {
+            'current_user': current_user,
+            'subs': subs,
+    }
+    elif current_user.department == "Department of Math and Science":
+        current_user.department1 = "DMS"
+        subs = Subjects.objects.filter (Q(course__icontains=current_user.department1)) 
+        context = {
+            'current_user': current_user,
+            'subs': subs,
+    }
+    elif current_user.department == "Department of Liberal Arts":
+        current_user.department1 = "DLA"
+        subs = Subjects.objects.filter (Q(course__icontains=current_user.department1)) 
+        context = {
+            'current_user': current_user,
+            'subs': subs,
+    }
     return render(request, 'TupAssistApp/h_subject.html', context)
 
 def sub_cvs(request):
@@ -759,7 +764,6 @@ def h_edit_sub(request):
         messages.success(request, 'Request Successfully Edited!')
         return redirect('/h_adding_edit/'+ str(data.studID))
         
-
 def h_dropping(request):
     current_user = request.user
     test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student'))

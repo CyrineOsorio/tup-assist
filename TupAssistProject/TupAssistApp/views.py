@@ -490,6 +490,8 @@ def s_drop_sub(request):
         subject8 = request.POST.get('subject8')
         subject9 = request.POST.get('subject9')
         subject10 = request.POST.get('subject10')
+        subject11 = request.POST.get('subject11')
+        subject12 = request.POST.get('subject12')
 
         section1 = request.POST.get('section1')
         section2 = request.POST.get('section2')
@@ -501,6 +503,8 @@ def s_drop_sub(request):
         section8 = request.POST.get('section8')
         section9 = request.POST.get('section9')
         section10 = request.POST.get('section10')
+        section11 = request.POST.get('section11')
+        section12 = request.POST.get('section12')
 
         schedule1 = request.POST.get('schedule1')
         schedule2 = request.POST.get('schedule2')
@@ -512,6 +516,8 @@ def s_drop_sub(request):
         schedule8 = request.POST.get('schedule8')
         schedule9 = request.POST.get('schedule9')
         schedule10 = request.POST.get('schedule10')
+        schedule11 = request.POST.get('schedule11')
+        schedule12 = request.POST.get('schedule12')
 
         teacher1 = request.POST.get('email1')
         teacher2 = request.POST.get('email2')
@@ -523,6 +529,8 @@ def s_drop_sub(request):
         teacher8 = request.POST.get('email8')
         teacher9 = request.POST.get('email9')
         teacher10 = request.POST.get('email10')
+        teacher11 = request.POST.get('email11')
+        teacher12 = request.POST.get('email12')
 
         reason = request.POST.get('reason')
         school_year = request.POST.get('school_year')
@@ -584,6 +592,18 @@ def s_drop_sub(request):
             data1.save()
         if subject10 and section10 and schedule10 !='':
             data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject10, section=section10, sched=schedule10, subj_teacher_name=teacher10, reason=reason)
+            data.save()
+            data1 = registration.objects.get(studID=current_user.studID)
+            data1.dropStatus = 'Wait for Teacher Approval'
+            data1.save()
+        if subject11 and section11 and schedule11 !='':
+            data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject11, section=section11, sched=schedule11, subj_teacher_name=teacher11, reason=reason)
+            data.save()
+            data1 = registration.objects.get(studID=current_user.studID)
+            data1.dropStatus = 'Wait for Teacher Approval'
+            data1.save()
+        if subject12 and section12 and schedule12 !='':
+            data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject12, section=section12, sched=schedule12, subj_teacher_name=teacher12, reason=reason)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
             data1.dropStatus = 'Wait for Teacher Approval'

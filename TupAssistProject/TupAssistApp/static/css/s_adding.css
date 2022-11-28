@@ -530,12 +530,19 @@ ul.form-stepper li a .form-stepper-circle {
 /* SCHEDULE */
 /* SOURCE: https://www.jqueryscript.net/demo/Create-A-Basic-Weekly-Schedule-with-Hour-Selector-Using-jQuery/ */
 
+.schedule-header {
+    background-color: #E2435E;
+    color: white;
+}
+
+.schedule-table {
+    width: 100%;
+}
 .schedule-rows td {
-    width: 80px;
-    height: 30px;
-    margin: 3px;
-    padding: 5px;
-    background-color: #3498DB;
+    height: 100px;
+    margin: 50px;
+    padding: 50px;
+    background-color: white;
     cursor: pointer;
     border: solid 1px black;
     pointer-events: none;
@@ -550,6 +557,6 @@ ul.form-stepper li a .form-stepper-circle {
   }
   
   .schedule-rows td[data-selected],
-  .schedule-rows td[data-selecting] { background-color: #E74C3C; }
+  .schedule-rows td[data-selecting] { background-color: #E2435E; }
   
   .schedule-rows td[data-disabled] { opacity: 0.55; }

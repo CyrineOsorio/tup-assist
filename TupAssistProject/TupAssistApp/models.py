@@ -41,9 +41,9 @@ class registration(AbstractUser):
 
 # Transaction json file to import | code in terminal: python manage.py loaddata data.json
 class TransStatus(models.Model):
+    school_year = models.IntegerField()
     TransName = models.CharField(max_length=100, null=True, blank=True)
     status = models.CharField(max_length=100, null=True, blank=True)
-    school_year = models.IntegerField(null=True, blank=True)
     semester = models.IntegerField(null=True, blank=True)
 
 
@@ -90,6 +90,8 @@ class AddingReq(models.Model):
     admin_approve = models.CharField(max_length=255, null=True, blank=True)
     admin_name = models.CharField(max_length=255, null=True, blank=True)
     admin_date = models.DateTimeField(null=True, blank=True)
+    school_year = models.IntegerField(blank=True, null=True)
+    semester = models.IntegerField(blank=True, null=True)
     
     class Meta:
         verbose_name_plural = "AddingReq" 
@@ -112,6 +114,8 @@ class DroppingReq(models.Model):
     admin_name = models.CharField(max_length=255, null=True, blank=True)
     admin_date = models.DateTimeField(null=True, blank=True)
     reason = models.CharField(max_length=500, null=True, blank=True)
+    school_year = models.IntegerField(blank=True, null=True)
+    semester = models.IntegerField(blank=True, null=True)
     
     class Meta:
         verbose_name_plural = "DroppingReq" 
@@ -133,6 +137,8 @@ class TransferringReq(models.Model):
     admin_name = models.CharField(max_length=255, null=True, blank=True)
     admin_date = models.DateTimeField(null=True, blank=True)
     reason = models.CharField(max_length=500, null=True, blank=True)
+    school_year = models.IntegerField(blank=True, null=True)
+    semester = models.IntegerField(blank=True, null=True)
     
     class Meta:
         verbose_name_plural = "TransferringReq" 

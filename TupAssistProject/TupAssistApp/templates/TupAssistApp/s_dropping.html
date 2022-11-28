@@ -87,7 +87,7 @@
                 <div class="progressbox">
                     <div class="lagayanNgStatus">
                         <p style="color: black; font-weight: bold;">Status:</p>
-                        <p style="text-align: center;">{{ current_user.dropStatus }}</p>
+                        <p style="text-align: center; color: #E2435E;">{{ current_user.dropStatus }}</p>
                     </div>
                     <div class="isapanglagayan"></div>
                 </div>
@@ -147,16 +147,7 @@
                                     <span class="form-stepper-circle text-muted">
                                         <span>2</span>
                                     </span>
-                                    <div class="label text-muted">Wait for Teacher Approval</div>
-                                </a>
-                            </li>
-                            <!-- Step 3 -->
-                            <li class="form-stepper-unfinished text-center form-stepper-list" step="3">
-                                <a class="mx-2">
-                                    <span class="form-stepper-circle text-muted">
-                                        <span>3</span>
-                                    </span>
-                                    <div class="label text-muted">Wait for Department Head and Assist. Director of Academic Affairs Approval</div>
+                                    <div class="label text-muted">Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval</div>
                                 </a>
                             </li>
                         </ul>
@@ -166,8 +157,8 @@
                         <section id="step-1" class="form-step">
                             <h2 class="font-normal">Subject to be drop</h2>
                             <!-- Step 1 input fields -->
-                            <div class="mt-3">
-                                <table class="table table-bordered">
+                            <div class="mt-3" style='overflow-x: scroll;'>
+                                <table class="table table-bordered" id="disable">
                                     <thead>
                                         <tr>
                                             <th scope="col" width="100px">ACTION</th>
@@ -205,18 +196,69 @@
                                         </tbody>
                                     </form>
                                 </table>
+                            </div>
                             <div class="mt-3">
-                                {% if current_user.dropStatus == '' %}
+                                {% if current_user.dropStatus != '' %}
                                 <button class="button btn-navigate-form-step" type="button" step_number="2">Next</button>{% endif %}
                             </div>
                         </section>
 
                         <!-- Step 2 Content, default hidden on page load. -->
                         <section id="step-2" class="form-step d-none">
-                            <h2 class="font-normal">Wait for Teacher Approval</h2>
+                            
+                            {% if current_user.addStatus == '' %}
+                            <div class="alert alert-danger" role="alert">
+                                Notice: Hintayin ang Program-in-charge i-approve ang iyong add request.
+                            </div> {% endif %}
+
+                            <h2 class="font-normal">Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval</h2>
                             <!-- Step 2 input fields -->
-                            <div class="mt-3">
-                                Step 2 input fields goes here..
+                            <div class="mt-3" style='overflow-x: scroll;'>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <th colspan="3" style="text-align: center;">SUBJECT TO BE TAKEN BY STUDENT</th>
+                                        <th colspan="4" style="text-align: center;">TEACHER APPROVAL</th>
+                                        <th colspan="4" style="text-align: center;">DEPARTMENT HEAD APPROVAL</th>
+                                        <th colspan="3" style="text-align: center;">ASSIST. DIRECTOR OF ACADEMIC AFFAIRS APPROVAL</th>
+                                    </thead>
+                                    <thead>
+                                        <th>SUBJECT</th>
+                                        <th>SECTION</th>
+                                        <th>SCHEDULE</th>
+                                        <th>APPROVAL</th>
+                                        <th>REMARK</th>
+                                        <th>ENLISTED BY</th>
+                                        <th>DATE & TIME</th>
+                                        <th>APPROVAL</th>
+                                        <th>REMARK</th>
+                                        <th>ENLISTED BY</th>
+                                        <th>DATE & TIME</th>
+                                        <th>APPROVAL</th>
+                                        <th>ENLISTED BY</th>
+                                        <th>DATE & TIME</th>
+                                </thead>
+
+                                    <tbody>
+                                        {% for i in dropReq %}
+                                        <tr>
+                                            <td>{{i.subject}}</td>
+                                            <td>{{i.section}}</td>
+                                            <td>{{i.sched}}</td>
+                                            <td>{{i.pic_is_approve}}</td>
+                                            <td>{{i.pic_remark}}</td>
+                                            <td>{{i.pic_name}}</td>
+                                            <td>{{i.pic_date}}</td>
+                                            <td>{{i.head_is_approve}}</td>
+                                            <td>{{i.head_remark}}</td>
+                                            <td>{{i.head_name}}</td>
+                                            <td>{{i.head_date}}</td>
+                                            <td>{{i.admin_is_approve}}</td>
+                                            <td>{{i.admin_name}}</td>
+                                            <td>{{i.admin_date}}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
                             </div>
                             <div class="mt-3">
                                 <button class="button btn-navigate-form-step" type="button" step_number="1">Prev</button>
@@ -224,20 +266,9 @@
                             </div>
                         </section>
 
-                        <!-- Step 3 Content, default hidden on page load. -->
-                        <section id="step-3" class="form-step d-none">
-                            <h2 class="font-normal">Wait for Department Head and Assist. Director of Academic Affairs Approval</h2>
-                            <!-- Step 3 input fields -->
-                            <div class="mt-3">
-                                Step 3 input fields goes here..
-                            </div>
-                            <div class="mt-3">
-                                <button class="button btn-navigate-form-step" type="button" step_number="2">Prev</button>
-                            </div>
-                        </section>
-                    </div>{% endif %}
+                    </div>
+                    {% endif %}
                 </div>
-
             </div>
         </div>
     </div>
@@ -365,6 +396,40 @@
         });
     </script>
 
+
+     <!-- Django with Jquery para magload kapag nasaang current step na si students -->
+
+     <!-- Django with Jquery para magload kapag nasaang current step na si students -->
+
+    {% if current_user.dropStatus == '' %}
+    <script>
+        // Content Update
+        document.querySelector("#step-" + 1).classList.remove("d-none");
+        const formStepCircle = document.querySelector('li[step="' + 1 + '"]');
+        formStepCircle.classList.remove("form-stepper-unfinished", "form-stepper-completed");
+        formStepCircle.classList.add("form-stepper-active");
+
+        // Header Update
+        formStepHeader.classList.remove("form-stepper-unfinished");
+        formStepHeader.classList.add("form-stepper-active", "form-stepper-completed");
+    </script>
+   
+    {% elif current_user.dropStatus != '' %}
+    <script>
+        document.getElementById('disable').style.pointerEvents = 'none';
+        // Content Update
+        document.querySelector("#step-" + 1).classList.add("d-none");
+        document.querySelector("#step-" + 2).classList.remove("d-none");
+        const formStepCircle1 = document.querySelector('li[step="' + 2 + '"]');
+        formStepCircle1.classList.remove("form-stepper-unfinished", "form-stepper-completed");
+        formStepCircle1.classList.add("form-stepper-active");
+
+        // Header Update
+        formStepHeader1.classList.remove("form-stepper-unfinished");
+        formStepHeader1.classList.add("form-stepper-active", "form-stepper-completed");
+    
+    </script>
+    {% endif %}
 
     <!-- Multiform javascript -->
     <script>

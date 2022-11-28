@@ -49,7 +49,9 @@ urlpatterns = [
     path('h_edit_sub', views.h_edit_sub, name='h_edit_sub'),
 
     path('h-dropping/', views.h_dropping, name='h_dropping'),
-    path('h-dropping-edit/<int:studID>', views.h_dropping_edit),
+    path('h_dropping_edit/<int:studID>', views.h_dropping_edit),
+    path('h_edit_sub1', views.h_edit_sub1, name='h_edit_sub1'),
+
     path('h-transferring/', views.h_transferring, name='h_transferring'),
     path('h-transferring-edit/<int:studID>', views.h_transferring_edit),
 

@@ -870,7 +870,6 @@ def h_dropping(request):
         }
     return render(request, 'TupAssistApp/h-dropping.html', context)
 
-
 def h_dropping_edit(request, studID):
     current_user = request.user
     data = registration.objects.get(studID=studID)
@@ -882,8 +881,22 @@ def h_dropping_edit(request, studID):
         'req': req,
         'sched': sched
         }
-    return render(request, 'TupAssistApp/h-dropping-edit.html', context)
+    return render(request, 'TupAssistApp/h_dropping_edit.html', context)
 
+def h_edit_sub1(request):
+    studID = request.POST.get('studID')
+    data = registration.objects.get(studID=studID)
+    if request.method =='POST':
+        id = request.POST.get('id')   
+        edit = DroppingReq.objects.get(id=id) 
+        edit.head_is_approve = request.POST.get('head_is_approve')
+        edit.head_remark = request.POST.get('head_remark')
+        edit.head_name = request.POST.get('head_name')
+        edit.head_date = datetime.now()
+        edit.save()
+        messages.success(request, 'Request Successfully Edited!')
+        return redirect('/h_dropping_edit/'+ str(data.studID))
+ 
 
 def h_transferring(request):
     current_user = request.user

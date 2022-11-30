@@ -23,7 +23,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
     <link rel="icon" href="../../static/images/tuplogo.png">
 
-
 </head>
 
 
@@ -32,7 +31,7 @@
     <nav class="navbar navbar-expand-lg" id="navbarnavbar">
         <div class="navbarLagayan">
             <img src="../../static/images/tuplogo.png" alt="TUPLogo.png" width="30" height="30">
-            <a class="nav-link" href="{%url 'TupAssistApp:r_adding'%}">Technological University of the Philippines - <span style="color: #E2435E; font-weight: 500;"> Assist</span></a>
+            <a class="nav-link" href="{%url 'TupAssistApp:adaa_profile'%}">Technological University of the Philippines - <span style="color: #E2435E; font-weight: 500;"> Assist</span></a>
             <div class="lagayanNgButton">
                 <button class="navbar-toggler navbar-light" type="button" style="background-color: transparent;" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -44,20 +43,17 @@
 
             <form class="d-flex">
                 <ul class="navbar-nav mr-auto" id="center">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{%url 'TupAssistApp:r_dashboard'%}" id="">Dashboard <span class="sr-only">(current)</span></a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{%url 'TupAssistApp:adaa_profile'%}" id="">Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{%url 'TupAssistApp:r_account'%}" id="">Accounts</a>
+                        <a class="nav-link" href="{%url 'TupAssistApp:adaa_adding'%}" id="">Adding</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{%url 'TupAssistApp:r_adding'%}" id="">Adding</a>
+                        <a class="nav-link" href="{%url 'TupAssistApp:adaa_dropping'%}" id="dropping">Dropping</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{%url 'TupAssistApp:r_dropping'%}" id="">Dropping</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{%url 'TupAssistApp:r_transferring'%}" id="transferring">Transfer</a>
+                        <a class="nav-link" href="{%url 'TupAssistApp:adaa_transferring'%}" id="">Transfer</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{%url 'TupAssistApp:logout'%}" id="logoutbutton">Logout</a>
@@ -66,8 +62,6 @@
             </form>
         </div>
     </nav>
-
-
 
 
     <div class="bg-container">
@@ -115,7 +109,7 @@
                         <th>NAME</th>
                         <th>EMAIL</th>
                         <th style="text-align: center;">SECTION</th>
-                        <th>TRANSFER STATUS</th>
+                        <th>DROP STATUS</th>
                         <th style="text-align: center;">VIEW TRANSACTION</th>
                     </thead>
 
@@ -127,8 +121,8 @@
                             <td>{{e.first_name}} {{e.last_name}}</td>
                             <td>{{e.email}}</td>
                             <td style="text-align: center;">{{e.course}}-{{e.yrandsec}}</td>
-                            <td>{{e.tranferStatus}}</td>
-                            <td class="action"><a href=""><i class="bi bi-eye"></i></a></td>
+                            <td>{{e.dropStatus}}</td>
+                            <td class="action"><a href="/adaa_dropping_view/{{e.studID}}"><i class="bi bi-eye"></i></a></td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -136,6 +130,7 @@
             </div>
         </div>
     </div>
+
 
 
 
@@ -159,6 +154,7 @@
             $("tbody").find("tr").show();
         });
     </script>
+
 
 </body>
 

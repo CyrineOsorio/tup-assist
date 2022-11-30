@@ -46,7 +46,11 @@ def index(request):
 
         if user is not None and user.is_superuser == True:
             login(request, user)
-            return redirect('/r_dashboard')
+            return redirect('/a_dashboard')
+
+        elif user is not None and user.userType == 'Assist. Director of Academic Affairs':
+            login(request, user)
+            return redirect('/adaa_adding')
 
         elif user is not None and user.userType == 'Student':
             login(request, user)
@@ -72,9 +76,12 @@ def logoutUser(request):
     logout(request)
     return redirect('/index')
 
-# CUSTOMIZE ADMIN PAGES FOR OAA AND REGISTRAR * NEED TO CLARIFY *
 
-def r_dashboard(request):
+
+
+# CUSTOMIZE ADMIN PAGES
+
+def a_dashboard(request):
     current_user = request.user
     subs = Subjects.objects.all()
     status = TransStatus.objects.all()
@@ -87,7 +94,7 @@ def r_dashboard(request):
         'sched': sched,
         'student': student
     }
-    return render(request, 'TupAssistApp/r_dashboard.html', context)
+    return render(request, 'TupAssistApp/a_dashboard.html', context)
 
 def import_sched(request):
     if request.method=='POST': 
@@ -97,7 +104,7 @@ def import_sched(request):
         department  = request.POST.get('department')
         data = Schedule.objects.create(gSheetLink = gSheetLink, school_year = school_year, semester = semester, department=department)
         data.save()
-        return redirect('/r_dashboard')
+        return redirect('/a_dashboard')
 
 def transStatus(request,id):
     status = TransStatus.objects.get(id=id)
@@ -107,11 +114,11 @@ def transStatus(request,id):
         status.status = status1
         status.save()
         print(status)
-        return redirect('/r_dashboard')
+        return redirect('/a_dashboard')
     else:
         status.status = 'Open'
         status.save()
-        return redirect('/r_dashboard')
+        return redirect('/a_dashboard')
 
 def changestatus(request):
     TransName = request.POST.get('TransName')
@@ -122,13 +129,13 @@ def changestatus(request):
         status.status = request.POST.get('status')
         status.save()
         messages.success(request, 'Status Change Successfully')
-        return redirect('/r_dashboard')
+        return redirect('/a_dashboard')
 
 
-def r_account(request):
+def a_account(request):
     current_user = request.user
     form = HeadRegistration()
-    staff = registration.objects.filter(Q(userType='Department Head') | Q(userType='Program-in-Charge') | Q(userType='Teacher'))
+    staff = registration.objects.filter(Q(userType='Department Head') | Q(userType='Program-in-Charge') | Q(userType='Teacher') | Q(userType='Assist. Director of Academic Affairs'))
     student = registration.objects.filter(userType='Student')
     context = {
         'form': form,
@@ -140,10 +147,10 @@ def r_account(request):
         form = HeadRegistration(request.POST)
         if form.is_valid():
             form.save()
-            return redirect ('/admin')
+            return redirect ('/a_account')
         else:
             messages.error(request, 'Invalid Credentials!')
-    return render(request, 'TupAssistApp/r_account.html', context)
+    return render(request, 'TupAssistApp/a_account.html', context)
 
 def student_acc_cvs(request):
     if request.method=='POST':
@@ -162,9 +169,9 @@ def student_acc_cvs(request):
                 messages.success(request, 'Successfully Import, but check if data imported is correct.')
             except:
                 messages.error(request, 'it looks like CSV format is not match to the table.')
-                return redirect('/r_account')
-        return redirect('/r_account')
-    return redirect('/r_account')
+                return redirect('/a_account')
+        return redirect('/a_account')
+    return redirect('/a_account')
 
 def staff_acc_cvs(request):
     if request.method=='POST':
@@ -183,32 +190,75 @@ def staff_acc_cvs(request):
                 messages.success(request, 'Successfully Import, but check if data imported is correct.')
             except:
                 messages.error(request, 'it looks like CSV format is not match to the table.')
-                return redirect('/r_account')
-        return redirect('/r_account')
-    return redirect('/r_account')
+                return redirect('/a_account')
+        return redirect('/a_account')
+    return redirect('/a_account')
 
-def r_staff_create(request):
+def a_staff_create(request):
     form = HeadRegistration(request.POST)
     if form.is_valid():
         form.save()
         messages.error(request, 'Account Successfully Created!')
-        return redirect ('/r_staff')
+        return redirect ('/a_staff')
     else:
         messages.error(request, 'Invalid Credentials!')
-        return redirect ('/r_staff')
-    return render(request, 'TupAssistApp/r_staff.html')
+        return redirect ('/a_staff')
+    return render(request, 'TupAssistApp/a_staff.html')
 
-
-def r_adding(request):
+def a_adding(request):
     current_user = request.user = request.user
     test = registration.objects.filter(userType='Student')
     context = { 
         'test': test,
         'current_user': current_user,
         }
-    return render(request, 'TupAssistApp/r_adding.html', context)
+    return render(request, 'TupAssistApp/a_adding.html', context)
 
-def r_adding_view(request, studID):
+def a_dropping(request):
+    current_user = request.user
+    test = registration.objects.filter(userType='Student')
+    context = {
+        'test': test,
+        'current_user': current_user
+        }
+    return render(request, 'TupAssistApp/a_dropping.html', context)
+
+def a_transferring(request):
+    current_user = request.user
+    test = registration.objects.filter(userType='Student')
+    context = { 
+        'test': test,
+        'current_user': current_user
+        }
+    return render(request, 'TupAssistApp/a_transferring.html', context)
+
+
+
+
+
+
+# ADAA PAGES
+
+def adaa_profile(request):
+    current_user = request.user
+    form = PasswordChangeForm(current_user)
+    # Models
+    context = {
+        'current_user': current_user,
+        'form': form
+    }
+    return render(request, 'TupAssistApp/adaa_profile.html', context)
+
+def adaa_adding(request):
+    current_user = request.user = request.user
+    test = registration.objects.filter(userType='Student')
+    context = { 
+        'test': test,
+        'current_user': current_user,
+        }
+    return render(request, 'TupAssistApp/adaa_adding.html', context)
+
+def adaa_adding_view(request, studID):
     current_user = request.user
     data = registration.objects.get(studID=studID)
     req = AddingReq.objects.filter(studID=data.studID)
@@ -217,7 +267,7 @@ def r_adding_view(request, studID):
         'current_user': current_user,
         'student_info': data,
         }
-    return render(request, 'TupAssistApp/r_adding_view.html', context)
+    return render(request, 'TupAssistApp/adaa_adding_view.html', context)
 
 def r_edit_sub(request):
     studID = request.POST.get('studID')
@@ -230,19 +280,19 @@ def r_edit_sub(request):
         edit.admin_date = datetime.now()
         edit.save()
         messages.success(request, 'Request Successfully Edited!')
-        return redirect('/r_adding_view/'+ str(data.studID))
+        return redirect('/adaa_adding_view/'+ str(data.studID))
 
 
-def r_dropping(request):
+def adaa_dropping(request):
     current_user = request.user
     test = registration.objects.filter(userType='Student')
     context = {
         'test': test,
         'current_user': current_user
         }
-    return render(request, 'TupAssistApp/r_dropping.html', context)
+    return render(request, 'TupAssistApp/adaa_dropping.html', context)
 
-def r_dropping_view(request, studID):
+def adaa_dropping_view(request, studID):
     current_user = request.user
     data = registration.objects.get(studID=studID)
     req = DroppingReq.objects.filter(studID=data.studID)
@@ -251,7 +301,7 @@ def r_dropping_view(request, studID):
         'current_user': current_user,
         'student_info': data,
         }
-    return render(request, 'TupAssistApp/r_dropping_view.html', context)
+    return render(request, 'TupAssistApp/adaa_dropping_view.html', context)
 
 def r_edit_sub1(request):
     studID = request.POST.get('studID')
@@ -264,16 +314,16 @@ def r_edit_sub1(request):
         edit.admin_date = datetime.now()
         edit.save()
         messages.success(request, 'Request Successfully Edited!')
-        return redirect('/r_dropping_view/'+ str(data.studID))
+        return redirect('/adaa_dropping_view/'+ str(data.studID))
 
-def r_transferring(request):
+def adaa_transferring(request):
     current_user = request.user
     test = registration.objects.filter(userType='Student')
     context = { 
         'test': test,
         'current_user': current_user
         }
-    return render(request, 'TupAssistApp/r_transferring.html', context)
+    return render(request, 'TupAssistApp/adaa_transferring.html', context)
 
 
 

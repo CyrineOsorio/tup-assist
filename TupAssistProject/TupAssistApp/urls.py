@@ -20,24 +20,32 @@ urlpatterns = [
 
 
     #admin
-    path('r_dashboard/', views.r_dashboard, name='r_dashboard'),
+    path('a_dashboard/', views.a_dashboard, name='a_dashboard'),
     path('student_acc_cvs', views.student_acc_cvs, name='student_acc_cvs'),
     path('staff_acc_cvs', views.staff_acc_cvs, name='staff_acc_cvs'),
     path('transStatus/<int:id>', views.transStatus),
     path('changestatus', views.changestatus, name='changestatus'),
     path('import_sched', views.import_sched, name='import_sched'),
-    path('r_account/', views.r_account, name='r_account'),
-    path('r_staff_create', views.r_staff_create, name='r_staff_create'),
+    path('a_account/', views.a_account, name='a_account'),
+    path('a_staff_create', views.a_staff_create, name='a_staff_create'),
 
-    path('r_adding/', views.r_adding, name='r_adding'),
-    path('r_adding_view/<int:studID>', views.r_adding_view),
+    path('a_adding/', views.a_adding, name='a_adding'),
+    path('a_dropping/', views.a_dropping, name='a_dropping'),
+    path('a_transferring/', views.a_transferring, name='a_transferring'),
+
+
+
+    # adaa
+    path('adaa_profile/', views.adaa_profile, name='adaa_profile'),
+    path('adaa_adding/', views.adaa_adding, name='adaa_adding'),
+    path('adaa_adding_view/<int:studID>', views.adaa_adding_view),
     path('r_edit_sub', views.r_edit_sub, name='r_edit_sub'),
 
-    path('r_dropping/', views.r_dropping, name='r_dropping'),
-    path('r_dropping_view/<int:studID>', views.r_dropping_view),
+    path('adaa_dropping/', views.adaa_dropping, name='adaa_dropping'),
+    path('adaa_dropping_view/<int:studID>', views.adaa_dropping_view),
     path('r_edit_sub1', views.r_edit_sub1, name='r_edit_sub1'),
     
-    path('r_transferring/', views.r_transferring, name='r_transferring'),
+    path('adaa_transferring/', views.adaa_transferring, name='adaa_transferring'),
 
    
     

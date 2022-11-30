@@ -77,13 +77,13 @@
                 <p>ADDING SUBJECT REQUESTS:</p>
             </div>
 
-            {% if current_user.department == None or current_user.course == None %}
+            {% if current_user.department == None %}
             <div class="alert alert-danger" role="alert">
                 Notice: You can't proceed to in this Transaction if your Personal Information is not complete.
             </div>{% endif %}
 
 
-            <br>{% if current_user.department != None and current_user.course != None %}
+            <br>{% if current_user.department != None %}
             <div class="filter">
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
                 <div class="row">

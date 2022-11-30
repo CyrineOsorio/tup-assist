@@ -996,11 +996,18 @@ def h_edit_sub(request):
         
 def h_dropping(request):
     current_user = request.user
-    test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student'))
-    context = { 
-        'test': test,
-        'current_user': current_user
-        }
+    if current_user.department == "Department of Information Technology" or current_user.department == "Department of Engineering" or current_user.department == "Department of Information Education":
+        test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student'))
+        context = { 
+            'test': test,
+            'current_user': current_user
+            }
+    else:
+        test = registration.objects.filter(userType='Student')
+        context = { 
+            'test': test,
+            'current_user': current_user
+            }
     return render(request, 'TupAssistApp/h-dropping.html', context)
 
 def h_dropping_edit(request, studID):
@@ -1033,11 +1040,18 @@ def h_edit_sub1(request):
 
 def h_transferring(request):
     current_user = request.user
-    test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student'))
-    context = { 
-        'test': test,
-        'current_user': current_user
-        }
+    if current_user.department == "Department of Information Technology" or current_user.department == "Department of Engineering" or current_user.department == "Department of Information Education":
+        test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student'))
+        context = { 
+            'test': test,
+            'current_user': current_user
+            }
+    else:
+        test = registration.objects.filter(userType='Student')
+        context = { 
+            'test': test,
+            'current_user': current_user
+            }
     return render(request, 'TupAssistApp/h-transferring.html', context)
 
 def h_transferring_edit(request, studID):

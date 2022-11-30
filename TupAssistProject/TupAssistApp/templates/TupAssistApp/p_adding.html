@@ -65,11 +65,19 @@
         </div>
 
         <div class="content">
+
+
             <div class="add-request-label">
                 <p>ADD SUBJECT REQUESTS:</p>
             </div>
 
+            {% if current_user.department == None or current_user.course == None %}
+            <div class="alert alert-danger" role="alert">
+                Notice: You can't proceed to in this Transaction if your Personal Information is not complete.
+            </div>{% endif %}
 
+
+            <br> {% if current_user.department != None and current_user.course != None %}
             <div class="filter">
                 <div class="row">
                     <div class="col">
@@ -122,7 +130,10 @@
                         {% endfor %}
                     </tbody>
                 </table>
-            </div>
+            </div>{% endif %}
+
+
+
         </div>
 
 

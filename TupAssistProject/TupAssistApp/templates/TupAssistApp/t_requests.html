@@ -66,6 +66,7 @@
         <div class="content">
             <h1>Drop Requests:</h1>
 
+
             <div style="overflow-x: scroll;">
                 <table class="table table-bordered">
                     <thead>
@@ -83,22 +84,22 @@
                             <th>ENLISTED BY</th>
                             <th>DATE & TIME</th>
                             <th>ACTION</th>
-                    </thead>
-                    <tbody>
-                        {% for i in req %}
-                        <tr>
-                            <td>{{i.studID}}</td>
-                            <td>{{i.subject.subject}}-{{i.subject.description}}</td>
-                            <td>{{i.section}}</td>
-                            <td>{{i.sched}}</td>
-                            <td>{{i.subj_teacher_approve}}</td>
-                            <td>{{i.subj_teacher_remark}}</td>
-                            <td>{{i.subj_teacher_name}}</td>
-                            <td>{{i.subj_teacher_date}}</td>
-                            <td><a class="btn btn-primary" data-toggle="modal" data-target="#editReq{{i.id}}">Edit</a></td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
+                        </thead>
+                        <tbody>
+                            {% for i in req %}
+                            <tr>
+                                <td>{{i.studID}}</td>
+                                <td>{{i.subject.subject}}-{{i.subject.description}}</td>
+                                <td>{{i.section}}</td>
+                                <td>{{i.sched}}</td>
+                                <td>{{i.subj_teacher_approve}}</td>
+                                <td>{{i.subj_teacher_remark}}</td>
+                                <td>{{i.subj_teacher_name}}</td>
+                                <td>{{i.subj_teacher_date}}</td>
+                                <td><a class="btn btn-primary" data-toggle="modal" data-target="#editReq{{i.id}}">Edit</a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
                 </table>
             </div>
 
@@ -140,7 +141,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="subj_teacher_approve">Approval</label>
-                                    <select class="custom-select" id="subj_teacher_approve" name="subj_teacher_approve" value="{{i.subj_teacher_approve}}" >
+                                    <select class="custom-select" id="subj_teacher_approve" name="subj_teacher_approve" value="{{i.subj_teacher_approve}}">
                                         <option selected disabled>Choose...</option>
                                         <option value="Approve">Approve</option>
                                         <option value="Decline">Decline</option>
@@ -155,7 +156,7 @@
                                     <input type="text" class="form-control" id="subj_teacher_name" name="subj_teacher_name" value="{{i.subj_teacher_name}}" readonly>
                                 </div>
                             </div>
-                        
+
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 <button type="submit" class="btn btn-primary">Save changes</button>

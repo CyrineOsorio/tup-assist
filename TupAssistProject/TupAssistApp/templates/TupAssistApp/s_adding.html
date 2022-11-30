@@ -1086,9 +1086,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
-    {% for i in req %}
     <script>
-        // alert('{{i.sched}}'.slice(2, 9))
         $(function() {
             $('#schedule5').jqs({
                 mode: 'read',
@@ -1099,7 +1097,6 @@
                 data: [{
                     day: 0,
                     periods: [
-
                         // ['2', '6', ], // Compact 12 hour
                         // ['10pm', '12am'],
                         // ['12am', '2:30am'], // Invalid period, not displayed
@@ -1154,7 +1151,6 @@
             });
         });
     </script>
-    {% endfor %}
 
     <script>
         /**

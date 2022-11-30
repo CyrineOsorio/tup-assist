@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
     <link rel="icon" href="../../static/images/tuplogo.png">
 
+    <!--DATATABLES-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
 </head>
 
 
@@ -29,7 +31,7 @@
     <nav class="navbar navbar-expand-lg" id="navbarnavbar">
         <div class="navbarLagayan">
             <img src="../../static/images/tuplogo.png" alt="TUPLogo.png" width="30" height="30">
-            <a class="nav-link" href="{%url 'TupAssistApp:a_dashboard'%}">Technological University of the Philippines - <span style="color: #E2435E; font-weight: 500;"> Assist</span></a>
+            <a class="nav-link" href="{%url 'TupAssistApp:students'%}">Technological University of the Philippines - <span style="color: #E2435E; font-weight: 500;"> Assist</span></a>
             <div class="lagayanNgButton">
                 <button class="navbar-toggler navbar-light" type="button" style="background-color: transparent;" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -41,20 +43,17 @@
 
             <form class="d-flex">
                 <ul class="navbar-nav mr-auto" id="center">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{%url 'TupAssistApp:a_dashboard'%}" id="">Dashboard <span class="sr-only">(current)</span></a>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{%url 'TupAssistApp:registrar'%}" id="">Dashboard <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{%url 'TupAssistApp:a_account'%}" id="">Accounts</a>
-                    </li>
-                    <li class="nav-item" active>
-                        <a class="nav-link" href="{%url 'TupAssistApp:a_adding'%}" id="adding">Adding</a>
+                        <a class="nav-link" href="{%url 'TupAssistApp:r_adding'%}" id="adding">Adding</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{%url 'TupAssistApp:a_dropping'%}" id="">Dropping</a>
+                        <a class="nav-link" href="{%url 'TupAssistApp:r_dropping'%}" id="">Dropping</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{%url 'TupAssistApp:a_transferring'%}" id="">Transfer</a>
+                        <a class="nav-link" href="{%url 'TupAssistApp:r_transferring'%}" id="">Transfer</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{%url 'TupAssistApp:logout'%}" id="logoutbutton">Logout</a>
@@ -72,57 +71,31 @@
         <div class="welcome">Welcome, {{current_user.username}}!</div>
 
         <div class="content">
-            <div class="add-request-label">
-                <p>ADD SUBJECT REQUESTS:</p>
-            </div>
-
-            <div class="filter">
-                <div class="row">
-                    <div class="col">
-                        <select class="custom-select" name="program">
-                            <option value="all">Program</option>
-                            <option value="BET-COET">BET-COET</option>
-                            <option value="BET-ET">BET-ET</option>
-                            <option value="BET-CT">BET-CT</option>
-                        </select>
-                    </div>
-                    <div class="col">
-                        <select class="custom-select" name="yearandsection">
-                            <option value="all">Year and Section</option>
-                            <option value="1A">1A</option>
-                            <option value="1B">1B</option>
-                            <option value="4A">4A</option>
-                            <option value="4B">4B</option>
-
-                        </select>
-                    </div>
-                    <div class="col">
-                        <button type="button" class="btn btn-primary">Reset</button>
-                    </div>
-                </div>
-            </div>
-
             <div style="overflow-x:auto;">
                 <!--HTML code to display data in tabular format-->
-                <table class="table table-striped">
+                <table id="table_id" class="display">
                     <thead>
+                        <th>NO.</th>
                         <th>STUDENT ID</th>
                         <th>NAME</th>
                         <th>EMAIL</th>
-                        <th style="text-align: center;">SECTION</th>
-                        <th>ADD STATUS</th>
+                        <th>COURSE</th>
+                        <th style="text-align: center;">YEAR AND SECTION</th>
                         <th style="text-align: center;">VIEW TRANSACTION</th>
                     </thead>
 
                     <tbody>
                         {% for e in test %}
-                        <tr class="all {{e.id}} {{e.studID}} {{e.first_name}} {{e.last_name}} {{e.email}} {{e.course}} {{e.yrandsec}}">
+                        <tr>
+                            <td>{{e.id}}</td>
                             <td>{{e.studID}}</td>
                             <td>{{e.first_name}} {{e.last_name}}</td>
                             <td>{{e.email}}</td>
-                            <td style="text-align: center;">{{e.course}}-{{e.yrandsec}}</td>
-                            <td>{{e.addStatus}}</td>
-                            <td class="action"><a href="/a_adding_view/{{e.studID}}"><i class="bi bi-eye"></i></a></td>
+                            <td>{{e.course}}</td>
+                            <td style="text-align: center;">{{e.yrandsec}}</td>
+                            <td class="action">
+                                <a href="/r-adding-view/{{e.id}}"><i class="bi bi-eye"></i></a>
+                            </td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -138,25 +111,13 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 
+    <!--DATATABLES-->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
     <script>
-        // Filter 
-        $(".filter select").on('change', function() {
-            var filters = $.map($(".filter select").toArray(), function(e) {
-                return $(e).val();
-            }).join(".");
-            $("tbody").find("tr").hide();
-            $("tbody").find("tr." + filters).show();
-
-        });
-        // Reset
-        $('button').on('click', function() {
-            $(".filter select").val($("option:first").val());
-            $("tbody").find("tr").show();
+        $(document).ready(function() {
+            $('#table_id').DataTable();
         });
     </script>
-
-
-
 
 
 </body>

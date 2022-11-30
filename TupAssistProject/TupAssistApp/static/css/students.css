@@ -1,0 +1,382 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+}
+
+a {
+    color: #E2435E;
+}
+
+a:focus {
+    font-weight: bold;
+}
+
+
+/* navbar */
+
+#navbarnavbar {
+    height: 60px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    position: sticky;
+    top: 0;
+    background-color: #F8F9FB;
+    z-index: 100;
+    padding: 0 10% 0 10%;
+}
+
+.navbarLagayan {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.navbarLagayan a {
+    color: black;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.lagayanNgButton {
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 1;
+}
+
+#logoutbutton {
+    background-color: #E2435E;
+    color: white;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 5px;
+}
+
+#logoutbutton:hover {
+    border: 1px solid #E2435E;
+    color: #E2435E;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.navbarLagayan button {
+    background-color: #E2435E;
+    color: white;
+    border: none;
+    justify-self: flex-end;
+}
+
+
+/* katawan yung section */
+
+section {
+    width: 100%;
+    height: fit-content;
+    background-image: url(../images/F3D4D9.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0 30px 0;
+}
+
+
+/* main lagayan sa loob ng section - lagayan ng tatlong box */
+
+.bodybody {
+    display: grid;
+    width: 60%;
+    height: fit-content;
+}
+
+
+/* lagayan nung 2 box */
+
+.boxes {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    gap: 20px;
+}
+
+
+/* student Details at mga laman */
+
+.studentDetails {
+    background-color: #E2435E;
+    width: 50%;
+    height: 100%;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.innerStudentDetails {
+    display: grid;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* progress box at mga laman niya */
+
+.progressbox {
+    background-color: #F8F9FB;
+    width: 50%;
+    height: 100%;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+
+/* hati lang */
+
+.dividerLangs {
+    height: 20px;
+}
+
+
+/* yung lagayan ng adding ganon */
+
+.innerBody {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    background-color: #F8F9FB;
+    padding: 4% 4% 4% 4%;
+}
+
+
+/* mga text */
+
+.lagayan1,
+.lagayan2,
+.lagayan3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+p {
+    width: 50%;
+    color: white;
+    font-size: 15px;
+    font-weight: 300;
+}
+
+#p1 {
+    font-weight: 500;
+}
+
+
+/*  Rejay's edit */
+
+.add-label {
+    margin-top: 4%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-label p {
+    width: 50%;
+    height: 100%;
+    font-weight: bold;
+    color: black;
+}
+
+.drop-label {
+    margin-top: 4%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.drop-label p {
+    width: 50%;
+    height: 100%;
+    font-weight: bold;
+    color: black;
+}
+
+.transfer-label {
+    margin-top: 4%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.transfer-label p {
+    width: 50%;
+    height: 100%;
+    font-weight: bold;
+    color: black;
+}
+
+.grades-label {
+    margin-top: 4%;
+    width: 100%;
+    display: grid;
+    justify-content: space-between;
+}
+
+.grades-label p {
+    width: 50%;
+    height: 100%;
+    font-weight: bold;
+    color: black;
+}
+
+.grades-label button {
+    background-color: #E2435E;
+    border: 1px solid #E2435E;
+}
+
+.submit-button {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 5%;
+}
+
+.submit-button button {
+    background-color: #E2435E;
+    border: 1px solid #E2435E;
+    color: white;
+}
+
+.grades-label input {
+    border: 1px solid black;
+}
+
+.action {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.action i {
+    font-size: 20px;
+}
+
+#subject,
+#subject1,
+#subject2,
+#course,
+#course1,
+#course2,
+#yrandsec,
+#yrandsec1,
+#yrandsec2,
+#sched {
+    border: solid 1px #E2435E;
+    height: 25px;
+    border-radius: 8%;
+    width: 100%;
+}
+
+.sched-icon {
+    padding: 5px;
+    border: none;
+    background-color: transparent;
+    width: 10px;
+}
+
+.image-icon {
+    width: 80px;
+    height: 80px;
+}
+
+
+/* footer */
+
+footer {
+    position: sticky;
+    background-color: white;
+    box-shadow: -1px -7px 16px -10px rgba(0, 0, 0, 0.75);
+    width: 100%;
+    height: 40px;
+    z-index: 100;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    flex-direction: column;
+    gap: 10px;
+}
+
+footer button {
+    background-color: transparent;
+    border: none;
+}
+
+footer button img {
+    width: 20px;
+}
+
+#sched-up {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 0;
+}
+
+#sched-down {
+    display: none;
+    justify-content: center;
+    width: 100%;
+}
+
+
+/* lagayan ng data */
+
+#datadata {
+    display: none;
+    height: 400px;
+    width: 90%;
+    justify-self: center;
+}
+
+
+/* grades file yung upload ng file/pdf */
+
+#gradesfile {
+    border: 1px solid #E2435E;
+}
+
+
+/* pag maliit na ang screen */
+
+@media only screen and (max-width: 1000px) {
+    .navbarLagayan {
+        text-align: center;
+        align-items: center;
+    }
+    #navbarnavbar {
+        padding: 0 5% 0 5%;
+    }
+    .bodybody {
+        width: 90%;
+    }
+    .boxes {
+        display: grid;
+        height: fit-content;
+    }
+    .studentDetails {
+        height: 150px;
+        width: 100%;
+    }
+    .progressbox {
+        height: 150px;
+        width: 100%;
+    }
+}

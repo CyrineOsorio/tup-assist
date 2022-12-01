@@ -704,6 +704,18 @@ def s_transferring(request):
     
     return render(request, 'TupAssistApp/s_transferring.html', context)
 
+def s_trans_sub(request):
+    current_user = request.user
+    if request.method =='POST':
+        school_year = request.POST.get('school_year')
+        semester = request.POST.get('semester')
+        subject = request.POST.get('subject')
+        section = request.POST.get('section')
+        schedule = request.POST.get('schedule')
+        data = TransferringReq.objects.create(school_year=school_year, semester=semester, studID_id= current_user.studID, subject_id=subject, section=section, sched=schedule)
+        data.save()
+        messages.success(request, 'Subject Tranfer Request')
+        return redirect('/s_adding')
 
 # PIC PAGES
 def p_profile(request):

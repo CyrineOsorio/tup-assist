@@ -717,7 +717,11 @@ def s_trans_sub(request):
         messages.success(request, 'Subject Tranfer Request')
         return redirect('/s_transferring')
 
-
+def s_del_sub_t(request, id):
+    data = TransferringReq.objects.get(id=id)
+    data.delete()
+    messages.success(request, 'Subject Deleted')
+    return redirect('/s_transferring')
 
 
 

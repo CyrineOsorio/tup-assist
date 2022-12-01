@@ -193,7 +193,7 @@
                                                 <td hidden><input type="text" class="form-control" name="school_year" value="{{trans.school_year}}" required></td>
                                                 <td hidden><input type="text" class="form-control" name="semester" value="{{trans.semester}}" required></td>
                                                 <td><input type="text" class="form-control" name="section" required></td>
-                                                <td class="d-flex" style="column-gap: 5px;"><input type="text" class="form-control" name="schedule" id="schedule" required> </td>
+                                                <td class="d-flex" style="column-gap: 5px;"><input type="text" class="form-control" name="schedule" id="schedule" readonly required> <a class="btn btn-primary" data-toggle="modal" data-target="#editSub">Edit</a> </td>
                                                 <td><button type="submit" class="btn btn-primary">+ Add</button></td>
                                             </tr>
                                         </form>
@@ -293,6 +293,72 @@
 
 
 
+    <!-- Edit Schedule Modal -->
+    <div class="modal fade" id="editSub" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Schedule</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Monday</span>
+                        </div>
+                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="mon_start">
+                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="mon_end">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Tuesday</span>
+                        </div>
+                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="tue_start">
+                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="tue_end">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Wednesday</span>
+                        </div>
+                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="wed_start">
+                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="wed_end">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Thurdsay</span>
+                        </div>
+                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="thu_start">
+                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="thu_end">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Friday</span>
+                        </div>
+                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="fri_start">
+                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="fri_end">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Saturday</span>
+                        </div>
+                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="sat_start">
+                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="sat_end">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" onclick="myFunction()" data-dismiss="modal">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
 
     <footer id="footerfooter">
         <!-- up and down button -->
@@ -348,6 +414,137 @@
         $("#TransferTransaction").show();
     </script> {% endif %}
 
+
+
+    <!-- ADD SCHEDULE NI REJAY -->
+    <script>
+        function myFunction() {
+
+            var a = document.getElementById("mon_start").value;
+            var b = document.getElementById("mon_end").value;
+            var c = document.getElementById("tue_start").value;
+            var d = document.getElementById("tue_end").value;
+            var e = document.getElementById("wed_start").value;
+            var f = document.getElementById("wed_end").value;
+            var g = document.getElementById("thu_start").value;
+            var h = document.getElementById("thu_end").value;
+            var i = document.getElementById("fri_start").value;
+            var j = document.getElementById("fri_end").value;
+            var k = document.getElementById("sat_start").value;
+            var l = document.getElementById("sat_end").value;
+
+            const a12hr = new Date('1970-01-01T' + a + 'Z').toLocaleTimeString('en-US', {
+                timeZone: 'UTC',
+                hour12: true,
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+
+            const b12hr = new Date('1970-01-01T' + b + 'Z').toLocaleTimeString('en-US', {
+                timeZone: 'UTC',
+                hour12: true,
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+
+            const c12hr = new Date('1970-01-01T' + c + 'Z').toLocaleTimeString('en-US', {
+                timeZone: 'UTC',
+                hour12: true,
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+
+            const d12hr = new Date('1970-01-01T' + d + 'Z').toLocaleTimeString('en-US', {
+                timeZone: 'UTC',
+                hour12: true,
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+
+            const e12hr = new Date('1970-01-01T' + e + 'Z').toLocaleTimeString('en-US', {
+                timeZone: 'UTC',
+                hour12: true,
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+
+            const f12hr = new Date('1970-01-01T' + f + 'Z').toLocaleTimeString('en-US', {
+                timeZone: 'UTC',
+                hour12: true,
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+
+            const g12hr = new Date('1970-01-01T' + g + 'Z').toLocaleTimeString('en-US', {
+                timeZone: 'UTC',
+                hour12: true,
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+
+            const h12hr = new Date('1970-01-01T' + h + 'Z').toLocaleTimeString('en-US', {
+                timeZone: 'UTC',
+                hour12: true,
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+
+            const i12hr = new Date('1970-01-01T' + i + 'Z').toLocaleTimeString('en-US', {
+                timeZone: 'UTC',
+                hour12: true,
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+
+            const j12hr = new Date('1970-01-01T' + j + 'Z').toLocaleTimeString('en-US', {
+                timeZone: 'UTC',
+                hour12: true,
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+
+            const k12hr = new Date('1970-01-01T' + k + 'Z').toLocaleTimeString('en-US', {
+                timeZone: 'UTC',
+                hour12: true,
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+
+            const l12hr = new Date('1970-01-01T' + l + 'Z').toLocaleTimeString('en-US', {
+                timeZone: 'UTC',
+                hour12: true,
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+
+
+            var arr = [];
+
+            // If the checkbox is checked, display the output text
+            if (a && b != '') {
+                arr.push('M' + ' ' + a12hr + '-' + b12hr);
+            }
+            if (c && d != '') {
+                arr.push('T' + ' ' + c12hr + '-' + d12hr);
+            }
+            if (e && f != '') {
+                arr.push('W' + ' ' + e12hr + '-' + f12hr);
+            }
+            if (g && h != '') {
+                arr.push('TH' + ' ' + g12hr + '-' + h12hr);
+            }
+            if (i && j != '') {
+                arr.push('F' + ' ' + i12hr + '-' + j12hr);
+            }
+            if (k && l != '') {
+                arr.push('S' + ' ' + k12hr + '-' + l12hr);
+            }
+
+            document.getElementById("schedule").value = arr;
+            // schedule.value = arr;
+
+        }
+    </script>
 
 
 

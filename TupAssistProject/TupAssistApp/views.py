@@ -486,10 +486,6 @@ def s_dropping(request):
     trans = TransStatus.objects.get(TransName="Drop")
     if current_user.department == "Department of Industrial Technology":
         current_user.department1 = "DIT"
-        # subs0 = Subjects.objects.filter(Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))
-        # subs1 = Subjects.objects.filter(Q(course__icontains=current_user.department) & Q(year=current_user.year) & Q(semester=trans.semester))
-        # subs = (chain(subs0, subs1))
-        # print(subs1)
         subs = Subjects.objects.filter( ((Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course__icontains=current_user.department1) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year=current_user.year) & Q(semester=trans.semester)))  ) 
         sched = Schedule.objects.all()
         context = {
@@ -662,21 +658,50 @@ def s_drop_sub(request):
         messages.success(request, 'Subject to Drop Successfully Request Wait for the Teacher Approval.')
         return redirect('/s_dropping')
 
+
+
 def s_transferring(request):
     current_user = request.user
-    # Models
     transReq = TransferringReq.objects.filter(studID=current_user.studID)
     trans = TransStatus.objects.get(TransName="Transfer")
-    sub = Subjects.objects.all()
-    sched = Schedule.objects.all()
-
-    context = {
-        'transReq': transReq,
-        'current_user': current_user,
-        'trans': trans,
-        'sub': sub,
-        'sched': sched
+    if current_user.department == "Department of Industrial Technology":
+        current_user.department1 = "DIT"
+        subs = Subjects.objects.filter( ((Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course__icontains=current_user.department1) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year=current_user.year) & Q(semester=trans.semester)))  ) 
+        sched = Schedule.objects.all()
+        context = {
+            'transReq': transReq,
+            'current_user': current_user,
+            'trans': trans,
+            'subs': subs,
+            'sched': sched
     }
+    elif current_user.department == "Department of Industrial Education":
+        current_user.department1 = "DIE"
+        subs = Subjects.objects.filter( ((Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course__icontains=current_user.department1) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year=current_user.year) & Q(semester=trans.semester)))  ) 
+        sched = Schedule.objects.all()
+        context = {
+            'transReq': transReq,
+            'current_user': current_user,
+            'trans': trans,
+            'subs': subs,
+            'sched': sched
+    }
+    elif current_user.department == "Department of Engineering":
+        current_user.department1 = "DOE"
+        subs = Subjects.objects.filter( ((Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course__icontains=current_user.department1) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year=current_user.year) & Q(semester=trans.semester)))  ) 
+        sched = Schedule.objects.all()
+        context = {
+            'transReq': transReq,
+            'current_user': current_user,
+            'trans': trans,
+            'subs': subs,
+            'sched': sched
+    }
+    else:
+        context = {
+            'current_user': current_user
+        }
+    
     return render(request, 'TupAssistApp/s_transferring.html', context)
 
 

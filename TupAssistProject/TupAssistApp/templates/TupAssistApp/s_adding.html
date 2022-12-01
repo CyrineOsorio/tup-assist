@@ -174,8 +174,6 @@
                             <h2 class="font-normal">Subject to be taken</h2>
                             <!-- Step 1 input fields -->
                             <div class="mt-3" id="step1">
-
-
                                 <!-- UPLOAD IMAGES -->
                                 {% if current_user.upload != '' %}
                                 <div class="lagayanngfile">
@@ -258,99 +256,34 @@
                             </div>
 
 
-
-                    </div>
-                    </section>
+                        </section>
 
 
-                    <!-- Step 2 Content, default hidden on page load. -->
-                    <section id="step-2" class="form-step d-none">
-                        {% if current_user.addStatus == '' %}
-                        <div class="alert alert-danger" role="alert">
-                            Notice: Hintayin ang Program-in-charge i-approve ang iyong add request.
-                        </div> {% endif %}
 
-                        <h2 class="font-normal">Wait for PIC Approval</h2>
-                        <!-- Step 2 input fields -->
-                        <div class="mt-3">
-                            <table class="table table-bordered">
-                                <thead>
-                                    <th colspan="3" style="text-align: center;">SUBJECT TO BE TAKEN BY STUDENT</th>
-                                    <th colspan="5" style="text-align: center;">PROGRAM-IN-CHARGE</th>
-                                </thead>
-                                <thead>
-                                    <th>SUBJECT</th>
-                                    <th>SECTION</th>
-                                    <th>SCHEDULE</th>
-                                    <th>APPROVAL</th>
-                                    <th>REMARK</th>
-                                    <th>ENLISTED BY</th>
-                                    <th>DATE & TIME</th>
-                                </thead>
+                        <!-- Step 2 Content, default hidden on page load. -->
+                        <section id="step-2" class="form-step d-none">
+                            {% if current_user.addStatus == '' %}
+                            <div class="alert alert-danger" role="alert">
+                                Notice: Hintayin ang Program-in-charge i-approve ang iyong add request.
+                            </div> {% endif %}
 
-                                <tbody>
-                                    {% for i in req %}
-                                    <tr>
-                                        <td>{{i.subject.subject}}-{{i.subject.description}}</td>
-                                        <td>{{i.section}}</td>
-                                        <td>{{i.sched}}</td>
-                                        <td>{{i.pic_is_approve}}</td>
-                                        <td>{{i.pic_remark}}</td>
-                                        <td>{{i.pic_name}}</td>
-                                        <td>{{i.pic_date}}</td>
-                                    </tr>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
-
-
-                            {% if current_user.addStatus == 'Update Your Request' %}
-                            <div class="mt-3" style="display: flex; justify-content: end;">
-                                <form action="s_step2_submit" method="post">
-                                    {% csrf_token %}
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </form>
-                            </div>{% endif %}
-
+                            <h2 class="font-normal">Wait for PIC Approval</h2>
+                            <!-- Step 2 input fields -->
                             <div class="mt-3">
-                                <button class="button btn-navigate-form-step" type="button" step_number="1">Prev</button> {% if current_user.addStatus != 'Wait for PIC Approval' %}
-                                <button class="button btn-navigate-form-step" type="button" step_number="3">Next</button> {% endif %}
-                            </div>
-                    </section>
-
-
-
-
-
-
-
-                    <!-- Step 3 Content, default hidden on page load. -->
-                    <section id="step-3" class="form-step d-none">
-                        <h2 class="font-normal">Wait for Department Head and Asst. Director for Academic Affairs Approval</h2>
-
-                        <div class="mt-3" style="overflow-x: scroll;">
-                            <table class="table table-bordered">
-                                <thead>
-                                    <th colspan="3" style="text-align: center;">SUBJECT TO BE TAKEN BY STUDENT</th>
-                                    <th colspan="4" style="text-align: center;">PROGRAM-IN-CHARGE</th>
-                                    <th colspan="4" style="text-align: center;">DEPARTMENT HEAD</th>
-                                    <th colspan="3" style="text-align: center;">ADMINISTRATION</th>
-                                </thead>
-                                <thead>
-                                    <th>SUBJECT</th>
-                                    <th>SECTION</th>
-                                    <th>SCHEDULE</th>
-                                    <th>APPROVAL</th>
-                                    <th>REMARK</th>
-                                    <th>ENLISTED BY</th>
-                                    <th>DATE & TIME</th>
-                                    <th>APPROVAL</th>
-                                    <th>REMARK</th>
-                                    <th>ENDORSED BY</th>
-                                    <th>DATE & TIME</th>
-                                    <th>APPROVAL</th>
-                                    <th>ENDORSED BY</th>
-                                    <th>DATE & TIME</th>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <th colspan="3" style="text-align: center;">SUBJECT TO BE TAKEN BY STUDENT</th>
+                                        <th colspan="5" style="text-align: center;">PROGRAM-IN-CHARGE</th>
+                                    </thead>
+                                    <thead>
+                                        <th>SUBJECT</th>
+                                        <th>SECTION</th>
+                                        <th>SCHEDULE</th>
+                                        <th>APPROVAL</th>
+                                        <th>REMARK</th>
+                                        <th>ENLISTED BY</th>
+                                        <th>DATE & TIME</th>
+                                    </thead>
 
                                     <tbody>
                                         {% for i in req %}
@@ -362,1101 +295,1170 @@
                                             <td>{{i.pic_remark}}</td>
                                             <td>{{i.pic_name}}</td>
                                             <td>{{i.pic_date}}</td>
-                                            <td>{{i.head_is_approve}}</td>
-                                            <td>{{i.head_remark}}</td>
-                                            <td>{{i.head_name}}</td>
-                                            <td>{{i.head_date}}</td>
-                                            <td>{{i.admin_is_approve}}</td>
-                                            <td>{{i.admin_name}}</td>
-                                            <td>{{i.admin_date}}</td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>
-                            </table>
+                                </table>
+
+
+                                {% if current_user.addStatus == 'Update Your Request' %}
+                                <div class="mt-3" style="display: flex; justify-content: end;">
+                                    <form action="s_step2_submit" method="post">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </form>
+                                </div>{% endif %}
+
+                                <div class="mt-3">
+                                    <button class="button btn-navigate-form-step" type="button" step_number="1">Prev</button> {% if current_user.addStatus != 'Wait for PIC Approval' %}
+                                    <button class="button btn-navigate-form-step" type="button" step_number="3">Next</button> {% endif %}
+                                </div>
+                        </section>
+
+
+
+
+
+
+
+                        <!-- Step 3 Content, default hidden on page load. -->
+                        <section id="step-3" class="form-step d-none">
+                            <h2 class="font-normal">Wait for Department Head and Asst. Director for Academic Affairs Approval</h2>
+
+                            <div class="mt-3" style="overflow-x: scroll;">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <th colspan="3" style="text-align: center;">SUBJECT TO BE TAKEN BY STUDENT</th>
+                                        <th colspan="4" style="text-align: center;">PROGRAM-IN-CHARGE</th>
+                                        <th colspan="4" style="text-align: center;">DEPARTMENT HEAD</th>
+                                        <th colspan="3" style="text-align: center;">ADMINISTRATION</th>
+                                    </thead>
+                                    <thead>
+                                        <th>SUBJECT</th>
+                                        <th>SECTION</th>
+                                        <th>SCHEDULE</th>
+                                        <th>APPROVAL</th>
+                                        <th>REMARK</th>
+                                        <th>ENLISTED BY</th>
+                                        <th>DATE & TIME</th>
+                                        <th>APPROVAL</th>
+                                        <th>REMARK</th>
+                                        <th>ENDORSED BY</th>
+                                        <th>DATE & TIME</th>
+                                        <th>APPROVAL</th>
+                                        <th>ENDORSED BY</th>
+                                        <th>DATE & TIME</th>
+
+                                        <tbody>
+                                            {% for i in req %}
+                                            <tr>
+                                                <td>{{i.subject.subject}}-{{i.subject.description}}</td>
+                                                <td>{{i.section}}</td>
+                                                <td>{{i.sched}}</td>
+                                                <td>{{i.pic_is_approve}}</td>
+                                                <td>{{i.pic_remark}}</td>
+                                                <td>{{i.pic_name}}</td>
+                                                <td>{{i.pic_date}}</td>
+                                                <td>{{i.head_is_approve}}</td>
+                                                <td>{{i.head_remark}}</td>
+                                                <td>{{i.head_name}}</td>
+                                                <td>{{i.head_date}}</td>
+                                                <td>{{i.admin_is_approve}}</td>
+                                                <td>{{i.admin_name}}</td>
+                                                <td>{{i.admin_date}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                </table>
+                            </div>
+
+
+                            <div class="mt-3">
+                                <button class="button btn-navigate-form-step" type="button" step_number="2">Prev</button>
+                            </div>
+                        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
                         </div>
-
-
-                        <div class="mt-3">
-                            <button class="button btn-navigate-form-step" type="button" step_number="2">Prev</button>
-                        </div>
-                    </section>
-
-
-
-
-                    </div>
-                </div>{% endif %}
-
-
+                    </div>{% endif %}
+                </div>
             </div>
         </div>
-    </div>
-    </div>
 
-
-    <!-- Add FIle Modal -->
-    <div class="modal fade" id="addFile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Upload a PDF FIle of your compiled previous grades from ERS.</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <!-- Add FIle Modal -->
+        <div class="modal fade" id="addFile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Upload a PDF FIle of your compiled previous grades from ERS.</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                </div>
-                <div class="modal-body">
-                    <form class="form-inline" id="gradesfileform" method="post" enctype="multipart/form-data" action="/upload">
-                        {% csrf_token %}
-                        <div class="image-upload">
-                            <label for="gradesfile">
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-inline" id="gradesfileform" method="post" enctype="multipart/form-data" action="/upload">
+                            {% csrf_token %}
+                            <div class="image-upload">
+                                <label for="gradesfile">
                                   <img src="../../static/images/icons8-pdf-40.png"/>
                                 </label>
-                            <input type="file" accept="application/pdf" name="gradesfile" id="gradesfile" required>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <input type="file" accept="application/pdf" name="gradesfile" id="gradesfile" required>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Edit Schedule Modal -->
-    <div class="modal fade" id="editSub" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Schedule</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <!-- Edit Schedule Modal -->
+        <div class="modal fade" id="editSub" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Schedule</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                </div>
-                <div class="modal-body">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Monday</span>
-                        </div>
-                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="mon_start">
-                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="mon_end">
                     </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Tuesday</span>
-                        </div>
-                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="tue_start">
-                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="tue_end">
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Wednesday</span>
-                        </div>
-                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="wed_start">
-                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="wed_end">
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Thurdsay</span>
-                        </div>
-                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="thu_start">
-                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="thu_end">
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Friday</span>
-                        </div>
-                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="fri_start">
-                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="fri_end">
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Saturday</span>
-                        </div>
-                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="sat_start">
-                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="sat_end">
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" onclick="myFunction()" data-dismiss="modal">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Update Request Modal -->
-    {% for i in req %}
-    <div class="modal fade" id="updateReq{{i.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Request Subject</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-                </div>
-                <form action="/s_edit_sub" method="post">
-                    {% csrf_token %}
                     <div class="modal-body">
-                        <div class="form-group" hidden>
-                            <label for="id">Transcation ID</label>
-                            <input type="text" class="form-control" id="id" name="id" value="{{i.id}}">
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" class="form-control" id="subject" name="subject" value="{{i.subject}}">
-                        </div>
-                        <div class="form-group">
-                            <label for="section">Section</label>
-                            <input type="text" class="form-control" id="section" name="section" value="{{i.section}}">
-                        </div>
-                        <div class="form-group">
-                            <label for="sched">Schedule</label>
-                            <div class="d-flex">
-                                <input type="text" style="width:70%" class="form-control" id="sched1" name="sched" value="{{i.sched}}" readonly>
-                                <a class="btn btn-primary" style="width:30%" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Edit</a>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Monday</span>
                             </div>
-
-                            <div class="collapse" id="collapseExample">
-                                <div class="card card-body">
-
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1">Monday</span>
-                                        </div>
-                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="mon_start1">
-                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="mon_end1">
-                                    </div>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1">Tuesday</span>
-                                        </div>
-                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="tue_start1">
-                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="tue_end1">
-                                    </div>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1">Wednesday</span>
-                                        </div>
-                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="wed_start1">
-                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="wed_end1">
-                                    </div>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1">Thurdsay</span>
-                                        </div>
-                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="thu_start1">
-                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="thu_end1">
-                                    </div>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1">Friday</span>
-                                        </div>
-                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="fri_start1">
-                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="fri_end1">
-                                    </div>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1">Saturday</span>
-                                        </div>
-                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="sat_start1">
-                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="sat_end1">
-                                    </div>
-
-                                    <!-- Submit sa editeing na schedule -->
-                                    <button type="button" class="btn btn-primary btn-lg btn-block" onclick="myFuntcion1()">Update Schedule</button>
-
-                                </div>
-                            </div>
-
+                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="mon_start">
+                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="mon_end">
                         </div>
-
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Tuesday</span>
+                            </div>
+                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="tue_start">
+                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="tue_end">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Wednesday</span>
+                            </div>
+                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="wed_start">
+                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="wed_end">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Thurdsay</span>
+                            </div>
+                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="thu_start">
+                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="thu_end">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Friday</span>
+                            </div>
+                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="fri_start">
+                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="fri_end">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Saturday</span>
+                            </div>
+                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="sat_start">
+                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="sat_end">
+                        </div>
 
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="submit" class="btn btn-primary" onclick="myFunction()" data-dismiss="modal">Save changes</button>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
-    </div> {% endfor %}
+
+
+        <!-- Update Request Modal -->
+        {% for i in req %}
+        <div class="modal fade" id="updateReq{{i.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Request Subject</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+                    </div>
+                    <form action="/s_edit_sub" method="post">
+                        {% csrf_token %}
+                        <div class="modal-body">
+                            <div class="form-group" hidden>
+                                <label for="id">Transcation ID</label>
+                                <input type="text" class="form-control" id="id" name="id" value="{{i.id}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" class="form-control" id="subject" name="subject" value="{{i.subject}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="section">Section</label>
+                                <input type="text" class="form-control" id="section" name="section" value="{{i.section}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="sched">Schedule</label>
+                                <div class="d-flex">
+                                    <input type="text" style="width:70%" class="form-control" id="sched1" name="sched" value="{{i.sched}}" readonly>
+                                    <a class="btn btn-primary" style="width:30%" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Edit</a>
+                                </div>
+
+                                <div class="collapse" id="collapseExample">
+                                    <div class="card card-body">
+
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">Monday</span>
+                                            </div>
+                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="mon_start1">
+                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="mon_end1">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">Tuesday</span>
+                                            </div>
+                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="tue_start1">
+                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="tue_end1">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">Wednesday</span>
+                                            </div>
+                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="wed_start1">
+                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="wed_end1">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">Thurdsay</span>
+                                            </div>
+                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="thu_start1">
+                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="thu_end1">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">Friday</span>
+                                            </div>
+                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="fri_start1">
+                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="fri_end1">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">Saturday</span>
+                                            </div>
+                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="sat_start1">
+                                            <input type="time" class="form-control" aria-describedby="basic-addon1" id="sat_end1">
+                                        </div>
+
+                                        <!-- Submit sa editeing na schedule -->
+                                        <button type="button" class="btn btn-primary btn-lg btn-block" onclick="myFuntcion1()">Update Schedule</button>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div> {% endfor %}
 
 
 
 
-    <footer id="footerfooter">
-        <!-- up and down button -->
-        <button id="sched-up" title="Show Schedule"><img src="../../static/images/double-up-arrow.png" alt=""></button>
-        <button id="sched-down" title="Hide Schedule"><img src="../../static/images/double-down-arrows.png" alt=""></button>
+        <footer id="footerfooter">
+            <!-- up and down button -->
+            <button id="sched-up" title="Show Schedule"><img src="../../static/images/double-up-arrow.png" alt=""></button>
+            <button id="sched-down" title="Hide Schedule"><img src="../../static/images/double-down-arrows.png" alt=""></button>
 
-        <div style="overflow-x:auto;" id="datadata">
-            {% for e in sched %}
-            <iframe src="{{e.gSheetLink}}" style="width: 100%; height: 100%; border: 1px solid #E2435E"></iframe>{% endfor %}
-        </div>
+            <div style="overflow-x:auto;" id="datadata">
+                {% for e in sched %}
+                <iframe src="{{e.gSheetLink}}" style="width: 100%; height: 100%; border: 1px solid #E2435E"></iframe>{% endfor %}
+            </div>
 
-    </footer>
-
-
-
-    <!-- bootstrap na js: yung seperate -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
-    <script>
-        console.log("chichi")
-
-        document.getElementById("sched-up").addEventListener("click", function() {
-            document.getElementById("sched-down").style.display = 'flex';
-            document.getElementById("sched-up").style.display = "none";
-            document.getElementById("footerfooter").style.height = "500px";
-            document.getElementById('datadata').style.display = "grid";
-
-        })
-
-        document.getElementById("sched-down").addEventListener("click", function() {
-            document.getElementById("sched-up").style.display = 'flex';
-            document.getElementById("sched-down").style.display = "none";
-            document.getElementById("footerfooter").style.height = "40px";
-            document.getElementById('datadata').style.display = "none";
-        })
-    </script>
+        </footer>
 
 
+
+        <!-- bootstrap na js: yung seperate -->
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+        <script>
+            console.log("chichi")
+
+            document.getElementById("sched-up").addEventListener("click", function() {
+                document.getElementById("sched-down").style.display = 'flex';
+                document.getElementById("sched-up").style.display = "none";
+                document.getElementById("footerfooter").style.height = "500px";
+                document.getElementById('datadata').style.display = "grid";
+
+            })
+
+            document.getElementById("sched-down").addEventListener("click", function() {
+                document.getElementById("sched-up").style.display = 'flex';
+                document.getElementById("sched-down").style.display = "none";
+                document.getElementById("footerfooter").style.height = "40px";
+                document.getElementById('datadata').style.display = "none";
+            })
+        </script>
 
 
 
 
 
-    <!-- Transcation Status -->
-    {% if trans.status == 'Open' %}
-    <script>
-        $("#multi-step-form-container").show();
-        $("#AddTransaction").hide();
-    </script>
-
-    {% elif trans.status == 'Close' %}
-    <script>
-        $("#multi-step-form-container").hide();
-        $("#AddTransaction").show();
-    </script> {% endif %}
 
 
-    <!-- FOOTER NI CYRINE -->
-    <script>
-        $(document).ready(function() {
-            // Source: https://stackoverflow.com/questions/18796221/creating-a-select-box-with-a-search-option
-            //change selectboxes to selectize mode to be searchable
-            $("#subject").select2();
-            $("#course").select2();
-            $("#yrandsec").select2();
+        <!-- Transcation Status -->
+        {% if trans.status == 'Open' %}
+        <script>
+            $("#multi-step-form-container").show();
+            $("#AddTransaction").hide();
+        </script>
+
+        {% elif trans.status == 'Close' %}
+        <script>
+            $("#multi-step-form-container").hide();
+            $("#AddTransaction").show();
+        </script> {% endif %}
 
 
-            $("#subject1").select2();
-            $("#course1").select2();
-            $("#yrandsec1").select2();
+        <!-- FOOTER NI CYRINE -->
+        <script>
+            $(document).ready(function() {
+                // Source: https://stackoverflow.com/questions/18796221/creating-a-select-box-with-a-search-option
+                //change selectboxes to selectize mode to be searchable
+                $("#subject").select2();
+                $("#course").select2();
+                $("#yrandsec").select2();
 
 
-            $("#subject2").select2();
-            $("#course2").select2();
-            $("#yrandsec2").select2();
+                $("#subject1").select2();
+                $("#course1").select2();
+                $("#yrandsec1").select2();
 
-        });
-    </script>
 
-    <!-- ADD SCHEDULE NI REJAY -->
-    <script>
-        function myFunction() {
+                $("#subject2").select2();
+                $("#course2").select2();
+                $("#yrandsec2").select2();
 
-            var a = document.getElementById("mon_start").value;
-            var b = document.getElementById("mon_end").value;
-            var c = document.getElementById("tue_start").value;
-            var d = document.getElementById("tue_end").value;
-            var e = document.getElementById("wed_start").value;
-            var f = document.getElementById("wed_end").value;
-            var g = document.getElementById("thu_start").value;
-            var h = document.getElementById("thu_end").value;
-            var i = document.getElementById("fri_start").value;
-            var j = document.getElementById("fri_end").value;
-            var k = document.getElementById("sat_start").value;
-            var l = document.getElementById("sat_end").value;
-
-            const a12hr = new Date('1970-01-01T' + a + 'Z').toLocaleTimeString('en-US', {
-                timeZone: 'UTC',
-                hour12: true,
-                hour: 'numeric',
-                minute: 'numeric'
             });
+        </script>
 
-            const b12hr = new Date('1970-01-01T' + b + 'Z').toLocaleTimeString('en-US', {
-                timeZone: 'UTC',
-                hour12: true,
-                hour: 'numeric',
-                minute: 'numeric'
-            });
+        <!-- ADD SCHEDULE NI REJAY -->
+        <script>
+            function myFunction() {
 
-            const c12hr = new Date('1970-01-01T' + c + 'Z').toLocaleTimeString('en-US', {
-                timeZone: 'UTC',
-                hour12: true,
-                hour: 'numeric',
-                minute: 'numeric'
-            });
+                var a = document.getElementById("mon_start").value;
+                var b = document.getElementById("mon_end").value;
+                var c = document.getElementById("tue_start").value;
+                var d = document.getElementById("tue_end").value;
+                var e = document.getElementById("wed_start").value;
+                var f = document.getElementById("wed_end").value;
+                var g = document.getElementById("thu_start").value;
+                var h = document.getElementById("thu_end").value;
+                var i = document.getElementById("fri_start").value;
+                var j = document.getElementById("fri_end").value;
+                var k = document.getElementById("sat_start").value;
+                var l = document.getElementById("sat_end").value;
 
-            const d12hr = new Date('1970-01-01T' + d + 'Z').toLocaleTimeString('en-US', {
-                timeZone: 'UTC',
-                hour12: true,
-                hour: 'numeric',
-                minute: 'numeric'
-            });
+                const a12hr = new Date('1970-01-01T' + a + 'Z').toLocaleTimeString('en-US', {
+                    timeZone: 'UTC',
+                    hour12: true,
+                    hour: 'numeric',
+                    minute: 'numeric'
+                });
 
-            const e12hr = new Date('1970-01-01T' + e + 'Z').toLocaleTimeString('en-US', {
-                timeZone: 'UTC',
-                hour12: true,
-                hour: 'numeric',
-                minute: 'numeric'
-            });
+                const b12hr = new Date('1970-01-01T' + b + 'Z').toLocaleTimeString('en-US', {
+                    timeZone: 'UTC',
+                    hour12: true,
+                    hour: 'numeric',
+                    minute: 'numeric'
+                });
 
-            const f12hr = new Date('1970-01-01T' + f + 'Z').toLocaleTimeString('en-US', {
-                timeZone: 'UTC',
-                hour12: true,
-                hour: 'numeric',
-                minute: 'numeric'
-            });
+                const c12hr = new Date('1970-01-01T' + c + 'Z').toLocaleTimeString('en-US', {
+                    timeZone: 'UTC',
+                    hour12: true,
+                    hour: 'numeric',
+                    minute: 'numeric'
+                });
 
-            const g12hr = new Date('1970-01-01T' + g + 'Z').toLocaleTimeString('en-US', {
-                timeZone: 'UTC',
-                hour12: true,
-                hour: 'numeric',
-                minute: 'numeric'
-            });
+                const d12hr = new Date('1970-01-01T' + d + 'Z').toLocaleTimeString('en-US', {
+                    timeZone: 'UTC',
+                    hour12: true,
+                    hour: 'numeric',
+                    minute: 'numeric'
+                });
 
-            const h12hr = new Date('1970-01-01T' + h + 'Z').toLocaleTimeString('en-US', {
-                timeZone: 'UTC',
-                hour12: true,
-                hour: 'numeric',
-                minute: 'numeric'
-            });
+                const e12hr = new Date('1970-01-01T' + e + 'Z').toLocaleTimeString('en-US', {
+                    timeZone: 'UTC',
+                    hour12: true,
+                    hour: 'numeric',
+                    minute: 'numeric'
+                });
 
-            const i12hr = new Date('1970-01-01T' + i + 'Z').toLocaleTimeString('en-US', {
-                timeZone: 'UTC',
-                hour12: true,
-                hour: 'numeric',
-                minute: 'numeric'
-            });
+                const f12hr = new Date('1970-01-01T' + f + 'Z').toLocaleTimeString('en-US', {
+                    timeZone: 'UTC',
+                    hour12: true,
+                    hour: 'numeric',
+                    minute: 'numeric'
+                });
 
-            const j12hr = new Date('1970-01-01T' + j + 'Z').toLocaleTimeString('en-US', {
-                timeZone: 'UTC',
-                hour12: true,
-                hour: 'numeric',
-                minute: 'numeric'
-            });
+                const g12hr = new Date('1970-01-01T' + g + 'Z').toLocaleTimeString('en-US', {
+                    timeZone: 'UTC',
+                    hour12: true,
+                    hour: 'numeric',
+                    minute: 'numeric'
+                });
 
-            const k12hr = new Date('1970-01-01T' + k + 'Z').toLocaleTimeString('en-US', {
-                timeZone: 'UTC',
-                hour12: true,
-                hour: 'numeric',
-                minute: 'numeric'
-            });
+                const h12hr = new Date('1970-01-01T' + h + 'Z').toLocaleTimeString('en-US', {
+                    timeZone: 'UTC',
+                    hour12: true,
+                    hour: 'numeric',
+                    minute: 'numeric'
+                });
 
-            const l12hr = new Date('1970-01-01T' + l + 'Z').toLocaleTimeString('en-US', {
-                timeZone: 'UTC',
-                hour12: true,
-                hour: 'numeric',
-                minute: 'numeric'
-            });
+                const i12hr = new Date('1970-01-01T' + i + 'Z').toLocaleTimeString('en-US', {
+                    timeZone: 'UTC',
+                    hour12: true,
+                    hour: 'numeric',
+                    minute: 'numeric'
+                });
+
+                const j12hr = new Date('1970-01-01T' + j + 'Z').toLocaleTimeString('en-US', {
+                    timeZone: 'UTC',
+                    hour12: true,
+                    hour: 'numeric',
+                    minute: 'numeric'
+                });
+
+                const k12hr = new Date('1970-01-01T' + k + 'Z').toLocaleTimeString('en-US', {
+                    timeZone: 'UTC',
+                    hour12: true,
+                    hour: 'numeric',
+                    minute: 'numeric'
+                });
+
+                const l12hr = new Date('1970-01-01T' + l + 'Z').toLocaleTimeString('en-US', {
+                    timeZone: 'UTC',
+                    hour12: true,
+                    hour: 'numeric',
+                    minute: 'numeric'
+                });
 
 
-            var arr = [];
+                var arr = [];
 
-            // If the checkbox is checked, display the output text
-            if (a && b != '') {
-                arr.push('M' + ' ' + a12hr + '-' + b12hr);
+                // If the checkbox is checked, display the output text
+                if (a && b != '') {
+                    arr.push('M' + ' ' + a12hr + '-' + b12hr);
+                }
+                if (c && d != '') {
+                    arr.push('T' + ' ' + c12hr + '-' + d12hr);
+                }
+                if (e && f != '') {
+                    arr.push('W' + ' ' + e12hr + '-' + f12hr);
+                }
+                if (g && h != '') {
+                    arr.push('TH' + ' ' + g12hr + '-' + h12hr);
+                }
+                if (i && j != '') {
+                    arr.push('F' + ' ' + i12hr + '-' + j12hr);
+                }
+                if (k && l != '') {
+                    arr.push('S' + ' ' + k12hr + '-' + l12hr);
+                }
+
+                document.getElementById("schedule").value = arr;
+                // schedule.value = arr;
+
             }
-            if (c && d != '') {
-                arr.push('T' + ' ' + c12hr + '-' + d12hr);
+        </script>
+
+        <!-- Update Schedule ni Rejay -->
+        <script>
+            function myFuntcion1() {
+
+                var a = document.getElementById("mon_start1").value;
+                var b = document.getElementById("mon_end1").value;
+                var c = document.getElementById("tue_start1").value;
+                var d = document.getElementById("tue_end1").value;
+                var e = document.getElementById("wed_start1").value;
+                var f = document.getElementById("wed_end1").value;
+                var g = document.getElementById("thu_start1").value;
+                var h = document.getElementById("thu_end1").value;
+                var i = document.getElementById("fri_start1").value;
+                var j = document.getElementById("fri_end1").value;
+                var k = document.getElementById("sat_start1").value;
+                var l = document.getElementById("sat_end1").value;
+
+                const a12hr = new Date('1970-01-01T' + a + 'Z').toLocaleTimeString('en-US', {
+                    timeZone: 'UTC',
+                    hour12: true,
+                    hour: 'numeric',
+                    minute: 'numeric'
+                });
+
+                const b12hr = new Date('1970-01-01T' + b + 'Z').toLocaleTimeString('en-US', {
+                    timeZone: 'UTC',
+                    hour12: true,
+                    hour: 'numeric',
+                    minute: 'numeric'
+                });
+
+                const c12hr = new Date('1970-01-01T' + c + 'Z').toLocaleTimeString('en-US', {
+                    timeZone: 'UTC',
+                    hour12: true,
+                    hour: 'numeric',
+                    minute: 'numeric'
+                });
+
+                const d12hr = new Date('1970-01-01T' + d + 'Z').toLocaleTimeString('en-US', {
+                    timeZone: 'UTC',
+                    hour12: true,
+                    hour: 'numeric',
+                    minute: 'numeric'
+                });
+
+                const e12hr = new Date('1970-01-01T' + e + 'Z').toLocaleTimeString('en-US', {
+                    timeZone: 'UTC',
+                    hour12: true,
+                    hour: 'numeric',
+                    minute: 'numeric'
+                });
+
+                const f12hr = new Date('1970-01-01T' + f + 'Z').toLocaleTimeString('en-US', {
+                    timeZone: 'UTC',
+                    hour12: true,
+                    hour: 'numeric',
+                    minute: 'numeric'
+                });
+
+                const g12hr = new Date('1970-01-01T' + g + 'Z').toLocaleTimeString('en-US', {
+                    timeZone: 'UTC',
+                    hour12: true,
+                    hour: 'numeric',
+                    minute: 'numeric'
+                });
+
+                const h12hr = new Date('1970-01-01T' + h + 'Z').toLocaleTimeString('en-US', {
+                    timeZone: 'UTC',
+                    hour12: true,
+                    hour: 'numeric',
+                    minute: 'numeric'
+                });
+
+                const i12hr = new Date('1970-01-01T' + i + 'Z').toLocaleTimeString('en-US', {
+                    timeZone: 'UTC',
+                    hour12: true,
+                    hour: 'numeric',
+                    minute: 'numeric'
+                });
+
+                const j12hr = new Date('1970-01-01T' + j + 'Z').toLocaleTimeString('en-US', {
+                    timeZone: 'UTC',
+                    hour12: true,
+                    hour: 'numeric',
+                    minute: 'numeric'
+                });
+
+                const k12hr = new Date('1970-01-01T' + k + 'Z').toLocaleTimeString('en-US', {
+                    timeZone: 'UTC',
+                    hour12: true,
+                    hour: 'numeric',
+                    minute: 'numeric'
+                });
+
+                const l12hr = new Date('1970-01-01T' + l + 'Z').toLocaleTimeString('en-US', {
+                    timeZone: 'UTC',
+                    hour12: true,
+                    hour: 'numeric',
+                    minute: 'numeric'
+                });
+
+
+                var arr = [];
+
+                // If the checkbox is checked, display the output text
+                if (a && b != '') {
+                    arr.push('M' + ' ' + a12hr + '-' + b12hr);
+                }
+                if (c && d != '') {
+                    arr.push('T' + ' ' + c12hr + '-' + d12hr);
+                }
+                if (e && f != '') {
+                    arr.push('W' + ' ' + e12hr + '-' + f12hr);
+                }
+                if (g && h != '') {
+                    arr.push('TH' + ' ' + g12hr + '-' + h12hr);
+                }
+                if (i && j != '') {
+                    arr.push('F' + ' ' + i12hr + '-' + j12hr);
+                }
+                if (k && l != '') {
+                    arr.push('S' + ' ' + k12hr + '-' + l12hr);
+                }
+
+                document.getElementById("sched1").value = arr;
+                // sched1.value = arr;
+
             }
-            if (e && f != '') {
-                arr.push('W' + ' ' + e12hr + '-' + f12hr);
-            }
-            if (g && h != '') {
-                arr.push('TH' + ' ' + g12hr + '-' + h12hr);
-            }
-            if (i && j != '') {
-                arr.push('F' + ' ' + i12hr + '-' + j12hr);
-            }
-            if (k && l != '') {
-                arr.push('S' + ' ' + k12hr + '-' + l12hr);
-            }
-
-            document.getElementById("schedule").value = arr;
-            // schedule.value = arr;
-
-        }
-    </script>
-
-    <!-- Update Schedule ni Rejay -->
-    <script>
-        function myFuntcion1() {
-
-            var a = document.getElementById("mon_start1").value;
-            var b = document.getElementById("mon_end1").value;
-            var c = document.getElementById("tue_start1").value;
-            var d = document.getElementById("tue_end1").value;
-            var e = document.getElementById("wed_start1").value;
-            var f = document.getElementById("wed_end1").value;
-            var g = document.getElementById("thu_start1").value;
-            var h = document.getElementById("thu_end1").value;
-            var i = document.getElementById("fri_start1").value;
-            var j = document.getElementById("fri_end1").value;
-            var k = document.getElementById("sat_start1").value;
-            var l = document.getElementById("sat_end1").value;
-
-            const a12hr = new Date('1970-01-01T' + a + 'Z').toLocaleTimeString('en-US', {
-                timeZone: 'UTC',
-                hour12: true,
-                hour: 'numeric',
-                minute: 'numeric'
-            });
-
-            const b12hr = new Date('1970-01-01T' + b + 'Z').toLocaleTimeString('en-US', {
-                timeZone: 'UTC',
-                hour12: true,
-                hour: 'numeric',
-                minute: 'numeric'
-            });
-
-            const c12hr = new Date('1970-01-01T' + c + 'Z').toLocaleTimeString('en-US', {
-                timeZone: 'UTC',
-                hour12: true,
-                hour: 'numeric',
-                minute: 'numeric'
-            });
-
-            const d12hr = new Date('1970-01-01T' + d + 'Z').toLocaleTimeString('en-US', {
-                timeZone: 'UTC',
-                hour12: true,
-                hour: 'numeric',
-                minute: 'numeric'
-            });
-
-            const e12hr = new Date('1970-01-01T' + e + 'Z').toLocaleTimeString('en-US', {
-                timeZone: 'UTC',
-                hour12: true,
-                hour: 'numeric',
-                minute: 'numeric'
-            });
-
-            const f12hr = new Date('1970-01-01T' + f + 'Z').toLocaleTimeString('en-US', {
-                timeZone: 'UTC',
-                hour12: true,
-                hour: 'numeric',
-                minute: 'numeric'
-            });
-
-            const g12hr = new Date('1970-01-01T' + g + 'Z').toLocaleTimeString('en-US', {
-                timeZone: 'UTC',
-                hour12: true,
-                hour: 'numeric',
-                minute: 'numeric'
-            });
-
-            const h12hr = new Date('1970-01-01T' + h + 'Z').toLocaleTimeString('en-US', {
-                timeZone: 'UTC',
-                hour12: true,
-                hour: 'numeric',
-                minute: 'numeric'
-            });
-
-            const i12hr = new Date('1970-01-01T' + i + 'Z').toLocaleTimeString('en-US', {
-                timeZone: 'UTC',
-                hour12: true,
-                hour: 'numeric',
-                minute: 'numeric'
-            });
-
-            const j12hr = new Date('1970-01-01T' + j + 'Z').toLocaleTimeString('en-US', {
-                timeZone: 'UTC',
-                hour12: true,
-                hour: 'numeric',
-                minute: 'numeric'
-            });
-
-            const k12hr = new Date('1970-01-01T' + k + 'Z').toLocaleTimeString('en-US', {
-                timeZone: 'UTC',
-                hour12: true,
-                hour: 'numeric',
-                minute: 'numeric'
-            });
-
-            const l12hr = new Date('1970-01-01T' + l + 'Z').toLocaleTimeString('en-US', {
-                timeZone: 'UTC',
-                hour12: true,
-                hour: 'numeric',
-                minute: 'numeric'
-            });
-
-
-            var arr = [];
-
-            // If the checkbox is checked, display the output text
-            if (a && b != '') {
-                arr.push('M' + ' ' + a12hr + '-' + b12hr);
-            }
-            if (c && d != '') {
-                arr.push('T' + ' ' + c12hr + '-' + d12hr);
-            }
-            if (e && f != '') {
-                arr.push('W' + ' ' + e12hr + '-' + f12hr);
-            }
-            if (g && h != '') {
-                arr.push('TH' + ' ' + g12hr + '-' + h12hr);
-            }
-            if (i && j != '') {
-                arr.push('F' + ' ' + i12hr + '-' + j12hr);
-            }
-            if (k && l != '') {
-                arr.push('S' + ' ' + k12hr + '-' + l12hr);
-            }
-
-            document.getElementById("sched1").value = arr;
-            // sched1.value = arr;
-
-        }
-    </script>
+        </script>
 
 
 
-    <!-- Django with Jquery para magload kapag nasaang current step na si students -->
+        <!-- Django with Jquery para magload kapag nasaang current step na si students -->
 
-    {% if current_user.addStatus == '' %}
-    <script>
-        // Content Update
-        document.querySelector("#step-" + 1).classList.remove("d-none");
-        const formStepCircle = document.querySelector('li[step="' + 1 + '"]');
-        formStepCircle.classList.remove("form-stepper-unfinished", "form-stepper-completed");
-        formStepCircle.classList.add("form-stepper-active");
-
-        // Header Update
-        formStepHeader.classList.remove("form-stepper-unfinished");
-        formStepHeader.classList.add("form-stepper-active", "form-stepper-completed");
-    </script>
-
-    {% elif current_user.addStatus == 'Wait for PIC Approval' %}
-    <script>
-        // Content Update
-        document.getElementById('disable').style.pointerEvents = 'none';
-        document.querySelector("#step-" + 1).classList.add("d-none");
-        document.querySelector("#step-" + 2).classList.remove("d-none");
-        const formStepCircle1 = document.querySelector('li[step="' + 2 + '"]');
-        formStepCircle1.classList.remove("form-stepper-unfinished", "form-stepper-completed");
-        formStepCircle1.classList.add("form-stepper-active");
-
-        // Header Update
-        formStepHeader1.classList.remove("form-stepper-unfinished");
-        formStepHeader1.classList.add("form-stepper-active", "form-stepper-completed");
-    </script>
-
-    {% elif current_user.addStatus == 'Wait for Department Head and Asst. Director for Academic Affairs Approval' %}
-    <script>
-        // Content Update
-        document.getElementById('disable').style.pointerEvents = 'none';
-        document.getElementById('disable0').style.pointerEvents = 'none';
-        document.querySelector("#step-" + 1).classList.add("d-none");
-        document.querySelector("#step-" + 2).classList.add("d-none");
-        document.querySelector("#step-" + 3).classList.remove("d-none");
-        const formStepCircle2 = document.querySelector('li[step="' + 3 + '"]');
-        formStepCircle2.classList.remove("form-stepper-unfinished", "form-stepper-completed");
-        formStepCircle2.classList.add("form-stepper-active");
-
-        // Header Update
-        const formStepHeader2 = document.querySelector('li[step="' + 2 + '"]');
-        formStepHeader2.classList.remove("form-stepper-unfinished");
-        formStepHeader2.classList.add("form-stepper-active");
-        const formStepHeader3 = document.querySelector('li[step="' + 3 + '"]');
-        formStepHeader3.classList.remove("form-stepper-unfinished");
-        formStepHeader3.classList.add("form-stepper-active");
-    </script>
-    {% endif %}
-
-
-
-
-    <!-- Multiform javascript -->
-    <script>
-        /**
-         * Define a function to navigate betweens form steps.
-         * It accepts one parameter. That is - step number.
-         */
-        const navigateToFormStep = (stepNumber) => {
-            /**
-             * Hide all form steps.
-             */
-            document.querySelectorAll(".form-step").forEach((formStepElement) => {
-                formStepElement.classList.add("d-none");
-            });
-            /**
-             * Mark all form steps as unfinished.
-             */
-            document.querySelectorAll(".form-stepper-list").forEach((formStepHeader) => {
-                formStepHeader.classList.add("form-stepper-unfinished");
-                formStepHeader.classList.remove("form-stepper-active", "form-stepper-completed");
-            });
-            /**
-             * Show the current form step (as passed to the function).
-             */
-            document.querySelector("#step-" + stepNumber).classList.remove("d-none");
-            /**
-             * Select the form step circle (progress bar).
-             */
-            const formStepCircle = document.querySelector('li[step="' + stepNumber + '"]');
-            /**
-             * Mark the current form step as active.
-             */
+        {% if current_user.addStatus == '' %}
+        <script>
+            // Content Update
+            document.querySelector("#step-" + 1).classList.remove("d-none");
+            const formStepCircle = document.querySelector('li[step="' + 1 + '"]');
             formStepCircle.classList.remove("form-stepper-unfinished", "form-stepper-completed");
             formStepCircle.classList.add("form-stepper-active");
+
+            // Header Update
+            formStepHeader.classList.remove("form-stepper-unfinished");
+            formStepHeader.classList.add("form-stepper-active", "form-stepper-completed");
+        </script>
+
+        {% elif current_user.addStatus == 'Wait for PIC Approval' %}
+        <script>
+            // Content Update
+            document.getElementById('disable').style.pointerEvents = 'none';
+            document.querySelector("#step-" + 1).classList.add("d-none");
+            document.querySelector("#step-" + 2).classList.remove("d-none");
+            const formStepCircle1 = document.querySelector('li[step="' + 2 + '"]');
+            formStepCircle1.classList.remove("form-stepper-unfinished", "form-stepper-completed");
+            formStepCircle1.classList.add("form-stepper-active");
+
+            // Header Update
+            formStepHeader1.classList.remove("form-stepper-unfinished");
+            formStepHeader1.classList.add("form-stepper-active", "form-stepper-completed");
+        </script>
+
+        {% elif current_user.addStatus == 'Wait for Department Head and Asst. Director for Academic Affairs Approval' %}
+        <script>
+            // Content Update
+            document.getElementById('disable').style.pointerEvents = 'none';
+            document.getElementById('disable0').style.pointerEvents = 'none';
+            document.querySelector("#step-" + 1).classList.add("d-none");
+            document.querySelector("#step-" + 2).classList.add("d-none");
+            document.querySelector("#step-" + 3).classList.remove("d-none");
+            const formStepCircle2 = document.querySelector('li[step="' + 3 + '"]');
+            formStepCircle2.classList.remove("form-stepper-unfinished", "form-stepper-completed");
+            formStepCircle2.classList.add("form-stepper-active");
+
+            // Header Update
+            const formStepHeader2 = document.querySelector('li[step="' + 2 + '"]');
+            formStepHeader2.classList.remove("form-stepper-unfinished");
+            formStepHeader2.classList.add("form-stepper-active");
+            const formStepHeader3 = document.querySelector('li[step="' + 3 + '"]');
+            formStepHeader3.classList.remove("form-stepper-unfinished");
+            formStepHeader3.classList.add("form-stepper-active");
+        </script>
+        {% endif %}
+
+
+
+
+        <!-- Multiform javascript -->
+        <script>
             /**
-             * Loop through each form step circles.
-             * This loop will continue up to the current step number.
-             * Example: If the current step is 3,
-             * then the loop will perform operations for step 1 and 2.
+             * Define a function to navigate betweens form steps.
+             * It accepts one parameter. That is - step number.
              */
-            for (let index = 0; index < stepNumber; index++) {
+            const navigateToFormStep = (stepNumber) => {
+                /**
+                 * Hide all form steps.
+                 */
+                document.querySelectorAll(".form-step").forEach((formStepElement) => {
+                    formStepElement.classList.add("d-none");
+                });
+                /**
+                 * Mark all form steps as unfinished.
+                 */
+                document.querySelectorAll(".form-stepper-list").forEach((formStepHeader) => {
+                    formStepHeader.classList.add("form-stepper-unfinished");
+                    formStepHeader.classList.remove("form-stepper-active", "form-stepper-completed");
+                });
+                /**
+                 * Show the current form step (as passed to the function).
+                 */
+                document.querySelector("#step-" + stepNumber).classList.remove("d-none");
                 /**
                  * Select the form step circle (progress bar).
                  */
-                const formStepCircle = document.querySelector('li[step="' + index + '"]');
+                const formStepCircle = document.querySelector('li[step="' + stepNumber + '"]');
                 /**
-                 * Check if the element exist. If yes, then proceed.
+                 * Mark the current form step as active.
                  */
-                if (formStepCircle) {
+                formStepCircle.classList.remove("form-stepper-unfinished", "form-stepper-completed");
+                formStepCircle.classList.add("form-stepper-active");
+                /**
+                 * Loop through each form step circles.
+                 * This loop will continue up to the current step number.
+                 * Example: If the current step is 3,
+                 * then the loop will perform operations for step 1 and 2.
+                 */
+                for (let index = 0; index < stepNumber; index++) {
                     /**
-                     * Mark the form step as completed.
+                     * Select the form step circle (progress bar).
                      */
-                    formStepCircle.classList.remove("form-stepper-unfinished", "form-stepper-active");
-                    formStepCircle.classList.add("form-stepper-completed");
+                    const formStepCircle = document.querySelector('li[step="' + index + '"]');
+                    /**
+                     * Check if the element exist. If yes, then proceed.
+                     */
+                    if (formStepCircle) {
+                        /**
+                         * Mark the form step as completed.
+                         */
+                        formStepCircle.classList.remove("form-stepper-unfinished", "form-stepper-active");
+                        formStepCircle.classList.add("form-stepper-completed");
+                    }
                 }
-            }
-        };
-        /**
-         * Select all form navigation buttons, and loop through them.
-         */
-        document.querySelectorAll(".btn-navigate-form-step").forEach((formNavigationBtn) => {
+            };
             /**
-             * Add a click event listener to the button.
+             * Select all form navigation buttons, and loop through them.
              */
-            formNavigationBtn.addEventListener("click", () => {
+            document.querySelectorAll(".btn-navigate-form-step").forEach((formNavigationBtn) => {
                 /**
-                 * Get the value of the step.
+                 * Add a click event listener to the button.
                  */
-                const stepNumber = parseInt(formNavigationBtn.getAttribute("step_number"));
-                /**
-                 * Call the function to navigate to the target form step.
-                 */
-                navigateToFormStep(stepNumber);
+                formNavigationBtn.addEventListener("click", () => {
+                    /**
+                     * Get the value of the step.
+                     */
+                    const stepNumber = parseInt(formNavigationBtn.getAttribute("step_number"));
+                    /**
+                     * Call the function to navigate to the target form step.
+                     */
+                    navigateToFormStep(stepNumber);
+                });
             });
-        });
-    </script>
+        </script>
 
 
-    <!-- Automatic Upload of images -->
-    <script>
-        $('#gradesfile').change(function() {
-            $('#gradesfileform').submit();
-        });
-    </script>
+        <!-- Automatic Upload of images -->
+        <script>
+            $('#gradesfile').change(function() {
+                $('#gradesfileform').submit();
+            });
+        </script>
 
 
-    <!-- Messages -->
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    {% if messages %} {% for message in messages %} {% if message.tags %}
-    <script>
-        Swal.fire({
-            text: '{{ message }}',
-        })
-    </script> {% endif %} {% endfor %} {% endif %}
-
-
+        <!-- Messages -->
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        {% if messages %} {% for message in messages %} {% if message.tags %}
+        <script>
+            Swal.fire({
+                text: '{{ message }}',
+            })
+        </script> {% endif %} {% endfor %} {% endif %}
 
 
 
 
-    <!-- HOUR WEEKLY SCHEDULE TESTING -->
-    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script>
-        (function($) {
-            'use strict';
 
-            var DayScheduleSelector = function(el, options) {
-                this.$el = $(el);
-                this.options = $.extend({}, DayScheduleSelector.DEFAULTS, options);
-                this.render();
-                this.attachEvents();
-                this.$selectingStart = null;
-            }
 
-            DayScheduleSelector.DEFAULTS = {
-                days: ['M', 'T', 'W', 'TH', 'F', 'S'], // Sun - Sat
-                startTime: '08:00', // HH:mm format
-                endTime: '21:00', // HH:mm format
-                interval: 30, // minutes
-                stringDays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-                template: '<div class="day-schedule-selector">' +
-                    '<table class="schedule-table">' +
-                    '<thead class="schedule-header"></thead>' +
-                    '<tbody class="schedule-rows"></tbody>' +
-                    '</table>' +
-                    '<div>'
-            };
+        <!-- HOUR WEEKLY SCHEDULE TESTING -->
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script>
+            (function($) {
+                'use strict';
 
-            /**
-             * Render the calendar UI
-             * @public
-             */
-            DayScheduleSelector.prototype.render = function() {
-                this.$el.html(this.options.template);
-                this.renderHeader();
-                this.renderRows();
-            };
-
-            /**
-             * Render the calendar header
-             * @public
-             */
-            DayScheduleSelector.prototype.renderHeader = function() {
-                var stringDays = this.options.stringDays,
-                    days = this.options.days,
-                    html = '';
-
-                $.each(days, function(i, _) {
-                    html += '<th>' + (stringDays[i] || '') + '</th>';
-                });
-                this.$el.find('.schedule-header').html('<tr><th></th>' + html + '</tr>');
-            };
-
-            /**
-             * Render the calendar rows, including the time slots and labels
-             * @public
-             */
-            DayScheduleSelector.prototype.renderRows = function() {
-                var start = this.options.startTime,
-                    end = this.options.endTime,
-                    interval = this.options.interval,
-                    days = this.options.days,
-                    $el = this.$el.find('.schedule-rows');
-
-                $.each(generateDates(start, end, interval), function(i, d) {
-                    var daysInARow = $.map(new Array(days.length), function(_, i) {
-                        return '<td class="time-slot" data-time="' + hhmm(d) + '" data-day="' + days[i] + '"></td>'
-                    }).join();
-
-                    $el.append('<tr><td class="time-label">' + hmmAmPm(d) + '</td>' + daysInARow + '</tr>');
-                });
-            };
-
-            /**
-             * Is the day schedule selector in selecting mode?
-             * @public
-             */
-            DayScheduleSelector.prototype.isSelecting = function() {
-                return !!this.$selectingStart;
-            }
-
-            DayScheduleSelector.prototype.select = function($slot) {
-                $slot.attr('data-selected', 'selected');
-            }
-            DayScheduleSelector.prototype.deselect = function($slot) {
-                $slot.removeAttr('data-selected');
-            }
-
-            function isSlotSelected($slot) {
-                return $slot.is('[data-selected]');
-            }
-
-            function isSlotSelecting($slot) {
-                return $slot.is('[data-selecting]');
-            }
-
-            /**
-             * Get the selected time slots given a starting and a ending slot
-             * @private
-             * @returns {Array} An array of selected time slots
-             */
-            function getSelection(plugin, $a, $b) {
-                var $slots, small, large, temp;
-                if (!$a.hasClass('time-slot') || !$b.hasClass('time-slot') ||
-                    ($a.data('day') != $b.data('day'))) {
-                    return [];
+                var DayScheduleSelector = function(el, options) {
+                    this.$el = $(el);
+                    this.options = $.extend({}, DayScheduleSelector.DEFAULTS, options);
+                    this.render();
+                    this.attachEvents();
+                    this.$selectingStart = null;
                 }
-                $slots = plugin.$el.find('.time-slot[data-day="' + $a.data('day') + '"]');
-                small = $slots.index($a);
-                large = $slots.index($b);
-                if (small > large) {
-                    temp = small;
-                    small = large;
-                    large = temp;
+
+                DayScheduleSelector.DEFAULTS = {
+                    days: ['M', 'T', 'W', 'TH', 'F', 'S'], // Sun - Sat
+                    startTime: '08:00', // HH:mm format
+                    endTime: '21:00', // HH:mm format
+                    interval: 30, // minutes
+                    stringDays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+                    template: '<div class="day-schedule-selector">' +
+                        '<table class="schedule-table">' +
+                        '<thead class="schedule-header"></thead>' +
+                        '<tbody class="schedule-rows"></tbody>' +
+                        '</table>' +
+                        '<div>'
+                };
+
+                /**
+                 * Render the calendar UI
+                 * @public
+                 */
+                DayScheduleSelector.prototype.render = function() {
+                    this.$el.html(this.options.template);
+                    this.renderHeader();
+                    this.renderRows();
+                };
+
+                /**
+                 * Render the calendar header
+                 * @public
+                 */
+                DayScheduleSelector.prototype.renderHeader = function() {
+                    var stringDays = this.options.stringDays,
+                        days = this.options.days,
+                        html = '';
+
+                    $.each(days, function(i, _) {
+                        html += '<th>' + (stringDays[i] || '') + '</th>';
+                    });
+                    this.$el.find('.schedule-header').html('<tr><th></th>' + html + '</tr>');
+                };
+
+                /**
+                 * Render the calendar rows, including the time slots and labels
+                 * @public
+                 */
+                DayScheduleSelector.prototype.renderRows = function() {
+                    var start = this.options.startTime,
+                        end = this.options.endTime,
+                        interval = this.options.interval,
+                        days = this.options.days,
+                        $el = this.$el.find('.schedule-rows');
+
+                    $.each(generateDates(start, end, interval), function(i, d) {
+                        var daysInARow = $.map(new Array(days.length), function(_, i) {
+                            return '<td class="time-slot" data-time="' + hhmm(d) + '" data-day="' + days[i] + '"></td>'
+                        }).join();
+
+                        $el.append('<tr><td class="time-label">' + hmmAmPm(d) + '</td>' + daysInARow + '</tr>');
+                    });
+                };
+
+                /**
+                 * Is the day schedule selector in selecting mode?
+                 * @public
+                 */
+                DayScheduleSelector.prototype.isSelecting = function() {
+                    return !!this.$selectingStart;
                 }
-                return $slots.slice(small, large + 1);
-            }
 
-            DayScheduleSelector.prototype.attachEvents = function() {
-                var plugin = this,
-                    options = this.options,
-                    $slots;
+                DayScheduleSelector.prototype.select = function($slot) {
+                    $slot.attr('data-selected', 'selected');
+                }
+                DayScheduleSelector.prototype.deselect = function($slot) {
+                    $slot.removeAttr('data-selected');
+                }
 
-                this.$el.on('click', '.time-slot', function() {
-                    var day = $(this).data('day');
-                    if (!plugin.isSelecting()) { // if we are not in selecting mode
-                        if (isSlotSelected($(this))) {
-                            plugin.deselect($(this));
-                        } else { // then start selecting
-                            plugin.$selectingStart = $(this);
-                            $(this).attr('data-selecting', 'selecting');
-                            plugin.$el.find('.time-slot').attr('data-disabled', 'disabled');
-                            plugin.$el.find('.time-slot[data-day="' + day + '"]').removeAttr('data-disabled');
-                        }
-                    } else { // if we are in selecting mode
-                        if (day == plugin.$selectingStart.data('day')) { // if clicking on the same day column
-                            // then end of selection
-                            plugin.$el.find('.time-slot[data-day="' + day + '"]').filter('[data-selecting]')
-                                .attr('data-selected', 'selected').removeAttr('data-selecting');
-                            plugin.$el.find('.time-slot').removeAttr('data-disabled');
-                            plugin.$el.trigger('selected.artsy.dayScheduleSelector', [getSelection(plugin, plugin.$selectingStart, $(this))]);
-                            plugin.$selectingStart = null;
-                        }
+                function isSlotSelected($slot) {
+                    return $slot.is('[data-selected]');
+                }
+
+                function isSlotSelecting($slot) {
+                    return $slot.is('[data-selecting]');
+                }
+
+                /**
+                 * Get the selected time slots given a starting and a ending slot
+                 * @private
+                 * @returns {Array} An array of selected time slots
+                 */
+                function getSelection(plugin, $a, $b) {
+                    var $slots, small, large, temp;
+                    if (!$a.hasClass('time-slot') || !$b.hasClass('time-slot') ||
+                        ($a.data('day') != $b.data('day'))) {
+                        return [];
                     }
-                });
-
-                this.$el.on('mouseover', '.time-slot', function() {
-                    var $slots, day, start, end, temp;
-                    if (plugin.isSelecting()) { // if we are in selecting mode
-                        day = plugin.$selectingStart.data('day');
-                        $slots = plugin.$el.find('.time-slot[data-day="' + day + '"]');
-                        $slots.filter('[data-selecting]').removeAttr('data-selecting');
-                        start = $slots.index(plugin.$selectingStart);
-                        end = $slots.index(this);
-                        if (end < 0) return; // not hovering on the same column
-                        if (start > end) {
-                            temp = start;
-                            start = end;
-                            end = temp;
-                        }
-                        $slots.slice(start, end + 1).attr('data-selecting', 'selecting');
+                    $slots = plugin.$el.find('.time-slot[data-day="' + $a.data('day') + '"]');
+                    small = $slots.index($a);
+                    large = $slots.index($b);
+                    if (small > large) {
+                        temp = small;
+                        small = large;
+                        large = temp;
                     }
-                });
-            };
+                    return $slots.slice(small, large + 1);
+                }
 
-            /**
-             * Serialize the selections
-             * @public
-             * @returns {Object} An object containing the selections of each day, e.g.
-             *    {
-             *      0: [],
-             *      1: [["15:00", "16:30"]],
-             *      2: [],
-             *      3: [],
-             *      5: [["09:00", "12:30"], ["15:00", "16:30"]],
-             *      6: []
-             *    }
-             */
-            DayScheduleSelector.prototype.serialize = function() {
-                var plugin = this,
-                    selections = {};
+                DayScheduleSelector.prototype.attachEvents = function() {
+                    var plugin = this,
+                        options = this.options,
+                        $slots;
 
-                $.each(this.options.days, function(_, v) {
-                    var start, end;
-                    start = end = false;
-                    selections[v] = [];
-                    plugin.$el.find(".time-slot[data-day='" + v + "']").each(function() {
-                        // Start of selection
-                        if (isSlotSelected($(this)) && !start) {
-                            start = $(this).data('time');
-                        }
-
-                        // End of selection (I am not selected, so select until my previous one.)
-                        if (!isSlotSelected($(this)) && !!start) {
-                            end = $(this).data('time');
-                        }
-
-                        // End of selection (I am the last one :) .)
-                        if (isSlotSelected($(this)) && !!start && $(this).is(".time-slot[data-day='" + v + "']:last")) {
-                            end = secondsSinceMidnightToHhmm(
-                                hhmmToSecondsSinceMidnight($(this).data('time')) + plugin.options.interval * 60);
-                        }
-
-                        if (!!end) {
-                            selections[v].push([start, end]);
-                            start = end = false;
+                    this.$el.on('click', '.time-slot', function() {
+                        var day = $(this).data('day');
+                        if (!plugin.isSelecting()) { // if we are not in selecting mode
+                            if (isSlotSelected($(this))) {
+                                plugin.deselect($(this));
+                            } else { // then start selecting
+                                plugin.$selectingStart = $(this);
+                                $(this).attr('data-selecting', 'selecting');
+                                plugin.$el.find('.time-slot').attr('data-disabled', 'disabled');
+                                plugin.$el.find('.time-slot[data-day="' + day + '"]').removeAttr('data-disabled');
+                            }
+                        } else { // if we are in selecting mode
+                            if (day == plugin.$selectingStart.data('day')) { // if clicking on the same day column
+                                // then end of selection
+                                plugin.$el.find('.time-slot[data-day="' + day + '"]').filter('[data-selecting]')
+                                    .attr('data-selected', 'selected').removeAttr('data-selecting');
+                                plugin.$el.find('.time-slot').removeAttr('data-disabled');
+                                plugin.$el.trigger('selected.artsy.dayScheduleSelector', [getSelection(plugin, plugin.$selectingStart, $(this))]);
+                                plugin.$selectingStart = null;
+                            }
                         }
                     });
-                })
-                return selections;
-            };
 
-            /**
-             * Deserialize the schedule and render on the UI
-             * @public
-             * @param {Object} schedule An object containing the schedule of each day, e.g.
-             *    {
-             *      0: [],
-             *      1: [["15:00", "16:30"]],
-             *      2: [],
-             *      3: [],
-             *      5: [["09:00", "12:30"], ["15:00", "16:30"]],
-             *      6: []
-             *    }
-             */
-            DayScheduleSelector.prototype.deserialize = function(schedule) {
-                var plugin = this,
-                    i;
-                $.each(schedule, function(d, ds) {
-                    var $slots = plugin.$el.find('.time-slot[data-day="' + d + '"]');
-                    $.each(ds, function(_, s) {
-                        for (i = 0; i < $slots.length; i++) {
-                            if ($slots.eq(i).data('time') >= s[1]) {
-                                break;
+                    this.$el.on('mouseover', '.time-slot', function() {
+                        var $slots, day, start, end, temp;
+                        if (plugin.isSelecting()) { // if we are in selecting mode
+                            day = plugin.$selectingStart.data('day');
+                            $slots = plugin.$el.find('.time-slot[data-day="' + day + '"]');
+                            $slots.filter('[data-selecting]').removeAttr('data-selecting');
+                            start = $slots.index(plugin.$selectingStart);
+                            end = $slots.index(this);
+                            if (end < 0) return; // not hovering on the same column
+                            if (start > end) {
+                                temp = start;
+                                start = end;
+                                end = temp;
                             }
-                            if ($slots.eq(i).data('time') >= s[0]) {
-                                plugin.select($slots.eq(i));
+                            $slots.slice(start, end + 1).attr('data-selecting', 'selecting');
+                        }
+                    });
+                };
+
+                /**
+                 * Serialize the selections
+                 * @public
+                 * @returns {Object} An object containing the selections of each day, e.g.
+                 *    {
+                 *      0: [],
+                 *      1: [["15:00", "16:30"]],
+                 *      2: [],
+                 *      3: [],
+                 *      5: [["09:00", "12:30"], ["15:00", "16:30"]],
+                 *      6: []
+                 *    }
+                 */
+                DayScheduleSelector.prototype.serialize = function() {
+                    var plugin = this,
+                        selections = {};
+
+                    $.each(this.options.days, function(_, v) {
+                        var start, end;
+                        start = end = false;
+                        selections[v] = [];
+                        plugin.$el.find(".time-slot[data-day='" + v + "']").each(function() {
+                            // Start of selection
+                            if (isSlotSelected($(this)) && !start) {
+                                start = $(this).data('time');
                             }
+
+                            // End of selection (I am not selected, so select until my previous one.)
+                            if (!isSlotSelected($(this)) && !!start) {
+                                end = $(this).data('time');
+                            }
+
+                            // End of selection (I am the last one :) .)
+                            if (isSlotSelected($(this)) && !!start && $(this).is(".time-slot[data-day='" + v + "']:last")) {
+                                end = secondsSinceMidnightToHhmm(
+                                    hhmmToSecondsSinceMidnight($(this).data('time')) + plugin.options.interval * 60);
+                            }
+
+                            if (!!end) {
+                                selections[v].push([start, end]);
+                                start = end = false;
+                            }
+                        });
+                    })
+                    return selections;
+                };
+
+                /**
+                 * Deserialize the schedule and render on the UI
+                 * @public
+                 * @param {Object} schedule An object containing the schedule of each day, e.g.
+                 *    {
+                 *      0: [],
+                 *      1: [["15:00", "16:30"]],
+                 *      2: [],
+                 *      3: [],
+                 *      5: [["09:00", "12:30"], ["15:00", "16:30"]],
+                 *      6: []
+                 *    }
+                 */
+                DayScheduleSelector.prototype.deserialize = function(schedule) {
+                    var plugin = this,
+                        i;
+                    $.each(schedule, function(d, ds) {
+                        var $slots = plugin.$el.find('.time-slot[data-day="' + d + '"]');
+                        $.each(ds, function(_, s) {
+                            for (i = 0; i < $slots.length; i++) {
+                                if ($slots.eq(i).data('time') >= s[1]) {
+                                    break;
+                                }
+                                if ($slots.eq(i).data('time') >= s[0]) {
+                                    plugin.select($slots.eq(i));
+                                }
+                            }
+                        })
+                    });
+                };
+
+                // DayScheduleSelector Plugin Definition
+                // =====================================
+
+                function Plugin(option) {
+                    return this.each(function() {
+                        var $this = $(this),
+                            data = $this.data('artsy.dayScheduleSelector'),
+                            options = typeof option == 'object' && option;
+
+                        if (!data) {
+                            $this.data('artsy.dayScheduleSelector', (data = new DayScheduleSelector(this, options)));
                         }
                     })
-                });
-            };
+                }
 
-            // DayScheduleSelector Plugin Definition
-            // =====================================
+                $.fn.dayScheduleSelector = Plugin;
 
-            function Plugin(option) {
-                return this.each(function() {
-                    var $this = $(this),
-                        data = $this.data('artsy.dayScheduleSelector'),
-                        options = typeof option == 'object' && option;
+                /**
+                 * Generate Date objects for each time slot in a day
+                 * @private
+                 * @param {String} start Start time in HH:mm format, e.g. "08:00"
+                 * @param {String} end End time in HH:mm format, e.g. "21:00"
+                 * @param {Number} interval Interval of each time slot in minutes, e.g. 30 (minutes)
+                 * @returns {Array} An array of Date objects representing the start time of the time slots
+                 */
+                function generateDates(start, end, interval) {
+                    var numOfRows = Math.ceil(timeDiff(start, end) / interval);
+                    return $.map(new Array(numOfRows), function(_, i) {
+                        // need a dummy date to utilize the Date object
+                        return new Date(new Date(2000, 0, 1, start.split(':')[0], start.split(':')[1]).getTime() + i * interval * 60000);
+                    });
+                }
 
-                    if (!data) {
-                        $this.data('artsy.dayScheduleSelector', (data = new DayScheduleSelector(this, options)));
-                    }
-                })
-            }
-
-            $.fn.dayScheduleSelector = Plugin;
-
-            /**
-             * Generate Date objects for each time slot in a day
-             * @private
-             * @param {String} start Start time in HH:mm format, e.g. "08:00"
-             * @param {String} end End time in HH:mm format, e.g. "21:00"
-             * @param {Number} interval Interval of each time slot in minutes, e.g. 30 (minutes)
-             * @returns {Array} An array of Date objects representing the start time of the time slots
-             */
-            function generateDates(start, end, interval) {
-                var numOfRows = Math.ceil(timeDiff(start, end) / interval);
-                return $.map(new Array(numOfRows), function(_, i) {
+                /**
+                 * Return time difference in minutes
+                 * @private
+                 */
+                function timeDiff(start, end) { // time in HH:mm format
                     // need a dummy date to utilize the Date object
-                    return new Date(new Date(2000, 0, 1, start.split(':')[0], start.split(':')[1]).getTime() + i * interval * 60000);
+                    return (new Date(2000, 0, 1, end.split(':')[0], end.split(':')[1]).getTime() -
+                        new Date(2000, 0, 1, start.split(':')[0], start.split(':')[1]).getTime()) / 60000;
+                }
+
+                /**
+                 * Convert a Date object to time in H:mm format with am/pm
+                 * @private
+                 * @returns {String} Time in H:mm format with am/pm, e.g. '9:30am'
+                 */
+                function hmmAmPm(date) {
+                    var hours = date.getHours(),
+                        minutes = date.getMinutes(),
+                        ampm = hours >= 12 ? 'pm' : 'am';
+                    return hours + ':' + ('0' + minutes).slice(-2) + ampm;
+                }
+
+                /**
+                 * Convert a Date object to time in HH:mm format
+                 * @private
+                 * @returns {String} Time in HH:mm format, e.g. '09:30'
+                 */
+                function hhmm(date) {
+                    var hours = date.getHours(),
+                        minutes = date.getMinutes();
+                    return ('0' + hours).slice(-2) + ':' + ('0' + minutes).slice(-2);
+                }
+
+                function hhmmToSecondsSinceMidnight(hhmm) {
+                    var h = hhmm.split(':')[0],
+                        m = hhmm.split(':')[1];
+                    return parseInt(h, 10) * 60 * 60 + parseInt(m, 10) * 60;
+                }
+
+                /**
+                 * Convert seconds since midnight to HH:mm string, and simply
+                 * ignore the seconds.
+                 */
+                function secondsSinceMidnightToHhmm(seconds) {
+                    var minutes = Math.floor(seconds / 60);
+                    return ('0' + Math.floor(minutes / 60)).slice(-2) + ':' +
+                        ('0' + (minutes % 60)).slice(-2);
+                }
+
+                // Expose some utility functions
+                window.DayScheduleSelector = {
+                    ssmToHhmm: secondsSinceMidnightToHhmm,
+                    hhmmToSsm: hhmmToSecondsSinceMidnight
+                };
+
+            })(jQuery);
+        </script>
+
+
+        <script>
+            (function($) {
+                $("#day-schedule").dayScheduleSelector({
+                    /*
+                    days: [1, 2, 3, 5, 6],
+                    interval: 15,
+                    startTime: '09:50',
+                    endTime: '21:06'
+                    */
                 });
-            }
-
-            /**
-             * Return time difference in minutes
-             * @private
-             */
-            function timeDiff(start, end) { // time in HH:mm format
-                // need a dummy date to utilize the Date object
-                return (new Date(2000, 0, 1, end.split(':')[0], end.split(':')[1]).getTime() -
-                    new Date(2000, 0, 1, start.split(':')[0], start.split(':')[1]).getTime()) / 60000;
-            }
-
-            /**
-             * Convert a Date object to time in H:mm format with am/pm
-             * @private
-             * @returns {String} Time in H:mm format with am/pm, e.g. '9:30am'
-             */
-            function hmmAmPm(date) {
-                var hours = date.getHours(),
-                    minutes = date.getMinutes(),
-                    ampm = hours >= 12 ? 'pm' : 'am';
-                return hours + ':' + ('0' + minutes).slice(-2) + ampm;
-            }
-
-            /**
-             * Convert a Date object to time in HH:mm format
-             * @private
-             * @returns {String} Time in HH:mm format, e.g. '09:30'
-             */
-            function hhmm(date) {
-                var hours = date.getHours(),
-                    minutes = date.getMinutes();
-                return ('0' + hours).slice(-2) + ':' + ('0' + minutes).slice(-2);
-            }
-
-            function hhmmToSecondsSinceMidnight(hhmm) {
-                var h = hhmm.split(':')[0],
-                    m = hhmm.split(':')[1];
-                return parseInt(h, 10) * 60 * 60 + parseInt(m, 10) * 60;
-            }
-
-            /**
-             * Convert seconds since midnight to HH:mm string, and simply
-             * ignore the seconds.
-             */
-            function secondsSinceMidnightToHhmm(seconds) {
-                var minutes = Math.floor(seconds / 60);
-                return ('0' + Math.floor(minutes / 60)).slice(-2) + ':' +
-                    ('0' + (minutes % 60)).slice(-2);
-            }
-
-            // Expose some utility functions
-            window.DayScheduleSelector = {
-                ssmToHhmm: secondsSinceMidnightToHhmm,
-                hhmmToSsm: hhmmToSecondsSinceMidnight
-            };
-
-        })(jQuery);
-    </script>
+                $("#day-schedule").on('selected.artsy.dayScheduleSelector', function(e, selected) {
+                    console.log(selected);
+                })
+                $("#day-schedule").data('artsy.dayScheduleSelector').deserialize({
+                    'F': [
+                        ['13:00', '16:30'],
+                    ],
+                    'TH': [
+                        ['07:30', '11:00'],
+                    ]
+                });
+            })($);
+        </script>
 
 
-    <script>
-        (function($) {
-            $("#day-schedule").dayScheduleSelector({
-                /*
-                days: [1, 2, 3, 5, 6],
-                interval: 15,
-                startTime: '09:50',
-                endTime: '21:06'
-                */
-            });
-            $("#day-schedule").on('selected.artsy.dayScheduleSelector', function(e, selected) {
-                console.log(selected);
-            })
-            $("#day-schedule").data('artsy.dayScheduleSelector').deserialize({
-                'F': [
-                    ['13:00', '16:30'],
-                ],
-                'TH': [
-                    ['07:30', '11:00'],
-                ]
-            });
-        })($);
-    </script>
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-36251023-1']);
+            _gaq.push(['_setDomainName', 'jqueryscript.net']);
+            _gaq.push(['_trackPageview']);
 
-
-    <script type="text/javascript">
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-36251023-1']);
-        _gaq.push(['_setDomainName', 'jqueryscript.net']);
-        _gaq.push(['_trackPageview']);
-
-        (function() {
-            var ga = document.createElement('script');
-            ga.type = 'text/javascript';
-            ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(ga, s);
-        })();
-    </script>
+            (function() {
+                var ga = document.createElement('script');
+                ga.type = 'text/javascript';
+                ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
 
 
 

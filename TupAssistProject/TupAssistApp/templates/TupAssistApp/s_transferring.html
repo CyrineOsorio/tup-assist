@@ -168,7 +168,7 @@
                                         <th>ACTION</th>
                                     </thead>
                                     <tbody>
-                                        {% for i in req %}
+                                        {% for i in transReq %}
                                         <tr>
                                             <td>{{i.id}}</td>
                                             <td>{{i.subject.subject}}-{{i.subject.description}}</td>
@@ -199,6 +199,13 @@
                                         </form>
                                     </tbody>
                                 </table>
+
+
+                                <br> {% if current_user.transferStatus == '' %}
+                                <form method="post" action="">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+                                </form> {% endif %}
 
 
                             </div>
@@ -396,6 +403,17 @@
             });
         });
     </script>
+
+
+
+    <!-- Messages -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {% if messages %} {% for message in messages %} {% if message.tags %}
+    <script>
+        Swal.fire({
+            text: '{{ message }}',
+        })
+    </script> {% endif %} {% endfor %} {% endif %}
 
 
 

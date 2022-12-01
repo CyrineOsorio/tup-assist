@@ -662,7 +662,7 @@ def s_drop_sub(request):
 
 def s_transferring(request):
     current_user = request.user
-    transReq = TransferringReq.objects.filter(studID=current_user.studID)
+    transReq = TransferringReq.objects.filter(studID_id=current_user.studID)
     trans = TransStatus.objects.get(TransName="Transfer")
     if current_user.department == "Department of Industrial Technology":
         current_user.department1 = "DIT"
@@ -715,7 +715,11 @@ def s_trans_sub(request):
         data = TransferringReq.objects.create(school_year=school_year, semester=semester, studID_id= current_user.studID, subject_id=subject, section=section, sched=schedule)
         data.save()
         messages.success(request, 'Subject Tranfer Request')
-        return redirect('/s_adding')
+        return redirect('/s_transferring')
+
+
+
+
 
 # PIC PAGES
 def p_profile(request):

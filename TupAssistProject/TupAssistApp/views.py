@@ -723,6 +723,16 @@ def s_del_sub_t(request, id):
     messages.success(request, 'Subject Deleted')
     return redirect('/s_transferring')
 
+def s_step1_submit_t(request):
+    current_user = request.user
+    if request.method =='POST':
+        data = registration.objects.get(username=current_user.username)
+        data.transferStatus = 'Wait for Teacher Approval'
+        data.save()
+        return redirect('/s_transferring')
+
+
+
 
 
 # PIC PAGES

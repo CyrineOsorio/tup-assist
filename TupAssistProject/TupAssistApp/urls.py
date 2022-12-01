@@ -108,6 +108,8 @@ urlpatterns = [
     path('s_transferring', views.s_transferring, name='s_transferring'),
     path('s_trans_sub', views.s_trans_sub, name='s_trans_sub'),
     path('s_del_sub_t/<int:id>', views.s_del_sub_t),
+    path('s_step1_submit_t', views.s_step1_submit_t, name="s_step1_submit_t"),
+    
     
     
     

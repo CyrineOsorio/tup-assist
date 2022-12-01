@@ -85,7 +85,10 @@
                     </div>
                 </div>
                 <div class="progressbox">
-                    <div class="lagayanNgStatus"></div>
+                    <div class="lagayanNgStatus">
+                        <p style="color: black; font-weight: bold;">Status:</p>
+                        <p style="text-align: center; color: #E2435E;">{{ current_user.transferStatus }}</p>
+                    </div>
                     <div class="isapanglagayan"></div>
                 </div>
 
@@ -206,7 +209,7 @@
 
 
                                 <br> {% if current_user.transferStatus == '' %}
-                                <form method="post" action="">
+                                <form method="post" action="/s_step1_submit_t">
                                     {% csrf_token %}
                                     <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
                                 </form> {% endif %}

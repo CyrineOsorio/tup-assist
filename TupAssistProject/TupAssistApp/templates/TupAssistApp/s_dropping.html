@@ -176,12 +176,12 @@
                                             <tr>
                                                 <td hidden><input type="text" class="form-control" name="school_year" value="{{trans.school_year}}"></td>
                                                 <td hidden><input type="text" class="form-control" name="semester" value="{{trans.semester}}"></td>
-                                                <td ><input type="checkbox" id="check{{forloop.counter}}"></td>
+                                                <td><input type="checkbox" id="check{{forloop.counter}}"></td>
                                                 <td><input type="text" class="form-control" id="subject" name="subject{{forloop.counter}}" value="{{i.course}}{{i.year}}{{i.semester}}{{i.shop}}{{i.is_lab}}" readonly></td>
                                                 <td>{{i.description}}</td>
-                                                <td><input type="text" class="form-control" id="schedule{{forloop.counter}}" name="schedule{{forloop.counter}}"  disabled></td>
-                                                <td><input type="text" class="form-control" id="section{{forloop.counter}}" name="section{{forloop.counter}}"  disabled></td>
-                                                <td><input type="email" class="form-control" id="email{{forloop.counter}}" name="email{{forloop.counter}}"  disabled></td>
+                                                <td><input type="text" class="form-control" id="schedule{{forloop.counter}}" name="schedule{{forloop.counter}}" disabled></td>
+                                                <td><input type="text" class="form-control" id="section{{forloop.counter}}" name="section{{forloop.counter}}" disabled></td>
+                                                <td><input type="email" class="form-control" id="email{{forloop.counter}}" name="email{{forloop.counter}}" disabled></td>
                                             </tr>
                                             {% endfor %}
                                             <tr>
@@ -190,7 +190,7 @@
                                                     <label for="reason">Reason:</label>
                                                     <textarea class="form-control" id="reason" name="reason" required></textarea>
                                                 </td>
-                                                
+
                                             </tr>
                                             <tr>
                                                 <td colspan="7"><button type="submit" class="btn btn-danger btn-lg btn-block" id="drop" disabled>Drop</button></td>
@@ -207,7 +207,7 @@
 
                         <!-- Step 2 Content, default hidden on page load. -->
                         <section id="step-2" class="form-step d-none">
-                            
+
                             {% if current_user.addStatus == '' %}
                             <div class="alert alert-danger" role="alert">
                                 Notice: Hintayin ang Teacher, Department Head and Assistant Director of Academic Affairs ma-approve ang iyong add request.
@@ -238,7 +238,7 @@
                                         <th>APPROVAL</th>
                                         <th>ENLISTED BY</th>
                                         <th>DATE & TIME</th>
-                                </thead>
+                                    </thead>
 
                                     <tbody>
                                         {% for i in dropReq %}
@@ -264,7 +264,6 @@
                             </div>
                             <div class="mt-3">
                                 <button class="button btn-navigate-form-step" type="button" step_number="1">Prev</button>
-                                <button class="button btn-navigate-form-step" type="button" step_number="3">Next</button>
                             </div>
                         </section>
 
@@ -336,8 +335,8 @@
             document.getElementById('drop').disabled = !this.checked;
         };
 
-        $('#checkAll').click(function () {    
-            $('input:checkbox').prop('checked', this.checked); 
+        $('#checkAll').click(function() {
+            $('input:checkbox').prop('checked', this.checked);
             $('#section{{forloop.counter}}').prop('disabled', !this.checked);
             $('#schedule{{forloop.counter}}').prop('disabled', !this.checked);
             $('#email{{forloop.counter}}').prop('disabled', !this.checked);
@@ -346,7 +345,6 @@
             document.getElementById('email{{forloop.counter}}').required = true;
             document.getElementById('drop').disabled = !this.checked;
         });
-
     </script>
     {% endfor %}
 
@@ -400,9 +398,9 @@
     </script>
 
 
-     <!-- Django with Jquery para magload kapag nasaang current step na si students -->
+    <!-- Django with Jquery para magload kapag nasaang current step na si students -->
 
-     <!-- Django with Jquery para magload kapag nasaang current step na si students -->
+    <!-- Django with Jquery para magload kapag nasaang current step na si students -->
 
     {% if current_user.dropStatus == '' %}
     <script>
@@ -416,7 +414,7 @@
         formStepHeader.classList.remove("form-stepper-unfinished");
         formStepHeader.classList.add("form-stepper-active", "form-stepper-completed");
     </script>
-   
+
     {% elif current_user.dropStatus != '' %}
     <script>
         document.getElementById('disable').style.pointerEvents = 'none';
@@ -430,7 +428,6 @@
         // Header Update
         formStepHeader1.classList.remove("form-stepper-unfinished");
         formStepHeader1.classList.add("form-stepper-active", "form-stepper-completed");
-    
     </script>
     {% endif %}
 

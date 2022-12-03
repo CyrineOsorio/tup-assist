@@ -208,27 +208,27 @@ def a_staff_create(request):
 
 def a_adding(request):
     current_user = request.user = request.user
-    test = registration.objects.filter(userType='Student')
+    req = AddingReq.objects.all()
     context = { 
-        'test': test,
+        'req': req,
         'current_user': current_user,
         }
     return render(request, 'TupAssistApp/a_adding.html', context)
 
 def a_dropping(request):
     current_user = request.user
-    test = registration.objects.filter(userType='Student')
+    req = DroppingReq.objects.all()
     context = {
-        'test': test,
+        'req': req,
         'current_user': current_user
         }
     return render(request, 'TupAssistApp/a_dropping.html', context)
 
 def a_transferring(request):
     current_user = request.user
-    test = registration.objects.filter(userType='Student')
+    req = TransferringReq.objects.all()
     context = { 
-        'test': test,
+        'req': req,
         'current_user': current_user
         }
     return render(request, 'TupAssistApp/a_transferring.html', context)

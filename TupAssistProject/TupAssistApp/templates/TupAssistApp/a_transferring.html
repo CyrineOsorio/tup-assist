@@ -107,32 +107,59 @@
 
 
             <div style="overflow-x:auto;">
-                <!--HTML code to display data in tabular format-->
-                <table class="table table-striped">
+
+
+                <table class="table table-bordered">
                     <thead>
-                        <th>NO.</th>
-                        <th>STUDENT ID</th>
+                        <th colspan="2" style="text-align: center;">STUDENT DETAILS</th>
+                        <th colspan="3" style="text-align: center;">SUBJECT TO BE TAKEN BY STUDENT</th>
+                        <th colspan="4" style="text-align: center;">PROGRAM-IN-CHARGE</th>
+                        <th colspan="4" style="text-align: center;">DEPARTMENT HEAD</th>
+                        <th colspan="3" style="text-align: center;">ASSIST. DIRECTOR OF ACADEMIC AFFAIRS</th>
+                    </thead>
+                    <thead>
+                        <th>SECTION</th>
                         <th>NAME</th>
-                        <th>EMAIL</th>
-                        <th style="text-align: center;">SECTION</th>
-                        <th>TRANSFER STATUS</th>
-                        <th style="text-align: center;">VIEW TRANSACTION</th>
+                        <th>SUBJECT</th>
+                        <th>SECTION</th>
+                        <th>SCHEDULE</th>
+                        <th>APPROVAL</th>
+                        <th>REMARK</th>
+                        <th>ENLISTED BY</th>
+                        <th>DATE & TIME</th>
+                        <th>APPROVAL</th>
+                        <th>REMARK</th>
+                        <th>ENDORSED BY</th>
+                        <th>DATE & TIME</th>
+                        <th>APPROVAL</th>
+                        <th>ADMIN NAME</th>
+                        <th>DATE & TIME</th>
                     </thead>
 
                     <tbody>
-                        {% for e in test %}
-                        <tr class="all {{e.id}} {{e.studID}} {{e.first_name}} {{e.last_name}} {{e.email}} {{e.course}} {{e.yrandsec}}">
-                            <td>{{e.id}}</td>
-                            <td>{{e.studID}}</td>
-                            <td>{{e.first_name}} {{e.last_name}}</td>
-                            <td>{{e.email}}</td>
-                            <td style="text-align: center;">{{e.course}}-{{e.yrandsec}}</td>
-                            <td>{{e.tranferStatus}}</td>
-                            <td class="action"><a href=""><i class="bi bi-eye"></i></a></td>
+                        {% for i in req %}
+                        <tr>
+                            <td>{{i.studID.course}}-{{i.studID.year}}{{i.studID.section}}</td>
+                            <td>{{i.studID.first_name}} {{i.studID.last_name}}</td>
+                            <td>{{i.subject.subject}}-{{i.subject.description}}</td>
+                            <td>{{i.section}}</td>
+                            <td>{{i.sched}}</td>
+                            <td>{{i.pic_is_approve}}</td>
+                            <td>{{i.pic_remark}}</td>
+                            <td>{{i.pic_name}}</td>
+                            <td>{{i.pic_date}}</td>
+                            <td>{{i.head_is_approve}}</td>
+                            <td>{{i.head_remark}}</td>
+                            <td>{{i.head_name}}</td>
+                            <td>{{i.head_date}}</td>
+                            <td>{{i.admin_approve}}</td>
+                            <td>{{i.admin_name}}</td>
+                            <td>{{i.admin_date}}</td>
                         </tr>
                         {% endfor %}
                     </tbody>
                 </table>
+
             </div>
         </div>
     </div>

@@ -63,6 +63,7 @@ def index(request):
         elif user is not None and user.userType == 'Program-in-charge':
             login(request, user)
             return redirect('/p_profile')
+            
         elif user is not None and user.userType == 'Teacher':
             login(request, user)
             return redirect('/t_profile')

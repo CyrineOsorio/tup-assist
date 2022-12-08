@@ -413,7 +413,8 @@ def s_adding(request):
     }
     else:
         context = {
-            'current_user': current_user
+            'current_user': current_user,
+            'sched': sched
         }
 
     return render(request, 'TupAssistApp/s_adding.html', context)
@@ -486,6 +487,7 @@ def s_dropping(request):
     current_user = request.user
     dropReq = DroppingReq.objects.filter(studID=current_user.studID)
     trans = TransStatus.objects.get(TransName="Drop")
+    sched = Schedule.objects.all()
     if current_user.department == "Department of Industrial Technology":
         current_user.department1 = "DIT"
         subs = Subjects.objects.filter( ((Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course__icontains=current_user.department1) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year=current_user.year) & Q(semester=trans.semester)))  ) 
@@ -521,7 +523,8 @@ def s_dropping(request):
     }
     else:
         context = {
-            'current_user': current_user
+            'current_user': current_user,
+            'sched': sched
         }
     return render(request, 'TupAssistApp/s_dropping.html', context)
 
@@ -666,6 +669,7 @@ def s_transferring(request):
     current_user = request.user
     transReq = TransferringReq.objects.filter(studID_id=current_user.studID)
     trans = TransStatus.objects.get(TransName="Transfer")
+    sched = Schedule.objects.all()
     if current_user.department == "Department of Industrial Technology":
         current_user.department1 = "DIT"
         subs = Subjects.objects.filter( ((Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course__icontains=current_user.department1) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year=current_user.year) & Q(semester=trans.semester)))  ) 
@@ -701,7 +705,8 @@ def s_transferring(request):
     }
     else:
         context = {
-            'current_user': current_user
+            'current_user': current_user,
+            'sched': sched
         }
     
     return render(request, 'TupAssistApp/s_transferring.html', context)

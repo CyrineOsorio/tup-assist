@@ -912,7 +912,6 @@ def t_edit_sub(request):
     if request.method =='POST':
         id = request.POST.get('id')   
         edit = DroppingReq.objects.get(id=id)
-        edit.subject = request.POST.get('subject')
         edit.section = request.POST.get('section')
         edit.sched = request.POST.get('sched')
         edit.subj_teacher_approve = request.POST.get('subj_teacher_approve')

@@ -848,7 +848,6 @@ def p_edit_sub(request):
     if request.method =='POST':
         id = request.POST.get('id')   
         edit = AddingReq.objects.get(id=id)
-        edit.subject = request.POST.get('subject')
         edit.section = request.POST.get('section')
         edit.sched = request.POST.get('sched')
         edit.pic_is_approve = request.POST.get('pic_is_approve')

@@ -258,6 +258,13 @@
                                             <td>{{i.admin_name}}</td>
                                             <td>{{i.admin_date}}</td>
                                         </tr>
+                                        <tr>
+                                            <td><label for="reason">Reason:</label></td>
+                                            <td colspan="13">
+                                                <textarea class="form-control" id="reason" name="reason" readonly>{{i.reason}}</textarea>
+                                            </td>
+
+                                        </tr>
                                         {% endfor %}
                                     </tbody>
                                 </table>

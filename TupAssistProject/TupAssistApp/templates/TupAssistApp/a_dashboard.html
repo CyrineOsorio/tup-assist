@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TUPC Registrar: Dashboard</title>
+    <title>TUPC Administrator: Dashboard</title>
 
 
 
@@ -179,67 +179,26 @@
                         <div class="col">
                             <label for="semester">Semester</label>
                             <select class="custom-select" name="semester" id="semester" required>
-                        <option selected disabled value="semester">semester</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        </select>
-                        </div>
-                        <div class="col">
-                            <label for="department">Department</label>
-                            <input type="text" class="form-control" name="department" id="department" required>
+                                <option selected disabled value="semester">semester</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
                         </div>
                         <div class="col">
                             <label for="button">.</label>
-                            <input type="submit" class="form-control" id="button" value="Add" required>
+                            <input type="submit" class="form-control" id="button" value="Update" required>
                         </div>
                     </div>
                 </form>
             </div>
 
-
             <!-- Viewing of Schedule -->
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="home-tab" data-toggle="tab" data-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Live View</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="profile-tab" data-toggle="tab" data-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Table</button>
-                </li>
-            </ul>
-
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <div style="overflow-x:auto; margin-bottom:2%;">
-                        <!--Defaul link: https://docs.google.com/spreadsheets/d/e/2PACX-1vTKXalt0LO2MbolP5HnRC-bgP8BAZHKEdd0yoUUoCIksyl4Qhn0femTlD8MWVU_pA/pubhtml?widget=true&amp;headers=false -->
-                        {% for e in sched %}
-                        <iframe src="{{e.gSheetLink}}" width="100%" height="500"></iframe> {% endfor %}
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                    <div style="overflow-x:auto; margin-bottom:2%;">
-                        <table class="table table-bordered">
-                            <thead>
-                                <th>NO.</th>
-                                <th>LINK</th>
-                                <th>SCHOOL YEAR</th>
-                                <th>SEMESTER</th>
-                                <th>DEPARTMENT</th>
-                            </thead>
-                            <tbody>
-                                {% for e in sched %}
-                                <tr>
-                                    <td>{{e.id}}</td>
-                                    <td>{{e.gSheetLink}}</td>
-                                    <td>{{e.school_year}}</td>
-                                    <td>{{e.semester}}</td>
-                                    <td>{{e.department}}</td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+            <div style="overflow-x:auto; margin-bottom:2%;">
+                <!--Defaul link: https://docs.google.com/spreadsheets/d/e/2PACX-1vTKXalt0LO2MbolP5HnRC-bgP8BAZHKEdd0yoUUoCIksyl4Qhn0femTlD8MWVU_pA/pubhtml?widget=true&amp;headers=false -->
+                {% for e in sched %}
+                <iframe src="{{e.gSheetLink}}" width="100%" height="500"></iframe> {% endfor %}
             </div>
+
 
         </div>
     </div>

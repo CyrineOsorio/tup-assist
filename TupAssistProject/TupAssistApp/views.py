@@ -99,11 +99,12 @@ def a_dashboard(request):
 
 def import_sched(request):
     if request.method=='POST': 
+        junk = Schedule.objects.all()
+        junk.delete()
         gSheetLink = request.POST.get('gSheetLink')
         school_year = request.POST.get('school_year')
         semester = request.POST.get('semester')
-        department  = request.POST.get('department')
-        data = Schedule.objects.create(gSheetLink = gSheetLink, school_year = school_year, semester = semester, department=department)
+        data = Schedule.objects.create(gSheetLink = gSheetLink, school_year = school_year, semester = semester)
         data.save()
         return redirect('/a_dashboard')
 

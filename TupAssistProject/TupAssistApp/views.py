@@ -1109,6 +1109,9 @@ def h_edit_sub1(request):
     if request.method =='POST':
         id = request.POST.get('id')   
         edit = DroppingReq.objects.get(id=id) 
+        edit.subj_teacher_approve = request.POST.get('subj_teacher_approve')
+        edit.subj_teacher_remark = request.POST.get('subj_teacher_remark')
+        edit.subj_teacher_name = request.POST.get('subj_teacher_name')
         edit.head_is_approve = request.POST.get('head_is_approve')
         edit.head_remark = request.POST.get('head_remark')
         edit.head_name = request.POST.get('head_name')

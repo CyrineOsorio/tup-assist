@@ -1052,7 +1052,43 @@ def h_adding_edit(request, studID):
     if current_user.department == "Department of Industrial Technology":
         department1 = "DIT"
         course1 = "BET-COET"
-        req = AddingReq.objects.filter(Q (studID_id=data.studID) & (Q(subject_course=department1) | (Q(subject_course=course1))))
+        req = AddingReq.objects.filter(Q (studID_id=data.studID) & (Q(subject_id__course=department1) | (Q(subject_id__course=course1))))
+        context = { 
+            'current_user': current_user,
+            'student_info': data,
+            'req': req,
+            'sched': sched
+            }
+    elif current_user.department == "Department of Information Education":
+        course1 = "BS-ICT"
+        req = AddingReq.objects.filter(Q(studID_id=data.studID) & (Q(subject_id__course=course1)))
+        context = { 
+            'current_user': current_user,
+            'student_info': data,
+            'req': req,
+            'sched': sched
+            }
+    elif current_user.department == "Department of Engineering":
+        course1 = "BSCE"
+        req = AddingReq.objects.filter(Q(studID_id=data.studID) & (Q(subject_id__course=course1)))
+        context = { 
+            'current_user': current_user,
+            'student_info': data,
+            'req': req,
+            'sched': sched
+            }
+    elif current_user.department == "Department of Math and Science":
+        department1 = "DMS"
+        req = AddingReq.objects.filter(Q(studID_id=data.studID) & (Q(subject_id__course=department1)))
+        context = { 
+            'current_user': current_user,
+            'student_info': data,
+            'req': req,
+            'sched': sched
+            }
+    elif current_user.department == "Department of Liberal Arts":
+        department1 = "DLA"
+        req = AddingReq.objects.filter(Q(studID_id=data.studID) & (Q(subject_id__course=department1)))
         context = { 
             'current_user': current_user,
             'student_info': data,

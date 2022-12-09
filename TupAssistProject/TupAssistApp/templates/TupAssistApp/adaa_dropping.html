@@ -74,53 +74,38 @@
             </div>
 
             <div class="filter">
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
                 <div class="row">
                     <div class="col">
-                        <select class="custom-select" name="program">
-                            <option value="all">Program</option>
-                            <option value="BET-COET">BET-COET</option>
-                            <option value="BET-ET">BET-ET</option>
-                            <option value="BET-CT">BET-CT</option>
-                        </select>
+                        <input type="text" class="form-control" name="program" id="program" placeholder="Program Ex. BET-COET">
                     </div>
                     <div class="col">
-                        <select class="custom-select" name="yearandsection">
-                            <option value="all">Year and Section</option>
-                            <option value="1A">1A</option>
-                            <option value="1B">1B</option>
-                            <option value="4A">4A</option>
-                            <option value="4B">4B</option>
-
-                        </select>
-                    </div>
-                    <div class="col">
-                        <button type="button" class="btn btn-primary">Reset</button>
+                        <input type="text" class="form-control" name="section" id="section" placeholder="Year and Section Ex. 4A">
                     </div>
                 </div>
             </div>
 
-
-            <div style="overflow-x:auto;">
+            <div style="overflow-x:auto;" id="table">
                 <!--HTML code to display data in tabular format-->
                 <table class="table table-striped">
                     <thead>
-                        <th>NO.</th>
                         <th>STUDENT ID</th>
                         <th>NAME</th>
                         <th>EMAIL</th>
-                        <th style="text-align: center;">SECTION</th>
+                        <th style="text-align: center;">PROGRAM</th>
+                        <th style="text-align: center;">YEAR & SECTION</th>
                         <th>DROP STATUS</th>
                         <th style="text-align: center;">VIEW TRANSACTION</th>
                     </thead>
 
                     <tbody>
                         {% for e in test %}
-                        <tr class="all {{e.id}} {{e.studID}} {{e.first_name}} {{e.last_name}} {{e.email}} {{e.course}} {{e.yrandsec}}">
-                            <td>{{e.id}}</td>
+                        <tr class="all {{e.id}} {{e.studID}} {{e.first_name}} {{e.last_name}} {{e.email}} {{e.course}} {{e.year}}{{e.section}}">
                             <td>{{e.studID}}</td>
                             <td>{{e.first_name}} {{e.last_name}}</td>
                             <td>{{e.email}}</td>
-                            <td style="text-align: center;">{{e.course}}-{{e.yrandsec}}</td>
+                            <td style="text-align: center;">{{e.course}}</td>
+                            <td style="text-align: center;">{{e.year}}{{e.section}}</td>
                             <td>{{e.dropStatus}}</td>
                             <td class="action"><a href="/adaa_dropping_view/{{e.studID}}"><i class="bi bi-eye"></i></a></td>
                         </tr>
@@ -139,19 +124,17 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 
     <script>
-        // Filter 
-        $(".filter select").on('change', function() {
-            var filters = $.map($(".filter select").toArray(), function(e) {
-                return $(e).val();
-            }).join(".");
-            $("tbody").find("tr").hide();
-            $("tbody").find("tr." + filters).show();
+        // Filter  inputs
+        var $rows = $('#table tbody tr');
+        $('#program, #section').on('input', function() {
+            var val1 = $.trim($('#program').val()).replace(/ +/g, ' ').toLowerCase();
+            var val2 = $.trim($('#section').val()).replace(/ +/g, ' ').toLowerCase();
 
-        });
-        // Reset
-        $('button').on('click', function() {
-            $(".filter select").val($("option:first").val());
-            $("tbody").find("tr").show();
+            $rows.show().filter(function() {
+                var text1 = $(this).find('td:nth-child(4)').text().replace(/\s+/g, ' ').toLowerCase();
+                var text2 = $(this).find('td:nth-child(5)').text().replace(/\s+/g, ' ').toLowerCase();
+                return !~text1.indexOf(val1) || !~text2.indexOf(val2);
+            }).hide();
         });
     </script>
 

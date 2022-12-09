@@ -783,7 +783,7 @@ def changepicinfo(request):
 
 def p_adding(request):
     current_user = request.user
-    test = registration.objects.filter(Q(course=current_user.course) & Q(userType='Student'))
+    test = registration.objects.filter(Q(course=current_user.course) & Q(userType='Student') & ~Q(addStatus=''))
     context = { 
         'test': test,
         'current_user': current_user
@@ -907,8 +907,6 @@ def t_requests(request):
     return render(request, 'TupAssistApp/t_requests.html', context)
 
 def t_edit_sub(request):
-    studID = request.POST.get('studID')
-    data = registration.objects.get(studID=studID)
     if request.method =='POST':
         id = request.POST.get('id')   
         edit = DroppingReq.objects.get(id=id)
@@ -920,7 +918,7 @@ def t_edit_sub(request):
         edit.subj_teacher_date = datetime.now()
         edit.save()
         messages.success(request, 'Request Successfully Edited!')
-        return redirect('/t_edit_sub')
+        return redirect('/t_requests')
 
 
 
@@ -1013,8 +1011,8 @@ def sub_cvs(request):
 
 def h_adding(request):
     current_user = request.user
-    if current_user.department == "Department of Information Technology" or current_user.department == "Department of Engineering" or current_user.department == "Department of Information Education":
-        test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student'))
+    if current_user.department == "Department of Industrial Technology" or current_user.department == "Department of Engineering" or current_user.department == "Department of Information Education":
+        test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student') & Q(addStatus='Wait for Department Head and Asst. Director for Academic Affairs Approval'))
         context = { 
             'test': test,
             'current_user': current_user
@@ -1056,8 +1054,8 @@ def h_edit_sub(request):
         
 def h_dropping(request):
     current_user = request.user
-    if current_user.department == "Department of Information Technology" or current_user.department == "Department of Engineering" or current_user.department == "Department of Information Education":
-        test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student'))
+    if current_user.department == "Department of Industrial Technology" or current_user.department == "Department of Engineering" or current_user.department == "Department of Information Education":
+        test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student') & Q(dropStatus='Wait for Department Head and Asst. Director for Academic Affairs Approval'))
         context = { 
             'test': test,
             'current_user': current_user
@@ -1100,8 +1098,8 @@ def h_edit_sub1(request):
 
 def h_transferring(request):
     current_user = request.user
-    if current_user.department == "Department of Information Technology" or current_user.department == "Department of Engineering" or current_user.department == "Department of Information Education":
-        test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student'))
+    if current_user.department == "Department of Industrial Technology" or current_user.department == "Department of Engineering" or current_user.department == "Department of Information Education":
+        test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student') & Q(transferStatus='Wait for Department Head and Asst. Director for Academic Affairs Approval'))
         context = { 
             'test': test,
             'current_user': current_user

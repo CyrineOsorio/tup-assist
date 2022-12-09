@@ -122,12 +122,12 @@
                             <div class="modal-body">
                                 <div class="form-group" hidden>
                                     <label for="studID_id">Student ID and Transaction No.</label>
-                                    <input type="number" class="form-control" id="studID" name="studID" value="{{i.studID}}">
+                                    <input type="number" class="form-control" id="studID" name="studID" value="{{i.studID_id}}">
                                     <input type="number" class="form-control" id="id" name="id" value="{{i.id}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="studID">Student</label>
-                                    <input type="text" class="form-control" id="{{i.studID}}" name="studID" value="{{i.studID}}" readonly>
+                                    <input type="text" class="form-control" id="" name="email" value="{{i.studID.first_name}} {{i.studID.last_name}}" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label for="subject">Subject</label>

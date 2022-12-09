@@ -80,7 +80,7 @@ urlpatterns = [
     path('p_add_sub', views.p_add_sub, name='p_add_sub'),
     path('p_step1_submit', views.p_step1_submit, name='p_step1_submit'),
     path('p_requests/', views.p_requests, name='p_requests'),
-    path('p_edit_sub', views.p_edit_sub, name='p_edit_sub'),
+    path('p_edit_sub1', views.p_edit_sub1, name='p_edit_sub1'),
 
 
     # teacher

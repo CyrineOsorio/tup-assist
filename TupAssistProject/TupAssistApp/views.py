@@ -892,7 +892,7 @@ def p_requests(request):
     }
     return render(request, 'TupAssistApp/p_requests.html', context)
 
-def p_edit_sub(request):
+def p_edit_sub1(request):
     if request.method =='POST':
         id = request.POST.get('id')   
         edit = DroppingReq.objects.get(id=id)
@@ -1048,14 +1048,24 @@ def h_adding(request):
 def h_adding_edit(request, studID):
     current_user = request.user
     data = registration.objects.get(studID=studID)
-    req = AddingReq.objects.filter(studID_id=data.studID)
     sched = Schedule.objects.all()
-    context = { 
-        'current_user': current_user,
-        'student_info': data,
-        'req': req,
-        'sched': sched
-        }
+    if current_user.department == "Department of Industrial Technology":
+        department1 = "DIT"
+        course1 = "BET-COET"
+        req = AddingReq.objects.filter(Q (studID_id=data.studID) & (Q(subject_course=department1) | (Q(subject_course=course1))))
+        context = { 
+            'current_user': current_user,
+            'student_info': data,
+            'req': req,
+            'sched': sched
+            }
+    else: 
+        context = { 
+            'current_user': current_user,
+            'student_info': data,
+            'req': req,
+            'sched': sched
+            }
     return render(request, 'TupAssistApp/h-adding-edit.html', context)
 
 def h_edit_sub(request):

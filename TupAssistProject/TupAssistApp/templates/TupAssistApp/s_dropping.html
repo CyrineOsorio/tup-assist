@@ -179,9 +179,9 @@
                                                 <td><input type="checkbox" id="check{{forloop.counter}}"></td>
                                                 <td><input type="text" class="form-control" id="subject" name="subject{{forloop.counter}}" value="{{i.course}}{{i.year}}{{i.semester}}{{i.shop}}{{i.is_lab}}" readonly></td>
                                                 <td>{{i.description}}</td>
-                                                <td><input type="text" class="form-control" id="schedule{{forloop.counter}}" name="schedule{{forloop.counter}}" disabled></td>
-                                                <td><input type="text" class="form-control" id="section{{forloop.counter}}" name="section{{forloop.counter}}" disabled></td>
-                                                <td><input type="email" class="form-control" id="email{{forloop.counter}}" name="email{{forloop.counter}}" disabled></td>
+                                                <td><input type="text" class="form-control" id="schedule{{forloop.counter}}" name="schedule{{forloop.counter}}" placeholder="Ex. M 9:00 AM-11:00 AM" disabled></td>
+                                                <td><input type="text" class="form-control" id="section{{forloop.counter}}" name="section{{forloop.counter}}" placeholder="Ex. BET-COET-4B" disabled></td>
+                                                <td><input type="email" class="form-control" id="email{{forloop.counter}}" name="email{{forloop.counter}}" placeholder="Ex. sample@gsfe.tupcavite.edu.ph" disabled></td>
                                             </tr>
                                             {% endfor %}
                                             <tr>

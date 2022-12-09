@@ -240,7 +240,6 @@ def a_transferring(request):
 
 
 # ADAA PAGES
-
 def adaa_profile(request):
     current_user = request.user
     form = PasswordChangeForm(current_user)

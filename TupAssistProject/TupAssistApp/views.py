@@ -907,8 +907,8 @@ def t_requests(request):
     return render(request, 'TupAssistApp/t_requests.html', context)
 
 def t_edit_sub(request):
-    studID_id = request.POST.get('studID_id')
-    data = registration.objects.get(studID=studID_id)
+    studID = request.POST.get('studID')
+    data = registration.objects.get(studID=studID)
     if request.method =='POST':
         id = request.POST.get('id')   
         edit = DroppingReq.objects.get(id=id)

@@ -1121,7 +1121,7 @@ def h_edit_sub1(request):
 def h_transferring(request):
     current_user = request.user
     if current_user.department == "Department of Industrial Technology" or current_user.department == "Department of Engineering" or current_user.department == "Department of Information Education":
-        test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student') & Q(transferStatus='Wait for Department Head and Asst. Director for Academic Affairs Approval'))
+        test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student') & Q(transferStatus='Wait for Teacher, Department Head and Asst. Director for Academic Affairs Approval'))
         context = { 
             'test': test,
             'current_user': current_user

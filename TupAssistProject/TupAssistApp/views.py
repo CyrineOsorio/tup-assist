@@ -1232,10 +1232,57 @@ def h_transferring_edit(request, studID):
     data = registration.objects.get(studID=studID)
     req = TransferringReq.objects.filter(studID_id=data.studID)
     sched = Schedule.objects.all()
-    context = { 
-        'current_user': current_user,
-        'student_info': data,
-        'req': req,
-        'sched': sched
-        }
+    if current_user.department == "Department of Industrial Technology":
+        department1 = "DIT"
+        course1 = "BET-COET"
+        req = TransferringReq.objects.filter(Q (studID_id=data.studID) & (Q(subject_id__course=department1) | (Q(subject_id__course=course1))))
+        context = { 
+            'current_user': current_user,
+            'student_info': data,
+            'req': req,
+            'sched': sched
+            }
+    elif current_user.department == "Department of Information Education":
+        course1 = "BS-ICT"
+        req = TransferringReq.objects.filter(Q(studID_id=data.studID) & (Q(subject_id__course=course1)))
+        context = { 
+            'current_user': current_user,
+            'student_info': data,
+            'req': req,
+            'sched': sched
+            }
+    elif current_user.department == "Department of Engineering":
+        course1 = "BSCE"
+        req = TransferringReq.objects.filter(Q(studID_id=data.studID) & (Q(subject_id__course=course1)))
+        context = { 
+            'current_user': current_user,
+            'student_info': data,
+            'req': req,
+            'sched': sched
+            }
+    elif current_user.department == "Department of Math and Science":
+        department1 = "DMS"
+        req = TransferringReq.objects.filter(Q(studID_id=data.studID) & (Q(subject_id__course=department1)))
+        context = { 
+            'current_user': current_user,
+            'student_info': data,
+            'req': req,
+            'sched': sched
+            }
+    elif current_user.department == "Department of Liberal Arts":
+        department1 = "DLA"
+        req = TransferringReq.objects.filter(Q(studID_id=data.studID) & (Q(subject_id__course=department1)))
+        context = { 
+            'current_user': current_user,
+            'student_info': data,
+            'req': req,
+            'sched': sched
+            }
+    else: 
+        context = { 
+            'current_user': current_user,
+            'student_info': data,
+            'req': req,
+            'sched': sched
+            }
     return render(request, 'TupAssistApp/h-transferring-edit.html', context)

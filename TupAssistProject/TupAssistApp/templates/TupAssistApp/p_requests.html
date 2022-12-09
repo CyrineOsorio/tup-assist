@@ -1,0 +1,198 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TUPC Administration: All Subjects</title>
+
+
+
+    <!--BOOTSTRAP-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <!--CSS Custom -->
+    <link rel="stylesheet" href="{%static 'css/t_requests.css'%}">
+
+    <!--FONTS-->
+    <link rel="stylesheet" href="../../static/css/fonts.css">
+
+    <!--ICONS-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+    <link rel="icon" href="../../static/images/tuplogo.png">
+
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg" id="navbarnavbar">
+        <div class="navbarLagayan">
+            <img src="../../static/images/tuplogo.png" alt="TUPLogo.png" width="30" height="30">
+            <a class="nav-link" href="{%url 'TupAssistApp:t_profile'%}">Technological University of the Philippines - <span style="color: #E2435E; font-weight: 500;"> Assist</span></a>
+            <div class="lagayanNgButton">
+                <button class="navbar-toggler navbar-light" type="button" style="background-color: transparent;" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+            </div>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
+
+            <form class="d-flex">
+                <ul class="navbar-nav mr-auto" id="center">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{%url 'TupAssistApp:p_profile'%}" id="">Profile<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{%url 'TupAssistApp:p_adding'%}" id="">Adding</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{%url 'TupAssistApp:p_requests'%}" id="requests">Requests<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{%url 'TupAssistApp:logout'%}" id="logoutbutton">Logout</a>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </nav>
+
+    <div class="bg-container">
+        <div class="welcome">
+            <p>Welcome, {{ current_user.userType }}!</p>
+            <p>{{ current_user.email }}</p>
+        </div>
+
+        <div class="content">
+            <h1>Drop Requests:</h1>
+
+
+            <div style="overflow-x: scroll;">
+                <table class="table table-bordered">
+                    <thead>
+                        <thead>
+                            <th colspan="5" style="text-align: center;">SUBJECT TO BE TAKEN BY STUDENT</th>
+                            <th colspan="5" style="text-align: center;">TEACHER</th>
+                        </thead>
+                        <thead>
+                            <th>STUDENT</th>
+                            <th>SUBJECT</th>
+                            <th>SECTION</th>
+                            <th>SCHEDULE</th>
+                            <th>REASON</th>
+                            <th>APPROVAL</th>
+                            <th>REMARK</th>
+                            <th>ENLISTED BY</th>
+                            <th>DATE & TIME</th>
+                            <th>ACTION</th>
+                        </thead>
+                        <tbody>
+                            {% for i in req %}
+                            <tr>
+                                <td>{{i.studID}}</td>
+                                <td>{{i.subject.subject}}-{{i.subject.description}}</td>
+                                <td>{{i.section}}</td>
+                                <td>{{i.sched}}</td>
+                                <td>{{i.reason}}</td>
+                                <td>{{i.subj_teacher_approve}}</td>
+                                <td>{{i.subj_teacher_remark}}</td>
+                                <td>{{i.subj_teacher_name}}</td>
+                                <td>{{i.subj_teacher_date}}</td>
+                                <td><a class="btn btn-primary" data-toggle="modal" data-target="#editReq{{i.id}}">Edit</a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                </table>
+            </div>
+
+
+            <!-- EDIT REQUESTS -->
+            {% for i in req %}
+            <div class="modal fade" id="editReq{{i.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">{{i.subject}}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form action="/t_edit_sub" method="post">
+                            {% csrf_token %}
+                            <div class="modal-body">
+                                <div class="form-group" hidden>
+                                    <label for="studID_id">Student ID and Transaction No.</label>
+                                    <input type="number" class="form-control" id="studID" name="studID" value="{{i.studID_id}}">
+                                    <input type="number" class="form-control" id="id" name="id" value="{{i.id}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="studID">Student</label>
+                                    <input type="text" class="form-control" id="" name="email" value="{{i.studID.first_name}} {{i.studID.last_name}}" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="subject">Subject</label>
+                                    <input type="text" class="form-control" id="subject" name="subject" value="{{i.subject.subject}}-{{i.subject.description}}" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="section">Section</label>
+                                    <input type="text" class="form-control" id="section" name="section" value="{{i.section}}" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="sched">Schedule</label>
+                                    <input type="text" class="form-control" id="sched" name="sched" value="{{i.sched}}" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="subj_teacher_approve">Approval</label>
+                                    <select class="custom-select" id="subj_teacher_approve" name="subj_teacher_approve" value="{{i.subj_teacher_approve}}">
+                                        <option selected disabled>Choose...</option>
+                                        <option value="Approve">Approve</option>
+                                        <option value="Decline">Decline</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="subj_teacher_remark">Remark</label>
+                                    <input type="text" class="form-control" id="subj_teacher_remark" name="subj_teacher_remark" value="{{i.subj_teacher_remark}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="subj_teacher_name">Enlisted by:</label>
+                                    <input type="text" class="form-control" id="subj_teacher_name" name="subj_teacher_name" value="{{i.subj_teacher_name}}" readonly>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+
+    <!--JAVASCRIPT-->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+
+    <!-- Messages -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {% if messages %} {% for message in messages %} {% if message.tags %}
+    <script>
+        Swal.fire({
+            text: '{{ message }}',
+        })
+    </script> {% endif %} {% endfor %} {% endif %}
+
+
+</body>
+
+</html>

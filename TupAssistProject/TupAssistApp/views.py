@@ -591,73 +591,73 @@ def s_drop_sub(request):
             data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject1, section=section1, sched=schedule1, subj_teacher_name=teacher1, reason=reason, school_year=school_year, semester=semester)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
-            data1.dropStatus = 'Wait for Teacher Approval'
+            data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'
             data1.save()
         if subject2 and section2 and schedule2 !='':
             data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject2, section=section2, sched=schedule2, subj_teacher_name=teacher2, reason=reason)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
-            data1.dropStatus = 'Wait for Teacher Approval'
+            data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'
             data1.save()
         if subject3 and section3 and schedule3 !='':
             data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject3, section=section3, sched=schedule3, subj_teacher_name=teacher3, reason=reason)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
-            data1.dropStatus = 'Wait for Teacher Approval'
+            data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'
             data1.save()
         if subject4 and section4 and schedule4 !='':
             data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject4, section=section4, sched=schedule4, subj_teacher_name=teacher4, reason=reason)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
-            data1.dropStatus = 'Wait for Teacher Approval'
+            data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'
             data1.save()
         if subject5 and section5 and schedule5 !='':
             data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject5, section=section5, sched=schedule5, subj_teacher_name=teacher5, reason=reason)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
-            data1.dropStatus = 'Wait for Teacher Approval'
+            data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'
             data1.save()
         if subject6 and section6 and schedule6 !='':
             data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject6, section=section6, sched=schedule6, subj_teacher_name=teacher6, reason=reason)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
-            data1.dropStatus = 'Wait for Teacher Approval'
+            data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'
             data1.save()
         if subject7 and section7 and schedule7 !='':
             data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject7, section=section7, sched=schedule7, subj_teacher_name=teacher7, reason=reason)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
-            data1.dropStatus = 'Wait for Teacher Approval'
+            data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'
             data1.save()
         if subject8 and section8 and schedule8 !='':
             data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject8, section=section8, sched=schedule8, subj_teacher_name=teacher8, reason=reason)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
-            data1.dropStatus = 'Wait for Teacher Approval'
+            data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'
             data1.save()
         if subject9 and section9 and schedule9 !='':
             data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject9, section=section9, sched=schedule9, subj_teacher_name=teacher9, reason=reason)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
-            data1.dropStatus = 'Wait for Teacher Approval'
+            data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'
             data1.save()
         if subject10 and section10 and schedule10 !='':
             data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject10, section=section10, sched=schedule10, subj_teacher_name=teacher10, reason=reason)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
-            data1.dropStatus = 'Wait for Teacher Approval'
+            data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'
             data1.save()
         if subject11 and section11 and schedule11 !='':
             data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject11, section=section11, sched=schedule11, subj_teacher_name=teacher11, reason=reason)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
-            data1.dropStatus = 'Wait for Teacher Approval'
+            data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'
             data1.save()
         if subject12 and section12 and schedule12 !='':
             data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject12, section=section12, sched=schedule12, subj_teacher_name=teacher12, reason=reason)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
-            data1.dropStatus = 'Wait for Teacher Approval'
+            data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'
             data1.save()
 
         messages.success(request, 'Subject to Drop Successfully Request Wait for the Teacher Approval.')
@@ -884,8 +884,30 @@ def p_step1_submit(request):
         data.addStatus = 'Wait for Department Head and Asst. Director for Academic Affairs Approval'
         data.save()
         return redirect('/p_adding_edit/'+ str(data.studID))
-        
 
+def p_requests(request):
+    current_user = request.user
+    req = DroppingReq.objects.filter(subj_teacher_name=current_user.email)
+    context = {
+        'current_user': current_user,
+        'req': req,
+    }
+    return render(request, 'TupAssistApp/p_requests.html', context)
+
+def p_edit_sub(request):
+    if request.method =='POST':
+        id = request.POST.get('id')   
+        edit = DroppingReq.objects.get(id=id)
+        edit.section = request.POST.get('section')
+        edit.sched = request.POST.get('sched')
+        edit.subj_teacher_approve = request.POST.get('subj_teacher_approve')
+        edit.subj_teacher_remark = request.POST.get('subj_teacher_remark')
+        edit.subj_teacher_name = request.POST.get('subj_teacher_name')
+        edit.subj_teacher_date = datetime.now()
+        edit.save()
+        messages.success(request, 'Request Successfully Edited!')
+        return redirect('/p_requests')
+        
 
 #  TEACHER PAGES
 def t_profile(request):
@@ -1055,7 +1077,7 @@ def h_edit_sub(request):
 def h_dropping(request):
     current_user = request.user
     if current_user.department == "Department of Industrial Technology" or current_user.department == "Department of Engineering" or current_user.department == "Department of Information Education":
-        test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student') & Q(dropStatus='Wait for Department Head and Asst. Director for Academic Affairs Approval'))
+        test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student') & Q(dropStatus='Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'))
         context = { 
             'test': test,
             'current_user': current_user
@@ -1124,5 +1146,3 @@ def h_transferring_edit(request, studID):
         'sched': sched
         }
     return render(request, 'TupAssistApp/h-transferring-edit.html', context)
-
-

@@ -1127,7 +1127,7 @@ def h_dropping(request):
             'current_user': current_user
             }
     else:
-        test = registration.objects.filter(userType='Student')
+        test = registration.objects.filter( Q(userType='Student') & Q(dropStatus='Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'))
         context = { 
             'test': test,
             'current_user': current_user
@@ -1220,7 +1220,7 @@ def h_transferring(request):
             'current_user': current_user
             }
     else:
-        test = registration.objects.filter(userType='Student')
+        test = registration.objects.filter(Q(userType='Student') & Q(transferStatus='Wait for Teacher, Department Head and Asst. Director for Academic Affairs Approval'))
         context = { 
             'test': test,
             'current_user': current_user

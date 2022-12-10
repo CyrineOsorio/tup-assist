@@ -150,8 +150,8 @@ MESSAGE_TAGS = {
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'tupaos.cavite@gmail.com'
-EMAIL_HOST_PASSWORD = 'hqubqxsrqfujykzv'
+EMAIL_HOST_USER = 'tupassist@gmail.com'
+EMAIL_HOST_PASSWORD = ''
 
 
 

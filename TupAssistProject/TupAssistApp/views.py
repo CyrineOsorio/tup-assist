@@ -27,9 +27,9 @@ from itertools import chain
 # filter "AND,OR,NOT"
 from django.db.models import Q
 
-from django.contrib import messages
+
+# Email
 from django.core.mail import send_mail
-from django.shortcuts import render, redirect
 from django.conf import settings
 
 # Create your views here.
@@ -734,6 +734,8 @@ def s_step1_submit_t(request):
         data = registration.objects.get(username=current_user.username)
         data.transferStatus = 'Wait for Teacher Approval'
         data.save()
+        # send_mail(subject, 
+        #     message1, settings.EMAIL_HOST_USER , [email], fail_silently=False)
         return redirect('/s_transferring')
 
 

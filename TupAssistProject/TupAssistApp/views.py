@@ -357,6 +357,31 @@ def adaa_transferring(request):
         }
     return render(request, 'TupAssistApp/adaa_transferring.html', context)
 
+def adaa_transferring_view(request, studID):
+    current_user = request.user
+    data = registration.objects.get(studID=studID)
+    req = TransferringReq.objects.filter(studID=data.studID)
+    context = { 
+        'req': req,
+        'current_user': current_user,
+        'student_info': data,
+        }
+    return render(request, 'TupAssistApp/adaa_transferring_view.html', context)
+
+def adaa_transferring_approve(request):
+    studID = request.POST.get('studID')
+    admin_name = request.POST.get('admin_name')
+    admin_date = datetime.now()
+    data = registration.objects.get(studID=studID)
+    if request.method =='POST':  
+        TransferringReq.objects.filter(studID_id=studID).update(admin_approve = 'Approve')
+        TransferringReq.objects.filter(studID_id=studID).update(admin_name = admin_name)
+        TransferringReq.objects.filter(studID_id=studID).update(admin_date = admin_date)
+        edit1 = registration.objects.get(studID=studID)
+        edit1.addStatus = 'ADAA Approved'
+        edit1.save()
+        messages.success(request, 'Request Successfully Edited!')
+        return redirect('/adaa_transferring_view/'+ str(data.studID))
 
 
 

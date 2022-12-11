@@ -31,7 +31,7 @@
             <img src="{%static 'images/tuplogo.png'%}" alt="TUPLogo.png" width="30" height="30">
             <a class="nav-link" href="{%url 'TupAssistApp:adaa_profile'%}">Technological University of the Philippines - <span style="color: #E2435E; font-weight: 500;"> Assist</span></a>
             <div class="lagayanNgButton">
-                <a class="nav-link" href="{%url 'TupAssistApp:adaa_dropping'%}" id="logoutbutton">Back</a>
+                <a class="nav-link" href="{%url 'TupAssistApp:adaa_transferring'%}" id="logoutbutton">Back</a>
             </div>
         </div>
     </nav>
@@ -43,7 +43,7 @@
         <div class="content">
             <div style="overflow-x:auto;">
 
-                <h1 style="text-align:center; margin-bottom: 30px;">Dropping of Subjects Request:</h1>
+                <h1 style="text-align:center; margin-bottom: 30px;">Transferring of Subjects Request:</h1>
 
                 <div class="container" style="margin:15px 0 15px 0;">
                     <div class="row">
@@ -68,7 +68,6 @@
                     <table class="table table-bordered">
                         <thead>
                             <th colspan="3" style="text-align: center;">SUBJECT TO BE TAKEN BY STUDENT</th>
-                            <th colspan="4" style="text-align: center;">TEACHER</th>
                             <th colspan="4" style="text-align: center;">DEPARTMENT HEAD</th>
                             <th colspan="3" style="text-align: center;">ASSIST. DIRECTOR OF ACADEMIC AFFAIRS</th>
                         </thead>
@@ -76,10 +75,6 @@
                             <th>SUBJECT</th>
                             <th>SECTION</th>
                             <th>SCHEDULE</th>
-                            <th>APPROVAL</th>
-                            <th>REMARK</th>
-                            <th>ENLISTED BY</th>
-                            <th>DATE & TIME</th>
                             <th>APPROVAL</th>
                             <th>REMARK</th>
                             <th>ENDORSED BY</th>
@@ -96,10 +91,6 @@
                                 <td>{{i.subject.subject}}-{{i.subject.description}}</td>
                                 <td>{{i.section}}</td>
                                 <td>{{i.sched}}</td>
-                                <td>{{i.subj_teacher_approve}}</td>
-                                <td>{{i.subj_teacher_remark}}</td>
-                                <td>{{i.subj_teacher_name}}</td>
-                                <td>{{i.subj_teacher_date}}</td>
                                 <td>{{i.head_is_approve}}</td>
                                 <td>{{i.head_remark}}</td>
                                 <td>{{i.head_name}}</td>
@@ -111,9 +102,9 @@
                             </tr>
                             {% endfor %}
                             <tr>
-                                <td colspan="13"></td>
+                                <td colspan="9"></td>
                                 <td>
-                                    <form action="/adaa_dropping_approve" method="post">
+                                    <form action="/adaa_transferring_approve" method="post">
                                         {% csrf_token %}
                                         <input type="text" name="admin_name" id="admin_name" value="{{current_user.email}}" hidden>
                                         <input type="text" name="studID" id="studID" value="{{student_info.studID}}" hidden>

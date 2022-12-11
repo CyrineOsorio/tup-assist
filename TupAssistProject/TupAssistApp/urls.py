@@ -69,7 +69,7 @@ urlpatterns = [
     path('h_edit_sub1', views.h_edit_sub1, name='h_edit_sub1'),
 
     path('h-transferring/', views.h_transferring, name='h_transferring'),
-    path('h-transferring-edit/<int:studID>', views.h_transferring_edit),
+    path('h_transferring_edit/<int:studID>', views.h_transferring_edit),
 
 
     # pic

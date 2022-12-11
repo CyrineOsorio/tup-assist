@@ -23,7 +23,7 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
 
     <!--CSS Custom -->
-    <link rel="stylesheet" href="{%static 'css/h-request-edit.css'%}">
+    <link rel="stylesheet" href="{%static 'css/h_transferring_edit.css'%}">
 
     <!--ICONS-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
@@ -44,7 +44,7 @@
 
 
 
-    <section>
+    <div class="bg-container">
         <div class="bodybody">
 
             <div class="welcome">Welcome, {{ current_user.department }}!</div>
@@ -52,118 +52,138 @@
             <div class="dividerLangs"></div>
 
             <div style="overflow-x:auto;" class="innerBody">
-                <div class="stud-request-label">
-                    <p>TRANSFERRING SUBJECT REQUESTS:</p>
-                </div>
 
-                <div class="student-ifo">
-                    <p>Name: {{ student_info.first_name }} {{ student_info.last_name }}</p>
-                    <p>Student ID: {{ student_info.studID }}</p>
-                    <p>Course Year and Section: {{ student_info.course }}-{{ student_info.yrandsec }}</p>
-                    <p>Grades File: {% if current_user.upload != '' %}<a href="#" class="alert-link" onclick="window.open('{{ student_info.upload.url }}');">{{ student_info.upload }}</a> {% endif %}</p>
+                <div>
+                    <h1>TRANSFERRING SUBJECT REQUESTS:</h1>
 
-                </div>
 
-                <!--HTML code to display data in tabular format-->
-                <table class="table table-striped">
-                    <thead class="thead-dark">
-                        <th>NO.</th>
-                        <th>STUDENT ID</th>
-                        <th>SUBJECT</th>
-                        <th>COURSE</th>
-                        <th>Y&S</th>
-                        <th>REASON</th>
-                        <th>HEAD: APPROVAL</th>
-                        <th>HEAD: COMMENT</th>
-                        <th>ACTION</th>
-                    </thead>
-
-                    <tbody>
-                        {% for e in req %}
-                        <tr>
-                            <td>{{e.id}}</td>
-                            <td>{{e.studID}}</td>
-                            <td>{{e.subject}} </td>
-                            <td>{{e.course}}</td>
-                            <td>{{e.yrandsec}}</td>
-                            <td>{{e.reason}}</td>
-                            <td>{{e.headCheck}}</td>
-                            <td>{{e.headComment}}</td>
-                            <td class="action">
-                                <a data-toggle="modal" data-target="#exampleModal{{e.id}}"> <i class="bi bi-pencil"></i> </a>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-    </section>
-
-    <!--UPDATE-->
-    <!-- Modal -->
-    {% for e in req %}
-    <div class="modal fade" id="exampleModal{{e.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit: {{e.id}}</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                </div>
-
-                <form class="form" method="post">
-                    <div class="modal-body">
-                        {% csrf_token %}
-
-                        <input type="text" name="id" id="id" value="{{e.id}}" hidden>
-
-                        <div class="form-row">
-                            <div class="col-md-4 mb-3">
-                                <label for="studID">Student ID</label>
-                                <input type="text" class="form-control" name="studID" id="studID" value="{{e.studID}}" readonly>
-
+                    <div class="container" style="margin:15px 0 15px 0;">
+                        <div class="row">
+                            <div class="col">
+                                <p>Name: {{ student_info.first_name }} {{ student_info.last_name }}</p>
                             </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="subject">Subject</label>
-                                <input type="text" class="form-control" name="subject" id="subject" value="{{e.subject}}" readonly>
+                            <div class="col" style="text-align: end;">
+                                <p>Student ID: {{ student_info.studID }}</p>
                             </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="course">Course</label>
-                                <input type="text" class="form-control" name="course" id="course" value="{{e.course}}" readonly>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p>Course Year and Section: {{ student_info.course }}-{{ student_info.yrandsec }}</p>
                             </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="yrandsec">Year and Section</label>
-                                <input type="text" class="form-control" name="yrandsec" id="yrandsec" value="{{e.yrandsec}}" readonly>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="reason">Reason</label>
-                                <input type="text" class="form-control" name="reason" id="reason" value="{{e.reason}}" readonly>
-                            </div>
-
-                            <div class="col-md-4 mb-3 ">
-                                <label for="headCheck ">Head Approval</label>
-                                <input type="text " class="form-control " name="headCheck" id="headCheck" value="{{e.headCheck}}">
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="headComment">Head Comment</label>
-                                <input type="text" class="form-control" name="headComment" id="headComment" value="{{e.headComment}}">
+                            <div class="col" style="text-align: end;">
+                                <p>Grades File: {% if student_info.upload != '' %}<a href="#" class="alert-link" onclick="window.open('{{ student_info.upload.url }}');">{{ student_info.upload.url }}</a> {% endif %}</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </form>
+                    <div style="overflow-x: scroll;">
+                        <table class="table table-bordered">
+                            <thead>
+                                <th colspan="3" style="text-align: center;">SUBJECT TO BE TAKEN BY STUDENT</th>
+                                <th colspan="5" style="text-align: center;">DEPARTMENT HEAD</th>
+                                <th colspan="4" style="text-align: center;">ASSIST. DIRECTOR FOR ACADEMIC AFFAIRS</th>
+                            </thead>
+                            <thead>
+                                <th>SUBJECT</th>
+                                <th>SECTION</th>
+                                <th>SCHEDULE</th>
+                                <th>APPROVAL</th>
+                                <th>REMARK</th>
+                                <th>ENDORSED BY</th>
+                                <th>DATE & TIME</th>
+                                <th>ACTION</th>
+                                <th>APPROVAL</th>
+                                <th>REMARK</th>
+                                <th>ADMIN EMAIL</th>
+                                <th>DATE & TIME</th>
+                            </thead>
 
+                            <tbody>
+                                {% for i in req %}
+                                <tr>
+                                    <td>{{i.subject.subject}}-{{i.subject.description}}</td>
+                                    <td>{{i.section}}</td>
+                                    <td>{{i.sched}}</td>
+                                    <td>{{i.head_is_approve}}</td>
+                                    <td>{{i.head_remark}}</td>
+                                    <td>{{i.head_name}}</td>
+                                    <td>{{i.head_date}}</td>
+                                    <td><a class="btn btn-primary" data-toggle="modal" data-target="#editReq{{i.id}}"> Edit </a></td>
+                                    <td>{{i.admin_is_approve}}</td>
+                                    <td>{{i.admin_remark}}</td>
+                                    <td>{{i.admin_name}}</td>
+                                    <td>{{i.admin_date}}</td>
+
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
+
     </div>
-    {% endfor %}
+
+    <!--UPDATE-->
+    <!-- Edit Subject Modal -->
+    {% for i in req %}
+    <div class="modal fade" id="editReq{{i.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Request</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form class="form" method="post" action="/h_edit_sub1">
+                    {% csrf_token %}
+
+                    <div class="modal-body">
+                        <div class="form-group" hidden>
+                            <label for="id">Transcation No. and Student ID</label>
+                            <input type="text" class="form-control" id="studID" name="studID" value="{{student_info.studID}}" readonly>
+                            <input type="text" class="form-control" id="id" name="id" value="{{i.id}}" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" class="form-control" id="subject" name="subject" value="{{i.subject.subject}}-{{i.subject.description}}" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="section">Section</label>
+                            <input type="text" class="form-control" id="section" name="section" value="{{i.section}}" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="sched">Schedule</label>
+                            <input type="text" class="form-control" id="sched" name="sched" value="{{i.sched}}" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="head_is_approve">Approval</label>
+                            <select class="custom-select" id="head_is_approve" name="head_is_approve">
+                                <option value="" selected disabled hidden>Select an Option</option>
+                                <option value="Pending">Pending</option>
+                                <option value="Approve">Approve</option>
+                                <option value="Decline">Decline</option>
+                              </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="head_remark">Head Remarks</label>
+                            <input type="text" class="form-control" id="head_remark" name="head_remark" value="{{i.head_remark}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="head_name">Endorsed By:</label>
+                            <input type="text" class="form-control" id="head_name" name="head_name" value="{{current_user.email}}">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div> {% endfor %}
 
 
 

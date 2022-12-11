@@ -113,7 +113,7 @@
                             <tr>
                                 <td colspan="13"></td>
                                 <td>
-                                    <form action="/adaa_adding_approve" method="post">
+                                    <form action="/adaa_dropping_approve" method="post">
                                         {% csrf_token %}
                                         <input type="text" name="admin_name" id="admin_name" value="{{current_user.email}}" hidden>
                                         <input type="text" name="studID" id="studID" value="{{student_info.studID}}" hidden>

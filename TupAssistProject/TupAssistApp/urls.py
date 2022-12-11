@@ -40,11 +40,12 @@ urlpatterns = [
     path('adaa_adding/', views.adaa_adding, name='adaa_adding'),
     path('adaa_adding_view/<int:studID>', views.adaa_adding_view),
     path('r_edit_sub', views.r_edit_sub, name='r_edit_sub'),
+    path('adaa_adding_approve', views.adaa_adding_approve, name='adaa_adding_approve'),
 
     path('adaa_dropping/', views.adaa_dropping, name='adaa_dropping'),
     path('adaa_dropping_view/<int:studID>', views.adaa_dropping_view),
     path('r_edit_sub1', views.r_edit_sub1, name='r_edit_sub1'),
-    path('adaa_adding_approve', views.adaa_adding_approve, name='adaa_adding_approve'),
+    path('adaa_dropping_approve', views.adaa_dropping_approve, name='adaa_dropping_approve'),
     
     
     path('adaa_transferring/', views.adaa_transferring, name='adaa_transferring'),

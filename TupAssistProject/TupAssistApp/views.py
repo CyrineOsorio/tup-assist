@@ -219,7 +219,7 @@ def a_adding(request):
 
 def a_dropping(request):
     current_user = request.user
-    req = DroppingReq.objects.all()
+    req = DroppingReq.objects.filter(admin_approve='Approve')
     context = {
         'req': req,
         'current_user': current_user
@@ -228,7 +228,7 @@ def a_dropping(request):
 
 def a_transferring(request):
     current_user = request.user
-    req = TransferringReq.objects.all()
+    req = TransferringReq.objects.filter(admin_approve='Approve')
     context = { 
         'req': req,
         'current_user': current_user
@@ -330,6 +330,21 @@ def r_edit_sub1(request):
         edit.admin_name = request.POST.get('admin_name')
         edit.admin_date = datetime.now()
         edit.save()
+        messages.success(request, 'Request Successfully Edited!')
+        return redirect('/adaa_dropping_view/'+ str(data.studID))
+
+def adaa_dropping_approve(request):
+    studID = request.POST.get('studID')
+    admin_name = request.POST.get('admin_name')
+    admin_date = datetime.now()
+    data = registration.objects.get(studID=studID)
+    if request.method =='POST':  
+        DroppingReq.objects.filter(studID_id=studID).update(admin_approve = 'Approve')
+        DroppingReq.objects.filter(studID_id=studID).update(admin_name = admin_name)
+        DroppingReq.objects.filter(studID_id=studID).update(admin_date = admin_date)
+        edit1 = registration.objects.get(studID=studID)
+        edit1.addStatus = 'ADAA Approved'
+        edit1.save()
         messages.success(request, 'Request Successfully Edited!')
         return redirect('/adaa_dropping_view/'+ str(data.studID))
 

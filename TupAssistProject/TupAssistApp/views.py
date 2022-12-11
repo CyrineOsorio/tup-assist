@@ -253,7 +253,7 @@ def adaa_profile(request):
 
 def adaa_adding(request):
     current_user = request.user = request.user
-    test = registration.objects.filter(Q(userType='Student') & Q(addStatus='Wait for Department Head and Asst. Director for Academic Affairs Approval'))
+    test = registration.objects.filter(Q(userType='Student') & (Q(addStatus='Wait for Department Head and Asst. Director for Academic Affairs Approval') | Q(addStatus='ADAA Approved')) )
     context = { 
         'test': test,
         'current_user': current_user,
@@ -290,11 +290,6 @@ def adaa_adding_approve(request):
     admin_date = datetime.now()
     data = registration.objects.get(studID=studID)
     if request.method =='POST':  
-        # edit = AddingReq.objects.get(studID_id=studID)
-        # edit.admin_approve = request.POST.get('admin_approve')
-        # edit.admin_name = request.POST.get('admin_name')
-        # edit.admin_date = datetime.now()
-        # edit.save()
         AddingReq.objects.filter(studID_id=studID).update(admin_approve = 'Approve')
         AddingReq.objects.filter(studID_id=studID).update(admin_name = admin_name)
         AddingReq.objects.filter(studID_id=studID).update(admin_date = admin_date)
@@ -754,7 +749,7 @@ def s_step1_submit_t(request):
     current_user = request.user
     if request.method =='POST':
         data = registration.objects.get(username=current_user.username)
-        data.transferStatus = 'Wait for Teacher Approval'
+        data.transferStatus = 'Wait for Department Head and Asst. Director for Academic Affairs Approval'
         data.save()
         # send_mail(subject, 
         #     message1, settings.EMAIL_HOST_USER , [email], fail_silently=False)
@@ -1056,13 +1051,13 @@ def sub_cvs(request):
 def h_adding(request):
     current_user = request.user
     if current_user.department == "Department of Industrial Technology" or current_user.department == "Department of Engineering" or current_user.department == "Department of Information Education":
-        test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student') & Q(addStatus='Wait for Department Head and Asst. Director for Academic Affairs Approval'))
+        test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student') & (Q(addStatus='Wait for Department Head and Asst. Director for Academic Affairs Approval')) | Q(addStatus='ADAA Approved'))
         context = { 
             'test': test,
             'current_user': current_user
             }
     else:
-        test = registration.objects.filter(Q(userType='Student') & Q(addStatus='Wait for Department Head and Asst. Director for Academic Affairs Approval'))
+        test = registration.objects.filter(Q(userType='Student') & (Q(addStatus='Wait for Department Head and Asst. Director for Academic Affairs Approval')) | Q(addStatus='ADAA Approved'))
         context = { 
             'test': test,
             'current_user': current_user
@@ -1238,13 +1233,13 @@ def h_edit_sub1(request):
 def h_transferring(request):
     current_user = request.user
     if current_user.department == "Department of Industrial Technology" or current_user.department == "Department of Engineering" or current_user.department == "Department of Information Education":
-        test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student') & Q(transferStatus='Wait for Teacher, Department Head and Asst. Director for Academic Affairs Approval'))
+        test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student') & (Q(transferStatus='Wait for Department Head and Asst. Director for Academic Affairs Approval')) | Q(transferStatus='ADAA Approved'))
         context = { 
             'test': test,
             'current_user': current_user
             }
     else:
-        test = registration.objects.filter(Q(userType='Student') & Q(transferStatus='Wait for Teacher, Department Head and Asst. Director for Academic Affairs Approval'))
+        test = registration.objects.filter(Q(userType='Student') & (Q(transferStatus='Wait for Department Head and Asst. Director for Academic Affairs Approval')) | Q(transferStatus='ADAA Approved'))
         context = { 
             'test': test,
             'current_user': current_user

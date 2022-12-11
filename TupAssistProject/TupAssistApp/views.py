@@ -302,7 +302,7 @@ def adaa_adding_approve(request):
 
 def adaa_dropping(request):
     current_user = request.user
-    test = registration.objects.filter(Q(userType='Student') & Q(dropStatus='Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'))
+    test = registration.objects.filter(Q(userType='Student') & (Q(dropStatus='Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval')) | Q(dropStatus='ADAA Approved')) 
     context = {
         'test': test,
         'current_user': current_user
@@ -350,7 +350,7 @@ def adaa_dropping_approve(request):
 
 def adaa_transferring(request):
     current_user = request.user
-    test = registration.objects.filter(Q(userType='Student') & Q(transferStatus='Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'))
+    test = registration.objects.filter(Q(userType='Student') & (Q(transferStatus='Wait for Department Head and Assist. Director of Academic Affairs Approval')) | Q(addStatus='ADAA Approved'))
     context = { 
         'test': test,
         'current_user': current_user

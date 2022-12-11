@@ -210,7 +210,7 @@ def a_staff_create(request):
 
 def a_adding(request):
     current_user = request.user = request.user
-    req = AddingReq.objects.all()
+    req = AddingReq.objects.filter(admin_approve='Approve')
     context = { 
         'req': req,
         'current_user': current_user,

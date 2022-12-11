@@ -70,6 +70,7 @@ urlpatterns = [
 
     path('h-transferring/', views.h_transferring, name='h_transferring'),
     path('h_transferring_edit/<int:studID>', views.h_transferring_edit),
+    path('h_edit_sub2', views.h_edit_sub2, name='h_edit_sub2'),
 
 
     # pic

@@ -1320,3 +1320,17 @@ def h_transferring_edit(request, studID):
             'sched': sched
             }
     return render(request, 'TupAssistApp/h-transferring-edit.html', context)
+
+def h_edit_sub2(request):
+    studID = request.POST.get('studID')
+    data = registration.objects.get(studID=studID)
+    if request.method =='POST':
+        id = request.POST.get('id')   
+        edit = TransferringReq.objects.get(id=id) 
+        edit.head_is_approve = request.POST.get('head_is_approve')
+        edit.head_remark = request.POST.get('head_remark')
+        edit.head_name = request.POST.get('head_name')
+        edit.head_date = datetime.now()
+        edit.save()
+        messages.success(request, 'Request Successfully Edited!')
+        return redirect('/h_transferring_edit/'+ str(data.studID))

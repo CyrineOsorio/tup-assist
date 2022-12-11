@@ -44,6 +44,8 @@ urlpatterns = [
     path('adaa_dropping/', views.adaa_dropping, name='adaa_dropping'),
     path('adaa_dropping_view/<int:studID>', views.adaa_dropping_view),
     path('r_edit_sub1', views.r_edit_sub1, name='r_edit_sub1'),
+    path('adaa_adding_approve', views.adaa_adding_approve, name='adaa_adding_approve'),
+    
     
     path('adaa_transferring/', views.adaa_transferring, name='adaa_transferring'),
 

@@ -349,6 +349,11 @@ def adaa_dropping_approve(request):
         edit1.addStatus = 'ADAA Approved'
         edit1.save()
         messages.success(request, 'Request Successfully Edited!')
+        # Email
+        link = 'tup-assist.com'
+        content = 'Hi ' + data.first_name + ' ' + data.last_name + ',\n\n' + 'Your Request for Dropping of Subject is already approved by ADAA. Check your request by signing in your account on the attached link. \n\n' + link
+        send_mail('DROPPING OF SUBJECT - REQUEST', 
+            content, settings.EMAIL_HOST_USER , [data.email], fail_silently=False)
         return redirect('/adaa_dropping_view/'+ str(data.studID))
 
 def adaa_transferring(request):
@@ -384,6 +389,11 @@ def adaa_transferring_approve(request):
         edit1.addStatus = 'ADAA Approved'
         edit1.save()
         messages.success(request, 'Request Successfully Edited!')
+        # Email
+        link = 'tup-assist.com'
+        content = 'Hi ' + data.first_name + ' ' + data.last_name + ',\n\n' + 'Your Request for Transfer of Subject is already approved by ADAA. Check your request by signing in your account on the attached link. \n\n' + link
+        send_mail('TRANSFERRING OF SUBJECT - REQUEST', 
+            content, settings.EMAIL_HOST_USER , [data.email], fail_silently=False)
         return redirect('/adaa_transferring_view/'+ str(data.studID))
 
 

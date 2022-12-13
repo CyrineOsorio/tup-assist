@@ -115,6 +115,14 @@ a:focus {
     margin-top: 1%;
 }
 
+th {
+    font-size: 10px;
+}
+
+td {
+    font-size: 12px;
+}
+
 .action {
     display: flex;
     justify-content: center;

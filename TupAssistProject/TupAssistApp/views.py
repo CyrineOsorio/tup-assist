@@ -46,7 +46,7 @@ def index(request):
 
         if user is not None and user.is_superuser == True:
             login(request, user)
-            
+            return redirect('/a_dashboard')
 
         elif user is not None and user.userType == 'Assist. Director of Academic Affairs':
             login(request, user)
@@ -296,9 +296,10 @@ def adaa_adding_approve(request):
         edit1.save()
         messages.success(request, 'Request Successfully Edited!')
         # Email
-        send_mail('Testing', 
-            'Something', settings.EMAIL_HOST_USER , [studID_id], fail_silently=False)
-            return redirect('/a_dashboard')
+        link = 'tup-assist.com'
+        content = 'Hi ' + data.first_name + ' ' + data.last_name + ',\n\n' + 'Your Request for Adding of Subject is already approved by ADAA. Check your request by signing in your account on the attached link. \n\n' + link
+        send_mail('ADDING OF SUBJECT - REQUEST', 
+            content, settings.EMAIL_HOST_USER , [data.email], fail_silently=False)
         return redirect('/adaa_adding_view/'+ str(data.studID))
 
 

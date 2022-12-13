@@ -46,9 +46,7 @@ def index(request):
 
         if user is not None and user.is_superuser == True:
             login(request, user)
-            send_mail('Testing', 
-            'Something', settings.EMAIL_HOST_USER , ['rejaymorada0@gmail.com'], fail_silently=False)
-            return redirect('/a_dashboard')
+            
 
         elif user is not None and user.userType == 'Assist. Director of Academic Affairs':
             login(request, user)
@@ -297,6 +295,10 @@ def adaa_adding_approve(request):
         edit1.addStatus = 'ADAA Approved'
         edit1.save()
         messages.success(request, 'Request Successfully Edited!')
+        # Email
+        send_mail('Testing', 
+            'Something', settings.EMAIL_HOST_USER , [studID_id], fail_silently=False)
+            return redirect('/a_dashboard')
         return redirect('/adaa_adding_view/'+ str(data.studID))
 
 

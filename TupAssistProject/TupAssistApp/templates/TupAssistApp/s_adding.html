@@ -1089,38 +1089,37 @@
     {% for i in req %}
     <script>
         $(function() {
-            alert('{{i.sched}}'.slice(2, 9));
-            alert('{{i.sched}}'.slice(10, 17));
 
+
+
+            // Define Variable
+            var M = 2;
+
+            function lala(response) {
+                res = '{{i.sched}}'.slice(0, 1)
+                if (res == 'M') {
+                    response = 0
+                }
+                return (response)
+            }
             $('#schedule5').jqs({
+
+
                 mode: 'read',
                 daysList: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
                 hour: 12,
                 periodDuration: 15,
                 periodOptions: false,
-                data: [{
-                    day: 0,
-                    periods: [
-                        ['2', '6'], // Compact 12 hour
 
-                        ['12am', '2:30am'] // Invalid period, not displayed
-                    ]
-                }, {
-                    day: 1,
+                data: [{
+
+                    day: lala(),
+
                     periods: [
-                        ['{{i.sched}}'.slice(2, 9), '{{i.sched}}'.slice(10, 17)]
+                        ['{{i.sched}}'.slice(2, 10), '{{i.sched}}'.slice(11, 17)],
                     ]
-                }, {
-                    day: 2,
-                    periods: [
-                        ['2', '5p'] // Compact 12 hour
-                    ]
-                }, {
-                    day: 3,
-                    periods: [
-                        ['6', '10']
-                    ]
-                }]
+                }],
+
             });
 
 

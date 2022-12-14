@@ -46,6 +46,7 @@ def index(request):
 
         if user is not None and user.is_superuser == True:
             login(request, user)
+            print("HI")
             return redirect('/a_dashboard')
 
         elif user is not None and user.userType == 'Assist. Director of Academic Affairs':

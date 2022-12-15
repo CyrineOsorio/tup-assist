@@ -83,7 +83,7 @@
                         <input type="text" class="form-control" name="program" id="program" placeholder="Search...">
                     </div>
                     <div class="col">
-                        <button class="btn btn-primary" onclick="myFunction()">Print PDF</button>
+                        <button class="btn btn-primary" onclick="download()">Print PDF</button>
                     </div>
                 </div>
             </div>
@@ -167,21 +167,20 @@
     </script>
 
     <!-- Print PDF -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.5/jspdf.plugin.autotable.min.js"></script>
-    <script src="{%static 'js/tableHTMLExport.js'%}"></script>
-
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <!-- html2canvas 1.0.0-alpha.11 or higher version is needed -->
     <script>
-        function myFunction() {
-            $("#print").tableHTMLExport({
-                type: 'csv',
-                filename: 'sample.csv',
-                orientation: 'p'
+        function download() {
+            let pdf = new jsPDF('l', 'pt', [1920, 640]);
+            pdf.html(document.getElementById('print'), {
+                callback: function(pdf) {
+                    pdf.save('test.pdf');
+                }
             });
         }
     </script>
+
 
 
 

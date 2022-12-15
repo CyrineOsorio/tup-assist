@@ -140,7 +140,7 @@ def changestatus(request):
 def a_account(request):
     current_user = request.user
     form = HeadRegistration()
-    staff = registration.objects.filter(Q(userType='Department Head') | Q(userType='Program-in-Charge') | Q(userType='Teacher') | Q(userType='Assist. Director of Academic Affairs'))
+    staff = registration.objects.filter(Q(userType='Department Head') | Q(userType='Program-in-Charge') | Q(userType='Teacher') | Q(userType='OAA Staff') | Q(userType='Assist. Director of Academic Affairs'))
     student = registration.objects.filter(userType='Student')
     context = {
         'form': form,

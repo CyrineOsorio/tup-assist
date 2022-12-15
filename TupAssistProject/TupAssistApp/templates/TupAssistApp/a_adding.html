@@ -118,7 +118,7 @@
                     <tbody>
                         {% for i in req %}
                         <tr>
-                            <td>{{i.studID.course}}-{{i.studID.year}}{{i.studID.section}}</td>
+                            <td id="search">{{i.studID.course}}-{{i.studID.year}}{{i.studID.section}}</td>
                             <td>{{i.studID.first_name}} {{i.studID.last_name}}</td>
                             <td>{{i.subject.subject}}-{{i.subject.description}}</td>
                             <td>{{i.section}}</td>
@@ -157,7 +157,7 @@
             var val1 = $.trim($('#program').val()).replace(/ +/g, ' ').toLowerCase();
 
             $rows.show().filter(function() {
-                var text1 = $(this).find('td:nth-child(1)').text().replace(/\s+/g, ' ').toLowerCase();
+                var text1 = $(this).find('#search').text().replace(/\s+/g, ' ').toLowerCase();
                 return !~text1.indexOf(val1);
             }).hide();
         });

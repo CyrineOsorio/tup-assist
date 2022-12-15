@@ -348,7 +348,7 @@ def adaa_dropping_approve(request):
         DroppingReq.objects.filter(studID_id=studID).update(admin_name = admin_name)
         DroppingReq.objects.filter(studID_id=studID).update(admin_date = admin_date)
         edit1 = registration.objects.get(studID=studID)
-        edit1.addStatus = 'ADAA Approved'
+        edit1.dropStatus = 'ADAA Approved'
         edit1.save()
         messages.success(request, 'Request Successfully Edited!')
         # Email
@@ -388,7 +388,7 @@ def adaa_transferring_approve(request):
         TransferringReq.objects.filter(studID_id=studID).update(admin_name = admin_name)
         TransferringReq.objects.filter(studID_id=studID).update(admin_date = admin_date)
         edit1 = registration.objects.get(studID=studID)
-        edit1.addStatus = 'ADAA Approved'
+        edit1.transferStatus = 'ADAA Approved'
         edit1.save()
         messages.success(request, 'Request Successfully Edited!')
         # Email
@@ -789,7 +789,8 @@ def s_trans_sub(request):
         subject = request.POST.get('subject')
         section = request.POST.get('section')
         schedule = request.POST.get('schedule')
-        data = TransferringReq.objects.create(school_year=school_year, semester=semester, studID_id= current_user.studID, subject_id=subject, section=section, sched=schedule)
+        reason = request.POST.get('reason')
+        data = TransferringReq.objects.create(school_year=school_year, semester=semester, studID_id= current_user.studID, subject_id=subject, section=section, sched=schedule, reason=reason)
         data.save()
         messages.success(request, 'Subject Tranfer Request')
         return redirect('/s_transferring')

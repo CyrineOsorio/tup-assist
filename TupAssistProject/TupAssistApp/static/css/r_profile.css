@@ -84,7 +84,7 @@ a:focus {
 /* body */
 
 body {
-    height: 100vh;
+    height: 100%;
     background-color: #ECECEC;
 }
 

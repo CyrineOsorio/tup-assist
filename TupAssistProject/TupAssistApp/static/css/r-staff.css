@@ -138,6 +138,18 @@ a:focus {
     border: 1px solid #388465;
 }
 
+.table {
+    margin-top: 1%;
+}
+
+th {
+    font-size: 10px;
+}
+
+td {
+    font-size: 12px;
+}
+
 @media only screen and (max-width: 1000px) {
     .navbarLagayan {
         text-align: center;

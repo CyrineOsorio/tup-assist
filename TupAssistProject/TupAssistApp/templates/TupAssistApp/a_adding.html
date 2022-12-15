@@ -152,22 +152,13 @@
 
     <script>
         // Filter  inputs
-
-        var $rows = $('.wrapper');
-        var rowsTextArray = [];
-
-        var i = 0;
-        $.each($rows, function() {
-            rowsTextArray[i] = ($(this).find('.number').text() + $(this).find('.fruit').text())
-                .replace(/\s+/g, '')
-                .toLowerCase();
-            i++;
-        });
-
+        var $rows = $('#table tr');
         $('#program').keyup(function() {
-            var val = $.trim($(this).val()).replace(/\s+/g, '').toLowerCase();
-            $rows.show().filter(function(index) {
-                return (rowsTextArray[index].indexOf(val) === -1);
+            var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+
+            $rows.show().filter(function() {
+                var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+                return !~text.indexOf(val);
             }).hide();
         });
     </script>

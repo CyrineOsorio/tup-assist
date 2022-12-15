@@ -127,9 +127,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="semester">Semester</label>
-                                    <input type="number" class="form-control" id="semester" name="semester" value="{{status.semester}}">
-                                    <select class="custom-select" id="semester" name="semester" value="{{status.semester}}" required>
-                                        <option value="{{status.semester}}" selected disabled>Select an Option</option>
+                                    <select class="custom-select" id="semester" name="semester" required>
+                                        <option value="{{status.semester}}" selected disabled>{{status.semester}}</option>
                                         <option value="1st">1st</option>
                                         <option value="2nd">2nd</option>
                                     </select>

@@ -114,7 +114,6 @@ body {
     margin-top: 2%;
     padding: 20px 20px 20px 20px;
     border-radius: 10px;
-    
 }
 
 .content h1 {
@@ -146,7 +145,11 @@ body {
         padding: 10% 10% 10% 10%;
     }
     .bg-container {
-        padding: 0 0 0 0;
+        width: 100%;
+        padding: 2% 2% 2% 2%;
+    }
+    .bodybody {
+        width: 100%;
     }
 }
 

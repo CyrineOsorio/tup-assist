@@ -161,8 +161,20 @@ body {
         text-align: center;
         padding: 10% 10% 10% 10%;
     }
+    #center {
+        display: grid;
+        width: 100%;
+        justify-items: center;
+        align-items: center;
+        text-align: center;
+        padding: 10% 10% 10% 10%;
+    }
     .bg-container {
-        padding: 0 0 0 0;
+        width: 100%;
+        padding: 2% 2% 2% 2%;
+    }
+    .bodybody {
+        width: 100%;
     }
 }
 

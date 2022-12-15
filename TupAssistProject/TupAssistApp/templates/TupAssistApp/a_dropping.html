@@ -77,6 +77,14 @@
                 <p>DROP SUBJECT REQUESTS:</p>
             </div>
 
+            <div class="filter">
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                <div class="row">
+                    <div class="col">
+                        <input type="text" class="form-control" name="program" id="program" placeholder="Search...">
+                    </div>
+                </div>
+            </div>
 
 
             <div style="overflow-x:auto;">
@@ -108,7 +116,7 @@
                         <th>DATE & TIME</th>
                     </thead>
 
-                    <tbody>
+                    <tbody id="table">
                         {% for i in req %}
                         <tr>
                             <td>{{i.studID.course}}-{{i.studID.year}}{{i.studID.section}}</td>
@@ -144,19 +152,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 
     <script>
-        // Filter 
-        $(".filter select").on('change', function() {
-            var filters = $.map($(".filter select").toArray(), function(e) {
-                return $(e).val();
-            }).join(".");
-            $("tbody").find("tr").hide();
-            $("tbody").find("tr." + filters).show();
+        // Filter  inputs
+        var $rows = $('#table tr');
+        $('#program').keyup(function() {
+            var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
 
-        });
-        // Reset
-        $('button').on('click', function() {
-            $(".filter select").val($("option:first").val());
-            $("tbody").find("tr").show();
+            $rows.show().filter(function() {
+                var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+                return !~text.indexOf(val);
+            }).hide();
         });
     </script>
 

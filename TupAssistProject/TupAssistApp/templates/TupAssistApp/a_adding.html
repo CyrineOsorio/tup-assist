@@ -82,6 +82,9 @@
                     <div class="col">
                         <input type="text" class="form-control" name="program" id="program" placeholder="Search...">
                     </div>
+                    <div class="col">
+                        <button class="btn btn-primary" id="pdf">Print PDF</button>
+                    </div>
                 </div>
             </div>
 
@@ -171,8 +174,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.5/jspdf.plugin.autotable.min.js"></script>
 
     <script>
-        $('#print').on('click', function() {
-            $("#example").tableHTMLExport({
+        $('#pdf').on('click', function() {
+            $("#print").tableHTMLExport({
                 type: 'pdf',
                 filename: 'sample.pdf',
                 orientation: 'p'

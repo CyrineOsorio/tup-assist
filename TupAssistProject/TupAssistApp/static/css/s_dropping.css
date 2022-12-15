@@ -262,6 +262,18 @@ footer button img {
     width: 80%;
 }
 
+.table {
+    margin-top: 1%;
+}
+
+th {
+    font-size: 10px;
+}
+
+td {
+    font-size: 12px;
+}
+
 
 /* pag maliit na ang screen */
 

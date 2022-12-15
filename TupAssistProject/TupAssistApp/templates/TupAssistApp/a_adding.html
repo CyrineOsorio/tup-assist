@@ -116,24 +116,6 @@
                     </thead>
 
                     <tbody id="table">
-                        <tr>
-                            <td id="search">{{i.studID.course}}-{{i.studID.year}}{{i.studID.section}}</td>
-                            <td>{{i.studID.first_name}} {{i.studID.last_name}}</td>
-                            <td>{{i.subject.subject}}-{{i.subject.description}}</td>
-                            <td>{{i.section}}</td>
-                            <td>{{i.sched}}</td>
-                            <td>{{i.pic_is_approve}}</td>
-                            <td>{{i.pic_remark}}</td>
-                            <td>{{i.pic_name}}</td>
-                            <td style="width: fit-content;">hasgdhskagdjsahjdhlsakjdghsgdhs {{i.pic_date}}</td>
-                            <td>{{i.head_is_approve}}</td>
-                            <td>{{i.head_remark}}</td>
-                            <td>{{i.head_name}}</td>
-                            <td>{{i.head_date}}</td>
-                            <td>{{i.admin_approve}}</td>
-                            <td>{{i.admin_name}}</td>
-                            <td>{{i.admin_date}}</td>
-                        </tr>
                         {% for i in req %}
                         <tr>
                             <td id="search">{{i.studID.course}}-{{i.studID.year}}{{i.studID.section}}</td>
@@ -144,7 +126,7 @@
                             <td>{{i.pic_is_approve}}</td>
                             <td>{{i.pic_remark}}</td>
                             <td>{{i.pic_name}}</td>
-                            <td style="width: fit-content;">hasgdhskagdjsahjdhlsakjdghsgdhs {{i.pic_date}}</td>
+                            <td>{{i.pic_date}}</td>
                             <td>{{i.head_is_approve}}</td>
                             <td>{{i.head_remark}}</td>
                             <td>{{i.head_name}}</td>

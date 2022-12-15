@@ -202,6 +202,19 @@ footer button img {
     border: 1px solid #E2435E;
 }
 
+.table {
+    margin-top: 1%;
+}
+
+th {
+    font-size: 10px;
+}
+
+td {
+    font-size: 12px;
+    width: fit-content;
+}
+
 @media only screen and (max-width: 1000px) {
     .navbarLagayan {
         text-align: center;

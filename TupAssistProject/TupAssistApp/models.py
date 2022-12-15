@@ -45,7 +45,7 @@ class TransStatus(models.Model):
     school_year = models.IntegerField()
     TransName = models.CharField(max_length=100, null=True, blank=True)
     status = models.CharField(max_length=100, null=True, blank=True)
-    semester = models.IntegerField(null=True, blank=True)
+    semester = models.CharField(max_length=100, null=True, blank=True)
 
 
     class Meta:
@@ -55,7 +55,7 @@ class TransStatus(models.Model):
 class Subjects(models.Model):           
     course = models.CharField(max_length=255)
     year = models.IntegerField()
-    semester = models.IntegerField()
+    semester = models.CharField(max_length=100, null=True, blank=True)
     shop = models.IntegerField()
     is_lab = models.CharField(max_length=255, null=True, blank=True, default="L")
     subject = models.CharField(max_length=255, primary_key=True)
@@ -68,7 +68,7 @@ class Subjects(models.Model):
 class Schedule(models.Model):
     gSheetLink = models.CharField(max_length=500, null=True, blank=True)
     school_year = models.IntegerField(blank=True, null=True)
-    semester = models.IntegerField(blank=True, null=True)
+    semester = models.CharField(max_length=100, null=True, blank=True)
 
     class Meta:
         verbose_name_plural = "Schedule" 
@@ -92,7 +92,7 @@ class AddingReq(models.Model):
     admin_name = models.CharField(max_length=255, null=True, blank=True)
     admin_date = models.DateTimeField(null=True, blank=True)
     school_year = models.IntegerField(blank=True, null=True)
-    semester = models.IntegerField(blank=True, null=True)
+    semester = models.CharField(max_length=100, null=True, blank=True)
     
     class Meta:
         verbose_name_plural = "AddingReq" 
@@ -116,7 +116,7 @@ class DroppingReq(models.Model):
     admin_date = models.DateTimeField(null=True, blank=True)
     reason = models.CharField(max_length=500, null=True, blank=True)
     school_year = models.IntegerField(blank=True, null=True)
-    semester = models.IntegerField(blank=True, null=True)
+    semester = models.CharField(max_length=100, null=True, blank=True)
     
     class Meta:
         verbose_name_plural = "DroppingReq" 
@@ -139,7 +139,7 @@ class TransferringReq(models.Model):
     admin_date = models.DateTimeField(null=True, blank=True)
     reason = models.CharField(max_length=500, null=True, blank=True)
     school_year = models.IntegerField(blank=True, null=True)
-    semester = models.IntegerField(blank=True, null=True)
+    semester = models.CharField(max_length=100, null=True, blank=True)
     
     class Meta:
         verbose_name_plural = "TransferringReq" 

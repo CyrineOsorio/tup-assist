@@ -348,7 +348,7 @@ def adaa_dropping_approve(request):
         DroppingReq.objects.filter(studID_id=studID).update(admin_name = admin_name)
         DroppingReq.objects.filter(studID_id=studID).update(admin_date = admin_date)
         edit1 = registration.objects.get(studID=studID)
-        edit1.addStatus = 'ADAA Approved'
+        edit1.dropStatus = 'ADAA Approved'
         edit1.save()
         messages.success(request, 'Request Successfully Edited!')
         # Email
@@ -388,7 +388,7 @@ def adaa_transferring_approve(request):
         TransferringReq.objects.filter(studID_id=studID).update(admin_name = admin_name)
         TransferringReq.objects.filter(studID_id=studID).update(admin_date = admin_date)
         edit1 = registration.objects.get(studID=studID)
-        edit1.addStatus = 'ADAA Approved'
+        edit1.transferStatus = 'ADAA Approved'
         edit1.save()
         messages.success(request, 'Request Successfully Edited!')
         # Email

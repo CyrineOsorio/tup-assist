@@ -354,7 +354,7 @@
                                             <tr>
                                                 <td>{{i.subject.subject}}-{{i.subject.description}}</td>
                                                 <td>{{i.section}}</td>
-                                                <td>{{i.sched}}</td>
+                                                <td style="width: fit-content;">{{i.sched}}</td>
                                                 <td>{{i.pic_is_approve}}</td>
                                                 <td>{{i.pic_remark}}</td>
                                                 <td>{{i.pic_name}}</td>
@@ -377,15 +377,6 @@
                                 <button class="button btn-navigate-form-step" type="button" step_number="2">Prev</button>
                             </div>
                         </section>
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1082,7 +1073,8 @@
     <!-- HOUR WEEKLY SCHEDULE TESTING -->
 
 
-    {% comment %} <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    {% comment %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="{%static 'js/jquery.schedule.js'%}"></script>
 

@@ -128,14 +128,19 @@
                                 <div class="form-group">
                                     <label for="semester">Semester</label>
                                     <input type="number" class="form-control" id="semester" name="semester" value="{{status.semester}}">
+                                    <select class="custom-select" id="semester" name="semester" value="{{status.semester}}" required>
+                                        <option value="{{status.semester}}" selected disabled>Select an Option</option>
+                                        <option value="1st">1st</option>
+                                        <option value="2nd">2nd</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="status">Status</label>
                                     <select class="custom-select" id="status" name="status" value="{{status.status}}">
-                                            <option value="{{status.status}}" selected>Select an Option</option>
-                                            <option value="Open">Open</option>
-                                            <option value="Close">Close</option>
-                                        </select>
+                                        <option value="{{status.status}}" selected>Select an Option</option>
+                                        <option value="Open">Open</option>
+                                        <option value="Close">Close</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -182,8 +187,8 @@
                             <label for="semester">Semester</label>
                             <select class="custom-select" name="semester" id="semester" required>
                                 <option selected disabled value="semester">semester</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
+                                <option value="1st">1st</option>
+                                <option value="2nd">2nd</option>
                             </select>
                         </div>
                         <div class="col">

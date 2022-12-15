@@ -261,6 +261,7 @@ th {
 
 td {
     font-size: 12px;
+    width: fit-content;
 }
 
 

@@ -46,8 +46,10 @@ def index(request):
 
         if user is not None and user.is_superuser == True:
             login(request, user)
-            send_mail('ADDING OF SUBJECT - REQUEST', 
-            'Something', settings.EMAIL_HOST_USER , ['rejaymorada0@gmail.com'], fail_silently=False)
+            return redirect('/a_dashboard')
+
+        elif user is not None and user.userType == 'OAA Staff':
+            login(request, user)
             return redirect('/a_dashboard')
 
         elif user is not None and user.userType == 'Assist. Director of Academic Affairs':

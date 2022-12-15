@@ -4,7 +4,7 @@
         "fields": {
             "TransName": "Add",
             "school_year": 2223,
-            "semester": 1,
+            "semester": "1st",
             "status": "Close"
         }
     },
@@ -14,7 +14,7 @@
         "fields": {
             "TransName": "Drop",
             "school_year": 2223,
-            "semester": 1,
+            "semester": "1st",
             "status": "Close"
         }
     },
@@ -24,7 +24,7 @@
         "fields": {
             "TransName": "Transfer",
             "school_year": 2223,
-            "semester": 1,
+            "semester": "1st",
             "status": "Close"
         }
     }

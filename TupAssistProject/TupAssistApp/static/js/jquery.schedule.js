@@ -669,7 +669,7 @@
             var mn = parseInt(split[1]);
 
             if (this.settings.hour === 12) {
-                var matches = time.match(/([0-1]?[0-9]):?([0-5][0-9])?\s?(am|pm|p)?/);
+                var matches = time.match(/([0-1]?[0-9]):?([0-5][0-9])?\s?(am|pm|P)?/);
                 var ind = matches[3];
                 if (!ind) {
                     ind = 'am';
@@ -685,10 +685,10 @@
                 if (hour === 12 && ind === 'am') {
                     hour = 0;
                 }
-                if (hour === 12 && (ind === 'pm' || ind === 'p')) {
+                if (hour === 12 && (ind === 'pm' || ind === 'P')) {
                     ind = 'am';
                 }
-                if (ind === 'pm' || ind === 'p') {
+                if (ind === 'pm' || ind === 'P') {
                     hour += 12;
                 }
             }

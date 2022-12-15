@@ -95,7 +95,8 @@ a:focus {
 
 .welcome {
     display: flex;
-    justify-content: flex-start;
+    width: 100%;
+    justify-content: space-between;
     background-color: #388465;
     color: white;
     padding: 20px 20px 20px 20px;
@@ -315,6 +316,7 @@ a:focus {
     justify-content: flex-start;
     padding-left: 10px;
 }
+
 .form-group4a:before {
     content: "Year";
     display: flex;

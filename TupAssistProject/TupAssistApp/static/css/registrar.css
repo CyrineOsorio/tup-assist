@@ -102,7 +102,8 @@ body {
 
 .welcome {
     display: flex;
-    justify-content: flex-start;
+    width: 100%;
+    justify-content: space-between;
     background-color: #388465;
     color: white;
     padding: 20px 20px 20px 20px;

@@ -83,7 +83,7 @@
                         <input type="text" class="form-control" name="program" id="program" placeholder="Search...">
                     </div>
                     <div class="col">
-                        <button class="btn btn-primary" id="pdf">Print PDF</button>
+                        <button class="btn btn-primary" onclick="myFunction()">Print PDF</button>
                     </div>
                 </div>
             </div>
@@ -174,13 +174,13 @@
 
 
     <script>
-        $('#pdf').on('click', function() {
+        function myFunction() {
             $("#print").tableHTMLExport({
                 type: 'pdf',
                 filename: 'sample.pdf',
                 orientation: 'p'
             });
-        })
+        }
     </script>
 
 

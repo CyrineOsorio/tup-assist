@@ -86,6 +86,10 @@
                     <div class="col">
                         <input type="text" class="form-control" name="program" id="program" placeholder="Search...">
                     </div>
+                    <div class="col">
+                        <!-- <button onclick="window.print()" class="btn btn-primary">Download</button> -->
+                        <input type="button" class="btn btn-primary" value="Create PDF" id="btPrint" onclick="createPDF()">
+                    </div>
                 </div>
             </div>
 
@@ -93,7 +97,7 @@
             <div style="overflow-x:auto;">
 
 
-                <table class="table table-bordered">
+                <table class="table table-bordered" id="tab">
                     <thead>
                         <th colspan="2" style="text-align: center;">STUDENT DETAILS</th>
                         <th colspan="3" style="text-align: center;">SUBJECT TO BE TAKEN BY STUDENT</th>
@@ -165,6 +169,35 @@
                 return !~text.indexOf(val);
             }).hide();
         });
+    </script>
+
+    <!-- Print PDF -->
+    <script>
+        function createPDF() {
+            var sTable = document.getElementById('tab').innerHTML;
+
+            var style = "<style>";
+            style = style + "table {width: 100%;font: 12px Calibri;}";
+            style = style + "table, th, td {border: solid 1px #DDD; border-collapse: collapse;";
+            style = style + "td {width: fit-content;";
+            style = style + "padding: 2px 3px;text-align: center;}";
+            style = style + "</style>";
+
+            // CREATE A WINDOW OBJECT.
+            var win = window.open('', '', 'height=700,width=700');
+
+            win.document.write('<html><head>');
+            win.document.write('<title>Transfer Subject Requests:</title>'); // <title> FOR PDF HEADER.
+            win.document.write(style); // ADD STYLE INSIDE THE HEAD TAG.
+            win.document.write('</head>');
+            win.document.write('<body>');
+            win.document.write(sTable); // THE TABLE CONTENTS INSIDE THE BODY TAG.
+            win.document.write('</body></html>');
+
+            win.document.close(); // CLOSE THE CURRENT WINDOW.
+
+            win.print(); // PRINT THE CONTENTS.
+        }
     </script>
 
 </body>

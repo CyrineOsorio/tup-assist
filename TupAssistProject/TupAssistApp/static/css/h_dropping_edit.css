@@ -77,7 +77,7 @@ a:focus {
 
 /* katawan yung section */
 
-.bg-container {  
+.bg-container {
     width: 100%;
     height: 100%;
     background-image: url(../images/ECEDF1.jpg);
@@ -204,9 +204,6 @@ footer button img {
     border: 1px solid #E2435E;
 }
 
-
-/* pag maliit na ang screen */
-
 @media only screen and (max-width: 1000px) {
     .navbarLagayan {
         text-align: center;
@@ -214,12 +211,34 @@ footer button img {
     }
     #navbarnavbar {
         padding: 0 5% 0 5%;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+        position: sticky;
+        top: 0;
+        z-index: 1;
     }
-    .welcome {
+    #navbarToggleExternalContent {
+        background-color: #F8F9FB;
         width: 100%;
+    }
+    #center {
+        display: grid;
+        width: 100%;
+        justify-items: center;
+        align-items: center;
+        text-align: center;
+        padding: 10% 10% 10% 10%;
+    }
+    .bg-container {
+        padding: 0 0 0 0;
     }
 }
 
+@media only screen and (min-width:1000px) {
+    #navbarToggleExternalContent {
+        display: flex;
+        justify-content: flex-end;
+    }
+}
 
 
 /* Dagdag MULTI_FORM 11/17/22 */

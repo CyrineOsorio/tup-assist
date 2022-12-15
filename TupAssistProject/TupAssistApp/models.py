@@ -11,6 +11,7 @@ class registration(AbstractUser):
         ('Department Head', 'Department Head'),
         ('Person-in-charge', 'Person-in-charge'), 
         ('Teacher', 'Teacher'), 
+        ('OAA Staff', 'OAA Staff'), 
     ]
     department = [
         ('Department of Industrial Technology', 'Department of Industrial Technology'),

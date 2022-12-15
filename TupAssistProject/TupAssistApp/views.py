@@ -180,7 +180,7 @@ def student_acc_cvs(request):
 
 def staff_acc_cvs(request):
     if request.method=='POST':
-        junk = registration.objects.filter(Q(userType='Department Head') | Q(userType='Program-in-Charge'))
+        junk = registration.objects.filter(Q(userType='Department Head') | Q(userType='Program-in-Charge') | Q(userType='Teacher') | Q(userType='OAA Staff') )
         junk.delete()
         form = StudentRegistration(request.POST)
         staffcvsfile = request.FILES["staffcvsfile"]

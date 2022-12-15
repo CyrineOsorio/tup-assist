@@ -38,7 +38,10 @@
 
 
     <div class="bg-container">
-        <div class="welcome">Welcome, {{current_user.userType}}!</div>
+        <div class="welcome">
+            <p>Welcome, {{ current_user.userType }}!</p>
+            <p>{{ current_user.email }}</p>
+        </div>
 
         <div class="content">
             <div style="overflow-x:auto;">

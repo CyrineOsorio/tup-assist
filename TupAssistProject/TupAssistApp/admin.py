@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import registration, Subjects, AddingReq, DroppingReq, Schedule, TransferringReq
+from .models import registration, Subjects, AddingReq, DroppingReq, Schedule, TransferringReq, TransStatus
 
 
 # Register your models here.
@@ -11,3 +11,4 @@ admin.site.register(AddingReq)
 admin.site.register(DroppingReq)
 admin.site.register(Schedule)
 admin.site.register(TransferringReq)
+admin.site.register(TransStatus)

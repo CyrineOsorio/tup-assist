@@ -87,8 +87,6 @@ a:focus {
 
 .bg-container {
     width: 100%;
-    min-height: 100vh;
-    max-height: 100%;
     background-image: url(../images/F3D4D9.jpg);
     background-position: center;
     background-size: cover;

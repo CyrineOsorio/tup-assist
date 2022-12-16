@@ -1069,6 +1069,22 @@ def h_subject(request):
             'current_user': current_user,
             'subs': subs,
     }
+    elif current_user.department == "Department of Engineering":
+        current_user.department1 = "DOE"
+        current_user.department2 = "BSCE"
+        subs = Subjects.objects.filter (Q(course__icontains=current_user.department1) | Q(course__icontains=current_user.department2) ) 
+        context = {
+            'current_user': current_user,
+            'subs': subs,
+    }
+    elif current_user.department == "Department of Industrial Education":
+        current_user.department1 = "DIE"
+        current_user.department2 = "BSIE-ICT"
+        subs = Subjects.objects.filter (Q(course__icontains=current_user.department1) | Q(course__icontains=current_user.department2) ) 
+        context = {
+            'current_user': current_user,
+            'subs': subs,
+    }
     elif current_user.department == "Department of Math and Science":
         current_user.department1 = "DMS"
         subs = Subjects.objects.filter (Q(course__icontains=current_user.department1)) 

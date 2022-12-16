@@ -667,7 +667,7 @@ def s_drop_sub(request):
             data1.save()
             subject = 'DROPPING SUBJECT REQUEST'
             link = 'https://tupassist.pythonanywhere.com'
-            content = 'Good day!, \n\n' + current_user.first_name + ' ' + current_user.last_name + 'is requesting to drop on your subject,' + subject1 + '. \n\n Please click this link below to login. + Use your gsfe eamil and the deault password is your id number. Ex. TUPC-190123 \n\n' + link
+            content = 'Good day!, \n\n' + current_user.first_name + ' ' + current_user.last_name + 'is requesting to drop on your subject,' + subject1 + 'Due to this reason:'+ reason + '\n\n Please click this link below to login. Use your gsfe eamil and the deault password is your id number. Ex. TUPC-190123 \n\n' + link
             send_mail(subject, 
                 content, settings.EMAIL_HOST_USER , [teacher1], fail_silently=False)
         if subject2 and section2 and schedule2 !='':
@@ -676,75 +676,137 @@ def s_drop_sub(request):
             data1 = registration.objects.get(studID=current_user.studID)
             data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'
             data1.save()
-            content = 'Good day!, \n\n' + current_user.first_name + ' ' + current_user.last_name + 'is requesting to drop on your subject,' + subject2 + '. \n\n Please click this link below to login. + Use your gsfe eamil and the deault password is your id number. Ex. TUPC-190123 \n\n' + link
+            subject = 'DROPPING SUBJECT REQUEST'
+            link = 'https://tupassist.pythonanywhere.com'
+            content = 'Good day!, \n\n' + current_user.first_name + ' ' + current_user.last_name + 'is requesting to drop on your subject,' + subject2 + 'Due to this reason:'+ reason + '\n\n Please click this link below to login. Use your gsfe eamil and the deault password is your id number. Ex. TUPC-190123 \n\n' + link
             send_mail(subject, 
                 content, settings.EMAIL_HOST_USER , [teacher2], fail_silently=False)
+        
+                
         if subject3 and section3 and schedule3 !='':
             data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject3, section=section3, sched=schedule3, subj_teacher_name=teacher3, reason=reason)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
             data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'
             data1.save()
-            content = 'Good day!, \n\n' + current_user.first_name + ' ' + current_user.last_name + 'is requesting to drop on your subject,' + subject3 + '. \n\n Please click this link below to login. + Use your gsfe eamil and the deault password is your id number. Ex. TUPC-190123 \n\n' + link
+            subject = 'DROPPING SUBJECT REQUEST'
+            link = 'https://tupassist.pythonanywhere.com'
+            content = 'Good day!, \n\n' + current_user.first_name + ' ' + current_user.last_name + 'is requesting to drop on your subject,' + subject3 + 'Due to this reason:'+ reason + '\n\n Please click this link below to login. Use your gsfe eamil and the deault password is your id number. Ex. TUPC-190123 \n\n' + link
             send_mail(subject, 
                 content, settings.EMAIL_HOST_USER , [teacher3], fail_silently=False)
+            
         if subject4 and section4 and schedule4 !='':
             data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject4, section=section4, sched=schedule4, subj_teacher_name=teacher4, reason=reason)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
             data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'
             data1.save()
-            content = 'Good day!, \n\n' + current_user.first_name + ' ' + current_user.last_name + 'is requesting to drop on your subject,' + subject4 + '. \n\n Please click this link below to login. + Use your gsfe eamil and the deault password is your id number. Ex. TUPC-190123 \n\n' + link
+            subject = 'DROPPING SUBJECT REQUEST'
+            link = 'https://tupassist.pythonanywhere.com'
+            content = 'Good day!, \n\n' + current_user.first_name + ' ' + current_user.last_name + 'is requesting to drop on your subject,' + subject4 + 'Due to this reason:'+ reason + '\n\n Please click this link below to login. Use your gsfe eamil and the deault password is your id number. Ex. TUPC-190123 \n\n' + link
             send_mail(subject, 
                 content, settings.EMAIL_HOST_USER , [teacher4], fail_silently=False)
+            
         if subject5 and section5 and schedule5 !='':
             data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject5, section=section5, sched=schedule5, subj_teacher_name=teacher5, reason=reason)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
             data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'
             data1.save()
+            subject = 'DROPPING SUBJECT REQUEST'
+            link = 'https://tupassist.pythonanywhere.com'
+            content = 'Good day!, \n\n' + current_user.first_name + ' ' + current_user.last_name + 'is requesting to drop on your subject,' + subject5 + 'Due to this reason:'+ reason + '\n\n Please click this link below to login. Use your gsfe eamil and the deault password is your id number. Ex. TUPC-190123 \n\n' + link
+            send_mail(subject, 
+                content, settings.EMAIL_HOST_USER , [teacher5], fail_silently=False)
+            
         if subject6 and section6 and schedule6 !='':
             data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject6, section=section6, sched=schedule6, subj_teacher_name=teacher6, reason=reason)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
             data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'
             data1.save()
+            subject = 'DROPPING SUBJECT REQUEST'
+            link = 'https://tupassist.pythonanywhere.com'
+            content = 'Good day!, \n\n' + current_user.first_name + ' ' + current_user.last_name + 'is requesting to drop on your subject,' + subject6 + 'Due to this reason:'+ reason + '\n\n Please click this link below to login. Use your gsfe eamil and the deault password is your id number. Ex. TUPC-190123 \n\n' + link
+            send_mail(subject, 
+                content, settings.EMAIL_HOST_USER , [teacher6], fail_silently=False)
+
+
         if subject7 and section7 and schedule7 !='':
             data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject7, section=section7, sched=schedule7, subj_teacher_name=teacher7, reason=reason)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
             data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'
             data1.save()
+            subject = 'DROPPING SUBJECT REQUEST'
+            link = 'https://tupassist.pythonanywhere.com'
+            content = 'Good day!, \n\n' + current_user.first_name + ' ' + current_user.last_name + 'is requesting to drop on your subject,' + subject7 + 'Due to this reason:'+ reason + '\n\n Please click this link below to login. Use your gsfe eamil and the deault password is your id number. Ex. TUPC-190123 \n\n' + link
+            send_mail(subject, 
+                content, settings.EMAIL_HOST_USER , [teacher7], fail_silently=False)
+
+
         if subject8 and section8 and schedule8 !='':
             data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject8, section=section8, sched=schedule8, subj_teacher_name=teacher8, reason=reason)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
             data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'
             data1.save()
+            subject = 'DROPPING SUBJECT REQUEST'
+            link = 'https://tupassist.pythonanywhere.com'
+            content = 'Good day!, \n\n' + current_user.first_name + ' ' + current_user.last_name + 'is requesting to drop on your subject,' + subject8 + 'Due to this reason:'+ reason + '\n\n Please click this link below to login. Use your gsfe eamil and the deault password is your id number. Ex. TUPC-190123 \n\n' + link
+            send_mail(subject, 
+                content, settings.EMAIL_HOST_USER , [teacher8], fail_silently=False)
+
+
         if subject9 and section9 and schedule9 !='':
             data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject9, section=section9, sched=schedule9, subj_teacher_name=teacher9, reason=reason)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
             data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'
             data1.save()
+            subject = 'DROPPING SUBJECT REQUEST'
+            link = 'https://tupassist.pythonanywhere.com'
+            content = 'Good day!, \n\n' + current_user.first_name + ' ' + current_user.last_name + 'is requesting to drop on your subject,' + subject9 + 'Due to this reason:'+ reason + '\n\n Please click this link below to login. Use your gsfe eamil and the deault password is your id number. Ex. TUPC-190123 \n\n' + link
+            send_mail(subject, 
+                content, settings.EMAIL_HOST_USER , [teacher9], fail_silently=False)
+
         if subject10 and section10 and schedule10 !='':
             data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject10, section=section10, sched=schedule10, subj_teacher_name=teacher10, reason=reason)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
             data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'
             data1.save()
+            subject = 'DROPPING SUBJECT REQUEST'
+            link = 'https://tupassist.pythonanywhere.com'
+            content = 'Good day!, \n\n' + current_user.first_name + ' ' + current_user.last_name + 'is requesting to drop on your subject,' + subject10 + 'Due to this reason:'+ reason + '\n\n Please click this link below to login. Use your gsfe eamil and the deault password is your id number. Ex. TUPC-190123 \n\n' + link
+            send_mail(subject, 
+                content, settings.EMAIL_HOST_USER , [teacher10], fail_silently=False)
+
+
         if subject11 and section11 and schedule11 !='':
             data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject11, section=section11, sched=schedule11, subj_teacher_name=teacher11, reason=reason)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
             data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'
             data1.save()
+            subject = 'DROPPING SUBJECT REQUEST'
+            link = 'https://tupassist.pythonanywhere.com'
+            content = 'Good day!, \n\n' + current_user.first_name + ' ' + current_user.last_name + 'is requesting to drop on your subject,' + subject11 + 'Due to this reason:'+ reason + '\n\n Please click this link below to login. Use your gsfe eamil and the deault password is your id number. Ex. TUPC-190123 \n\n' + link
+            send_mail(subject, 
+                content, settings.EMAIL_HOST_USER , [teacher11], fail_silently=False)
+
+
         if subject12 and section12 and schedule12 !='':
             data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject12, section=section12, sched=schedule12, subj_teacher_name=teacher12, reason=reason)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
             data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'
             data1.save()
+            subject = 'DROPPING SUBJECT REQUEST'
+            link = 'https://tupassist.pythonanywhere.com'
+            content = 'Good day!, \n\n' + current_user.first_name + ' ' + current_user.last_name + 'is requesting to drop on your subject,' + subject12 + 'Due to this reason:'+ reason + '\n\n Please click this link below to login. Use your gsfe eamil and the deault password is your id number. Ex. TUPC-190123 \n\n' + link
+            send_mail(subject, 
+                content, settings.EMAIL_HOST_USER , [teacher12], fail_silently=False)
 
         messages.success(request, 'Subject to Drop Successfully Request Wait for the Teacher Approval.')
         return redirect('/s_dropping')

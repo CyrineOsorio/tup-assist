@@ -86,6 +86,8 @@ a:focus {
 /* katawan yung section */
 
 .bg-container {
+    min-height: 100vh;
+    max-height: 100%;
     width: 100%;
     background-image: url(../images/F3D4D9.jpg);
     background-position: center;

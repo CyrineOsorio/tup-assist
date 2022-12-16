@@ -300,7 +300,7 @@ def adaa_adding_approve(request):
         edit1.save()
         messages.success(request, 'Request Successfully Edited!')
         # Email
-        link = 'tup-assist.com'
+        link = 'https://tupassist.pythonanywhere.com'
         content = 'Hi ' + data.first_name + ' ' + data.last_name + ',\n\n' + 'Your Request for Adding of Subject is already approved by ADAA. Check your request by signing in your account on the attached link. \n\n' + link
         send_mail('ADDING OF SUBJECT - REQUEST', 
             content, settings.EMAIL_HOST_USER , [data.email], fail_silently=False)
@@ -665,24 +665,38 @@ def s_drop_sub(request):
             data1 = registration.objects.get(studID=current_user.studID)
             data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'
             data1.save()
+            subject = 'DROPPING SUBJECT REQUEST'
+            link = 'https://tupassist.pythonanywhere.com'
+            content = 'Good day!, \n\n' + current_user.first_name + ' ' + current_user.lastname + 'is requesting to drop on your subject,' + subject1 + '. \n\n Please click this link below to login. + Use your gsfe eamil and the deault password is your id number. Ex. TUPC-190123 \n\n' + link
+            send_mail(subject, 
+                content, settings.EMAIL_HOST_USER , [teacher1], fail_silently=False)
         if subject2 and section2 and schedule2 !='':
             data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject2, section=section2, sched=schedule2, subj_teacher_name=teacher2, reason=reason)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
             data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'
             data1.save()
+            content = 'Good day!, \n\n' + current_user.first_name + ' ' + current_user.lastname + 'is requesting to drop on your subject,' + subject2 + '. \n\n Please click this link below to login. + Use your gsfe eamil and the deault password is your id number. Ex. TUPC-190123 \n\n' + link
+            send_mail(subject, 
+                content, settings.EMAIL_HOST_USER , [teacher2], fail_silently=False)
         if subject3 and section3 and schedule3 !='':
             data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject3, section=section3, sched=schedule3, subj_teacher_name=teacher3, reason=reason)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
             data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'
             data1.save()
+            content = 'Good day!, \n\n' + current_user.first_name + ' ' + current_user.lastname + 'is requesting to drop on your subject,' + subject3 + '. \n\n Please click this link below to login. + Use your gsfe eamil and the deault password is your id number. Ex. TUPC-190123 \n\n' + link
+            send_mail(subject, 
+                content, settings.EMAIL_HOST_USER , [teacher3], fail_silently=False)
         if subject4 and section4 and schedule4 !='':
             data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject4, section=section4, sched=schedule4, subj_teacher_name=teacher4, reason=reason)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
             data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'
             data1.save()
+            content = 'Good day!, \n\n' + current_user.first_name + ' ' + current_user.lastname + 'is requesting to drop on your subject,' + subject4 + '. \n\n Please click this link below to login. + Use your gsfe eamil and the deault password is your id number. Ex. TUPC-190123 \n\n' + link
+            send_mail(subject, 
+                content, settings.EMAIL_HOST_USER , [teacher4], fail_silently=False)
         if subject5 and section5 and schedule5 !='':
             data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject5, section=section5, sched=schedule5, subj_teacher_name=teacher5, reason=reason)
             data.save()
@@ -1124,7 +1138,7 @@ def sub_cvs(request):
 
 def h_adding(request):
     current_user = request.user
-    if current_user.department == "Department of Industrial Technology" or current_user.department == "Department of Engineering" or current_user.department == "Department of Information Education":
+    if current_user.department == "Department of Industrial Technology" or current_user.department == "Department of Engineering" or current_user.department == "Department of Industrial Education":
         test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student') & (Q(addStatus='Wait for Department Head and Asst. Director for Academic Affairs Approval')) | Q(addStatus='ADAA Approved'))
         context = { 
             'test': test,
@@ -1152,7 +1166,7 @@ def h_adding_edit(request, studID):
             'req': req,
             'sched': sched
             }
-    elif current_user.department == "Department of Information Education":
+    elif current_user.department == "Department of Industrial Education":
         course1 = "BS-ICT"
         req = AddingReq.objects.filter(Q(studID_id=data.studID) & (Q(subject_id__course=course1)))
         context = { 
@@ -1213,7 +1227,7 @@ def h_edit_sub(request):
         
 def h_dropping(request):
     current_user = request.user
-    if current_user.department == "Department of Industrial Technology" or current_user.department == "Department of Engineering" or current_user.department == "Department of Information Education":
+    if current_user.department == "Department of Industrial Technology" or current_user.department == "Department of Engineering" or current_user.department == "Department of Industrial Education":
         test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student') & Q(dropStatus='Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'))
         context = { 
             'test': test,
@@ -1241,7 +1255,7 @@ def h_dropping_edit(request, studID):
             'req': req,
             'sched': sched
             }
-    elif current_user.department == "Department of Information Education":
+    elif current_user.department == "Department of Industrial Education":
         course1 = "BS-ICT"
         req = DroppingReq.objects.filter(Q(studID_id=data.studID) & (Q(subject_id__course=course1)))
         context = { 
@@ -1306,7 +1320,7 @@ def h_edit_sub1(request):
 
 def h_transferring(request):
     current_user = request.user
-    if current_user.department == "Department of Industrial Technology" or current_user.department == "Department of Engineering" or current_user.department == "Department of Information Education":
+    if current_user.department == "Department of Industrial Technology" or current_user.department == "Department of Engineering" or current_user.department == "Department of Industrial Education":
         test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student') & (Q(transferStatus='Wait for Department Head and Asst. Director for Academic Affairs Approval')) | Q(transferStatus='ADAA Approved'))
         context = { 
             'test': test,
@@ -1335,7 +1349,7 @@ def h_transferring_edit(request, studID):
             'req': req,
             'sched': sched
             }
-    elif current_user.department == "Department of Information Education":
+    elif current_user.department == "Department of Industrial Education":
         course1 = "BS-ICT"
         req = TransferringReq.objects.filter(Q(studID_id=data.studID) & (Q(subject_id__course=course1)))
         context = { 

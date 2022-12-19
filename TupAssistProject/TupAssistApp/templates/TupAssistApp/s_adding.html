@@ -234,7 +234,7 @@
                                 <form method="post" action="/s_step1_submit">
                                     {% csrf_token %}
                                     <!-- <input type="text" name="" id=""> -->
-                                    <input type="text" name="grade" id="grade" value="{{ current_user.upload }}" hidden>
+                                    <input type="text" name="grade" id="grade" value="{{ current_user.upload }}">
                                     <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
                                 </form> {% endif %}
 

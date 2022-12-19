@@ -222,7 +222,9 @@
                                                 <td colspan="5">
                                                     <!-- UPLOAD IMAGE -->
                                                     {% if current_user.plot_sheet_link != '' %}
-                                                    <img src="{{data.image.url}}" alt="" id="viewimg" onclick="window.open('{{data.image.url}}');" style="width:100%;">
+
+                                                    <img src="{{current_user.plot_sheet_link.url}}" alt="" id="viewimg" onclick="window.open('{{current_user.plot_sheet_link.url}}');" style="width:100%; height:auto">
+                                                    <a href="{%url 'TupAssistApp:delupload1'%}"><i class="bi bi-x-circle" style="margin-left: 5%; color: #E2435E"></i></a>
 
                                                     <br> {% elif current_user.plot_sheet_link == '' %}
                                                     <button type="button" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target="#addImage">
@@ -524,8 +526,8 @@
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Edit Request Subject</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     <form action="/s_edit_sub" method="post">
                         {% csrf_token %}

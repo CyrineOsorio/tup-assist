@@ -500,10 +500,26 @@ def upload(request):
         messages.success(request, 'Successfully Upload your file.')
         return redirect('/s_adding')
 
+def upload1(request):
+    current_user = request.user
+    if request.method == 'POST':
+        data = registration.objects.get(username=current_user.username)
+        data.plot_sheet_link = request.FILES["plot_sheet_link"]
+        data.save()
+        messages.success(request, 'Successfully Upload your file.')
+        return redirect('/s_adding')
+
 def delupload(request):
     current_user = request.user
     data = registration.objects.get(username=current_user.username)
     data.upload = ""
+    data.save()
+    return redirect('/s_adding')
+
+def delupload1(request):
+    current_user = request.user
+    data = registration.objects.get(username=current_user.username)
+    data.plot_sheet_link = ""
     data.save()
     return redirect('/s_adding')
 

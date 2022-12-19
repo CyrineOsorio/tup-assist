@@ -531,9 +531,9 @@ def s_step1_submit(request):
     if request.method =='POST':
         grade = request.POST.get("grade")
         if grade != '' or grade != None:
-            data = registration.objects.get(username=current_user.username)
-            data.addStatus = 'Wait for PIC Approval'
-            data.save()
+            # data = registration.objects.get(username=current_user.username)
+            # data.addStatus = 'Wait for PIC Approval'
+            # data.save()
             messages.success(request, 'Request Submitted')
             return redirect('/s_adding')
         else:

@@ -85,6 +85,7 @@ def logoutUser(request):
 
 
 # CUSTOMIZE ADMIN PAGES
+@login_required(login_url='/index')
 def a_dashboard(request):
     current_user = request.user
     subs = Subjects.objects.all()

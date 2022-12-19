@@ -220,21 +220,26 @@
                                             {% csrf_token %}
                                             <tr>
                                                 <td colspan="5">
-                                                    <input type="url" class="form-control" name="plot_sheet_link" id="plot_sheet_link" placeholder="Link of your plotted schedule in google sheet." required>
+                                                    <!-- UPLOAD IMAGE -->
+                                                    {% if current_user.plot_sheet_link != '' %}
+                                                    <img src="{{data.image.url}}" alt="" id="viewimg" onclick="window.open('{{data.image.url}}');" style="width:100%;">
+
+                                                    <br> {% elif current_user.plot_sheet_link == '' %}
+                                                    <button type="button" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target="#addImage">
+                                                        Upload Image of your Plotted Schedule.
+                                                    </button> {% endif %}
                                                 </td>
                                             </tr>
 
                                             <tr>
                                                 <td colspan="5">
-                                                    <!-- UPLOAD IMAGES -->
+                                                    <!-- UPLOAD PDF -->
                                                     {% if current_user.upload != '' %}
                                                     <div class="lagayanngfile">
                                                         Grades: <a href="#" class="alert-link" onclick="window.open('{{ current_user.upload.url }}');">{{ current_user.upload }}</a> <a href="{%url 'TupAssistApp:delupload'%}"><i class="bi bi-x-circle" style="margin-left: 5%; color: #E2435E"></i></a>
                                                     </div>
-                                                    {% endif %}
-
-                                                    <br> {% if current_user.upload == '' %}
-                                                    <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#addFile" id="disable0">
+                                                    {% elif current_user.upload == '' %}
+                                                    <button type="button" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target="#addFile" id="disable0">
                                                         Upload PDF.
                                                     </button> {% endif %}
                                                 </td>
@@ -256,18 +261,6 @@
                                     {% if current_user.addStatus != '' %}
                                     <button class="button btn-navigate-form-step" type="button" step_number="2">Next</button> {% endif %}
                                 </div>
-
-
-
-                                <!-- SHOWING OF SCHEDULE -->
-                                <div class="mt-3" style="overflow-x: auto;">
-
-
-                                    <!-- <div id="schedule5" class="jqs-demo mb-3"></div> -->
-
-
-                                </div>
-
 
                             </div>
 
@@ -403,7 +396,7 @@
             </div>
         </div>
 
-        <!-- Add FIle Modal -->
+        <!-- Add PDF Modal -->
         <div class="modal fade" id="addFile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -418,9 +411,37 @@
                             {% csrf_token %}
                             <div class="image-upload">
                                 <label for="gradesfile">
-                                  <img src="../../static/images/icons8-pdf-40.png"/>
+                                  <img src="{%static 'images/icons8-pdf-40.png'%}"/>
                                 </label>
                                 <input type="file" accept="application/pdf" name="gradesfile" id="gradesfile" required>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Image Modal -->
+        <div class="modal fade" id="addImage" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Upload a screnshot/image of your customized plotted schedule from googlesheets/excel.</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-inline" id="plotfileform" method="post" enctype="multipart/form-data" action="/upload1">
+                            {% csrf_token %}
+                            <div class="image-upload">
+                                <label for="plot_sheet_link">
+                                  <img src="{%static 'images/add_image.png'%}"/>
+                                </label>
+                                <input type="file" accept="image/*" name="plot_sheet_link" id="plot_sheet_link" required>
                             </div>
                         </form>
                     </div>
@@ -1068,6 +1089,26 @@
     <script>
         $('#gradesfile').change(function() {
             $('#gradesfileform').submit();
+        });
+        $('#plot_sheet_link').change(function() {
+            $('#plotfileform').submit();
+        });
+
+
+        $("input").change(function(e) {
+
+            for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
+
+                var file = e.originalEvent.srcElement.files[i];
+
+                var img = document.getElementById("viewimg");
+                var reader = new FileReader();
+                reader.onloadend = function() {
+                    img.src = reader.result;
+                }
+                reader.readAsDataURL(file);
+
+            }
         });
     </script>
 

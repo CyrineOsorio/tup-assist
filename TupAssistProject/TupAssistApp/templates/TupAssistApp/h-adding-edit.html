@@ -129,6 +129,12 @@
                             </tbody>
                         </table>
                     </div>
+
+                    <div class="mt-3">
+                        {% if current_user.plot_sheet_link != '' %}
+                        <br> Plotted Schedule
+                        <img src="{{student_info.plot_sheet_link.url}}" alt="" id="viewimg" onclick="window.open('{{student_info.plot_sheet_link.url}}');" style="width:100%; height:auto"> {% endif %}
+                    </div>
                 </div>
             </div>
         </div>

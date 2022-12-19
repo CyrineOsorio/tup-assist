@@ -215,13 +215,33 @@
                                             </tr>
                                         </form>
 
-                                        <br> {% if current_user.addStatus == '' %}
+                                        {% if current_user.addStatus != '' %}
+                                        <tr>
+                                            <td colspan="5">
+                                                {% if current_user.plot_sheet_link != '' %}
+                                                <br> Plotted Schedule Upload:
+                                                <a style=" justify-self: flex-end;" href="{%url 'TupAssistApp:delupload1'%}"><i class="bi bi-x-circle" style="text-align: center; font-size: 50px; margin-left: 5%; color: #E2435E"></i></a>
+                                                <img src="{{current_user.plot_sheet_link.url}}" alt="" id="viewimg" onclick="window.open('{{current_user.plot_sheet_link.url}}');" style="width:100%; height:auto"> {% endif %}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="5">
+                                                {% if current_user.upload != '' %}
+                                                <div class="lagayanngfile">
+                                                    Grades: <a href="#" class="alert-link" onclick="window.open('{{ current_user.upload.url }}');">{{ current_user.upload }}</a>
+                                                </div>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+
+                                        <br> {% elif current_user.addStatus == '' %}
                                         <form method="post" action="/s_step1_submit">
                                             {% csrf_token %}
                                             <tr>
                                                 <td colspan="5">
                                                     <!-- UPLOAD IMAGE -->
                                                     {% if current_user.plot_sheet_link != '' %}
+                                                    <p>Plotted Schedule Upload:</p>
                                                     <a style=" justify-self: flex-end;" href="{%url 'TupAssistApp:delupload1'%}"><i class="bi bi-x-circle" style="text-align: center; font-size: 50px; margin-left: 5%; color: #E2435E"></i></a>
                                                     <img src="{{current_user.plot_sheet_link.url}}" alt="" id="viewimg" onclick="window.open('{{current_user.plot_sheet_link.url}}');" style="width:100%; height:auto">
 
@@ -312,6 +332,12 @@
                                     </tbody>
                                 </table>
 
+                                <div class="mt-3">
+                                    {% if current_user.plot_sheet_link != '' %}
+                                    <br> Plotted Schedule
+                                    <img src="{{current_user.plot_sheet_link.url}}" alt="" id="viewimg" onclick="window.open('{{current_user.plot_sheet_link.url}}');" style="width:100%; height:auto"> {% endif %}
+                                </div>
+
 
                                 {% if current_user.addStatus == 'Update Your Request' %}
                                 <div class="mt-3" style="display: flex; justify-content: end;">
@@ -384,10 +410,7 @@
                                 </table>
                             </div>
 
-                            <div class="mt-3">
-                                {% if current_user.plot_sheet_link != '' %}
-                                <img src="{{current_user.plot_sheet_link.url}}" alt="" id="viewimg1" onclick="window.open('{{current_user.plot_sheet_link.url}}');" style="width:100%; height:auto"> {% endif %}
-                            </div>
+
 
 
                             <div class="mt-3">

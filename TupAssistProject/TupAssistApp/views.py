@@ -530,15 +530,16 @@ def s_step1_submit(request):
     current_user = request.user
     if request.method =='POST':
         grade = request.POST.get("grade")
-        if grade != '' or grade != None:
-            # data = registration.objects.get(username=current_user.username)
-            # data.addStatus = 'Wait for PIC Approval'
-            # data.save()
-            messages.success(request, 'Request Submitted')
-            return redirect('/s_adding')
-        else:
+        if grade == '' or grade == None:
             messages.error(request, 'Upload Compile of your grades first.')
             return redirect('/s_adding')
+        else:
+            data = registration.objects.get(username=current_user.username)
+            data.addStatus = 'Wait for PIC Approval'
+            data.save()
+            messages.success(request, 'Request Submitted')
+            return redirect('/s_adding')
+           
         
 def s_edit_sub(request):
     if request.method =='POST':

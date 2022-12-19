@@ -92,6 +92,7 @@ class AddingReq(models.Model):
     admin_date = models.DateTimeField(null=True, blank=True)
     school_year = models.IntegerField(blank=True, null=True)
     semester = models.IntegerField(blank=True, null=True)
+    plot_sheet_link = models.CharField(max_length=500, null=True, blank=True)
     
     class Meta:
         verbose_name_plural = "AddingReq" 

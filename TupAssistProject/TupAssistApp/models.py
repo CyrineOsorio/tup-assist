@@ -30,6 +30,7 @@ class registration(AbstractUser):
     userType = models.CharField(max_length=255, choices= userType, verbose_name='userType', null=True)
     department = models.CharField(max_length=255, choices= department, verbose_name='department', null=True)
     upload = models.FileField(upload_to ='grades/', null=True, blank=True)
+    plot_sheet_link = models.FileField(upload_to ='plot/', null=True, blank=True)
     addStatus = models.CharField(max_length=255, blank=True)
     dropStatus = models.CharField(max_length=255, blank=True)
     transferStatus = models.CharField(max_length=255, blank=True)
@@ -92,7 +93,6 @@ class AddingReq(models.Model):
     admin_date = models.DateTimeField(null=True, blank=True)
     school_year = models.IntegerField(blank=True, null=True)
     semester = models.IntegerField(blank=True, null=True)
-    plot_sheet_link = models.CharField(max_length=500, null=True, blank=True)
     
     class Meta:
         verbose_name_plural = "AddingReq" 

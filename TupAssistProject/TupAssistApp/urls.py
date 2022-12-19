@@ -105,6 +105,7 @@ urlpatterns = [
     path('upload', views.upload, name='upload'),
     path('delupload', views.delupload, name='delupload'),
     path('upload1', views.upload1, name='upload1'),
+    path('delupload1', views.delupload1, name='delupload1'),
     path('s_add_sub', views.s_add_sub, name='s_add_sub'),
     path('s_del_sub/<int:id>', views.s_del_sub),
     path('s_step1_submit', views.s_step1_submit, name="s_step1_submit"),

@@ -223,8 +223,8 @@
                                                     <!-- UPLOAD IMAGE -->
                                                     {% if current_user.plot_sheet_link != '' %}
 
+                                                    <a style=" justify-self: flex-end;" href="{%url 'TupAssistApp:delupload1'%}"><i class="bi bi-x-circle" style="text-align: center; font-size: 50px; margin-left: 5%; color: #E2435E"></i></a>
                                                     <img src="{{current_user.plot_sheet_link.url}}" alt="" id="viewimg" onclick="window.open('{{current_user.plot_sheet_link.url}}');" style="width:100%; height:auto">
-                                                    <a href="{%url 'TupAssistApp:delupload1'%}"><i class="bi bi-x-circle" style="margin-left: 5%; color: #E2435E"></i></a>
 
                                                     <br> {% elif current_user.plot_sheet_link == '' %}
                                                     <button type="button" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target="#addImage">
@@ -248,7 +248,9 @@
                                             </tr>
 
                                             <tr>
-                                                <td colspan="5">
+                                                <td colspan="5"> {% for i in req %}
+                                                    <input type="text" name="not_empty" value="{{i.studID}}"> {% endfor %}
+                                                    <input type="text" name="plot" id="plot" value="{{ current_user.plot_sheet_link }}" hidden>
                                                     <input type="text" name="grade" id="grade" value="{{ current_user.upload }}" hidden>
                                                     <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
                                                 </td>

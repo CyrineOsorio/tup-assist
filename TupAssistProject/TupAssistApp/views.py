@@ -546,8 +546,16 @@ def s_step1_submit(request):
     current_user = request.user
     if request.method =='POST':
         grade = request.POST.get("grade")
-        if grade == '' or grade == None:
-            messages.error(request, 'Upload Compile of your grades first.')
+        plot = request.POST.get("plot")
+        not_empty = request.POST.get("not_empty")
+        if (not_empty == '' or not_empty == None):
+            messages.error(request, 'Add Subject First.')
+            return redirect('/s_adding')
+        elif (grade == '' or grade == None):
+            messages.error(request, 'Upload compile of your grades first.')
+            return redirect('/s_adding')
+        elif  (plot == '' or plot == None):
+            messages.error(request, 'Upload Image/Screenshot of your Plotted Schedule from your customized google sheet/excel file.')
             return redirect('/s_adding')
         else:
             data = registration.objects.get(username=current_user.username)

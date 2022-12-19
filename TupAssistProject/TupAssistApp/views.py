@@ -1229,8 +1229,9 @@ def h_adding_edit(request, studID):
             'sched': sched
             }
     elif current_user.department == "Department of Industrial Education":
+        department1 = "DIE"
         course1 = "BS-ICT"
-        req = AddingReq.objects.filter(Q(studID_id=data.studID) & (Q(subject_id__course=course1)))
+        req = AddingReq.objects.filter(Q (studID_id=data.studID) & (Q(subject_id__course=department1) | (Q(subject_id__course=course1))))
         context = { 
             'current_user': current_user,
             'student_info': data,
@@ -1238,8 +1239,9 @@ def h_adding_edit(request, studID):
             'sched': sched
             }
     elif current_user.department == "Department of Engineering":
+        department1 = "DOE"
         course1 = "BSCE"
-        req = AddingReq.objects.filter(Q(studID_id=data.studID) & (Q(subject_id__course=course1)))
+        req = AddingReq.objects.filter(Q (studID_id=data.studID) & (Q(subject_id__course=department1) | (Q(subject_id__course=course1))))
         context = { 
             'current_user': current_user,
             'student_info': data,
@@ -1318,8 +1320,9 @@ def h_dropping_edit(request, studID):
             'sched': sched
             }
     elif current_user.department == "Department of Industrial Education":
+        department1 = "DIE"
         course1 = "BS-ICT"
-        req = DroppingReq.objects.filter(Q(studID_id=data.studID) & (Q(subject_id__course=course1)))
+        req = DroppingReq.objects.filter(Q(studID_id=data.studID) & (Q(subject_id__course=department1) | (Q(subject_id__course=course1))))
         context = { 
             'current_user': current_user,
             'student_info': data,
@@ -1327,8 +1330,9 @@ def h_dropping_edit(request, studID):
             'sched': sched
             }
     elif current_user.department == "Department of Engineering":
+        department1 = "DOE"
         course1 = "BSCE"
-        req = DroppingReq.objects.filter(Q(studID_id=data.studID) & (Q(subject_id__course=course1)))
+        req = DroppingReq.objects.filter(Q(studID_id=data.studID) & (Q(subject_id__course=department1) | (Q(subject_id__course=course1))))
         context = { 
             'current_user': current_user,
             'student_info': data,
@@ -1412,8 +1416,9 @@ def h_transferring_edit(request, studID):
             'sched': sched
             }
     elif current_user.department == "Department of Industrial Education":
+        department1 = "DIE"
         course1 = "BS-ICT"
-        req = TransferringReq.objects.filter(Q(studID_id=data.studID) & (Q(subject_id__course=course1)))
+        req = TransferringReq.objects.filter(Q (studID_id=data.studID) & (Q(subject_id__course=department1) | (Q(subject_id__course=course1))))
         context = { 
             'current_user': current_user,
             'student_info': data,
@@ -1421,8 +1426,9 @@ def h_transferring_edit(request, studID):
             'sched': sched
             }
     elif current_user.department == "Department of Engineering":
+        department1 = "DOE"
         course1 = "BSCE"
-        req = TransferringReq.objects.filter(Q(studID_id=data.studID) & (Q(subject_id__course=course1)))
+        req = TransferringReq.objects.filter(Q (studID_id=data.studID) & (Q(subject_id__course=department1) | (Q(subject_id__course=course1))))
         context = { 
             'current_user': current_user,
             'student_info': data,

@@ -249,7 +249,7 @@
 
                                             <tr>
                                                 <td colspan="5"> {% for i in req %}
-                                                    <input type="text" name="not_empty" value="{{i.studID}}"> {% endfor %}
+                                                    <input type="text" name="not_empty" value="{{i.studID}}" hidden> {% endfor %}
                                                     <input type="text" name="plot" id="plot" value="{{ current_user.plot_sheet_link }}" hidden>
                                                     <input type="text" name="grade" id="grade" value="{{ current_user.upload }}" hidden>
                                                     <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>

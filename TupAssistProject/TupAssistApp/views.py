@@ -535,6 +535,7 @@ def s_step1_submit(request):
             return redirect('/s_adding')
         else:
             data = registration.objects.get(username=current_user.username)
+            data.plot_sheet_link = request.POST.get("plot_sheet_link")
             data.addStatus = 'Wait for PIC Approval'
             data.save()
             messages.success(request, 'Request Submitted')

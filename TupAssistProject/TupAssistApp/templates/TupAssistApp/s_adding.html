@@ -222,7 +222,6 @@
                                                 <td colspan="5">
                                                     <!-- UPLOAD IMAGE -->
                                                     {% if current_user.plot_sheet_link != '' %}
-
                                                     <a style=" justify-self: flex-end;" href="{%url 'TupAssistApp:delupload1'%}"><i class="bi bi-x-circle" style="text-align: center; font-size: 50px; margin-left: 5%; color: #E2435E"></i></a>
                                                     <img src="{{current_user.plot_sheet_link.url}}" alt="" id="viewimg" onclick="window.open('{{current_user.plot_sheet_link.url}}');" style="width:100%; height:auto">
 
@@ -383,6 +382,11 @@
                                             {% endfor %}
                                         </tbody>
                                 </table>
+                            </div>
+
+                            <div class="mt-3">
+                                {% if current_user.plot_sheet_link != '' %}
+                                <img src="{{current_user.plot_sheet_link.url}}" alt="" id="viewimg1" onclick="window.open('{{current_user.plot_sheet_link.url}}');" style="width:100%; height:auto"> {% endif %}
                             </div>
 
 

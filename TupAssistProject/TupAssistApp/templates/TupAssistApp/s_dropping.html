@@ -90,7 +90,7 @@
                         <p style="text-align: center;">{{ current_user.dropStatus }}</p>
                     </div>
                     <div class="isapanglagayan">
-                        <a href=""><img src="{%static 'images/print_pdf.png'%}" alt="print_pdf"></a>
+                        <a role="button" onclick="createPDF()"><img src="{%static 'images/print_pdf.png'%}" alt="print_pdf"></a>
                     </div>
                 </div>
 
@@ -217,7 +217,7 @@
 
                             <h2 class="font-normal">Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval</h2>
                             <!-- Step 2 input fields -->
-                            <div class="mt-3" style='overflow-x: scroll;'>
+                            <div class="mt-3" style='overflow-x: scroll;' id="tab">
                                 <table class="table table-bordered">
                                     <thead>
                                         <th colspan="4" style="text-align: center;">SUBJECT TO BE TAKEN BY STUDENT</th>
@@ -324,6 +324,36 @@
     <!--DROPDOWN-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+
+
+    <!-- Print PDF -->
+    <script>
+        function createPDF() {
+            var sTable = document.getElementById('tab').innerHTML;
+
+            var style = "<style>";
+            style = style + "table {width: 100%;font: 12px Calibri;}";
+            style = style + "table, th, td {border: solid 1px #DDD; border-collapse: collapse;";
+            style = style + "td {width: fit-content;";
+            style = style + "padding: 2px 3px;text-align: center;}";
+            style = style + "</style>";
+
+            // CREATE A WINDOW OBJECT.
+            var win = window.open('', '', 'height=700,width=700');
+
+            win.document.write('<html><head>');
+            win.document.write('<title>Add Subject Requests:</title>'); // <title> FOR PDF HEADER.
+            win.document.write(style); // ADD STYLE INSIDE THE HEAD TAG.
+            win.document.write('</head>');
+            win.document.write('<body>');
+            win.document.write(sTable); // THE TABLE CONTENTS INSIDE THE BODY TAG.
+            win.document.write('</body></html>');
+
+            win.document.close(); // CLOSE THE CURRENT WINDOW.
+
+            win.print(); // PRINT THE CONTENTS.
+        }
+    </script>
 
 
     <!-- Checkbox ni Rejay -->

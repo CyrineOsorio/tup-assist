@@ -139,6 +139,7 @@ def changestatus(request):
         return redirect('/a_dashboard')
 
 
+@login_required(login_url='/index')
 def a_account(request):
     current_user = request.user
     form = HeadRegistration()
@@ -212,6 +213,7 @@ def a_staff_create(request):
         return redirect ('/a_staff')
     return render(request, 'TupAssistApp/a_staff.html')
 
+@login_required(login_url='/index')
 def a_adding(request):
     current_user = request.user = request.user
     req = AddingReq.objects.filter(admin_approve='Approve')
@@ -221,6 +223,7 @@ def a_adding(request):
         }
     return render(request, 'TupAssistApp/a_adding.html', context)
 
+@login_required(login_url='/index')
 def a_dropping(request):
     current_user = request.user
     req = DroppingReq.objects.filter(admin_approve='Approve')
@@ -230,6 +233,7 @@ def a_dropping(request):
         }
     return render(request, 'TupAssistApp/a_dropping.html', context)
 
+@login_required(login_url='/index')
 def a_transferring(request):
     current_user = request.user
     req = TransferringReq.objects.filter(admin_approve='Approve')
@@ -245,6 +249,7 @@ def a_transferring(request):
 
 
 # ADAA PAGES
+@login_required(login_url='/index')
 def adaa_profile(request):
     current_user = request.user
     form = PasswordChangeForm(current_user)
@@ -255,6 +260,7 @@ def adaa_profile(request):
     }
     return render(request, 'TupAssistApp/adaa_profile.html', context)
 
+@login_required(login_url='/index')
 def adaa_adding(request):
     current_user = request.user = request.user
     test = registration.objects.filter(Q(userType='Student') & (Q(addStatus='Wait for Department Head and Asst. Director for Academic Affairs Approval') | Q(addStatus='ADAA Approved')) )
@@ -264,6 +270,7 @@ def adaa_adding(request):
         }
     return render(request, 'TupAssistApp/adaa_adding.html', context)
 
+@login_required(login_url='/index')
 def adaa_adding_view(request, studID):
     current_user = request.user
     data = registration.objects.get(studID=studID)
@@ -309,6 +316,7 @@ def adaa_adding_approve(request):
         return redirect('/adaa_adding_view/'+ str(data.studID))
 
 
+@login_required(login_url='/index')
 def adaa_dropping(request):
     current_user = request.user
     test = registration.objects.filter(Q(userType='Student') & (Q(dropStatus='Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval')) | Q(dropStatus='ADAA Approved')) 
@@ -318,6 +326,7 @@ def adaa_dropping(request):
         }
     return render(request, 'TupAssistApp/adaa_dropping.html', context)
 
+@login_required(login_url='/index')
 def adaa_dropping_view(request, studID):
     current_user = request.user
     data = registration.objects.get(studID=studID)
@@ -342,6 +351,7 @@ def r_edit_sub1(request):
         messages.success(request, 'Request Successfully Edited!')
         return redirect('/adaa_dropping_view/'+ str(data.studID))
 
+@login_required(login_url='/index')
 def adaa_dropping_approve(request):
     studID = request.POST.get('studID')
     admin_name = request.POST.get('admin_name')
@@ -362,6 +372,7 @@ def adaa_dropping_approve(request):
             content, settings.EMAIL_HOST_USER , [data.email], fail_silently=False)
         return redirect('/adaa_dropping_view/'+ str(data.studID))
 
+@login_required(login_url='/index')
 def adaa_transferring(request):
     current_user = request.user
     test = registration.objects.filter(Q(userType='Student') & (Q(transferStatus='Wait for Department Head and Assist. Director of Academic Affairs Approval')) | Q(addStatus='ADAA Approved'))
@@ -371,6 +382,7 @@ def adaa_transferring(request):
         }
     return render(request, 'TupAssistApp/adaa_transferring.html', context)
 
+@login_required(login_url='/index')
 def adaa_transferring_view(request, studID):
     current_user = request.user
     data = registration.objects.get(studID=studID)
@@ -382,6 +394,7 @@ def adaa_transferring_view(request, studID):
         }
     return render(request, 'TupAssistApp/adaa_transferring_view.html', context)
 
+@login_required(login_url='/index')
 def adaa_transferring_approve(request):
     studID = request.POST.get('studID')
     admin_name = request.POST.get('admin_name')
@@ -405,7 +418,7 @@ def adaa_transferring_approve(request):
 
 
 #STUDENT PAGES
-
+@login_required(login_url='/index')
 def s_profile(request):
     current_user = request.user
     form = PasswordChangeForm(current_user)
@@ -445,7 +458,7 @@ def changestudentinfo(request):
             messages.error(request, 'Invalid Credentials!')
             return redirect('/s_profile')
         
-
+@login_required(login_url='/index')
 def s_adding(request):
     current_user = request.user
     # Models
@@ -587,7 +600,7 @@ def s_step2_submit(request):
     return redirect('/s_adding')
 
 
-
+@login_required(login_url='/index')
 def s_dropping(request):
     current_user = request.user
     dropReq = DroppingReq.objects.filter(studID=current_user.studID)
@@ -845,7 +858,7 @@ def s_drop_sub(request):
         return redirect('/s_dropping')
 
 
-
+@login_required(login_url='/index')
 def s_transferring(request):
     current_user = request.user
     transReq = TransferringReq.objects.filter(studID_id=current_user.studID)
@@ -927,6 +940,7 @@ def s_step1_submit_t(request):
 
 
 # PIC PAGES
+@login_required(login_url='/index')
 def p_profile(request):
     current_user = request.user
     form = PasswordChangeForm(current_user)
@@ -964,7 +978,7 @@ def changepicinfo(request):
             messages.error(request, 'Invalid Credentials!')
             return redirect('/p_profile')
 
-
+@login_required(login_url='/index')
 def p_adding(request):
     current_user = request.user
     test = registration.objects.filter(Q(course=current_user.course) & Q(userType='Student') & ~Q(addStatus=''))
@@ -974,6 +988,7 @@ def p_adding(request):
         }
     return render(request, 'TupAssistApp/p_adding.html', context )
 
+@login_required(login_url='/index')
 def p_adding_edit(request, studID):
     current_user = request.user
     student_info = registration.objects.get(studID=studID)
@@ -1069,6 +1084,8 @@ def p_step1_submit(request):
         data.save()
         return redirect('/p_adding_edit/'+ str(data.studID))
 
+
+@login_required(login_url='/index')
 def p_requests(request):
     current_user = request.user
     req = DroppingReq.objects.filter(subj_teacher_name=current_user.email)
@@ -1094,6 +1111,7 @@ def p_edit_sub1(request):
         
 
 #  TEACHER PAGES
+@login_required(login_url='/index')
 def t_profile(request):
     current_user = request.user
     form = PasswordChangeForm(current_user)
@@ -1103,6 +1121,7 @@ def t_profile(request):
     }
     return render(request, 'TupAssistApp/t_profile.html', context)
 
+@login_required(login_url='/index')
 def t_requests(request):
     current_user = request.user
     req = DroppingReq.objects.filter(subj_teacher_name=current_user.email)
@@ -1131,7 +1150,7 @@ def t_edit_sub(request):
 
 
 # DEPARTMENT HEAD PAGES
-
+@login_required(login_url='/index')
 def h_profile(request):
     current_user = request.user
     form = PasswordChangeForm(current_user)
@@ -1168,6 +1187,7 @@ def changeheadinfo(request):
             messages.error(request, 'Invalid Credentials!')
             return redirect('/h_profile')
 
+@login_required(login_url='/index')
 def h_subject(request):
     current_user = request.user
     if current_user.department == "Department of Industrial Technology":
@@ -1230,7 +1250,7 @@ def sub_cvs(request):
         return redirect('/h_subject')
     return redirect('/h_subject')
 
-
+@login_required(login_url='/index')
 def h_adding(request):
     current_user = request.user
     if current_user.department == "Department of Industrial Technology" or current_user.department == "Department of Engineering" or current_user.department == "Department of Industrial Education":
@@ -1247,6 +1267,7 @@ def h_adding(request):
             }
     return render(request, 'TupAssistApp/h-adding.html', context)
 
+@login_required(login_url='/index')
 def h_adding_edit(request, studID):
     current_user = request.user
     data = registration.objects.get(studID=studID)
@@ -1321,7 +1342,8 @@ def h_edit_sub(request):
         edit.save()
         messages.success(request, 'Request Successfully Edited!')
         return redirect('/h_adding_edit/'+ str(data.studID))
-        
+
+@login_required(login_url='/index')        
 def h_dropping(request):
     current_user = request.user
     if current_user.department == "Department of Industrial Technology" or current_user.department == "Department of Engineering" or current_user.department == "Department of Industrial Education":
@@ -1338,6 +1360,7 @@ def h_dropping(request):
             }
     return render(request, 'TupAssistApp/h-dropping.html', context)
 
+@login_required(login_url='/index')
 def h_dropping_edit(request, studID):
     current_user = request.user
     data = registration.objects.get(studID=studID)
@@ -1416,7 +1439,7 @@ def h_edit_sub1(request):
         messages.success(request, 'Request Successfully Edited!')
         return redirect('/h_dropping_edit/'+ str(data.studID))
  
-
+@login_required(login_url='/index')
 def h_transferring(request):
     current_user = request.user
     if current_user.department == "Department of Industrial Technology" or current_user.department == "Department of Engineering" or current_user.department == "Department of Industrial Education":
@@ -1433,6 +1456,7 @@ def h_transferring(request):
             }
     return render(request, 'TupAssistApp/h-transferring.html', context)
 
+@login_required(login_url='/index')
 def h_transferring_edit(request, studID):
     current_user = request.user
     data = registration.objects.get(studID=studID)

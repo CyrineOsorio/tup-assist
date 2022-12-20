@@ -262,6 +262,18 @@ footer button img {
     width: 80%;
 }
 
+#button_s {
+    border: 1px solid #E2435E;
+    background-color: #E2435E;
+    color: white;
+}
+
+#button_s:hover {
+    border: 1px solid #E2435E;
+    color: #E2435E;
+    background-color: white;
+}
+
 
 /* pag maliit na ang screen */
 

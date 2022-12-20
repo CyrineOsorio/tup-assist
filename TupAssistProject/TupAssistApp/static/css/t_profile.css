@@ -80,6 +80,15 @@ a:focus {
     font-weight: bold;
 }
 
+.num {
+    color: #E2435E;
+    position: absolute;
+    right: 0px;
+    top: 6px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
 
 /* body */
 

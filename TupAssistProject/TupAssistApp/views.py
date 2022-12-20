@@ -25,7 +25,7 @@ import pandas as pd
 from itertools import chain
 
 # filter "AND,OR,NOT"
-from django.db.models import Q
+from django.db.models import Q, Count
 
 
 # Email
@@ -982,8 +982,9 @@ def p_profile(request):
     if request.user.is_authenticated and request.user.userType == 'Program-in-charge':
         current_user = request.user
         form = PasswordChangeForm(current_user)
-        # Models
+        cnt = len(registration.objects.filter(addStatus='Wait for PIC Approval'))
         context = {
+            'cnt': cnt,
             'current_user': current_user,
             'form': form
         }
@@ -1022,7 +1023,9 @@ def p_adding(request):
     if request.user.is_authenticated and request.user.userType == 'Program-in-charge':
         current_user = request.user
         test = registration.objects.filter(Q(course=current_user.course) & Q(userType='Student') & ~Q(addStatus=''))
+        cnt = len(registration.objects.filter(addStatus='Wait for PIC Approval'))
         context = { 
+            'cnt': cnt,
             'test': test,
             'current_user': current_user
             }
@@ -1132,7 +1135,9 @@ def p_requests(request):
     if request.user.is_authenticated and request.user.userType == 'Program-in-charge':
         current_user = request.user
         req = DroppingReq.objects.filter(subj_teacher_name=current_user.email)
+        cnt = len(registration.objects.filter(addStatus='Wait for PIC Approval'))
         context = {
+            'cnt': cnt,
             'current_user': current_user,
             'req': req,
         }

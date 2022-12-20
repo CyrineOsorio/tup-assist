@@ -173,7 +173,7 @@
             <div style="overflow-x:auto; margin-bottom:2%;">
                 <form action="/import_sched" method="post" style="margin-bottom:2%;">
                     {% csrf_token %}
-                    <div class="row">
+                    <div class="row" id="schedule_col">
                         <div class="col">
                             <label for="sub_code">Google Sheet Link</label>
                             <input type="text" class="form-control" name="gSheetLink" id="gSheetLink" required>

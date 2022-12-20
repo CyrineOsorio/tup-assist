@@ -208,6 +208,9 @@ td {
         width: 100%;
         padding: 2% 2% 2% 2%;
     }
+    #schedule_col {
+        display: grid;
+    }
 }
 
 @media only screen and (min-width:1000px) {

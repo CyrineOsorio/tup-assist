@@ -123,26 +123,21 @@ input.login-google {
     margin-top: 20px;
 }
 
-
-/*Don't have an account? SIGN UP here.*/
-
-h2.signup-label {
-    font-style: normal;
-    font-weight: 200;
-    font-size: 20px;
-    color: #000000;
+#lagayan1 {
+    display: flex;
+    height: 45px;
 }
 
-
-/*sigunp label yung red sa baba*/
-
-a.signup-label {
-    color: #E2435E;
-    text-decoration: none;
-    font-weight: normal;
-    font-size: 20px;
+#lagayan1 #password {
+    background-color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    height: 50px;
+    border: 1px solid #CED4DA;
+    font-weight: 300;
+    font-size: 18px;
+    border-radius: 10px;
+    width: 100%;
 }
-
 
 @media only screen and (max-width: 1000px) {
     .bg-container {
@@ -153,6 +148,4 @@ a.signup-label {
     form {
         width: 100%;
     }
-    
-    
 }

@@ -1346,7 +1346,7 @@ def sub_cvs(request):
                     messages.success(request, 'Successfully Import, but check if data imported is correct.')
                     return redirect('/h_subject')
             return redirect('/h_subject')
-        elif current_user.department == 'Department of Math and  Science':
+        elif current_user.department == 'Department of Math and Science':
             junk = Subjects.objects.filter(course='DMS')
             junk.delete()
             subcvsfile = request.FILES["subcvsfile"]

@@ -87,19 +87,21 @@ def logoutUser(request):
 # CUSTOMIZE ADMIN PAGES
 @login_required(login_url='/index')
 def a_dashboard(request):
-    current_user = request.user
-    subs = Subjects.objects.all()
-    status = TransStatus.objects.all()
-    sched = Schedule.objects.all()
-    student = registration.objects.filter(userType='Student')
-    context = {
-        'current_user': current_user,
-        'subs': subs,
-        'status' : status,
-        'sched': sched,
-        'student': student
-    }
-    return render(request, 'TupAssistApp/a_dashboard.html', context)
+    if request.user.is_authenticated and (request.user.userType == 'OAA Staff' or user.is_superuser == True ):
+        current_user = request.user
+        subs = Subjects.objects.all()
+        status = TransStatus.objects.all()
+        sched = Schedule.objects.all()
+        student = registration.objects.filter(userType='Student')
+        context = {
+            'current_user': current_user,
+            'subs': subs,
+            'status' : status,
+            'sched': sched,
+            'student': student
+        }
+        return render(request, 'TupAssistApp/a_dashboard.html', context)
+    return redirect('/index')   
 
 
 def import_sched(request):
@@ -141,24 +143,26 @@ def changestatus(request):
 
 @login_required(login_url='/index')
 def a_account(request):
-    current_user = request.user
-    form = HeadRegistration()
-    staff = registration.objects.filter(Q(userType='Department Head') | Q(userType='Program-in-Charge') | Q(userType='Teacher') | Q(userType='OAA Staff') | Q(userType='Assist. Director of Academic Affairs'))
-    student = registration.objects.filter(userType='Student')
-    context = {
-        'form': form,
-        'current_user': current_user,
-        'student': student,
-        'staff': staff
-    }
-    if request.method == 'POST':
-        form = HeadRegistration(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect ('/a_account')
-        else:
-            messages.error(request, 'Invalid Credentials!')
-    return render(request, 'TupAssistApp/a_account.html', context)
+    if request.user.is_authenticated and (request.user.userType == 'OAA Staff' or user.is_superuser == True ):
+        current_user = request.user
+        form = HeadRegistration()
+        staff = registration.objects.filter(Q(userType='Department Head') | Q(userType='Program-in-Charge') | Q(userType='Teacher') | Q(userType='OAA Staff') | Q(userType='Assist. Director of Academic Affairs'))
+        student = registration.objects.filter(userType='Student')
+        context = {
+            'form': form,
+            'current_user': current_user,
+            'student': student,
+            'staff': staff
+        }
+        if request.method == 'POST':
+            form = HeadRegistration(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect ('/a_account')
+            else:
+                messages.error(request, 'Invalid Credentials!')
+        return render(request, 'TupAssistApp/a_account.html', context)
+    return redirect('/index')
 
 def student_acc_cvs(request):
     if request.method=='POST':
@@ -215,34 +219,39 @@ def a_staff_create(request):
 
 @login_required(login_url='/index')
 def a_adding(request):
-    current_user = request.user = request.user
-    req = AddingReq.objects.filter(admin_approve='Approve')
-    context = { 
-        'req': req,
-        'current_user': current_user,
-        }
-    return render(request, 'TupAssistApp/a_adding.html', context)
+    if request.user.is_authenticated and (request.user.userType == 'OAA Staff' or user.is_superuser == True ):
+        current_user = request.user = request.user
+        req = AddingReq.objects.filter(admin_approve='Approve')
+        context = { 
+            'req': req,
+            'current_user': current_user,
+            }
+        return render(request, 'TupAssistApp/a_adding.html', context)
+    return redirect('/index')  
 
 @login_required(login_url='/index')
 def a_dropping(request):
-    current_user = request.user
-    req = DroppingReq.objects.filter(admin_approve='Approve')
-    context = {
-        'req': req,
-        'current_user': current_user
-        }
-    return render(request, 'TupAssistApp/a_dropping.html', context)
+    if request.user.is_authenticated and (request.user.userType == 'OAA Staff' or user.is_superuser == True ):
+        current_user = request.user
+        req = DroppingReq.objects.filter(admin_approve='Approve')
+        context = {
+            'req': req,
+            'current_user': current_user
+            }
+        return render(request, 'TupAssistApp/a_dropping.html', context)
+    return redirect('/index')  
 
 @login_required(login_url='/index')
 def a_transferring(request):
-    current_user = request.user
-    req = TransferringReq.objects.filter(admin_approve='Approve')
-    context = { 
-        'req': req,
-        'current_user': current_user
-        }
-    return render(request, 'TupAssistApp/a_transferring.html', context)
-
+    if request.user.is_authenticated and (request.user.userType == 'OAA Staff' or user.is_superuser == True ):
+        current_user = request.user
+        req = TransferringReq.objects.filter(admin_approve='Approve')
+        context = { 
+            'req': req,
+            'current_user': current_user
+            }
+        return render(request, 'TupAssistApp/a_transferring.html', context)
+    return redirect('/index')  
 
 
 

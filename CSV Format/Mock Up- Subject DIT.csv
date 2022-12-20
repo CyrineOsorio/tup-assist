@@ -1,41 +1,41 @@
-BET-COET,1,1,1,L,Program Logic and Formulation Lab
-BET-COET,1,1,2, ,Orientation to BET,Seminars and Field Trips
-BET-COET,1,1,3, ,Electrical Circuits Lec
-BET-COET,1,1,4, ,Electrical Circuits Lab
-BET-COET,1,2,1,L,Object Oriented Programming 2 Lab
-BET-COET,1,2,2, ,Computer Aided Drafting/Engineering Graphics
-BET-COET,1,2,3, ,Electronics 1 Lec
-BET-COET,1,2,4,L,Electronics 1 Lab
-BET-COET,2,1,1, ,Logic Circuits and Switching Theory Lec
-BET-COET,2,1,2,L,Logic Circuits and Switching Theory Lab
-BET-COET,2,1,3, ,Data and Digital Communications
-BET-COET,2,1,4,L,Data Structures and Algorithms Lab
-BET-COET,2,1,5, ,Introduction to Hardware Description Language
-BET-COET,2,2,1,L,Operation System
-BET-COET,2,2,2, ,Fundamentals of Mixed Signals and Sensors
-BET-COET,2,2,3, ,Software Design Lec
-BET-COET,2,2,4,L,Software Design Lec
-BET-COET,2,2,5, ,Computer Architecture and Organization Lec
-BET-COET,2,2,6,L,Computer Architecture and Organization Lab
-BET-COET,3,1,1, ,Microprocessor and Micro-controller System Lec
-BET-COET,3,1,2,L,Microprocessor and Micro-controller System Lab
-BET-COET,3,1,3,L,Web App Programming
-BET-COET,3,1,4,L,CpET Laws & Professional Practice
-BET-COET,3,1,5, ,Basic Occupational Safety and Health
-BET-COET,3,1,6, ,Technopreneurship
-BET-COET,3,1,7, ,Engineering Economy
-BET-COET,3,2,1, ,Technical Research
-BET-COET,3,2,2, ,Intellectual Property
-BET-COET,3,2,3, ,Computer Network Design Lec
-BET-COET,3,2,4,L,Computer Network Design Lab
-BET-COET,3,2,5,L,Mobile Application Programming Lab
-BET-COET,3,2,6, ,Automation
-BET-COET,3,2,7, ,Engineering Data Analysis
-BET-COET,4,1,1, ,Emerging Technology
-BET-COET,4,1,2, ,Embedded System Lec
-BET-COET,4,1,3,L,Embedded System Lab
-BET-COET,4,1,4,L,Network Security Lab
-BET-COET,4,1,5, ,Elective 2
-BET-COET,4,1,6, ,Project Development
-BET-COET,4,1,7,L,Project Development Lab
-BET-COET,4,1,8, ,Engineering Management
+DIT,1,1,1,L,Program Logic and Formulation Lab,
+DIT,1,1,2, ,Orientation to BET,Seminars and Field Trips
+DIT,1,1,3, ,Electrical Circuits Lec,
+DIT,1,1,4, ,Electrical Circuits Lab,
+DIT,1,2,1,L,Object Oriented Programming 2 Lab,
+DIT,1,2,2, ,Computer Aided Drafting/Engineering Graphics,
+DIT,1,2,3, ,Electronics 1 Lec,
+DIT,1,2,4,L,Electronics 1 Lab,
+DIT,2,1,1, ,Logic Circuits and Switching Theory Lec,
+DIT,2,1,2,L,Logic Circuits and Switching Theory Lab,
+DIT,2,1,3, ,Data and Digital Communications,
+DIT,2,1,4,L,Data Structures and Algorithms Lab,
+DIT,2,1,5, ,Introduction to Hardware Description Language,
+DIT,2,2,1,L,Operation System,
+DIT,2,2,2, ,Fundamentals of Mixed Signals and Sensors,
+DIT,2,2,3, ,Software Design Lec,
+DIT,2,2,4,L,Software Design Lec,
+DIT,2,2,5, ,Computer Architecture and Organization Lec,
+DIT,2,2,6,L,Computer Architecture and Organization Lab,
+DIT,3,1,1, ,Microprocessor and Micro-controller System Lec,
+DIT,3,1,2,L,Microprocessor and Micro-controller System Lab,
+DIT,3,1,3,L,Web App Programming,
+DIT,3,1,4,L,CpET Laws & Professional Practice,
+DIT,3,1,5, ,Basic Occupational Safety and Health,
+DIT,3,1,6, ,Technopreneurship,
+DIT,3,1,7, ,Engineering Economy,
+DIT,3,2,1, ,Technical Research,
+DIT,3,2,2, ,Intellectual Property,
+DIT,3,2,3, ,Computer Network Design Lec,
+DIT,3,2,4,L,Computer Network Design Lab,
+DIT,3,2,5,L,Mobile Application Programming Lab,
+DIT,3,2,6, ,Automation,
+DIT,3,2,7, ,Engineering Data Analysis,
+DIT,4,1,1, ,Emerging Technology,
+DIT,4,1,2, ,Embedded System Lec,
+DIT,4,1,3,L,Embedded System Lab,
+DIT,4,1,4,L,Network Security Lab,
+DIT,4,1,5, ,Elective 2,
+DIT,4,1,6, ,Project Development,
+DIT,4,1,7,L,Project Development Lab,
+DIT,4,1,8, ,Engineering Management,

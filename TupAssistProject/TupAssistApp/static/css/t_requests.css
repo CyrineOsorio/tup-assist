@@ -134,6 +134,18 @@ td {
     width: fit-content;
 }
 
+.add-request-label {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-request-label p {
+    width: 50%;
+    height: 100%;
+    font-weight: bold;
+}
+
 @media only screen and (max-width: 1000px) {
     .navbarLagayan {
         text-align: center;

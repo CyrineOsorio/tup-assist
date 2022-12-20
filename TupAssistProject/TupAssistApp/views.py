@@ -1292,23 +1292,94 @@ def h_subject(request):
     return redirect('/index') 
 
 def sub_cvs(request):
+    current_user = request.user
     if request.method=='POST': 
-        # junk = Subjects.objects.all()
-        # junk.delete()
-        subcvsfile = request.FILES["subcvsfile"]
-        decoded_file = subcvsfile.read().decode('utf-8').splitlines()
-        reader = csv.reader(decoded_file)
-        print(reader)
-        for row in reader:
-            print(row)
-            try:
-                if str(row[4]) == "" or str(row[4]) != "":
-                    new_revo = Subjects.objects.create(subject=str(row[0])+str(row[1])+str(row[2])+str(row[3])+str(row[4]), course=str(row[0]), year=int(row[1]), semester=int(row[2]), shop=int(row[3]), is_lab=str(row[4]), description=str(row[5]))
-                    new_revo.save()
-            except:
-                messages.success(request, 'Successfully Import, but check if data imported is correct.')
-                return redirect('/h_subject')
-        return redirect('/h_subject')
+        if current_user.department == 'Departmanet of Industrial Technology':
+            junk = Subjects.objects.filter(Q(subject_id__course='DIT') | Q(subject_id__course='BET-COET') )
+            junk.delete()
+            subcvsfile = request.FILES["subcvsfile"]
+            decoded_file = subcvsfile.read().decode('utf-8').splitlines()
+            reader = csv.reader(decoded_file)
+            print(reader)
+            for row in reader:
+                print(row)
+                try:
+                    if str(row[4]) == "" or str(row[4]) != "":
+                        new_revo = Subjects.objects.create(subject=str(row[0])+str(row[1])+str(row[2])+str(row[3])+str(row[4]), course=str(row[0]), year=int(row[1]), semester=int(row[2]), shop=int(row[3]), is_lab=str(row[4]), description=str(row[5]))
+                        new_revo.save()
+                except:
+                    messages.success(request, 'Successfully Import, but check if data imported is correct.')
+                    return redirect('/h_subject')
+            return redirect('/h_subject')
+        elif current_user.department == 'Departmanet of Industrial Education':
+            junk = Subjects.objects.filter(subject_id__course='DIE')
+            junk.delete()
+            subcvsfile = request.FILES["subcvsfile"]
+            decoded_file = subcvsfile.read().decode('utf-8').splitlines()
+            reader = csv.reader(decoded_file)
+            print(reader)
+            for row in reader:
+                print(row)
+                try:
+                    if str(row[4]) == "" or str(row[4]) != "":
+                        new_revo = Subjects.objects.create(subject=str(row[0])+str(row[1])+str(row[2])+str(row[3])+str(row[4]), course=str(row[0]), year=int(row[1]), semester=int(row[2]), shop=int(row[3]), is_lab=str(row[4]), description=str(row[5]))
+                        new_revo.save()
+                except:
+                    messages.success(request, 'Successfully Import, but check if data imported is correct.')
+                    return redirect('/h_subject')
+            return redirect('/h_subject')
+        elif current_user.department == 'Departmanet of Engineering':
+            junk = Subjects.objects.filter(subject_id__course='DOE')
+            junk.delete()
+            subcvsfile = request.FILES["subcvsfile"]
+            decoded_file = subcvsfile.read().decode('utf-8').splitlines()
+            reader = csv.reader(decoded_file)
+            print(reader)
+            for row in reader:
+                print(row)
+                try:
+                    if str(row[4]) == "" or str(row[4]) != "":
+                        new_revo = Subjects.objects.create(subject=str(row[0])+str(row[1])+str(row[2])+str(row[3])+str(row[4]), course=str(row[0]), year=int(row[1]), semester=int(row[2]), shop=int(row[3]), is_lab=str(row[4]), description=str(row[5]))
+                        new_revo.save()
+                except:
+                    messages.success(request, 'Successfully Import, but check if data imported is correct.')
+                    return redirect('/h_subject')
+            return redirect('/h_subject')
+        elif current_user.department == 'Departmanet of Math and  Science':
+            junk = Subjects.objects.filter(subject_id__course='DMS')
+            junk.delete()
+            subcvsfile = request.FILES["subcvsfile"]
+            decoded_file = subcvsfile.read().decode('utf-8').splitlines()
+            reader = csv.reader(decoded_file)
+            print(reader)
+            for row in reader:
+                print(row)
+                try:
+                    if str(row[4]) == "" or str(row[4]) != "":
+                        new_revo = Subjects.objects.create(subject=str(row[0])+str(row[1])+str(row[2])+str(row[3])+str(row[4]), course=str(row[0]), year=int(row[1]), semester=int(row[2]), shop=int(row[3]), is_lab=str(row[4]), description=str(row[5]))
+                        new_revo.save()
+                except:
+                    messages.success(request, 'Successfully Import, but check if data imported is correct.')
+                    return redirect('/h_subject')
+            return redirect('/h_subject')
+        elif current_user.department == 'Departmanet of Liberal Arts':
+            junk = Subjects.objects.filter(subject_id__course='DLA')
+            junk.delete()
+            subcvsfile = request.FILES["subcvsfile"]
+            decoded_file = subcvsfile.read().decode('utf-8').splitlines()
+            reader = csv.reader(decoded_file)
+            print(reader)
+            for row in reader:
+                print(row)
+                try:
+                    if str(row[4]) == "" or str(row[4]) != "":
+                        new_revo = Subjects.objects.create(subject=str(row[0])+str(row[1])+str(row[2])+str(row[3])+str(row[4]), course=str(row[0]), year=int(row[1]), semester=int(row[2]), shop=int(row[3]), is_lab=str(row[4]), description=str(row[5]))
+                        new_revo.save()
+                except:
+                    messages.success(request, 'Successfully Import, but check if data imported is correct.')
+                    return redirect('/h_subject')
+            return redirect('/h_subject')
+
     return redirect('/h_subject')
 
 @login_required(login_url='/index')

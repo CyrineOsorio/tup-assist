@@ -204,7 +204,7 @@
                                                 <td><input type="text" class="form-control" name="section" placeholder="Ex. BET-COET-4B" required></td>
                                                 <td class="d-flex" style="column-gap: 5px;"><input type="text" class="form-control" name="schedule" id="schedule" readonly required> <a class="btn btn-primary" data-toggle="modal" data-target="#editSub">Edit</a> </td>
                                                 <td><textarea class="form-control" id="reason" name="reason" required></textarea></td>
-                                                <td><button type="submit" class="btn btn-primary">+ Add</button></td>
+                                                <td><button type="submit" class="btn btn-primary" id="button_s">+ Add</button></td>
                                             </tr>
                                         </form>
                                     </tbody>
@@ -215,7 +215,7 @@
                                 <form method="post" action="/s_step1_submit_t">
                                     {% csrf_token %} {% for i in transReq %}
                                     <input type="text" name="not_empty" value="{{i.studID}}" hidden> {% endfor %}
-                                    <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+                                    <button type="submit" class="btn btn-primary btn-lg btn-block" id="button_s">Submit</button>
                                 </form> {% endif %}
 
                             </div>

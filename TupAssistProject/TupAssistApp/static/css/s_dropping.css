@@ -341,6 +341,10 @@ td {
         height: 150px;
         width: 100%;
     }
+    .form-step {
+        border: 0px;
+        padding: 1rem;
+    }
 }
 
 
@@ -394,7 +398,7 @@ h2 {
 }
 
 .form-step {
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: solid 1px #E2435E;
     border-radius: 20px;
     padding: 3rem;
 }
@@ -535,12 +539,6 @@ ul.form-stepper li a .form-stepper-circle {
 
 .form-stepper a {
     cursor: default;
-}
-
-#step-1,
-#step-2,
-#step-3 {
-    border: solid 1px #E2435E;
 }
 
 #step1 {

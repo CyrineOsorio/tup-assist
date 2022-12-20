@@ -1313,7 +1313,7 @@ def h_adding(request):
                 'current_user': current_user
                 }
         else:
-            test = registration.objects.filter(Q(userType='Student') & (Q(addStatus='Wait for Department Head and Asst. Director for Academic Affairs Approval')) | Q(addStatus='ADAA Approved'))
+            test = registration.objects.filter(Q(userType='Student') & (Q(addStatus='Wait for Department Head and Asst. Director for Academic Affairs Approval')))
             context = { 
                 'test': test,
                 'current_user': current_user

@@ -341,7 +341,9 @@ td {
         height: 150px;
         width: 100%;
     }
-    .form-step {
+    #step-1,
+    #step-2,
+    #step-3 {
         border: 0px;
         padding: 1rem;
         width: 100%;
@@ -402,7 +404,7 @@ h2 {
 .form-step {
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 20px;
-    padding: 3rem;
+    padding: 2rem;
     width: 100%;
 }
 

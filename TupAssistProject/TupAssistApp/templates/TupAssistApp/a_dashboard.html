@@ -76,7 +76,7 @@
         <div class="content">
 
             <div class="title">
-                <p>TRANSACTION STATUS</p>
+                <p>TRANSACTION STATUS:</p>
             </div>
 
             <!-- Transaction Status -->
@@ -153,10 +153,34 @@
             {% endfor %}
 
 
+            <div class="title">
+                <p>ALL SUBJECTS:</p>
+            </div>
+
+            <div style="overflow-x:auto; margin-bottom:2%;">
+                <table id="table_id" class="display">
+                    <thead>
+                        <tr>
+                            <th>SUBJECT</th>
+                            <th>DESCRIPTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in subs %}
+                        <tr>
+                            <td>{{i.subject}}</td>
+                            <td>{{i.description}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+
 
             <!-- Schedule -->
             <div class="title">
-                <p>SCHEDULE</p>
+                <p>SCHEDULE:</p>
                 <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="bi bi-info-circle"></i></a>
             </div>
             <div class="collapse" id="collapseExample">
@@ -227,7 +251,6 @@
     <script>
         $(document).ready(function() {
             $('#table_id').DataTable();
-            $('#table_id_1').DataTable();
         });
     </script>
 

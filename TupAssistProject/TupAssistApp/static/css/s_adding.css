@@ -139,6 +139,7 @@ a:focus {
     height: 100%;
     border-radius: 5px;
     padding: 10px;
+    display: flex;
 }
 
 
@@ -183,9 +184,23 @@ p {
     font-weight: 500;
 }
 
+.isapanglagayan,
+.lagayanNgStatus {
+    width: 100%;
+}
+
+.isapanglagayan {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+
+.isapanglagayan #p1,
+.isapanglagayan p,
 .lagayanNgStatus #p1,
 .lagayanNgStatus p {
     color: #E2435E;
+    width: 100%;
 }
 
 

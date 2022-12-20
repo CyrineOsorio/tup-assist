@@ -86,10 +86,12 @@
                 </div>
                 <div class="progressbox">
                     <div class="lagayanNgStatus">
-                        <p style="color: black; font-weight: bold;">Status:</p>
-                        <p style="text-align: center; color: #E2435E;">{{ current_user.transferStatus }}</p>
+                        <p id="p1">Status:</p>
+                        <p style="text-align: center;">{{ current_user.dropStatus }}</p>
                     </div>
-                    <div class="isapanglagayan"></div>
+                    <div class="isapanglagayan">
+                        <a href=""><img src="{%static 'images/print_pdf.png'%}" alt="print_pdf"></a>
+                    </div>
                 </div>
 
             </div>

@@ -341,6 +341,11 @@ td {
         height: 150px;
         width: 100%;
     }
+    .form-step {
+        border-radius: 20px;
+        padding: 0;
+        width: 100%;
+    }
 }
 
 

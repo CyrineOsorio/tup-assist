@@ -19987,3 +19987,9 @@ dl li {
 
 
 /*# sourceMappingURL=style.css.map */
+
+.navbarLagayan a {
+    color: black;
+    text-decoration: none;
+    font-weight: 700;
+}

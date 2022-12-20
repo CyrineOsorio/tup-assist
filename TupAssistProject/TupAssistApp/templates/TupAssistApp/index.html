@@ -15,7 +15,8 @@
     <!--ICONS-->
     <link rel="icon" href="{%static 'images/tuplogo.png'%}">
     <!-- SHOW PASSWORD -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+
 </head>
 
 <body>
@@ -36,7 +37,7 @@
                 <div class="form-group">
                     <div id="lagayan1">
                         <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
-                        <span><i class="far fa-eye" id="togglePassword" style="margin-left: -50px; margin-top: 20px; cursor: pointer;"></i></span>
+                        <span><i class="bi bi-eye-slash" id="togglePassword" style="margin-left: -50px; margin-top: -40px; cursor: pointer;"></i></span>
                     </div>
 
 
@@ -64,15 +65,22 @@
 
 
     <script>
-        const togglePassword = document.querySelector('#togglePassword');
-        const password = document.querySelector('#password');
+        const togglePassword = document.querySelector("#togglePassword");
+        const password = document.querySelector("#password");
 
-        togglePassword.addEventListener('click', function(e) {
+        togglePassword.addEventListener("click", function() {
             // toggle the type attribute
-            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-            password.setAttribute('type', type);
-            // toggle the eye slash icon
-            this.classList.toggle('fa-eye-slash');
+            const type = password.getAttribute("type") === "password" ? "text" : "password";
+            password.setAttribute("type", type);
+
+            // toggle the icon
+            this.classList.toggle("bi-eye");
+        });
+
+        // prevent form submit
+        const form = document.querySelector("form");
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
         });
     </script>
 

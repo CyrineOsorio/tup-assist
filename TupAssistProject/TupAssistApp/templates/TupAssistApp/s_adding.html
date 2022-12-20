@@ -1010,7 +1010,7 @@
         formStepHeader1.classList.add("form-stepper-active", "form-stepper-completed");
     </script>
 
-    {% elif current_user.addStatus == 'Wait for Department Head and Asst. Director for Academic Affairs Approval' %}
+    {% elif current_user.addStatus == 'Wait for Department Head and Asst. Director for Academic Affairs Approval' or current_user.addStatus == 'ADAA Approved' %}
     <script>
         // Content Update
         document.getElementById('disable').style.pointerEvents = 'none';

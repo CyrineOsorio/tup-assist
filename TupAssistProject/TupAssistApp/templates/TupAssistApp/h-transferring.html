@@ -127,6 +127,12 @@
                                 <a href="/h_transferring_edit/{{e.studID}}"><i class="bi bi-pencil"></i></a>
                             </td>
                         </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="7" style="text-align: center; font-style: italic;">
+                                No data
+                            </td>
+                        </tr>
                         {% endfor %}
                     </tbody>
                 </table>

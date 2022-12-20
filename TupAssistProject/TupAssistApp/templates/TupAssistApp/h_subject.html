@@ -81,8 +81,18 @@
                     <div class="form-group">
                         <input type="file" name="subcvsfile" id="subcvsfile" required>
                     </div>
-                    <button type="submit" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" class="btn btn-primary mb-2" id="button_h">Import CSV File</button>
+                    <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="bi bi-info-circle"></i></a>
                 </form>
+            </div>
+            <div class="collapse" id="collapseExample" style="margin-bottom: 10px;">
+                <div class="card card-body">
+                    Reminder: Import Offer Subjects with the csv file.
+                    <br>CSV Format for subject are as follows:
+                    <br>Deparment Initials/Course, Year, Semester, Shop Number, Description
+                    <br>Ex. DIT,1,1,1,L,Program Logic and Formulation Lab,
+                    <br>
+                    <br>Important: Don't include the Column Title when the file is ready to import.
+                </div>
             </div>
 
             <div style="overflow-x:auto; margin-bottom:2%;">

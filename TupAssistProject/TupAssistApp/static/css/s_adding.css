@@ -346,7 +346,6 @@ td {
     #step-3 {
         border: 0px;
         padding: 1rem;
-        width: 100%;
     }
 }
 
@@ -550,7 +549,6 @@ ul.form-stepper li a .form-stepper-circle {
 #step-2,
 #step-3 {
     border: solid 1px #E2435E;
-    width: 100%;
 }
 
 #step1,

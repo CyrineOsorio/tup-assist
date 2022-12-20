@@ -107,7 +107,7 @@
 
                     <div style="overflow-x:auto; margin-bottom:2%;">
                         <!--HTML code to display data in tabular format-->
-                        <table class="table table-bordered">
+                        <table id="table_id" class="display">
                             <thead>
                                 <th>STAFF ID</th>
                                 <th>FIRST NAME</th>
@@ -147,7 +147,7 @@
 
                     <div style="overflow-x:auto; margin-bottom:2%;">
                         <!--HTML code to display data in tabular format-->
-                        <table class="table table-bordered">
+                        <table id="table_id_1" class="display">
                             <thead>
                                 <th>STUDENT NUMBER</th>
                                 <th>FIRST NAME</th>
@@ -253,6 +253,15 @@
             text: '{{ message }}',
         })
     </script> {% endif %} {% endfor %} {% endif %}
+
+    <!--DATATABLES-->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#table_id').DataTable();
+            $('#table_id_1').DataTable();
+        });
+    </script>
 
 </body>
 

@@ -485,7 +485,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Edit Schedule</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Schedule:</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -550,7 +550,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Edit Request Subject</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Request Subject:</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -1015,28 +1015,6 @@
     <script>
         // Content Update
         document.getElementById('disable').style.pointerEvents = 'none';
-        document.getElementById('disable0').style.pointerEvents = 'none';
-        document.querySelector("#step-" + 1).classList.add("d-none");
-        document.querySelector("#step-" + 2).classList.add("d-none");
-        document.querySelector("#step-" + 3).classList.remove("d-none");
-        const formStepCircle2 = document.querySelector('li[step="' + 3 + '"]');
-        formStepCircle2.classList.remove("form-stepper-unfinished", "form-stepper-completed");
-        formStepCircle2.classList.add("form-stepper-active");
-
-        // Header Update
-        const formStepHeader2 = document.querySelector('li[step="' + 2 + '"]');
-        formStepHeader2.classList.remove("form-stepper-unfinished");
-        formStepHeader2.classList.add("form-stepper-active");
-        const formStepHeader3 = document.querySelector('li[step="' + 3 + '"]');
-        formStepHeader3.classList.remove("form-stepper-unfinished");
-        formStepHeader3.classList.add("form-stepper-active");
-    </script>
-
-    {% elif current_user.addStatus == 'ADAA Approved' %}
-    <script>
-        // Content Update
-        document.getElementById('disable').style.pointerEvents = 'none';
-        document.getElementById('disable0').style.pointerEvents = 'none';
         document.querySelector("#step-" + 1).classList.add("d-none");
         document.querySelector("#step-" + 2).classList.add("d-none");
         document.querySelector("#step-" + 3).classList.remove("d-none");

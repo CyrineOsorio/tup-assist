@@ -965,12 +965,16 @@ def s_del_sub_t(request, id):
 def s_step1_submit_t(request):
     current_user = request.user
     if request.method =='POST':
-        data = registration.objects.get(username=current_user.username)
-        data.transferStatus = 'Wait for Department Head and Asst. Director for Academic Affairs Approval'
-        data.save()
-        # send_mail(subject, 
-        #     message1, settings.EMAIL_HOST_USER , [email], fail_silently=False)
-        return redirect('/s_transferring')
+        not_empty = request.POST.get("not_empty")
+        if (not_empty == '' or not_empty == None):
+            messages.error(request, 'Transfer Subject First.')
+            return redirect('/s_transferring')    
+        else: 
+            data = registration.objects.get(username=current_user.username)
+            data.transferStatus = 'Wait for Department Head and Asst. Director for Academic Affairs Approval'
+            data.save()
+            messages.success(request, 'Request Submitted')
+            return redirect('/s_transferring')
 
 
 

@@ -213,7 +213,8 @@
 
                                 <br> {% if current_user.transferStatus == '' %}
                                 <form method="post" action="/s_step1_submit_t">
-                                    {% csrf_token %}
+                                    {% csrf_token %} {% for i in transReq %}
+                                    <input type="text" name="not_empty" value="{{i.studID}}" hidden> {% endfor %}
                                     <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
                                 </form> {% endif %}
 

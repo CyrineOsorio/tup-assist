@@ -986,9 +986,7 @@ def p_profile(request):
     if request.user.is_authenticated and request.user.userType == 'Program-in-charge':
         current_user = request.user
         form = PasswordChangeForm(current_user)
-        cnt = len(registration.objects.filter(addStatus='Wait for PIC Approval'))
         context = {
-            'cnt': cnt,
             'current_user': current_user,
             'form': form
         }
@@ -1027,9 +1025,13 @@ def p_adding(request):
     if request.user.is_authenticated and request.user.userType == 'Program-in-charge':
         current_user = request.user
         test = registration.objects.filter(Q(course=current_user.course) & Q(userType='Student') & ~Q(addStatus=''))
-        cnt = len(registration.objects.filter(addStatus='Wait for PIC Approval'))
+        cnt1 = len(AddingReq.objects.filter(Q(studID__course=current_user.course) & Q(pic_is_approve='Decline')))
+        cnt2 = len(AddingReq.objects.filter(Q(studID__course=current_user.course) & Q(pic_is_approve='Pending')))
+        cnt3 = len(AddingReq.objects.filter(Q(studID__course=current_user.course) & Q(pic_is_approve='Approve')))
         context = { 
-            'cnt': cnt,
+            'cnt1': cnt1,
+            'cnt2': cnt2,
+            'cnt3': cnt3,
             'test': test,
             'current_user': current_user
             }
@@ -1139,9 +1141,7 @@ def p_requests(request):
     if request.user.is_authenticated and request.user.userType == 'Program-in-charge':
         current_user = request.user
         req = DroppingReq.objects.filter(subj_teacher_name=current_user.email)
-        cnt = len(registration.objects.filter(addStatus='Wait for PIC Approval'))
         context = {
-            'cnt': cnt,
             'current_user': current_user,
             'req': req,
         }

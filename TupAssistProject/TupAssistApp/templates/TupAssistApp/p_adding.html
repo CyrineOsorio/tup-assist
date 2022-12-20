@@ -16,12 +16,14 @@
     <!--CSS Custom -->
     <link rel="stylesheet" href="{%static 'css/p-adding.css'%}">
 
-    <!--FONTS-->
-    <link rel="stylesheet" href="../../static/css/fonts.css">
-
     <!--ICONS-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
     <link rel="icon" href="{%static 'images/tuplogo.png'%}">
+
+
+    <!-- Dashboard -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="{%static 'css/something.css'%}">
 
 
 </head>
@@ -47,7 +49,7 @@
                         <a class="nav-link" href="{%url 'TupAssistApp:p_profile'%}" id="">Profile</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="{%url 'TupAssistApp:p_adding'%}" id="adding">Adding<span style="color: #E2435E;">{{cnt}}</span></a>
+                        <a class="nav-link" href="{%url 'TupAssistApp:p_adding'%}" id="adding">Adding</a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="{%url 'TupAssistApp:p_requests'%}" id="">Requests</a>
@@ -72,6 +74,45 @@
 
             <div class="add-request-label">
                 <p>ADD SUBJECT REQUESTS:</p>
+            </div>
+
+            <!-- Dashboard -->
+            <div>
+                <div class="row">
+                    <div class="col-md-4 stretch-card grid-margin">
+                        <div class="card bg-gradient-danger card-img-holder text-white">
+                            <div class="card-body">
+                                <img src="{%static 'images/circle.png'%}" class="card-img-absolute" alt="circle-image" />
+                                <h4 class="font-weight-normal mb-3">Decline <i class="mdi mdi-chart-line mdi-24px float-right"></i>
+                                </h4>
+                                <h2 class="mb-5">{{cnt1}}</h2>
+                                <!-- <h6 class="card-text">Increased by 60%</h6> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 stretch-card grid-margin">
+                        <div class="card bg-gradient-info card-img-holder text-white">
+                            <div class="card-body">
+                                <img src="{%static 'images/circle.png'%}" class="card-img-absolute" alt="circle-image" />
+                                <h4 class="font-weight-normal mb-3">Pending <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
+                                </h4>
+                                <h2 class="mb-5">{{cnt2}}</h2>
+                                <!-- <h6 class="card-text">Decreased by 10%</h6> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 stretch-card grid-margin">
+                        <div class="card bg-gradient-success card-img-holder text-white">
+                            <div class="card-body">
+                                <img src="{%static 'images/circle.png'%}" class="card-img-absolute" alt="circle-image" />
+                                <h4 class="font-weight-normal mb-3">Approve <i class="mdi mdi-diamond mdi-24px float-right"></i>
+                                </h4>
+                                <h2 class="mb-5">{{cnt3}}</h2>
+                                <!-- <h6 class="card-text">Increased by 5%</h6> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             {% if current_user.department == None or current_user.course == None %}

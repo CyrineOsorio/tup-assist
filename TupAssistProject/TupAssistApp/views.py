@@ -87,7 +87,7 @@ def logoutUser(request):
 # CUSTOMIZE ADMIN PAGES
 @login_required(login_url='/index')
 def a_dashboard(request):
-    if request.user.is_authenticated and (request.user.userType == 'OAA Staff' or user.is_superuser == True ):
+    if request.user.is_authenticated and (request.user.userType == 'OAA Staff' or request.user.is_superuser == True ):
         current_user = request.user
         subs = Subjects.objects.all()
         status = TransStatus.objects.all()
@@ -143,7 +143,7 @@ def changestatus(request):
 
 @login_required(login_url='/index')
 def a_account(request):
-    if request.user.is_authenticated and (request.user.userType == 'OAA Staff' or user.is_superuser == True ):
+    if request.user.is_authenticated and (request.user.userType == 'OAA Staff' or request.user.is_superuser == True ):
         current_user = request.user
         form = HeadRegistration()
         staff = registration.objects.filter(Q(userType='Department Head') | Q(userType='Program-in-Charge') | Q(userType='Teacher') | Q(userType='OAA Staff') | Q(userType='Assist. Director of Academic Affairs'))
@@ -219,7 +219,7 @@ def a_staff_create(request):
 
 @login_required(login_url='/index')
 def a_adding(request):
-    if request.user.is_authenticated and (request.user.userType == 'OAA Staff' or user.is_superuser == True ):
+    if request.user.is_authenticated and (request.user.userType == 'OAA Staff' or request.user.is_superuser == True ):
         current_user = request.user = request.user
         req = AddingReq.objects.filter(admin_approve='Approve')
         context = { 
@@ -231,7 +231,7 @@ def a_adding(request):
 
 @login_required(login_url='/index')
 def a_dropping(request):
-    if request.user.is_authenticated and (request.user.userType == 'OAA Staff' or user.is_superuser == True ):
+    if request.user.is_authenticated and (request.user.userType == 'OAA Staff' or request.user.is_superuser == True ):
         current_user = request.user
         req = DroppingReq.objects.filter(admin_approve='Approve')
         context = {
@@ -243,7 +243,7 @@ def a_dropping(request):
 
 @login_required(login_url='/index')
 def a_transferring(request):
-    if request.user.is_authenticated and (request.user.userType == 'OAA Staff' or user.is_superuser == True ):
+    if request.user.is_authenticated and (request.user.userType == 'OAA Staff' or request.user.is_superuser == True ):
         current_user = request.user
         req = TransferringReq.objects.filter(admin_approve='Approve')
         context = { 
@@ -260,7 +260,7 @@ def a_transferring(request):
 # ADAA PAGES
 @login_required(login_url='/index')
 def adaa_profile(request):
-    if request.user.is_authenticated and user.userType == 'Assist. Director of Academic Affairs':  
+    if request.user.is_authenticated and request.user.userType == 'Assist. Director of Academic Affairs':  
         current_user = request.user
         form = PasswordChangeForm(current_user)
         # Models
@@ -273,7 +273,7 @@ def adaa_profile(request):
 
 @login_required(login_url='/index')
 def adaa_adding(request):
-    if request.user.is_authenticated and user.userType == 'Assist. Director of Academic Affairs':
+    if request.user.is_authenticated and request.user.userType == 'Assist. Director of Academic Affairs':
         current_user = request.user = request.user
         test = registration.objects.filter(Q(userType='Student') & (Q(addStatus='Wait for Department Head and Asst. Director for Academic Affairs Approval') | Q(addStatus='ADAA Approved')) )
         context = { 
@@ -285,7 +285,7 @@ def adaa_adding(request):
 
 @login_required(login_url='/index')
 def adaa_adding_view(request, studID):
-    if request.user.is_authenticated and user.userType == 'Assist. Director of Academic Affairs':
+    if request.user.is_authenticated and request.user.userType == 'Assist. Director of Academic Affairs':
         current_user = request.user
         data = registration.objects.get(studID=studID)
         req = AddingReq.objects.filter(studID=data.studID)
@@ -333,7 +333,7 @@ def adaa_adding_approve(request):
 
 @login_required(login_url='/index')
 def adaa_dropping(request):
-    if request.user.is_authenticated and user.userType == 'Assist. Director of Academic Affairs':
+    if request.user.is_authenticated and request.user.userType == 'Assist. Director of Academic Affairs':
         current_user = request.user
         test = registration.objects.filter(Q(userType='Student') & (Q(dropStatus='Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval')) | Q(dropStatus='ADAA Approved')) 
         context = {
@@ -345,7 +345,7 @@ def adaa_dropping(request):
 
 @login_required(login_url='/index')
 def adaa_dropping_view(request, studID):
-    if request.user.is_authenticated and user.userType == 'Assist. Director of Academic Affairs':
+    if request.user.is_authenticated and request.user.userType == 'Assist. Director of Academic Affairs':
         current_user = request.user
         data = registration.objects.get(studID=studID)
         req = DroppingReq.objects.filter(studID=data.studID)
@@ -372,7 +372,7 @@ def r_edit_sub1(request):
 
 @login_required(login_url='/index')
 def adaa_dropping_approve(request):
-    if request.user.is_authenticated and user.userType == 'Assist. Director of Academic Affairs':
+    if request.user.is_authenticated and request.user.userType == 'Assist. Director of Academic Affairs':
         studID = request.POST.get('studID')
         admin_name = request.POST.get('admin_name')
         admin_date = datetime.now()
@@ -395,7 +395,7 @@ def adaa_dropping_approve(request):
 
 @login_required(login_url='/index')
 def adaa_transferring(request):
-    if request.user.is_authenticated and user.userType == 'Assist. Director of Academic Affairs':
+    if request.user.is_authenticated and request.user.userType == 'Assist. Director of Academic Affairs':
         current_user = request.user
         test = registration.objects.filter(Q(userType='Student') & (Q(transferStatus='Wait for Department Head and Assist. Director of Academic Affairs Approval')) | Q(addStatus='ADAA Approved'))
         context = { 
@@ -407,7 +407,7 @@ def adaa_transferring(request):
 
 @login_required(login_url='/index')
 def adaa_transferring_view(request, studID):
-    if request.user.is_authenticated and user.userType == 'Assist. Director of Academic Affairs':
+    if request.user.is_authenticated and request.user.userType == 'Assist. Director of Academic Affairs':
         current_user = request.user
         data = registration.objects.get(studID=studID)
         req = TransferringReq.objects.filter(studID=data.studID)
@@ -445,7 +445,7 @@ def adaa_transferring_approve(request):
 #STUDENT PAGES
 @login_required(login_url='/index')
 def s_profile(request):
-    if request.user.is_authenticated and user.userType == 'Student':
+    if request.user.is_authenticated and request.user.userType == 'Student':
         current_user = request.user
         form = PasswordChangeForm(current_user)
         # Models
@@ -487,7 +487,7 @@ def changestudentinfo(request):
         
 @login_required(login_url='/index')
 def s_adding(request):
-    if request.user.is_authenticated and user.userType == 'Student':
+    if request.user.is_authenticated and request.user.userType == 'Student':
         current_user = request.user
         # Models
         req = AddingReq.objects.filter(studID=current_user.studID)
@@ -635,7 +635,7 @@ def s_step2_submit(request):
 
 @login_required(login_url='/index')
 def s_dropping(request):
-    if request.user.is_authenticated and user.userType == 'Student':
+    if request.user.is_authenticated and request.user.userType == 'Student':
         current_user = request.user
         dropReq = DroppingReq.objects.filter(studID=current_user.studID)
         trans = TransStatus.objects.get(TransName="Drop")
@@ -895,7 +895,7 @@ def s_drop_sub(request):
 
 @login_required(login_url='/index')
 def s_transferring(request):
-    if request.user.is_authenticated and user.userType == 'Student':
+    if request.user.is_authenticated and request.user.userType == 'Student':
         current_user = request.user
         transReq = TransferringReq.objects.filter(studID_id=current_user.studID)
         trans = TransStatus.objects.get(TransName="Transfer")
@@ -979,7 +979,7 @@ def s_step1_submit_t(request):
 # PIC PAGES
 @login_required(login_url='/index')
 def p_profile(request):
-    if request.user.is_authenticated and user.userType == 'Program-in-charge':
+    if request.user.is_authenticated and request.user.userType == 'Program-in-charge':
         current_user = request.user
         form = PasswordChangeForm(current_user)
         # Models
@@ -1019,7 +1019,7 @@ def changepicinfo(request):
 
 @login_required(login_url='/index')
 def p_adding(request):
-    if request.user.is_authenticated and user.userType == 'Program-in-charge':
+    if request.user.is_authenticated and request.user.userType == 'Program-in-charge':
         current_user = request.user
         test = registration.objects.filter(Q(course=current_user.course) & Q(userType='Student') & ~Q(addStatus=''))
         context = { 
@@ -1031,7 +1031,7 @@ def p_adding(request):
 
 @login_required(login_url='/index')
 def p_adding_edit(request, studID):
-    if request.user.is_authenticated and user.userType == 'Program-in-charge':
+    if request.user.is_authenticated and request.user.userType == 'Program-in-charge':
         current_user = request.user
         student_info = registration.objects.get(studID=studID)
         req = AddingReq.objects.filter(studID_id=student_info.studID)
@@ -1129,7 +1129,7 @@ def p_step1_submit(request):
 
 @login_required(login_url='/index')
 def p_requests(request):
-    if request.user.is_authenticated and user.userType == 'Program-in-charge':
+    if request.user.is_authenticated and request.user.userType == 'Program-in-charge':
         current_user = request.user
         req = DroppingReq.objects.filter(subj_teacher_name=current_user.email)
         context = {
@@ -1157,7 +1157,7 @@ def p_edit_sub1(request):
 #  TEACHER PAGES
 @login_required(login_url='/index')
 def t_profile(request):
-    if request.user.is_authenticated and user.userType == 'Teacher':
+    if request.user.is_authenticated and request.user.userType == 'Teacher':
         current_user = request.user
         form = PasswordChangeForm(current_user)
         context = {
@@ -1169,7 +1169,7 @@ def t_profile(request):
 
 @login_required(login_url='/index')
 def t_requests(request):
-    if request.user.is_authenticated and user.userType == 'Teacher':
+    if request.user.is_authenticated and request.user.userType == 'Teacher':
         current_user = request.user
         req = DroppingReq.objects.filter(subj_teacher_name=current_user.email)
         context = {
@@ -1200,7 +1200,7 @@ def t_edit_sub(request):
 # DEPARTMENT HEAD PAGES
 @login_required(login_url='/index')
 def h_profile(request):
-    if request.user.is_authenticated and user.userType == 'Department Head':
+    if request.user.is_authenticated and request.user.userType == 'Department Head':
         current_user = request.user
         form = PasswordChangeForm(current_user)
         # Models
@@ -1239,7 +1239,7 @@ def changeheadinfo(request):
 
 @login_required(login_url='/index')
 def h_subject(request):
-    if request.user.is_authenticated and user.userType == 'Department Head':
+    if request.user.is_authenticated and request.user.userType == 'Department Head':
         current_user = request.user
         if current_user.department == "Department of Industrial Technology":
             current_user.department1 = "DIT"
@@ -1304,7 +1304,7 @@ def sub_cvs(request):
 
 @login_required(login_url='/index')
 def h_adding(request):
-    if request.user.is_authenticated and user.userType == 'Department Head':
+    if request.user.is_authenticated and request.user.userType == 'Department Head':
         current_user = request.user
         if current_user.department == "Department of Industrial Technology" or current_user.department == "Department of Engineering" or current_user.department == "Department of Industrial Education":
             test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student') & (Q(addStatus='Wait for Department Head and Asst. Director for Academic Affairs Approval')) | Q(addStatus='ADAA Approved'))
@@ -1323,7 +1323,7 @@ def h_adding(request):
 
 @login_required(login_url='/index')
 def h_adding_edit(request, studID):
-    if request.user.is_authenticated and user.userType == 'Department Head':
+    if request.user.is_authenticated and request.user.userType == 'Department Head':
         current_user = request.user
         data = registration.objects.get(studID=studID)
         sched = Schedule.objects.all()
@@ -1401,7 +1401,7 @@ def h_edit_sub(request):
 
 @login_required(login_url='/index')        
 def h_dropping(request):
-    if request.user.is_authenticated and user.userType == 'Department Head':
+    if request.user.is_authenticated and request.user.userType == 'Department Head':
         current_user = request.user
         if current_user.department == "Department of Industrial Technology" or current_user.department == "Department of Engineering" or current_user.department == "Department of Industrial Education":
             test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student') & Q(dropStatus='Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'))
@@ -1420,7 +1420,7 @@ def h_dropping(request):
 
 @login_required(login_url='/index')
 def h_dropping_edit(request, studID):
-    if request.user.is_authenticated and user.userType == 'Department Head':
+    if request.user.is_authenticated and request.user.userType == 'Department Head':
         current_user = request.user
         data = registration.objects.get(studID=studID)
         sched = Schedule.objects.all()
@@ -1501,7 +1501,7 @@ def h_edit_sub1(request):
  
 @login_required(login_url='/index')
 def h_transferring(request):
-    if request.user.is_authenticated and user.userType == 'Department Head':
+    if request.user.is_authenticated and request.user.userType == 'Department Head':
         current_user = request.user
         if current_user.department == "Department of Industrial Technology" or current_user.department == "Department of Engineering" or current_user.department == "Department of Industrial Education":
             test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student') & (Q(transferStatus='Wait for Department Head and Asst. Director for Academic Affairs Approval')) | Q(transferStatus='ADAA Approved'))
@@ -1520,7 +1520,7 @@ def h_transferring(request):
 
 @login_required(login_url='/index')
 def h_transferring_edit(request, studID):
-    if request.user.is_authenticated and user.userType == 'Department Head':
+    if request.user.is_authenticated and request.user.userType == 'Department Head':
         current_user = request.user
         data = registration.objects.get(studID=studID)
         req = TransferringReq.objects.filter(studID_id=data.studID)

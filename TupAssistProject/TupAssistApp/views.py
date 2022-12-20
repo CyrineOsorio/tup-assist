@@ -1307,9 +1307,9 @@ def sub_cvs(request):
                     if str(row[4]) == "" or str(row[4]) != "":
                         new_revo = Subjects.objects.create(subject=str(row[0])+str(row[1])+str(row[2])+str(row[3])+str(row[4]), course=str(row[0]), year=int(row[1]), semester=int(row[2]), shop=int(row[3]), is_lab=str(row[4]), description=str(row[5]))
                         new_revo.save()
-                        messages.success(request, 'Successfully Import, but check if data imported is correct.')
+                        messages.success(request, 'Successfully Updated the Subjects, but check if data imported is correct.')
                 except:
-                    messages.success(request, 'Successfully Import, but check if data imported is correct.')
+                    messages.success(request, 'Successfully Updated the Subjects, but check if data imported is correct.')
                     return redirect('/h_subject')
             return redirect('/h_subject')
         elif current_user.department == 'Department of Industrial Education':
@@ -1325,8 +1325,9 @@ def sub_cvs(request):
                     if str(row[4]) == "" or str(row[4]) != "":
                         new_revo = Subjects.objects.create(subject=str(row[0])+str(row[1])+str(row[2])+str(row[3])+str(row[4]), course=str(row[0]), year=int(row[1]), semester=int(row[2]), shop=int(row[3]), is_lab=str(row[4]), description=str(row[5]))
                         new_revo.save()
+                        messages.success(request, 'Successfully Updated the Subjects, but check if data imported is correct.')
                 except:
-                    messages.success(request, 'Successfully Import, but check if data imported is correct.')
+                    messages.success(request, 'Successfully Updated the Subjects, but check if data imported is correct.')
                     return redirect('/h_subject')
             return redirect('/h_subject')
         elif current_user.department == 'Department of Engineering':
@@ -1342,8 +1343,9 @@ def sub_cvs(request):
                     if str(row[4]) == "" or str(row[4]) != "":
                         new_revo = Subjects.objects.create(subject=str(row[0])+str(row[1])+str(row[2])+str(row[3])+str(row[4]), course=str(row[0]), year=int(row[1]), semester=int(row[2]), shop=int(row[3]), is_lab=str(row[4]), description=str(row[5]))
                         new_revo.save()
+                        messages.success(request, 'Successfully Updated the Subjects, but check if data imported is correct.')
                 except:
-                    messages.success(request, 'Successfully Import, but check if data imported is correct.')
+                    messages.success(request, 'Successfully Updated the Subjects, but check if data imported is correct.')
                     return redirect('/h_subject')
             return redirect('/h_subject')
         elif current_user.department == 'Department of Math and Science':
@@ -1359,8 +1361,9 @@ def sub_cvs(request):
                     if str(row[4]) == "" or str(row[4]) != "":
                         new_revo = Subjects.objects.create(subject=str(row[0])+str(row[1])+str(row[2])+str(row[3])+str(row[4]), course=str(row[0]), year=int(row[1]), semester=int(row[2]), shop=int(row[3]), is_lab=str(row[4]), description=str(row[5]))
                         new_revo.save()
+                        messages.success(request, 'Successfully Updated the Subjects, but check if data imported is correct.')
                 except:
-                    messages.success(request, 'Successfully Import, but check if data imported is correct.')
+                    messages.success(request, 'Successfully Updated the Subjects, but check if data imported is correct.')
                     return redirect('/h_subject')
             return redirect('/h_subject')
         elif current_user.department == 'Department of Liberal Arts':
@@ -1376,8 +1379,9 @@ def sub_cvs(request):
                     if str(row[4]) == "" or str(row[4]) != "":
                         new_revo = Subjects.objects.create(subject=str(row[0])+str(row[1])+str(row[2])+str(row[3])+str(row[4]), course=str(row[0]), year=int(row[1]), semester=int(row[2]), shop=int(row[3]), is_lab=str(row[4]), description=str(row[5]))
                         new_revo.save()
+                        messages.success(request, 'Successfully Updated the Subjects, but check if data imported is correct.')
                 except:
-                    messages.success(request, 'Successfully Import, but check if data imported is correct.')
+                    messages.success(request, 'Successfully Updated the Subjects, but check if data imported is correct.')
                     return redirect('/h_subject')
             return redirect('/h_subject')
 

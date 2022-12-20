@@ -85,7 +85,7 @@
             </div>
 
             <div style="overflow-x:auto; margin-bottom:2%;">
-                <table class="table table-bordered">
+                <table id="table_id" class="display">
                     <thead>
                         <th>COURSE</th>
                         <th>YEAR</th>
@@ -154,6 +154,15 @@
             text: '{{ message }}',
         })
     </script> {% endif %} {% endfor %} {% endif %}
+
+
+    <!--DATATABLES-->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#table_id').DataTable();
+        });
+    </script>
 
 
 </body>

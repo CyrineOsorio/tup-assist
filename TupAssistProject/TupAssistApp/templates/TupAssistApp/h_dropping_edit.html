@@ -122,7 +122,12 @@
                                     <td>{{i.admin_remark}}</td>
                                     <td>{{i.admin_name}}</td>
                                     <td>{{i.admin_date}}</td>
-
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="10" style="text-align: center; font-style: italic;">
+                                        No request of subject for this department. But the other departments have request.
+                                    </td>
                                 </tr>
                                 {% endfor %}
                             </tbody>

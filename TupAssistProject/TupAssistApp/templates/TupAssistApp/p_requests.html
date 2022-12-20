@@ -103,6 +103,12 @@
                                 <td>{{i.subj_teacher_date}}</td>
                                 <td><a class="btn btn-primary" data-toggle="modal" data-target="#editReq{{i.id}}">Edit</a></td>
                             </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="10" style="text-align: center; font-style: italic;">
+                                    No data
+                                </td>
+                            </tr>
                             {% endfor %}
                         </tbody>
                 </table>

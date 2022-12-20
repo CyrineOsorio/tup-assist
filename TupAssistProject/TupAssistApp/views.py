@@ -260,36 +260,42 @@ def a_transferring(request):
 # ADAA PAGES
 @login_required(login_url='/index')
 def adaa_profile(request):
-    current_user = request.user
-    form = PasswordChangeForm(current_user)
-    # Models
-    context = {
-        'current_user': current_user,
-        'form': form
-    }
-    return render(request, 'TupAssistApp/adaa_profile.html', context)
+    if request.user.is_authenticated and user.userType == 'Assist. Director of Academic Affairs':  
+        current_user = request.user
+        form = PasswordChangeForm(current_user)
+        # Models
+        context = {
+            'current_user': current_user,
+            'form': form
+        }
+        return render(request, 'TupAssistApp/adaa_profile.html', context)
+    return redirect('/index')
 
 @login_required(login_url='/index')
 def adaa_adding(request):
-    current_user = request.user = request.user
-    test = registration.objects.filter(Q(userType='Student') & (Q(addStatus='Wait for Department Head and Asst. Director for Academic Affairs Approval') | Q(addStatus='ADAA Approved')) )
-    context = { 
-        'test': test,
-        'current_user': current_user,
-        }
-    return render(request, 'TupAssistApp/adaa_adding.html', context)
+    if request.user.is_authenticated and user.userType == 'Assist. Director of Academic Affairs':
+        current_user = request.user = request.user
+        test = registration.objects.filter(Q(userType='Student') & (Q(addStatus='Wait for Department Head and Asst. Director for Academic Affairs Approval') | Q(addStatus='ADAA Approved')) )
+        context = { 
+            'test': test,
+            'current_user': current_user,
+            }
+        return render(request, 'TupAssistApp/adaa_adding.html', context)
+    return redirect('/index')
 
 @login_required(login_url='/index')
 def adaa_adding_view(request, studID):
-    current_user = request.user
-    data = registration.objects.get(studID=studID)
-    req = AddingReq.objects.filter(studID=data.studID)
-    context = { 
-        'req': req,
-        'current_user': current_user,
-        'student_info': data,
-        }
-    return render(request, 'TupAssistApp/adaa_adding_view.html', context)
+    if request.user.is_authenticated and user.userType == 'Assist. Director of Academic Affairs':
+        current_user = request.user
+        data = registration.objects.get(studID=studID)
+        req = AddingReq.objects.filter(studID=data.studID)
+        context = { 
+            'req': req,
+            'current_user': current_user,
+            'student_info': data,
+            }
+        return render(request, 'TupAssistApp/adaa_adding_view.html', context)
+    return redirect('/index')
 
 def r_edit_sub(request):
     studID = request.POST.get('studID')
@@ -327,25 +333,29 @@ def adaa_adding_approve(request):
 
 @login_required(login_url='/index')
 def adaa_dropping(request):
-    current_user = request.user
-    test = registration.objects.filter(Q(userType='Student') & (Q(dropStatus='Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval')) | Q(dropStatus='ADAA Approved')) 
-    context = {
-        'test': test,
-        'current_user': current_user
-        }
-    return render(request, 'TupAssistApp/adaa_dropping.html', context)
+    if request.user.is_authenticated and user.userType == 'Assist. Director of Academic Affairs':
+        current_user = request.user
+        test = registration.objects.filter(Q(userType='Student') & (Q(dropStatus='Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval')) | Q(dropStatus='ADAA Approved')) 
+        context = {
+            'test': test,
+            'current_user': current_user
+            }
+        return render(request, 'TupAssistApp/adaa_dropping.html', context)  
+    return redirect('/index')
 
 @login_required(login_url='/index')
 def adaa_dropping_view(request, studID):
-    current_user = request.user
-    data = registration.objects.get(studID=studID)
-    req = DroppingReq.objects.filter(studID=data.studID)
-    context = { 
-        'req': req,
-        'current_user': current_user,
-        'student_info': data,
-        }
-    return render(request, 'TupAssistApp/adaa_dropping_view.html', context)
+    if request.user.is_authenticated and user.userType == 'Assist. Director of Academic Affairs':
+        current_user = request.user
+        data = registration.objects.get(studID=studID)
+        req = DroppingReq.objects.filter(studID=data.studID)
+        context = { 
+            'req': req,
+            'current_user': current_user,
+            'student_info': data,
+            }
+        return render(request, 'TupAssistApp/adaa_dropping_view.html', context)
+    return redirect('/index')
 
 def r_edit_sub1(request):
     studID = request.POST.get('studID')
@@ -362,48 +372,54 @@ def r_edit_sub1(request):
 
 @login_required(login_url='/index')
 def adaa_dropping_approve(request):
-    studID = request.POST.get('studID')
-    admin_name = request.POST.get('admin_name')
-    admin_date = datetime.now()
-    data = registration.objects.get(studID=studID)
-    if request.method =='POST':  
-        DroppingReq.objects.filter(studID_id=studID).update(admin_approve = 'Approve')
-        DroppingReq.objects.filter(studID_id=studID).update(admin_name = admin_name)
-        DroppingReq.objects.filter(studID_id=studID).update(admin_date = admin_date)
-        edit1 = registration.objects.get(studID=studID)
-        edit1.dropStatus = 'ADAA Approved'
-        edit1.save()
-        messages.success(request, 'Request Successfully Edited!')
-        # Email
-        link = 'tup-assist.com'
-        content = 'Hi ' + data.first_name + ' ' + data.last_name + ',\n\n' + 'Your Request for Dropping of Subject is already approved by ADAA. Check your request by signing in your account on the attached link. \n\n' + link
-        send_mail('DROPPING OF SUBJECT - REQUEST', 
-            content, settings.EMAIL_HOST_USER , [data.email], fail_silently=False)
-        return redirect('/adaa_dropping_view/'+ str(data.studID))
+    if request.user.is_authenticated and user.userType == 'Assist. Director of Academic Affairs':
+        studID = request.POST.get('studID')
+        admin_name = request.POST.get('admin_name')
+        admin_date = datetime.now()
+        data = registration.objects.get(studID=studID)
+        if request.method =='POST':  
+            DroppingReq.objects.filter(studID_id=studID).update(admin_approve = 'Approve')
+            DroppingReq.objects.filter(studID_id=studID).update(admin_name = admin_name)
+            DroppingReq.objects.filter(studID_id=studID).update(admin_date = admin_date)
+            edit1 = registration.objects.get(studID=studID)
+            edit1.dropStatus = 'ADAA Approved'
+            edit1.save()
+            messages.success(request, 'Request Successfully Edited!')
+            # Email
+            link = 'tup-assist.com'
+            content = 'Hi ' + data.first_name + ' ' + data.last_name + ',\n\n' + 'Your Request for Dropping of Subject is already approved by ADAA. Check your request by signing in your account on the attached link. \n\n' + link
+            send_mail('DROPPING OF SUBJECT - REQUEST', 
+                content, settings.EMAIL_HOST_USER , [data.email], fail_silently=False)
+            return redirect('/adaa_dropping_view/'+ str(data.studID))
+    return redirect('/index')     
 
 @login_required(login_url='/index')
 def adaa_transferring(request):
-    current_user = request.user
-    test = registration.objects.filter(Q(userType='Student') & (Q(transferStatus='Wait for Department Head and Assist. Director of Academic Affairs Approval')) | Q(addStatus='ADAA Approved'))
-    context = { 
-        'test': test,
-        'current_user': current_user
-        }
-    return render(request, 'TupAssistApp/adaa_transferring.html', context)
+    if request.user.is_authenticated and user.userType == 'Assist. Director of Academic Affairs':
+        current_user = request.user
+        test = registration.objects.filter(Q(userType='Student') & (Q(transferStatus='Wait for Department Head and Assist. Director of Academic Affairs Approval')) | Q(addStatus='ADAA Approved'))
+        context = { 
+            'test': test,
+            'current_user': current_user
+            }
+        return render(request, 'TupAssistApp/adaa_transferring.html', context)
+    return redirect('/index')
 
 @login_required(login_url='/index')
 def adaa_transferring_view(request, studID):
-    current_user = request.user
-    data = registration.objects.get(studID=studID)
-    req = TransferringReq.objects.filter(studID=data.studID)
-    context = { 
-        'req': req,
-        'current_user': current_user,
-        'student_info': data,
-        }
-    return render(request, 'TupAssistApp/adaa_transferring_view.html', context)
+    if request.user.is_authenticated and user.userType == 'Assist. Director of Academic Affairs':
+        current_user = request.user
+        data = registration.objects.get(studID=studID)
+        req = TransferringReq.objects.filter(studID=data.studID)
+        context = { 
+            'req': req,
+            'current_user': current_user,
+            'student_info': data,
+            }
+        return render(request, 'TupAssistApp/adaa_transferring_view.html', context)
+    return redirect('/index')
 
-@login_required(login_url='/index')
+
 def adaa_transferring_approve(request):
     studID = request.POST.get('studID')
     admin_name = request.POST.get('admin_name')
@@ -429,14 +445,16 @@ def adaa_transferring_approve(request):
 #STUDENT PAGES
 @login_required(login_url='/index')
 def s_profile(request):
-    current_user = request.user
-    form = PasswordChangeForm(current_user)
-    # Models
-    context = {
-        'current_user': current_user,
-        'form': form
-    }
-    return render(request, 'TupAssistApp/s_profile.html', context)
+    if request.user.is_authenticated and user.userType == 'Student':
+        current_user = request.user
+        form = PasswordChangeForm(current_user)
+        # Models
+        context = {
+            'current_user': current_user,
+            'form': form
+        }
+        return render(request, 'TupAssistApp/s_profile.html', context)
+    return redirect('/index')
 
 def changepassword(request):
     if request.method == 'POST':
@@ -469,51 +487,57 @@ def changestudentinfo(request):
         
 @login_required(login_url='/index')
 def s_adding(request):
-    current_user = request.user
-    # Models
-    req = AddingReq.objects.filter(studID=current_user.studID)
-    sched = Schedule.objects.all()
-    trans = TransStatus.objects.get(TransName="Add")
-    if current_user.department == "Department of Industrial Technology":
-        current_user.department1 = "DIT"
-        subs = Subjects.objects.filter( ((Q(course=current_user.course) & Q(year__lte=current_user.year) & Q(semester=trans.semester))) | ((Q(course__icontains=current_user.department1) & Q(year__lte=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year__lte=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year__lte=current_user.year) & Q(semester=trans.semester)))  ) 
+    if request.user.is_authenticated and user.userType == 'Student':
+        current_user = request.user
+        # Models
+        req = AddingReq.objects.filter(studID=current_user.studID)
         sched = Schedule.objects.all()
-        context = {
-            'req': req,
-            'current_user': current_user,
-            'trans': trans,
-            'subs': subs,
-            'sched': sched
-        }
-    elif current_user.department == "Department of Industrial Education":
-        current_user.department1 = "DIE"
-        subs = Subjects.objects.filter( ((Q(course=current_user.course) & Q(year__lte=current_user.year) & Q(semester=trans.semester))) | ((Q(course__icontains=current_user.department1) & Q(year__lte=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year__lte=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year__lte=current_user.year) & Q(semester=trans.semester)))  ) 
-        sched = Schedule.objects.all()
-        context = {
-            'req': req,
-            'current_user': current_user,
-            'trans': trans,
-            'subs': subs,
-            'sched': sched
-    }
-    elif current_user.department == "Department of Engineering":
-        current_user.department1 = "DOE"
-        subs = Subjects.objects.filter( ((Q(course=current_user.course) & Q(year__lte=current_user.year) & Q(semester=trans.semester))) | ((Q(course__icontains=current_user.department1) & Q(year__lte=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year__lte=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year__lte=current_user.year) & Q(semester=trans.semester)))  ) 
-        sched = Schedule.objects.all()
-        context = {
-            'req': req,
-            'current_user': current_user,
-            'trans': trans,
-            'subs': subs,
-            'sched': sched
-    }
-    else:
-        context = {
-            'current_user': current_user,
-            'sched': sched
-        }
+        trans = TransStatus.objects.get(TransName="Add")
+        if current_user.department == "Department of Industrial Technology":
+            current_user.department1 = "DIT"
+            subs = Subjects.objects.filter( ((Q(course=current_user.course) & Q(year__lte=current_user.year) & Q(semester=trans.semester))) | ((Q(course__icontains=current_user.department1) & Q(year__lte=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year__lte=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year__lte=current_user.year) & Q(semester=trans.semester)))  ) 
+            sched = Schedule.objects.all()
+            context = {
+                'req': req,
+                'current_user': current_user,
+                'trans': trans,
+                'subs': subs,
+                'sched': sched
+            }
+        elif current_user.department == "Department of Industrial Education":
+            current_user.department1 = "DIE"
+            subs = Subjects.objects.filter( ((Q(course=current_user.course) & Q(year__lte=current_user.year) & Q(semester=trans.semester))) | ((Q(course__icontains=current_user.department1) & Q(year__lte=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year__lte=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year__lte=current_user.year) & Q(semester=trans.semester)))  ) 
+            sched = Schedule.objects.all()
+            context = {
+                'req': req,
+                'current_user': current_user,
+                'trans': trans,
+                'subs': subs,
+                'sched': sched
+            }
+        elif current_user.department == "Department of Engineering":
+            current_user.department1 = "DOE"
+            subs = Subjects.objects.filter( ((Q(course=current_user.course) & Q(year__lte=current_user.year) & Q(semester=trans.semester))) | ((Q(course__icontains=current_user.department1) & Q(year__lte=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year__lte=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year__lte=current_user.year) & Q(semester=trans.semester)))  ) 
+            sched = Schedule.objects.all()
+            context = {
+                'req': req,
+                'current_user': current_user,
+                'trans': trans,
+                'subs': subs,
+                'sched': sched
+            }
+        else:
+            context = {
+                'current_user': current_user,
+                'sched': sched
+            }
+        return render(request, 'TupAssistApp/s_adding.html', context)
+    return redirect('/index')
 
-    return render(request, 'TupAssistApp/s_adding.html', context)
+
+
+
+
 
 def upload(request):
     current_user = request.user
@@ -611,49 +635,51 @@ def s_step2_submit(request):
 
 @login_required(login_url='/index')
 def s_dropping(request):
-    current_user = request.user
-    dropReq = DroppingReq.objects.filter(studID=current_user.studID)
-    trans = TransStatus.objects.get(TransName="Drop")
-    sched = Schedule.objects.all()
-    if current_user.department == "Department of Industrial Technology":
-        current_user.department1 = "DIT"
-        subs = Subjects.objects.filter( ((Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course__icontains=current_user.department1) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year=current_user.year) & Q(semester=trans.semester)))  ) 
+    if request.user.is_authenticated and user.userType == 'Student':
+        current_user = request.user
+        dropReq = DroppingReq.objects.filter(studID=current_user.studID)
+        trans = TransStatus.objects.get(TransName="Drop")
         sched = Schedule.objects.all()
-        context = {
-            'dropReq': dropReq,
-            'current_user': current_user,
-            'trans': trans,
-            'subs': subs,
-            'sched': sched
-    }
-    elif current_user.department == "Department of Industrial Education":
-        current_user.department1 = "DIE"
-        subs = Subjects.objects.filter( ((Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course__icontains=current_user.department1) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year=current_user.year) & Q(semester=trans.semester)))  ) 
-        sched = Schedule.objects.all()
-        context = {
-            'dropReq': dropReq,
-            'current_user': current_user,
-            'trans': trans,
-            'subs': subs,
-            'sched': sched
-    }
-    elif current_user.department == "Department of Engineering":
-        current_user.department1 = "DOE"
-        subs = Subjects.objects.filter( ((Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course__icontains=current_user.department1) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year=current_user.year) & Q(semester=trans.semester)))  ) 
-        sched = Schedule.objects.all()
-        context = {
-            'dropReq': dropReq,
-            'current_user': current_user,
-            'trans': trans,
-            'subs': subs,
-            'sched': sched
-    }
-    else:
-        context = {
-            'current_user': current_user,
-            'sched': sched
-        }
-    return render(request, 'TupAssistApp/s_dropping.html', context)
+        if current_user.department == "Department of Industrial Technology":
+            current_user.department1 = "DIT"
+            subs = Subjects.objects.filter( ((Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course__icontains=current_user.department1) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year=current_user.year) & Q(semester=trans.semester)))  ) 
+            sched = Schedule.objects.all()
+            context = {
+                'dropReq': dropReq,
+                'current_user': current_user,
+                'trans': trans,
+                'subs': subs,
+                'sched': sched
+            }
+        elif current_user.department == "Department of Industrial Education":
+            current_user.department1 = "DIE"
+            subs = Subjects.objects.filter( ((Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course__icontains=current_user.department1) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year=current_user.year) & Q(semester=trans.semester)))  ) 
+            sched = Schedule.objects.all()
+            context = {
+                'dropReq': dropReq,
+                'current_user': current_user,
+                'trans': trans,
+                'subs': subs,
+                'sched': sched
+            }
+        elif current_user.department == "Department of Engineering":
+            current_user.department1 = "DOE"
+            subs = Subjects.objects.filter( ((Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course__icontains=current_user.department1) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year=current_user.year) & Q(semester=trans.semester)))  ) 
+            sched = Schedule.objects.all()
+            context = {
+                'dropReq': dropReq,
+                'current_user': current_user,
+                'trans': trans,
+                'subs': subs,
+                'sched': sched
+            }
+        else:
+            context = {
+                'current_user': current_user,
+                'sched': sched
+            }
+        return render(request, 'TupAssistApp/s_dropping.html', context)
+    return redirect('/index')
 
 def s_drop_sub(request):
     current_user = request.user
@@ -869,50 +895,52 @@ def s_drop_sub(request):
 
 @login_required(login_url='/index')
 def s_transferring(request):
-    current_user = request.user
-    transReq = TransferringReq.objects.filter(studID_id=current_user.studID)
-    trans = TransStatus.objects.get(TransName="Transfer")
-    sched = Schedule.objects.all()
-    if current_user.department == "Department of Industrial Technology":
-        current_user.department1 = "DIT"
-        subs = Subjects.objects.filter( ((Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course__icontains=current_user.department1) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year=current_user.year) & Q(semester=trans.semester)))  ) 
+    if request.user.is_authenticated and user.userType == 'Student':
+        current_user = request.user
+        transReq = TransferringReq.objects.filter(studID_id=current_user.studID)
+        trans = TransStatus.objects.get(TransName="Transfer")
         sched = Schedule.objects.all()
-        context = {
-            'transReq': transReq,
-            'current_user': current_user,
-            'trans': trans,
-            'subs': subs,
-            'sched': sched
-    }
-    elif current_user.department == "Department of Industrial Education":
-        current_user.department1 = "DIE"
-        subs = Subjects.objects.filter( ((Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course__icontains=current_user.department1) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year=current_user.year) & Q(semester=trans.semester)))  ) 
-        sched = Schedule.objects.all()
-        context = {
-            'transReq': transReq,
-            'current_user': current_user,
-            'trans': trans,
-            'subs': subs,
-            'sched': sched
-    }
-    elif current_user.department == "Department of Engineering":
-        current_user.department1 = "DOE"
-        subs = Subjects.objects.filter( ((Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course__icontains=current_user.department1) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year=current_user.year) & Q(semester=trans.semester)))  ) 
-        sched = Schedule.objects.all()
-        context = {
-            'transReq': transReq,
-            'current_user': current_user,
-            'trans': trans,
-            'subs': subs,
-            'sched': sched
-    }
-    else:
-        context = {
-            'current_user': current_user,
-            'sched': sched
-        }
-    
-    return render(request, 'TupAssistApp/s_transferring.html', context)
+        if current_user.department == "Department of Industrial Technology":
+            current_user.department1 = "DIT"
+            subs = Subjects.objects.filter( ((Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course__icontains=current_user.department1) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year=current_user.year) & Q(semester=trans.semester)))  ) 
+            sched = Schedule.objects.all()
+            context = {
+                'transReq': transReq,
+                'current_user': current_user,
+                'trans': trans,
+                'subs': subs,
+                'sched': sched
+            }
+        elif current_user.department == "Department of Industrial Education":
+            current_user.department1 = "DIE"
+            subs = Subjects.objects.filter( ((Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course__icontains=current_user.department1) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year=current_user.year) & Q(semester=trans.semester)))  ) 
+            sched = Schedule.objects.all()
+            context = {
+                'transReq': transReq,
+                'current_user': current_user,
+                'trans': trans,
+                'subs': subs,
+                'sched': sched
+            }
+        elif current_user.department == "Department of Engineering":
+            current_user.department1 = "DOE"
+            subs = Subjects.objects.filter( ((Q(course=current_user.course) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course__icontains=current_user.department1) & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year=current_user.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year=current_user.year) & Q(semester=trans.semester)))  ) 
+            sched = Schedule.objects.all()
+            context = {
+                'transReq': transReq,
+                'current_user': current_user,
+                'trans': trans,
+                'subs': subs,
+                'sched': sched
+            }
+        else:
+            context = {
+                'current_user': current_user,
+                'sched': sched
+            }
+        return render(request, 'TupAssistApp/s_transferring.html', context)
+    return redirect('/index')
+
 
 def s_trans_sub(request):
     current_user = request.user
@@ -951,14 +979,16 @@ def s_step1_submit_t(request):
 # PIC PAGES
 @login_required(login_url='/index')
 def p_profile(request):
-    current_user = request.user
-    form = PasswordChangeForm(current_user)
-    # Models
-    context = {
-        'current_user': current_user,
-        'form': form
-    }
-    return render(request, 'TupAssistApp/p_profile.html', context)
+    if request.user.is_authenticated and user.userType == 'Program-in-charge':
+        current_user = request.user
+        form = PasswordChangeForm(current_user)
+        # Models
+        context = {
+            'current_user': current_user,
+            'form': form
+        }
+        return render(request, 'TupAssistApp/p_profile.html', context)
+    return redirect('/index')
 
 def changepassword1(request):
     if request.method == 'POST':
@@ -989,66 +1019,69 @@ def changepicinfo(request):
 
 @login_required(login_url='/index')
 def p_adding(request):
-    current_user = request.user
-    test = registration.objects.filter(Q(course=current_user.course) & Q(userType='Student') & ~Q(addStatus=''))
-    context = { 
-        'test': test,
-        'current_user': current_user
-        }
-    return render(request, 'TupAssistApp/p_adding.html', context )
+    if request.user.is_authenticated and user.userType == 'Program-in-charge':
+        current_user = request.user
+        test = registration.objects.filter(Q(course=current_user.course) & Q(userType='Student') & ~Q(addStatus=''))
+        context = { 
+            'test': test,
+            'current_user': current_user
+            }
+        return render(request, 'TupAssistApp/p_adding.html', context )
+    return redirect('/index')
 
 @login_required(login_url='/index')
 def p_adding_edit(request, studID):
-    current_user = request.user
-    student_info = registration.objects.get(studID=studID)
-    req = AddingReq.objects.filter(studID_id=student_info.studID)
-    sched = Schedule.objects.all()
-    trans = TransStatus.objects.get(TransName="Add")
-    if student_info.department == "Department of Industrial Technology":
-        student_info.department1 = "DIT"
-        subs = Subjects.objects.filter( ((Q(course=student_info.course) & Q(year__lte=student_info.year) & Q(semester=trans.semester))) | ((Q(course__icontains=student_info.department1) & Q(year__lte=student_info.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year__lte=student_info.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year__lte=student_info.year) & Q(semester=trans.semester)))  ) 
+    if request.user.is_authenticated and user.userType == 'Program-in-charge':
+        current_user = request.user
+        student_info = registration.objects.get(studID=studID)
+        req = AddingReq.objects.filter(studID_id=student_info.studID)
         sched = Schedule.objects.all()
-        context = {
-            'current_user': current_user,
-            'student_info': student_info,
-            'req': req,
-            'sched': sched,
-            'subs': subs,
- 
-        }
-    elif student_info.department == "Department of Industrial Education":
-        student_info.department1 = "DIE"
-        subs = Subjects.objects.filter( ((Q(course=student_info.course) & Q(year__lte=student_info.year) & Q(semester=trans.semester))) | ((Q(course__icontains=student_info.department1) & Q(year__lte=student_info.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year__lte=student_info.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year__lte=student_info.year) & Q(semester=trans.semester)))  ) 
-        sched = Schedule.objects.all()
-        context = {
-            'current_user': current_user,
-            'student_info': student_info,
-            'req': req,
-            'sched': sched,
-            'subs': subs,
- 
-        }
-    elif student_info.department == "Department of Engineering":
-        student_info.department1 = "DOE"
-        subs = Subjects.objects.filter( ((Q(course=student_info.course) & Q(year__lte=student_info.year) & Q(semester=trans.semester))) | ((Q(course__icontains=student_info.department1) & Q(year__lte=student_info.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year__lte=student_info.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year__lte=student_info.year) & Q(semester=trans.semester)))  ) 
-        sched = Schedule.objects.all()
-        context = {
-            'current_user': current_user,
-            'student_info': student_info,
-            'req': req,
-            'sched': sched,
-            'subs': subs,
- 
-        }
-    else:
-        context = {
-            'current_user': current_user,
-            'student_info': student_info,
-            'req': req,
-            'sched': sched
-        }
-
-    return render(request, 'TupAssistApp/p_adding_edit.html', context)
+        trans = TransStatus.objects.get(TransName="Add")
+        if student_info.department == "Department of Industrial Technology":
+            student_info.department1 = "DIT"
+            subs = Subjects.objects.filter( ((Q(course=student_info.course) & Q(year__lte=student_info.year) & Q(semester=trans.semester))) | ((Q(course__icontains=student_info.department1) & Q(year__lte=student_info.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year__lte=student_info.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year__lte=student_info.year) & Q(semester=trans.semester)))  ) 
+            sched = Schedule.objects.all()
+            context = {
+                'current_user': current_user,
+                'student_info': student_info,
+                'req': req,
+                'sched': sched,
+                'subs': subs,
+    
+            }
+        elif student_info.department == "Department of Industrial Education":
+            student_info.department1 = "DIE"
+            subs = Subjects.objects.filter( ((Q(course=student_info.course) & Q(year__lte=student_info.year) & Q(semester=trans.semester))) | ((Q(course__icontains=student_info.department1) & Q(year__lte=student_info.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year__lte=student_info.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year__lte=student_info.year) & Q(semester=trans.semester)))  ) 
+            sched = Schedule.objects.all()
+            context = {
+                'current_user': current_user,
+                'student_info': student_info,
+                'req': req,
+                'sched': sched,
+                'subs': subs,
+    
+            }
+        elif student_info.department == "Department of Engineering":
+            student_info.department1 = "DOE"
+            subs = Subjects.objects.filter( ((Q(course=student_info.course) & Q(year__lte=student_info.year) & Q(semester=trans.semester))) | ((Q(course__icontains=student_info.department1) & Q(year__lte=student_info.year) & Q(semester=trans.semester))) | ((Q(course='DMS') & Q(year__lte=student_info.year) & Q(semester=trans.semester))) | ((Q(course='DLA') & Q(year__lte=student_info.year) & Q(semester=trans.semester)))  ) 
+            sched = Schedule.objects.all()
+            context = {
+                'current_user': current_user,
+                'student_info': student_info,
+                'req': req,
+                'sched': sched,
+                'subs': subs,
+    
+            }
+        else:
+            context = {
+                'current_user': current_user,
+                'student_info': student_info,
+                'req': req,
+                'sched': sched
+            }
+        return render(request, 'TupAssistApp/p_adding_edit.html', context)
+    return redirect('/index')
 
 def p_edit_sub(request):
     studID = request.POST.get('studID')
@@ -1096,13 +1129,15 @@ def p_step1_submit(request):
 
 @login_required(login_url='/index')
 def p_requests(request):
-    current_user = request.user
-    req = DroppingReq.objects.filter(subj_teacher_name=current_user.email)
-    context = {
-        'current_user': current_user,
-        'req': req,
-    }
-    return render(request, 'TupAssistApp/p_requests.html', context)
+    if request.user.is_authenticated and user.userType == 'Program-in-charge':
+        current_user = request.user
+        req = DroppingReq.objects.filter(subj_teacher_name=current_user.email)
+        context = {
+            'current_user': current_user,
+            'req': req,
+        }
+        return render(request, 'TupAssistApp/p_requests.html', context)
+    return redirect('/index')  
 
 def p_edit_sub1(request):
     if request.method =='POST':
@@ -1122,23 +1157,27 @@ def p_edit_sub1(request):
 #  TEACHER PAGES
 @login_required(login_url='/index')
 def t_profile(request):
-    current_user = request.user
-    form = PasswordChangeForm(current_user)
-    context = {
-        'current_user': current_user,
-        'form': form
-    }
-    return render(request, 'TupAssistApp/t_profile.html', context)
+    if request.user.is_authenticated and user.userType == 'Teacher':
+        current_user = request.user
+        form = PasswordChangeForm(current_user)
+        context = {
+            'current_user': current_user,
+            'form': form
+        }
+        return render(request, 'TupAssistApp/t_profile.html', context)
+    return redirect('/index')
 
 @login_required(login_url='/index')
 def t_requests(request):
-    current_user = request.user
-    req = DroppingReq.objects.filter(subj_teacher_name=current_user.email)
-    context = {
-        'current_user': current_user,
-        'req': req,
-    }
-    return render(request, 'TupAssistApp/t_requests.html', context)
+    if request.user.is_authenticated and user.userType == 'Teacher':
+        current_user = request.user
+        req = DroppingReq.objects.filter(subj_teacher_name=current_user.email)
+        context = {
+            'current_user': current_user,
+            'req': req,
+        }
+        return render(request, 'TupAssistApp/t_requests.html', context)
+    return redirect('/index')
 
 def t_edit_sub(request):
     if request.method =='POST':
@@ -1161,14 +1200,16 @@ def t_edit_sub(request):
 # DEPARTMENT HEAD PAGES
 @login_required(login_url='/index')
 def h_profile(request):
-    current_user = request.user
-    form = PasswordChangeForm(current_user)
-    # Models
-    context = {
-        'current_user': current_user,
-        'form': form
-    }
-    return render(request, 'TupAssistApp/h_profile.html', context)
+    if request.user.is_authenticated and user.userType == 'Department Head':
+        current_user = request.user
+        form = PasswordChangeForm(current_user)
+        # Models
+        context = {
+            'current_user': current_user,
+            'form': form
+        }
+        return render(request, 'TupAssistApp/h_profile.html', context)
+    return redirect('/index')
 
 def changepassword2(request):
     if request.method == 'POST':
@@ -1198,46 +1239,48 @@ def changeheadinfo(request):
 
 @login_required(login_url='/index')
 def h_subject(request):
-    current_user = request.user
-    if current_user.department == "Department of Industrial Technology":
-        current_user.department1 = "DIT"
-        current_user.department2 = "BET"
-        subs = Subjects.objects.filter (Q(course__icontains=current_user.department1) | Q(course__icontains=current_user.department2) ) 
-        context = {
-            'current_user': current_user,
-            'subs': subs,
-    }
-    elif current_user.department == "Department of Engineering":
-        current_user.department1 = "DOE"
-        current_user.department2 = "BSCE"
-        subs = Subjects.objects.filter (Q(course__icontains=current_user.department1) | Q(course__icontains=current_user.department2) ) 
-        context = {
-            'current_user': current_user,
-            'subs': subs,
-    }
-    elif current_user.department == "Department of Industrial Education":
-        current_user.department1 = "DIE"
-        current_user.department2 = "BSIE-ICT"
-        subs = Subjects.objects.filter (Q(course__icontains=current_user.department1) | Q(course__icontains=current_user.department2) ) 
-        context = {
-            'current_user': current_user,
-            'subs': subs,
-    }
-    elif current_user.department == "Department of Math and Science":
-        current_user.department1 = "DMS"
-        subs = Subjects.objects.filter (Q(course__icontains=current_user.department1)) 
-        context = {
-            'current_user': current_user,
-            'subs': subs,
-    }
-    elif current_user.department == "Department of Liberal Arts":
-        current_user.department1 = "DLA"
-        subs = Subjects.objects.filter (Q(course__icontains=current_user.department1)) 
-        context = {
-            'current_user': current_user,
-            'subs': subs,
-    }
-    return render(request, 'TupAssistApp/h_subject.html', context)
+    if request.user.is_authenticated and user.userType == 'Department Head':
+        current_user = request.user
+        if current_user.department == "Department of Industrial Technology":
+            current_user.department1 = "DIT"
+            current_user.department2 = "BET"
+            subs = Subjects.objects.filter (Q(course__icontains=current_user.department1) | Q(course__icontains=current_user.department2) ) 
+            context = {
+                'current_user': current_user,
+                'subs': subs,
+                }
+        elif current_user.department == "Department of Engineering":
+            current_user.department1 = "DOE"
+            current_user.department2 = "BSCE"
+            subs = Subjects.objects.filter (Q(course__icontains=current_user.department1) | Q(course__icontains=current_user.department2) ) 
+            context = {
+                'current_user': current_user,
+                'subs': subs,
+            }
+        elif current_user.department == "Department of Industrial Education":
+            current_user.department1 = "DIE"
+            current_user.department2 = "BSIE-ICT"
+            subs = Subjects.objects.filter (Q(course__icontains=current_user.department1) | Q(course__icontains=current_user.department2) ) 
+            context = {
+                'current_user': current_user,
+                'subs': subs,
+            }
+        elif current_user.department == "Department of Math and Science":
+            current_user.department1 = "DMS"
+            subs = Subjects.objects.filter (Q(course__icontains=current_user.department1)) 
+            context = {
+                'current_user': current_user,
+                'subs': subs,
+            }
+        elif current_user.department == "Department of Liberal Arts":
+            current_user.department1 = "DLA"
+            subs = Subjects.objects.filter (Q(course__icontains=current_user.department1)) 
+            context = {
+                'current_user': current_user,
+                'subs': subs,
+            }
+        return render(request, 'TupAssistApp/h_subject.html', context)
+    return redirect('/index') 
 
 def sub_cvs(request):
     if request.method=='POST': 
@@ -1261,82 +1304,86 @@ def sub_cvs(request):
 
 @login_required(login_url='/index')
 def h_adding(request):
-    current_user = request.user
-    if current_user.department == "Department of Industrial Technology" or current_user.department == "Department of Engineering" or current_user.department == "Department of Industrial Education":
-        test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student') & (Q(addStatus='Wait for Department Head and Asst. Director for Academic Affairs Approval')) | Q(addStatus='ADAA Approved'))
-        context = { 
-            'test': test,
-            'current_user': current_user
-            }
-    else:
-        test = registration.objects.filter(Q(userType='Student') & (Q(addStatus='Wait for Department Head and Asst. Director for Academic Affairs Approval')) | Q(addStatus='ADAA Approved'))
-        context = { 
-            'test': test,
-            'current_user': current_user
-            }
-    return render(request, 'TupAssistApp/h-adding.html', context)
+    if request.user.is_authenticated and user.userType == 'Department Head':
+        current_user = request.user
+        if current_user.department == "Department of Industrial Technology" or current_user.department == "Department of Engineering" or current_user.department == "Department of Industrial Education":
+            test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student') & (Q(addStatus='Wait for Department Head and Asst. Director for Academic Affairs Approval')) | Q(addStatus='ADAA Approved'))
+            context = { 
+                'test': test,
+                'current_user': current_user
+                }
+        else:
+            test = registration.objects.filter(Q(userType='Student') & (Q(addStatus='Wait for Department Head and Asst. Director for Academic Affairs Approval')) | Q(addStatus='ADAA Approved'))
+            context = { 
+                'test': test,
+                'current_user': current_user
+                }
+        return render(request, 'TupAssistApp/h-adding.html', context)
+    return redirect('/index') 
 
 @login_required(login_url='/index')
 def h_adding_edit(request, studID):
-    current_user = request.user
-    data = registration.objects.get(studID=studID)
-    sched = Schedule.objects.all()
-    if current_user.department == "Department of Industrial Technology":
-        department1 = "DIT"
-        course1 = "BET-COET"
-        req = AddingReq.objects.filter(Q (studID_id=data.studID) & (Q(subject_id__course=department1) | (Q(subject_id__course=course1))))
-        context = { 
-            'current_user': current_user,
-            'student_info': data,
-            'req': req,
-            'sched': sched
-            }
-    elif current_user.department == "Department of Industrial Education":
-        department1 = "DIE"
-        course1 = "BS-ICT"
-        req = AddingReq.objects.filter(Q (studID_id=data.studID) & (Q(subject_id__course=department1) | (Q(subject_id__course=course1))))
-        context = { 
-            'current_user': current_user,
-            'student_info': data,
-            'req': req,
-            'sched': sched
-            }
-    elif current_user.department == "Department of Engineering":
-        department1 = "DOE"
-        course1 = "BSCE"
-        req = AddingReq.objects.filter(Q (studID_id=data.studID) & (Q(subject_id__course=department1) | (Q(subject_id__course=course1))))
-        context = { 
-            'current_user': current_user,
-            'student_info': data,
-            'req': req,
-            'sched': sched
-            }
-    elif current_user.department == "Department of Math and Science":
-        department1 = "DMS"
-        req = AddingReq.objects.filter(Q(studID_id=data.studID) & (Q(subject_id__course=department1)))
-        context = { 
-            'current_user': current_user,
-            'student_info': data,
-            'req': req,
-            'sched': sched
-            }
-    elif current_user.department == "Department of Liberal Arts":
-        department1 = "DLA"
-        req = AddingReq.objects.filter(Q(studID_id=data.studID) & (Q(subject_id__course=department1)))
-        context = { 
-            'current_user': current_user,
-            'student_info': data,
-            'req': req,
-            'sched': sched
-            }
-    else: 
-        context = { 
-            'current_user': current_user,
-            'student_info': data,
-            'req': req,
-            'sched': sched
-            }
-    return render(request, 'TupAssistApp/h-adding-edit.html', context)
+    if request.user.is_authenticated and user.userType == 'Department Head':
+        current_user = request.user
+        data = registration.objects.get(studID=studID)
+        sched = Schedule.objects.all()
+        if current_user.department == "Department of Industrial Technology":
+            department1 = "DIT"
+            course1 = "BET-COET"
+            req = AddingReq.objects.filter(Q (studID_id=data.studID) & (Q(subject_id__course=department1) | (Q(subject_id__course=course1))))
+            context = { 
+                'current_user': current_user,
+                'student_info': data,
+                'req': req,
+                'sched': sched
+                }
+        elif current_user.department == "Department of Industrial Education":
+            department1 = "DIE"
+            course1 = "BS-ICT"
+            req = AddingReq.objects.filter(Q (studID_id=data.studID) & (Q(subject_id__course=department1) | (Q(subject_id__course=course1))))
+            context = { 
+                'current_user': current_user,
+                'student_info': data,
+                'req': req,
+                'sched': sched
+                }
+        elif current_user.department == "Department of Engineering":
+            department1 = "DOE"
+            course1 = "BSCE"
+            req = AddingReq.objects.filter(Q (studID_id=data.studID) & (Q(subject_id__course=department1) | (Q(subject_id__course=course1))))
+            context = { 
+                'current_user': current_user,
+                'student_info': data,
+                'req': req,
+                'sched': sched
+                }
+        elif current_user.department == "Department of Math and Science":
+            department1 = "DMS"
+            req = AddingReq.objects.filter(Q(studID_id=data.studID) & (Q(subject_id__course=department1)))
+            context = { 
+                'current_user': current_user,
+                'student_info': data,
+                'req': req,
+                'sched': sched
+                }
+        elif current_user.department == "Department of Liberal Arts":
+            department1 = "DLA"
+            req = AddingReq.objects.filter(Q(studID_id=data.studID) & (Q(subject_id__course=department1)))
+            context = { 
+                'current_user': current_user,
+                'student_info': data,
+                'req': req,
+                'sched': sched
+                }
+        else: 
+            context = { 
+                'current_user': current_user,
+                'student_info': data,
+                'req': req,
+                'sched': sched
+                }
+        return render(request, 'TupAssistApp/h-adding-edit.html', context)
+    return redirect('/index') 
 
 def h_edit_sub(request):
     studID = request.POST.get('studID')
@@ -1354,82 +1401,86 @@ def h_edit_sub(request):
 
 @login_required(login_url='/index')        
 def h_dropping(request):
-    current_user = request.user
-    if current_user.department == "Department of Industrial Technology" or current_user.department == "Department of Engineering" or current_user.department == "Department of Industrial Education":
-        test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student') & Q(dropStatus='Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'))
-        context = { 
-            'test': test,
-            'current_user': current_user
-            }
-    else:
-        test = registration.objects.filter( Q(userType='Student') & Q(dropStatus='Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'))
-        context = { 
-            'test': test,
-            'current_user': current_user
-            }
-    return render(request, 'TupAssistApp/h-dropping.html', context)
+    if request.user.is_authenticated and user.userType == 'Department Head':
+        current_user = request.user
+        if current_user.department == "Department of Industrial Technology" or current_user.department == "Department of Engineering" or current_user.department == "Department of Industrial Education":
+            test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student') & Q(dropStatus='Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'))
+            context = { 
+                'test': test,
+                'current_user': current_user
+                }
+        else:
+            test = registration.objects.filter( Q(userType='Student') & Q(dropStatus='Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'))
+            context = { 
+                'test': test,
+                'current_user': current_user
+                }
+        return render(request, 'TupAssistApp/h-dropping.html', context)
+    return redirect('/index') 
 
 @login_required(login_url='/index')
 def h_dropping_edit(request, studID):
-    current_user = request.user
-    data = registration.objects.get(studID=studID)
-    sched = Schedule.objects.all()
-    if current_user.department == "Department of Industrial Technology":
-        department1 = "DIT"
-        course1 = "BET-COET"
-        req = DroppingReq.objects.filter(Q (studID_id=data.studID) & (Q(subject_id__course=department1) | (Q(subject_id__course=course1))))
-        context = { 
-            'current_user': current_user,
-            'student_info': data,
-            'req': req,
-            'sched': sched
-            }
-    elif current_user.department == "Department of Industrial Education":
-        department1 = "DIE"
-        course1 = "BS-ICT"
-        req = DroppingReq.objects.filter(Q(studID_id=data.studID) & (Q(subject_id__course=department1) | (Q(subject_id__course=course1))))
-        context = { 
-            'current_user': current_user,
-            'student_info': data,
-            'req': req,
-            'sched': sched
-            }
-    elif current_user.department == "Department of Engineering":
-        department1 = "DOE"
-        course1 = "BSCE"
-        req = DroppingReq.objects.filter(Q(studID_id=data.studID) & (Q(subject_id__course=department1) | (Q(subject_id__course=course1))))
-        context = { 
-            'current_user': current_user,
-            'student_info': data,
-            'req': req,
-            'sched': sched
-            }
-    elif current_user.department == "Department of Math and Science":
-        department1 = "DMS"
-        req = DroppingReq.objects.filter(Q(studID_id=data.studID) & (Q(subject_id__course=department1)))
-        context = { 
-            'current_user': current_user,
-            'student_info': data,
-            'req': req,
-            'sched': sched
-            }
-    elif current_user.department == "Department of Liberal Arts":
-        department1 = "DLA"
-        req = DroppingReq.objects.filter(Q(studID_id=data.studID) & (Q(subject_id__course=department1)))
-        context = { 
-            'current_user': current_user,
-            'student_info': data,
-            'req': req,
-            'sched': sched
-            }
-    else: 
-        context = { 
-            'current_user': current_user,
-            'student_info': data,
-            'req': req,
-            'sched': sched
-            }
-    return render(request, 'TupAssistApp/h_dropping_edit.html', context)
+    if request.user.is_authenticated and user.userType == 'Department Head':
+        current_user = request.user
+        data = registration.objects.get(studID=studID)
+        sched = Schedule.objects.all()
+        if current_user.department == "Department of Industrial Technology":
+            department1 = "DIT"
+            course1 = "BET-COET"
+            req = DroppingReq.objects.filter(Q (studID_id=data.studID) & (Q(subject_id__course=department1) | (Q(subject_id__course=course1))))
+            context = { 
+                'current_user': current_user,
+                'student_info': data,
+                'req': req,
+                'sched': sched
+                }
+        elif current_user.department == "Department of Industrial Education":
+            department1 = "DIE"
+            course1 = "BS-ICT"
+            req = DroppingReq.objects.filter(Q(studID_id=data.studID) & (Q(subject_id__course=department1) | (Q(subject_id__course=course1))))
+            context = { 
+                'current_user': current_user,
+                'student_info': data,
+                'req': req,
+                'sched': sched
+                }
+        elif current_user.department == "Department of Engineering":
+            department1 = "DOE"
+            course1 = "BSCE"
+            req = DroppingReq.objects.filter(Q(studID_id=data.studID) & (Q(subject_id__course=department1) | (Q(subject_id__course=course1))))
+            context = { 
+                'current_user': current_user,
+                'student_info': data,
+                'req': req,
+                'sched': sched
+                }
+        elif current_user.department == "Department of Math and Science":
+            department1 = "DMS"
+            req = DroppingReq.objects.filter(Q(studID_id=data.studID) & (Q(subject_id__course=department1)))
+            context = { 
+                'current_user': current_user,
+                'student_info': data,
+                'req': req,
+                'sched': sched
+                }
+        elif current_user.department == "Department of Liberal Arts":
+            department1 = "DLA"
+            req = DroppingReq.objects.filter(Q(studID_id=data.studID) & (Q(subject_id__course=department1)))
+            context = { 
+                'current_user': current_user,
+                'student_info': data,
+                'req': req,
+                'sched': sched
+                }
+        else: 
+            context = { 
+                'current_user': current_user,
+                'student_info': data,
+                'req': req,
+                'sched': sched
+                }
+        return render(request, 'TupAssistApp/h_dropping_edit.html', context)
+    return redirect('/index') 
 
 def h_edit_sub1(request):
     studID = request.POST.get('studID')
@@ -1450,83 +1501,87 @@ def h_edit_sub1(request):
  
 @login_required(login_url='/index')
 def h_transferring(request):
-    current_user = request.user
-    if current_user.department == "Department of Industrial Technology" or current_user.department == "Department of Engineering" or current_user.department == "Department of Industrial Education":
-        test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student') & (Q(transferStatus='Wait for Department Head and Asst. Director for Academic Affairs Approval')) | Q(transferStatus='ADAA Approved'))
-        context = { 
-            'test': test,
-            'current_user': current_user
-            }
-    else:
-        test = registration.objects.filter(Q(userType='Student') & (Q(transferStatus='Wait for Department Head and Asst. Director for Academic Affairs Approval')) | Q(transferStatus='ADAA Approved'))
-        context = { 
-            'test': test,
-            'current_user': current_user
-            }
-    return render(request, 'TupAssistApp/h-transferring.html', context)
+    if request.user.is_authenticated and user.userType == 'Department Head':
+        current_user = request.user
+        if current_user.department == "Department of Industrial Technology" or current_user.department == "Department of Engineering" or current_user.department == "Department of Industrial Education":
+            test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student') & (Q(transferStatus='Wait for Department Head and Asst. Director for Academic Affairs Approval')) | Q(transferStatus='ADAA Approved'))
+            context = { 
+                'test': test,
+                'current_user': current_user
+                }
+        else:
+            test = registration.objects.filter(Q(userType='Student') & (Q(transferStatus='Wait for Department Head and Asst. Director for Academic Affairs Approval')) | Q(transferStatus='ADAA Approved'))
+            context = { 
+                'test': test,
+                'current_user': current_user
+                }
+        return render(request, 'TupAssistApp/h-transferring.html', context)
+    return redirect('/index') 
 
 @login_required(login_url='/index')
 def h_transferring_edit(request, studID):
-    current_user = request.user
-    data = registration.objects.get(studID=studID)
-    req = TransferringReq.objects.filter(studID_id=data.studID)
-    sched = Schedule.objects.all()
-    if current_user.department == "Department of Industrial Technology":
-        department1 = "DIT"
-        course1 = "BET-COET"
-        req = TransferringReq.objects.filter(Q (studID_id=data.studID) & (Q(subject_id__course=department1) | (Q(subject_id__course=course1))))
-        context = { 
-            'current_user': current_user,
-            'student_info': data,
-            'req': req,
-            'sched': sched
-            }
-    elif current_user.department == "Department of Industrial Education":
-        department1 = "DIE"
-        course1 = "BS-ICT"
-        req = TransferringReq.objects.filter(Q (studID_id=data.studID) & (Q(subject_id__course=department1) | (Q(subject_id__course=course1))))
-        context = { 
-            'current_user': current_user,
-            'student_info': data,
-            'req': req,
-            'sched': sched
-            }
-    elif current_user.department == "Department of Engineering":
-        department1 = "DOE"
-        course1 = "BSCE"
-        req = TransferringReq.objects.filter(Q (studID_id=data.studID) & (Q(subject_id__course=department1) | (Q(subject_id__course=course1))))
-        context = { 
-            'current_user': current_user,
-            'student_info': data,
-            'req': req,
-            'sched': sched
-            }
-    elif current_user.department == "Department of Math and Science":
-        department1 = "DMS"
-        req = TransferringReq.objects.filter(Q(studID_id=data.studID) & (Q(subject_id__course=department1)))
-        context = { 
-            'current_user': current_user,
-            'student_info': data,
-            'req': req,
-            'sched': sched
-            }
-    elif current_user.department == "Department of Liberal Arts":
-        department1 = "DLA"
-        req = TransferringReq.objects.filter(Q(studID_id=data.studID) & (Q(subject_id__course=department1)))
-        context = { 
-            'current_user': current_user,
-            'student_info': data,
-            'req': req,
-            'sched': sched
-            }
-    else: 
-        context = { 
-            'current_user': current_user,
-            'student_info': data,
-            'req': req,
-            'sched': sched
-            }
-    return render(request, 'TupAssistApp/h-transferring-edit.html', context)
+    if request.user.is_authenticated and user.userType == 'Department Head':
+        current_user = request.user
+        data = registration.objects.get(studID=studID)
+        req = TransferringReq.objects.filter(studID_id=data.studID)
+        sched = Schedule.objects.all()
+        if current_user.department == "Department of Industrial Technology":
+            department1 = "DIT"
+            course1 = "BET-COET"
+            req = TransferringReq.objects.filter(Q (studID_id=data.studID) & (Q(subject_id__course=department1) | (Q(subject_id__course=course1))))
+            context = { 
+                'current_user': current_user,
+                'student_info': data,
+                'req': req,
+                'sched': sched
+                }
+        elif current_user.department == "Department of Industrial Education":
+            department1 = "DIE"
+            course1 = "BS-ICT"
+            req = TransferringReq.objects.filter(Q (studID_id=data.studID) & (Q(subject_id__course=department1) | (Q(subject_id__course=course1))))
+            context = { 
+                'current_user': current_user,
+                'student_info': data,
+                'req': req,
+                'sched': sched
+                }
+        elif current_user.department == "Department of Engineering":
+            department1 = "DOE"
+            course1 = "BSCE"
+            req = TransferringReq.objects.filter(Q (studID_id=data.studID) & (Q(subject_id__course=department1) | (Q(subject_id__course=course1))))
+            context = { 
+                'current_user': current_user,
+                'student_info': data,
+                'req': req,
+                'sched': sched
+                }
+        elif current_user.department == "Department of Math and Science":
+            department1 = "DMS"
+            req = TransferringReq.objects.filter(Q(studID_id=data.studID) & (Q(subject_id__course=department1)))
+            context = { 
+                'current_user': current_user,
+                'student_info': data,
+                'req': req,
+                'sched': sched
+                }
+        elif current_user.department == "Department of Liberal Arts":
+            department1 = "DLA"
+            req = TransferringReq.objects.filter(Q(studID_id=data.studID) & (Q(subject_id__course=department1)))
+            context = { 
+                'current_user': current_user,
+                'student_info': data,
+                'req': req,
+                'sched': sched
+                }
+        else: 
+            context = { 
+                'current_user': current_user,
+                'student_info': data,
+                'req': req,
+                'sched': sched
+                }
+        return render(request, 'TupAssistApp/h-transferring-edit.html', context)
+    return redirect('/index') 
 
 def h_edit_sub2(request):
     studID = request.POST.get('studID')

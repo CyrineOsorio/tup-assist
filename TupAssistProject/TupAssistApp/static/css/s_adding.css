@@ -343,7 +343,7 @@ td {
     }
     .form-step {
         border-radius: 20px;
-        padding: 0;
+        padding: 0px;
         width: 100%;
     }
 }
@@ -402,7 +402,7 @@ h2 {
 .form-step {
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 20px;
-    padding: 3rem;
+    padding: 1rem;
     width: 100%;
 }
 

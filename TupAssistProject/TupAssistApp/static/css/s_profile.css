@@ -308,6 +308,9 @@ footer button img {
         height: 150px;
         width: 100%;
     }
+    #section_col {
+        display: grid;
+    }
 }
 
 

@@ -93,20 +93,21 @@
                             <option value="Department of Industrial Education">Department of Industrial Education</option>
                           </select>
                     </div>
-                    <div class="row">
+                    <div class="row" id="section_col">
                         <div class="col">
                             <label for="course">Course:</label>
-                            <input type="text" class="form-control" id="course" name="course" value="{{current_user.course}}">
                             <small id="course" class="form-text text-muted">Ex. BET-COET</small>
+                            <input type="text" class="form-control" id="course" name="course" value="{{current_user.course}}">
                         </div>
                         <div class="col">
-                          <label for="year">Year Level:</label>
-                          <input type="number" class="form-control" id="year" name="year" value="{{current_user.year}}" min="1" max="5">
+                            <label for="year">Year Level:</label>
+                            <small id="year" class="form-text text-muted">Ex. 1</small>
+                            <input type="number" class="form-control" id="year" name="year" value="{{current_user.year}}" min="1" max="5">
                         </div>
                         <div class="col">
                             <label for="section">Section:</label>
-                            <input type="text" class="form-control" id="section" name="section" value="{{current_user.section}}">
                             <small id="section" class="form-text text-muted">Ex. A or B</small>
+                            <input type="text" class="form-control" id="section" name="section" value="{{current_user.section}}">
                         </div>
                     </div>
                     <div class="form-group">

@@ -155,8 +155,6 @@
 
 
 
-                        <!-- Step Wise Form Content -->
-                        <!-- <form id="userAccountSetupForm" name="userAccountSetupForm" enctype="multipart/form-data" method="POST"> -->
                         <!-- Step 1 Content -->
                         <section id="step-1" class="form-step">
                             <h2 class="font-normal">Subject to be transfer</h2>
@@ -235,7 +233,6 @@
                                 <table class="table table-bordered">
                                     <thead>
                                         <th colspan="3" style="text-align: center;">SUBJECT TO BE TAKEN BY STUDENT</th>
-                                        <!-- <th colspan="4" style="text-align: center;">TEACHER APPROVAL</th> -->
                                         <th colspan="4" style="text-align: center;">DEPARTMENT HEAD APPROVAL</th>
                                         <th colspan="3" style="text-align: center;">ASSIST. DIRECTOR OF ACADEMIC AFFAIRS APPROVAL</th>
                                     </thead>
@@ -243,10 +240,6 @@
                                         <th>SUBJECT</th>
                                         <th>SECTION</th>
                                         <th>SCHEDULE</th>
-                                        <!-- <th>APPROVAL</th>
-                                        <th>REMARK</th>
-                                        <th>ENLISTED BY</th>
-                                        <th>DATE & TIME</th> -->
                                         <th>APPROVAL</th>
                                         <th>REMARK</th>
                                         <th>ENLISTED BY</th>
@@ -569,6 +562,40 @@
     </script>
 
 
+    <!-- Django with Jquery para magload kapag nasaang current step na si students -->
+
+    {% if current_user.transferStatus == '' %}
+    <script>
+        // Content Update
+        document.querySelector("#step-" + 1).classList.remove("d-none");
+        const formStepCircle = document.querySelector('li[step="' + 1 + '"]');
+        formStepCircle.classList.remove("form-stepper-unfinished", "form-stepper-completed");
+        formStepCircle.classList.add("form-stepper-active");
+
+        // Header Update
+        formStepHeader.classList.remove("form-stepper-unfinished");
+        formStepHeader.classList.add("form-stepper-active", "form-stepper-completed");
+    </script>
+
+    {% elif current_user.transferStatus != '' %}
+    <script>
+        document.getElementById('disable').style.pointerEvents = 'none';
+        // Content Update
+        document.querySelector("#step-" + 1).classList.add("d-none");
+        document.querySelector("#step-" + 2).classList.remove("d-none");
+        const formStepCircle1 = document.querySelector('li[step="' + 2 + '"]');
+        formStepCircle1.classList.remove("form-stepper-unfinished", "form-stepper-completed");
+        formStepCircle1.classList.add("form-stepper-active");
+
+        // Header Update
+        formStepHeader1.classList.remove("form-stepper-unfinished");
+        formStepHeader1.classList.add("form-stepper-active", "form-stepper-completed");
+    </script>
+    {% endif %}
+
+
+
+    <!-- MULTIFORM -->
     <script>
         /**
          * Define a function to navigate betweens form steps.

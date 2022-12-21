@@ -168,7 +168,6 @@
 
                                 <table class="table table-bordered" id="disable">
                                     <thead>
-                                        <th>NO.</th>
                                         <th>SUBJECT</th>
                                         <th>SECTION</th>
                                         <th>SCHEDULE</th>
@@ -178,7 +177,6 @@
                                     <tbody>
                                         {% for i in transReq %}
                                         <tr>
-                                            <td>{{i.id}}</td>
                                             <td>{{i.subject.subject}}-{{i.subject.description}}</td>
                                             <td>{{i.section}}</td>
                                             <td>{{i.reason}}</td>
@@ -191,7 +189,7 @@
                                         <form method="post" action="/s_trans_sub">
                                             {% csrf_token %}
                                             <tr>
-                                                <td colspan="2">
+                                                <td>
                                                     <select class="custom-select" name="subject" required>
                                                         <option selected disabled hidden>Choose...</option>
                                                         {% for i in subs %}

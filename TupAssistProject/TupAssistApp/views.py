@@ -579,10 +579,16 @@ def s_add_sub(request):
         subject = request.POST.get('subject')
         section = request.POST.get('section')
         schedule = request.POST.get('schedule')
-        data = AddingReq.objects.create(school_year=school_year, semester=semester, studID_id= current_user.studID, subject_id=subject, section=section, sched=schedule)
-        data.save()
-        messages.success(request, 'Subject Added')
-        return redirect('/s_adding')
+        slots = len(AddingReq.objects.filter(Q(school_year=school_year) & Q(semester=semester) & Q(subject=subject) & Q(section=section) & Q(pic_is_approve='Approve')))
+        print(slots)
+        if slots == 10:
+            messages.error(request, "Sorry, there is no slots available for this subject and section already.")
+            return redirect('/s_adding')
+        else:
+            data = AddingReq.objects.create(school_year=school_year, semester=semester, studID_id= current_user.studID, subject_id=subject, section=section, sched=schedule)
+            data.save()
+            messages.success(request, 'Subject Added')
+            return redirect('/s_adding')
 
 def s_del_sub(request, id):
     data = AddingReq.objects.get(id=id)
@@ -1056,6 +1062,7 @@ def p_adding_edit(request, studID):
                 'req': req,
                 'sched': sched,
                 'subs': subs,
+                'trans': trans
     
             }
         elif student_info.department == "Department of Industrial Education":
@@ -1068,7 +1075,7 @@ def p_adding_edit(request, studID):
                 'req': req,
                 'sched': sched,
                 'subs': subs,
-    
+                'trans': trans
             }
         elif student_info.department == "Department of Engineering":
             student_info.department1 = "DOE"
@@ -1080,14 +1087,15 @@ def p_adding_edit(request, studID):
                 'req': req,
                 'sched': sched,
                 'subs': subs,
-    
+                'trans': trans
             }
         else:
             context = {
                 'current_user': current_user,
                 'student_info': student_info,
                 'req': req,
-                'sched': sched
+                'sched': sched,
+                'trans': trans
             }
         return render(request, 'TupAssistApp/p_adding_edit.html', context)
     return redirect('/index')
@@ -1096,17 +1104,29 @@ def p_edit_sub(request):
     studID = request.POST.get('studID')
     data = registration.objects.get(studID=studID)
     if request.method =='POST':
-        id = request.POST.get('id')   
-        edit = AddingReq.objects.get(id=id)
-        edit.section = request.POST.get('section')
-        edit.sched = request.POST.get('sched')
-        edit.pic_is_approve = request.POST.get('pic_is_approve')
-        edit.pic_remark = request.POST.get('pic_remark')
-        edit.pic_name = request.POST.get('pic_name')
-        edit.pic_date = datetime.now()
-        edit.save()
-        messages.success(request, 'Request Successfully Edited!')
-        return redirect('/p_adding_edit/'+ str(data.studID))
+        id = request.POST.get('id')
+        school_year = request.POST.get('school_year')
+        semester = request.POST.get('semester')
+        subject = request.POST.get('subject')
+        section = request.POST.get('section')
+        slots = len(AddingReq.objects.filter(Q(school_year=school_year) & Q(semester=semester) & Q(subject=subject) & Q(section=section) & Q(pic_is_approve='Approve')))
+        print(slots)
+        if slots == 10:
+            messages.error(request, "Sorry, there is no slots available for this subject and section already.")
+            return redirect('/p_adding_edit/'+ str(data.studID))
+        else:
+            edit = AddingReq.objects.get(id=id)
+            edit.section = request.POST.get('section')
+            edit.sched = request.POST.get('sched')
+            edit.pic_is_approve = request.POST.get('pic_is_approve')
+            edit.pic_remark = request.POST.get('pic_remark')
+            edit.pic_name = request.POST.get('pic_name')
+            edit.pic_date = datetime.now()
+            edit.save()
+            messages.success(request, 'Request Successfully Edited!')
+            return redirect('/p_adding_edit/'+ str(data.studID))
+              
+       
 
 def p_add_sub(request):
     studID = request.POST.get('studID')
@@ -1122,10 +1142,17 @@ def p_add_sub(request):
         pic_remark = request.POST.get('pic_remark')
         pic_name = request.POST.get('pic_name')
         pic_date = datetime.now()
-        add = AddingReq.objects.create(school_year=school_year, semester=semester, studID_id=studID, subject=subject, section=section, sched=sched, pic_is_approve=pic_is_approve, pic_remark=pic_remark, pic_name=pic_name, pic_date=pic_date)
-        add.save()
-        messages.success(request, 'Subject Successfully Add!')
-        return redirect('/p_adding_edit/'+ str(data.studID))
+        # Condition for slots availability
+        slots = len(AddingReq.objects.filter(Q(school_year=school_year) & Q(semester=semester) & Q(subject=subject) & Q(section=section) & Q(pic_is_approve='Approve')))
+        print(slots)
+        if slots == 10:
+            messages.error(request, "Sorry, there is no slots available for this subject and section already.")
+            return redirect('/p_adding_edit/'+ str(data.studID))
+        else:
+            add = AddingReq.objects.create(school_year=school_year, semester=semester, studID_id=studID, subject_id=subject, section=section, sched=sched, pic_is_approve=pic_is_approve, pic_remark=pic_remark, pic_name=pic_name, pic_date=pic_date)
+            add.save()
+            messages.success(request, 'Subject Successfully Add!')
+            return redirect('/p_adding_edit/'+ str(data.studID))
 
 def p_step1_submit(request):
     studID = request.POST.get('studID')

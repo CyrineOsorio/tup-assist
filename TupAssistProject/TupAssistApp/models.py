@@ -32,6 +32,7 @@ class registration(AbstractUser):
     upload = models.FileField(upload_to ='grades/', null=True, blank=True)
     plot_sheet_link = models.FileField(upload_to ='plot/', null=True, blank=True)
     addStatus = models.CharField(max_length=255, blank=True)
+    addDate = models.DateTimeField(null=True, blank=True)
     dropStatus = models.CharField(max_length=255, blank=True)
     transferStatus = models.CharField(max_length=255, blank=True)
     

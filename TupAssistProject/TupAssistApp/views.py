@@ -1123,7 +1123,7 @@ def p_edit_sub(request):
             messages.error(request, "Sorry, there is no slots available for this subject and section already.")
             return redirect('/p_adding_edit/'+ str(data.studID))
         else:
-            exist = len(AddingReq.objects.filter(Q(studID_id=current_user.studID) & Q(school_year=school_year) & Q(semester=semester) & Q(subject=subject)))
+            exist = len(AddingReq.objects.filter(Q(studID_id=studID) & Q(school_year=school_year) & Q(semester=semester) & Q(subject=subject)))
             print(exist)
             if exist == 0:
                 edit = AddingReq.objects.get(id=id)
@@ -1138,7 +1138,7 @@ def p_edit_sub(request):
                 return redirect('/p_adding_edit/'+ str(data.studID))
             else:
                 messages.error(request, 'Subject already existed.')
-                return redirect('/s_adding')
+                return redirect('/p_adding_edit/'+ str(data.studID))
            
               
        
@@ -1164,22 +1164,16 @@ def p_add_sub(request):
             messages.error(request, "Sorry, there is no slots available for this subject and section already.")
             return redirect('/p_adding_edit/'+ str(data.studID))
         else:
-             exist = len(AddingReq.objects.filter(Q(studID_id=current_user.studID) & Q(school_year=school_year) & Q(semester=semester) & Q(subject=subject)))
+            exist = len(AddingReq.objects.filter(Q(studID_id=studID) & Q(school_year=school_year) & Q(semester=semester) & Q(subject=subject)))
             print(exist)
             if exist == 0:
-                edit = AddingReq.objects.get(id=id)
-                edit.section = request.POST.get('section')
-                edit.sched = request.POST.get('sched')
-                edit.pic_is_approve = request.POST.get('pic_is_approve')
-                edit.pic_remark = request.POST.get('pic_remark')
-                edit.pic_name = request.POST.get('pic_name')
-                edit.pic_date = datetime.now()
-                edit.save()
-                messages.success(request, 'Request Successfully Edited!')
+                add = AddingReq.objects.create(school_year=school_year, semester=semester, studID_id=studID, subject_id=subject, section=section, sched=sched, pic_is_approve=pic_is_approve, pic_remark=pic_remark, pic_name=pic_name, pic_date=pic_date)
+                add.save()
+                messages.success(request, 'Subject Successfully Add!')
                 return redirect('/p_adding_edit/'+ str(data.studID))
             else:
                 messages.error(request, 'Subject already existed.')
-                return redirect('/s_adding')
+                return redirect('/p_adding_edit/'+ str(data.studID))
 
 def p_step1_submit(request):
     studID = request.POST.get('studID')

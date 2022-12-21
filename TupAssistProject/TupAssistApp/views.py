@@ -190,7 +190,6 @@ def student_acc_cvs(request):
                 'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n'
                 '\nIf there are any concerns, please reply to this email.' + '\n'
                 'Thank you.', settings.EMAIL_HOST_USER , [str(row[3])], fail_silently=False)
-                return redirect('/a_account')
             except:
                 messages.error(request, 'it looks like CSV format is not match to the table.')
                 return redirect('/a_account')
@@ -220,7 +219,6 @@ def staff_acc_cvs(request):
                 'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n'
                 '\nIf there are any concerns, please reply to this email.' + '\n'
                 'Thank you.'
-                return redirect('/a_account')
             except:
                 messages.error(request, 'it looks like CSV format is not match to the table.')
                 return redirect('/a_account')

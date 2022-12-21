@@ -180,6 +180,9 @@ def student_acc_cvs(request):
                 new_revo.set_password('TUPC-'+str(row[0])) #Default Password
                 new_revo.save()    
                 messages.success(request, 'Successfully Import, but check if data imported is correct.')
+                content = "Good day!, \nTUP-Assist created an account for you for Add, Drop and Transfer.\n Your default username/email is your gsfe account, while your password is" + 'TUPC-'+str(row[0]) +'.'
+                send_mail('TUP-Assist Account', 
+                    content, settings.EMAIL_HOST_USER , [str(row[3])], fail_silently=False)
             except:
                 messages.error(request, 'it looks like CSV format is not match to the table.')
                 return redirect('/a_account')

@@ -180,7 +180,6 @@ def student_acc_cvs(request):
                 new_revo.set_password('TUPC-'+str(row[0])) #Default Password
                 new_revo.save()    
                 messages.success(request, 'Successfully Import, but check if data imported is correct.')
-                
                 send_mail('TUP-Assist Account', 
                 "Hello " + str(row[1]) + ',\n'
                 '\nAs a student of Technological University of the Philippines - Cavite, you are automatically registered in TUP-Assist.' + '\n'

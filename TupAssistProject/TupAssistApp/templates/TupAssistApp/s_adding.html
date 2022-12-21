@@ -177,7 +177,6 @@
 
                                 <table class="table table-bordered" id="disable">
                                     <thead>
-                                        <th>NO.</th>
                                         <th>SUBJECT</th>
                                         <th>SECTION</th>
                                         <th>SCHEDULE</th>
@@ -186,7 +185,6 @@
                                     <tbody>
                                         {% for i in req %}
                                         <tr>
-                                            <td>{{i.id}}</td>
                                             <td>{{i.subject.subject}}-{{i.subject.description}}</td>
                                             <td>{{i.section}}</td>
                                             <td>{{i.sched}}</td>

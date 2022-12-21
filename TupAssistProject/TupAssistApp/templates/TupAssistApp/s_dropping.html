@@ -87,7 +87,7 @@
                 <div class="progressbox">
                     <div class="lagayanNgStatus">
                         <p id="p1">Status:</p>
-                        <p style="text-align: center;">{% if current_user.dropStatus  == "" %}No Request Yet {% else %} {{ current_user.dropStatus }} {% endif %}</p>
+                        <p style="text-align: center;">{% if current_user.dropStatus  == "" %} No Request Yet {% else %} {{ current_user.dropStatus }} {% endif %}</p>
                     </div>
                     <div class="isapanglagayan">
                         <a role="button" onclick="createPDF()"><img src="{%static 'images/print_pdf.png'%}" alt="print_pdf"></a>

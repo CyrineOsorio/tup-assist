@@ -196,7 +196,7 @@
                                         <form method="post" action="/s_add_sub">
                                             {% csrf_token %}
                                             <tr>
-                                                <td colspan="2">
+                                                <td>
                                                     <select class="custom-select" name="subject" required>
                                                         <option selected disabled>Choose...</option>
                                                         {% for i in subs %}
@@ -204,11 +204,11 @@
                                                         {% endfor %}
                                                     </select>
                                                 </td>
+                                                <td><input type="text" class="form-control" name="section" placeholder="Ex. BET-COET-4B" required></td>
+                                                <td class="d-flex"><input type="text" class="form-control" name="schedule" id="schedule" readonly required> <a class="btn btn-primary" data-toggle="modal" data-target="#editSub">Edit</a> </td>
+                                                <td><button type="submit" class="btn btn-primary" id="button_s">+ Add</button></td>
                                                 <td hidden><input type="text" class="form-control" name="school_year" value="{{trans.school_year}}" required></td>
                                                 <td hidden><input type="text" class="form-control" name="semester" value="{{trans.semester}}" required></td>
-                                                <td><input type="text" class="form-control" name="section" placeholder="Ex. BET-COET-4B" required></td>
-                                                <td class="d-flex" style="column-gap: 5px;"><input type="text" class="form-control" name="schedule" id="schedule" readonly required> <a class="btn btn-primary" data-toggle="modal" data-target="#editSub">Edit</a> </td>
-                                                <td><button type="submit" class="btn btn-primary" id="button_s">+ Add</button></td>
                                             </tr>
                                         </form>
 

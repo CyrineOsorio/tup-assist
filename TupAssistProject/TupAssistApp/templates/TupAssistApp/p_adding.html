@@ -136,6 +136,7 @@
                 <!--HTML code to display data in tabular format-->
                 <table class="table table-striped">
                     <thead>
+                        <th>DATE REQUESTED</th>
                         <th>STUDENT ID</th>
                         <th>NAME</th>
                         <th>EMAIL</th>
@@ -147,7 +148,8 @@
 
                     <tbody>
                         {% for e in test %}
-                        <tr class="all {{e.studID}} {{e.first_name}} {{e.last_name}} {{e.email}} {{e.course}} {{e.year}}{{e.section}}">
+                        <tr class="all {{e.addDate}} {{e.studID}} {{e.first_name}} {{e.last_name}} {{e.email}} {{e.course}} {{e.year}}{{e.section}}">
+                            <th>{{e.addDate}}</th>
                             <td>{{e.studID}}</td>
                             <td>{{e.first_name}} {{e.last_name}}</td>
                             <td>{{e.email}}</td>

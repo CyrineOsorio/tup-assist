@@ -40,6 +40,7 @@ installed_apps = ['TupAssistApp']
 #LOGIN PAGE
 def index(request):
     if request.method == 'POST':
+        logout(request)
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password) 

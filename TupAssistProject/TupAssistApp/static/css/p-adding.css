@@ -8,7 +8,6 @@
 body {
     width: 100%;
     height: 110vh;
-    background-color: #319AE4;
 }
 
 a {
@@ -86,7 +85,7 @@ a:focus {
 
 body {
     height: 100vh;
-    background-color: #ECECEC;
+    background-color: #DFF0FF;
 }
 
 .bg-container {

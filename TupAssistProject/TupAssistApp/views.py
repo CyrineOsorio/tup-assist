@@ -180,11 +180,11 @@ def student_acc_cvs(request):
                 new_revo.set_password('TUPC-'+str(row[0])) #Default Password
                 new_revo.save()    
                 messages.success(request, 'Successfully Import, but check if data imported is correct.')
-                content = "Good day!, \nTUP-Assist created an account for you for Add, Drop and Transfer.\n Your default username/email is your gsfe account, while your password is" + 'TUPC-'+str(row[0]) +'.'
+                content = "Good day!, \n\nTUP-Assist created an account for you for Add, Drop and Transfer.\n Your default username/email is your gsfe account, while your password is" + 'TUPC-'+str(row[0]) +'.'
                 send_mail('TUP-Assist Account', 
                     content, settings.EMAIL_HOST_USER , [str(row[3])], fail_silently=False)
             except:
-                content = "Good day!, \nTUP-Assist created an account for you for Add, Drop and Transfer.\nYour default username/email is your gsfe account, while your password is" + 'TUPC-'+str(row[0]) +'.'
+                content = "Good day!, \n\nTUP-Assist created an account for you for Add, Drop and Transfer.\nYour default username/email is your gsfe account, while your password is" + 'TUPC-'+str(row[0]) +'.'
                 send_mail('TUP-Assist Account', 
                     content, settings.EMAIL_HOST_USER , [str(row[3])], fail_silently=False)
                 messages.error(request, 'it looks like CSV format is not match to the table.')
@@ -206,12 +206,12 @@ def staff_acc_cvs(request):
                 new_revo = registration.objects.create(studID=str(row[0]), username=str(row[3]), email=str(row[3]), first_name=str(row[1]), last_name=str(row[2]), userType=str(row[4]), department=str(row[5]))
                 new_revo.set_password('TUPC-'+str(row[0])) #Default Password
                 new_revo.save()
-                content = "Good day!, \nTUP-Assist created an account for you for Add, Drop and Transfer.\n Your default username/email is your gsfe account, while your password is" + 'TUPC-'+str(row[0]) +'.'    
+                content = "Good day! \n\nTUP-Assist created an account for you for Add, Drop and Transfer.\n Your default username/email is your gsfe account, while your password is" + 'TUPC-'+str(row[0]) +'.'    
                 messages.success(request, 'Successfully Import, but check if data imported is correct.')
                 send_mail('TUP-Assist Account', 
                     content, settings.EMAIL_HOST_USER , [str(row[3])], fail_silently=False)
             except:
-                content = "Good day!, \nTUP-Assist created an account for you for Add, Drop and Transfer.\n Your default username/email is your gsfe account, while your password is" + 'TUPC-'+str(row[0]) +'.'
+                content = "Good day! \n\nTUP-Assist created an account for you for Add, Drop and Transfer.\n Your default username/email is your gsfe account, while your password is" + 'TUPC-'+str(row[0]) +'.'
                 send_mail('TUP-Assist Account', 
                     content, settings.EMAIL_HOST_USER , [str(row[3])], fail_silently=False)
                 messages.error(request, 'it looks like CSV format is not match to the table.')

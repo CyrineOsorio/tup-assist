@@ -183,10 +183,11 @@ def student_acc_cvs(request):
                 send_mail('TUP-Assist Account', 
                 "Hello " + str(row[1]) + ',\n'
                 '\nAs a student of Technological University of the Philippines - Cavite, you are automatically registered in TUP-Assist.' + '\n'
-                '\nTUP-Assist is a web-based system that helps students in adding, drop, and transferring of subjects in TUP-Cavite.' + '\n'
+                '\nTUP-Assist is a web-based system that helps students in adding, dropping, and transferring of subjects in TUP-Cavite.' + '\n'
                 '\nAttached to this are your account and the default password that you can change later after logging in.' + '\n'
-                '\nUsername: ' + str(row[3]) + '\n'
+                '\nUsername/Email: ' + str(row[3]) + '\n'
                 'Password: ' + 'TUPC-'+str(row[0]) + '\n'
+                'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n'
                 '\nIf there are any concerns, please reply to this email.' + '\n'
                 'Thank you.', settings.EMAIL_HOST_USER , [str(row[3])], fail_silently=False)
             except:
@@ -210,6 +211,15 @@ def staff_acc_cvs(request):
                 new_revo.set_password('TUPC-'+str(row[0])) #Default Password
                 new_revo.save()
                 return redirect('/a_account')
+                "Hello " + str(row[1]) + ',\n'
+                '\nAs a staff of Technological University of the Philippines - Cavite, you are automatically registered in TUP-Assist.' + '\n'
+                '\nTUP-Assist is a web-based system that helps Assist. Director of Academic Affairs, Department Head, Program-in-charge, and Teachers in adding, dropping, and transferring of subjects of students in TUP-Cavite.' + '\n'
+                '\nAttached to this are your account and the default password that you can change later after logging in.' + '\n'
+                '\nUsername/Email: ' + str(row[3]) + '\n'
+                'Password: ' + 'TUPC-'+str(row[0]) + '\n'
+                'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n'
+                '\nIf there are any concerns, please reply to this email.' + '\n'
+                'Thank you.'
             except:
                 messages.error(request, 'it looks like CSV format is not match to the table.')
                 return redirect('/a_account')

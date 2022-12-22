@@ -234,17 +234,19 @@
                                         <form method="post" action="/s_step1_submit">
                                             {% csrf_token %}
                                             <tr>
-                                                <td colspan="5">
+                                                <td colspan="3">
                                                     <!-- UPLOAD IMAGE -->
                                                     {% if current_user.plot_sheet_link != '' %}
-                                                    <p>Plotted Schedule Upload:</p>
-                                                    <a style="display: flex; justify-self: flex-end;" href="{%url 'TupAssistApp:delupload1'%}"><i class="bi bi-x-circle" style="text-align: center; font-size: 50px; margin-left: 5%; color: #E2435E"></i></a>
-                                                    <img src="{{current_user.plot_sheet_link.url}}" alt="" id="viewimg" onclick="window.open('{{current_user.plot_sheet_link.url}}');" style="width:100%; height:auto">
-
+                                                    <p style="color: black;">Plotted Schedule Upload:</p>
+                                                    <img src="{{current_user.plot_sheet_link.url}}" alt="" id="viewimg" onclick="window.open('{{current_user.plot_sheet_link.url}}');" style="width:100%; height:auto;">
+                                                    
                                                     <br> {% elif current_user.plot_sheet_link == '' %}
                                                     <button type="button" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target="#addImage">
                                                         Upload Image of Plotted Schedule
                                                     </button> {% endif %}
+                                                </td>
+                                                <td>
+                                                    <a href="{%url 'TupAssistApp:delupload1'%}"><i class="bi bi-x-circle" style="text-align: center; font-size: 50px; color: #E2435E"></i></a>
                                                 </td>
                                             </tr>
 

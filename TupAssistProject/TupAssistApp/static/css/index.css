@@ -141,7 +141,7 @@ input.login-google {
 
 @media only screen and (max-width: 1000px) {
     .bg-container {
-        padding: 10% 5% 10% 5%;
+        padding: 20% 10% 10% 10%;
         display: grid;
         justify-content: center;
     }

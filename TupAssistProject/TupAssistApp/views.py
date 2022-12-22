@@ -1043,7 +1043,7 @@ def changepicinfo(request):
     if request.method == 'POST':
         try:
             data = registration.objects.get(username=current_user.username)
-            data.course = request.POST.get("course")
+            data.course = request.POST.get("course").upper()
             data.studID = request.POST.get("studID")
             data.department = request.POST.get("department")
             data.save()

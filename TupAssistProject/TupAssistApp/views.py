@@ -1220,7 +1220,7 @@ def p_edit_sub1(request):
     if request.method =='POST':
         id = request.POST.get('id')   
         edit = DroppingReq.objects.get(id=id)
-        edit.section = request.POST.get('section')
+        edit.section = request.POST.get('section').upper()
         edit.sched = request.POST.get('sched')
         edit.subj_teacher_approve = request.POST.get('subj_teacher_approve')
         edit.subj_teacher_remark = request.POST.get('subj_teacher_remark')

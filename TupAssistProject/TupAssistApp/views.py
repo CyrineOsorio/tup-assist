@@ -210,6 +210,7 @@ def staff_acc_cvs(request):
                 new_revo = registration.objects.create(studID=str(row[0]), username=str(row[3]), email=str(row[3]), first_name=str(row[1]), last_name=str(row[2]), userType=str(row[4]), department=str(row[5]))
                 new_revo.set_password('TUPC-'+str(row[0])) #Default Password
                 new_revo.save()
+                messages.success(request, 'Successfully Import, but check if data imported is correct.')
                 "Hello " + str(row[1]) + ',\n'
                 '\nAs a staff of Technological University of the Philippines - Cavite, you are automatically registered in TUP-Assist.' + '\n\n'
                 '\nTUP-Assist is a web-based system that helps Assist. Director of Academic Affairs, Department Head, Program-in-charge, and Teachers in adding, dropping, and transferring of subjects of students in TUP-Cavite.' + '\n\n'

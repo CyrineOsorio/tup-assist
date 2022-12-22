@@ -25,7 +25,7 @@ import pandas as pd
 from itertools import chain
 
 # filter "AND,OR,NOT"
-from django.db.models import Q, Count
+from django.db.models import Q, Count, Sum
 
 
 # Email

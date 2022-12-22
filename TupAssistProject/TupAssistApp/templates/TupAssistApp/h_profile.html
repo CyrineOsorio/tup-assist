@@ -76,6 +76,10 @@
             <form action="/changeheadinfo" method="post">
                 {% csrf_token %}
                 <div class="form-group">
+                    <label for="studID">Access ID:</label>
+                    <input type="number" class="form-control" id="studID" name="studID" value="{{current_user.studID}}">
+                </div>
+                <div class="form-group">
                     <label for="exampleInputEmail1">Email Address/Username:</label>
                     <input type="email" class="form-control" id="exampleInputEmail1" name="username" aria-describedby="emailHelp" value="{{current_user.username}}" readonly>
                 </div>
@@ -98,13 +102,8 @@
                             <option value="Department of Liberal Arts">Department of Liberal Arts</option>
                           </select>
                 </div>
-                <div class="form-group">
-                    <label for="studID">ID Number:</label>
-                    <input type="number" class="form-control" id="studID" name="studID" value="{{current_user.studID}}">
-                </div>
-                <button type="submit" class="btn btn-primary btn-lg btn-block" id="button_h">Update</button>
+                <button type="submit" class="btn btn-primary btn-lg btn-block" id="button_h" style="margin-top:30px;">Update</button>
             </form>
-
             <h1 style="margin-top:30px;">Change Password</h1>
 
 

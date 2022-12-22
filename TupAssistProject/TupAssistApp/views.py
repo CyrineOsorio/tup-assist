@@ -597,7 +597,7 @@ def s_add_sub(request):
         school_year = request.POST.get('school_year')
         semester = request.POST.get('semester')
         subject = request.POST.get('subject')
-        section = request.POST.get('section')
+        section = request.POST.get('section').upper()
         schedule = request.POST.get('schedule')
         slots = len(AddingReq.objects.filter(Q(school_year=school_year) & Q(semester=semester) & Q(subject=subject) & Q(section=section) & Q(pic_is_approve='Approve')))
         print(slots)

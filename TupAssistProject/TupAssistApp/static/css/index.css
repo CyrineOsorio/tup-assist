@@ -141,11 +141,23 @@ input.login-google {
 
 @media only screen and (max-width: 1000px) {
     .bg-container {
-        padding: 20% 10% 10% 10%;
+        padding: 20% 7% 10% 7%;
         display: grid;
         justify-content: center;
     }
     form {
         width: 100%;
+    }
+    form img.mb4 {
+        margin-bottom: 1px;
+    }
+    .tup-label {
+        margin-bottom: 1px;
+    }
+    .assist-label {
+        margin-bottom: 1px;
+    }
+    .adt-label {
+        margin-bottom: 2px;
     }
 }

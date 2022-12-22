@@ -77,7 +77,7 @@
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="studID">Access ID:</label>
-                    <input type="number" class="form-control" id="studID" name="studID" value="{{current_user.studID}}">
+                    <input type="number" class="form-control" id="studID" name="studID" value="{{current_user.studID}}" readonly>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email Address/Username:</label>

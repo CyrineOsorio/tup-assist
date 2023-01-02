@@ -337,9 +337,9 @@ def adaa_adding_approve(request):
     admin_date = datetime.now()
     data = registration.objects.get(studID=studID)
     if request.method =='POST':  
-        AddingReq.objects.filter(studID_id=studID).update(admin_approve = 'Approve')
-        AddingReq.objects.filter(studID_id=studID).update(admin_name = admin_name)
-        AddingReq.objects.filter(studID_id=studID).update(admin_date = admin_date)
+        AddingReq.objects.filter(Q(studID_id=studID) & (Q(head_is_approve='Approve'))).update(admin_approve = 'Approve')
+        AddingReq.objects.filter(Q(studID_id=studID) & (Q(head_is_approve='Approve'))).update(admin_name = admin_name)
+        AddingReq.objects.filter(Q(studID_id=studID) & (Q(head_is_approve='Approve'))).update(admin_date = admin_date)
         edit1 = registration.objects.get(studID=studID)
         edit1.addStatus = 'ADAA Approved'
         edit1.save()

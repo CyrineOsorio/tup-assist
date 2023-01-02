@@ -120,7 +120,7 @@
                                         {% csrf_token %}
                                         <input type="text" name="admin_name" id="admin_name" value="{{current_user.email}}" hidden>
                                         <input type="text" name="studID" id="studID" value="{{student_info.studID}}" hidden>
-                                        <br> {% if req != '' or req != None %}
+                                        <br> {% if len(req) != 0 %}
                                         <button type="submit" class="btn btn-primary">Approve All</a>
                                         {% endif %}
                                     </form>

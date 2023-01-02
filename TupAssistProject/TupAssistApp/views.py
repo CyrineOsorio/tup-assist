@@ -308,7 +308,7 @@ def adaa_adding_view(request, studID):
     if request.user.is_authenticated and request.user.userType == 'Assist. Director of Academic Affairs':
         current_user = request.user
         data = registration.objects.get(studID=studID)
-        req = AddingReq.objects.filter(studID=data.studID)
+        req = AddingReq.objects.filter(Q(studID=data.studID) & (Q(head_is_approve='Approve')))
         context = { 
             'req': req,
             'current_user': current_user,

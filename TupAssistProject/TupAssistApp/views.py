@@ -309,6 +309,7 @@ def adaa_adding_view(request, studID):
         current_user = request.user
         data = registration.objects.get(studID=studID)
         req = AddingReq.objects.filter(Q(studID=data.studID) & (Q(head_is_approve='Approve')))
+        print(req)
         context = { 
             'req': req,
             'current_user': current_user,

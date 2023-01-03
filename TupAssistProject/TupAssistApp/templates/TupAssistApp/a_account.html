@@ -104,7 +104,7 @@
                             <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="bi bi-info-circle"></i></a>
                         </form>
                     </div>
-                    <div class="collapse" id="collapseExample" style="margin-bottom: 10px; margin-top: 10px;" >
+                    <div class="collapse" id="collapseExample" style="margin-bottom: 10px; margin-top: 10px;">
                         <div class="card card-body">
                             Reminder: Import Staff Account with the csv file.
                             <br>CSV Format for staff are as follows:
@@ -126,6 +126,7 @@
                                 <th>EMAIL</th>
                                 <th>USER ROLE</th>
                                 <th>DEPARTMENT</th>
+                                <th>LAST LOGIN</th>
                             </thead>
                             <tbody>
                                 {% for e in staff %}
@@ -136,6 +137,7 @@
                                     <td>{{e.email}}</td>
                                     <td>{{e.userType}}</td>
                                     <td>{{e.department}}</td>
+                                    <td>{{e.last_login}}</td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
@@ -176,6 +178,7 @@
                                 <th>LAST NAME</th>
                                 <th>EMAIL</th>
                                 <th>SECTION</th>
+                                <th>LAST LOGIN</th>
                             </thead>
                             <tbody>
                                 {% for e in student %}
@@ -185,6 +188,7 @@
                                     <td>{{e.last_name}}</td>
                                     <td>{{e.email}}</td>
                                     <td>{{e.course}}-{{e.year}}{{e.section}}</td>
+                                    <td>{{e.last_login}}</td>
                                 </tr>
                                 {% endfor %}
                             </tbody>

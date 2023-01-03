@@ -112,6 +112,14 @@
                                 <td>{{i.admin_date}}</td>
                                 <td hidden><a class="btn btn-primary" data-toggle="modal" data-target="#editReq{{i.id}}">Edit</a></td>
                             </tr>
+                            {% empty %}
+                            <tr>
+                                <tr>
+                                    <td colspan="15" style="text-align: center; font-style: italic;">
+                                        Not yet approved by the Department head/s
+                                    </td>
+                                </tr>
+                            </tr>
                             {% endfor %}
                             <tr>
                                 <td colspan="13"></td>

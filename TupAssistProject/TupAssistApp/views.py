@@ -346,7 +346,7 @@ def adaa_adding_approve(request):
         messages.success(request, 'Request Successfully Edited!')
         # Email
         link = 'https://tupassist.pythonanywhere.com'
-        content = 'Hi ' + data.first_name + ' ' + data.last_name + ',\n\n' + 'Your Request for Adding of Subject is already approved by ADAA. Check your request by signing in your account on the attached link. \n\n' + link
+        content = 'Hi ' + data.first_name + ' ' + data.last_name + ',\n\nYour Request for Adding of Subject is already approved by ADAA. Check your request by signing in your account on the attached link. \n\n' + link
         send_mail('ADDING OF SUBJECT - REQUEST', 
             content, settings.EMAIL_HOST_USER , [data.email], fail_silently=False)
         return redirect('/adaa_adding_view/'+ str(data.studID))

@@ -103,6 +103,14 @@
                                 <td>{{i.admin_date}}</td>
                                 <!-- <td><a class="btn btn-primary" data-toggle="modal" data-target="#editReq{{i.id}}">Edit</a></td> -->
                             </tr>
+                            {% empty %}
+                            <tr>
+                                <tr>
+                                    <td colspan="15" style="text-align: center; font-style: italic;">
+                                        Not yet approved by the Department head/s
+                                    </td>
+                                </tr>
+                            </tr>
                             {% endfor %}
                             <tr>
                                 <td colspan="9"></td>
@@ -111,7 +119,9 @@
                                         {% csrf_token %}
                                         <input type="text" name="admin_name" id="admin_name" value="{{current_user.email}}" hidden>
                                         <input type="text" name="studID" id="studID" value="{{student_info.studID}}" hidden>
+                                        <br> {% if req|length > 0 %}
                                         <button type="submit" class="btn btn-primary">Approve All</a>
+                                        {% endif %}
                                     </form>
                                 </td>
                             </tr>

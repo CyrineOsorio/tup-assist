@@ -782,7 +782,7 @@ def s_drop_sub(request):
             data1.save()
             subject = 'DROPPING SUBJECT REQUEST'
             link = 'https://tupassist.pythonanywhere.com'
-            content = 'Good day!, \n\n' + current_user.first_name + ' ' + current_user.last_name + ' is requesting to drop on your subject,' + subject1 + ' Due to this reason:'+ reason + '\n\n Please click this link below to login. Use your gsfe eamil and the deault password is your id number. Ex. TUPC-190123 \n\n' + link
+            content = 'Good day!, \n\n' + current_user.first_name + ' ' + current_user.last_name + ' is requesting to drop on your subject,' + subject1 + ' Due to this reason: '+ reason + '\n\n Please click this link below to login. Use your gsfe eamil and the deault password is your id number. Ex. TUPC-190123 \n\n' + link
             send_mail(subject, 
                 content, settings.EMAIL_HOST_USER , [teacher1], fail_silently=False)
         if subject2 and section2 and schedule2 !='':
@@ -793,7 +793,7 @@ def s_drop_sub(request):
             data1.save()
             subject = 'DROPPING SUBJECT REQUEST'
             link = 'https://tupassist.pythonanywhere.com'
-            content = 'Good day!, \n\n' + current_user.first_name + ' ' + current_user.last_name + ' is requesting to drop on your subject,' + subject2 + ' Due to this reason:'+ reason + '\n\n Please click this link below to login. Use your gsfe eamil and the deault password is your id number. Ex. TUPC-190123 \n\n' + link
+            content = 'Good day!, \n\n' + current_user.first_name + ' ' + current_user.last_name + ' is requesting to drop on your subject,' + subject2 + ' Due to this reason: '+ reason + '\n\n Please click this link below to login. Use your gsfe eamil and the deault password is your id number. Ex. TUPC-190123 \n\n' + link
             send_mail(subject, 
                 content, settings.EMAIL_HOST_USER , [teacher2], fail_silently=False)
         
@@ -881,7 +881,7 @@ def s_drop_sub(request):
             data1.save()
             subject = 'DROPPING SUBJECT REQUEST'
             link = 'https://tupassist.pythonanywhere.com'
-            content = 'Good day!, \n\n' + current_user.first_name + ' ' + current_user.last_name + ' is requesting to drop on your subject,' + subject9 + ' Due to this reason:'+ reason + '\n\n Please click this link below to login. Use your gsfe eamil and the deault password is your id number. Ex. TUPC-190123 \n\n' + link
+            content = 'Good day!, \n\n' + current_user.first_name + ' ' + current_user.last_name + ' is requesting to drop on your subject,' + subject9 + ' Due to this reason: '+ reason + '\n\n Please click this link below to login. Use your gsfe eamil and the deault password is your id number. Ex. TUPC-190123 \n\n' + link
             send_mail(subject, 
                 content, settings.EMAIL_HOST_USER , [teacher9], fail_silently=False)
 
@@ -893,7 +893,7 @@ def s_drop_sub(request):
             data1.save()
             subject = 'DROPPING SUBJECT REQUEST'
             link = 'https://tupassist.pythonanywhere.com'
-            content = 'Good day!, \n\n' + current_user.first_name + ' ' + current_user.last_name + ' is requesting to drop on your subject,' + subject10 + ' Due to this reason:'+ reason + '\n\n Please click this link below to login. Use your gsfe eamil and the deault password is your id number. Ex. TUPC-190123 \n\n' + link
+            content = 'Good day!, \n\n' + current_user.first_name + ' ' + current_user.last_name + ' is requesting to drop on your subject,' + subject10 + ' Due to this reason: '+ reason + '\n\n Please click this link below to login. Use your gsfe eamil and the deault password is your id number. Ex. TUPC-190123 \n\n' + link
             send_mail(subject, 
                 content, settings.EMAIL_HOST_USER , [teacher10], fail_silently=False)
 
@@ -906,7 +906,7 @@ def s_drop_sub(request):
             data1.save()
             subject = 'DROPPING SUBJECT REQUEST'
             link = 'https://tupassist.pythonanywhere.com'
-            content = 'Good day!, \n\n' + current_user.first_name + ' ' + current_user.last_name + ' is requesting to drop on your subject,' + subject11 + ' Due to this reason:'+ reason + '\n\n Please click this link below to login. Use your gsfe eamil and the deault password is your id number. Ex. TUPC-190123 \n\n' + link
+            content = 'Good day!, \n\n' + current_user.first_name + ' ' + current_user.last_name + ' is requesting to drop on your subject,' + subject11 + ' Due to this reason: '+ reason + '\n\n Please click this link below to login. Use your gsfe eamil and the deault password is your id number. Ex. TUPC-190123 \n\n' + link
             send_mail(subject, 
                 content, settings.EMAIL_HOST_USER , [teacher11], fail_silently=False)
 
@@ -919,7 +919,7 @@ def s_drop_sub(request):
             data1.save()
             subject = 'DROPPING SUBJECT REQUEST'
             link = 'https://tupassist.pythonanywhere.com'
-            content = 'Good day!, \n\n' + current_user.first_name + ' ' + current_user.last_name + ' is requesting to drop on your subject,' + subject12 + ' Due to this reason:'+ reason + '\n\n Please click this link below to login. Use your gsfe eamil and the deault password is your id number. Ex. TUPC-190123 \n\n' + link
+            content = 'Good day!, \n\n' + current_user.first_name + ' ' + current_user.last_name + ' is requesting to drop on your subject,' + subject12 + ' Due to this reason: '+ reason + '\n\n Please click this link below to login. Use your gsfe eamil and the deault password is your id number. Ex. TUPC-190123 \n\n' + link
             send_mail(subject, 
                 content, settings.EMAIL_HOST_USER , [teacher12], fail_silently=False)
 

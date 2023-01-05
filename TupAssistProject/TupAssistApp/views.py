@@ -338,8 +338,6 @@ def adaa_adding_approve(request):
     data = registration.objects.get(studID=studID)
     if request.method =='POST':  
         AddingReq.objects.filter(Q(studID_id=studID) & (Q(head_is_approve='Approve')) & ((Q(admin_approve= None)) | (Q(admin_approve= ''))) ).update(admin_approve = 'Approve' , admin_name = admin_name , admin_date = admin_date)
-        # AddingReq.objects.filter(Q(studID_id=studID) & (Q(head_is_approve='Approve')) & (Q(admin_approve= 'Approve'))).update(admin_name = admin_name)
-        # AddingReq.objects.filter(Q(studID_id=studID) & (Q(head_is_approve='Approve')) & (Q(admin_approve= 'Approve'))).update(admin_date = admin_date)
         edit1 = registration.objects.get(studID=studID)
         edit1.addStatus = 'ADAA Approved'
         edit1.save()
@@ -1147,6 +1145,12 @@ def p_edit_sub(request):
             exist = len(AddingReq.objects.filter(Q(studID_id=studID) & Q(school_year=school_year) & Q(semester=semester) & Q(subject=subject)))
             print(exist)
             if exist == 0:
+                subject = request.POST.get('subject')
+                section = request.POST.get('section').upper()
+                sched = request.POST.get('sched')
+                pic_is_approve = request.POST.get('pic_is_approve')
+                pic_remark = request.POST.get('pic_remark')
+                pic_name = request.POST.get('pic_name')
                 edit = AddingReq.objects.get(id=id)
                 edit.section = request.POST.get('section').upper()
                 edit.sched = request.POST.get('sched')
@@ -1156,6 +1160,9 @@ def p_edit_sub(request):
                 edit.pic_date = datetime.now()
                 edit.save()
                 messages.success(request, 'Request Successfully Edited!')
+                content = 'Good day! \n\n' + pic_name + " " + pic_is_approve + 'd' + ' your request for ' + subject + ' ' + section + '\n\nRemarks: ' + pic_remark
+                send_mail('ADDING OF SUBJECT - REQUEST', 
+                content, settings.EMAIL_HOST_USER , [data.email], fail_silently=False)
                 return redirect('/p_adding_edit/'+ str(data.studID))
             else:
                 messages.error(request, 'Subject already existed.')
@@ -1543,7 +1550,13 @@ def h_edit_sub(request):
     studID = request.POST.get('studID')
     data = registration.objects.get(studID=studID)
     if request.method =='POST':
-        id = request.POST.get('id')   
+        id = request.POST.get('id')
+        subject = request.POST.get('subject')
+        section = request.POST.get('section')
+        head_is_approve = request.POST.get('head_is_approve')
+        head_remark = request.POST.get('head_remark')
+        head_name = request.POST.get('head_name')
+        head_date = datetime.now()   
         edit = AddingReq.objects.get(id=id) 
         edit.head_is_approve = request.POST.get('head_is_approve')
         edit.head_remark = request.POST.get('head_remark')
@@ -1551,6 +1564,9 @@ def h_edit_sub(request):
         edit.head_date = datetime.now()
         edit.save()
         messages.success(request, 'Request Successfully Edited!')
+        content = 'Good day! \n\n' + head_name + " " + head_is_approve + 'd' + ' your request for ' + subject + ' ' + section + '\n\nRemarks: ' + head_remark
+        send_mail('ADDING OF SUBJECT - REQUEST', 
+        content, settings.EMAIL_HOST_USER , [data.email], fail_silently=False)
         return redirect('/h_adding_edit/'+ str(data.studID))
 
 @login_required(login_url='/index')        

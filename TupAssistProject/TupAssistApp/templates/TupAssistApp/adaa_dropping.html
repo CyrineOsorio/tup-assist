@@ -96,7 +96,7 @@
                         <th style="text-align: center;">PROGRAM</th>
                         <th style="text-align: center;">YEAR & SECTION</th>
                         <th>DROP STATUS</th>
-                        <th style="text-align: center;">VIEW TRANSACTION</th>
+                        <th style="text-align: center;">ACTION</th>
                     </thead>
 
                     <tbody>
@@ -108,7 +108,7 @@
                             <td style="text-align: center;">{{e.course}}</td>
                             <td style="text-align: center;">{{e.year}}{{e.section}}</td>
                             <td>{{e.dropStatus}}</td>
-                            <td class="action"><a href="/adaa_dropping_view/{{e.studID}}"><i class="bi bi-eye"></i></a></td>
+                            <td class="action"><a href="/adaa_dropping_view/{{e.studID}}" style="text-align: center;"><i class="bi bi-eye"></i></a></td>
                         </tr>
                         {% empty %}
                         <tr>

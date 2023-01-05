@@ -1000,7 +1000,7 @@ def s_trans_sub(request):
         reason = request.POST.get('reason')
         data = TransferringReq.objects.create(school_year=school_year, semester=semester, studID_id= current_user.studID, subject_id=subject, section=section, sched=schedule, reason=reason)
         data.save()
-        messages.success(request, 'Subject Tranfer Request')
+        messages.success(request, 'Subject tranfer request added.')
         return redirect('/s_transferring')
 
 def s_del_sub_t(request, id):
@@ -1020,7 +1020,7 @@ def s_step1_submit_t(request):
             data = registration.objects.get(username=current_user.username)
             data.transferStatus = 'Wait for Department Head and Asst. Director for Academic Affairs Approval'
             data.save()
-            messages.success(request, 'Request Submitted')
+            messages.success(request, 'Request submitted')
             return redirect('/s_transferring')
 
 
@@ -1046,10 +1046,10 @@ def changepassword1(request):
         if form.is_valid():
             user = form.save()
             update_session_auth_hash(request, user)
-            messages.success(request, 'Change Password Successfully')
+            messages.success(request, 'Successfully changed the password.')
             return redirect('/p_profile')
         else:
-            messages.error(request, 'Invalid Credentials')
+            messages.error(request, 'Wrong password!')
             return redirect('/p_profile')
 
 def changepicinfo(request):
@@ -1061,7 +1061,7 @@ def changepicinfo(request):
             data.studID = request.POST.get("studID")
             data.department = request.POST.get("department")
             data.save()
-            messages.success(request, 'Successfully Updated your Personal Information.')
+            messages.success(request, 'Successfully updated your Personal Information.')
             return redirect('/p_profile')
         except:
             messages.error(request, 'Invalid Credentials!')
@@ -1174,7 +1174,7 @@ def p_edit_sub(request):
                 edit.pic_name = request.POST.get('pic_name')
                 edit.pic_date = datetime.now()
                 edit.save()
-                messages.success(request, 'Request Successfully Edited!')
+                messages.success(request, 'Request successfully edited!')
                 content = 'Good day! \n\n' + pic_name + " " + pic_is_approve + 'd' + ' your request for ' + subject + ' ' + section + '\n\nRemarks: ' + pic_remark
                 send_mail('ADDING OF SUBJECT - REQUEST', 
                 content, settings.EMAIL_HOST_USER , [data.email], fail_silently=False)
@@ -1212,7 +1212,7 @@ def p_add_sub(request):
             if exist == 0:
                 add = AddingReq.objects.create(school_year=school_year, semester=semester, studID_id=studID, subject_id=subject, section=section, sched=sched, pic_is_approve=pic_is_approve, pic_remark=pic_remark, pic_name=pic_name, pic_date=pic_date)
                 add.save()
-                messages.success(request, 'Subject Successfully Add!')
+                messages.success(request, 'Subject successfully added!')
                 return redirect('/p_adding_edit/'+ str(data.studID))
             else:
                 messages.error(request, 'Subject already existed.')
@@ -1250,7 +1250,7 @@ def p_edit_sub1(request):
         edit.subj_teacher_name = request.POST.get('subj_teacher_name')
         edit.subj_teacher_date = datetime.now()
         edit.save()
-        messages.success(request, 'Request Successfully Edited!')
+        messages.success(request, 'Successfully edited the request!')
         return redirect('/p_requests')
         
 
@@ -1290,7 +1290,7 @@ def t_edit_sub(request):
         edit.subj_teacher_name = request.POST.get('subj_teacher_name')
         edit.subj_teacher_date = datetime.now()
         edit.save()
-        messages.success(request, 'Request Successfully Edited!')
+        messages.success(request, 'Successfully edited the request')
         return redirect('/t_requests')
 
 
@@ -1317,7 +1317,7 @@ def changepassword2(request):
         if form.is_valid():
             user = form.save()
             update_session_auth_hash(request, user)
-            messages.success(request, 'Change Password Successfully')
+            messages.success(request, 'Successfully changed the password.')
             return redirect('/h_profile')
         else:
             messages.error(request, 'Invalid Credentials')
@@ -1331,7 +1331,7 @@ def changeheadinfo(request):
             data.studID = request.POST.get("studID")
             data.department = request.POST.get("department")
             data.save()
-            messages.success(request, 'Successfully Updated your Personal Information.')
+            messages.success(request, 'Successfully updated your Personal Information.')
             return redirect('/h_profile')
         except:
             messages.error(request, 'Invalid Credentials!')
@@ -1578,7 +1578,7 @@ def h_edit_sub(request):
         edit.head_name = request.POST.get('head_name')
         edit.head_date = datetime.now()
         edit.save()
-        messages.success(request, 'Request Successfully Edited!')
+        messages.success(request, 'Successfully edited the request!')
         content = 'Good day! \n\n' + head_name + " " + head_is_approve + 'd' + ' your request for ' + subject + ' ' + section + '\n\nRemarks: ' + head_remark
         send_mail('ADDING OF SUBJECT - REQUEST', 
         content, settings.EMAIL_HOST_USER , [data.email], fail_silently=False)
@@ -1681,7 +1681,7 @@ def h_edit_sub1(request):
         edit.head_name = request.POST.get('head_name')
         edit.head_date = datetime.now()
         edit.save()
-        messages.success(request, 'Request Successfully Edited!')
+        messages.success(request, 'Successfully edited the request!')
         return redirect('/h_dropping_edit/'+ str(data.studID))
  
 @login_required(login_url='/index')
@@ -1779,5 +1779,5 @@ def h_edit_sub2(request):
         edit.head_name = request.POST.get('head_name')
         edit.head_date = datetime.now()
         edit.save()
-        messages.success(request, 'Request Successfully Edited!')
+        messages.success(request, 'Successfully edited the request!')
         return redirect('/h_transferring_edit/'+ str(data.studID))

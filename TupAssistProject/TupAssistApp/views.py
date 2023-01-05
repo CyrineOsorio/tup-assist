@@ -17,6 +17,7 @@ import csv
 import os
 import time
 from datetime import datetime
+import pytz
 
 
 # importing pandas module
@@ -656,7 +657,8 @@ def s_step1_submit(request):
         else:
             data = registration.objects.get(username=current_user.username)
             data.addStatus = 'Wait for PIC Approval'
-            data.addDate = datetime.now()
+            ph_time = pytz.timezone(Asia/Philippines)
+            data.addDate = datetime.now(ph_time)
             data.save()
             messages.success(request, 'Request submitted')
             return redirect('/s_adding')

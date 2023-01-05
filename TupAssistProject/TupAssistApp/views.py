@@ -660,7 +660,7 @@ def s_step1_submit(request):
             # DATETIME
             format = "%Y-%m-%d %H:%M:%S %Z%z"
             now_utc = datetime.now(timezone('UTC'))
-            now_asia = now_utc.astimezone(timezone('Asia/Kolkata'))
+            now_asia = now_utc.astimezone(timezone('Asia/Manila'))
             data.addDate = now_asia.strftime(format)
             data.save()
             messages.success(request, 'Request submitted')

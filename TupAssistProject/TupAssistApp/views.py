@@ -167,8 +167,8 @@ def a_account(request):
 
 def student_acc_cvs(request):
     if request.method=='POST':
-        junk = registration.objects.filter(userType='Student')
-        junk.delete()
+        # junk = registration.objects.filter(userType='Student')
+        # junk.delete()
         form = StudentRegistration(request.POST)
         studcvsfile = request.FILES["studcvsfile"]
         decoded_file = studcvsfile.read().decode('utf-8').splitlines()
@@ -198,8 +198,8 @@ def student_acc_cvs(request):
 
 def staff_acc_cvs(request):
     if request.method=='POST':
-        junk = registration.objects.filter(Q(userType='Department Head') | Q(userType='Program-in-Charge') | Q(userType='Teacher') | Q(userType='OAA Staff') )
-        junk.delete()
+        # junk = registration.objects.filter(Q(userType='Department Head') | Q(userType='Program-in-Charge') | Q(userType='Teacher') | Q(userType='OAA Staff') )
+        # junk.delete()
         form = StudentRegistration(request.POST)
         staffcvsfile = request.FILES["staffcvsfile"]
         decoded_file = staffcvsfile.read().decode('utf-8').splitlines()
@@ -236,15 +236,15 @@ def a_staff_create(request):
         email1 = form.cleaned_data.get(email)
         password1 = form.cleaned_data.get(password)
         send_mail('TUP-Assist Account', 
-                "Hello " + first_name1 + ',\n'
-                'As a student of Technological University of the Philippines - Cavite, you are automatically registered in TUP-Assist.' + '\n\n'
-                'TUP-Assist is a web-based system that helps students in adding, dropping, and transferring of subjects in TUP-Cavite.' + '\n\n'
-                'Attached to this are your account and the default password that you can change later after logging in.' + '\n\n'
-                'Username/Email: ' + username1 + '\n'
-                'Password: ' + password1 + '\n'
-                'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
-                'If there are any concerns, please reply to this email.' + '\n\n'
-                'Thank you.', settings.EMAIL_HOST_USER , email1, fail_silently=False)
+            "Hello " + first_name1 + ',\n'
+            'As a student of Technological University of the Philippines - Cavite, you are automatically registered in TUP-Assist.' + '\n\n'
+            'TUP-Assist is a web-based system that helps students in adding, dropping, and transferring of subjects in TUP-Cavite.' + '\n\n'
+            'Attached to this are your account and the default password that you can change later after logging in.' + '\n\n'
+            'Username/Email: ' + username1 + '\n'
+            'Password: ' + password1 + '\n'
+            'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
+            'If there are any concerns, please reply to this email.' + '\n\n'
+            'Thank you.', settings.EMAIL_HOST_USER , email1, fail_silently=False)
         messages.error(request, 'Account Successfully Created!')
         return redirect ('/a_account')
     else:

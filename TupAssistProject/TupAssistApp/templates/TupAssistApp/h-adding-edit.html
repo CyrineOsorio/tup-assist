@@ -69,7 +69,7 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <p>Course Year and Section: {{ student_info.course }}-{{ student_info.yrandsec }}</p>
+                                <p>Course Year and Section: {{ student_info.course }}-{{ student_info.year }}{{ student_info.section }}</p>
                             </div>
                             <div class="col" style="text-align: end;">
                                 <p>Grades File: {% if student_info.upload != '' %}<a href="#" class="alert-link" onclick="window.open('{{ student_info.upload.url }}');">{{ student_info.upload.url }}</a> {% endif %}</p>

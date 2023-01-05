@@ -232,7 +232,7 @@ def a_staff_create(request):
     if request.method == 'POST':
         form = HeadRegistration(request.POST)
         if form.is_valid():
-            # form.save()
+            form.save()
             # first_name1 = form.cleaned_data.get(first_name)
             # username1 = form.cleaned_data.get(username)
             # email1 = form.cleaned_data.get(email)

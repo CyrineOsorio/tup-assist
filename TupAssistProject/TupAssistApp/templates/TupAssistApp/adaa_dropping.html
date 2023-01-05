@@ -110,6 +110,12 @@
                             <td>{{e.dropStatus}}</td>
                             <td class="action"><a href="/adaa_dropping_view/{{e.studID}}"><i class="bi bi-eye"></i></a></td>
                         </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="7" style="text-align: center; font-style: italic;">
+                                No data
+                            </td>
+                        </tr>
                         {% endfor %}
                     </tbody>
                 </table>

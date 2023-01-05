@@ -73,7 +73,7 @@
         <div class="content">
 
             <div class="add-request-label">
-                <p>DROP SUBJECT REQUESTS:</p>
+                <p>TRANSFER SUBJECT REQUESTS:</p>
             </div>
 
             <div class="filter">
@@ -111,6 +111,12 @@
                             <td style="text-align: center;">{{e.year}}{{e.section}}</td>
                             <td>{{e.transferStatus}}</td>
                             <td class="action"><a href="/adaa_transferring_view/{{e.studID}}"><i class="bi bi-eye"></i></a></td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="7" style="text-align: center; font-style: italic;">
+                                No data
+                            </td>
                         </tr>
                         {% endfor %}
                     </tbody>

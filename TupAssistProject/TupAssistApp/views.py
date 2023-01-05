@@ -230,21 +230,21 @@ def a_staff_create(request):
     form = HeadRegistration(request.POST)
     if form.is_valid():
         form.save()
-        first_name = form.cleaned_data.get(first_name)
-        username = form.cleaned_data.get(username)
-        email = form.cleaned_data.get(email)
-        password = form.cleaned_data.get(password)
-        send_mail('TUP-Assist Account', 
-                "Hello " + first_name + ',\n'
-                'As a student of Technological University of the Philippines - Cavite, you are automatically registered in TUP-Assist.' + '\n\n'
-                'TUP-Assist is a web-based system that helps students in adding, dropping, and transferring of subjects in TUP-Cavite.' + '\n\n'
-                'Attached to this are your account and the default password that you can change later after logging in.' + '\n\n'
-                'Username/Email: ' + username + '\n'
-                'Password: ' + password + '\n'
-                'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
-                'If there are any concerns, please reply to this email.' + '\n\n'
-                'Thank you.', settings.EMAIL_HOST_USER , email, fail_silently=False)
-        messages.error(request, 'Account Successfully Created!')
+        # first_name = form.cleaned_data.get(first_name)
+        # username = form.cleaned_data.get(username)
+        # email = form.cleaned_data.get(email)
+        # password = form.cleaned_data.get(password)
+        # send_mail('TUP-Assist Account', 
+        #         "Hello " + first_name + ',\n'
+        #         'As a student of Technological University of the Philippines - Cavite, you are automatically registered in TUP-Assist.' + '\n\n'
+        #         'TUP-Assist is a web-based system that helps students in adding, dropping, and transferring of subjects in TUP-Cavite.' + '\n\n'
+        #         'Attached to this are your account and the default password that you can change later after logging in.' + '\n\n'
+        #         'Username/Email: ' + username + '\n'
+        #         'Password: ' + password + '\n'
+        #         'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
+        #         'If there are any concerns, please reply to this email.' + '\n\n'
+        #         'Thank you.', settings.EMAIL_HOST_USER , email, fail_silently=False)
+        # messages.error(request, 'Account Successfully Created!')
         return redirect ('/a_account')
     else:
         messages.error(request, 'Invalid Credentials!')

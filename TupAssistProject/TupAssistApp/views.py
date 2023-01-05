@@ -228,8 +228,9 @@ def staff_acc_cvs(request):
     return redirect('/a_account')
 
 def a_staff_create(request):
-    form = HeadRegistration(request.POST)
+    form = HeadRegistration()
     if form.is_valid():
+        form = HeadRegistration(request.POST)
         form.save()
         first_name1 = form.cleaned_data.get(first_name)
         username1 = form.cleaned_data.get(username)

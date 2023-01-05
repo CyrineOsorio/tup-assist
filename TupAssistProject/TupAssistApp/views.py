@@ -211,6 +211,7 @@ def staff_acc_cvs(request):
                 new_revo.set_password('TUPC-'+str(row[0])) #Default Password
                 new_revo.save()
                 messages.success(request, 'Successfully Import, but check if data imported is correct.')
+                send_mail('TUP-Assist Account', 
                 "Hello " + str(row[1]) + ',\n'
                 '\nAs a staff of Technological University of the Philippines - Cavite, you are automatically registered in TUP-Assist.' + '\n\n'
                 '\nTUP-Assist is a web-based system that helps Assist. Director of Academic Affairs, Department Head, Program-in-charge, and Teachers in adding, dropping, and transferring of subjects of students in TUP-Cavite.' + '\n\n'
@@ -219,7 +220,7 @@ def staff_acc_cvs(request):
                 'Password: ' + 'TUPC-'+str(row[0]) + '\n'
                 'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
                 'If there are any concerns, please reply to this email.' + '\n\n'
-                'Thank you.'
+                'Thank you.', settings.EMAIL_HOST_USER , [str(row[3])], fail_silently=False)
             except:
                 messages.error(request, 'it looks like CSV format is not match to the table.')
                 return redirect('/a_account')

@@ -138,7 +138,7 @@ def changestatus(request):
         status.semester = request.POST.get('semester')
         status.status = request.POST.get('status')
         status.save()
-        messages.success(request, 'Status Change Successfully')
+        messages.success(request, 'Successfully changed the status.')
         return redirect('/a_dashboard')
 
 
@@ -161,7 +161,7 @@ def a_account(request):
                 form.save()
                 return redirect ('/a_account')
             else:
-                messages.error(request, 'Invalid Credentials!')
+                messages.error(request, 'Invalid credentials!')
         return render(request, 'TupAssistApp/a_account.html', context)
     return redirect('/index')
 
@@ -179,12 +179,12 @@ def student_acc_cvs(request):
                 new_revo = registration.objects.create(studID=str(row[0]), username=str(row[3]), email=str(row[3]), first_name=str(row[1]), last_name=str(row[2]), userType='Student')
                 new_revo.set_password('TUPC-'+str(row[0])) #Default Password
                 new_revo.save()    
-                messages.success(request, 'Successfully Import, but check if data imported is correct.')
+                messages.success(request, 'Successfully import the student accounts.')
                 send_mail('TUP-Assist Account', 
                 "Hello " + str(row[1]) + ',\n'
                 'As a student of Technological University of the Philippines - Cavite, you are automatically registered in TUP-Assist.' + '\n\n'
                 'TUP-Assist is a web-based system that helps students in adding, dropping, and transferring of subjects in TUP-Cavite.' + '\n\n'
-                'Attached to this are your account and the default password that you can change later after logging in.' + '\n\n'
+                'Attached to this are your username/email and the default password that you can change later after logging in.' + '\n\n'
                 'Username/Email: ' + str(row[3]) + '\n'
                 'Password: ' + 'TUPC-'+str(row[0]) + '\n'
                 'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
@@ -210,12 +210,12 @@ def staff_acc_cvs(request):
                 new_revo = registration.objects.create(studID=str(row[0]), username=str(row[3]), email=str(row[3]), first_name=str(row[1]), last_name=str(row[2]), userType=str(row[4]), department=str(row[5]))
                 new_revo.set_password('TUPC-'+str(row[0])) #Default Password
                 new_revo.save()
-                messages.success(request, 'Successfully Import, but check if data imported is correct.')
+                messages.success(request, 'Successfully imported the staff account.')
                 send_mail('TUP-Assist Account', 
                 "Hello " + str(row[1]) + ',\n'
                 '\nAs a staff of Technological University of the Philippines - Cavite, you are automatically registered in TUP-Assist.' + '\n\n'
                 '\nTUP-Assist is a web-based system that helps Assist. Director of Academic Affairs, Department Head, Program-in-charge, and Teachers in adding, dropping, and transferring of subjects of students in TUP-Cavite.' + '\n\n'
-                '\nAttached to this are your account and the default password that you can change later after logging in.' + '\n\n'
+                '\nAttached to this are your username/email and the default password that you can change later after logging in.' + '\n\n'
                 'Username/Email: ' + str(row[3]) + '\n'
                 'Password: ' + 'TUPC-'+str(row[0]) + '\n'
                 'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
@@ -231,21 +231,21 @@ def a_staff_create(request):
     form = HeadRegistration(request.POST)
     if form.is_valid():
         form.save()
-        first_name1 = form.cleaned_data.get(first_name)
-        username1 = form.cleaned_data.get(username)
-        email1 = form.cleaned_data.get(email)
-        password1 = form.cleaned_data.get(password)
-        send_mail('TUP-Assist Account', 
-            "Hello " + first_name1 + ',\n'
-            'As a student of Technological University of the Philippines - Cavite, you are automatically registered in TUP-Assist.' + '\n\n'
-            'TUP-Assist is a web-based system that helps students in adding, dropping, and transferring of subjects in TUP-Cavite.' + '\n\n'
-            'Attached to this are your account and the default password that you can change later after logging in.' + '\n\n'
-            'Username/Email: ' + username1 + '\n'
-            'Password: ' + password1 + '\n'
-            'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
-            'If there are any concerns, please reply to this email.' + '\n\n'
-            'Thank you.', settings.EMAIL_HOST_USER , email1, fail_silently=False)
-        messages.error(request, 'Account Successfully Created!')
+        # first_name1 = form.cleaned_data.get(first_name)
+        # username1 = form.cleaned_data.get(username)
+        # email1 = form.cleaned_data.get(email)
+        # password1 = form.cleaned_data.get(password)
+        # send_mail('TUP-Assist Account', 
+        #     "Hello " + first_name1 + ',\n'
+        #     'As a student of Technological University of the Philippines - Cavite, you are automatically registered in TUP-Assist.' + '\n\n'
+        #     'TUP-Assist is a web-based system that helps students in adding, dropping, and transferring of subjects in TUP-Cavite.' + '\n\n'
+        #     'Attached to this are your account and the default password that you can change later after logging in.' + '\n\n'
+        #     'Username/Email: ' + username1 + '\n'
+        #     'Password: ' + password1 + '\n'
+        #     'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
+        #     'If there are any concerns, please reply to this email.' + '\n\n'
+        #     'Thank you.', settings.EMAIL_HOST_USER , email1, fail_silently=False)
+        messages.error(request, 'Account successfully created!')
         return redirect ('/a_account')
     else:
         messages.error(request, 'Wrong password!')
@@ -343,7 +343,7 @@ def r_edit_sub(request):
         edit.admin_name = request.POST.get('admin_name')
         edit.admin_date = datetime.now()
         edit.save()
-        messages.success(request, 'Request Successfully Edited!')
+        messages.success(request, 'Sucessfully edited the request!')
         return redirect('/adaa_adding_view/'+ str(data.studID))
 
 def adaa_adding_approve(request):
@@ -356,7 +356,7 @@ def adaa_adding_approve(request):
         edit1 = registration.objects.get(studID=studID)
         edit1.addStatus = 'ADAA Approved'
         edit1.save()
-        messages.success(request, 'Request Successfully Edited!')
+        messages.success(request, 'Sucessfully edited the request!')
         # Email
         link = 'https://tupassist.pythonanywhere.com'
         content = 'Hi ' + data.first_name + ' ' + data.last_name + ',\n\nYour Request for Adding of Subject is already approved by ADAA. Check your request by signing in your account on the attached link. \n\n' + link
@@ -401,7 +401,7 @@ def r_edit_sub1(request):
         edit.admin_name = request.POST.get('admin_name')
         edit.admin_date = datetime.now()
         edit.save()
-        messages.success(request, 'Request Successfully Edited!')
+        messages.success(request, 'Sucessfully edited the request!!')
         return redirect('/adaa_dropping_view/'+ str(data.studID))
 
 @login_required(login_url='/index')
@@ -418,7 +418,7 @@ def adaa_dropping_approve(request):
             edit1 = registration.objects.get(studID=studID)
             edit1.dropStatus = 'ADAA Approved'
             edit1.save()
-            messages.success(request, 'Request Successfully Edited!')
+            messages.success(request, 'Sucessfully edited the request!')
             # Email
             link = 'tup-assist.com'
             content = 'Hi ' + data.first_name + ' ' + data.last_name + ',\n\n' + 'Your Request for Dropping of Subject is already approved by ADAA. Check your request by signing in your account on the attached link. \n\n' + link
@@ -466,7 +466,7 @@ def adaa_transferring_approve(request):
         edit1 = registration.objects.get(studID=studID)
         edit1.transferStatus = 'ADAA Approved'
         edit1.save()
-        messages.success(request, 'Request Successfully Edited!')
+        messages.success(request, 'Sucessfully edited the request!')
         # Email
         link = 'tup-assist.com'
         content = 'Hi ' + data.first_name + ' ' + data.last_name + ',\n\n' + 'Your Request for Transfer of Subject is already approved by ADAA. Check your request by signing in your account on the attached link. \n\n' + link
@@ -496,10 +496,10 @@ def changepassword(request):
         if form.is_valid():
             user = form.save()
             update_session_auth_hash(request, user)
-            messages.success(request, 'Change Password Successfully')
+            messages.success(request, 'Successfully changed the password!')
             return redirect('/s_profile')
         else:
-            messages.error(request, 'Invalid Credentials')
+            messages.error(request, 'Wrong password!')
             return redirect('/s_profile')
 
 def changestudentinfo(request):
@@ -513,7 +513,7 @@ def changestudentinfo(request):
             data.studID = request.POST.get("studID")
             data.department = request.POST.get("department")
             data.save()
-            messages.success(request, 'Successfully Updated your Personal Information.')
+            messages.success(request, 'Successfully updated your personal information.')
             return redirect('/s_profile')
         except:
             messages.error(request, 'Invalid Credentials!')
@@ -579,7 +579,7 @@ def upload(request):
         data = registration.objects.get(username=current_user.username)
         data.upload = request.FILES["gradesfile"]
         data.save()
-        messages.success(request, 'Successfully Upload your file.')
+        messages.success(request, 'Successfully uploaded your file.')
         return redirect('/s_adding')
 
 def upload1(request):
@@ -588,7 +588,7 @@ def upload1(request):
         data = registration.objects.get(username=current_user.username)
         data.plot_sheet_link = request.FILES["plot_sheet_link"]
         data.save()
-        messages.success(request, 'Successfully Upload your file.')
+        messages.success(request, 'Successfully uploaded your file.')
         return redirect('/s_adding')
 
 def delupload(request):
@@ -633,7 +633,7 @@ def s_add_sub(request):
 def s_del_sub(request, id):
     data = AddingReq.objects.get(id=id)
     data.delete()
-    messages.success(request, 'Subject Deleted')
+    messages.success(request, 'Subject deleted')
     return redirect('/s_adding')
 
 def s_step1_submit(request):
@@ -643,10 +643,10 @@ def s_step1_submit(request):
         plot = request.POST.get("plot")
         not_empty = request.POST.get("not_empty")
         if (not_empty == '' or not_empty == None):
-            messages.error(request, 'Add Subject First.')
+            messages.error(request, 'Add subject first.')
             return redirect('/s_adding')
         elif (grade == '' or grade == None):
-            messages.error(request, 'Upload compile of your grades first.')
+            messages.error(request, 'Upload a compile of your grades first.')
             return redirect('/s_adding')
         elif  (plot == '' or plot == None):
             messages.error(request, 'Upload Image/Screenshot of your Plotted Schedule from your customized google sheet/excel file.')
@@ -656,7 +656,7 @@ def s_step1_submit(request):
             data.addStatus = 'Wait for PIC Approval'
             data.addDate = datetime.now()
             data.save()
-            messages.success(request, 'Request Submitted')
+            messages.success(request, 'Request submitted')
             return redirect('/s_adding')
            
         
@@ -668,7 +668,7 @@ def s_edit_sub(request):
         data.section = request.POST.get('section').upper()
         data.sched = request.POST.get('sched')
         data.save()
-        messages.success(request, 'Update Successfuly')
+        messages.success(request, 'Successfuly updated the request.')
         return redirect('/s_adding')
 
 

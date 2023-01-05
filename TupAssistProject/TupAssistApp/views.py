@@ -657,7 +657,7 @@ def s_step1_submit(request):
         else:
             data = registration.objects.get(username=current_user.username)
             data.addStatus = 'Wait for PIC Approval'
-            ph_time = pytz.timezone(Asia/Philippines)
+            ph_time = pytz.timezone(Asia/Manila)
             data.addDate = datetime.now(ph_time)
             data.save()
             messages.success(request, 'Request submitted')

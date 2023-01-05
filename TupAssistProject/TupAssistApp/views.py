@@ -229,29 +229,30 @@ def staff_acc_cvs(request):
 
 def a_staff_create(request):
     form = HeadRegistration()
-    if form.is_valid():
+    if request.method == 'POST':
         form = HeadRegistration(request.POST)
-        form.save()
-        first_name1 = form.cleaned_data.get(first_name)
-        username1 = form.cleaned_data.get(username)
-        email1 = form.cleaned_data.get(email)
-        password1 = form.cleaned_data.get(password)
-        send_mail('TUP-Assist Account', 
-            "Hello " + first_name1 + ',\n'
-            'As a student of Technological University of the Philippines - Cavite, you are automatically registered in TUP-Assist.' + '\n\n'
-            'TUP-Assist is a web-based system that helps students in adding, dropping, and transferring of subjects in TUP-Cavite.' + '\n\n'
-            'Attached to this are your account and the default password that you can change later after logging in.' + '\n\n'
-            'Username/Email: ' + username1 + '\n'
-            'Password: ' + password1 + '\n'
-            'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
-            'If there are any concerns, please reply to this email.' + '\n\n'
-            'Thank you.', settings.EMAIL_HOST_USER , email1, fail_silently=False)
-        messages.error(request, 'Account successfully created!')
-        return redirect ('/a_account')
-    else:
-        messages.error(request, 'Wrong password!')
-        return redirect ('/a_account')
-        # return render(request, 'TupAssistApp/a_staff.html')
+        if form.is_valid():
+            form.save()
+            first_name1 = form.cleaned_data.get(first_name)
+            username1 = form.cleaned_data.get(username)
+            email1 = form.cleaned_data.get(email)
+            password1 = form.cleaned_data.get(password)
+            send_mail('TUP-Assist Account', 
+                "Hello " + first_name1 + ',\n'
+                'As a student of Technological University of the Philippines - Cavite, you are automatically registered in TUP-Assist.' + '\n\n'
+                'TUP-Assist is a web-based system that helps students in adding, dropping, and transferring of subjects in TUP-Cavite.' + '\n\n'
+                'Attached to this are your account and the default password that you can change later after logging in.' + '\n\n'
+                'Username/Email: ' + username1 + '\n'
+                'Password: ' + password1 + '\n'
+                'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
+                'If there are any concerns, please reply to this email.' + '\n\n'
+                'Thank you.', settings.EMAIL_HOST_USER , email1, fail_silently=False)
+            messages.error(request, 'Account successfully created!')
+            return redirect ('/a_account')
+        else:
+            messages.error(request, 'Invalid Credentials!')
+            return redirect ('/a_account')
+    return render(request, 'TupAssistApp/a_account.html')
 
 @login_required(login_url='/index')
 def a_adding(request):

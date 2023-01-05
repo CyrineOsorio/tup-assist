@@ -239,16 +239,16 @@ def a_staff_create(request):
             email1 = form.cleaned_data.get('email')
             password1 = form.cleaned_data.get('password')
             userType1 = form.cleaned_data.get('userType')
-            # send_mail('TUP-Assist Account', 
-            #     "Hello " + first_name1 + ',\n'
-            #     'As a ' + userType1 + ' of Technological University of the Philippines - Cavite, you are automatically registered in TUP-Assist.' + '\n\n'
-            #     'TUP-Assist is a web-based system that helps students in adding, dropping, and transferring of subjects in TUP-Cavite.' + '\n\n'
-            #     'Attached to this are your username/email and the default password that you can change later after logging in.' + '\n\n'
-            #     'Username/Email: ' + username1 + '\n'
-            #     'Password: ' + password1 + '\n'
-            #     'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
-            #     'If there are any concerns, please reply to this email.' + '\n\n'
-            #     'Thank you.', settings.EMAIL_HOST_USER , email1, fail_silently=False)
+            send_mail('TUP-Assist Account', 
+                "Hello " + str(first_name1) + ',\n'
+                'As a ' + str(userType1) + ' of Technological University of the Philippines - Cavite, you are automatically registered in TUP-Assist.' + '\n\n'
+                'TUP-Assist is a web-based system that helps students in adding, dropping, and transferring of subjects in TUP-Cavite.' + '\n\n'
+                'Attached to this are your username/email and the default password that you can change later after logging in.' + '\n\n'
+                'Username/Email: ' + str(username1) + '\n'
+                'Password: ' + str(password1) + '\n'
+                'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
+                'If there are any concerns, please reply to this email.' + '\n\n'
+                'Thank you.', settings.EMAIL_HOST_USER , [email1], fail_silently=False)
             messages.success(request, 'Account successfully created!')
             return redirect ('/a_account')
         else:

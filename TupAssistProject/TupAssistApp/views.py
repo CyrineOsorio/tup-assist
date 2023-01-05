@@ -231,10 +231,10 @@ def a_staff_create(request):
     if form.is_valid():
         form.save()
         messages.error(request, 'Account Successfully Created!')
-        return redirect ('/a_staff')
+        return redirect ('/a_account')
     else:
         messages.error(request, 'Invalid Credentials!')
-        return redirect ('/a_staff')
+        return redirect ('/a_account')
     return render(request, 'TupAssistApp/a_staff.html')
 
 @login_required(login_url='/index')

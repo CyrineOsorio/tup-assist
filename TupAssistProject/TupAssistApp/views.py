@@ -1589,13 +1589,13 @@ def h_dropping(request):
     if request.user.is_authenticated and request.user.userType == 'Department Head':
         current_user = request.user
         if current_user.department == "Department of Industrial Technology" or current_user.department == "Department of Engineering" or current_user.department == "Department of Industrial Education":
-            test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student') & Q(dropStatus='Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'))
+            test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student') & (Q(dropStatus='Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval')) | (Q(dropStatus='ADAA Approve')))
             context = { 
                 'test': test,
                 'current_user': current_user
                 }
         else:
-            test = registration.objects.filter( Q(userType='Student') & Q(dropStatus='Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'))
+            test = registration.objects.filter( Q(userType='Student') & (Q(dropStatus='Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval')) | (Q(dropStatus='ADAA Approve')))
             context = { 
                 'test': test,
                 'current_user': current_user

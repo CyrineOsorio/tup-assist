@@ -7,7 +7,7 @@
 
 body {
     width: 100%;
-    height: 110vh;
+    height: 100%;
 }
 
 a {
@@ -84,8 +84,7 @@ a:focus {
 /* body */
 
 body {
-    height: 100vh;
- 
+    height: 100%;
 }
 
 .bg-container {

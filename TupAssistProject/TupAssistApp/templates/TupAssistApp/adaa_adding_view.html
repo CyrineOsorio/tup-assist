@@ -73,7 +73,7 @@
                             <th colspan="3" style="text-align: center;">SUBJECT TO BE TAKEN BY STUDENT</th>
                             <th colspan="4" style="text-align: center;">PROGRAM-IN-CHARGE</th>
                             <th colspan="4" style="text-align: center;">DEPARTMENT HEAD</th>
-                            <th colspan="3" style="text-align: center;">ASSIST. DIRECTOR OF ACADEMIC AFFAIRS</th>
+                            <th colspan="3" style="text-align: center;">OAA</th>
                         </thead>
                         <thead>
                             <th>SUBJECT</th>
@@ -175,7 +175,7 @@
                             <input type="text" class="form-control" id="sched" name="sched" value="{{i.sched}}" readonly>
                         </div>
                         <div class="form-group">
-                            <label for="pic_remark">PIC Approval</label>
+                            <label for="pic_remark">PIC Action Taken</label>
                             <input type="text" class="form-control" id="pic_remark" name="pic_remark" value="{{i.pic_is_approve}}" readonly>
                         </div>
                         <div class="form-group">
@@ -187,7 +187,7 @@
                             <input type="text" class="form-control" id="pic_name" name="pic_name" value="{{i.pic_name}}" readonly>
                         </div>
                         <div class="form-group">
-                            <label for="head_is_approve">Head Approval</label>
+                            <label for="head_is_approve">Head Action Taken</label>
                             <input type="text" class="form-control" id="pic_remark" name="pic_remark" value="{{i.head_is_approve}}" readonly>
                         </div>
                         <div class="form-group">
@@ -199,7 +199,7 @@
                             <input type="text" class="form-control" id="head_name" name="head_name" value="{{i.head_name}}" readonly>
                         </div>
                         <div class="form-group">
-                            <label for="admin_approve">Administration Approval</label>
+                            <label for="admin_approve">Administration Action</label>
                             <select class="custom-select" id="admin_approve" name="admin_approve">
                                 <option value="Pending" selected disabled hidden>Select an Option</option>
                                 <option value="Approve">Approve</option>
@@ -207,7 +207,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="admin_name">Administration Name:</label>
+                            <label for="admin_name">Administrator Action:</label>
                             <input type="text" class="form-control" id="admin_name" name="admin_name" value="{{current_user.first_name}} {{current_user.last_name}}" readonly>
                         </div>
                     </div>

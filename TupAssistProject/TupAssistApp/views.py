@@ -247,7 +247,7 @@ def a_staff_create(request):
             #     'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
             #     'If there are any concerns, please reply to this email.' + '\n\n'
             #     'Thank you.', settings.EMAIL_HOST_USER , email1, fail_silently=False)
-            messages.error(request, 'Account successfully created!')
+            messages.success(request, 'Account successfully created!')
             return redirect ('/a_account')
         else:
             messages.error(request, 'Invalid Credentials!')

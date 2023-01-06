@@ -250,7 +250,7 @@ td {
 .form-group3a select,
 .form-group4 input,
 .form-group4a input,
-.form-group4b select,
+.form-group4b input,
 .form-group5 input,
 .form-group6 input {
     background-color: #ffffff;
@@ -273,7 +273,7 @@ td {
 .form-group3a select:focus,
 .form-group4 input:focus,
 .form-group4a input:focus,
-.form-group4b select:focus,
+.form-group4b group4b:focus,
 .form-group5 input:focus,
 .form-group6 input:focus {
     box-shadow: none;

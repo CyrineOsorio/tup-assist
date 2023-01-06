@@ -26,7 +26,7 @@ class registration(AbstractUser):
     studID = models.BigAutoField(primary_key=True)
     course = models.CharField(max_length=255, null=True, blank=True)
     year = models.IntegerField(blank=True, null=True)
-    section = models.CharField(max_length=255, choices= section, null=True, blank=True)
+    section = models.CharField(max_length=255, null=True, blank=True)
     userType = models.CharField(max_length=255, choices= userType, verbose_name='userType', null=True)
     department = models.CharField(max_length=255, choices= department, verbose_name='department', null=True)
     upload = models.FileField(upload_to ='grades/', null=True, blank=True)

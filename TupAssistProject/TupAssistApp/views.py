@@ -245,7 +245,7 @@ def a_staff_create(request):
                 'TUP-Assist is a web-based system that helps students in adding, dropping, and transferring of subjects in TUP-Cavite.' + '\n\n'
                 'Attached to this are your username/email and the default password that you can change later after logging in.' + '\n\n'
                 'Username/Email: ' + str(username1) + '\n'
-                'Password: ' + str(password1) + '\n'
+                "Password: TUPC-XXXXXX" +  '\n'
                 'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
                 'If there are any concerns, please reply to this email.' + '\n\n'
                 'Thank you.', settings.EMAIL_HOST_USER , [email1], fail_silently=False)

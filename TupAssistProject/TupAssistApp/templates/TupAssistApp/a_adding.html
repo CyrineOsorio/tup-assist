@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
     <link rel="icon" href="{%static 'images/tuplogo.png'%}">
 
+    <!--DATATABLES-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
 
 </head>
 
@@ -92,33 +94,35 @@
 
             <div style="overflow-x:auto;" id="tab">
 
-                <table class="table table-bordered" id="demo">
+                <table class="table table-bordered" id="demo" style="width: 100%;">
                     <thead>
-                        <th colspan="2" style="text-align: center;">STUDENT DETAILS</th>
-                        <th colspan="3" style="text-align: center;">SUBJECT TO BE TAKEN BY STUDENT</th>
-                        <th colspan="4" style="text-align: center;">PROGRAM-IN-CHARGE</th>
-                        <th colspan="4" style="text-align: center;">DEPARTMENT HEAD</th>
-                        <th colspan="3" style="text-align: center;">ASSIST. DIRECTOR OF ACADEMIC AFFAIRS</th>
-                        <th colspan="1" style="text-align: center;">ADMINISTRARTOR</th>
-                    </thead>
-                    <thead>
-                        <th>SECTION</th>
-                        <th>NAME</th>
-                        <th>SUBJECT</th>
-                        <th>SECTION</th>
-                        <th>SCHEDULE</th>
-                        <th>ACTION TAKEN</th>
-                        <th>REMARK</th>
-                        <th>REVIEWED BY</th>
-                        <th>DATE & TIME</th>
-                        <th>ACTION TAKEN</th>
-                        <th>REMARK</th>
-                        <th>RECOMMENDED BY</th>
-                        <th>DATE & TIME</th>
-                        <th>ACTION TAKEN</th>
-                        <th>APPROVED BY</th>
-                        <th>DATE & TIME</th>
-                        <th>ACTION TAKEN</th>
+                        <tr>
+                            <th colspan="2" style="text-align: center;">STUDENT DETAILS</th>
+                            <th colspan="3" style="text-align: center;">SUBJECT TO BE TAKEN BY STUDENT</th>
+                            <th colspan="4" style="text-align: center;">PROGRAM-IN-CHARGE</th>
+                            <th colspan="4" style="text-align: center;">DEPARTMENT HEAD</th>
+                            <th colspan="3" style="text-align: center;">ASSIST. DIRECTOR OF ACADEMIC AFFAIRS</th>
+                            <th colspan="1" style="text-align: center;">ADMINISTRARTOR</th>
+                        </tr>
+                        <tr>
+                            <th>SECTION</th>
+                            <th>NAME</th>
+                            <th>SUBJECT</th>
+                            <th>SECTION</th>
+                            <th>SCHEDULE</th>
+                            <th>ACTION TAKEN</th>
+                            <th>REMARK</th>
+                            <th>REVIEWED BY</th>
+                            <th>DATE & TIME</th>
+                            <th>ACTION TAKEN</th>
+                            <th>REMARK</th>
+                            <th>RECOMMENDED BY</th>
+                            <th>DATE & TIME</th>
+                            <th>ACTION TAKEN</th>
+                            <th>APPROVED BY</th>
+                            <th>DATE & TIME</th>
+                            <th>ACTION TAKEN</th>
+                        </tr>
                     </thead>
                     <tbody id="table">
                         {% for i in req %}
@@ -199,6 +203,14 @@
         }
     </script>
 
+
+    <!--DATATABLES-->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#demo').DataTable();
+        });
+    </script>
 
 
 

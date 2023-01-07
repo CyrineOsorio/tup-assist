@@ -231,6 +231,7 @@ td {
 .form-group4a,
 .form-group4b {
     width: 100%;
+    margin-top: 10px;
 }
 
 #sub_button {
@@ -252,14 +253,15 @@ td {
 .form-group4a input,
 .form-group4b input,
 .form-group5 input,
-.form-group6 input {
+.form-group6 input,
+.form-group7 input {
     background-color: #ffffff;
     font-family: 'Roboto', sans-serif;
     height: 40px;
     border: 1px solid #CED4DA;
     font-weight: 300;
     font-size: 18px;
-    border-radius: 10px;
+    border-radius: 5px;
     width: 100%;
     padding: 0 15px 0 15px;
 }
@@ -275,7 +277,8 @@ td {
 .form-group4a input:focus,
 .form-group4b group4b:focus,
 .form-group5 input:focus,
-.form-group6 input:focus {
+.form-group6 input:focus,
+.form-group7 input:focus {
     box-shadow: none;
 }
 
@@ -290,75 +293,82 @@ td {
     content: "First Name (Required)";
     display: flex;
     justify-content: flex-start;
-    padding-left: 10px;
+    padding-left: 5px;
 }
 
 .form-group1a:before {
     content: "Last Name (Required)";
     display: flex;
     justify-content: flex-start;
-    padding-left: 10px;
+    padding-left: 5px;
 }
 
 .form-group2:before {
     content: "Email (Required)";
     display: flex;
     justify-content: flex-start;
-    padding-left: 10px;
+    padding-left: 5px;
 }
 
 .form-group2a:before {
     content: "Username (Required)";
     display: flex;
     justify-content: flex-start;
-    padding-left: 10px;
+    padding-left: 5px;
 }
 
 .form-group3:before {
     content: "User Type (Required)";
     display: flex;
     justify-content: flex-start;
-    padding-left: 10px;
+    padding-left: 5px;
 }
 
 .form-group3a:before {
     content: "Department";
     display: flex;
     justify-content: flex-start;
-    padding-left: 10px;
+    padding-left: 5px;
 }
 
 .form-group4:before {
     content: "Course: Ex. BET-COET";
     display: flex;
     justify-content: flex-start;
-    padding-left: 10px;
+    padding-left: 5px;
 }
 
 .form-group4a:before {
     content: "Year";
     display: flex;
     justify-content: flex-start;
-    padding-left: 10px;
+    padding-left: 5px;
 }
 
 .form-group4b:before {
     content: "Section";
     display: flex;
     justify-content: flex-start;
-    padding-left: 10px;
+    padding-left: 5px;
 }
 
 .form-group5:before {
-    content: "Password (Required)";
+    content: "Student Number";
     display: flex;
     justify-content: flex-start;
-    padding-left: 10px;
+    padding-left: 5px;
 }
 
 .form-group6:before {
+    content: "Password (Required)";
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 5px;
+}
+
+.form-group7:before {
     content: "Confirm Password (Required)";
     display: flex;
     justify-content: flex-start;
-    padding-left: 10px;
+    padding-left: 5px;
 }

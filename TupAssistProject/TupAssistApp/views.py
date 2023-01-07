@@ -234,18 +234,18 @@ def a_staff_create(request):
         if form.is_valid():
             form.save()
             first_name1 = form.cleaned_data.get('first_name')
-            print(first_name1)
             username1 = form.cleaned_data.get('username')
             email1 = form.cleaned_data.get('email')
             password1 = form.cleaned_data.get('password')
             userType1 = form.cleaned_data.get('userType')
+            studID1 = form.cleaned_data.get('studID')
             send_mail('TUP-Assist Account', 
                 "Hello " + str(first_name1) + ',\n'
                 'As a ' + str(userType1) + ' of Technological University of the Philippines - Cavite, you are automatically registered in TUP-Assist.' + '\n\n'
                 'TUP-Assist is a web-based system that helps students in adding, dropping, and transferring of subjects in TUP-Cavite.' + '\n\n'
                 'Attached to this are your username/email and the default password that you can change later after logging in.' + '\n\n'
                 'Username/Email: ' + str(username1) + '\n'
-                "Password: TUPC-XXXXXX" +  '\n'
+                "Password: " + str(studID1) +  '\n'
                 'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
                 'If there are any concerns, please reply to this email.' + '\n\n'
                 'Thank you.', settings.EMAIL_HOST_USER , [email1], fail_silently=False)

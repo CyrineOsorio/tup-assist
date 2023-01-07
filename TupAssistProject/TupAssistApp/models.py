@@ -25,8 +25,8 @@ class registration(AbstractUser):
         ('A', 'A'),
         ('B', 'B'),
     ]
-    
-    studID = models.BigAutoField(primary_key=True)
+
+    studID = models.CharField(max_length=255, primary_key=True)
     course = models.CharField(max_length=255, null=True, blank=True)
     year = models.IntegerField(blank=True, null=True)
     section = models.CharField(max_length=255, null=True, blank=True)

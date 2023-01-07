@@ -1082,7 +1082,7 @@ def p_adding(request):
         print(test)
         cnt1 = len(AddingReq.objects.filter(Q(studID__course=current_user.course) & Q(pic_is_approve='Decline')))
         cnt2 = len(AddingReq.objects.filter(Q(studID__course=current_user.course) & Q(pic_is_approve='Pending')))
-        cnt3 = len(AddingReq.objects.filter(Q(studID__course=current_user.course) & Q(pic_is_approve='Approve')))
+        cnt3 = len(AddingReq.objects.filter(Q(studID__course=current_user.course) & Q(pic_is_approve='Approved')))
         context = { 
             'cnt1': cnt1,
             'cnt2': cnt2,

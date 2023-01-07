@@ -345,6 +345,14 @@ def adaa_approved_sub(request, id):
     edit.admin_date = datetime.now()
     edit.save()
     messages.success(request, 'Sucessfully approved the request!')
+    # Email
+    link = 'https://tupassist.pythonanywhere.com'
+    data = registration.objects.get(studID=edit.studID_id) 
+    send_mail('ADDING OF SUBJECT - REQUEST', 
+    "Hi " + str(data.first_name) + ',' +
+    '\n\nYour Request for Adding the ' + str(edit.subject.description) + ' in ' + str(edit.section) +
+    " was already approved by ADAA. You need to wait for Registrar to enroll your subject. " + '\n\nYou may also check your request status by signing in your account on the attached link of our website.\n' + link
+    , settings.EMAIL_HOST_USER , [data.email], fail_silently=False)
     return redirect('/adaa_adding_view/'+ str(edit.studID_id))
 
 

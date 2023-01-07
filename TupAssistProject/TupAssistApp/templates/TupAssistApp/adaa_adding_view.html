@@ -111,10 +111,10 @@
                                 <td>{{i.admin_name}}</td>
                                 <td>{{i.admin_date}}</td>
                                 <td>
-                                    <br> {% if i.head_is_approve == 'Approved' %}
+                                    <br> {% if i.admin_approve == None %}
                                     <a class="btn btn-primary" href="/adaa_approved_sub/{{i.id}}">Approve</a>
                                     <br> {% else %}
-                                    <a class="btn btn-primary disabled" href="/adaa_approved_sub/{{id}}" disabled>Approve</a>
+                                    <a class="btn btn-primary disabled" href="/adaa_approved_sub/{{id}}" aria-disabled="true" disabled>Approve</a>
                                     <br> {% endif %}
                                 </td>
                             </tr>

@@ -229,7 +229,10 @@ td {
 .form-group3a,
 .form-group4,
 .form-group4a,
-.form-group4b {
+.form-group4b,
+.form-group5,
+.form-group6,
+.form-group7 {
     width: 100%;
     margin-top: 10px;
 }

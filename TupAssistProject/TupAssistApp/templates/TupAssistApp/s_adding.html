@@ -229,6 +229,7 @@
                                                     <!-- UPLOAD IMAGE -->
                                                     {% if current_user.plot_sheet_link != '' %}
                                                     <p style="color: black;">Plotted Schedule Upload:</p>
+
                                                     <button type="button" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target="#addImage">
                                                         Repload Image of Plotted Schedule
                                                     </button>
@@ -349,6 +350,9 @@
                             <div class="mt-3">
                                 {% if current_user.plot_sheet_link != '' %}
                                 <br> Plotted Schedule <br>
+                                <p style="color: black;">Note: Please download this <span>
+                                    <a href="{%static 'css/Sample Plotting Schedule.xlsx'%}" download target="_blank" style="color: #E2435E; font-weight: bold;">file</a>
+                                </span>to use as a format for plotting of your schedule.</p>
                                 <button type="button" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target="#addImage">
                                     Repload Image of Plotted Schedule
                                 </button>
@@ -419,7 +423,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon1">Monday</span>
                                         </div>
-                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="mon_start1">
+                                        <input type="time" class="form-control" id="mon_start1">
                                         <input type="time" class="form-control" aria-describedby="basic-addon1" id="mon_end1">
                                     </div>
                                     <div class="input-group mb-3">
@@ -834,7 +838,10 @@
     <script>
         function myFuction1() {
 
+            alert('something');
+
             var a = document.getElementById("mon_start1").value;
+            alert(a);
             var b = document.getElementById("mon_end1").value;
             var c = document.getElementById("tue_start1").value;
             var d = document.getElementById("tue_end1").value;

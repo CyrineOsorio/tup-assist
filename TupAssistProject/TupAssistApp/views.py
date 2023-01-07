@@ -1179,7 +1179,7 @@ def p_edit_sub(request):
                 edit.pic_date = datetime.now()
                 edit.save()
                 messages.success(request, 'Request successfully edited!')
-                content = 'Good day! \n\n' + pic_name + " " + pic_is_approve + 'd' + ' your request for ' + subject + ' ' + section + '\n\nRemarks: ' + pic_remark
+                content = 'Good day! \n\n' + str(pic_name) + " " + str(pic_is_approve) + ' your request for ' + str(subject) + ' ' + str(section) + '\n\nRemarks: ' + str(pic_remark)
                 send_mail('ADDING OF SUBJECT - REQUEST', 
                 content, settings.EMAIL_HOST_USER , [data.email], fail_silently=False)
                 return redirect('/p_adding_edit/'+ str(data.studID))

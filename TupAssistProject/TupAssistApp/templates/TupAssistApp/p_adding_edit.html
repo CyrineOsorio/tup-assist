@@ -66,7 +66,7 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <p>Course Year and Section: {{ student_info.course }}-{{ student_info.yrandsec }}</p>
+                                <p>Course Year and Section: {{ student_info.course }}-{{ student_info.year }}{{ student_info.section }}</p>
                             </div>
                             <div class="col" style="text-align: end;">
                                 <p>Grades File: {% if student_info.upload != '' %}<a href="#" class="alert-link" onclick="window.open('{{ student_info.upload.url }}');">{{ student_info.upload.url }}</a> {% endif %}</p>
@@ -76,34 +76,11 @@
                 </div>
 
                 <div id="multi-step-form-container">
-                    <!-- Form Steps / Progress Bar -->
-                    <ul class="form-stepper form-stepper-horizontal text-center mx-auto pl-0">
-                        <!-- Step 1 -->
-                        <li class="form-stepper-active text-center form-stepper-list" step="1">
-                            <a class="mx-2">
-                                <span class="form-stepper-circle">
-                                        <span>1</span>
-                                </span>
-                                <div class="label">Check Student Request and Program-in-charge Approval</div>
-                            </a>
-                        </li>
-                        <!-- Step 2 -->
-                        <li class="form-stepper-unfinished text-center form-stepper-list" step="2">
-                            <a class="mx-2">
-                                <span class="form-stepper-circle text-muted">
-                                        <span>2</span>
-                                </span>
-                                <div class="label text-muted">Wait for Department Head and Asst. Director for Academic Affairs Approval</div>
-                            </a>
-                        </li>
-                    </ul>
-
-
 
                     <!-- Step 1 Content -->
                     <section id="step-1" class="form-step">
 
-                        <h2 class="font-normal">Check Student Request and Program-in-charge Approval</h2>
+                        <h2 class="font-normal">Check of Add Request:</h2>
 
                         <div class="mt-3" style="overflow-x: scroll;">
                             <table class="table table-bordered">
@@ -111,6 +88,8 @@
                                     <thead>
                                         <th colspan="3" style="text-align: center;">SUBJECT TO BE TAKEN BY STUDENT</th>
                                         <th colspan="5" style="text-align: center;">PROGRAM-IN-CHARGE</th>
+                                        <th colspan="4" style="text-align: center;">DEPARTMENT HEAD</th>
+                                        <th colspan="4" style="text-align: center;">ASSIST. DIRECTOR FOR ACADEMIC AFFAIRS</th>
                                     </thead>
                                     <thead>
                                         <th>SUBJECT</th>
@@ -118,9 +97,16 @@
                                         <th>SCHEDULE</th>
                                         <th>ACTION TAKEN</th>
                                         <th>REMARK</th>
-                                        <th>ENLISTED BY</th>
+                                        <th>REVIEWED BY</th>
                                         <th>DATE & TIME</th>
                                         <th>ACTION</th>
+                                        <th>ACTION TAKEN</th>
+                                        <th>REMARK</th>
+                                        <th>RECOMMENDED BY</th>
+                                        <th>DATE & TIME</th>
+                                        <th>APPROVED BY</th>
+                                        <th>ADMIN NAME</th>
+                                        <th>DATE & TIME</th>
                                     </thead>
                                     <tbody>
                                         {% for i in req %}
@@ -132,11 +118,22 @@
                                             <td>{{i.pic_remark}}</td>
                                             <td>{{i.pic_name}}</td>
                                             <td>{{i.pic_date}}</td>
-                                            <td><a class="btn btn-primary" data-toggle="modal" data-target="#editReq{{i.id}}">Edit</a></td>
+                                            <td style="display: grid; row-gap: 2px;">
+                                                <a class="btn btn-secondary" data-toggle="modal" data-target="#editReq{{i.id}}">Edit</a>
+                                                <br> {% if i.pic_is_approve == 'Approved' %}
+                                                <a class="btn btn-primary" href="">Submit</a> {% endif %}
+                                            </td>
+                                            <td>{{i.head_is_approve}}</td>
+                                            <td>{{i.head_remark}}</td>
+                                            <td>{{i.head_name}}</td>
+                                            <td>{{i.head_date}}</td>
+                                            <td>{{i.admin_approve}}</td>
+                                            <td>{{i.admin_name}}</td>
+                                            <td>{{i.admin_date}}</td>
                                         </tr>
                                         {% endfor %}
                                         <tr>
-                                            <td colspan="8"><button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#addSub">+ Add Subject</button></td>
+                                            <td colspan="16"><button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#addSub">+ Add Subject</button></td>
                                         </tr>
                                     </tbody>
                             </table>
@@ -159,11 +156,6 @@
                         </div>
 
                         <br>
-                        <div class="mt-3">
-                            {% if student_info.addStatus != 'Wait for PIC Approval' %}
-                            <button class="button btn-navigate-form-step" type="button" step_number="2" id="next1">Next ></button> {% endif %}
-                        </div>
-
 
                         <!-- Edit Subject Modal -->
                         {% for i in req %}
@@ -260,8 +252,8 @@
                                                 <select class="custom-select" id="pic_is_approve" name="pic_is_approve">
                                                     <option value="" selected disabled hidden>Select an Option</option>
                                                     <option value="Pending">Pending</option>
-                                                    <option value="Approve">Approve</option>
-                                                    <option value="Decline">Decline</option>
+                                                    <option value="Approved">Approve</option>
+                                                    <option value="Declined">Decline</option>
                                                   </select>
                                             </div>
                                             <div class="form-group">
@@ -381,8 +373,8 @@
                                                         <select class="custom-select" id="pic_is_approve" name="pic_is_approve">
                                                             <option value="" selected disabled hidden>Select an Option</option>
                                                             <option value="Pending">Pending</option>
-                                                            <option value="Approve">Approve</option>
-                                                            <option value="Decline">Decline</option>
+                                                            <option value="Approved">Approve</option>
+                                                            <option value="Declined">Decline</option>
                                                             </select>
                                                     </div>
                                                     <div class="form-group">
@@ -405,78 +397,6 @@
                             </div>
                         </div>
                     </section>
-
-
-
-
-
-
-                    <!-- Step 2 Content, default hidden on page load. -->
-                    <section id="step-2" class="form-step d-none">
-
-
-                        <h2 class="font-normal">Wait for Department Head and Asst. Director for Academic Affairs Approval</h2>
-
-                        <div class="mt-3" style="overflow-x: scroll;">
-                            <table class="table table-bordered">
-                                <thead>
-                                    <th colspan="3" style="text-align: center;">SUBJECT TO BE TAKEN BY STUDENT</th>
-                                    <th colspan="4" style="text-align: center;">PROGRAM-IN-CHARGE</th>
-                                    <th colspan="4" style="text-align: center;">DEPARTMENT HEAD</th>
-                                    <th colspan="4" style="text-align: center;">ASSIST. DIRECTOR FOR ACADEMIC AFFAIRS</th>
-                                </thead>
-                                <thead>
-                                    <th>SUBJECT</th>
-                                    <th>SECTION</th>
-                                    <th>SCHEDULE</th>
-                                    <th>APPROVAL</th>
-                                    <th>REMARK</th>
-                                    <th>ENLISTED BY</th>
-                                    <th>DATE & TIME</th>
-                                    <th>APPROVAL</th>
-                                    <th>REMARK</th>
-                                    <th>ENDORSED BY</th>
-                                    <th>DATE & TIME</th>
-                                    <th>APPROVAL</th>
-                                    <th>REMARK</th>
-                                    <th>ADMIN NAME</th>
-                                    <th>DATE & TIME</th>
-
-                                    <tbody>
-                                        {% for i in req %}
-                                        <tr>
-                                            <td>{{i.subject.subject}}-{{i.subject.description}}</td>
-                                            <td>{{i.section}}</td>
-                                            <td>{{i.sched}}</td>
-                                            <td>{{i.pic_is_approve}}</td>
-                                            <td>{{i.pic_remark}}</td>
-                                            <td>{{i.pic_name}}</td>
-                                            <td>{{i.pic_date}}</td>
-                                            <td>{{i.head_is_approve}}</td>
-                                            <td>{{i.head_remark}}</td>
-                                            <td>{{i.head_name}}</td>
-                                            <td>{{i.head_date}}</td>
-                                            <td>{{i.admin_is_approve}}</td>
-                                            <td>{{i.admin_remark}}</td>
-                                            <td>{{i.admin_name}}</td>
-                                            <td>{{i.admin_date}}</td>
-                                        </tr>
-                                        {% endfor %}
-                                    </tbody>
-                            </table>
-                        </div>
-
-                        <div class="mt-3">
-                            {% if student_info.plot_sheet_link != '' %}
-                            <br> Plotted Schedule
-                            <img src="{{student_info.plot_sheet_link.url}}" alt="" id="viewimg" onclick="window.open('{{student_info.plot_sheet_link.url}}');" style="width:100%; height:auto"> {% endif %}
-                        </div>
-
-                        <div class="mt-3">
-                            <button class="button btn-navigate-form-step" type="button" step_number="1"> < Prev</button>
-                        </div>
-                    </section>
-
 
                 </div>
             </div>
@@ -804,29 +724,6 @@
             document.getElementById("schedule1").value = arr;
         }
     </script>
-
-
-
-    <!-- Django with Jquery para magload kapag nasaang current step na si students -->
-    {% if student_info.addStatus == 'Wait for Department Head and Asst. Director for Academic Affairs Approval' %}
-    <script>
-        document.querySelector("#step-" + 1).classList.add("d-none");
-        document.querySelector("#step-" + 2).classList.remove("d-none");
-        const formStepCircle0 = document.querySelector('li[step="' + 2 + '"]');
-        formStepCircle0.classList.remove("form-stepper-unfinished", "form-stepper-completed");
-        formStepCircle0.classList.add("form-stepper-active");
-
-        const formStepCircle1 = document.querySelector('li[step="' + 1 + '"]');
-        formStepCircle1.classList.remove("form-stepper-unfinished", "form-stepper-active");
-        formStepCircle1.classList.add("form-stepper-completed");
-        // Header Update
-        const formStepHeader = document.querySelector('li[step="' + 2 + '"]');
-        formStepHeader.classList.remove("form-stepper-unfinished", "form-stepper-completed");
-        formStepHeader.classList.add("form-stepper-active");
-    </script>
-    {% endif %}
-
-
 
 
     <!-- Multiform ni Rejay -->

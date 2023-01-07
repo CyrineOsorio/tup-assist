@@ -360,7 +360,7 @@ td {
 }
 
 .form-group6:before {
-    content: "Password (Required)";
+    content: "Password (Required) Format: TUPC-XXXXXX";
     display: flex;
     justify-content: flex-start;
     padding-left: 5px;

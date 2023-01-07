@@ -287,35 +287,35 @@ td {
 }
 
 .form-group1:before {
-    content: "First Name *";
+    content: "First Name (Required)";
     display: flex;
     justify-content: flex-start;
     padding-left: 10px;
 }
 
 .form-group1a:before {
-    content: "Last Name *";
+    content: "Last Name (Required)";
     display: flex;
     justify-content: flex-start;
     padding-left: 10px;
 }
 
 .form-group2:before {
-    content: "Email *";
+    content: "Email (Required)";
     display: flex;
     justify-content: flex-start;
     padding-left: 10px;
 }
 
 .form-group2a:before {
-    content: "Username *";
+    content: "Username (Required)";
     display: flex;
     justify-content: flex-start;
     padding-left: 10px;
 }
 
 .form-group3:before {
-    content: "User Type *";
+    content: "User Type (Required)";
     display: flex;
     justify-content: flex-start;
     padding-left: 10px;
@@ -350,14 +350,14 @@ td {
 }
 
 .form-group5:before {
-    content: "Password *";
+    content: "Password (Required)";
     display: flex;
     justify-content: flex-start;
     padding-left: 10px;
 }
 
 .form-group6:before {
-    content: "Confirm Password *";
+    content: "Confirm Password (Required)";
     display: flex;
     justify-content: flex-start;
     padding-left: 10px;

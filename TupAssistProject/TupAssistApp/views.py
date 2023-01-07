@@ -574,9 +574,6 @@ def s_adding(request):
 
 
 
-
-
-
 def upload(request):
     current_user = request.user
     if request.method == 'POST':
@@ -657,7 +654,7 @@ def s_step1_submit(request):
             return redirect('/s_adding')
         else:
             data = registration.objects.get(username=current_user.username)
-            data.addStatus = 'Wait for PIC Approval'
+            data.addStatus = "Wait for PIC, Department head and ADAA's Approval"
             data.addDate = datetime.now()
             data.save()
             messages.success(request, 'Request submitted')

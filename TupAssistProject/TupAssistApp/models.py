@@ -12,6 +12,7 @@ class registration(AbstractUser):
         ('Person-in-charge', 'Person-in-charge'), 
         ('Teacher', 'Teacher'), 
     ]
+
     department = [
         ('Department of Industrial Technology', 'Department of Industrial Technology'),
         ('Department of Industrial Education', 'Department of Industrial Education'),
@@ -19,10 +20,12 @@ class registration(AbstractUser):
         ('Department of Math and Science', 'Department of Math and Science'),
         ('Department of Liberal Arts', 'Department of Liberal Arts'),
     ]
+
     section = [
         ('A', 'A'),
         ('B', 'B'),
     ]
+    
     studID = models.BigAutoField(primary_key=True)
     course = models.CharField(max_length=255, null=True, blank=True)
     year = models.IntegerField(blank=True, null=True)

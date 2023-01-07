@@ -5,10 +5,15 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .models import *
 
+class StudentRegistration(UserCreationForm):
+    class Meta:
+        model = registration
+        fields = ['username', 'email', 'last_name', 'first_name', 'password']
+
 class HeadRegistration(UserCreationForm):
     class Meta:
         model = registration
-        fields = ['username', 'email', 'last_name', 'first_name','course', 'year', 'section', 'userType', 'department', 'studID']
+        fields = ['username', 'email', 'password1', 'password2', 'last_name', 'first_name','course', 'year', 'section', 'userType', 'department', 'studID']
     
     def __init__(self, *args, **kwargs):
         super(HeadRegistration, self).__init__(*args, **kwargs)
@@ -16,4 +21,5 @@ class HeadRegistration(UserCreationForm):
         self.fields['year'].required = False
         self.fields['section'].required = False
         self.fields['department'].required = False
+
 

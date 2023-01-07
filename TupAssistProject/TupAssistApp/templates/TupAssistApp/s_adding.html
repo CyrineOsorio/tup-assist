@@ -324,11 +324,11 @@
                                                 <td>{{i.section}}</td>
                                                 <td>{{i.sched}}</td>
                                                 <td>
-                                                    <br> {% if i.pic_is_approve == 'Pending' %}
+
                                                     <a class="btn btn-primary" data-toggle="modal" data-target="#editReq{{i.id}}">Edit</a>
-                                                    <br> {% else %}
+
                                                     <a class="btn btn-primary disabled" aria-disabled="true" disabled>Edit</a>
-                                                    <br> {% endif %}
+
                                                 </td>
                                                 <td>{{i.pic_is_approve}}</td>
                                                 <td>{{i.pic_remark}}</td>
@@ -412,54 +412,54 @@
                         <div class="form-group">
                             <label for="sched">Schedule</label>
                             <div class="d-flex">
-                                <input type="text" style="width:70%" class="form-control" id="schedule1" name="sched" value="{{i.sched}}" readonly>
-                                <a class="btn btn-primary" style="width:30%" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Edit</a>
+                                <input type="text" style="width:70%" class="form-control" id="schedule1{{i.id}}" name="sched" value="{{i.sched}}" readonly>
+                                <a class="btn btn-primary" style="width:30%" data-toggle="collapse" href="#collapseExample{{i.id}}" role="button" aria-expanded="false" aria-controls="collapseExample{{i.id}}">Edit</a>
                             </div>
 
-                            <div class="collapse" id="collapseExample">
+                            <div class="collapse" id="collapseExample{{i.id}}">
                                 <div class="card card-body">
 
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon1">Monday</span>
                                         </div>
-                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="mon_start1">
-                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="mon_end1">
+                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="mon_start1{{i.sched}}">
+                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="mon_end1{{i.sched}}">
                                     </div>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon1">Tuesday</span>
                                         </div>
-                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="tue_start1">
-                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="tue_end1">
+                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="tue_start1{{i.sched}}">
+                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="tue_end1{{i.sched}}">
                                     </div>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon1">Wednesday</span>
                                         </div>
-                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="wed_start1">
-                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="wed_end1">
+                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="wed_start1{{i.sched}}">
+                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="wed_end1{{i.sched}}">
                                     </div>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon1">Thurdsay</span>
                                         </div>
-                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="thu_start1">
-                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="thu_end1">
+                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="thu_start1{{i.sched}}">
+                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="thu_end1{{i.sched}}">
                                     </div>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon1">Friday</span>
                                         </div>
-                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="fri_start1">
-                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="fri_end1">
+                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="fri_start1{{i.sched}}">
+                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="fri_end1{{i.sched}}">
                                     </div>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon1">Saturday</span>
                                         </div>
-                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="sat_start1">
-                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="sat_end1">
+                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="sat_start1{{i.sched}}">
+                                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="sat_end1{{i.sched}}">
                                     </div>
 
                                     <!-- Submit sa editeing na schedule -->
@@ -529,69 +529,6 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Edit Schedule Modal -->
-    <div class="modal fade" id="editSub" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Schedule:</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Monday</span>
-                        </div>
-                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="mon_start">
-                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="mon_end">
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Tuesday</span>
-                        </div>
-                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="tue_start">
-                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="tue_end">
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Wednesday</span>
-                        </div>
-                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="wed_start">
-                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="wed_end">
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Thurdsay</span>
-                        </div>
-                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="thu_start">
-                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="thu_end">
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Friday</span>
-                        </div>
-                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="fri_start">
-                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="fri_end">
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Saturday</span>
-                        </div>
-                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="sat_start">
-                        <input type="time" class="form-control" aria-describedby="basic-addon1" id="sat_end">
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" onclick="myFunction()" data-dismiss="modal">Save changes</button>
                 </div>
             </div>
         </div>
@@ -835,24 +772,25 @@
     </script>
 
     <!-- Update Schedule ni Rejay -->
+    {% for i in req %}
     <script>
         function myFuction1() {
 
             alert('something');
 
-            var a = document.getElementById("mon_start1").value;
+            var a = document.getElementById("mon_start1{{i.sched}}").value;
             alert(a);
-            var b = document.getElementById("mon_end1").value;
-            var c = document.getElementById("tue_start1").value;
-            var d = document.getElementById("tue_end1").value;
-            var e = document.getElementById("wed_start1").value;
-            var f = document.getElementById("wed_end1").value;
-            var g = document.getElementById("thu_start1").value;
-            var h = document.getElementById("thu_end1").value;
-            var i = document.getElementById("fri_start1").value;
-            var j = document.getElementById("fri_end1").value;
-            var k = document.getElementById("sat_start1").value;
-            var l = document.getElementById("sat_end1").value;
+            var b = document.getElementById("mon_end1{{i.sched}}").value;
+            var c = document.getElementById("tue_start1{{i.sched}}").value;
+            var d = document.getElementById("tue_end1{{i.sched}}").value;
+            var e = document.getElementById("wed_start1{{i.sched}}").value;
+            var f = document.getElementById("wed_end1{{i.sched}}").value;
+            var g = document.getElementById("thu_start1{{i.sched}}").value;
+            var h = document.getElementById("thu_end1{{i.sched}}").value;
+            var i = document.getElementById("fri_start1{{i.sched}}").value;
+            var j = document.getElementById("fri_end1{{i.sched}}").value;
+            var k = document.getElementById("sat_start{{i.sched}}1").value;
+            var l = document.getElementById("sat_end1{{i.sched}}").value;
 
             const a12hr = new Date('1970-01-01T' + a + 'Z').toLocaleTimeString('en-US', {
                 timeZone: 'UTC',
@@ -961,9 +899,10 @@
                 arr.push('S' + ' ' + k12hr + '-' + l12hr);
             }
 
-            document.getElementById("schedule1").value = arr;
+            document.getElementById("schedule1{{i.id}}").value = arr;
         }
     </script>
+    {% endfor %}
 
 
 

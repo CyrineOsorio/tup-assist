@@ -99,6 +99,7 @@
                         <th colspan="4" style="text-align: center;">PROGRAM-IN-CHARGE</th>
                         <th colspan="4" style="text-align: center;">DEPARTMENT HEAD</th>
                         <th colspan="3" style="text-align: center;">ASSIST. DIRECTOR OF ACADEMIC AFFAIRS</th>
+                        <th colspan="1" style="text-align: center;">ADMINISTRARTOR</th>
                     </thead>
                     <thead>
                         <th>SECTION</th>
@@ -108,15 +109,16 @@
                         <th>SCHEDULE</th>
                         <th>ACTION TAKEN</th>
                         <th>REMARK</th>
-                        <th>ENLISTED BY</th>
+                        <th>REVIEWED BY</th>
                         <th>DATE & TIME</th>
                         <th>ACTION TAKEN</th>
                         <th>REMARK</th>
-                        <th>ENDORSED BY</th>
+                        <th>RECOMMENDED BY</th>
                         <th>DATE & TIME</th>
                         <th>ACTION TAKEN</th>
-                        <th>ADMIN NAME</th>
+                        <th>APPROVED BY</th>
                         <th>DATE & TIME</th>
+                        <th>ACTION TAKEN</th>
                     </thead>
                     <tbody id="table">
                         {% for i in req %}
@@ -137,6 +139,7 @@
                             <td>{{i.admin_approve}}</td>
                             <td>{{i.admin_name}}</td>
                             <td>{{i.admin_date}}</td>
+                            <td><a class="btn btn-primary">Enroll</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>

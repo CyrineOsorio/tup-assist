@@ -314,7 +314,7 @@ def adaa_profile(request):
 def adaa_adding(request):
     if request.user.is_authenticated and request.user.userType == 'Assist. Director of Academic Affairs':
         current_user = request.user = request.user
-        test = registration.objects.filter(Q(userType='Student') & (Q(addStatus='Wait for Department Head and Asst. Director for Academic Affairs Approval') | Q(addStatus='ADAA Approved')) )
+        test = registration.objects.filter(Q(userType='Student') & (~Q(addStatus='') | Q(addStatus=None)) )
         context = { 
             'test': test,
             'current_user': current_user,
@@ -327,7 +327,7 @@ def adaa_adding_view(request, studID):
     if request.user.is_authenticated and request.user.userType == 'Assist. Director of Academic Affairs':
         current_user = request.user
         data = registration.objects.get(studID=studID)
-        req = AddingReq.objects.filter(Q(studID=data.studID) & (Q(head_is_approve='Approve')))
+        req = AddingReq.objects.filter(Q(studID=data.studID) & (Q(head_is_approve='Approved')))
         print(req)
         context = { 
             'req': req,
@@ -337,18 +337,16 @@ def adaa_adding_view(request, studID):
         return render(request, 'TupAssistApp/adaa_adding_view.html', context)
     return redirect('/index')
 
-def r_edit_sub(request):
-    studID = request.POST.get('studID')
-    data = registration.objects.get(studID=studID)
-    if request.method =='POST':
-        id = request.POST.get('id')   
-        edit = AddingReq.objects.get(id=id) 
-        edit.admin_approve = request.POST.get('admin_approve')
-        edit.admin_name = request.POST.get('admin_name')
-        edit.admin_date = datetime.now()
-        edit.save()
-        messages.success(request, 'Sucessfully edited the request!')
-        return redirect('/adaa_adding_view/'+ str(data.studID))
+
+def adaa_approved_sub(request, id):
+    edit = AddingReq.objects.get(id=id) 
+    edit.admin_approve = 'Approved'
+    edit.admin_name = request.user.first_name + ' ' + request.user.last_name
+    edit.admin_date = datetime.now()
+    edit.save()
+    messages.success(request, 'Sucessfully approved the request!')
+    return redirect('/adaa_adding_view/'+ str(edit.studID_id))
+
 
 def adaa_adding_approve(request):
     studID = request.POST.get('studID')
@@ -1484,13 +1482,13 @@ def h_adding(request):
     if request.user.is_authenticated and request.user.userType == 'Department Head':
         current_user = request.user
         if current_user.department == "Department of Industrial Technology" or current_user.department == "Department of Engineering" or current_user.department == "Department of Industrial Education":
-            test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student') & (Q(addStatus='Wait for Department Head and Asst. Director for Academic Affairs Approval')) | Q(addStatus='ADAA Approved'))
+            test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student') & (~Q(addStatus='')))
             context = { 
                 'test': test,
                 'current_user': current_user
                 }
         else:
-            test = registration.objects.filter(Q(userType='Student') & (Q(addStatus='Wait for Department Head and Asst. Director for Academic Affairs Approval')))
+            test = registration.objects.filter(Q(userType='Student') & (~Q(addStatus='')))
             context = { 
                 'test': test,
                 'current_user': current_user

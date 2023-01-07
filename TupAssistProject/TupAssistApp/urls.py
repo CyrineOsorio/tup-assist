@@ -39,8 +39,7 @@ urlpatterns = [
     path('adaa_profile/', views.adaa_profile, name='adaa_profile'),
     path('adaa_adding/', views.adaa_adding, name='adaa_adding'),
     path('adaa_adding_view/<str:studID>', views.adaa_adding_view),
-    path('r_edit_sub', views.r_edit_sub, name='r_edit_sub'),
-    path('adaa_adding_approve', views.adaa_adding_approve, name='adaa_adding_approve'),
+    path('adaa_approved_sub/<int:id>', views.adaa_approved_sub),
 
     path('adaa_dropping/', views.adaa_dropping, name='adaa_dropping'),
     path('adaa_dropping_view/<str:studID>', views.adaa_dropping_view),

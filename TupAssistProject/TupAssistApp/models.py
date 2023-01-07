@@ -35,9 +35,6 @@ class registration(AbstractUser):
     addDate = models.DateTimeField(null=True, blank=True)
     dropStatus = models.CharField(max_length=255, blank=True)
     transferStatus = models.CharField(max_length=255, blank=True)
-    # add_main_dep_status = models.CharField(max_length=255, blank=True)
-    # add_dms_status = models.CharField(max_length=255, blank=True)
-    # add_dla_status = models.CharField(max_length=255, blank=True)
     
     class Meta:
         verbose_name_plural = "registration" 
@@ -66,7 +63,7 @@ class Subjects(models.Model):
     class Meta:
         verbose_name_plural = "Subjects" 
 
-# CvS file of schedule to import in Schedule Model
+# Publish web page link of schedule to import in Schedule Model
 class Schedule(models.Model):
     gSheetLink = models.CharField(max_length=500, null=True, blank=True)
     school_year = models.IntegerField(blank=True, null=True)

@@ -229,9 +229,10 @@
                                                     <!-- UPLOAD IMAGE -->
                                                     {% if current_user.plot_sheet_link != '' %}
                                                     <p style="color: black;">Plotted Schedule Upload:</p>
-                                                    <a href="{%url 'TupAssistApp:delupload1'%}"><i class="bi bi-x-circle" style="text-align: center; font-size: 50px; color: #E2435E"></i></a>
-                                                    <img src="{{current_user.plot_sheet_link.url}}" alt="" id="viewimg" onclick="window.open('{{current_user.plot_sheet_link.url}}');" style="width:100%; height:auto; margin-top: -12px;">
-
+                                                    <button type="button" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target="#addImage">
+                                                        Repload Image of Plotted Schedule
+                                                    </button>
+                                                    <img src="{{current_user.plot_sheet_link.url}}" alt="" id="viewimg" onclick="window.open('{{current_user.plot_sheet_link.url}}');" style="width:100%; height:auto;">
                                                     <br> {% elif current_user.plot_sheet_link == '' %}
                                                     <p style="color: black;">Note: Please download this <span>
                                                         <a href="{%static 'css/Sample Plotting Schedule.xlsx'%}" download target="_blank" style="color: #E2435E; font-weight: bold;">file</a>
@@ -355,8 +356,7 @@
 
 
                             <div class="mt-3">
-                                <button class="button btn-navigate-form-step" type="button" step_number="1">Prev</button> {% if current_user.addStatus != 'Wait for PIC Approval' %}
-                                <button class="button btn-navigate-form-step" type="button" step_number="3">Next</button> {% endif %}
+                                <button class="button btn-navigate-form-step" type="button" step_number="1">Prev</button>
                             </div>
                         </section>
 

@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
     <link rel="icon" href="{%static 'images/tuplogo.png'%}">
 
+    <!--DATATABLES-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
 
 </head>
 
@@ -50,7 +52,7 @@
                         <a class="nav-link" href="{%url 'TupAssistApp:p_adding'%}" id="">Adding</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="{%url 'TupAssistApp:p_requests'%}" id="requests">Requests</a>
+                        <a class="nav-link" href="{%url 'TupAssistApp:p_requests'%}" id="requests">Dropping</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{%url 'TupAssistApp:logout'%}" id="logoutbutton">Logout</a>
@@ -74,23 +76,25 @@
 
 
             <div style="overflow-x: scroll;">
-                <table class="table table-bordered">
+                <table class="table table-bordered" id="table_id" style="width: 100%;">
                     <thead>
                         <thead>
-                            <th colspan="5" style="text-align: center;">SUBJECT TO BE TAKEN BY STUDENT</th>
-                            <th colspan="5" style="text-align: center;">TEACHER</th>
-                        </thead>
-                        <thead>
-                            <th>STUDENT</th>
-                            <th>SUBJECT</th>
-                            <th>SECTION</th>
-                            <th>SCHEDULE</th>
-                            <th>REASON</th>
-                            <th>APPROVAL</th>
-                            <th>REMARK</th>
-                            <th>ENLISTED BY</th>
-                            <th>DATE & TIME</th>
-                            <th>ACTION</th>
+                            <tr>
+                                <th colspan="5" style="text-align: center;">SUBJECT TO BE TAKEN BY STUDENT</th>
+                                <th colspan="5" style="text-align: center;">TEACHER</th>
+                            </tr>
+                            <tr>
+                                <th>STUDENT</th>
+                                <th>SUBJECT</th>
+                                <th>SECTION</th>
+                                <th>SCHEDULE</th>
+                                <th>REASON</th>
+                                <th>ACTION TAKEN</th>
+                                <th>REMARK</th>
+                                <th>REVIEWED BY</th>
+                                <th>DATE & TIME</th>
+                                <th>ACTION</th>
+                            </tr>
                         </thead>
                         <tbody>
                             {% for i in req %}
@@ -181,9 +185,6 @@
                 {% endfor %}
             </div>
 
-
-
-
         </div>
     </div>
 
@@ -200,6 +201,15 @@
             text: '{{ message }}',
         })
     </script> {% endif %} {% endfor %} {% endif %}
+
+
+    <!--DATATABLES-->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#table_id').DataTable();
+        });
+    </script>
 
 
 </body>

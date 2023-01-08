@@ -620,6 +620,7 @@ def s_add_sub(request):
         subject = request.POST.get('subject')
         section = request.POST.get('section').upper()
         schedule = request.POST.get('schedule')
+        datetime1 = datetime.now()
         slots = len(AddingReq.objects.filter(Q(school_year=school_year) & Q(semester=semester) & Q(subject=subject) & Q(section=section) & Q(pic_is_approve='Approve')))
         print(slots)
         if slots == 10:
@@ -629,7 +630,7 @@ def s_add_sub(request):
             exist = len(AddingReq.objects.filter(Q(studID_id=current_user.studID) & Q(school_year=school_year) & Q(semester=semester) & Q(subject=subject)))
             print(exist)
             if exist == 0:
-                data = AddingReq.objects.create(school_year=school_year, semester=semester, studID_id= current_user.studID, subject_id=subject, section=section, sched=schedule, pic_is_approve='Pending')
+                data = AddingReq.objects.create(school_year=school_year, semester=semester, studID_id= current_user.studID, subject_id=subject, section=section, sched=schedule, req_date=datetime1, pic_is_approve='Pending')
                 data.save()
                 messages.success(request, 'Subject Added')
                 return redirect('/s_adding')
@@ -673,6 +674,7 @@ def s_edit_sub(request):
         data = AddingReq.objects.get(id=id)
         data.subject_id = request.POST.get('subject')
         data.section = request.POST.get('section').upper()
+        data.req_date = datetime.now()
 
         # Time Handling error
         a = request.POST.get('mon_start1')

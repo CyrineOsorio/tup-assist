@@ -299,7 +299,7 @@
                                 <table class="table table-bordered" id="table_id" style="width: 100%;">
                                     <thead>
                                         <tr>
-                                            <th colspan="4" style="text-align: center;">SUBJECT TO BE TAKEN BY STUDENT</th>
+                                            <th colspan="5" style="text-align: center;">SUBJECT TO BE TAKEN BY STUDENT</th>
                                             <th colspan="4" style="text-align: center;">PROGRAM-IN-CHARGE</th>
                                             <th colspan="4" style="text-align: center;">DEPARTMENT HEAD</th>
                                             <th colspan="3" style="text-align: center;">ASSISTANT DIRECTOR FOR ACADEMIC AFFAIRS</th>
@@ -308,6 +308,7 @@
                                             <th>SUBJECT</th>
                                             <th>SECTION</th>
                                             <th>SCHEDULE</th>
+                                            <th>DATE & TIME</th>
                                             <th>ACTION</th>
                                             <th>ACTION TAKEN</th>
                                             <th>REMARK</th>
@@ -329,6 +330,7 @@
                                             <td>{{i.subject.subject}}-{{i.subject.description}}</td>
                                             <td>{{i.section}}</td>
                                             <td>{{i.sched}}</td>
+                                            <td>{{i.req_date}}</td>
                                             <td>
                                                 {% if i.pic_is_approve == 'Pending' %}
                                                 <a class="btn btn-primary" data-toggle="modal" data-target="#editReq{{i.id}}">Edit</a>

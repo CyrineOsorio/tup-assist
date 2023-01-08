@@ -303,6 +303,7 @@
                                             <th colspan="4" style="text-align: center;">PROGRAM-IN-CHARGE</th>
                                             <th colspan="4" style="text-align: center;">DEPARTMENT HEAD</th>
                                             <th colspan="3" style="text-align: center;">ASSISTANT DIRECTOR FOR ACADEMIC AFFAIRS</th>
+                                            <th colspan="3" style="text-align: center;">REGISTRAR</th>
                                         </tr>
                                         <tr>
                                             <th>SUBJECT</th>
@@ -316,9 +317,12 @@
                                             <th>DATE & TIME</th>
                                             <th>ACTION TAKEN</th>
                                             <th>REMARK</th>
-                                            <th>RECOMMENDED BY</th>
+                                            <th>ENDORSED BY</th>
                                             <th>DATE & TIME</th>
                                             <th>ACTION TAKEN</th>
+                                            <th>APPROVED BY</th>
+                                            <th>DATE & TIME</th>
+                                            <th>ENLISTED BY</th>
                                             <th>APPROVED BY</th>
                                             <th>DATE & TIME</th>
                                         </tr>
@@ -350,6 +354,9 @@
                                             <td>{{i.admin_approve}}</td>
                                             <td>{{i.admin_name}}</td>
                                             <td>{{i.admin_date}}</td>
+                                            <td>{{i.reg_action}}</td>
+                                            <td>{{i.enroll_by}}</td>
+                                            <td>{{i.reg_date}}</td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>

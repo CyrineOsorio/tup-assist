@@ -329,7 +329,12 @@
                                                 <td>{{i.section}}</td>
                                                 <td>{{i.sched}}</td>
                                                 <td>
+                                                    {% if i.pic_is_approve == 'Pending' %}
                                                     <a class="btn btn-primary" data-toggle="modal" data-target="#editReq{{i.id}}">Edit</a>
+                                                    <br>{% else %}
+                                                    <a class="btn btn-primary disabled" data-toggle="modal" data-target="#editReq{{i.id}}" aria-disabled="true">Edit</a>
+                                                    <br>{% endif %}
+
                                                 </td>
                                                 <td>{{i.pic_is_approve}}</td>
                                                 <td>{{i.pic_remark}}</td>

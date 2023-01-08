@@ -117,7 +117,7 @@
                                     <td>{{i.head_name}}</td>
                                     <td>{{i.head_date}}</td>
                                     <td>
-                                        <br> {% if i.pic_is_approve == 'Approved' %}
+                                        <br> {% if i.pic_is_approve == 'Approved' or admin_approve != 'Approved' %}
                                         <a class="btn btn-primary" data-toggle="modal" data-target="#editReq{{i.id}}" id="button_h"> Edit </a>
                                         <br> {% else %}
                                         <a class="btn btn-primary disabled" data-toggle="modal" data-target="#editReq{{i.id}}" id="button_h" aria-disabled="true"> Edit </a>

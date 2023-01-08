@@ -119,7 +119,11 @@
                                             <td>{{i.pic_name}}</td>
                                             <td>{{i.pic_date}}</td>
                                             <td>
+                                                <br> {% if i.head_is_approve != 'Approved' %}
                                                 <a class="btn btn-secondary" data-toggle="modal" data-target="#editReq{{i.id}}">Edit</a>
+                                                <br> {% else %}
+                                                <a class="btn btn-secondary disabled" data-toggle="modal" data-target="#editReq{{i.id}}" id="button_h" aria-disabled="true"> Edit </a>
+                                                <br> {% endif %}
                                             </td>
                                             <td>{{i.head_is_approve}}</td>
                                             <td>{{i.head_remark}}</td>

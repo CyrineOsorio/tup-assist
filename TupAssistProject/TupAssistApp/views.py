@@ -629,7 +629,7 @@ def s_add_sub(request):
             exist = len(AddingReq.objects.filter(Q(studID_id=current_user.studID) & Q(school_year=school_year) & Q(semester=semester) & Q(subject=subject)))
             print(exist)
             if exist == 0:
-                data = AddingReq.objects.create(school_year=school_year, semester=semester, studID_id= current_user.studID, subject_id=subject, section=section, sched=schedule)
+                data = AddingReq.objects.create(school_year=school_year, semester=semester, studID_id= current_user.studID, subject_id=subject, section=section, sched=schedule, pic_is_approve='Pending')
                 data.save()
                 messages.success(request, 'Subject Added')
                 return redirect('/s_adding')

@@ -1102,8 +1102,10 @@ def s_step1_submit_t(request):
 def p_profile(request):
     if request.user.is_authenticated and request.user.userType == 'Program-in-charge':
         current_user = request.user
+        cnt = len(AddingReq.objects.filter(pic_is_approve='Pending'))
         form = PasswordChangeForm(current_user)
         context = {
+            'cnt': cnt,
             'current_user': current_user,
             'form': form
         }
@@ -1256,7 +1258,6 @@ def p_edit_sub(request):
            
               
        
-
 def p_add_sub(request):
     studID = request.POST.get('studID')
     data = registration.objects.get(studID=studID)
@@ -1302,8 +1303,10 @@ def p_step1_submit(request):
 def p_requests(request):
     if request.user.is_authenticated and request.user.userType == 'Program-in-charge':
         current_user = request.user
+        cnt = len(AddingReq.objects.filter(pic_is_approve='Pending'))
         req = DroppingReq.objects.filter(subj_teacher_name=current_user.email)
         context = {
+            'cnt': cnt,
             'current_user': current_user,
             'req': req,
         }

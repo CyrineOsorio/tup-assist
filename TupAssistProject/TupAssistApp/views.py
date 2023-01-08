@@ -1235,7 +1235,7 @@ def p_edit_sub(request):
             if exist == 0:
                 subject = request.POST.get('subject')
                 section = request.POST.get('section').upper()
-                # sched = request.POST.get('sched')
+                sched = request.POST.get('sched')
                 pic_is_approve = request.POST.get('pic_is_approve')
                 pic_remark = request.POST.get('pic_remark')
                 pic_name = request.POST.get('pic_name')
@@ -1246,76 +1246,12 @@ def p_edit_sub(request):
                 edit.pic_remark = request.POST.get('pic_remark')
                 edit.pic_name = request.POST.get('pic_name')
                 edit.pic_date = datetime.now()
-
-                # Time Handling error
-                a = request.POST.get('mon_start1')
-                b = request.POST.get('mon_end1')
-                c = request.POST.get('tue_start1')
-                d = request.POST.get('tue_end1')
-                e = request.POST.get('wed_start1')
-                f = request.POST.get('wed_end1')
-                g = request.POST.get('thu_start1')
-                h = request.POST.get('thu_end1')
-                i = request.POST.get('fri_start1')
-                j = request.POST.get('fri_end1')
-                k = request.POST.get('sat_start1')
-                l = request.POST.get('sat_end1')
-
-                arr = []
-
-                if (a == '' and b == '' and c == '' and d == '' and e == '' and f == '' and g == '' and h == '' and i == '' and j == '' and k == '' and l == '')  :
-                    edit.sched = None
-                    edit.save()
-                    messages.success(request, 'Request successfully edited!')
-                    content = 'Good day! \n\n' + str(pic_name) + " " + str(pic_is_approve) + ' your request for ' + str(subject) + ' ' + str(section) + '\n\nRemarks: ' + str(pic_remark)
-                    send_mail('ADDING OF SUBJECT - REQUEST', 
-                    content, settings.EMAIL_HOST_USER , [data.email], fail_silently=False)
-                    return redirect('/p_adding_edit/'+ str(data.studID))
-
-                elif (b < a and (a and b != '')) or (d < c and (c and d != '')) or (f < e and (e and f != '')) or (h < g and (h and g != '')) or (j < i and (i and j != '')) or (l < k  and (k and l != '')):
-                    data.save()
-                    messages.error(request, 'Wrong input of time start and end time!')
-                    return redirect('/p_adding_edit/'+ str(data.studID))
-
-                else :
-                    if b > a and (a and b != '') :
-                        # Conversion of 24 form to 12hr format
-                        a1 = datetime.strptime(a, "%H:%M")
-                        b1 = datetime.strptime(b, "%H:%M")
-                        arr.append('M'  + ' ' + a1.strftime("%I:%M %p") + '-' + b1.strftime("%I:%M %p"))
-                    if d > c and (c and d != '') :
-                        # Conversion of 24 form to 12hr format
-                        c1 = datetime.strptime(c, "%H:%M")
-                        d1 = datetime.strptime(d, "%H:%M")
-                        arr.append('T'  + ' ' + c1.strftime("%I:%M %p")  + '-' + d1.strftime("%I:%M %p")) 
-                    if f > e and (e and f != '') :
-                        # Conversion of 24 form to 12hr format
-                        e1 = datetime.strptime(e, "%H:%M")
-                        f1 = datetime.strptime(f, "%H:%M")
-                        arr.append('W'  + ' ' + e1.strftime("%I:%M %p")  + '-' + f1.strftime("%I:%M %p"))
-                    if h > g and (h and g != '') :
-                        # Conversion of 24 form to 12hr format
-                        g1 = datetime.strptime(g, "%H:%M")
-                        h1 = datetime.strptime(h, "%H:%M")
-                        arr.append('TH'  + ' ' + g1.strftime("%I:%M %p")  + '-' + h1.strftime("%I:%M %p"))    
-                    if j > i and (i and j != '') :
-                        # Conversion of 24 form to 12hr format
-                        i1 = datetime.strptime(i, "%H:%M")
-                        j1 = datetime.strptime(j, "%H:%M")
-                        arr.append('F'  + ' ' + i1.strftime("%I:%M %p")  + '-' + j1.strftime("%I:%M %p")) 
-                    if l > k and (k and l != '') :
-                        # Conversion of 24 form to 12hr format
-                        k1 = datetime.strptime(k, "%H:%M")
-                        l1 = datetime.strptime(l, "%H:%M")
-                        arr.append('S'  + ' ' + k1.strftime("%I:%M %p")  + '-' + l1.strftime("%I:%M %p"))    
-                
-                    
-                    # data.sched = str(arr)[2:-2]
-                    edit.sched = ("[{0}]".format( ', '.join(map(str, arr))))[1:-1]
-                    edit.save() 
-                    messages.success(request, 'Successfuly updated the request.')
-                    return redirect('/p_adding_edit/'+ str(data.studID))
-            
+                edit.save()
+                messages.success(request, 'Request successfully edited!')
+                content = 'Good day! \n\n' + str(pic_name) + " " + str(pic_is_approve) + ' your request for ' + str(subject) + ' ' + str(section) + '\n\nRemarks: ' + str(pic_remark)
+                send_mail('ADDING OF SUBJECT - REQUEST', 
+                content, settings.EMAIL_HOST_USER , [data.email], fail_silently=False)
+                return redirect('/p_adding_edit/'+ str(data.studID))
             else:
                 messages.error(request, 'Subject already existed.')
                 return redirect('/p_adding_edit/'+ str(data.studID))

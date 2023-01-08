@@ -671,12 +671,74 @@ def s_edit_sub(request):
     if request.method =='POST':
         id = request.POST.get('id')
         data = AddingReq.objects.get(id=id)
-        data.subject = request.POST.get('subject')
+        data.subject_id = request.POST.get('subject')
         data.section = request.POST.get('section').upper()
-        data.sched = request.POST.get('sched')
-        data.save()
-        messages.success(request, 'Successfuly updated the request.')
-        return redirect('/s_adding')
+
+        # Time Handling error
+        a = request.POST.get('mon_start1')
+        b = request.POST.get('mon_end1')
+        c = request.POST.get('tue_start1')
+        d = request.POST.get('tue_end1')
+        e = request.POST.get('wed_start1')
+        f = request.POST.get('wed_end1')
+        g = request.POST.get('thu_start1')
+        h = request.POST.get('thu_end1')
+        i = request.POST.get('fri_start1')
+        j = request.POST.get('fri_end1')
+        k = request.POST.get('sat_start1')
+        l = request.POST.get('sat_end1')
+
+        arr = []
+
+
+        if (a == '' and b == '' and c == '' and d == '' and e == '' and f == '' and g == '' and h == '' and i == '' and j == '' and k == '' and l == '')  :
+            data.sched = None
+            data.save()
+            messages.success(request, 'Successfuly updated the request.')
+            return redirect('/s_adding')
+
+        elif (b < a and (a and b != '')) or (d < c and (c and d != '')) or (f < e and (e and f != '')) or (h < g and (h and g != '')) or (j < i and (i and j != '')) or (l < k  and (k and l != '')):
+            data.save()
+            messages.error(request, 'Wrong input of time start and end time!')
+            return redirect('/s_adding')
+
+        else :
+            if b > a and (a and b != '') :
+                # Conversion of 24 form to 12hr format
+                a1 = datetime.strptime(a, "%H:%M")
+                b1 = datetime.strptime(b, "%H:%M")
+                arr.append('M'  + ' ' + a1.strftime("%I:%M %p") + '-' + b1.strftime("%I:%M %p"))
+            if d > c and (c and d != '') :
+                # Conversion of 24 form to 12hr format
+                c1 = datetime.strptime(c, "%H:%M")
+                d1 = datetime.strptime(d, "%H:%M")
+                arr.append('T'  + ' ' + c1.strftime("%I:%M %p")  + '-' + d1.strftime("%I:%M %p")) 
+            if f > e and (e and f != '') :
+                # Conversion of 24 form to 12hr format
+                e1 = datetime.strptime(e, "%H:%M")
+                f1 = datetime.strptime(f, "%H:%M")
+                arr.append('W'  + ' ' + e1.strftime("%I:%M %p")  + '-' + f1.strftime("%I:%M %p"))
+            if h > g and (h and g != '') :
+                # Conversion of 24 form to 12hr format
+                g1 = datetime.strptime(g, "%H:%M")
+                h1 = datetime.strptime(h, "%H:%M")
+                arr.append('TH'  + ' ' + g1.strftime("%I:%M %p")  + '-' + h1.strftime("%I:%M %p"))    
+            if j > i and (i and j != '') :
+                # Conversion of 24 form to 12hr format
+                i1 = datetime.strptime(i, "%H:%M")
+                j1 = datetime.strptime(j, "%H:%M")
+                arr.append('F'  + ' ' + i1.strftime("%I:%M %p")  + '-' + j1.strftime("%I:%M %p")) 
+            if l > k and (k and l != '') :
+                # Conversion of 24 form to 12hr format
+                k1 = datetime.strptime(k, "%H:%M")
+                l1 = datetime.strptime(l, "%H:%M")
+                arr.append('S'  + ' ' + k1.strftime("%I:%M %p")  + '-' + l1.strftime("%I:%M %p"))    
+        
+            data.sched = arr
+            data.save()
+            messages.success(request, 'Successfuly updated the request.')
+            return redirect('/s_adding')
+       
 
 
 def s_step2_submit(request):

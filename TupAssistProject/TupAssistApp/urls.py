@@ -109,7 +109,7 @@ urlpatterns = [
     path('s_del_sub/<str:id>', views.s_del_sub),
     path('s_step1_submit', views.s_step1_submit, name="s_step1_submit"),
     # path('s_step2_submit', views.s_step2_submit, name="s_step2_submit"),
-    # path('s_edit_sub', views.s_edit_sub, name='s_edit_sub'),
+    path('s_edit_sub', views.s_edit_sub, name='s_edit_sub'),
 
     path('s_dropping', views.s_dropping, name='s_dropping'),
     path('s_drop_sub', views.s_drop_sub, name='s_drop_sub'),

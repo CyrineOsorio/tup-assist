@@ -734,8 +734,10 @@ def s_edit_sub(request):
                 l1 = datetime.strptime(l, "%H:%M")
                 arr.append('S'  + ' ' + k1.strftime("%I:%M %p")  + '-' + l1.strftime("%I:%M %p"))    
         
-            data.sched = arr
-            data.save()
+            
+            # data.sched = str(arr)[2:-2]
+            data.sched = ("[{0}]".format( ', '.join(map(str, arr))))[1:-1]
+            data.save() 
             messages.success(request, 'Successfuly updated the request.')
             return redirect('/s_adding')
        

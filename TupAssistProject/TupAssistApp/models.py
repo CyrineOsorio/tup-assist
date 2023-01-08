@@ -82,6 +82,7 @@ class AddingReq(models.Model):
     subject = models.ForeignKey("Subjects", on_delete=models.CASCADE)
     section = models.CharField(max_length=255, null=True, blank=True)
     sched = models.CharField(max_length=255, null=True, blank=True)
+    req_date =  models.DateTimeField(null=True, blank=True)
     pic_is_approve = models.CharField(max_length=255, null=True, blank=True, default='Pending')
     pic_remark = models.CharField(max_length=255, null=True, blank=True)
     pic_name = models.CharField(max_length=255, null=True, blank=True)
@@ -93,6 +94,9 @@ class AddingReq(models.Model):
     admin_approve = models.CharField(max_length=255, null=True, blank=True)
     admin_name = models.CharField(max_length=255, null=True, blank=True)
     admin_date = models.DateTimeField(null=True, blank=True)
+    reg_action = models.CharField(max_length=255, null=True, blank=True)
+    enroll_by = models.CharField(max_length=255, null=True, blank=True)
+    reg_date = models.DateTimeField(null=True, blank=True)
     school_year = models.IntegerField(blank=True, null=True)
     semester = models.IntegerField(blank=True, null=True)
     

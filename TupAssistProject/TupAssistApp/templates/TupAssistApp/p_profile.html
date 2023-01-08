@@ -47,7 +47,7 @@
                         <a class="nav-link" href="{%url 'TupAssistApp:p_profile'%}" id="profile">Profile</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="{%url 'TupAssistApp:p_adding'%}" id="">Adding</a>
+                        <a class="nav-link" href="{%url 'TupAssistApp:p_adding'%}" id="">Adding<span>{% if cnt > 0 %}<i class="bi bi-exclamation-circle-fill" style="color:#E2435E;"></i>{%endif%}</span></a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="{%url 'TupAssistApp:p_requests'%}" id="">Dropping</a>

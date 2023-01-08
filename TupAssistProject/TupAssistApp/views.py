@@ -667,7 +667,6 @@ def s_step1_submit(request):
             messages.success(request, 'Request submitted')
             return redirect('/s_adding')
            
-        
 def s_edit_sub(request):
     if request.method =='POST':
         id = request.POST.get('id')
@@ -743,8 +742,6 @@ def s_edit_sub(request):
             messages.success(request, 'Successfuly updated the request.')
             return redirect('/s_adding')
        
-
-
 def s_step2_submit(request):
     # current_user = request.user
     # data = registration.objects.get(username=current_user.username)
@@ -1145,11 +1142,12 @@ def p_adding(request):
     if request.user.is_authenticated and request.user.userType == 'Program-in-charge':
         current_user = request.user
         test = registration.objects.filter(Q(course=current_user.course) & Q(userType='Student') & ~Q(addStatus='')).order_by('addDate')
-        print(test)
+        cnt = len(AddingReq.objects.filter(pic_is_approve='Pending'))
         cnt1 = len(AddingReq.objects.filter(Q(studID__course=current_user.course) & Q(pic_is_approve='Decline')))
         cnt2 = len(AddingReq.objects.filter(Q(studID__course=current_user.course) & Q(pic_is_approve='Pending')))
         cnt3 = len(AddingReq.objects.filter(Q(studID__course=current_user.course) & Q(pic_is_approve='Approved')))
         context = { 
+            'cnt': cnt,
             'cnt1': cnt1,
             'cnt2': cnt2,
             'cnt3': cnt3,

@@ -321,35 +321,36 @@
                                             <th>APPROVED BY</th>
                                             <th>DATE & TIME</th>
                                         </tr>
+                                    </thead>
 
-                                        <tbody>
-                                            {% for i in req %}
-                                            <tr>
-                                                <td>{{i.subject.subject}}-{{i.subject.description}}</td>
-                                                <td>{{i.section}}</td>
-                                                <td>{{i.sched}}</td>
-                                                <td>
-                                                    {% if i.pic_is_approve == 'Pending' %}
-                                                    <a class="btn btn-primary" data-toggle="modal" data-target="#editReq{{i.id}}">Edit</a>
-                                                    <br>{% else %}
-                                                    <a class="btn btn-primary disabled" data-toggle="modal" data-target="#editReq{{i.id}}" aria-disabled="true">Edit</a>
-                                                    <br>{% endif %}
+                                    <tbody>
+                                        {% for i in req %}
+                                        <tr>
+                                            <td>{{i.subject.subject}}-{{i.subject.description}}</td>
+                                            <td>{{i.section}}</td>
+                                            <td>{{i.sched}}</td>
+                                            <td>
+                                                {% if i.pic_is_approve == 'Pending' %}
+                                                <a class="btn btn-primary" data-toggle="modal" data-target="#editReq{{i.id}}">Edit</a>
+                                                <br>{% else %}
+                                                <a class="btn btn-primary disabled" data-toggle="modal" data-target="#editReq{{i.id}}" aria-disabled="true">Edit</a>
+                                                <br>{% endif %}
 
-                                                </td>
-                                                <td>{{i.pic_is_approve}}</td>
-                                                <td>{{i.pic_remark}}</td>
-                                                <td>{{i.pic_name}}</td>
-                                                <td>{{i.pic_date}}</td>
-                                                <td>{{i.head_is_approve}}</td>
-                                                <td>{{i.head_remark}}</td>
-                                                <td>{{i.head_name}}</td>
-                                                <td>{{i.head_date}}</td>
-                                                <td>{{i.admin_approve}}</td>
-                                                <td>{{i.admin_name}}</td>
-                                                <td>{{i.admin_date}}</td>
-                                            </tr>
-                                            {% endfor %}
-                                        </tbody>
+                                            </td>
+                                            <td>{{i.pic_is_approve}}</td>
+                                            <td>{{i.pic_remark}}</td>
+                                            <td>{{i.pic_name}}</td>
+                                            <td>{{i.pic_date}}</td>
+                                            <td>{{i.head_is_approve}}</td>
+                                            <td>{{i.head_remark}}</td>
+                                            <td>{{i.head_name}}</td>
+                                            <td>{{i.head_date}}</td>
+                                            <td>{{i.admin_approve}}</td>
+                                            <td>{{i.admin_name}}</td>
+                                            <td>{{i.admin_date}}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
                                 </table>
                             </div>
 

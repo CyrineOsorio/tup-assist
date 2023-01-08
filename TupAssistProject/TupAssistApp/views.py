@@ -177,7 +177,7 @@ def student_acc_cvs(request):
         for row in reader:
             try:
                 new_revo = registration.objects.create(studID=str(row[0]), username=str(row[3]), email=str(row[3]), first_name=str(row[1]), last_name=str(row[2]), userType='Student')
-                new_revo.set_password('TUPC-'+str(row[0])) #Default Password
+                new_revo.set_password(str(row[0])) #Default Password
                 new_revo.save()    
                 messages.success(request, 'Successfully import the student accounts.')
                 send_mail('TUP-Assist Account', 
@@ -186,7 +186,7 @@ def student_acc_cvs(request):
                 'TUP-Assist is a web-based system that helps students in adding, dropping, and transferring of subjects in TUP-Cavite.' + '\n\n'
                 'Attached to this are your username/email and the default password that you can change later after logging in.' + '\n\n'
                 'Username/Email: ' + str(row[3]) + '\n'
-                'Password: ' + 'TUPC-'+str(row[0]) + '\n'
+                'Password: ' + str(row[0]) + '\n'
                 'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
                 'If there are any concerns, please reply to this email.' + '\n\n'
                 'Thank you.', settings.EMAIL_HOST_USER , [str(row[3])], fail_silently=False)

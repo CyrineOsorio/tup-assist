@@ -78,46 +78,39 @@
             <div style="overflow-x: scroll;">
                 <table class="table table-bordered" id="table_id" style="width: 100%;">
                     <thead>
-                        <thead>
-                            <tr>
-                                <th colspan="5" style="text-align: center;">SUBJECT TO BE TAKEN BY STUDENT</th>
-                                <th colspan="5" style="text-align: center;">TEACHER</th>
-                            </tr>
-                            <tr>
-                                <th>STUDENT</th>
-                                <th>SUBJECT</th>
-                                <th>SECTION</th>
-                                <th>SCHEDULE</th>
-                                <th>REASON</th>
-                                <th>ACTION TAKEN</th>
-                                <th>REMARK</th>
-                                <th>REVIEWED BY</th>
-                                <th>DATE & TIME</th>
-                                <th>ACTION</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for i in req %}
-                            <tr>
-                                <td>{{i.studID}}</td>
-                                <td>{{i.subject.subject}}-{{i.subject.description}}</td>
-                                <td>{{i.section}}</td>
-                                <td>{{i.sched}}</td>
-                                <td>{{i.reason}}</td>
-                                <td>{{i.subj_teacher_approve}}</td>
-                                <td>{{i.subj_teacher_remark}}</td>
-                                <td>{{i.subj_teacher_name}}</td>
-                                <td>{{i.subj_teacher_date}}</td>
-                                <td><a class="btn btn-primary" data-toggle="modal" data-target="#editReq{{i.id}}">Edit</a></td>
-                            </tr>
-                            {% empty %}
-                            <tr>
-                                <td colspan="10" style="text-align: center; font-style: italic;">
-                                    No data
-                                </td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
+                        <tr>
+                            <th colspan="5" style="text-align: center;">SUBJECT TO BE TAKEN BY STUDENT</th>
+                            <th colspan="5" style="text-align: center;">TEACHER</th>
+                        </tr>
+                        <tr>
+                            <th>STUDENT</th>
+                            <th>SUBJECT</th>
+                            <th>SECTION</th>
+                            <th>SCHEDULE</th>
+                            <th>REASON</th>
+                            <th>ACTION TAKEN</th>
+                            <th>REMARK</th>
+                            <th>REVIEWED BY</th>
+                            <th>DATE & TIME</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in req %}
+                        <tr>
+                            <td>{{i.studID}}</td>
+                            <td>{{i.subject.subject}}-{{i.subject.description}}</td>
+                            <td>{{i.section}}</td>
+                            <td>{{i.sched}}</td>
+                            <td>{{i.reason}}</td>
+                            <td>{{i.subj_teacher_approve}}</td>
+                            <td>{{i.subj_teacher_remark}}</td>
+                            <td>{{i.subj_teacher_name}}</td>
+                            <td>{{i.subj_teacher_date}}</td>
+                            <td><a class="btn btn-primary" data-toggle="modal" data-target="#editReq{{i.id}}">Edit</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
                 </table>
             </div>
 

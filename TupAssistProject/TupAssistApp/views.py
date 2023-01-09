@@ -1565,12 +1565,10 @@ def h_adding(request):
         current_user = request.user
         if current_user.department == "Department of Industrial Technology" or current_user.department == "Department of Engineering" or current_user.department == "Department of Industrial Education":
             test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student') & (~Q(addStatus='')))
-            cnt = len(AddingReq.objects.filter(head_is_approve='Pending'))
             cnt1 = len(AddingReq.objects.filter(Q(studID__department=current_user.department) & Q(head_is_approve='Decline')))
             cnt2 = len(AddingReq.objects.filter(Q(studID__department=current_user.department) & Q(head_is_approve='Pending')))
             cnt3 = len(AddingReq.objects.filter(Q(studID__department=current_user.department) & Q(head_is_approve='Approved')))
             context = { 
-                'cnt': cnt,
                 'cnt1': cnt1,
                 'cnt2': cnt2,
                 'cnt3': cnt3,
@@ -1579,12 +1577,10 @@ def h_adding(request):
                 }
         else:
             test = registration.objects.filter(Q(userType='Student') & (~Q(addStatus='')))
-            cnt = len(AddingReq.objects.filter(head_is_approve='Pending'))
             cnt1 = len(AddingReq.objects.filter(Q(studID__department=current_user.department) & Q(head_is_approve='Decline')))
             cnt2 = len(AddingReq.objects.filter(Q(studID__department=current_user.department) & Q(head_is_approve='Pending')))
             cnt3 = len(AddingReq.objects.filter(Q(studID__department=current_user.department) & Q(head_is_approve='Approved')))
             context = { 
-                'cnt': cnt,
                 'cnt1': cnt1,
                 'cnt2': cnt2,
                 'cnt3': cnt3,

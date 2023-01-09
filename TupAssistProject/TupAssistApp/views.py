@@ -191,7 +191,7 @@ def student_acc_cvs(request):
                 'If there are any concerns, please reply to this email.' + '\n\n'
                 'Thank you.', settings.EMAIL_HOST_USER , [str(row[3])], fail_silently=False)
             except:
-                messages.error(request, 'it looks like CSV format is not match to the table.')
+                messages.error(request, 'Content of the csv does not not match to the format or accounts are already exist create another file for the additional account.')
                 return redirect('/a_account')
         return redirect('/a_account')
     return redirect('/a_account')
@@ -222,7 +222,7 @@ def staff_acc_cvs(request):
                 'If there are any concerns, please reply to this email.' + '\n\n'
                 'Thank you.', settings.EMAIL_HOST_USER , [str(row[3])], fail_silently=False)
             except:
-                messages.error(request, 'it looks like CSV format is not match to the table.')
+                messages.error(request, 'Content of the csv does not not match to the format or accounts are already exist create another file for the additional account.')
                 return redirect('/a_account')
         return redirect('/a_account')
     return redirect('/a_account')

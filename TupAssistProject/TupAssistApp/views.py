@@ -302,8 +302,9 @@ def adaa_profile(request):
     if request.user.is_authenticated and request.user.userType == 'Assist. Director of Academic Affairs':  
         current_user = request.user
         form = PasswordChangeForm(current_user)
-        # Models
+        cnt1 = len(AddingReq.objects.filter(admin_approve='Pending'))
         context = {
+            'cnt1': cnt1,
             'current_user': current_user,
             'form': form
         }
@@ -384,7 +385,9 @@ def adaa_dropping(request):
     if request.user.is_authenticated and request.user.userType == 'Assist. Director of Academic Affairs':
         current_user = request.user
         test = registration.objects.filter(Q(userType='Student') & (Q(dropStatus='Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval')) | Q(dropStatus='ADAA Approved')) 
+        cnt1 = len(AddingReq.objects.filter(admin_approve='Pending'))
         context = {
+            'cnt1': cnt1,
             'test': test,
             'current_user': current_user
             }
@@ -446,7 +449,9 @@ def adaa_transferring(request):
     if request.user.is_authenticated and request.user.userType == 'Assist. Director of Academic Affairs':
         current_user = request.user
         test = registration.objects.filter(Q(userType='Student') & (Q(transferStatus='Wait for Department Head and Assist. Director of Academic Affairs Approval')) | Q(transferStatus='ADAA Approved'))
+        cnt1 = len(AddingReq.objects.filter(admin_approve='Pending'))
         context = { 
+            'cnt1': cnt1,
             'test': test,
             'current_user': current_user
             }

@@ -50,7 +50,7 @@
                         <a class="nav-link" href="{%url 'TupAssistApp:h_subject'%}" id="">Subjects</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="{%url 'TupAssistApp:h_adding'%}" id="">Adding<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{%url 'TupAssistApp:h_adding'%}" id="" style="display: flex;">Adding<span>{% if cnt2 > 0 %}<i class="bi bi-exclamation-circle-fill" style="color:#E2435E;"></i>{%endif%}</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{%url 'TupAssistApp:h_dropping'%}" id="">Dropping</a>

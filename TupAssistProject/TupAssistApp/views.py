@@ -1384,8 +1384,9 @@ def h_profile(request):
     if request.user.is_authenticated and request.user.userType == 'Department Head':
         current_user = request.user
         form = PasswordChangeForm(current_user)
-        # Models
+        cnt2 = len(AddingReq.objects.filter(Q(studID__department=current_user.department) & Q(head_is_approve='Pending')))
         context = {
+            'cnt2': cnt2,
             'current_user': current_user,
             'form': form
         }
@@ -1426,7 +1427,9 @@ def h_subject(request):
             current_user.department1 = "DIT"
             current_user.department2 = "BET"
             subs = Subjects.objects.filter (Q(course__icontains=current_user.department1) | Q(course__icontains=current_user.department2) ) 
+            cnt2 = len(AddingReq.objects.filter(Q(studID__department=current_user.department) & Q(head_is_approve='Pending')))
             context = {
+                'cnt2': cnt2,
                 'current_user': current_user,
                 'subs': subs,
                 }
@@ -1434,7 +1437,9 @@ def h_subject(request):
             current_user.department1 = "DOE"
             current_user.department2 = "BSCE"
             subs = Subjects.objects.filter (Q(course__icontains=current_user.department1) | Q(course__icontains=current_user.department2) ) 
+            cnt2 = len(AddingReq.objects.filter(Q(studID__department=current_user.department) & Q(head_is_approve='Pending')))
             context = {
+                'cnt2': cnt2,
                 'current_user': current_user,
                 'subs': subs,
             }
@@ -1442,21 +1447,27 @@ def h_subject(request):
             current_user.department1 = "DIE"
             current_user.department2 = "BSIE-ICT"
             subs = Subjects.objects.filter (Q(course__icontains=current_user.department1) | Q(course__icontains=current_user.department2) ) 
+            cnt2 = len(AddingReq.objects.filter(Q(studID__department=current_user.department) & Q(head_is_approve='Pending')))
             context = {
+                'cnt2': cnt2,
                 'current_user': current_user,
                 'subs': subs,
             }
         elif current_user.department == "Department of Math and Science":
             current_user.department1 = "DMS"
             subs = Subjects.objects.filter (Q(course__icontains=current_user.department1)) 
+            cnt2 = len(AddingReq.objects.filter(Q(studID__department=current_user.department) & Q(head_is_approve='Pending')))
             context = {
+                'cnt2': cnt2,
                 'current_user': current_user,
                 'subs': subs,
             }
         elif current_user.department == "Department of Liberal Arts":
             current_user.department1 = "DLA"
             subs = Subjects.objects.filter (Q(course__icontains=current_user.department1)) 
+            cnt2 = len(AddingReq.objects.filter(Q(studID__department=current_user.department) & Q(head_is_approve='Pending')))
             context = {
+                'cnt2': cnt2,
                 'current_user': current_user,
                 'subs': subs,
             }
@@ -1683,13 +1694,17 @@ def h_dropping(request):
         current_user = request.user
         if current_user.department == "Department of Industrial Technology" or current_user.department == "Department of Engineering" or current_user.department == "Department of Industrial Education":
             test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student') & (Q(dropStatus='Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval')) | (Q(dropStatus='ADAA Approved')))
+            cnt2 = len(AddingReq.objects.filter(Q(studID__department=current_user.department) & Q(head_is_approve='Pending')))
             context = { 
+                'cnt2': cnt2,
                 'test': test,
                 'current_user': current_user
                 }
         else:
             test = registration.objects.filter( Q(userType='Student') & (Q(dropStatus='Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval')) | (Q(dropStatus='ADAA Approved')))
+            cnt2 = len(AddingReq.objects.filter(Q(studID__department=current_user.department) & Q(head_is_approve='Pending')))
             context = { 
+                'cnt2': cnt2,
                 'test': test,
                 'current_user': current_user
                 }
@@ -1783,13 +1798,17 @@ def h_transferring(request):
         current_user = request.user
         if current_user.department == "Department of Industrial Technology" or current_user.department == "Department of Engineering" or current_user.department == "Department of Industrial Education":
             test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student') & (Q(transferStatus='Wait for Department Head and Asst. Director for Academic Affairs Approval')) | Q(transferStatus='ADAA Approved'))
+            cnt2 = len(AddingReq.objects.filter(Q(studID__department=current_user.department) & Q(head_is_approve='Pending')))
             context = { 
+                'cnt2': cnt2,
                 'test': test,
                 'current_user': current_user
                 }
         else:
             test = registration.objects.filter(Q(userType='Student') & (Q(transferStatus='Wait for Department Head and Asst. Director for Academic Affairs Approval')) | Q(transferStatus='ADAA Approved'))
+            cnt2 = len(AddingReq.objects.filter(Q(studID__department=current_user.department) & Q(head_is_approve='Pending')))
             context = { 
+                'cnt2': cnt2,
                 'test': test,
                 'current_user': current_user
                 }

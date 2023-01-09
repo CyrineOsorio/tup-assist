@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TUPC Administration: Add Subject</title>
+    <title>TUPC Department Head: Add Subject</title>
 
 
 
@@ -42,7 +42,7 @@
             <form class="d-flex">
                 <ul class="navbar-nav mr-auto" id="center">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{%url 'TupAssistApp:h_adding'%}" id="">Adding<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{%url 'TupAssistApp:h_adding'%}" id="" style="display: flex;">Adding<span>{% if cnt2 > 0 %}<i class="bi bi-exclamation-circle-fill" style="color:#E2435E;"></i>{%endif%}</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{%url 'TupAssistApp:h_dropping'%}" id="">Dropping</a>

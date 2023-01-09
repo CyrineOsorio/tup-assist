@@ -75,20 +75,10 @@
         </div>
 
         <div class="content">
-            <div class="add-request-label">
-                <p>ADD SUBJECT REQUESTS:</p>
-            </div>
 
-            <div class="filter">
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-                <div class="row">
-                    <div class="col">
-                        <input type="text" class="form-control" name="program" id="program" placeholder="Search...">
-                    </div>
-                    <div class="col">
-                        <input type="button" class="btn btn-primary" value="Generate Report" id="btPrint" onclick="createPDF()">
-                    </div>
-                </div>
+            <div class="add-request-label" style="display: flex; justify-content: space-between; padding-bottom: 20px;">
+                <p style="font-weight:bold">ADD SUBJECT REQUESTS:</p>
+                <input type="button" class="btn btn-primary" value="Generate Report" id="btPrint" onclick="createPDF()">
             </div>
 
 

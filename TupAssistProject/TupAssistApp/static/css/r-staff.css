@@ -293,42 +293,42 @@ td {
 }
 
 .form-group1:before {
-    content: "First Name (Required)";
+    content: "First Name: (Required)";
     display: flex;
     justify-content: flex-start;
     padding-left: 5px;
 }
 
 .form-group1a:before {
-    content: "Last Name (Required)";
+    content: "Last Name: (Required)";
     display: flex;
     justify-content: flex-start;
     padding-left: 5px;
 }
 
 .form-group2:before {
-    content: "Email (Required)";
+    content: "Email: (Required)";
     display: flex;
     justify-content: flex-start;
     padding-left: 5px;
 }
 
 .form-group2a:before {
-    content: "Username (Required)";
+    content: "Username: (Required)";
     display: flex;
     justify-content: flex-start;
     padding-left: 5px;
 }
 
 .form-group3:before {
-    content: "User Type (Required)";
+    content: "User Type: (Required)";
     display: flex;
     justify-content: flex-start;
     padding-left: 5px;
 }
 
 .form-group3a:before {
-    content: "Department";
+    content: "Department:";
     display: flex;
     justify-content: flex-start;
     padding-left: 5px;
@@ -342,28 +342,28 @@ td {
 }
 
 .form-group4a:before {
-    content: "Year";
+    content: "Year: Ex. 1";
     display: flex;
     justify-content: flex-start;
     padding-left: 5px;
 }
 
 .form-group4b:before {
-    content: "Section";
+    content: "Section: Ex. A";
     display: flex;
     justify-content: flex-start;
     padding-left: 5px;
 }
 
 .form-group5:before {
-    content: "Student Number";
+    content: "Student Number Format: TUPC-XX-XXXX";
     display: flex;
     justify-content: flex-start;
     padding-left: 5px;
 }
 
 .form-group6:before {
-    content: "Password (Required) Format: TUPC-XXXXXX";
+    content: "Password (Required) Format: TUPC-XX-XXXX";
     display: flex;
     justify-content: flex-start;
     padding-left: 5px;

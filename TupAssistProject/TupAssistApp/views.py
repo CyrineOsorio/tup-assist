@@ -1246,12 +1246,21 @@ def p_edit_sub(request):
                 edit.pic_remark = request.POST.get('pic_remark')
                 edit.pic_name = request.POST.get('pic_name')
                 edit.pic_date = datetime.now()
-                edit.save()
-                messages.success(request, 'Request successfully edited!')
-                content = 'Good day! \n\n' + str(pic_name) + " " + str(pic_is_approve) + ' your request for ' + str(subject) + ' ' + str(section) + '\n\nRemarks: ' + str(pic_remark)
-                send_mail('ADDING OF SUBJECT - REQUEST', 
-                content, settings.EMAIL_HOST_USER , [data.email], fail_silently=False)
-                return redirect('/p_adding_edit/'+ str(data.studID))
+                if request.POST.get('pic_is_approve') == 'Approved':
+                    edit.head_is_approve = 'Pending'
+                    edit.save()
+                    messages.success(request, 'Request successfully edited!')
+                    content = 'Good day! \n\n' + str(pic_name) + " " + str(pic_is_approve) + ' your request for ' + str(subject) + ' ' + str(section) + '\n\nRemarks: ' + str(pic_remark)
+                    send_mail('ADDING OF SUBJECT - REQUEST', 
+                    content, settings.EMAIL_HOST_USER , [data.email], fail_silently=False)
+                    return redirect('/p_adding_edit/'+ str(data.studID))
+                else:
+                    edit.save()
+                    messages.success(request, 'Request successfully edited!')
+                    content = 'Good day! \n\n' + str(pic_name) + " " + str(pic_is_approve) + ' your request for ' + str(subject) + ' ' + str(section) + '\n\nRemarks: ' + str(pic_remark)
+                    send_mail('ADDING OF SUBJECT - REQUEST', 
+                    content, settings.EMAIL_HOST_USER , [data.email], fail_silently=False)
+                    return redirect('/p_adding_edit/'+ str(data.studID))
             else:
                 messages.error(request, 'Subject already existed.')
                 return redirect('/p_adding_edit/'+ str(data.studID))

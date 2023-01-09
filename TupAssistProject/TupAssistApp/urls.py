@@ -60,6 +60,7 @@ urlpatterns = [
     path('changeheadinfo', views.changeheadinfo, name='changeheadinfo'),
 
     path('h_subject/', views.h_subject, name='h_subject'),
+    path('h_logs/', views.h_logs, name='h_logs'),
     path('sub_cvs', views.sub_cvs, name='sub_cvs'),
 
     path('h-adding/', views.h_adding, name='h_adding'),

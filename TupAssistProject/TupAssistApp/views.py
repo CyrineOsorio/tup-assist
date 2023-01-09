@@ -1597,6 +1597,21 @@ def sub_cvs(request):
 
     return redirect('/h_subject')
 
+
+@login_required(login_url='/index')
+def h_logs(request):
+    if request.user.is_authenticated and request.user.userType == 'Department Head':
+        current_user = request.user
+        staff = registration.objects.filter(Q(userType='Program-in-Charge') & Q(department=request.user.department))
+        context = {
+            'current_user': current_user,
+            'staff': staff
+        }
+        return render(request, 'TupAssistApp/h_logs.html', context)
+    return redirect('/index')
+
+
+
 @login_required(login_url='/index')
 def h_adding(request):
     if request.user.is_authenticated and request.user.userType == 'Department Head':

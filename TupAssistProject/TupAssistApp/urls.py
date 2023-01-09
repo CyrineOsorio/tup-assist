@@ -30,6 +30,7 @@ urlpatterns = [
     path('a_staff_create', views.a_staff_create, name='a_staff_create'),
 
     path('a_adding/', views.a_adding, name='a_adding'),
+    path('a_approved_sub/<int:id>', views.a_approved_sub),
     path('a_dropping/', views.a_dropping, name='a_dropping'),
     path('a_transferring/', views.a_transferring, name='a_transferring'),
 

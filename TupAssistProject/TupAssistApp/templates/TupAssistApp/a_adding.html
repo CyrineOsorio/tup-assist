@@ -136,7 +136,11 @@
                             <td>{{i.admin_name}}</td>
                             <td>{{i.admin_date}}</td>
                             <td>
-                                <a class="btn btn-primary">Enroll</a>
+                                <br> {% if i.reg_action == 'Pending' %}
+                                <a class="btn btn-primary" href="/a_approved_sub/{{i.id}}">Enroll</a>
+                                <br> {% else %}
+                                <a class="btn btn-primary disabled" aria-disabled="true">Enroll</a>
+                                <br> {% endif %}
                             </td>
                         </tr>
                         {% endfor %}
@@ -206,7 +210,14 @@
         });
     </script>
 
-
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {% if messages %} {% for message in messages %} {% if message.tags %}
+    <script>
+        Swal.fire({
+            icon: '{{ messages }}',
+            text: '{{ message }}',
+        })
+    </script> {% endif %} {% endfor %} {% endif %}
 
 
 </body>

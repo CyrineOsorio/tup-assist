@@ -661,7 +661,7 @@ def s_step1_submit(request):
             return redirect('/s_adding')
         else:
             data = registration.objects.get(username=current_user.username)
-            data.addStatus = "Wait for PIC, Department head and ADAA's Approval"
+            data.addStatus = "Wait for PIC, Department head, ADAA and Registrar's Action"
             data.addDate = datetime.now()
             data.save()
             messages.success(request, 'Request submitted')

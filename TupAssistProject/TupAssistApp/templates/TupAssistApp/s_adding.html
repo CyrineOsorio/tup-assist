@@ -234,7 +234,7 @@
                                                     <p style="color: black;">Plotted Schedule Upload:</p>
 
                                                     <button type="button" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target="#addImage">
-                                                        Repload Image of Plotted Schedule
+                                                        Reupload Image of Plotted Schedule
                                                     </button>
                                                     <img src="{{current_user.plot_sheet_link.url}}" alt="" id="viewimg" onclick="window.open('{{current_user.plot_sheet_link.url}}');" style="width:100%; height:auto;">
                                                     <br> {% elif current_user.plot_sheet_link == '' %}
@@ -370,7 +370,7 @@
                                     <a href="{%static 'css/Sample Plotting Schedule.xlsx'%}" download target="_blank" style="color: #E2435E; font-weight: bold;">file</a>
                                 </span>to use as a format for plotting of your schedule.</p>
                                 <button type="button" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target="#addImage">
-                                    Repload Image of Plotted Schedule
+                                    Reupload Image of Plotted Schedule
                                 </button>
                                 <img src="{{current_user.plot_sheet_link.url}}" alt="" id="viewimg" onclick="window.open('{{current_user.plot_sheet_link.url}}');" style="width:100%; height:auto"> {% endif %}
                             </div>

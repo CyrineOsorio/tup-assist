@@ -171,7 +171,7 @@ def student_acc_cvs(request):
         # junk.delete()
         form = StudentRegistration(request.POST)
         studcvsfile = request.FILES["studcvsfile"]
-        decoded_file = studcvsfile.read().decode('utf-8').splitlines()
+        decoded_file = studcvsfile.read().decode('utf-8').splitlines()[1:]
         reader = csv.reader(decoded_file)
         print(reader)
         for row in reader:
@@ -202,7 +202,7 @@ def staff_acc_cvs(request):
         # junk.delete()
         form = StudentRegistration(request.POST)
         staffcvsfile = request.FILES["staffcvsfile"]
-        decoded_file = staffcvsfile.read().decode('utf-8').splitlines()
+        decoded_file = staffcvsfile.read().decode('utf-8').splitlines()[1:]
         reader = csv.reader(decoded_file)
         print(reader)
         for row in reader:

@@ -332,7 +332,7 @@ def adaa_adding_view(request, studID):
     if request.user.is_authenticated and request.user.userType == 'Assist. Director of Academic Affairs':
         current_user = request.user
         data = registration.objects.get(studID=studID)
-        req = AddingReq.objects.filter(Q(studID=data.studID) & (Q(head_is_approve='Approved')))
+        req = AddingReq.objects.filter(Q(studID=data.studID) & (Q(admin_approve='Pending') | (Q(admin_approve='Approved')) )).order_by(('-admin_date'))
         print(req)
         context = { 
             'req': req,
@@ -348,6 +348,7 @@ def adaa_approved_sub(request, id):
     edit.admin_approve = 'Approved'
     edit.admin_name = request.user.first_name + ' ' + request.user.last_name
     edit.admin_date = datetime.now()
+    edit.reg_action = 'Pending'
     edit.save()
     messages.success(request, 'Sucessfully approved the request!')
     # Email

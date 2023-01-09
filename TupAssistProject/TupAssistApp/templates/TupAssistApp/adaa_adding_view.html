@@ -68,30 +68,36 @@
                 </div>
 
                 <div style="overflow-x: scroll;">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered" id="table_id1" style="width: 100%;">
                         <thead>
-                            <th colspan="4" style="text-align: center;">SUBJECT TO BE TAKEN BY STUDENT</th>
-                            <th colspan="4" style="text-align: center;">PROGRAM-IN-CHARGE</th>
-                            <th colspan="4" style="text-align: center;">DEPARTMENT HEAD</th>
-                            <th colspan="4" style="text-align: center;">ASSIST. DIRECTOR FOR ACADEMIC AFFAIRS</th>
-                        </thead>
-                        <thead>
-                            <th>SUBJECT</th>
-                            <th>SECTION</th>
-                            <th>SCHEDULE</th>
-                            <th>DATE & TIME</th>
-                            <th>ACTION TAKEN</th>
-                            <th>REMARK</th>
-                            <th>REVIEWED BY</th>
-                            <th>DATE & TIME</th>
-                            <th>ACTION TAKEN</th>
-                            <th>REMARK</th>
-                            <th>RECOMMENDED BY</th>
-                            <th>DATE & TIME</th>
-                            <th>ACTION TAKEN</th>
-                            <th>APPROVED BY</th>
-                            <th>DATE & TIME</th>
-                            <th>ACTION</th>
+                            <tr>
+                                <th colspan="4" style="text-align: center;">SUBJECT TO BE TAKEN BY STUDENT</th>
+                                <th colspan="4" style="text-align: center;">PROGRAM-IN-CHARGE</th>
+                                <th colspan="4" style="text-align: center;">DEPARTMENT HEAD</th>
+                                <th colspan="4" style="text-align: center;">ASSIST. DIRECTOR FOR ACADEMIC AFFAIRS</th>
+                                <th colspan="3" style="text-align: center;">REGISTRAR</th>
+                            </tr>
+                            <tr>
+                                <th>SUBJECT</th>
+                                <th>SECTION</th>
+                                <th>SCHEDULE</th>
+                                <th>DATE & TIME</th>
+                                <th>ACTION TAKEN</th>
+                                <th>REMARK</th>
+                                <th>REVIEWED BY</th>
+                                <th>DATE & TIME</th>
+                                <th>ACTION TAKEN</th>
+                                <th>REMARK</th>
+                                <th>RECOMMENDED BY</th>
+                                <th>DATE & TIME</th>
+                                <th>ACTION TAKEN</th>
+                                <th>APPROVED BY</th>
+                                <th>DATE & TIME</th>
+                                <th>ACTION</th>
+                                <th>ACTION TAKEN</th>
+                                <th>ENLISTED BY</th>
+                                <th>DATE & TIME</th>
+                            </tr>
                         </thead>
 
                         <tbody>
@@ -119,14 +125,9 @@
                                     <a class="btn btn-primary disabled" href="/adaa_approved_sub/{{id}}" aria-disabled="true" disabled>Approve</a>
                                     <br> {% endif %}
                                 </td>
-                            </tr>
-                            {% empty %}
-                            <tr>
-                                <tr>
-                                    <td colspan="15" style="text-align: center; font-style: italic;">
-                                        Not yet approved by the Department head/s
-                                    </td>
-                                </tr>
+                                <td>{{i.reg_action}}</td>
+                                <td>{{i.enroll_by}}</td>
+                                <td>{{i.reg_date}}</td>
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -232,6 +233,15 @@
             text: '{{ message }}',
         })
     </script> {% endif %} {% endfor %} {% endif %}
+
+
+    <!--DATATABLES-->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#table_id1').DataTable();
+        });
+    </script>
 
 
 </body>

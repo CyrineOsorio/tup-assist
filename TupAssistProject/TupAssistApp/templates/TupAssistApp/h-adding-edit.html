@@ -28,6 +28,9 @@
     <!--ICONS-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 
+    <!--DATATABLES-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+
 </head>
 
 <body>
@@ -77,31 +80,36 @@
                     </div>
 
                     <div style="overflow-x: scroll;">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered" id="table_id" style="width: 100%;">
                             <thead>
-                                <th colspan="4" style="text-align: center;">SUBJECT TO BE TAKEN BY STUDENT</th>
-                                <th colspan="4" style="text-align: center;">PROGRAM-IN-CHARGE</th>
-                                <th colspan="5" style="text-align: center;">DEPARTMENT HEAD</th>
-                                <th colspan="3" style="text-align: center;">ASSIST. DIRECTOR FOR ACADEMIC AFFAIRS</th>
-                                <th colspan="3" style="text-align: center;">REGISTRAR</th>
-                            </thead>
-                            <thead>
-                                <th>SUBJECT</th>
-                                <th>SECTION</th>
-                                <th>SCHEDULE</th>
-                                <th>DATE & TIME</th>
-                                <th>ACTION TAKEN</th>
-                                <th>REMARK</th>
-                                <th>ENLISTED BY</th>
-                                <th>DATE & TIME</th>
-                                <th>ACTION TAKEN</th>
-                                <th>REMARK</th>
-                                <th>ENDORSED BY</th>
-                                <th>DATE & TIME</th>
-                                <th>ACTION</th>
-                                <th>ACTION TAKEN</th>
-                                <th>ADMIN</th>
-                                <th>DATE & TIME</th>
+                                <tr>
+                                    <th colspan="4" style="text-align: center;">SUBJECT TO BE TAKEN BY STUDENT</th>
+                                    <th colspan="4" style="text-align: center;">PROGRAM-IN-CHARGE</th>
+                                    <th colspan="5" style="text-align: center;">DEPARTMENT HEAD</th>
+                                    <th colspan="3" style="text-align: center;">ASSIST. DIRECTOR FOR ACADEMIC AFFAIRS</th>
+                                    <th colspan="3" style="text-align: center;">REGISTRAR</th>
+                                </tr>
+                                <tr>
+                                    <th>SUBJECT</th>
+                                    <th>SECTION</th>
+                                    <th>SCHEDULE</th>
+                                    <th>DATE & TIME</th>
+                                    <th>ACTION TAKEN</th>
+                                    <th>REMARK</th>
+                                    <th>REVIEWED BY</th>
+                                    <th>DATE & TIME</th>
+                                    <th>ACTION TAKEN</th>
+                                    <th>REMARK</th>
+                                    <th>ENDORSED BY</th>
+                                    <th>DATE & TIME</th>
+                                    <th>ACTION</th>
+                                    <th>ACTION TAKEN</th>
+                                    <th>APPROVED BY</th>
+                                    <th>DATE & TIME</th>
+                                    <th>ACTION TAKEN</th>
+                                    <th>ENLISTED BY</th>
+                                    <th>DATE & TIME</th>
+                                </tr>
                             </thead>
 
                             <tbody>
@@ -129,12 +137,9 @@
                                     <td>{{i.admin_approve}}</td>
                                     <td>{{i.admin_name}}</td>
                                     <td>{{i.admin_date}}</td>
-                                </tr>
-                                {% empty %}
-                                <tr>
-                                    <td colspan="16" style="text-align: center; font-style: italic;">
-                                        No request of subject for this department. But the other departments have. Disregard this request.
-                                    </td>
+                                    <td>{{i.reg_action}}</td>
+                                    <td>{{i.enroll_by}}</td>
+                                    <td>{{i.reg_date}}</td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
@@ -305,6 +310,15 @@
             text: '{{ message }}',
         })
     </script> {% endif %} {% endfor %} {% endif %}
+
+
+    <!--DATATABLES-->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#table_id').DataTable();
+        });
+    </script>
 
 </body>
 

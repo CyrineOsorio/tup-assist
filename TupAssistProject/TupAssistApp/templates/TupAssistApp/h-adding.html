@@ -6,9 +6,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TUPC Administration: Add Subject</title>
+    <title>TUPC Department Head: Add Subject</title>
 
-
+    <!-- Dashboard -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="{%static 'css/something.css'%}">
 
     <!--BOOTSTRAP-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
@@ -79,6 +81,42 @@
                 <p>ADDING SUBJECT REQUESTS:</p>
             </div>
 
+            <!-- Dashboard -->
+            <div>
+                <div class="row">
+                    <div class="col-md-4 stretch-card grid-margin">
+                        <div class="card bg-gradient-info card-img-holder text-white">
+                            <div class="card-body">
+                                <img src="{%static 'images/circle.png'%}" class="card-img-absolute" alt="circle-image" />
+                                <h4 class="font-weight-normal mb-3">Pending <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
+                                </h4>
+                                <h2 class="mb-5">{{cnt2}}</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 stretch-card grid-margin">
+                        <div class="card bg-gradient-success card-img-holder text-white">
+                            <div class="card-body">
+                                <img src="{%static 'images/circle.png'%}" class="card-img-absolute" alt="circle-image" />
+                                <h4 class="font-weight-normal mb-3">Approved <i class="mdi mdi-diamond mdi-24px float-right"></i>
+                                </h4>
+                                <h2 class="mb-5">{{cnt3}}</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 stretch-card grid-margin">
+                        <div class="card bg-gradient-danger card-img-holder text-white">
+                            <div class="card-body">
+                                <img src="{%static 'images/circle.png'%}" class="card-img-absolute" alt="circle-image" />
+                                <h4 class="font-weight-normal mb-3">Declined <i class="mdi mdi-chart-line mdi-24px float-right"></i>
+                                </h4>
+                                <h2 class="mb-5">{{cnt1}}</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             {% if current_user.department == None %}
             <div class="alert alert-danger" role="alert">
                 Notice: You can't proceed to in this Transaction if your Personal Information is not complete.
@@ -114,12 +152,6 @@
                             <td>{{e.addStatus}}</td>
                             <td class="action">
                                 <a href="/h_adding_edit/{{e.studID}}"><i class="bi bi-pencil"></i></a>
-                            </td>
-                        </tr>
-                        {% empty %}
-                        <tr>
-                            <td colspan="7" style="text-align: center; font-style: italic;">
-                                No data
                             </td>
                         </tr>
                         {% endfor %}

@@ -315,7 +315,11 @@ def adaa_adding(request):
     if request.user.is_authenticated and request.user.userType == 'Assist. Director of Academic Affairs':
         current_user = request.user = request.user
         test = registration.objects.filter(Q(userType='Student') & (~Q(addStatus='') | Q(addStatus=None)) )
-        context = { 
+        cnt1 = len(AddingReq.objects.filter(admin_approve='Pending'))
+        cnt2 = len(AddingReq.objects.filter(admin_approve='Approved'))
+        context = {
+            'cnt1': cnt1,
+            'cnt2': cnt2,
             'test': test,
             'current_user': current_user,
             }
@@ -1681,12 +1685,21 @@ def h_edit_sub(request):
         edit.head_remark = request.POST.get('head_remark')
         edit.head_name = request.POST.get('head_name')
         edit.head_date = datetime.now()
-        edit.save()
-        messages.success(request, 'Successfully edited the request!')
-        content = 'Good day! \n\n' + head_name + " " + head_is_approve + 'd' + ' your request for ' + subject + ' ' + section + '\n\nRemarks: ' + head_remark
-        send_mail('ADDING OF SUBJECT - REQUEST', 
-        content, settings.EMAIL_HOST_USER , [data.email], fail_silently=False)
-        return redirect('/h_adding_edit/'+ str(data.studID))
+        if request.POST.get('head_is_approve') == 'Approved':
+            edit.admin_approve = 'Pending'
+            edit.save()
+            messages.success(request, 'Successfully edited the request!')
+            content = 'Good day! \n\n' + head_name + " " + head_is_approve + 'd' + ' your request for ' + subject + ' ' + section + '\n\nRemarks: ' + head_remark
+            send_mail('ADDING OF SUBJECT - REQUEST', 
+            content, settings.EMAIL_HOST_USER , [data.email], fail_silently=False)
+            return redirect('/h_adding_edit/'+ str(data.studID))
+        else:
+            edit.save()
+            messages.success(request, 'Successfully edited the request!')
+            content = 'Good day! \n\n' + head_name + " " + head_is_approve + 'd' + ' your request for ' + subject + ' ' + section + '\n\nRemarks: ' + head_remark
+            send_mail('ADDING OF SUBJECT - REQUEST', 
+            content, settings.EMAIL_HOST_USER , [data.email], fail_silently=False)
+            return redirect('/h_adding_edit/'+ str(data.studID))
 
 @login_required(login_url='/index')        
 def h_dropping(request):

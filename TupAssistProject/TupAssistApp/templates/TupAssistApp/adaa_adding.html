@@ -108,7 +108,7 @@
 
             <div style="overflow-x:auto;" id="table">
                 <!--HTML code to display data in tabular format-->
-                <table class="table table-striped" id="table_id" style="width: 100%;">
+                <table id="table_id" style="width: 100%;">
                     <thead>
                         <th>STUDENT ID</th>
                         <th>NAME</th>
@@ -129,12 +129,6 @@
                             <td style="text-align: center;">{{e.year}}{{e.section}}</td>
                             <td>{{e.addStatus}}</td>
                             <td class="action"><a href="/adaa_adding_view/{{e.studID}}" style="text-align: center;"><i class="bi bi-pencil"></i></a></td>
-                        </tr>
-                        {% empty %}
-                        <tr>
-                            <td colspan="7" style="text-align: center; font-style: italic;">
-                                No data
-                            </td>
                         </tr>
                         {% endfor %}
                     </tbody>

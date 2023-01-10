@@ -474,11 +474,22 @@ def adaa_dropping_approve(request):
             return redirect('/adaa_dropping_view/'+ str(data.studID))
     return redirect('/index')     
 
+def adaa_approved_sub1(request, id):
+    edit = TransferringReq.objects.get(id=id) 
+    edit.admin_approve = 'Approved'
+    edit.admin_name = request.user.first_name + ' ' + request.user.last_name
+    edit.admin_date = datetime.now()
+    edit.reg_action = 'Pending'
+    edit.save()
+    messages.success(request, 'Sucessfully approved the request!')
+    return redirect('/adaa_transferring_view/'+ str(edit.studID_id))
+
+
 @login_required(login_url='/index')
 def adaa_transferring(request):
     if request.user.is_authenticated and request.user.userType == 'Assist. Director of Academic Affairs':
         current_user = request.user
-        test = registration.objects.filter(Q(userType='Student') & (Q(transferStatus="Wait for Department Head, and ADDA and Registrar's Action")) | Q(transferStatus='ADAA Approved'))
+        test = registration.objects.filter(Q(userType='Student') & (Q(transferStatus="Wait for Department head, and ADDA, and Registrar's Action")) | Q(transferStatus='ADAA Approved'))
         cnt1 = len(AddingReq.objects.filter(admin_approve='Pending'))
         context = { 
             'cnt1': cnt1,
@@ -493,7 +504,7 @@ def adaa_transferring_view(request, studID):
     if request.user.is_authenticated and request.user.userType == 'Assist. Director of Academic Affairs':
         current_user = request.user
         data = registration.objects.get(studID=studID)
-        req = TransferringReq.objects.filter(studID=data.studID)
+        req = TransferringReq.objects.filter(Q(studID=data.studID) & Q(head_is_approve='Approved'))
         context = { 
             'req': req,
             'current_user': current_user,
@@ -1927,6 +1938,15 @@ def h_edit_sub2(request):
         edit.head_remark = request.POST.get('head_remark')
         edit.head_name = request.POST.get('head_name')
         edit.head_date = datetime.now()
-        edit.save()
-        messages.success(request, 'Successfully edited the request!')
-        return redirect('/h_transferring_edit/'+ str(data.studID))
+        if request.POST.get('head_is_approve') == 'Approved':
+            edit.admin_approve = 'Pending'
+            edit.save()
+            messages.success(request, 'Successfully edited the request!')
+            return redirect('/h_transferring_edit/'+ str(data.studID))
+        else:
+            edit.save()
+            messages.success(request, 'Successfully edited the request!')
+            edit.save()
+            messages.success(request, 'Successfully edited the request!')
+            return redirect('/h_transferring_edit/'+ str(data.studID))
+        

@@ -51,6 +51,7 @@ urlpatterns = [
     path('adaa_transferring/', views.adaa_transferring, name='adaa_transferring'),
     path('adaa_transferring_view/<str:studID>', views.adaa_transferring_view),
     path('adaa_transferring_approve', views.adaa_transferring_approve, name='adaa_transferring_approve'),
+    path('adaa_approved_sub1/<int:id>', views.adaa_approved_sub1),
 
    
     

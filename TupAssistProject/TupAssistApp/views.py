@@ -1129,7 +1129,7 @@ def s_step1_submit_t(request):
             return redirect('/s_transferring')    
         else: 
             data = registration.objects.get(username=current_user.username)
-            data.transferStatus = "Wait for Department Head, and ADDA and Registrar's Action"
+            data.transferStatus = "Wait for Department head, and ADDA, and Registrar's Action"
             data.save()
             messages.success(request, 'Request submitted')
             return redirect('/s_transferring')
@@ -1338,7 +1338,7 @@ def p_step1_submit(request):
     studID = request.POST.get('studID')
     if request.method =='POST':
         data = registration.objects.get(studID=studID)
-        data.addStatus = "Wait for Department Head, and ADDA and Registrar's Action"
+        data.addStatus = "Wait for Department head, and ADDA, and Registrar's Action"
         data.save()
         return redirect('/p_adding_edit/'+ str(data.studID))
 
@@ -1834,7 +1834,7 @@ def h_transferring(request):
     if request.user.is_authenticated and request.user.userType == 'Department Head':
         current_user = request.user
         if current_user.department == "Department of Industrial Technology" or current_user.department == "Department of Engineering" or current_user.department == "Department of Industrial Education":
-            test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student') & (Q(transferStatus="Wait for Department Head, and ADDA and Registrar's Action")) | Q(transferStatus='ADAA Approved'))
+            test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student') & (Q(transferStatus="Wait for Department head, and ADDA, and Registrar's Action")) | Q(transferStatus='ADAA Approved'))
             cnt2 = len(AddingReq.objects.filter(Q(studID__department=current_user.department) & Q(head_is_approve='Pending')))
             context = { 
                 'cnt2': cnt2,
@@ -1842,7 +1842,7 @@ def h_transferring(request):
                 'current_user': current_user
                 }
         else:
-            test = registration.objects.filter(Q(userType='Student') & (Q(transferStatus="Wait for Department Head, and ADDA and Registrar's Action")) | Q(transferStatus='ADAA Approved'))
+            test = registration.objects.filter(Q(userType='Student') & (Q(transferStatus="Wait for Department head, and ADDA, and Registrar's Action")) | Q(transferStatus='ADAA Approved'))
             cnt2 = len(AddingReq.objects.filter(Q(studID__department=current_user.department) & Q(head_is_approve='Pending')))
             context = { 
                 'cnt2': cnt2,

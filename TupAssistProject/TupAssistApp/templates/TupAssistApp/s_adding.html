@@ -711,6 +711,8 @@
     </script>
 
     <!-- ADD SCHEDULE NI REJAY -->
+    <!-- Messages -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         function myFunction() {
 
@@ -814,35 +816,41 @@
 
             var arr = [];
 
-            // If the checkbox is checked, display the output text
-            if (a && b != '') {
-                arr.push('M' + ' ' + a12hr + '-' + b12hr);
-            }
-            if (c && d != '') {
-                arr.push('T' + ' ' + c12hr + '-' + d12hr);
-            }
-            if (e && f != '') {
-                arr.push('W' + ' ' + e12hr + '-' + f12hr);
-            }
-            if (g && h != '') {
-                arr.push('TH' + ' ' + g12hr + '-' + h12hr);
-            }
-            if (i && j != '') {
-                arr.push('F' + ' ' + i12hr + '-' + j12hr);
-            }
-            if (k && l != '') {
-                arr.push('S' + ' ' + k12hr + '-' + l12hr);
+            // Time Handling error
+            if ((b <= a && (a && b != '')) || (d <= c && (c && d != '')) || (f <= e & (e & f != '')) || (h <= g & (h & g != '')) || (j <= i & (i & j != '')) || (l <= k & (k & l != ''))) {
+                Swal.fire({
+                    text: 'Wrong input of time start and end time!',
+                })
+            } else {
+
+                if (a && b != '') {
+                    arr.push('M' + ' ' + a12hr + '-' + b12hr);
+                }
+                if (c && d != '') {
+                    arr.push('T' + ' ' + c12hr + '-' + d12hr);
+                }
+                if (e && f != '') {
+                    arr.push('W' + ' ' + e12hr + '-' + f12hr);
+                }
+                if (g && h != '') {
+                    arr.push('TH' + ' ' + g12hr + '-' + h12hr);
+                }
+                if (i && j != '') {
+                    arr.push('F' + ' ' + i12hr + '-' + j12hr);
+                }
+                if (k && l != '') {
+                    arr.push('S' + ' ' + k12hr + '-' + l12hr);
+                }
+
+                document.getElementById("schedule").value = arr;
+                // schedule.value = arr;
+
             }
 
-            document.getElementById("schedule").value = arr;
-            // schedule.value = arr;
+
 
         }
     </script>
-
-    <!-- TIME HANDLING ERROR -->
-
-
 
 
     <!-- Django with Jquery para magload kapag nasaang current step na si students -->

@@ -430,7 +430,7 @@ def adaa_adding_approve(request):
 def adaa_dropping(request):
     if request.user.is_authenticated and request.user.userType == 'Assist. Director of Academic Affairs':
         current_user = request.user
-        test = registration.objects.filter(Q(userType='Student') & (Q(dropStatus='Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval')) | Q(dropStatus='ADAA Approved')) 
+        test = registration.objects.filter(Q(userType='Student') & ~Q(dropStatus='')) 
         cnt1 = len(AddingReq.objects.filter(admin_approve='Pending'))
         context = {
             'cnt1': cnt1,

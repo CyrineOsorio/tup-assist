@@ -1510,10 +1510,9 @@ def sub_cvs(request):
             reader = csv.reader(decoded_file)
             for row in reader:
                 try:
-                    if str(row[4]) == "" or str(row[4]) != "":
-                        new_revo = Subjects.objects.create(subject=str(row[0])+str(row[1])+str(row[2])+str(row[3])+str(row[4]), course=str(row[0]), year=int(row[1]), semester=int(row[2]), shop=int(row[3]), is_lab=str(row[4]), description=str(row[5]))
-                        new_revo.save()
-                        messages.success(request, 'Successfully updated the subjects')
+                    new_revo = Subjects.objects.create(subject=str(row[0])+str(row[1])+str(row[2])+str(row[3]), course=str(row[0]), year=int(row[1]), semester=int(row[2]), shop=int(row[3]), description=str(row[4]))
+                    new_revo.save()
+                    messages.success(request, 'Successfully updated the subjects')
                 except:
                     messages.error(request, 'Content of the csv does not match to the format, or subjects are already existed create another file for the additional subject.')
                     return redirect('/h_subject')
@@ -1524,10 +1523,9 @@ def sub_cvs(request):
             reader = csv.reader(decoded_file)
             for row in reader:
                 try:
-                    if str(row[4]) == "" or str(row[4]) != "":
-                        new_revo = Subjects.objects.create(subject=str(row[0])+str(row[1])+str(row[2])+str(row[3])+str(row[4]), course=str(row[0]), year=int(row[1]), semester=int(row[2]), shop=int(row[3]), is_lab=str(row[4]), description=str(row[5]))
-                        new_revo.save()
-                        messages.success(request, 'Successfully updated the subjects')
+                    new_revo = Subjects.objects.create(subject=str(row[0])+str(row[1])+str(row[2])+str(row[3]), course=str(row[0]), year=int(row[1]), semester=int(row[2]), shop=int(row[3]), description=str(row[4]))
+                    new_revo.save()
+                    messages.success(request, 'Successfully updated the subjects')
                 except:
                     messages.error(request, 'Content of the csv does not match to the format, or subjects are already existed create another file for the additional subject.')
                     return redirect('/h_subject')
@@ -1538,10 +1536,9 @@ def sub_cvs(request):
             reader = csv.reader(decoded_file)
             for row in reader:
                 try:
-                    if str(row[4]) == "" or str(row[4]) != "":
-                        new_revo = Subjects.objects.create(subject=str(row[0])+str(row[1])+str(row[2])+str(row[3])+str(row[4]), course=str(row[0]), year=int(row[1]), semester=int(row[2]), shop=int(row[3]), is_lab=str(row[4]), description=str(row[5]))
-                        new_revo.save()
-                        messages.success(request, 'Successfully updated the subjects')
+                    new_revo = Subjects.objects.create(subject=str(row[0])+str(row[1])+str(row[2])+str(row[3]), course=str(row[0]), year=int(row[1]), semester=int(row[2]), shop=int(row[3]), description=str(row[4]))
+                    new_revo.save()
+                    messages.success(request, 'Successfully updated the subjects')
                 except:
                     messages.error(request, 'Content of the csv does not match to the format, or subjects are already existed create another file for the additional subject.')
                     return redirect('/h_subject')
@@ -1552,10 +1549,9 @@ def sub_cvs(request):
             reader = csv.reader(decoded_file)
             for row in reader:
                 try:
-                    if str(row[4]) == "" or str(row[4]) != "":
-                        new_revo = Subjects.objects.create(subject=str(row[0])+str(row[1])+str(row[2])+str(row[3])+str(row[4]), course=str(row[0]), year=int(row[1]), semester=int(row[2]), shop=int(row[3]), is_lab=str(row[4]), description=str(row[5]))
-                        new_revo.save()
-                        messages.success(request, 'Successfully updated the subjects')
+                    new_revo = Subjects.objects.create(subject=str(row[0])+str(row[1])+str(row[2])+str(row[3]), course=str(row[0]), year=int(row[1]), semester=int(row[2]), shop=int(row[3]), description=str(row[4]))
+                    new_revo.save()
+                    messages.success(request, 'Successfully updated the subjects')
                 except:
                     messages.error(request, 'Content of the csv does not match to the format, or subjects are already existed create another file for the additional subject.')
                     return redirect('/h_subject')
@@ -1568,10 +1564,9 @@ def sub_cvs(request):
             reader = csv.reader(decoded_file)
             for row in reader:
                 try:
-                    if str(row[4]) == "" or str(row[4]) != "":
-                        new_revo = Subjects.objects.create(subject=str(row[0])+str(row[1])+str(row[2])+str(row[3])+str(row[4]), course=str(row[0]), year=int(row[1]), semester=int(row[2]), shop=int(row[3]), is_lab=str(row[4]), description=str(row[5]))
-                        new_revo.save()
-                        messages.success(request, 'Successfully updated the subjects')
+                    new_revo = Subjects.objects.create(subject=str(row[0])+str(row[1])+str(row[2])+str(row[3]), course=str(row[0]), year=int(row[1]), semester=int(row[2]), shop=int(row[3]), description=str(row[4]))
+                    new_revo.save()
+                    messages.success(request, 'Successfully updated the subjects')
                 except:
                     messages.error(request, 'Content of the csv does not match to the format, or subjects are already existed create another file for the additional subject.')
                     return redirect('/h_subject')

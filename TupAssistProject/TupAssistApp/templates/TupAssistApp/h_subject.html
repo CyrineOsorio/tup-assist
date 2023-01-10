@@ -118,7 +118,6 @@
                         <th>YEAR</th>
                         <th>SEMESTER</th>
                         <th>SHOP</th>
-                        <th>LAB</th>
                         <th>SUBJECT CODE</th>
                         <th>DESCRIPTION</th>
                         <th>ACTION</th>
@@ -131,7 +130,6 @@
                             <td>{{i.year}}</td>
                             <td>{{i.semester}}</td>
                             <td>{{i.shop}}</td>
-                            <td>{{i.is_lab}}</td>
                             <td>{{i.subject}}</td>
                             <td>{{i.description}}</td>
                             <td>
@@ -142,28 +140,6 @@
 
                     </tbody>
                 </table>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- ADD SUBJECT MODAL -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add 1 Subject</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-                </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save</button>
-                </div>
             </div>
         </div>
     </div>
@@ -191,6 +167,31 @@
         </div>
     </div>
     {% endfor %}
+
+
+    <!-- ADD SUBJECT MODAL -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add 1 Subject</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 
 
 

@@ -739,7 +739,7 @@ def s_edit_sub(request):
 
         elif (b <= a and (a and b != '')) or (d <= c and (c and d != '')) or (f <= e and (e and f != '')) or (h <= g and (h and g != '')) or (j <= i and (i and j != '')) or (l <= k  and (k and l != '')):
             data.save()
-            messages.error(request, 'Wrong input of time start and end time!')
+            messages.error(request, 'Wrong input of start time and end time!')
             return redirect('/s_adding')
 
         else :

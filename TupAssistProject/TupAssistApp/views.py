@@ -725,7 +725,7 @@ def s_edit_sub(request):
             messages.success(request, 'Successfuly updated the request.')
             return redirect('/s_adding')
 
-        elif (b < a and (a and b != '')) or (d < c and (c and d != '')) or (f < e and (e and f != '')) or (h < g and (h and g != '')) or (j < i and (i and j != '')) or (l < k  and (k and l != '')):
+        elif (b <= a and (a and b != '')) or (d <= c and (c and d != '')) or (f <= e and (e and f != '')) or (h <= g and (h and g != '')) or (j <= i and (i and j != '')) or (l <= k  and (k and l != '')):
             data.save()
             messages.error(request, 'Wrong input of time start and end time!')
             return redirect('/s_adding')
@@ -1313,16 +1313,12 @@ def p_add_sub(request):
             messages.error(request, "Sorry, there is no slots available for this subject and section already.")
             return redirect('/p_adding_edit/'+ str(data.studID))
         else:
-            exist = len(AddingReq.objects.filter(Q(studID_id=studID) & Q(school_year=school_year) & Q(semester=semester) & Q(subject=subject)))
-            print(exist)
-            if exist == 0:
-                add = AddingReq.objects.create(school_year=school_year, semester=semester, studID_id=studID, subject_id=subject, section=section, sched=sched, pic_is_approve=pic_is_approve, pic_remark=pic_remark, pic_name=pic_name, pic_date=pic_date)
-                add.save()
-                messages.success(request, 'Subject successfully added!')
-                return redirect('/p_adding_edit/'+ str(data.studID))
-            else:
-                messages.error(request, 'Subject already existed.')
-                return redirect('/p_adding_edit/'+ str(data.studID))
+            # exist = len(AddingReq.objects.filter(Q(studID_id=studID) & Q(school_year=school_year) & Q(semester=semester) & Q(subject=subject)))
+            # print(exist)
+            add = AddingReq.objects.create(school_year=school_year, semester=semester, studID_id=studID, subject_id=subject, section=section, sched=sched, pic_is_approve=pic_is_approve, pic_remark=pic_remark, pic_name=pic_name, pic_date=pic_date)
+            add.save()
+            messages.success(request, 'Subject successfully added!')
+            return redirect('/p_adding_edit/'+ str(data.studID))
 
 def p_step1_submit(request):
     studID = request.POST.get('studID')

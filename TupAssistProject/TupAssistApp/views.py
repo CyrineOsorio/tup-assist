@@ -94,7 +94,9 @@ def a_dashboard(request):
         status = TransStatus.objects.all()
         sched = Schedule.objects.all()
         student = registration.objects.filter(userType='Student')
+        cnt1 = len(AddingReq.objects.filter(reg_action='Pending'))
         context = {
+            'cnt1': cnt1,
             'current_user': current_user,
             'subs': subs,
             'status' : status,
@@ -149,7 +151,9 @@ def a_account(request):
         form = HeadRegistration()
         staff = registration.objects.filter(Q(userType='Department Head') | Q(userType='Program-in-Charge') | Q(userType='Teacher') | Q(userType='OAA Staff') | Q(userType='Assist. Director of Academic Affairs'))
         student = registration.objects.filter(userType='Student')
+        cnt1 = len(AddingReq.objects.filter(reg_action='Pending'))
         context = {
+            'cnt1': cnt1,
             'form': form,
             'current_user': current_user,
             'student': student,
@@ -294,7 +298,9 @@ def a_dropping(request):
     if request.user.is_authenticated and (request.user.userType == 'OAA Staff' or request.user.is_superuser == True ):
         current_user = request.user
         req = DroppingReq.objects.filter(admin_approve='Approve')
+        cnt1 = len(AddingReq.objects.filter(reg_action='Pending'))
         context = {
+            'cnt1': cnt1,
             'req': req,
             'current_user': current_user
             }
@@ -306,7 +312,9 @@ def a_transferring(request):
     if request.user.is_authenticated and (request.user.userType == 'OAA Staff' or request.user.is_superuser == True ):
         current_user = request.user
         req = TransferringReq.objects.filter(admin_approve='Approve')
+        cnt1 = len(AddingReq.objects.filter(reg_action='Pending'))
         context = { 
+            'cnt1': cnt1,
             'req': req,
             'current_user': current_user
             }

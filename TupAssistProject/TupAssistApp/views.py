@@ -288,7 +288,7 @@ def a_approved_sub(request, id):
     data = registration.objects.get(studID=edit.studID_id) 
     send_mail('ADDING OF SUBJECT - REQUEST', 
     "Hi " + str(data.first_name) + ',' +
-    '\n\nYour Request for Adding the ' + str(edit.subject.description) + ' in ' + str(edit.section) +
+    '\n\nYour request for adding the ' + str(edit.subject.description) + ' in ' + str(edit.section) +
     " was already enrolled by the Registrar." + '\n\nYou may also check your request status by signing in your account on the attached link of our website.\n' + link
     , settings.EMAIL_HOST_USER , [data.email], fail_silently=False)
     return redirect('/a_adding/')
@@ -306,6 +306,23 @@ def a_dropping(request):
             }
         return render(request, 'TupAssistApp/a_dropping.html', context)
     return redirect('/index')  
+
+def a_approved_sub2(request, id):
+    edit = DroppingReq.objects.get(id=id) 
+    edit.reg_action = 'Approved'
+    edit.enroll_by = request.user.first_name + ' ' + request.user.last_name
+    edit.reg_date = datetime.now()
+    edit.save()
+    messages.success(request, 'Sucessfully enlisted the request!')
+    # Email
+    link = 'https://tupassist.pythonanywhere.com'
+    data = registration.objects.get(studID=edit.studID_id) 
+    send_mail('DROPPING OF SUBJECT - REQUEST', 
+    "Hi " + str(data.first_name) + ',' +
+    '\n\nYour request for dropping the ' + str(edit.subject.description) + ' in ' + str(edit.section) +
+    " was already enlisted by the Registrar." + '\n\nYou may also check your request status by signing in your account on the attached link of our website.\n' + link
+    , settings.EMAIL_HOST_USER , [data.email], fail_silently=False)
+    return redirect('/a_dropping/')
 
 @login_required(login_url='/index')
 def a_transferring(request):
@@ -334,7 +351,7 @@ def a_approved_sub1(request, id):
     data = registration.objects.get(studID=edit.studID_id) 
     send_mail('TRANSFERRING OF SUBJECT - REQUEST', 
     "Hi " + str(data.first_name) + ',' +
-    '\n\nYour Request for Transferring the ' + str(edit.subject.description) + ' in ' + str(edit.section) +
+    '\n\nYour request for transferring the ' + str(edit.subject.description) + ' in ' + str(edit.section) +
     " was already enrolled by the Registrar." + '\n\nYou may also check your request status by signing in your account on the attached link of our website.\n' + link
     , settings.EMAIL_HOST_USER , [data.email], fail_silently=False)
     return redirect('/a_transferring/')

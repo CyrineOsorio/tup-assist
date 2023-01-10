@@ -68,7 +68,7 @@
                     <table class="table table-bordered" id="table_id" style="width: 100%;">
                         <thead>
                             <tr>
-                                <th colspan="3" style="text-align: center;">SUBJECT TO BE TAKEN BY STUDENT</th>
+                                <th colspan="5" style="text-align: center;">SUBJECT TO BE TAKEN BY STUDENT</th>
                                 <th colspan="4" style="text-align: center;">TEACHER</th>
                                 <th colspan="4" style="text-align: center;">DEPARTMENT HEAD</th>
                                 <th colspan="4" style="text-align: center;">ASSIST. DIRECTOR OF ACADEMIC AFFAIRS</th>
@@ -78,6 +78,8 @@
                                 <th>SUBJECT</th>
                                 <th>SECTION</th>
                                 <th>SCHEDULE</th>
+                                <th>REASONS</th>
+                                <th>DATE & TIME</th>
                                 <th>ACTION TAKEN</th>
                                 <th>REMARK</th>
                                 <th>ENLISTED BY</th>
@@ -102,6 +104,8 @@
                                 <td>{{i.subject.subject}}-{{i.subject.description}}</td>
                                 <td>{{i.section}}</td>
                                 <td>{{i.sched}}</td>
+                                <td>{{i.reason}}</td>
+                                <td>{{i.req_date}}</td>
                                 <td>{{i.subj_teacher_approve}}</td>
                                 <td>{{i.subj_teacher_remark}}</td>
                                 <td>{{i.subj_teacher_name}}</td>

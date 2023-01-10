@@ -1505,93 +1505,75 @@ def sub_cvs(request):
     current_user = request.user
     if request.method=='POST': 
         if current_user.department == 'Department of Industrial Technology':
-            junk = Subjects.objects.filter(Q(course='DIT') | Q(course='BET-COET') )
-            junk.delete()
             subcvsfile = request.FILES["subcvsfile"]
-            decoded_file = subcvsfile.read().decode('utf-8').splitlines()
+            decoded_file = subcvsfile.read().decode('utf-8').splitlines()[1:]
             reader = csv.reader(decoded_file)
-            print(reader)
             for row in reader:
-                print(row)
                 try:
                     if str(row[4]) == "" or str(row[4]) != "":
                         new_revo = Subjects.objects.create(subject=str(row[0])+str(row[1])+str(row[2])+str(row[3])+str(row[4]), course=str(row[0]), year=int(row[1]), semester=int(row[2]), shop=int(row[3]), is_lab=str(row[4]), description=str(row[5]))
                         new_revo.save()
-                        messages.success(request, 'Successfully Updated the Subjects, but check if data imported is correct.')
+                        messages.success(request, 'Successfully updated the subjects')
                 except:
-                    messages.success(request, 'Successfully Updated the Subjects, but check if data imported is correct.')
+                    messages.error(request, 'Content of the csv does not not match to the format, or subjects are already existed create another file for the additional subject.')
                     return redirect('/h_subject')
             return redirect('/h_subject')
         elif current_user.department == 'Department of Industrial Education':
-            junk = Subjects.objects.filter(course='DIE')
-            junk.delete()
             subcvsfile = request.FILES["subcvsfile"]
-            decoded_file = subcvsfile.read().decode('utf-8').splitlines()
+            decoded_file = subcvsfile.read().decode('utf-8').splitlines()[1:]
             reader = csv.reader(decoded_file)
-            print(reader)
             for row in reader:
-                print(row)
                 try:
                     if str(row[4]) == "" or str(row[4]) != "":
                         new_revo = Subjects.objects.create(subject=str(row[0])+str(row[1])+str(row[2])+str(row[3])+str(row[4]), course=str(row[0]), year=int(row[1]), semester=int(row[2]), shop=int(row[3]), is_lab=str(row[4]), description=str(row[5]))
                         new_revo.save()
-                        messages.success(request, 'Successfully Updated the Subjects, but check if data imported is correct.')
+                        messages.success(request, 'Successfully updated the subjects')
                 except:
-                    messages.success(request, 'Successfully Updated the Subjects, but check if data imported is correct.')
+                    messages.error(request, 'Content of the csv does not not match to the format, or subjects are already existed create another file for the additional subject.')
                     return redirect('/h_subject')
             return redirect('/h_subject')
         elif current_user.department == 'Department of Engineering':
-            junk = Subjects.objects.filter(course='DOE')
-            junk.delete()
             subcvsfile = request.FILES["subcvsfile"]
-            decoded_file = subcvsfile.read().decode('utf-8').splitlines()
+            decoded_file = subcvsfile.read().decode('utf-8').splitlines()[1:]
             reader = csv.reader(decoded_file)
-            print(reader)
             for row in reader:
-                print(row)
                 try:
                     if str(row[4]) == "" or str(row[4]) != "":
                         new_revo = Subjects.objects.create(subject=str(row[0])+str(row[1])+str(row[2])+str(row[3])+str(row[4]), course=str(row[0]), year=int(row[1]), semester=int(row[2]), shop=int(row[3]), is_lab=str(row[4]), description=str(row[5]))
                         new_revo.save()
-                        messages.success(request, 'Successfully Updated the Subjects, but check if data imported is correct.')
+                        messages.success(request, 'Successfully updated the subjects')
                 except:
-                    messages.success(request, 'Successfully Updated the Subjects, but check if data imported is correct.')
+                    messages.error(request, 'Content of the csv does not not match to the format, or subjects are already existed create another file for the additional subject.')
                     return redirect('/h_subject')
             return redirect('/h_subject')
         elif current_user.department == 'Department of Math and Science':
-            junk = Subjects.objects.filter(course='DMS')
-            junk.delete()
             subcvsfile = request.FILES["subcvsfile"]
-            decoded_file = subcvsfile.read().decode('utf-8').splitlines()
+            decoded_file = subcvsfile.read().decode('utf-8').splitlines()[1:]
             reader = csv.reader(decoded_file)
-            print(reader)
             for row in reader:
-                print(row)
                 try:
                     if str(row[4]) == "" or str(row[4]) != "":
                         new_revo = Subjects.objects.create(subject=str(row[0])+str(row[1])+str(row[2])+str(row[3])+str(row[4]), course=str(row[0]), year=int(row[1]), semester=int(row[2]), shop=int(row[3]), is_lab=str(row[4]), description=str(row[5]))
                         new_revo.save()
-                        messages.success(request, 'Successfully Updated the Subjects, but check if data imported is correct.')
+                        messages.success(request, 'Successfully updated the subjects')
                 except:
-                    messages.success(request, 'Successfully Updated the Subjects, but check if data imported is correct.')
+                    messages.error(request, 'Content of the csv does not not match to the format, or subjects are already existed create another file for the additional subject.')
                     return redirect('/h_subject')
             return redirect('/h_subject')
         elif current_user.department == 'Department of Liberal Arts':
-            junk = Subjects.objects.filter(course='DLA')
-            junk.delete()
+            # junk = Subjects.objects.filter(course='DLA')
+            # junk.delete()
             subcvsfile = request.FILES["subcvsfile"]
-            decoded_file = subcvsfile.read().decode('utf-8').splitlines()
+            decoded_file = subcvsfile.read().decode('utf-8').splitlines()[1:]
             reader = csv.reader(decoded_file)
-            print(reader)
             for row in reader:
-                print(row)
                 try:
                     if str(row[4]) == "" or str(row[4]) != "":
                         new_revo = Subjects.objects.create(subject=str(row[0])+str(row[1])+str(row[2])+str(row[3])+str(row[4]), course=str(row[0]), year=int(row[1]), semester=int(row[2]), shop=int(row[3]), is_lab=str(row[4]), description=str(row[5]))
                         new_revo.save()
-                        messages.success(request, 'Successfully Updated the Subjects, but check if data imported is correct.')
+                        messages.success(request, 'Successfully updated the subjects')
                 except:
-                    messages.success(request, 'Successfully Updated the Subjects, but check if data imported is correct.')
+                    messages.error(request, 'Content of the csv does not not match to the format, or subjects are already existed create another file for the additional subject.')
                     return redirect('/h_subject')
             return redirect('/h_subject')
 

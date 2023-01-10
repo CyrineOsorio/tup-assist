@@ -79,14 +79,16 @@
 
             <div class="title">
                 <p>OFFER SUBJECTS</p>
-                <form class="form-inline" action="/sub_cvs" method="post" enctype="multipart/form-data" name="subcvsfile" style="gap:10px;">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        <input type="file" name="subcvsfile" id="subcvsfile" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary" id="button_h">Import CSV File</button>
-                    <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="bi bi-info-circle"></i></a>
-                </form>
+                <div class="d-flex" style="justify-content: end;">
+                    <form class="form-inline" action="/sub_cvs" method="post" enctype="multipart/form-data" id="subcvsfileform" style="gap:10px;">
+                        {% csrf_token %}
+
+                        <button type="button" class="btn btn-primary" onclick="document.getElementById('subcvsfile').click()">Upload CSV File</button>
+                        <input type="file" style="display:none" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" name="subcvsfile" id="subcvsfile" required>
+
+                        <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="bi bi-info-circle"></i></a>
+                    </form>
+                </div>
             </div>
             <div class="collapse" id="collapseExample" style="margin-bottom: 10px;">
                 <div class="card card-body">
@@ -142,25 +144,6 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 
-
-    <script>
-        // Filter 
-        $(".filter select").on('change', function() {
-            var filters = $.map($(".filter select").toArray(), function(e) {
-                return $(e).val();
-            }).join(".");
-            $("tbody").find("tr").hide();
-            $("tbody").find("tr." + filters).show();
-
-        });
-        // Reset
-        $('button').on('click', function() {
-            $(".filter select").val($("option:first").val());
-            $("tbody").find("tr").show();
-        });
-    </script>
-
-
     <!-- Messages -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     {% if messages %} {% for message in messages %} {% if message.tags %}
@@ -176,6 +159,13 @@
     <script>
         $(document).ready(function() {
             $('#table_id').DataTable();
+        });
+    </script>
+
+    <!-- Automatic Upload of Files -->
+    <script>
+        $('#subcvsfile').change(function() {
+            $('#subcvsfileform').submit();
         });
     </script>
 

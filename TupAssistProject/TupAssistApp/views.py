@@ -261,7 +261,11 @@ def a_adding(request):
     if request.user.is_authenticated and (request.user.userType == 'OAA Staff' or request.user.is_superuser == True ):
         current_user = request.user = request.user
         req = AddingReq.objects.filter(admin_approve='Approved').order_by('-admin_date')
+        cnt1 = len(AddingReq.objects.filter(reg_action='Pending'))
+        cnt2 = len(AddingReq.objects.filter(reg_action='Approved'))
         context = { 
+            'cnt1': cnt1,
+            'cnt2': cnt2,
             'req': req,
             'current_user': current_user,
             }

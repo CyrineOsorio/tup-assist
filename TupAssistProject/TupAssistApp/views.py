@@ -179,7 +179,7 @@ def student_acc_cvs(request):
                 new_revo = registration.objects.create(studID=str(row[0]), username=str(row[3]), email=str(row[3]), first_name=str(row[1]), last_name=str(row[2]), userType='Student')
                 new_revo.set_password(str(row[0])) #Default Password
                 new_revo.save()    
-                messages.success(request, 'Successfully import the student accounts.')
+                messages.success(request, 'Successfully uploaded the student accounts.')
                 send_mail('TUP-Assist Account', 
                 "Hello " + str(row[1]) + ',\n'
                 'As a student of Technological University of the Philippines - Cavite, you are automatically registered in TUP-Assist.' + '\n\n'
@@ -191,7 +191,7 @@ def student_acc_cvs(request):
                 'If there are any concerns, please reply to this email.' + '\n\n'
                 'Thank you.', settings.EMAIL_HOST_USER , [str(row[3])], fail_silently=False)
             except:
-                messages.error(request, 'Content of the csv does not not match to the format or accounts are already exist create another file for the additional account.')
+                messages.error(request, 'Content of the csv does not not match to the format, or accounts are already existed create another file for the additional account.')
                 return redirect('/a_account')
         return redirect('/a_account')
     return redirect('/a_account')
@@ -210,7 +210,7 @@ def staff_acc_cvs(request):
                 new_revo = registration.objects.create(studID=str(row[0]), username=str(row[3]), email=str(row[3]), first_name=str(row[1]), last_name=str(row[2]), userType=str(row[4]), department=str(row[5]))
                 new_revo.set_password('TUPC-'+str(row[0])) #Default Password
                 new_revo.save()
-                messages.success(request, 'Successfully imported the staff account.')
+                messages.success(request, 'Successfully uploaded the staff account.')
                 send_mail('TUP-Assist Account', 
                 "Hello " + str(row[1]) + ',\n'
                 '\nAs a staff of Technological University of the Philippines - Cavite, you are automatically registered in TUP-Assist.' + '\n\n'
@@ -222,7 +222,7 @@ def staff_acc_cvs(request):
                 'If there are any concerns, please reply to this email.' + '\n\n'
                 'Thank you.', settings.EMAIL_HOST_USER , [str(row[3])], fail_silently=False)
             except:
-                messages.error(request, 'Content of the csv does not not match to the format or accounts are already exist create another file for the additional account.')
+                messages.error(request, 'Content of the csv does not not match to the format, or accounts are already exist create another file for the additional account.')
                 return redirect('/a_account')
         return redirect('/a_account')
     return redirect('/a_account')

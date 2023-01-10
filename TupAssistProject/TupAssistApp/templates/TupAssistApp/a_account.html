@@ -92,12 +92,12 @@
 
                     <!-- List of Staffs -->
                     <div class="title" style="justify-content: end;">
-                        <form class="form-inline" action="/staff_acc_cvs" method="post" enctype="multipart/form-data" name="staffcvsfile" style="gap:10px;">
+                        <form class="form-inline" action="/staff_acc_cvs" method="post" enctype="multipart/form-data" id="staffcvsfileform" style="gap:10px;">
                             {% csrf_token %}
-                            <div class="form-group">
-                                <input type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" name="staffcvsfile" id="staffcvsfile" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Upload</button>
+
+                            <button type="button" class="btn btn-primary" onclick="document.getElementById('staffcvsfile').click()">Upload CSV File</button>
+                            <input type="file" style="display:none" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" name="staffcvsfile" id="staffcvsfile" required>
+
                             <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="bi bi-info-circle"></i></a>
                         </form>
                     </div>
@@ -143,12 +143,14 @@
 
                     <!-- Enrolled Students -->
                     <div class="title" style="justify-content: end;">
-                        <form class="form-inline" action="/student_acc_cvs" method="post" enctype="multipart/form-data" name="studcvsfile" style="gap:10px;">
+                        <form class="form-inline" action="/student_acc_cvs" method="post" enctype="multipart/form-data" id="studcvsfileform" style="gap:10px;">
                             {% csrf_token %}
-                            <div class="form-group">
-                                <input type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" name="studcvsfile" id="studcvsfile" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Upload</button>
+
+                            <button type="button" class="btn btn-primary" onclick="document.getElementById('studcvsfile').click()">Upload CSV File</button>
+                            <input type="file" style="display:none" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" name="studcvsfile" id="studcvsfile" required>
+
+
+
                             <a data-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="bi bi-info-circle"></i></a>
                         </form>
                     </div>
@@ -284,6 +286,16 @@
         $(document).ready(function() {
             $('#table_id').DataTable();
             $('#table_id_1').DataTable();
+        });
+    </script>
+
+    <!-- Automatic Upload of images -->
+    <script>
+        $('#staffcvsfile').change(function() {
+            $('#staffcvsfileform').submit();
+        });
+        $('#studcvsfile').change(function() {
+            $('#studcvsfileform').submit();
         });
     </script>
 

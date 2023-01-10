@@ -1220,7 +1220,7 @@ def s_step1_submit_t(request):
 def p_profile(request):
     if request.user.is_authenticated and request.user.userType == 'Program-in-charge':
         current_user = request.user
-        cnt = len(AddingReq.objects.filter(pic_is_approve='Pending'))
+        cnt = len(AddingReq.objects.filter(Q(studID__course=current_user.course) & Q(pic_is_approve='Pending')))
         form = PasswordChangeForm(current_user)
         context = {
             'cnt': cnt,
@@ -1424,7 +1424,7 @@ def p_step1_submit(request):
 def p_requests(request):
     if request.user.is_authenticated and request.user.userType == 'Program-in-charge':
         current_user = request.user
-        cnt = len(AddingReq.objects.filter(pic_is_approve='Pending'))
+        cnt = len(AddingReq.objects.filter(Q(studID__course=current_user.course) & Q(pic_is_approve='Pending')))
         req = DroppingReq.objects.filter(subj_teacher_name=current_user.email)
         context = {
             'cnt': cnt,
@@ -1807,7 +1807,7 @@ def h_dropping(request):
     if request.user.is_authenticated and request.user.userType == 'Department Head':
         current_user = request.user
         if current_user.department == "Department of Industrial Technology" or current_user.department == "Department of Engineering" or current_user.department == "Department of Industrial Education":
-            test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student') & (Q(dropStatus='Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval')) | (Q(dropStatus='ADAA Approved')))
+            test = registration.objects.filter(Q(department=current_user.department) & Q(userType='Student') & ~Q(dropStatus='') )
             cnt2 = len(AddingReq.objects.filter(Q(studID__department=current_user.department) & Q(head_is_approve='Pending')))
             context = { 
                 'cnt2': cnt2,
@@ -1815,7 +1815,7 @@ def h_dropping(request):
                 'current_user': current_user
                 }
         else:
-            test = registration.objects.filter( Q(userType='Student') & (Q(dropStatus='Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval')) | (Q(dropStatus='ADAA Approved')))
+            test = registration.objects.filter(Q(userType='Student') & ~Q(dropStatus=''))
             cnt2 = len(AddingReq.objects.filter(Q(studID__department=current_user.department) & Q(head_is_approve='Pending')))
             context = { 
                 'cnt2': cnt2,

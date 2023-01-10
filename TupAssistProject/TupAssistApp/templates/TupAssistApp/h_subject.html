@@ -82,14 +82,16 @@
                 <div class="d-flex" style="justify-content: end;">
                     <form class="form-inline" action="/sub_cvs" method="post" enctype="multipart/form-data" id="subcvsfileform" style="gap:10px;">
                         {% csrf_token %}
+                        <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="bi bi-info-circle"></i></a>
 
-                        <button type="button" class="btn btn-primary" onclick="document.getElementById('subcvsfile').click()">Upload CSV File</button>
+                        <button type="button" class="btn btn-dark" onclick="document.getElementById('subcvsfile').click()">Upload CSV File</button>
                         <input type="file" style="display:none" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" name="subcvsfile" id="subcvsfile" required>
 
-                        <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="bi bi-info-circle"></i></a>
                     </form>
                 </div>
             </div>
+
+            <!-- NOTE: -->
             <div class="collapse" id="collapseExample" style="margin-bottom: 10px;">
                 <div class="card card-body">
                     Reminder: Import Offer Subjects with the csv file.
@@ -99,6 +101,16 @@
                 </div>
             </div>
 
+
+            <!-- Add 1 Subject -->
+            <div class="d-flex" style="justify-content: end; margin-top: 10px;">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
+                    Add 1 Subject
+                </button>
+            </div>
+
+            <!-- TABLE -->
             <div style="overflow-x:auto; margin-bottom:2%; margin-top:2%;">
                 <table id="table_id" class="display">
                     <thead>
@@ -109,6 +121,7 @@
                         <th>LAB</th>
                         <th>SUBJECT CODE</th>
                         <th>DESCRIPTION</th>
+                        <th>ACTION</th>
                     </thead>
 
                     <tbody>
@@ -121,18 +134,63 @@
                             <td>{{i.is_lab}}</td>
                             <td>{{i.subject}}</td>
                             <td>{{i.description}}</td>
+                            <td>
+                                <button data-toggle="modal" data-target="#editSub{{i.subject}}" class="btn btn-dark">Edit</button>
+                            </td>
                         </tr>
                         {% endfor %}
 
                     </tbody>
                 </table>
             </div>
-
         </div>
-
-
     </div>
 
+
+    <!-- ADD SUBJECT MODAL -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add 1 Subject</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- EDIT SUBJECT MODAL -->
+    {% for i in subs %}
+    <div class="modal fade" id="editSub{{i.subject}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Subject: {{i.pk}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
 
 
 

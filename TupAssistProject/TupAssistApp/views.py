@@ -971,7 +971,7 @@ def s_drop_sub(request):
                 'You may approve the request by signing in your account. Use your gsfe email and the default password is your staff id number.' + '\n\n' +
                 'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
                 'If there are any concerns, please reply to this email.' + '\n\n'
-                'Thank you.', settings.EMAIL_HOST_USER , [teacher2], fail_silently=False) settings.EMAIL_HOST_USER , [teacher3], fail_silently=False)
+                'Thank you.', [teacher3], fail_silently=False)
             
         if subject4 and section4 and schedule4 !='':
             data = DroppingReq.objects.create(req_date = datetime.now(), subj_teacher_approve='Pending', studID_id= current_user.studID, subject_id=subject4, section=section4, sched=schedule4, subj_teacher_name=teacher4, reason=reason)
@@ -987,7 +987,7 @@ def s_drop_sub(request):
                 'You may approve the request by signing in your account. Use your gsfe email and the default password is your staff id number.' + '\n\n' +
                 'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
                 'If there are any concerns, please reply to this email.' + '\n\n'
-                'Thank you.', settings.EMAIL_HOST_USER , [teacher2], fail_silently=False) settings.EMAIL_HOST_USER , [teacher4], fail_silently=False)
+                'Thank you.', settings.EMAIL_HOST_USER , [teacher4], fail_silently=False)
             
         if subject5 and section5 and schedule5 !='':
             data = DroppingReq.objects.create(req_date = datetime.now(), subj_teacher_approve='Pending', studID_id= current_user.studID, subject_id=subject5, section=section5, sched=schedule5, subj_teacher_name=teacher5, reason=reason)
@@ -1003,7 +1003,7 @@ def s_drop_sub(request):
                 'You may approve the request by signing in your account. Use your gsfe email and the default password is your staff id number.' + '\n\n' +
                 'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
                 'If there are any concerns, please reply to this email.' + '\n\n'
-                'Thank you.', settings.EMAIL_HOST_USER , [teacher2], fail_silently=False) settings.EMAIL_HOST_USER , [teacher5], fail_silently=False)
+                'Thank you.', settings.EMAIL_HOST_USER , [teacher5], fail_silently=False)
             
         if subject6 and section6 and schedule6 !='':
             data = DroppingReq.objects.create(req_date = datetime.now(), subj_teacher_approve='Pending', studID_id= current_user.studID, subject_id=subject6, section=section6, sched=schedule6, subj_teacher_name=teacher6, reason=reason)
@@ -1019,7 +1019,7 @@ def s_drop_sub(request):
                 'You may approve the request by signing in your account. Use your gsfe email and the default password is your staff id number.' + '\n\n' +
                 'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
                 'If there are any concerns, please reply to this email.' + '\n\n'
-                'Thank you.', settings.EMAIL_HOST_USER , [teacher2], fail_silently=False) settings.EMAIL_HOST_USER , [teacher6], fail_silently=False)
+                'Thank you.', settings.EMAIL_HOST_USER , [teacher6], fail_silently=False)
 
 
         if subject7 and section7 and schedule7 !='':
@@ -1036,7 +1036,7 @@ def s_drop_sub(request):
                 'You may approve the request by signing in your account. Use your gsfe email and the default password is your staff id number.' + '\n\n' +
                 'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
                 'If there are any concerns, please reply to this email.' + '\n\n'
-                'Thank you.', settings.EMAIL_HOST_USER , [teacher2], fail_silently=False) settings.EMAIL_HOST_USER , [teacher7], fail_silently=False)
+                'Thank you.', settings.EMAIL_HOST_USER , [teacher7], fail_silently=False)
 
 
         if subject8 and section8 and schedule8 !='':
@@ -1053,7 +1053,7 @@ def s_drop_sub(request):
                 'You may approve the request by signing in your account. Use your gsfe email and the default password is your staff id number.' + '\n\n' +
                 'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
                 'If there are any concerns, please reply to this email.' + '\n\n'
-                'Thank you.', settings.EMAIL_HOST_USER , [teacher2], fail_silently=False) settings.EMAIL_HOST_USER , [teacher8], fail_silently=False)
+                'Thank you.', settings.EMAIL_HOST_USER , [teacher8], fail_silently=False)
 
 
         if subject9 and section9 and schedule9 !='':
@@ -1070,7 +1070,7 @@ def s_drop_sub(request):
                 'You may approve the request by signing in your account. Use your gsfe email and the default password is your staff id number.' + '\n\n' +
                 'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
                 'If there are any concerns, please reply to this email.' + '\n\n'
-                'Thank you.', settings.EMAIL_HOST_USER , [teacher2], fail_silently=False) settings.EMAIL_HOST_USER , [teacher9], fail_silently=False)
+                'Thank you.', settings.EMAIL_HOST_USER , [teacher9], fail_silently=False)
 
         if subject10 and section10 and schedule10 !='':
             data = DroppingReq.objects.create(req_date = datetime.now(), subj_teacher_approve='Pending', studID_id= current_user.studID, subject_id=subject10, section=section10, sched=schedule10, subj_teacher_name=teacher10, reason=reason)
@@ -1086,7 +1086,7 @@ def s_drop_sub(request):
                 'You may approve the request by signing in your account. Use your gsfe email and the default password is your staff id number.' + '\n\n' +
                 'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
                 'If there are any concerns, please reply to this email.' + '\n\n'
-                'Thank you.', settings.EMAIL_HOST_USER , [teacher2], fail_silently=False) settings.EMAIL_HOST_USER , [teacher10], fail_silently=False)
+                'Thank you.', settings.EMAIL_HOST_USER , [teacher10], fail_silently=False)
 
 
         if subject11 and section11 and schedule11 !='':
@@ -1103,7 +1103,7 @@ def s_drop_sub(request):
                 'You may approve the request by signing in your account. Use your gsfe email and the default password is your staff id number.' + '\n\n' +
                 'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
                 'If there are any concerns, please reply to this email.' + '\n\n'
-                'Thank you.', settings.EMAIL_HOST_USER , [teacher2], fail_silently=False) settings.EMAIL_HOST_USER , [teacher11], fail_silently=False)
+                'Thank you.', settings.EMAIL_HOST_USER , [teacher11], fail_silently=False)
 
 
         if subject12 and section12 and schedule12 !='':
@@ -1120,7 +1120,7 @@ def s_drop_sub(request):
                 'You may approve the request by signing in your account. Use your gsfe email and the default password is your staff id number.' + '\n\n' +
                 'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
                 'If there are any concerns, please reply to this email.' + '\n\n'
-                'Thank you.', settings.EMAIL_HOST_USER , [teacher2], fail_silently=False) settings.EMAIL_HOST_USER , [teacher12], fail_silently=False)
+                'Thank you.', settings.EMAIL_HOST_USER , [teacher12], fail_silently=False)
 
         messages.success(request, "Successfully requested to drop the subject/s. Wait for Teacher, Department head, ADAA, and Registrar Action")
         return redirect('/s_dropping')

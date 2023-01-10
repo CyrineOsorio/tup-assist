@@ -81,7 +81,7 @@
 
             <!-- Transaction Status -->
             <div style="overflow-x:auto; margin-bottom:2%;">
-                <table class="table table-bordered">
+                <table class="table table-borderless">
                     <thead>
                         <th>TRANSACTION NAME</th>
                         <th>SCHOOL YEAR</th>
@@ -94,7 +94,7 @@
                         <tr>
                             <td>{{status.TransName}} Of Subject</td>
                             <td>{{status.school_year}}</td>
-                            <td>{% if status.semester == 1 %}{{status.semester}}st {% elif status.semester == 2 %}{{status.semester}}nd{% else %}{{status.semester}}{% endif %} </td>
+                            <td>{% if status.semester == 1 %}{{status.semester}}st {% elif status.semester == 2 %}{{status.semester}}nd{% else %}{{status.semester}}{% endif %}</td>
                             <td><a type="button" href="/transStatus/{{status.id}}">{{status.status}}</a></td>
                             <td><button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#change{{status.id}}">Change</button> </td>
                         </tr>
@@ -128,7 +128,7 @@
                                 <div class="form-group">
                                     <label for="semester">Semester</label>
                                     <select class="custom-select" id="semester" name="semester" required>
-                                        <option value="{{status.semester}}" selected disabled>Select...</option>
+                                        <option value="{{status.semester}}" selected hidden>{% if status.semester == 1 %}{{status.semester}}st {% elif status.semester == 2 %}{{status.semester}}nd{% else %}{{status.semester}}{% endif %}</option>
                                         <option value="1">1st</option>
                                         <option value="2">2nd</option>
                                     </select>
@@ -136,7 +136,7 @@
                                 <div class="form-group">
                                     <label for="status">Status</label>
                                     <select class="custom-select" id="status" name="status" required>
-                                        <option value="{{status.status}}" selected disabled>Select...</option>
+                                        <option value="{{status.status}}" selected hidden>{{status.status}}</option>
                                         <option value="Open">Open</option>
                                         <option value="Close">Close</option>
                                     </select>

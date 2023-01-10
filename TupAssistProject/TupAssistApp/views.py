@@ -490,15 +490,18 @@ def adaa_dropping_approve(request):
             return redirect('/adaa_dropping_view/'+ str(data.studID))
     return redirect('/index')     
 
-def adaa_approved_sub1(request, id):
-    edit = TransferringReq.objects.get(id=id) 
+def adaa_approved_sub2(request, id):
+    edit = DroppingReq.objects.get(id=id) 
     edit.admin_approve = 'Approved'
     edit.admin_name = request.user.first_name + ' ' + request.user.last_name
     edit.admin_date = datetime.now()
     edit.reg_action = 'Pending'
     edit.save()
     messages.success(request, 'Sucessfully approved the request!')
-    return redirect('/adaa_transferring_view/'+ str(edit.studID_id))
+    return redirect('/adaa_fropping_view/'+ str(edit.studID_id))
+
+
+
 
 
 @login_required(login_url='/index')
@@ -550,6 +553,16 @@ def adaa_transferring_approve(request):
             content, settings.EMAIL_HOST_USER , [data.email], fail_silently=False)
         return redirect('/adaa_transferring_view/'+ str(data.studID))
 
+
+def adaa_approved_sub1(request, id):
+    edit = TransferringReq.objects.get(id=id) 
+    edit.admin_approve = 'Approved'
+    edit.admin_name = request.user.first_name + ' ' + request.user.last_name
+    edit.admin_date = datetime.now()
+    edit.reg_action = 'Pending'
+    edit.save()
+    messages.success(request, 'Sucessfully approved the request!')
+    return redirect('/adaa_transferring_view/'+ str(edit.studID_id))
 
 
 #STUDENT PAGES
@@ -1902,9 +1915,16 @@ def h_edit_sub1(request):
         edit.head_remark = request.POST.get('head_remark')
         edit.head_name = request.POST.get('head_name')
         edit.head_date = datetime.now()
-        edit.save()
-        messages.success(request, 'Successfully edited the request!')
-        return redirect('/h_dropping_edit/'+ str(data.studID))
+        if request.POST.get('head_is_approve') == 'Approved':
+            edit.admin_approve = 'Pending'
+            edit.save()
+            messages.success(request, 'Successfully edited the request!')
+            return redirect('/h_dropping_edit/'+ str(data.studID))
+        else:
+            edit.save()
+            messages.success(request, 'Successfully edited the request!')
+            return redirect('/h_dropping_edit/'+ str(data.studID))
+        
  
 @login_required(login_url='/index')
 def h_transferring(request):

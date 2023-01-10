@@ -65,29 +65,35 @@
                 </div>
 
                 <div style="overflow-x: scroll;">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered" id="table_id" style="width: 100%;">
                         <thead>
-                            <th colspan="3" style="text-align: center;">SUBJECT TO BE TAKEN BY STUDENT</th>
-                            <th colspan="4" style="text-align: center;">TEACHER</th>
-                            <th colspan="4" style="text-align: center;">DEPARTMENT HEAD</th>
-                            <th colspan="3" style="text-align: center;">ASSIST. DIRECTOR OF ACADEMIC AFFAIRS</th>
-                        </thead>
-                        <thead>
-                            <th>SUBJECT</th>
-                            <th>SECTION</th>
-                            <th>SCHEDULE</th>
-                            <th>ACTION TAKEN</th>
-                            <th>REMARK</th>
-                            <th>ENLISTED BY</th>
-                            <th>DATE & TIME</th>
-                            <th>ACTION TAKEN</th>
-                            <th>REMARK</th>
-                            <th>ENDORSED BY</th>
-                            <th>DATE & TIME</th>
-                            <th>ACTION TAKEN</th>
-                            <th>ADMIN NAME</th>
-                            <th>DATE & TIME</th>
-                            <!-- <th>ACTION</th> -->
+                            <tr>
+                                <th colspan="3" style="text-align: center;">SUBJECT TO BE TAKEN BY STUDENT</th>
+                                <th colspan="4" style="text-align: center;">TEACHER</th>
+                                <th colspan="4" style="text-align: center;">DEPARTMENT HEAD</th>
+                                <th colspan="4" style="text-align: center;">ASSIST. DIRECTOR OF ACADEMIC AFFAIRS</th>
+                                <th colspan="3" style="text-align: center;">REGISTRAR</th>
+                            </tr>
+                            <tr>
+                                <th>SUBJECT</th>
+                                <th>SECTION</th>
+                                <th>SCHEDULE</th>
+                                <th>ACTION TAKEN</th>
+                                <th>REMARK</th>
+                                <th>ENLISTED BY</th>
+                                <th>DATE & TIME</th>
+                                <th>ACTION TAKEN</th>
+                                <th>REMARK</th>
+                                <th>ENDORSED BY</th>
+                                <th>DATE & TIME</th>
+                                <th>ACTION TAKEN</th>
+                                <th>APPROVED BY</th>
+                                <th>DATE & TIME</th>
+                                <th>ACTION</th>
+                                <th>ACTION TAKEN</th>
+                                <th>ENLISTED BY</th>
+                                <th>DATE & TIME</th>
+                            </tr>
                         </thead>
 
                         <tbody>
@@ -107,118 +113,34 @@
                                 <td>{{i.admin_approve}}</td>
                                 <td>{{i.admin_name}}</td>
                                 <td>{{i.admin_date}}</td>
-                                <!-- <td><a class="btn btn-primary" data-toggle="modal" data-target="#editReq{{i.id}}">Edit</a></td> -->
-                            </tr>
-                            {% empty %}
-                            <tr>
-                                <tr>
-                                    <td colspan="15" style="text-align: center; font-style: italic;">
-                                        Not yet approved by the Department head/s
-                                    </td>
-                                </tr>
+                                <td>
+                                    {% if i.admin_approve == 'Pending' %}
+                                    <a class="btn btn-primary" href="/adaa_approved_sub2/{{i.id}}">Approve</a>
+                                    <br> {% else %}
+                                    <a class="btn btn-primary disabled" href="/adaa_approved_sub2/{{id}}" aria-disabled="true" disabled>Approve</a>
+                                    <br> {% endif %}
+                                </td>
+                                <td>{{i.reg_action}}</td>
+                                <td>{{i.enlist_by}}</td>
+                                <td>{{i.reg_date}}</td>
                             </tr>
                             {% endfor %}
-                            <tr>
-                                <td colspan="13"></td>
-                                <td>
-                                    <form action="/adaa_dropping_approve" method="post">
-                                        {% csrf_token %}
-                                        <input type="text" name="admin_name" id="admin_name" value="{{current_user.first_name}} {{current_user.last_name}}" hidden>
-                                        <input type="text" name="studID" id="studID" value="{{student_info.studID}}" hidden>
-                                        <br> {% if req|length > 0 %}
-                                        <button type="submit" class="btn btn-primary">Approve All</a>
-                                        {% endif %}
-                                    </form>
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
-            </div>
 
-        </div>
-
-
-        <!-- Edit Subject Modal -->
-        {% for i in req %}
-        <div class="modal fade" id="editReq{{i.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Edit Request:</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form class="form" method="post" action="/r_edit_sub1">
-                    {% csrf_token %}
-
-                    <div class="modal-body">
-                        <div class="form-group" hidden>
-                            <label for="id">Transcation No. and Student ID</label>
-                            <input type="text" class="form-control" id="studID" name="studID" value="{{student_info.studID}}" readonly>
-                            <input type="text" class="form-control" id="id" name="id" value="{{i.id}}" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" class="form-control" id="subject" name="subject" value="{{i.subject.subject}}-{{i.subject.description}}" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="section">Section</label>
-                            <input type="text" class="form-control" id="section" name="section" value="{{i.section}}" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="sched">Schedule</label>
-                            <input type="text" class="form-control" id="sched" name="sched" value="{{i.sched}}" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="subj_teacher_approve">Teacher Action Taken</label>
-                            <input type="text" class="form-control" id="subj_teacher_approve" name="subj_teacher_approve" value="{{i.subj_teacher_approve}}" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="subj_teacher_remark">Teacher Remarks</label>
-                            <input type="text" class="form-control" id="pic_remark" name="subj_teacher_remark" value="{{i.subj_teacher_remark}}" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="subj_teacher_name">Enlisted By:</label>
-                            <input type="text" class="form-control" id="subj_teacher_name" name="subj_teacher_name" value="{{i.subj_teacher_name}}" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="head_is_approve">Head Action Taken</label>
-                            <input type="text" class="form-control" id="pic_remark" name="pic_remark" value="{{i.head_is_approve}}" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="head_remark">Head Remarks</label>
-                            <input type="text" class="form-control" id="head_remark" name="head_remark" value="{{i.head_remark}}" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="head_name">Endorsed By:</label>
-                            <input type="text" class="form-control" id="head_name" name="head_name" value="{{i.head_name}}" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="admin_approve">Administration Action</label>
-                            <select class="custom-select" id="admin_approve" name="admin_approve">
-                                <option value="Pending" selected disabled hidden>Select an Option</option>
-                                <option value="Approve">Approve</option>
-                                <option value="Decline">Decline</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="admin_name">Administration Name:</label>
-                            <input type="text" class="form-control" id="admin_name" name="admin_name" value="{{current_user.first_name}} {{current_user.last_name}}" readonly>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                    </div>
-                </form>
             </div>
         </div>
-    </div> {% endfor %}
-
-
     </div>
+
+    <!-- <form action="/adaa_dropping_approve" method="post">
+        {% csrf_token %}
+        <input type="text" name="admin_name" id="admin_name" value="{{current_user.first_name}} {{current_user.last_name}}" hidden>
+        <input type="text" name="studID" id="studID" value="{{student_info.studID}}" hidden>
+        <br> {% if req|length > 0 %}
+        <button type="submit" class="btn btn-primary">Approve All</a>
+        {% endif %}
+    </form> -->
 
 
     <!--JAVASCRIPT-->
@@ -235,6 +157,13 @@
         })
     </script> {% endif %} {% endfor %} {% endif %}
 
+    <!--DATATABLES-->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#table_id').DataTable();
+        });
+    </script>
 
 </body>
 

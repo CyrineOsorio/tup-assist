@@ -322,6 +322,22 @@ def a_transferring(request):
     return redirect('/index')  
 
 
+def a_approved_sub1(request, id):
+    edit = TransferringReq.objects.get(id=id) 
+    edit.reg_action = 'Approved'
+    edit.enroll_by = request.user.first_name + ' ' + request.user.last_name
+    edit.reg_date = datetime.now()
+    edit.save()
+    messages.success(request, 'Sucessfully enrolled the request!')
+    # Email
+    link = 'https://tupassist.pythonanywhere.com'
+    data = registration.objects.get(studID=edit.studID_id) 
+    send_mail('TRANSFERRING OF SUBJECT - REQUEST', 
+    "Hi " + str(data.first_name) + ',' +
+    '\n\nYour Request for Transferring the ' + str(edit.subject.description) + ' in ' + str(edit.section) +
+    " was already enrolled by the Registrar." + '\n\nYou may also check your request status by signing in your account on the attached link of our website.\n' + link
+    , settings.EMAIL_HOST_USER , [data.email], fail_silently=False)
+    return redirect('/a_transferring/')
 
 
 

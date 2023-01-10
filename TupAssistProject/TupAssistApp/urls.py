@@ -31,8 +31,11 @@ urlpatterns = [
 
     path('a_adding/', views.a_adding, name='a_adding'),
     path('a_approved_sub/<int:id>', views.a_approved_sub),
+
     path('a_dropping/', views.a_dropping, name='a_dropping'),
+
     path('a_transferring/', views.a_transferring, name='a_transferring'),
+    path('a_approved_sub1/<int:id>', views.a_approved_sub1),
 
 
 

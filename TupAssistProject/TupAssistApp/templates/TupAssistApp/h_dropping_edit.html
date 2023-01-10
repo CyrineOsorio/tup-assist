@@ -120,7 +120,13 @@
                                     <td>{{i.head_remark}}</td>
                                     <td>{{i.head_name}}</td>
                                     <td>{{i.head_date}}</td>
-                                    <td><a class="btn btn-primary" data-toggle="modal" data-target="#editReq{{i.id}}" id="button_h"> Edit </a></td>
+                                    <td>
+                                        {% if i.head_is_approve == 'Pending' %}
+                                        <a class="btn btn-primary" data-toggle="modal" data-target="#editReq{{i.id}}" id="button_h">Edit</a>
+                                        <br>{% else %}
+                                        <a class="btn btn-primary disabled" aria-disabled="true" data-toggle="modal" data-target="#editReq{{i.id}}" id="button_h">Edit</a>
+                                        <br>{% endif %}
+                                    </td>
                                     <td>{{i.admin_approve}}</td>
                                     <td>{{i.admin_name}}</td>
                                     <td>{{i.admin_date}}</td>

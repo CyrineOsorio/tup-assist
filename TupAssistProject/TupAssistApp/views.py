@@ -311,7 +311,7 @@ def a_dropping(request):
 def a_transferring(request):
     if request.user.is_authenticated and (request.user.userType == 'OAA Staff' or request.user.is_superuser == True ):
         current_user = request.user
-        req = TransferringReq.objects.filter(admin_approve='Approve')
+        req = TransferringReq.objects.filter(admin_approve='Approved')
         cnt1 = len(AddingReq.objects.filter(reg_action='Pending'))
         context = { 
             'cnt1': cnt1,

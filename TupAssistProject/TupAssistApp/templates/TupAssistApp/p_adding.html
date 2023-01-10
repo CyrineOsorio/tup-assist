@@ -133,6 +133,7 @@
                         <th style="text-align: center;">PROGRAM</th>
                         <th style="text-align: center;">YEAR & SECTION</th>
                         <th>STATUS</th>
+                        <th>NO. OF REQUEST</th>
                         <th style="text-align: center;">ACTION</th>
                     </thead>
 
@@ -146,6 +147,7 @@
                             <td style="text-align: center;">{{e.course}}</td>
                             <td style="text-align: center;">{{e.year}}{{e.section}}</td>
                             <td>{{ e.addStatus }}</td>
+                            <td>{{e.addingreq_set.all|length}}</td>
                             <td class="action">
                                 <a href="/p_adding_edit/{{e.studID}}"><i class="bi bi-pencil"></i></a>
                             </td>

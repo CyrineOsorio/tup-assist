@@ -1,79 +1,79 @@
 Deparment Initials/Program, Year, Semester, Shop Number, Description
-DOE,1,1,1,,Engineering Drawing
-DOE,1,1,2,,Mechanical Engineering Orientation
-DOE,1,1,3,L,Workshop Theory and Practice Lab.
-DOE,1,1,4,,Chemistry for Engineers
-DOE,1,1,5,L,Chemistry for Engineers (Lab.)
-DOE,1,1,6,,Differential Calculus
-DOE,1,1,7,,Life and Works of Rizal
-DOE,1,1,8,,Mathematics in the Modern World 1
-DOE,1,1,9,,National Service Training Program 1
-DOE,1,1,10,,Physical Fitness
-DOE,1,1,11,,Purposive Communication
-DOE,1,2,1,,Art Appreciation
-DOE,1,2,2,,Calculus 2
-DOE,1,2,3,,Computer Aided Drafting
-DOE,1,2,4,L,Computer Fundamentals and Programming Lab.
-DOE,1,2,5,,Ethics
-DOE,1,2,6,L,"Machine Shop Theory and Practice, Lab."
-DOE,1,2,7,,National Service Training Program 2
-DOE,1,2,8,L,Physics for Engineers Lab.
-DOE,1,2,9,,Physics for Engineers Lec.
-DOE,1,2,10,,Rhythmic Activities
-DOE,1,2,11,,"Science, Technology, and Society"
-DOE,2,1,1,L,Basic Electrical Engineering Lab.
-DOE,2,1,2,,Basic Electrical Engineering Lec.
-DOE,2,1,3,,Differential Equations
-DOE,2,1,4,,Engineering Data Analysis
-DOE,2,1,5,,Individual and Dual Sports
-DOE,2,1,6,,Readings in Philippine History
-DOE,2,1,7,,Statics of Rigid Bodies
-DOE,2,1,8,,The Contemporary World 
-DOE,2,1,9,,Thermodynamics 1
-DOE,2,1,10,,Understanding the Self
-DOE,2,2,1,,Advanced Mathematics for ME
-DOE,2,2,2,L,Basic Electronic Lab.
-DOE,2,2,3,,Basic Electronic Lec.
-DOE,2,2,4,,Dynamics of Rigid Bodies
-DOE,2,2,5,,Engineering Economics
-DOE,2,2,6,,Indigenous Creative Crafts
-DOE,2,2,7,L,Machine Elements 1 (Drafting)
-DOE,2,2,8,,Machine Elements 1 Lec.
-DOE,2,2,9,L,Material Science and Engineering for ME Lab.
-DOE,2,2,10,,Material Science and Engineering for ME Lec.
-DOE,2,2,11,,Team Sports
-DOE,2,2,12,,Thermodynamics 2
-DOE,3,1,1,L,Computer Applications for ME (Lab.)
-DOE,3,1,2,,Computer Applications for ME (Lec.)
-DOE,3,1,3,L,DC and AC Machinery Lab.
-DOE,3,1,4,,DC and AC Machinery Lec.
-DOE,3,1,5,,Engineering Management
-DOE,3,1,6,,Environmental Science and Engineering
-DOE,3,1,7,,Fluid Mechanics
-DOE,3,1,8,,Heat Transfer
-DOE,3,1,9,L,Machine Elements 2 (Drafting)
-DOE,3,1,10,,Machine Elements 2 (Lec)
-DOE,3,1,11,,Mechanics of Deformable Bodies
-DOE,3,1,12,,Technopreneurship 101
-DOE,3,2,1,,Combustion Engineering
-DOE,3,2,2,,Refrigeration Engineering
-DOE,3,2,3,L,Control Engineering (Lab.)
-DOE,3,2,4,,Control Engineering (Lec.)
-DOE,3,2,5,,Fluid Machinery
-DOE,3,2,6,L,Machine Design 1 (Design)
-DOE,3,2,7,,Machine Design 1 (Lec.)
-DOE,3,2,8,,Mechanical Engineering Elective 1
-DOE,3,2,9,L,Mechanical Engineering Laboratory1
-DOE,3,2,10,,Methods of Research for ME
-DOE,3,2,11,,Vibration Engineering
-DOE,4,1,1,,Air-Conditioning and Ventilation Systems
-DOE,4,1,2,,Basic Occupational Safety and Health
-DOE,4,1,3,,General Mathematics and Allied Subjects for ME
-DOE,4,1,4,,M.E. Project Study
-DOE,4,1,5,L,Machine Design 2 (Design)
-DOE,4,1,6,,Machine Design 2 (Lec.)
-DOE,4,1,7,L,Manufacturing and Industrial Processes with Plant Visits (Lab.)
-DOE,4,1,8,,Manufacturing and Industrial Processes with Plant Visits (Lec.)
-DOE,4,1,9,,Mechanical Engineering Elective 2
-DOE,4,1,10,L,Mechanical Engineering Laboratory 2
-DOE,4,1,11,,The Entrepreneurial Mind
+DOE,1,1,1,Engineering Drawing
+DOE,1,1,2,Mechanical Engineering Orientation
+DOE,1,1,3,Workshop Theory and Practice Lab.
+DOE,1,1,4,Chemistry for Engineers
+DOE,1,1,5,Chemistry for Engineers (Lab.)
+DOE,1,1,6,Differential Calculus
+DOE,1,1,7,Life and Works of Rizal
+DOE,1,1,8,Mathematics in the Modern World 1
+DOE,1,1,9,National Service Training Program 1
+DOE,1,1,10,Physical Fitness
+DOE,1,1,11,Purposive Communication
+DOE,1,2,1,Art Appreciation
+DOE,1,2,2,Calculus 2
+DOE,1,2,3,Computer Aided Drafting
+DOE,1,2,4,Computer Fundamentals and Programming Lab.
+DOE,1,2,5,Ethics
+DOE,1,2,6,"Machine Shop Theory and Practice, Lab."
+DOE,1,2,7,National Service Training Program 2
+DOE,1,2,8,Physics for Engineers Lab.
+DOE,1,2,9,Physics for Engineers Lec.
+DOE,1,2,10,Rhythmic Activities
+DOE,1,2,11,"Science, Technology, and Society"
+DOE,2,1,1,Basic Electrical Engineering Lab.
+DOE,2,1,2,Basic Electrical Engineering Lec.
+DOE,2,1,3,Differential Equations
+DOE,2,1,4,Engineering Data Analysis
+DOE,2,1,5,Individual and Dual Sports
+DOE,2,1,6,Readings in Philippine History
+DOE,2,1,7,Statics of Rigid Bodies
+DOE,2,1,8,The Contemporary World 
+DOE,2,1,9,Thermodynamics 1
+DOE,2,1,10,Understanding the Self
+DOE,2,2,1,Advanced Mathematics for ME
+DOE,2,2,2,Basic Electronic Lab.
+DOE,2,2,3,Basic Electronic Lec.
+DOE,2,2,4,Dynamics of Rigid Bodies
+DOE,2,2,5,Engineering Economics
+DOE,2,2,6,Indigenous Creative Crafts
+DOE,2,2,7,Machine Elements 1 (Drafting)
+DOE,2,2,8,Machine Elements 1 Lec.
+DOE,2,2,9,Material Science and Engineering for ME Lab.
+DOE,2,2,10,Material Science and Engineering for ME Lec.
+DOE,2,2,11,Team Sports
+DOE,2,2,12,Thermodynamics 2
+DOE,3,1,1,Computer Applications for ME (Lab.)
+DOE,3,1,2,Computer Applications for ME (Lec.)
+DOE,3,1,3,DC and AC Machinery Lab.
+DOE,3,1,4,DC and AC Machinery Lec.
+DOE,3,1,5,Engineering Management
+DOE,3,1,6,Environmental Science and Engineering
+DOE,3,1,7,Fluid Mechanics
+DOE,3,1,8,Heat Transfer
+DOE,3,1,9,Machine Elements 2 (Drafting)
+DOE,3,1,10,Machine Elements 2 (Lec)
+DOE,3,1,11,Mechanics of Deformable Bodies
+DOE,3,1,12,Technopreneurship 101
+DOE,3,2,1,Combustion Engineering
+DOE,3,2,2,Refrigeration Engineering
+DOE,3,2,3,Control Engineering (Lab.)
+DOE,3,2,4,Control Engineering (Lec.)
+DOE,3,2,5,Fluid Machinery
+DOE,3,2,6,Machine Design 1 (Design)
+DOE,3,2,7,Machine Design 1 (Lec.)
+DOE,3,2,8,Mechanical Engineering Elective 1
+DOE,3,2,9,Mechanical Engineering Laboratory1
+DOE,3,2,10,Methods of Research for ME
+DOE,3,2,11,Vibration Engineering
+DOE,4,1,1,Air-Conditioning and Ventilation Systems
+DOE,4,1,2,Basic Occupational Safety and Health
+DOE,4,1,3,General Mathematics and Allied Subjects for ME
+DOE,4,1,4,M.E. Project Study
+DOE,4,1,5,Machine Design 2 (Design)
+DOE,4,1,6,Machine Design 2 (Lec.)
+DOE,4,1,7,Manufacturing and Industrial Processes with Plant Visits (Lab.)
+DOE,4,1,8,Manufacturing and Industrial Processes with Plant Visits (Lec.)
+DOE,4,1,9,Mechanical Engineering Elective 2
+DOE,4,1,10,Mechanical Engineering Laboratory 2
+DOE,4,1,11,The Entrepreneurial Mind

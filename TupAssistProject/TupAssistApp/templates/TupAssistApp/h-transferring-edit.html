@@ -84,14 +84,14 @@
                                 <th>SUBJECT</th>
                                 <th>SECTION</th>
                                 <th>SCHEDULE</th>
-                                <th>REASON/S</th>
+                                <th>REASON</th>
                                 <th>ACTION TAKEN</th>
                                 <th>REMARK</th>
                                 <th>ENDORSED BY</th>
                                 <th>DATE & TIME</th>
                                 <th>ACTION</th>
                                 <th>ACTION TAKEN</th>
-                                <th>ADMIN</th>
+                                <th>APPROVED </th>
                                 <th>DATE & TIME</th>
                             </thead>
 
@@ -106,7 +106,13 @@
                                     <td>{{i.head_remark}}</td>
                                     <td>{{i.head_name}}</td>
                                     <td>{{i.head_date}}</td>
-                                    <td><a class="btn btn-primary" data-toggle="modal" data-target="#editReq{{i.id}}" id="button_h"> Edit </a></td>
+                                    <td>
+                                        {% if i.head_is_approve == 'Pending' %}
+                                        <a class="btn btn-primary" data-toggle="modal" data-target="#editReq{{i.id}}" id="button_h">Edit</a>
+                                        <br> {% else %}
+                                        <a class="btn btn-primary disabled" aria-disabled="true" data-toggle="modal" data-target="#editReq{{i.id}}" id="button_h">Edit</a>
+                                        <br> {% endif %}
+                                    </td>
                                     <td>{{i.admin_approve}}</td>
                                     <td>{{i.admin_name}}</td>
                                     <td>{{i.admin_date}}</td>
@@ -161,21 +167,20 @@
                             <input type="text" class="form-control" id="sched" name="sched" value="{{i.sched}}" readonly>
                         </div>
                         <div class="form-group">
-                            <label for="head_is_approve">Approval</label>
+                            <label for="head_is_approve">Action</label>
                             <select class="custom-select" id="head_is_approve" name="head_is_approve">
-                                <option value="" selected disabled hidden>Select an Option</option>
-                                <option value="Pending">Pending</option>
-                                <option value="Approve">Approve</option>
-                                <option value="Decline">Decline</option>
+                                <option value="{{i.head_is_approve}}" selected hidden>{{i.head_is_approve}}</option>
+                                <option value="Approved">Approve</option>
+                                <option value="Declined">Decline</option>
                               </select>
                         </div>
                         <div class="form-group">
-                            <label for="head_remark">Head Remarks</label>
+                            <label for="head_remark">Remark</label>
                             <input type="text" class="form-control" id="head_remark" name="head_remark" value="{{i.head_remark}}">
                         </div>
                         <div class="form-group">
                             <label for="head_name">Endorsed By:</label>
-                            <input type="text" class="form-control" id="head_name" name="head_name" value="{{current_user.first_name}} {{current_user.last_name}}">
+                            <input type="text" class="form-control" id="head_name" name="head_name" value="{{current_user.first_name}} {{current_user.last_name}}" readonly>
                         </div>
                     </div>
                     <div class="modal-footer">

@@ -1107,8 +1107,9 @@ def s_trans_sub(request):
         section = request.POST.get('section').upper()
         schedule = request.POST.get('schedule')
         reason = request.POST.get('reason')
+        req_date = datetime.now()
         head_is_approve = 'Pending'
-        data = TransferringReq.objects.create(school_year=school_year, semester=semester, studID_id= current_user.studID, subject_id=subject, section=section, sched=schedule, reason=reason, head_is_approve=head_is_approve)
+        data = TransferringReq.objects.create(school_year=school_year, semester=semester, studID_id= current_user.studID, subject_id=subject, section=section, sched=schedule, reason=reason, head_is_approve=head_is_approve, req_date=req_date)
         data.save()
         messages.success(request, 'Subject tranfer request added.')
         return redirect('/s_transferring')

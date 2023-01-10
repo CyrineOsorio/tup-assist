@@ -167,7 +167,7 @@
                             <td>{{i.admin_name}}</td>
                             <td>{{i.admin_date}}</td>
                             <td>
-                                <br> {% if i.reg_action == 'Pending' %}
+                                {% if i.reg_action == 'Pending' %}
                                 <a class="btn btn-primary" href="/a_approved_sub/{{i.id}}">Enroll</a>
                                 <br> {% else %}
                                 <a class="btn btn-primary disabled" aria-disabled="true">Enroll</a>

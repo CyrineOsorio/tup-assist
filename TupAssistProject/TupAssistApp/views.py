@@ -924,18 +924,23 @@ def s_drop_sub(request):
         semester = request.POST.get('semester')
 
         if subject1 and section1 and schedule1 !='':
-            data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject1, section=section1, sched=schedule1, subj_teacher_name=teacher1, reason=reason, school_year=school_year, semester=semester)
+            data = DroppingReq.objects.create(req_date = datetime.now(), head_is_approve='Pending', studID_id= current_user.studID, subject_id=subject1, section=section1, sched=schedule1, subj_teacher_name=teacher1, reason=reason, school_year=school_year, semester=semester)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
-            data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'
+            data1.dropStatus = "Wait for Teacher, Department head, ADAA, and Registrar's Action"
             data1.save()
             subject = 'DROPPING SUBJECT REQUEST'
-            link = 'https://tupassist.pythonanywhere.com'
-            content = 'Good day!, \n\n' + current_user.first_name + ' ' + current_user.last_name + ' is requesting to drop on your subject,' + subject1 + ' Due to this reason: '+ reason + '\n\n Please click this link below to login. Use your gsfe eamil and the deault password is your id number. Ex. TUPC-190123 \n\n' + link
             send_mail(subject, 
-                content, settings.EMAIL_HOST_USER , [teacher1], fail_silently=False)
+                'Good day!\n\n' +
+                current_user.first_name + ' ' + current_user.last_name + ' requested to drop on your subject, ' + 
+                subject1 + '.\n\nDue to this reason: '+ reason + 
+                'Ex. TUPC-2020-XXX \n\n' +
+                'Use your gsfe email and the deault password is your staff id number.' + '\n\n' +
+                'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
+                'If there are any concerns, please reply to this email.' + '\n\n'
+                'Thank you.', settings.EMAIL_HOST_USER , [teacher1], fail_silently=False)
         if subject2 and section2 and schedule2 !='':
-            data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject2, section=section2, sched=schedule2, subj_teacher_name=teacher2, reason=reason)
+            data = DroppingReq.objects.create(req_date = datetime.now(), studID_id= current_user.studID, subject_id=subject2, section=section2, sched=schedule2, subj_teacher_name=teacher2, reason=reason)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
             data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'
@@ -948,7 +953,7 @@ def s_drop_sub(request):
         
                 
         if subject3 and section3 and schedule3 !='':
-            data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject3, section=section3, sched=schedule3, subj_teacher_name=teacher3, reason=reason)
+            data = DroppingReq.objects.create(req_date = datetime.now(), studID_id= current_user.studID, subject_id=subject3, section=section3, sched=schedule3, subj_teacher_name=teacher3, reason=reason)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
             data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'
@@ -960,7 +965,7 @@ def s_drop_sub(request):
                 content, settings.EMAIL_HOST_USER , [teacher3], fail_silently=False)
             
         if subject4 and section4 and schedule4 !='':
-            data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject4, section=section4, sched=schedule4, subj_teacher_name=teacher4, reason=reason)
+            data = DroppingReq.objects.create(req_date = datetime.now(), studID_id= current_user.studID, subject_id=subject4, section=section4, sched=schedule4, subj_teacher_name=teacher4, reason=reason)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
             data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'
@@ -972,7 +977,7 @@ def s_drop_sub(request):
                 content, settings.EMAIL_HOST_USER , [teacher4], fail_silently=False)
             
         if subject5 and section5 and schedule5 !='':
-            data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject5, section=section5, sched=schedule5, subj_teacher_name=teacher5, reason=reason)
+            data = DroppingReq.objects.create(req_date = datetime.now(), studID_id= current_user.studID, subject_id=subject5, section=section5, sched=schedule5, subj_teacher_name=teacher5, reason=reason)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
             data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'
@@ -984,7 +989,7 @@ def s_drop_sub(request):
                 content, settings.EMAIL_HOST_USER , [teacher5], fail_silently=False)
             
         if subject6 and section6 and schedule6 !='':
-            data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject6, section=section6, sched=schedule6, subj_teacher_name=teacher6, reason=reason)
+            data = DroppingReq.objects.create(req_date = datetime.now(), studID_id= current_user.studID, subject_id=subject6, section=section6, sched=schedule6, subj_teacher_name=teacher6, reason=reason)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
             data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'
@@ -997,7 +1002,7 @@ def s_drop_sub(request):
 
 
         if subject7 and section7 and schedule7 !='':
-            data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject7, section=section7, sched=schedule7, subj_teacher_name=teacher7, reason=reason)
+            data = DroppingReq.objects.create(req_date = datetime.now(), studID_id= current_user.studID, subject_id=subject7, section=section7, sched=schedule7, subj_teacher_name=teacher7, reason=reason)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
             data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'
@@ -1010,7 +1015,7 @@ def s_drop_sub(request):
 
 
         if subject8 and section8 and schedule8 !='':
-            data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject8, section=section8, sched=schedule8, subj_teacher_name=teacher8, reason=reason)
+            data = DroppingReq.objects.create(req_date = datetime.now(), studID_id= current_user.studID, subject_id=subject8, section=section8, sched=schedule8, subj_teacher_name=teacher8, reason=reason)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
             data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'
@@ -1023,7 +1028,7 @@ def s_drop_sub(request):
 
 
         if subject9 and section9 and schedule9 !='':
-            data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject9, section=section9, sched=schedule9, subj_teacher_name=teacher9, reason=reason)
+            data = DroppingReq.objects.create(req_date = datetime.now(), studID_id= current_user.studID, subject_id=subject9, section=section9, sched=schedule9, subj_teacher_name=teacher9, reason=reason)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
             data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'
@@ -1035,7 +1040,7 @@ def s_drop_sub(request):
                 content, settings.EMAIL_HOST_USER , [teacher9], fail_silently=False)
 
         if subject10 and section10 and schedule10 !='':
-            data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject10, section=section10, sched=schedule10, subj_teacher_name=teacher10, reason=reason)
+            data = DroppingReq.objects.create(req_date = datetime.now(), studID_id= current_user.studID, subject_id=subject10, section=section10, sched=schedule10, subj_teacher_name=teacher10, reason=reason)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
             data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'
@@ -1048,7 +1053,7 @@ def s_drop_sub(request):
 
 
         if subject11 and section11 and schedule11 !='':
-            data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject11, section=section11, sched=schedule11, subj_teacher_name=teacher11, reason=reason)
+            data = DroppingReq.objects.create(req_date = datetime.now(), studID_id= current_user.studID, subject_id=subject11, section=section11, sched=schedule11, subj_teacher_name=teacher11, reason=reason)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
             data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'
@@ -1061,7 +1066,7 @@ def s_drop_sub(request):
 
 
         if subject12 and section12 and schedule12 !='':
-            data = DroppingReq.objects.create(studID_id= current_user.studID, subject_id=subject12, section=section12, sched=schedule12, subj_teacher_name=teacher12, reason=reason)
+            data = DroppingReq.objects.create(req_date = datetime.now(), studID_id= current_user.studID, subject_id=subject12, section=section12, sched=schedule12, subj_teacher_name=teacher12, reason=reason)
             data.save()
             data1 = registration.objects.get(studID=current_user.studID)
             data1.dropStatus = 'Wait for Teacher, Department Head and Assist. Director of Academic Affairs Approval'

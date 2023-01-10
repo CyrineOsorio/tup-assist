@@ -180,16 +180,15 @@
                             <input type="text" class="form-control" id="subj_teacher_remark" name="subj_teacher_remark" value="{{i.subj_teacher_remark}}">
                         </div>
                         <div class="form-group">
-                            <label for="subj_teacher_name">Enlisted By:</label>
+                            <label for="subj_teacher_name">Reviewed By:</label>
                             <input type="text" class="form-control" id="subj_teacher_name" name="subj_teacher_name" value="{{i.subj_teacher_name}}">
                         </div>
                         <div class="form-group">
-                            <label for="head_is_approve">Approval</label>
+                            <label for="head_is_approve">Action</label>
                             <select class="custom-select" id="head_is_approve" name="head_is_approve">
-                                <option value="" selected disabled hidden>Select an Option</option>
-                                <option value="Pending">Pending</option>
-                                <option value="Approve">Approve</option>
-                                <option value="Decline">Decline</option>
+                                <option value="{{i.head_is_approve}}" selected hidden>{{i.head_is_approve}}</option>
+                                <option value="Approved">Approve</option>
+                                <option value="Declined">Decline</option>
                               </select>
                         </div>
                         <div class="form-group">

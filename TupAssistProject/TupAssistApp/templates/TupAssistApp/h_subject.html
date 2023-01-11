@@ -157,7 +157,38 @@
           </button>
                 </div>
                 <div class="modal-body">
-                    ...
+
+                    <form action="/h_edit_subject" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="subject">Subject Code:</label>
+                            <input type="text" class="form-control" id="subject" name="subject" value="{{current_user.studID}}" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email Address/Username:</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" name="username" aria-describedby="emailHelp" value="{{current_user.username}}" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="first_name">First Name:</label>
+                            <input type="text" class="form-control" id="first_name" name="first_name" value="{{current_user.first_name}}" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="first_name">Last Name:</label>
+                            <input type="text" class="form-control" id="last_name" name="last_name" value="{{current_user.last_name}}" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="department">Department:</label>
+                            <select class="custom-select" id="department" name="department">
+                                <option selected>{{current_user.department}}</option>
+                                <option value="Department of Engineering">Department of Engineering</option>
+                                <option value="Department of Industrial Technology">Department of Industrial Technology</option>
+                                <option value="Department of Industrial Education">Department of Industrial Education</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg btn-block" style="margin-top:30px;">Update</button>
+                    </form>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -176,16 +207,43 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Add 1 Subject</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save</button>
-                </div>
+                <form action="/h_add_subject" method="post">
+                    {% csrf_token %}
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="course">Department/Program:</label> {% if current_user.department == 'Department of Industrial Technology' %}
+                            <input type="text" class="form-control" id="course" name="course" value="DIT" readonly> {% elif current_user.department == 'Department of Industrial Education' %}
+                            <input type="text" class="form-control" id="course" name="course" value="DIE" readonly> {% elif current_user.department == 'Department of Engineering' %}
+                            <input type="text" class="form-control" id="course" name="course" value="DOE" readonly> {% elif current_user.department == 'Department of Math and Science' %}
+                            <input type="text" class="form-control" id="course" name="course" value="DMS" readonly> {% elif current_user.department == 'Department of Liberal Arts' %}
+                            <input type="text" class="form-control" id="course" name="course" value="DLA" readonly> {% endif %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="year">Year:</label>
+                            <input type="number" class="form-control" id="year" name="year">
+                        </div>
+                        <div class="form-group">
+                            <label for="semester">Semester:</label>
+                            <input type="number" class="form-control" id="semester" name="semester">
+                        </div>
+                        <div class="form-group">
+                            <label for="shop">Shop Number:</label>
+                            <input type="number" class="form-control" id="shop" name="shop">
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description:</label>
+                            <input type="text" class="form-control" id="description" name="description">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Add</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

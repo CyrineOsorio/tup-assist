@@ -1709,6 +1709,26 @@ def h_add_subject(request):
             messages.success(request, 'Sucessfully added the subject!')
             return redirect('/h_subject')
 
+def h_edit_subject(request):
+    if request.method =='POST':
+        subject = request.POST.get('subject')
+        course = request.POST.get('course')
+        year = request.POST.get('year')
+        semester = request.POST.get('semester')
+        shop = request.POST.get('shop')
+        description = request.POST.get('description')
+        subject1 = course + year + semester + shop
+        if Subjects.objects.filter(subject=subject1).exists():
+            messages.error(request, 'Subject code are already existed!')
+            return redirect('/h_subject')
+        else:
+            edit= Subjects.objects.get(subject=subject)
+            edit.delete()
+            sub = Subjects.objects.create( course=course, year=year, semester=semester, shop=shop, description=description, subject=subject1)
+            sub.save()
+            messages.success(request, 'Sucessfully updated the subject!')
+            return redirect('/h_subject')
+
 
 @login_required(login_url='/index')
 def h_logs(request):

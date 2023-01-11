@@ -1658,7 +1658,7 @@ def sub_cvs(request):
                     new_revo.save()
                     messages.success(request, 'Successfully updated the subjects')
                 except:
-                    messages.error(request, 'Content of the csv does not match to the format, or subjects are already existed create another file for the additional subject.')
+                    messages.error(request, 'Content of the csv does not match to the format, or subjects are already existed. Create another file for the additional subject.')
                     return redirect('/h_subject')
             return redirect('/h_subject')
         elif current_user.department == 'Department of Math and Science':
@@ -1686,7 +1686,7 @@ def sub_cvs(request):
                     new_revo.save()
                     messages.success(request, 'Successfully updated the subjects')
                 except:
-                    messages.error(request, 'Content of the csv does not match to the format, or subjects are already existed create another file for the additional subject.')
+                    messages.error(request, 'Content of the csv does not match to the format, or subjects are already existed. Create another file for the additional subject.')
                     return redirect('/h_subject')
             return redirect('/h_subject')
     return redirect('/h_subject')

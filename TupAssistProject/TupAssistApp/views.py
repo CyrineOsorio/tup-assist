@@ -1692,6 +1692,24 @@ def sub_cvs(request):
     return redirect('/h_subject')
 
 
+def h_add_subject(request):
+    if request.method =='POST':
+        course = request.POST.get('course')
+        year = request.POST.get('year')
+        semester = request.POST.get('semester')
+        shop = request.POST.get('shop')
+        description = request.POST.get('description')
+        subject = course + year + semester + shop
+        if Subjects.objects.filter(subject=subject).exists():
+            messages.error(request, 'Subject code are already existed!')
+            return redirect('/h_subject')
+        else:
+            sub = Subjects.objects.create( course=course, year=year, semester=semester, shop=shop, description=description, subject=subject)
+            sub.save()
+            messages.success(request, 'Sucessfully added the subject!')
+            return redirect('/h_subject')
+
+
 @login_required(login_url='/index')
 def h_logs(request):
     if request.user.is_authenticated and request.user.userType == 'Department Head':

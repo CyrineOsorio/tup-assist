@@ -67,6 +67,9 @@ urlpatterns = [
     path('changeheadinfo', views.changeheadinfo, name='changeheadinfo'),
 
     path('h_subject/', views.h_subject, name='h_subject'),
+    path('h_add_subject/', views.h_add_subject, name='h_add_subject'),
+    # path('h_edit_subject/', views.h_edit_subject, name='h_edit_subject'),
+
     path('h_logs/', views.h_logs, name='h_logs'),
     path('sub_cvs', views.sub_cvs, name='sub_cvs'),
 

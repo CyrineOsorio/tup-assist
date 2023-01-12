@@ -11,7 +11,7 @@ class registration(AbstractUser):
         ('Department Head', 'Department Head'),
         ('Person-in-charge', 'Person-in-charge'), 
         ('Teacher', 'Teacher'), 
-        ('Assist. Director for Academic Affairs', 'Assist. Director for Academic Affairs'), 
+        ('Assistant Director for Academic Affairs', 'Assistant Director for Academic Affairs'), 
         ('OAA Staff', 'OAA Staff'),
     ]
 

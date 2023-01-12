@@ -53,7 +53,7 @@ def index(request):
             login(request, user)
             return redirect('/a_dashboard')
 
-        elif user is not None and user.userType == 'Assist. Director for Academic Affairs':
+        elif user is not None and user.userType == 'Assistant Director for Academic Affairs':
             login(request, user)
             return redirect('/adaa_adding')
 
@@ -149,7 +149,7 @@ def a_account(request):
     if request.user.is_authenticated and (request.user.userType == 'OAA Staff' or request.user.is_superuser == True ):
         current_user = request.user
         form = HeadRegistration()
-        staff = registration.objects.filter(Q(userType='Department Head') | Q(userType='Program-in-Charge') | Q(userType='Teacher') | Q(userType='OAA Staff') | Q(userType='Assist. Director for Academic Affairs'))
+        staff = registration.objects.filter(Q(userType='Department Head') | Q(userType='Program-in-Charge') | Q(userType='Teacher') | Q(userType='OAA Staff') | Q(userType='Assistant Director for Academic Affairs'))
         student = registration.objects.filter(userType='Student')
         cnt1 = len(AddingReq.objects.filter(reg_action='Pending'))
         context = {
@@ -218,7 +218,7 @@ def staff_acc_cvs(request):
                 send_mail('TUP-Assist Account', 
                 "Hello " + str(row[1]) + ',\n'
                 '\nAs a staff of Technological University of the Philippines - Cavite, you are automatically registered in TUP-Assist.' + '\n\n'
-                '\nTUP-Assist is a web-based system that helps Assist. Director for Academic Affairs, Department Head, Program-in-charge, and Teachers in adding, dropping, and transferring of subjects of students in TUP-Cavite.' + '\n\n'
+                '\nTUP-Assist is a web-based system that helps Assistant Director for Academic Affairs, Department Head, Program-in-charge, and Teachers in adding, dropping, and transferring of subjects of students in TUP-Cavite.' + '\n\n'
                 '\nAttached to this are your username/email and the default password that you can change later after logging in.' + '\n\n'
                 'Username/Email: ' + str(row[3]) + '\n'
                 'Password: ' + 'TUPC-'+str(row[0]) + '\n'
@@ -361,7 +361,7 @@ def a_approved_sub1(request, id):
 # ADAA PAGES
 @login_required(login_url='/index')
 def adaa_profile(request):
-    if request.user.is_authenticated and request.user.userType == 'Assist. Director for Academic Affairs':  
+    if request.user.is_authenticated and request.user.userType == 'Assistant Director for Academic Affairs':  
         current_user = request.user
         form = PasswordChangeForm(current_user)
         cnt1 = len(AddingReq.objects.filter(admin_approve='Pending'))
@@ -375,7 +375,7 @@ def adaa_profile(request):
 
 @login_required(login_url='/index')
 def adaa_adding(request):
-    if request.user.is_authenticated and request.user.userType == 'Assist. Director for Academic Affairs':
+    if request.user.is_authenticated and request.user.userType == 'Assistant Director for Academic Affairs':
         current_user = request.user = request.user
         test = registration.objects.filter(Q(userType='Student') & (~Q(addStatus='') | Q(addStatus=None)) )
         cnt1 = len(AddingReq.objects.filter(admin_approve='Pending'))
@@ -391,7 +391,7 @@ def adaa_adding(request):
 
 @login_required(login_url='/index')
 def adaa_adding_view(request, studID):
-    if request.user.is_authenticated and request.user.userType == 'Assist. Director for Academic Affairs':
+    if request.user.is_authenticated and request.user.userType == 'Assistant Director for Academic Affairs':
         current_user = request.user
         data = registration.objects.get(studID=studID)
         req = AddingReq.objects.filter(Q(studID=data.studID) & (Q(admin_approve='Pending') | (Q(admin_approve='Approved')) )).order_by(('-admin_date'))
@@ -445,7 +445,7 @@ def adaa_adding_approve(request):
 
 @login_required(login_url='/index')
 def adaa_dropping(request):
-    if request.user.is_authenticated and request.user.userType == 'Assist. Director for Academic Affairs':
+    if request.user.is_authenticated and request.user.userType == 'Assistant Director for Academic Affairs':
         current_user = request.user
         test = registration.objects.filter(Q(userType='Student') & ~Q(dropStatus='')) 
         cnt1 = len(AddingReq.objects.filter(admin_approve='Pending'))
@@ -459,7 +459,7 @@ def adaa_dropping(request):
 
 @login_required(login_url='/index')
 def adaa_dropping_view(request, studID):
-    if request.user.is_authenticated and request.user.userType == 'Assist. Director for Academic Affairs':
+    if request.user.is_authenticated and request.user.userType == 'Assistant Director for Academic Affairs':
         current_user = request.user
         data = registration.objects.get(studID=studID)
         req = DroppingReq.objects.filter(studID=data.studID)
@@ -486,7 +486,7 @@ def r_edit_sub1(request):
 
 @login_required(login_url='/index')
 def adaa_dropping_approve(request):
-    if request.user.is_authenticated and request.user.userType == 'Assist. Director for Academic Affairs':
+    if request.user.is_authenticated and request.user.userType == 'Assistant Director for Academic Affairs':
         studID = request.POST.get('studID')
         admin_name = request.POST.get('admin_name')
         admin_date = datetime.now()
@@ -523,7 +523,7 @@ def adaa_approved_sub2(request, id):
 
 @login_required(login_url='/index')
 def adaa_transferring(request):
-    if request.user.is_authenticated and request.user.userType == 'Assist. Director for Academic Affairs':
+    if request.user.is_authenticated and request.user.userType == 'Assistant Director for Academic Affairs':
         current_user = request.user
         test = registration.objects.filter(Q(userType='Student') & (Q(transferStatus="Wait for Department head, and ADDA, and Registrar's Action")) | Q(transferStatus='ADAA Approved'))
         cnt1 = len(AddingReq.objects.filter(admin_approve='Pending'))
@@ -537,7 +537,7 @@ def adaa_transferring(request):
 
 @login_required(login_url='/index')
 def adaa_transferring_view(request, studID):
-    if request.user.is_authenticated and request.user.userType == 'Assist. Director for Academic Affairs':
+    if request.user.is_authenticated and request.user.userType == 'Assistant Director for Academic Affairs':
         current_user = request.user
         data = registration.objects.get(studID=studID)
         req = TransferringReq.objects.filter(Q(studID=data.studID) & Q(head_is_approve='Approved'))

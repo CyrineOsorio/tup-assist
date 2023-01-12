@@ -191,7 +191,7 @@ def student_acc_cvs(request):
                 'Attached to this are your username/email and the default password that you can change later after logging in.' + '\n\n'
                 'Username/Email: ' + str(row[3]) + '\n'
                 'Password: ' + str(row[0]) + '\n'
-                'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
+                'System Link: ' + 'https://tup-assist.com' + '\n\n'
                 'If there are any concerns, please reply to this email.' + '\n\n'
                 'Thank you.', settings.EMAIL_HOST_USER , [str(row[3])], fail_silently=False)
             except:
@@ -222,7 +222,7 @@ def staff_acc_cvs(request):
                 '\nAttached to this are your username/email and the default password that you can change later after logging in.' + '\n\n'
                 'Username/Email: ' + str(row[3]) + '\n'
                 'Password: ' + 'TUPC-'+str(row[0]) + '\n'
-                'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
+                'System Link: ' + 'https://tup-assist.com' + '\n\n'
                 'If there are any concerns, please reply to this email.' + '\n\n'
                 'Thank you.', settings.EMAIL_HOST_USER , [str(row[3])], fail_silently=False)
             except:
@@ -250,7 +250,7 @@ def a_staff_create(request):
                 'Attached to this are your username/email and the default password that you can change later after logging in.' + '\n\n'
                 'Username/Email: ' + str(username1) + '\n'
                 "Password: " + str(studID1) +  '\n'
-                'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
+                'System Link: ' + 'https://tup-assist.com' + '\n\n'
                 'If there are any concerns, please reply to this email.' + '\n\n'
                 'Thank you.', settings.EMAIL_HOST_USER , [email1], fail_silently=False)
             messages.success(request, 'Account successfully created!')
@@ -284,7 +284,7 @@ def a_approved_sub(request, id):
     edit.save()
     messages.success(request, 'Sucessfully enrolled the request!')
     # Email
-    link = 'https://tupassist.pythonanywhere.com'
+    link = 'https://tup-assist.com'
     data = registration.objects.get(studID=edit.studID_id) 
     send_mail('ADDING OF SUBJECT - REQUEST', 
     "Hi " + str(data.first_name) + ',' +
@@ -315,7 +315,7 @@ def a_approved_sub2(request, id):
     edit.save()
     messages.success(request, 'Sucessfully enlisted the request!')
     # Email
-    link = 'https://tupassist.pythonanywhere.com'
+    link = 'https://tup-assist.com'
     data = registration.objects.get(studID=edit.studID_id) 
     send_mail('DROPPING OF SUBJECT - REQUEST', 
     "Hi " + str(data.first_name) + ',' +
@@ -347,7 +347,7 @@ def a_approved_sub1(request, id):
     edit.save()
     messages.success(request, 'Sucessfully enrolled the request!')
     # Email
-    link = 'https://tupassist.pythonanywhere.com'
+    link = 'https://tup-assist.com'
     data = registration.objects.get(studID=edit.studID_id) 
     send_mail('TRANSFERRING OF SUBJECT - REQUEST', 
     "Hi " + str(data.first_name) + ',' +
@@ -414,7 +414,7 @@ def adaa_approved_sub(request, id):
     edit.save()
     messages.success(request, 'Sucessfully approved the request!')
     # Email
-    # link = 'https://tupassist.pythonanywhere.com'
+    # link = 'https://tup-assist.com'
     # data = registration.objects.get(studID=edit.studID_id) 
     # send_mail('ADDING OF SUBJECT - REQUEST', 
     # "Hi " + str(data.first_name) + ',' +
@@ -436,7 +436,7 @@ def adaa_adding_approve(request):
         edit1.save()
         messages.success(request, 'Sucessfully edited the request!')
         # Email
-        link = 'https://tupassist.pythonanywhere.com'
+        link = 'https://tup-assist.com'
         content = 'Hi ' + data.first_name + ' ' + data.last_name + ',\n\nYour Request for Adding of Subject is already approved by ADAA. Check your request by signing in your account on the attached link. \n\n' + link
         send_mail('ADDING OF SUBJECT - REQUEST', 
             content, settings.EMAIL_HOST_USER , [data.email], fail_silently=False)
@@ -965,7 +965,7 @@ def s_drop_sub(request):
                 current_user.first_name + ' ' + current_user.last_name + ' requested to drop on your subject, ' + 
                 subject1 + '.\n\nDue to this reason: '+ reason + '\n\n' +
                 'You may approve the request by signing in your account. Use your gsfe email and the default password is your staff id number.' + '\n\n' +
-                'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
+                'System Link: ' + 'https://tup-assist.com' + '\n\n'
                 'If there are any concerns, please reply to this email.' + '\n\n'
                 'Thank you.', settings.EMAIL_HOST_USER , [teacher1], fail_silently=False)
         
@@ -976,13 +976,13 @@ def s_drop_sub(request):
             data1.dropStatus = "Wait for Teacher, Department head, ADAA, and Registrar's Action"
             data1.save()
             subject = 'DROPPING SUBJECT REQUEST'
-            link = 'https://tupassist.pythonanywhere.com'
+            link = 'https://tup-assist.com'
             send_mail(subject, 
                 'Good day!\n\n' +
                 current_user.first_name + ' ' + current_user.last_name + ' requested to drop on your subject, ' + 
                 subject2 + '.\n\nDue to this reason: '+ reason + '\n\n' +
                 'You may approve the request by signing in your account. Use your gsfe email and the default password is your staff id number.' + '\n\n' +
-                'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
+                'System Link: ' + 'https://tup-assist.com' + '\n\n'
                 'If there are any concerns, please reply to this email.' + '\n\n'
                 'Thank you.', settings.EMAIL_HOST_USER , [teacher2], fail_silently=False)
         
@@ -999,7 +999,7 @@ def s_drop_sub(request):
                 current_user.first_name + ' ' + current_user.last_name + ' requested to drop on your subject, ' + 
                 subject3 + '.\n\nDue to this reason: '+ reason + '\n\n' +
                 'You may approve the request by signing in your account. Use your gsfe email and the default password is your staff id number.' + '\n\n' +
-                'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
+                'System Link: ' + 'https://tup-assist.com' + '\n\n'
                 'If there are any concerns, please reply to this email.' + '\n\n'
                 'Thank you.', [teacher3], fail_silently=False)
             
@@ -1015,7 +1015,7 @@ def s_drop_sub(request):
                 current_user.first_name + ' ' + current_user.last_name + ' requested to drop on your subject, ' + 
                 subject4 + '.\n\nDue to this reason: '+ reason + '\n\n' +
                 'You may approve the request by signing in your account. Use your gsfe email and the default password is your staff id number.' + '\n\n' +
-                'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
+                'System Link: ' + 'https://tup-assist.com' + '\n\n'
                 'If there are any concerns, please reply to this email.' + '\n\n'
                 'Thank you.', settings.EMAIL_HOST_USER , [teacher4], fail_silently=False)
             
@@ -1031,7 +1031,7 @@ def s_drop_sub(request):
                 current_user.first_name + ' ' + current_user.last_name + ' requested to drop on your subject, ' + 
                 subject5 + '.\n\nDue to this reason: '+ reason + '\n\n' +
                 'You may approve the request by signing in your account. Use your gsfe email and the default password is your staff id number.' + '\n\n' +
-                'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
+                'System Link: ' + 'https://tup-assist.com' + '\n\n'
                 'If there are any concerns, please reply to this email.' + '\n\n'
                 'Thank you.', settings.EMAIL_HOST_USER , [teacher5], fail_silently=False)
             
@@ -1047,7 +1047,7 @@ def s_drop_sub(request):
                 current_user.first_name + ' ' + current_user.last_name + ' requested to drop on your subject, ' + 
                 subject6 + '.\n\nDue to this reason: '+ reason + '\n\n' +
                 'You may approve the request by signing in your account. Use your gsfe email and the default password is your staff id number.' + '\n\n' +
-                'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
+                'System Link: ' + 'https://tup-assist.com' + '\n\n'
                 'If there are any concerns, please reply to this email.' + '\n\n'
                 'Thank you.', settings.EMAIL_HOST_USER , [teacher6], fail_silently=False)
 
@@ -1064,7 +1064,7 @@ def s_drop_sub(request):
                 current_user.first_name + ' ' + current_user.last_name + ' requested to drop on your subject, ' + 
                 subject7 + '.\n\nDue to this reason: '+ reason + '\n\n' +
                 'You may approve the request by signing in your account. Use your gsfe email and the default password is your staff id number.' + '\n\n' +
-                'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
+                'System Link: ' + 'https://tup-assist.com' + '\n\n'
                 'If there are any concerns, please reply to this email.' + '\n\n'
                 'Thank you.', settings.EMAIL_HOST_USER , [teacher7], fail_silently=False)
 
@@ -1081,7 +1081,7 @@ def s_drop_sub(request):
                 current_user.first_name + ' ' + current_user.last_name + ' requested to drop on your subject, ' + 
                 subject8 + '.\n\nDue to this reason: '+ reason + '\n\n' +
                 'You may approve the request by signing in your account. Use your gsfe email and the default password is your staff id number.' + '\n\n' +
-                'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
+                'System Link: ' + 'https://tup-assist.com' + '\n\n'
                 'If there are any concerns, please reply to this email.' + '\n\n'
                 'Thank you.', settings.EMAIL_HOST_USER , [teacher8], fail_silently=False)
 
@@ -1098,7 +1098,7 @@ def s_drop_sub(request):
                 current_user.first_name + ' ' + current_user.last_name + ' requested to drop on your subject, ' + 
                 subject9 + '.\n\nDue to this reason: '+ reason + '\n\n' +
                 'You may approve the request by signing in your account. Use your gsfe email and the default password is your staff id number.' + '\n\n' +
-                'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
+                'System Link: ' + 'https://tup-assist.com' + '\n\n'
                 'If there are any concerns, please reply to this email.' + '\n\n'
                 'Thank you.', settings.EMAIL_HOST_USER , [teacher9], fail_silently=False)
 
@@ -1114,7 +1114,7 @@ def s_drop_sub(request):
                 current_user.first_name + ' ' + current_user.last_name + ' requested to drop on your subject, ' + 
                 subject10 + '.\n\nDue to this reason: '+ reason + '\n\n' +
                 'You may approve the request by signing in your account. Use your gsfe email and the default password is your staff id number.' + '\n\n' +
-                'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
+                'System Link: ' + 'https://tup-assist.com' + '\n\n'
                 'If there are any concerns, please reply to this email.' + '\n\n'
                 'Thank you.', settings.EMAIL_HOST_USER , [teacher10], fail_silently=False)
 
@@ -1131,7 +1131,7 @@ def s_drop_sub(request):
                 current_user.first_name + ' ' + current_user.last_name + ' requested to drop on your subject, ' + 
                 subject11 + '.\n\nDue to this reason: '+ reason + '\n\n' +
                 'You may approve the request by signing in your account. Use your gsfe email and the default password is your staff id number.' + '\n\n' +
-                'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
+                'System Link: ' + 'https://tup-assist.com' + '\n\n'
                 'If there are any concerns, please reply to this email.' + '\n\n'
                 'Thank you.', settings.EMAIL_HOST_USER , [teacher11], fail_silently=False)
 
@@ -1148,7 +1148,7 @@ def s_drop_sub(request):
                 current_user.first_name + ' ' + current_user.last_name + ' requested to drop on your subject, ' + 
                 subject12 + '.\n\nDue to this reason: '+ reason + '\n\n' +
                 'You may approve the request by signing in your account. Use your gsfe email and the default password is your staff id number.' + '\n\n' +
-                'System Link: ' + 'https://tupassist.pythonanywhere.com' + '\n\n'
+                'System Link: ' + 'https://tup-assist.com' + '\n\n'
                 'If there are any concerns, please reply to this email.' + '\n\n'
                 'Thank you.', settings.EMAIL_HOST_USER , [teacher12], fail_silently=False)
 

@@ -114,7 +114,7 @@ class DroppingReq(models.Model):
     subj_teacher_approve = models.CharField(max_length=255, null=True, blank=True, default='Pending')
     subj_teacher_remark = models.CharField(max_length=255, null=True, blank=True, default='-')
     subj_teacher_name = models.CharField(max_length=255, null=True, blank=True, default='-')
-    subj_teacher_date = models.DateTimeField(null=True, blank=, default='-')
+    subj_teacher_date = models.DateTimeField(null=True, blank=True, default='-')
     head_is_approve = models.CharField(max_length=255, null=True, blank=True, default='-')
     head_remark = models.CharField(max_length=255, null=True, blank=True, default='-')
     head_name = models.CharField(max_length=255, null=True, blank=True, default='-')
@@ -127,7 +127,7 @@ class DroppingReq(models.Model):
     reg_date = models.DateTimeField(null=True, blank=True, default='-')
     reason = models.CharField(max_length=500, null=True, blank=True, default='-')
     school_year = models.IntegerField(blank=True, null=True, default='-')
-    semester = models.IntegerField(blank=True, null=True, default='-', default='-')
+    semester = models.IntegerField(blank=True, null=True, default='-')
     
     class Meta:
         verbose_name_plural = "DroppingReq" 

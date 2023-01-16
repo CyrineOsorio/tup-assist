@@ -7,7 +7,7 @@
 
 body {
     width: 100%;
-    height: 100vh;
+    height: 100%;
 }
 
 a {
@@ -28,7 +28,7 @@ a:focus {
     top: 0;
     background-color: #F8F9FB;
     z-index: 100;
-    padding: 0 10% 0 10%;
+    padding: 0 5% 0 5%;
 }
 
 .navbarLagayan {
@@ -79,26 +79,19 @@ a:focus {
 #dropping,
 #transferring,
 #dashboard,
-#account {
+#staff {
     font-weight: bold;
-}
-
-
-/* body */
-
-body {
-    height: 100%;
-    background-color: #ECECEC;
 }
 
 .bg-container {
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
+    max-height: 100%;
     background-image: url(../images/E8EFE5.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    padding: 2% 20% 2% 20%;
+    padding: 2% 5% 2% 5%;
 }
 
 .welcome {
@@ -116,49 +109,8 @@ body {
     display: grid;
     background-color: white;
     margin-top: 2%;
-    padding: 20px 40px 20px 40px;
+    padding: 20px 20px 20px 20px;
     border-radius: 10px;
-}
-
-.card {
-    border: solid 0.5px #388465;
-}
-
-.title {
-    margin-top: 20px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.title p {
-    width: 50%;
-    height: 100%;
-    font-weight: bold;
-}
-
-.title button {
-    background-color: #388465;
-    border: 1px solid #388465;
-}
-
-.title input {
-    border: 1px solid #388465;
-}
-
-#trans_status {
-    display: flex;
-}
-
-#button {
-    color: white;
-    background-color: #388465;
-    border: 1px solid #388465;
-    border-radius: 5px;
-}
-
-#profile {
-    width: 100%;
 }
 
 .table {
@@ -172,6 +124,15 @@ th {
 td {
     font-size: 12px;
     width: fit-content;
+}
+
+.action {
+    display: flex;
+    justify-content: center;
+}
+
+.action i {
+    font-size: 20px;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -196,6 +157,7 @@ td {
         justify-items: center;
         align-items: center;
         text-align: center;
+        padding: 10% 10% 10% 10%;
     }
     .bg-container {
         width: 100%;
@@ -203,13 +165,6 @@ td {
     }
     .bodybody {
         width: 100%;
-    }
-    .content {
-        width: 100%;
-        padding: 2% 2% 2% 2%;
-    }
-    #schedule_col {
-        display: grid;
     }
 }
 

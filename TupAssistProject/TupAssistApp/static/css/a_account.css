@@ -28,7 +28,7 @@ a:focus {
     top: 0;
     background-color: #F8F9FB;
     z-index: 100;
-    padding: 0 10% 0 10%;
+    padding: 0 5% 0 5%;
 }
 
 .navbarLagayan {
@@ -91,7 +91,7 @@ a:focus {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    padding: 2% 20% 2% 20%;
+    padding: 2% 5% 2% 5%;
 }
 
 .welcome {

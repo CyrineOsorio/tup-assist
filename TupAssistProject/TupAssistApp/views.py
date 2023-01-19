@@ -960,7 +960,7 @@ def s_drop_sub(request):
             data1.dropStatus = "Wait for Teacher, Department head, ADAA, and Registrar's Action"
             data1.save()
             subject = 'DROPPING SUBJECT REQUEST'
-            end_mail(subject, 
+            send_mail(subject, 
                 'Good day!\n\n' +
                 current_user.first_name + ' ' + current_user.last_name + ' requested to drop on your subject, ' + 
                 subject1 + '.\n\nDue to this reason: '+ reason + '\n\n' +

@@ -38,6 +38,10 @@ npm install -g bower
 
 Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope CurrentUser
 
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+
+npm install datatables.net-dt
 bower install --save datatables.net
 bower install --save datatables.net-dt
 
